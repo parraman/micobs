@@ -1,0 +1,7 @@
+package es.uah.aut.srg.micobs.pdl.common.arch;
+
+architecture SPARC {
+	
+	version := v7;
+	
+};

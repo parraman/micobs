@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<micobs:MDescriptorList xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:micobs="http://srg.aut.uah.es/micobs/libdesc">
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.arch" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.arch.SPARC" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemArchitecture">
+    <fields name="version" value="v7"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/SPARC/v7/SPARC.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/SPARC/v7"/>
+  </descriptors>
+</micobs:MDescriptorList>
