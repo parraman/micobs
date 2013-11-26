@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mesposswp" nsURI="http://srg.aut.uah.es/micobs/mesp/mesposswp"
+    nsPrefix="micobs.mesp">
+  <eClassifiers xsi:type="ecore:EClass" name="MOSSwPackage" eSuperTypes="#//MMESPOSSWPPackageElement ../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageReferencingElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//MOSSwPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ctools" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ctool.ecore#//MConstructionTool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedOSSWIs" upperBound="-1"
+        eType="ecore:EClass osswi.ecore#//MOSSwInterface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPOSSWPPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPOSSWPPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+</ecore:EPackage>

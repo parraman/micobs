@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mespdep" nsURI="http://srg.aut.uah.es/micobs/mesp/mespdep" nsPrefix="micobs.mesp">
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDeployment" eSuperTypes="#//MMESPDEPPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ctool" lowerBound="1" eType="ecore:EClass ctool.ecore#//MConstructionTool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="ecore:EClass swp.ecore#//MSwPackageRequiredInterface" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deployedSwPackages" upperBound="-1"
+        eType="#//MMESPSwPackageDeployment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentAlternatives"
+        upperBound="-1" eType="#//MMESPDeploymentAlternative" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentPlatforms" lowerBound="1"
+        upperBound="-1" eType="#//MMESPDeploymentPlatform" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDeploymentPlatform" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platformSwPackage" lowerBound="1"
+        eType="ecore:EClass pswp.ecore#//MPlatformSwPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MPlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deployedDevices" upperBound="-1"
+        eType="#//MMESPDeployedDevice" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDeployedDevice" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MDevice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDeploymentAlternative" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentPlatforms" lowerBound="1"
+        upperBound="-1" eType="#//MMESPDeploymentPlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="ecore:EClass swp.ecore#//MSwPackageRequiredInterface" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deployedSwPackages" upperBound="-1"
+        eType="#//MMESPSwPackageDeployment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deploymentAlternatives"
+        upperBound="-1" eType="#//MMESPDeploymentAlternative" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPSwPackageDeployment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swPackage" lowerBound="1"
+        eType="ecore:EClass swp.ecore#//MSwPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDriverSwPackageDeployment" eSuperTypes="#//MMESPSwPackageDeployment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deviceDriverMappings" upperBound="-1"
+        eType="#//MMESPDeviceDriverMapping" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDeviceDriverMapping">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="deployedDevice" lowerBound="1"
+        eType="#//MMESPDeployedDevice"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedDevice" lowerBound="1"
+        eType="ecore:EClass swp.ecore#//MDriverSwPackageSupportedDevice"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDEPPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPDEPPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+</ecore:EPackage>

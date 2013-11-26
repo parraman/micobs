@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mesplibrary" nsURI="http://srg.aut.uah.es/micobs/mesp/library/mesplibrary"
+    nsPrefix="micobs.mesp.library">
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPLibrary" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonLibrary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPPackage" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPPackageItem" abstract="true" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPPackageVersionedItem" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPPackageVersionedItemWithRepository"
+      abstract="true" eSuperTypes="#//MMESPPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemSwPackage" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemSwPackage" eSuperTypes="#//MMESPPackageVersionedItemWithRepository"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemSwInterface" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemSwInterface" eSuperTypes="#//MMESPPackageVersionedItemWithRepository"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemOSSwPackage" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemOSSwPackage" eSuperTypes="#//MMESPPackageVersionedItemWithRepository"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemOSSwInterface" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemOSSwInterface" eSuperTypes="#//MMESPPackageVersionedItemWithRepository"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemPlatformSwPackage" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemPlatformSwPackage"
+      eSuperTypes="#//MMESPPackageVersionedItemWithRepository"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemDeployment" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemDeployment" eSuperTypes="#//MMESPPackageVersionedItemWithRepository"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemAbstractSwPackage" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemAbstractSwPackage"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemConstructionTool" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemConstructionTool"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPItemDriverSwPackage" eSuperTypes="#//MMESPPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPVersionedItemDriverSwPackage" eSuperTypes="#//MMESPPackageVersionedItemWithRepository"/>
+</ecore:EPackage>

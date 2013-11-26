@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mesp/src" editDirectory="/es.uah.aut.srg.micobs.mesp/src"
+    modelPluginID="es.uah.aut.srg.micobs.mesp" modelName="Swp" editPluginClass="es.uah.aut.srg.micobs.mesp.plugin.MESPPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common ctool.genmodel#//mespctool mespcommon.genmodel#//mespcommon osswi.genmodel#//mesposswi ../../es.uah.aut.srg.micobs.pdl/model/pdl.genmodel#//pdl swi.genmodel#//mespswi ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>swp.ecore</foreignModel>
+  <genPackages prefix="mespswp" basePackage="es.uah.aut.srg.micobs.mesp" disposableProviderFactory="true"
+      ecorePackage="swp.ecore#/">
+    <genClasses ecoreClass="swp.ecore#//MSwPackage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackage/requiredInterfacesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackage/supportedPlatformsList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackage/extends"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackage/languages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackage/ctools"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MSwPackageRequiredInterfacesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageRequiredInterfacesList/requires"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MSwPackageProvidedInterfacesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageProvidedInterfacesList/provides"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MSwPackageSupportedPlatformsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatformsList/supportedPlatforms"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MSwPackageProvidedInterface">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageProvidedInterface/swinterface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageProvidedInterface/parametersValueAssignments"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="swp.ecore#//MSwPackageRequiredInterface">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageRequiredInterface/resourceDemands"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MSwPackageRequiredSwInterface">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageRequiredSwInterface/swinterface"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MAbstractSwPackage">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MAbstractSwPackage/providedInterfacesList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MAbstractSwPackage/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MAbstractSwPackage/parametersList"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MSwPackageSupportedPlatform">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/osapi"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/os"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/architecture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/compiler"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/microprocessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/board"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/requiredInterfacesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageSupportedPlatform/parametersList"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="swp.ecore#//MResourceDemand"/>
+    <genClasses ecoreClass="swp.ecore#//MInstantiableResourceDemand">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MInstantiableResourceDemand/resource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MInstantiableResourceDemand/parametersValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MQuantifiableResourceDemand">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MQuantifiableResourceDemand/resource"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference swp.ecore#//MQuantifiableResourceDemand/resourceValue"/>
+    </genClasses>
+    <genClasses ecoreClass="swp.ecore#//MMESPSWPPackageFile"/>
+    <genClasses image="false" ecoreClass="swp.ecore#//MMESPSWPPackageElement"/>
+    <genClasses ecoreClass="swp.ecore#//MSwPackageRequiredOSSwInterface">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference swp.ecore#//MSwPackageRequiredOSSwInterface/osswinterface"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

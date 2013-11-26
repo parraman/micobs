@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="system" nsURI="http://srg.aut.uah.es/micobs/system" nsPrefix="micobs">
+  <eClassifiers xsi:type="ecore:EClass" name="MLanguage" eSuperTypes="#//MSYSTEMPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//MLanguage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MSYSTEMPackageFile" eSuperTypes="common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSYSTEMPackageElement" abstract="true"
+      eSuperTypes="common.ecore#//MCommonPackageElement"/>
+</ecore:EPackage>

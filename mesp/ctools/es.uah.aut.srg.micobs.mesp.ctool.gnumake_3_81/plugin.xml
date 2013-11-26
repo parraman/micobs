@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+!-->
+
+<plugin>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.swp.generateconstructionfiles.command.id"
+            name="Generate Construction Files">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.osswp.generateconstructionfiles.command.id"
+            name="Generate Construction Files">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.pswp.generateconstructionfiles.command.id"
+            name="Generate Construction Files">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateswis.command.id"
+            name="Update SwInterfaces">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateosswis.command.id"
+            name="Update OSSwInterfaces">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateswps.command.id"
+            name="Update SwPackages">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateosswps.command.id"
+            name="Update OSSwPackages">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updatepswps.command.id"
+            name="Update Platform SwPackages">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generateprojectconstructionfiles.command.id"
+            name="Generate Construction Files">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generatemainconstructionfiles.command.id"
+            name="Generate Construction Files">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.createmainfolders.command.id"
+            name="Create Main Folders">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanconfigfolders.command.id"
+            name="Clean Config Folders">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanmainfolders.command.id"
+            name="Clean Main Folders">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanprojectconstructionfiles.command.id"
+            name="Clean Construction Files">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateallresources.command.id"
+            name="Update All Resources">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generateprojectskeleton.command.id"
+            name="Generate Project Skeleton">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.swp.menu.id?after=es.uah.aut.srg.micobs.mesp.swp.ctool.separator">
+         <menu
+               label="GNU Make(3.81)">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.swp.generateconstructionfiles.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.ctool.isGNUMake_3_81">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.osswp.menu.id?after=es.uah.aut.srg.micobs.mesp.osswp.ctool.separator">
+         <menu
+               label="GNU Make(3.81)">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.osswp.generateconstructionfiles.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.ctool.isGNUMake_3_81">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.pswp.menu.id?after=es.uah.aut.srg.micobs.mesp.pswp.ctool.separator">
+         <menu
+               label="GNU Make(3.81)">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.pswp.generateconstructionfiles.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.ctool.isGNUMake_3_81">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+         </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.dep.menu.id?after=es.uah.aut.srg.micobs.mesp.dep.ctool.separator">
+         <menu
+               label="GNU Make(3.81)">
+            <menu
+                  label="Main Packages">
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.createmainfolders.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanmainfolders.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generatemainconstructionfiles.command.id"
+                     style="push">
+               </command>
+            </menu>
+            <menu
+                  label="Config Files">
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanconfigfolders.command.id"
+                     style="push">
+               </command>
+            </menu>
+            <menu
+                  label="Project Files">
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generateprojectconstructionfiles.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanprojectconstructionfiles.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generateprojectskeleton.command.id"
+                     style="push">
+               </command>
+            </menu>
+            <menu
+                  label="Update Resources">
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateosswis.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateswis.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateswps.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateosswps.command.id"
+                     style="push">
+               </command>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updatepswps.command.id"
+                     style="push">
+               </command>
+               <separator
+                     name="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateresources.separator.id">
+               </separator>
+               <command
+                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateallresources.command.id"
+                     style="push">
+               </command>
+            </menu>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.ctool.isGNUMake_3_81">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+         </menu>
+      </menuContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.GenerateSwPackageGNUMakeConstructionFiles"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.swp.generateconstructionfiles.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.GenerateOSSwPackageGNUMakeConstructionFiles"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.osswp.generateconstructionfiles.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.GeneratePlatformSwPackageGNUMakeConstructionFiles"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.pswp.generateconstructionfiles.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.UpdateDeploymentSwInterfaces"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateswis.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.UpdateDeploymentOSSwInterfaces"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateosswis.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.UpdateDeploymentSwPackages"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateswps.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.UpdateDeploymentOSSwPackages"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateosswps.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.UpdateDeploymentPlatformSwPackages"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updatepswps.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.GenerateDeploymentGNUMakeConstructionFiles"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generateprojectconstructionfiles.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.GenerateMainGNUMakeConstructionFiles"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generatemainconstructionfiles.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.CreateMainFolders"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.createmainfolders.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.CleanConfigFolders"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanconfigfolders.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.CleanMainFolders"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanmainfolders.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.CleanDeploymentGNUMakeConstructionFiles"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanprojectconstructionfiles.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.UpdateDeploymentResources"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.updateallresources.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.generator.GenerateDeploymentGNUMakeProjectSkeleton"
+            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generateprojectskeleton.command.id">
+      </handler>
+   </extension>
+
+   <extension
+         point="es.uah.aut.srg.micobs.mesp.ctool">
+      <ctool
+            model="model/gnumake.mesp_ctool"
+            uri="es.uah.aut.srg.micobs.mesp.ctools.GNUMake"
+            version="3.81">
+      </ctool>
+   </extension>
+
+   <extension
+         point="es.uah.aut.srg.micobs.mesp.ctoolAdapter">
+      <ctoolAdapter
+            adapter="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.adapter.CToolGNUMakeAdapter"
+            uri="es.uah.aut.srg.micobs.mesp.ctools.GNUMake"
+            version="3.81">
+      </ctoolAdapter>
+   </extension>
+
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.tester.MESPCToolGNUMake_3_81Tester"
+            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.tester"
+            namespace="es.uah.aut.srg.micobs.mesp.ctool"
+            properties="isGNUMake_3_81"
+            type="org.eclipse.core.resources.IResource">
+      </propertyTester>
+   </extension>
+
+</plugin>

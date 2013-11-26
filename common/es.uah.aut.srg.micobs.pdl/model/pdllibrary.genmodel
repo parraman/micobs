@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/es.uah.aut.srg.micobs.pdl/src" editDirectory="/es.uah.aut.srg.micobs.pdl/src"
+    editorDirectory="/es.uah.aut.srg.micobs.pdl/src" modelPluginID="es.uah.aut.srg.micobs.pdl"
+    modelName="Pdllibrary" editPluginClass="es.uah.aut.srg.micobs.pdl.plugin.PDLPlugin"
+    editorPluginClass="es.uah.aut.srg.micobs.pdl.plugin.PDLPlugin" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common">
+  <foreignModel>pdllibrary.ecore</foreignModel>
+  <genPackages prefix="pdllibrary" basePackage="es.uah.aut.srg.micobs.pdl.library"
+      disposableProviderFactory="true" multipleEditorPages="false" generateModelWizard="false"
+      ecorePackage="pdllibrary.ecore#/">
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLLibrary"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLPackage"/>
+    <genClasses image="false" ecoreClass="pdllibrary.ecore#//MPDLPackageItem"/>
+    <genClasses image="false" ecoreClass="pdllibrary.ecore#//MPDLPackageVersionedItem"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLItemOperatingSystemAPI"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLVersionedItemOperatingSystemAPI"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLItemOperatingSystem"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLVersionedItemOperatingSystem"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLItemArchitecture"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLVersionedItemArchitecture"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLItemMicroprocessor"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLVersionedItemMicroprocessor"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLItemBoard"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLVersionedItemBoard"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLItemPlatform"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLVersionedItemPlatform"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLItemCompiler"/>
+    <genClasses ecoreClass="pdllibrary.ecore#//MPDLVersionedItemCompiler"/>
+  </genPackages>
+</genmodel:GenModel>

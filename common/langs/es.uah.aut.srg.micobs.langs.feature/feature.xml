@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="es.uah.aut.srg.micobs.langs"
+      label="%featureName"
+      version="2.1.0"
+      provider-name="%providerName">
+
+   <description url="http://www.micobs.com">
+      %description
+   </description>
+
+   <copyright url="&quot;ttp://www.eclipse.org/legal/epl-v10.html">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.0.x"/>
+   </url>
+
+   <requires>
+      <import plugin="es.uah.aut.srg.micobs" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.lang.asm_ia32_i686"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.lang.asm_SPARC_v7"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.lang.asm_SPARC_v8"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.lang.c_c99"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.lang.cpp_98"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

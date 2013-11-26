@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mesppswp" nsURI="http://srg.aut.uah.es/micobs/mesp/mesppswp"
+    nsPrefix="micobs.mesp">
+  <eClassifiers xsi:type="ecore:EClass" name="MPlatformSwPackage" eSuperTypes="#//MMESPPSWPPackageElement ../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageReferencingElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="osSwPackages" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass osswp.ecore#//MOSSwPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ctools" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ctool.ecore#//MConstructionTool"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPPSWPPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPPSWPPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+</ecore:EPackage>

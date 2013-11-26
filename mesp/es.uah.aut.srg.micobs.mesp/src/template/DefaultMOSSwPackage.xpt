@@ -1,0 +1,57 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mesposswp»
+«IMPORT common»
+
+«EXTENSION template::MESPStringHelper»
+
+«DEFINE main FOR MMESPOSSWPPackageFile»
+«FILE this.element.name.toLowerDefString() + ".mesp_osswp" -»
+/*
+ * First we have to assign this file to a certain package.
+ */
+
+package «this.package.uri»;
+
+/*
+ * Optionally, we can import packages to use their elements as references.
+ */
+
+import «((MCommonPackageFile)((MCommonPackageReferencingElement)this.element).referencedElement.eContainer).package.uri»;
+«FOREACH (((MOSSwPackage)this.element).ctools.eContainer).typeSelect(MCommonPackageFile).package.toSet() AS package -»
+«IF this.package != package -»
+import «package.uri»;
+«ENDIF -»
+«ENDFOREACH -»
+
+/**
+ * Definition of an OSSwPackage. Every OSSwResource should have:
+ * - A name
+ * - A version
+ * - The OS to which this osswresource is an implementation
+ * - A list of implemented MOSSwInterfaces
+ * 
+ */
+
+osswpackage «this.element.name»
+{
+	version := «this.element.version»;
+	
+	os := «((MOSSwPackage)this.element).referencedElement.getElementName()»;
+
+	construction tools := «((MOSSwPackage)this.element).ctools.first().getElementName()»«FOREACH ((MOSSwPackage)this.element).ctools.withoutFirst() AS ctool -»«ctool.getElementName()»«ENDFOREACH -»;
+	
+	provided osswis := /* comma separated names */;
+};
+«ENDFILE»
+«ENDDEFINE»

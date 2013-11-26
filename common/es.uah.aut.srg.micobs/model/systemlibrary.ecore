@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="systemlibrary" nsURI="http://srg.aut.uah.es/micobs/library/systemlibrary"
+    nsPrefix="micobs.system.library">
+  <eClassifiers xsi:type="ecore:EClass" name="MSystemLibrary" eSuperTypes="common.ecore#//MCommonLibrary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSystemPackage" eSuperTypes="common.ecore#//MCommonPackage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSystemPackageItem" abstract="true"
+      eSuperTypes="common.ecore#//MCommonPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSystemPackageVersionedItem" eSuperTypes="common.ecore#//MCommonPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSystemItemLanguage" eSuperTypes="#//MSystemPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSystemVersionedItemLanguage" eSuperTypes="#//MSystemPackageVersionedItem"/>
+</ecore:EPackage>

@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="common" nsURI="http://srg.aut.uah.es/micobs/common" nsPrefix="micobs">
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonPackage" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" upperBound="-1"
+        eType="#//MCommonPackageItem" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonPackageFile" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="package" lowerBound="1"
+        eType="#//MCommonPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="imports" upperBound="-1"
+        eType="#//MCommonPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="element" lowerBound="1"
+        eType="#//MCommonPackageElement" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonPackageElement" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        changeable="false" volatile="true" transient="true" derived="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonPackageItem" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versionedItems" upperBound="-1"
+        eType="#//MCommonPackageVersionedItem" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="uri" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonPackageVersionedItem" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="localModelURI" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="remoteModelURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="repositoryFolderURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="version" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonLibrary" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packages" upperBound="-1"
+        eType="#//MCommonPackage" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonPackageReferencingElement" abstract="true"
+      eSuperTypes="#//MCommonPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedElement" lowerBound="1"
+        eType="#//MCommonPackageElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonPackageParametricReferencingElement"
+      eSuperTypes="#//MCommonPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="referencedElement" lowerBound="1"
+        eType="#//MCommonPackageElement"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterElement" lowerBound="1"
+        eType="#//MCommonPackageElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCommonReferenceableObj" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameter" abstract="true" eSuperTypes="#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="constant" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterDefaultValueSingleExpression"
+      abstract="true" eSuperTypes="#//MParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" lowerBound="1"
+        eType="#//MParameterValueExpression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParameterDefinition" eSuperTypes="#//MParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="literals" lowerBound="1"
+        upperBound="-1" eType="#//MEnumParameterLiteral" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParameter" abstract="true" eSuperTypes="#//MParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParameterSingleExpression" eSuperTypes="#//MBooleanParameter #//MParameterDefaultValueSingleExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParameter" abstract="true" eSuperTypes="#//MParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParameterSingleExpression" eSuperTypes="#//MStringParameter #//MParameterDefaultValueSingleExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParameter" abstract="true" eSuperTypes="#//MParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParameterSingleExpression" eSuperTypes="#//MIntegerParameter #//MParameterDefaultValueSingleExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParameter" abstract="true" eSuperTypes="#//MParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enumDefinition" lowerBound="1"
+        eType="#//MEnumParameterDefinition"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParameterSingleExpression" eSuperTypes="#//MEnumParameter #//MParameterDefaultValueSingleExpression"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParameterLiteral" eSuperTypes="#//MCommonReferenceableObj"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParameter" abstract="true" eSuperTypes="#//MParameter"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParameterSingleExpression" eSuperTypes="#//MRealParameter #//MParameterDefaultValueSingleExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterRange" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowerValue" lowerBound="1"
+        eType="#//MParameterValueExpression" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upperValue" lowerBound="1"
+        eType="#//MParameterValueExpression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterOOR" eSuperTypes="#//MParameterRange"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterOCR" eSuperTypes="#//MParameterRange"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterCCR" eSuperTypes="#//MParameterRange"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterCOR" eSuperTypes="#//MParameterRange"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamIntegerLiteral" eSuperTypes="#//MEnumParameterLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamRealLiteral" eSuperTypes="#//MEnumParameterLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamStringLiteral" eSuperTypes="#//MEnumParameterLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValue" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueLiteral" abstract="true"
+      eSuperTypes="#//MParameterValue"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueIntegerLiteral" eSuperTypes="#//MParameterValueLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueRealLiteral" eSuperTypes="#//MParameterValueLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueBooleanLiteral" eSuperTypes="#//MParameterValueLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueStringLiteral" eSuperTypes="#//MParameterValueLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueRefObject" eSuperTypes="#//MParameterValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"
+        eType="#//MCommonReferenceableObj"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueExpression">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" lowerBound="1" eType="#//MParameterValueTERM"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" eType="#//MParameterValueExpressionOperators"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MParameterValueExpressionOperators">
+    <eLiterals name="plus" literal="plus"/>
+    <eLiterals name="minus" value="1" literal="minus"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueTERM">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="left" lowerBound="1" eType="#//MParameterValue"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="operation" eType="#//MParameterValueTERMOperators"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="right" eType="#//MParameterValueTERM"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValuePAR" eSuperTypes="#//MParameterValue">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="value" lowerBound="1" eType="#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="MParameterValueTERMOperators">
+    <eLiterals name="mult" literal="mult"/>
+    <eLiterals name="div" value="1" literal="div"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueAssignment" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+        eType="#//MParameter"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueAssignmentSingleExpression"
+      eSuperTypes="#//MParameterValueAssignment">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
+        eType="#//MParameterValueExpression" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueRange">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameter" lowerBound="1"
+        eType="#//MParameter"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" eType="#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueDependentItem" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ranges" upperBound="-1"
+        eType="#//MParameterValueRange" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterValueDependentItemsList">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="items" lowerBound="1" upperBound="-1"
+        eType="#//MParameterValueDependentItem" containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

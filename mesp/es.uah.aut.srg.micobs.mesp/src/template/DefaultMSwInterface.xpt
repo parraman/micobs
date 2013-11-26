@@ -1,0 +1,51 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mespswi»
+«IMPORT common»
+
+«EXTENSION template::MESPStringHelper»
+
+«DEFINE main FOR MMESPSWIPackageFile»
+«FILE this.element.name.toLowerDefString() + ".mesp_swi" -»
+/*
+ * First we have to assign this file to a certain package
+ */
+
+package «this.package.uri»;
+
+/*
+ * Optionally, we can import packages to use their elements as references.
+ */
+
+import «((MCommonPackageFile)((MSwInterface)this.element).language.eContainer).package.uri»;
+
+/*
+ * Definition of a SwInterface. Every SwInterface should have:
+ * - A name
+ * - A version
+ * - A list of defined languages
+ *
+ * And optionally can have:
+ * - A list of provided resources (quantifiable and instantiable)
+ *
+ */
+
+swinterface «this.element.name»
+{
+	version := «this.element.version»;
+	
+	language := «((MSwInterface)this.element).language.getElementName()»;
+	
+};
+«ENDFILE»
+«ENDDEFINE»

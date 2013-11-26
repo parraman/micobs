@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.pdl/src" editDirectory="/es.uah.aut.srg.micobs.pdl/src"
+    modelPluginID="es.uah.aut.srg.micobs.pdl" modelName="Pdl" editPluginClass="es.uah.aut.srg.micobs.pdl.plugin.PDLPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>pdl.ecore</foreignModel>
+  <genPackages prefix="pdl" basePackage="es.uah.aut.srg.micobs" disposableProviderFactory="true"
+      ecorePackage="pdl.ecore#/">
+    <genClasses ecoreClass="pdl.ecore#//MBoard">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MBoard/microprocessor"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MMicroprocessor">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MMicroprocessor/architecture"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MOperatingSystem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pdl.ecore#//MOperatingSystem/supportedPlatforms"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MOperatingSystem/supportedOSAPIs"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MOSSupportedPlatform">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MOSSupportedPlatform/architecture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MOSSupportedPlatform/microprocessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MOSSupportedPlatform/board"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MOperatingSystemAPI"/>
+    <genClasses ecoreClass="pdl.ecore#//MArchitecture"/>
+    <genClasses ecoreClass="pdl.ecore#//MPDLPackageFile"/>
+    <genClasses image="false" ecoreClass="pdl.ecore#//MPDLPackageElement"/>
+    <genClasses ecoreClass="pdl.ecore#//MPlatform">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MPlatform/osapi"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MPlatform/os"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MPlatform/architecture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MPlatform/microprocessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MPlatform/board"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pdl.ecore#//MPlatform/configurationParameters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pdl.ecore#//MPlatformConfigParam"/>
+    <genClasses ecoreClass="pdl.ecore#//MBooleanPlatformConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MBooleanPlatformConfigParam/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MStringPlatformConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MStringPlatformConfigParam/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MEnumPlatformConfigParam">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pdl.ecore#//MEnumPlatformConfigParam/literals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MEnumPlatformConfigParam/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MEnumPlatformConfigParamLiteral"/>
+    <genClasses ecoreClass="pdl.ecore#//MIntegerPlatformConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MIntegerPlatformConfigParam/defaultValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pdl.ecore#//MIntegerPlatformConfigParam/range"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pdl.ecore#//MIntPlatformConfigParamRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MIntPlatformConfigParamRange/lowerValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MIntPlatformConfigParamRange/upperValue"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MIntPlatformConfigParamOOR"/>
+    <genClasses ecoreClass="pdl.ecore#//MIntPlatformConfigParamOCR"/>
+    <genClasses ecoreClass="pdl.ecore#//MIntPlatformConfigParamCCR"/>
+    <genClasses ecoreClass="pdl.ecore#//MIntPlatformConfigParamCOR"/>
+    <genClasses ecoreClass="pdl.ecore#//MRealPlatformConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MRealPlatformConfigParam/defaultValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pdl.ecore#//MRealPlatformConfigParam/range"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pdl.ecore#//MRealPlatformConfigParamRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MRealPlatformConfigParamRange/lowerValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MRealPlatformConfigParamRange/upperValue"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MRealPlatformConfigParamOOR"/>
+    <genClasses ecoreClass="pdl.ecore#//MRealPlatformConfigParamOCR"/>
+    <genClasses ecoreClass="pdl.ecore#//MRealPlatformConfigParamCCR"/>
+    <genClasses ecoreClass="pdl.ecore#//MRealPlatformConfigParamCOR"/>
+    <genClasses ecoreClass="pdl.ecore#//MEnumPlatformConfigParamIntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MEnumPlatformConfigParamIntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MEnumPlatformConfigParamRealLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MEnumPlatformConfigParamRealLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MEnumPlatformConfigParamStringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MEnumPlatformConfigParamStringLiteral/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="pdl.ecore#//MPlatformConfigParamValueAssignment"/>
+    <genClasses ecoreClass="pdl.ecore#//MBooleanPCPValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MBooleanPCPValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MBooleanPCPValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MEnumPCPValueAssignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MEnumPCPValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MEnumPCPValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MIntegerPCPValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MIntegerPCPValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MIntegerPCPValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MStringPCPValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MStringPCPValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MStringPCPValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MRealPCPValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute pdl.ecore#//MRealPCPValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MRealPCPValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MCompiler">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference pdl.ecore#//MCompiler/frontends"/>
+    </genClasses>
+    <genClasses ecoreClass="pdl.ecore#//MCompilerFrontend">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MCompilerFrontend/language"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference pdl.ecore#//MCompilerFrontend/architectures"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

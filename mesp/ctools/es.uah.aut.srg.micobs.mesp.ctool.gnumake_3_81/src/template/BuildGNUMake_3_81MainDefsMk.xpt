@@ -1,0 +1,54 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mespdep»
+«IMPORT common»
+
+«EXTENSION template::MICOBSStringHelper»
+«EXTENSION template::MESPUtil»
+«EXTENSION template::GNUMakeStringHelper»
+
+«DEFINE main FOR MMESPDeployment»
+«IF this.deploymentAlternatives.isEmpty -»
+«FOREACH this.deploymentPlatforms AS deploymentPlatform -»
+«EXPAND generateDefsMkFile(null, deploymentPlatform) FOR this -»
+«ENDFOREACH -»
+«ELSE -»
+«FOREACH this.getLeafDeploymentAlternatives() AS alternative -»
+«FOREACH alternative.deploymentPlatforms AS deploymentPlatform -»
+«EXPAND generateDefsMkFile(alternative, deploymentPlatform) FOR this -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE generateDefsMkFile(MMESPDeploymentAlternative alternative, MMESPDeploymentPlatform deploymentPlatform) FOR MMESPDeployment»
+«FILE "/" + this.getDeploymentFolderName(alternative, deploymentPlatform) + "/defs.mk" -»
+# Label SRCS contains a list of all the source files that are to be compiled
+# following the rules specifies by the chosen platform. All the source files
+# included in this list are going to be compiled and linked to create the
+# project executable. A common example of use for this label would be:
+# 
+# SRCS+=$(wildcard $R/«getMainFolder()»/«this.getDeploymentFolderName(alternative, deploymentPlatform)»/src/*.c)
+# SRCS+=$(wildcard $R/«getMainFolder()»/«this.getDeploymentFolderName(alternative, deploymentPlatform)»/src/*.cpp)
+# 
+# The previous lines would include in the list all the source files contained
+# in the source root folder.
+#
+
+«PROTECT CSTART '# ' CEND '' ID this.getDeploymentFolderName(alternative, deploymentPlatform) + "_src"»
+
+SRCS+=
+
+«ENDPROTECT»
+«ENDFILE»
+«ENDDEFINE»

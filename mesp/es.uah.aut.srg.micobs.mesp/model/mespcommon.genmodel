@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mesp/src" editDirectory="/es.uah.aut.srg.micobs.mesp/src"
+    modelPluginID="es.uah.aut.srg.micobs.mesp" modelName="Mespcommon" editPluginClass="es.uah.aut.srg.micobs.mesp.plugin.MESPPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common">
+  <foreignModel>mespcommon.ecore</foreignModel>
+  <genPackages prefix="mespcommon" basePackage="es.uah.aut.srg.micobs.mesp" disposableProviderFactory="true"
+      ecorePackage="mespcommon.ecore#/">
+    <genClasses image="false" ecoreClass="mespcommon.ecore#//MConfigurationParameter"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MBooleanConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MBooleanConfigParam/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MStringConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MStringConfigParam/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MIntegerConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MIntegerConfigParam/defaultValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MIntegerConfigParam/range"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MEnumConfigParam">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MEnumConfigParam/literals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MEnumConfigParam/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MEnumConfigParamLiteral"/>
+    <genClasses image="false" ecoreClass="mespcommon.ecore#//MProvidedResource"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MQuantifiableResource"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MInstantiableResource">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MInstantiableResource/parameters"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mespcommon.ecore#//MConfigParamValueAssignment"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MBooleanConfigParamValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MBooleanConfigParamValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MBooleanConfigParamValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MEnumConfigParamValueAssignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MEnumConfigParamValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MEnumConfigParamValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MIntegerConfigParamValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MIntegerConfigParamValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MIntegerConfigParamValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MRealConfigParamValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MRealConfigParamValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MRealConfigParamValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MRealConfigParam">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MRealConfigParam/defaultValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MRealConfigParam/range"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MStringConfigParamValueAssignment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MStringConfigParamValueAssignment/value"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mespcommon.ecore#//MStringConfigParamValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mespcommon.ecore#//MIntegerConfigParamRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MIntegerConfigParamRange/lowerValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MIntegerConfigParamRange/upperValue"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MIntConfigParamOOR"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MIntConfigParamOCR"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MIntConfigParamCCR"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MIntConfigParamCOR"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MEnumConfigParamIntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MEnumConfigParamIntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MEnumConfigParamRealLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MEnumConfigParamRealLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MEnumConfigParamStringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MEnumConfigParamStringLiteral/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mespcommon.ecore#//MRealConfigParamRange">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MRealConfigParamRange/lowerValue"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute mespcommon.ecore#//MRealConfigParamRange/upperValue"/>
+    </genClasses>
+    <genClasses ecoreClass="mespcommon.ecore#//MRealConfigParamOOR"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MRealConfigParamOCR"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MRealConfigParamCCR"/>
+    <genClasses ecoreClass="mespcommon.ecore#//MRealConfigParamCOR"/>
+  </genPackages>
+</genmodel:GenModel>

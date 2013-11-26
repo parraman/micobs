@@ -1,0 +1,531 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+-->
+
+<plugin>
+
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mesp.ui.CreateNewVersion"
+            name="Create new version">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.ui.handlers.CreateNewPackageVersionHandler"
+            commandId="es.uah.aut.srg.micobs.mesp.ui.CreateNewVersion">
+      </handler>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <command
+               commandId="es.uah.aut.srg.micobs.mesp.ui.CreateNewVersion"
+               id="es.uah.aut.srg.micobs.library.ui.CreateNewVersion"
+               mnemonic="N"
+               style="push">
+         <visibleWhen
+                  checkEnabled="false">
+               <with variable="selection">
+               <count value = "1"></count>
+               <iterate ifEmpty="false">
+                        <instanceof value="es.uah.aut.srg.micobs.mesp.library.mesplibrary.MMESPPackageVersionedItemWithRepository">
+                        </instanceof>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension-point id="ctool" name="MESP Construction Tool" schema="schema/ctool.exsd"/>
+   <extension-point id="ctoolAdapter" name="MESP Construction Tool Adapter" schema="schema/ctoolAdapter.exsd"/>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mespctool"
+            class="es.uah.aut.srg.micobs.mesp.mespctool.provider.mespctoolItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>   
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mespcommon"
+            class="es.uah.aut.srg.micobs.mesp.mespcommon.provider.mespcommonItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/library/mesplibrary"
+            class="es.uah.aut.srg.micobs.mesp.library.mesplibrary.provider.mesplibraryItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mespswi"
+            class="es.uah.aut.srg.micobs.mesp.mespswi.provider.mespswiItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mesposswi"
+            class="es.uah.aut.srg.micobs.mesp.mesposswi.provider.mesposswiItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mesposswp"
+            class="es.uah.aut.srg.micobs.mesp.mesposswp.provider.mesposswpItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mesppswp"
+            class="es.uah.aut.srg.micobs.mesp.mesppswp.provider.mesppswpItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mespswp"
+            class="es.uah.aut.srg.micobs.mesp.mespswp.provider.mespswpItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mesp/mespdep"
+            class="es.uah.aut.srg.micobs.mesp.mespdep.provider.mespdepItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mespctool"
+            class="es.uah.aut.srg.micobs.mesp.mespctool.mespctoolPackage"
+            genModel="model/mespctool.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mespcommon"
+            class="es.uah.aut.srg.micobs.mesp.mespcommon.mespcommonPackage"
+            genModel="model/mespcommon.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/library/mesplibrary"
+            class="es.uah.aut.srg.micobs.mesp.library.mesplibrary.mesplibraryPackage"
+            genModel="model/mesplibrary.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mespswi"
+            class="es.uah.aut.srg.micobs.mesp.mespswi.mespswiPackage"
+            genModel="model/mespswi.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mesposswi"
+            class="es.uah.aut.srg.micobs.mesp.mesposswi.mesposswiPackage"
+            genModel="model/mesposswi.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mesposswp"
+            class="es.uah.aut.srg.micobs.mesp.mesposswp.mesposswpPackage"
+            genModel="model/mesposswp.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mesppswp"
+            class="es.uah.aut.srg.micobs.mesp.mesppswp.mesppswpPackage"
+            genModel="model/mesppswp.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mespswp"
+            class="es.uah.aut.srg.micobs.mesp.mespswp.mespswpPackage"
+            genModel="model/mespswp.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mesp/mespdep"
+            class="es.uah.aut.srg.micobs.mesp.mespdep.mespdepPackage"
+            genModel="model/mespdep.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="es.uah.aut.srg.micobs.mesp.library.mesplibrary.presentation.mesplibraryEditor"
+            contributorClass="es.uah.aut.srg.micobs.mesp.library.mesplibrary.presentation.mesplibraryActionBarContributor"
+            extensions="mesplibrary"
+            icon="icons/full/obj16/mesplibraryModelFile.gif"
+            id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.presentation.mesplibraryEditorID"
+            name="%_UI_mesplibraryEditor_label">
+      </editor>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.OpenLibrary"
+            name="Open MESP Library">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary"
+            name="Upload to Library">
+      </command>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.ui.OpenMESPLibrary"
+            commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.OpenLibrary">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.ui.UploadToMESPLibraryHandler"
+            commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary">
+      </handler>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:es.uah.aut.srg.micobs.menu.id?before=es.uah.aut.srg.micobs.menu.separator.id">
+         <command
+               commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.OpenLibrary"
+               id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.menu.OpenLibrary"
+               mnemonic="M"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension
+         point="es.uah.aut.srg.micobs.library">
+      <library
+            adapter="es.uah.aut.srg.micobs.mesp.library.mesplibrary.adapters.MESPLibraryAdapter"
+            id="es.uah.aut.srg.micobs.mesp.library.mesplibrary"
+            name="MMESPLibrary">
+         <depends
+               library="es.uah.aut.srg.micobs.pdl.library.pdllibrary">
+         </depends>
+      </library>
+   </extension>
+
+
+   <extension
+         point="org.eclipse.ui.newWizards">
+      <category
+            id="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            name="%_UI_Wizard_category">
+      </category>
+      <wizard
+            category="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            class="es.uah.aut.srg.micobs.mesp.ui.wizards.EmptyDriverSwPackageProjectWizard"
+            icon="icons/full/wizban/MICOBSLogoSmall.gif"
+            id="es.uah.aut.srg.micobs.mesp.generator.empty.driverswp.wizard.id"
+            name="%_UI_EmptyDriverSwPackageProject_Wizard_name"
+            project="true">
+      </wizard>
+      <wizard
+            category="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            class="es.uah.aut.srg.micobs.mesp.ui.wizards.EmptySwPackageProjectWizard"
+            icon="icons/full/wizban/MICOBSLogoSmall.gif"
+            id="es.uah.aut.srg.micobs.mesp.generator.empty.swp.wizard.id"
+            name="%_UI_EmptySwPackageProject_Wizard_name"
+            project="true">
+      </wizard>
+      <wizard
+            category="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            class="es.uah.aut.srg.micobs.mesp.ui.wizards.EmptyOSSwPackageProjectWizard"
+            icon="icons/full/wizban/MICOBSLogoSmall.gif"
+            id="es.uah.aut.srg.micobs.mesp.generator.empty.osswp.wizard.id"
+            name="%_UI_EmptyOSSwPackageProject_Wizard_name"
+            project="true">
+      </wizard>
+      <wizard
+            category="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            class="es.uah.aut.srg.micobs.mesp.ui.wizards.EmptyPlatformSwPackageProjectWizard"
+            icon="icons/full/wizban/MICOBSLogoSmall.gif"
+            id="es.uah.aut.srg.micobs.mesp.generator.empty.pswp.wizard.id"
+            name="%_UI_EmptyPlatformSwPackageProject_Wizard_name"
+            project="true">
+      </wizard>
+      <wizard
+            category="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            class="es.uah.aut.srg.micobs.mesp.ui.wizards.EmptyMESPDeploymentProjectWizard"
+            icon="icons/full/wizban/MICOBSLogoSmall.gif"
+            id="es.uah.aut.srg.micobs.mesp.generator.empty.dep.wizard.id"
+            name="%_UI_EmptyMESPDeploymentProject_Wizard_name"
+            project="true">
+      </wizard>
+      <wizard
+            category="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            class="es.uah.aut.srg.micobs.mesp.ui.wizards.EmptySwInterfaceRepositoryWizard"
+            icon="icons/full/wizban/MICOBSLogoSmall.gif"
+            id="es.uah.aut.srg.micobs.mesp.generator.empty.swi.wizard.id"
+            name="%_UI_EmptySwInterfaceRepository_Wizard_name"
+            project="true">
+      </wizard>
+      <wizard
+            category="es.uah.aut.srg.micobs.mesp.generator.wizard.category.id"
+            class="es.uah.aut.srg.micobs.mesp.ui.wizards.EmptyOSSwInterfaceRepositoryWizard"
+            icon="icons/full/wizban/MICOBSLogoSmall.gif"
+            id="es.uah.aut.srg.micobs.mesp.generator.empty.osswi.wizard.id"
+            name="%_UI_EmptyOSSwInterfaceRepository_Wizard_name"
+            project="true">
+      </wizard>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="es.uah.aut.srg.micobs.mesp.swi.menu.id"
+               label="MESP SwInterface">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.swi.lang.separator">
+            </separator>
+             <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mesp_swi">
+                        </test>
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>                        
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mesp.osswi.menu.id"
+               label="MESP OSSwInterface">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.osswi.lang.separator">
+            </separator>
+             <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mesp_osswi">
+                        </test>
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>                        
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mesp.swp.menu.id"
+               label="%_UI_SwPackage_menu_item">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.swp.lang.separator">
+            </separator>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.swp.ctool.separator">
+            </separator>
+             <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mesp_swp">
+                        </test>
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>                        
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+        	   id="es.uah.aut.srg.micobs.mesp.osswp.menu.id"
+               label="%_UI_OSSwPackage_menu_item">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.osswp.lang.separator">
+            </separator>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.osswp.ctool.separator">
+            </separator>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                              value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="mesp_osswp">
+                        </test>
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+         	   id="es.uah.aut.srg.micobs.mesp.pswp.menu.id"
+               label="%_UI_PlatformSwPackage_menu_item">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.pswp.lang.separator">
+            </separator>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.pswp.ctool.separator">
+            </separator>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                              value="org.eclipse.core.resources.IResource">
+                        </instanceof>                        
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="mesp_pswp">
+                        </test>
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+             	 </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mesp.dep.menu.id"
+               label="%_UI_MESPDeployment_menu_item">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <separator
+                  name="es.uah.aut.srg.micobs.mesp.dep.ctool.separator">
+            </separator>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                  <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                              value="org.eclipse.core.resources.IResource">
+                        </instanceof>                        
+                        <test
+                              property="org.eclipse.core.resources.extension"
+                              value="mesp_dep">
+                        </test>
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+             	 </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+   
+      </menuContribution>
+   </extension>
+</plugin>

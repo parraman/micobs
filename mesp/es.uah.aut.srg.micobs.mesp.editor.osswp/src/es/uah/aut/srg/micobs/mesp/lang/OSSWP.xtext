@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+grammar es.uah.aut.srg.micobs.mesp.lang.OSSWP with org.eclipse.xtext.common.Terminals
+
+import "http://srg.aut.uah.es/micobs/mesp/mesposswp" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://srg.aut.uah.es/micobs/pdl" as pdl
+import "http://srg.aut.uah.es/micobs/mesp/mesposswi" as mesposswi
+import "http://srg.aut.uah.es/micobs/mesp/mespcommon" as mespcommon
+import "http://srg.aut.uah.es/micobs/common" as common
+import "http://srg.aut.uah.es/micobs/mesp/mespctool" as mespctool
+import "http://srg.aut.uah.es/micobs/mesp/library/mesplibrary" as mesplibrary
+
+MMESPOSSWPPackageFile returns MMESPOSSWPPackageFile:
+	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';'
+	('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
+	element=MMESPOSSWPPackageElement
+	;
+
+MMESPOSSWPPackageElement returns MMESPOSSWPPackageElement:
+	MOSSwPackage;
+
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*;
+
+Version returns ecore::EString:
+	(INT | ((INT)? ID)) ('.' (INT | ((INT)? ID)))*
+	;
+
+VersionedQualifiedName returns ecore::EString:
+	QualifiedName '(' Version ')'
+	;
+
+MOSSwPackage returns MOSSwPackage:
+	'osswpackage'
+	name=ID
+	('extends' extends+=[MOSSwPackage|VersionedQualifiedName] ("," extends+=[MOSSwPackage|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('os' ':=' referencedElement=[pdl::MOperatingSystem|VersionedQualifiedName] ';')
+		& ('construction tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';')
+		& ('provided osswis' ':=' providedOSSWIs+=[mesposswi::MOSSwInterface|VersionedQualifiedName] ("," providedOSSWIs+=[mesposswi::MOSSwInterface|VersionedQualifiedName])* ';')?)
+    '}' ';'
+    ;

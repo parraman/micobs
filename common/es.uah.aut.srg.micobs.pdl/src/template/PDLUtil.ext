@@ -1,0 +1,83 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+import common;
+import pdl;
+
+Set[MEnumParameterDefinition] getAllEnumParameterDefinitions(MOperatingSystem this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllEnumParameterDefinitions(
+			es.uah.aut.srg.micobs.pdl.MOperatingSystem);
+
+Set[MEnumParameterDefinition] getAllEnumParameterDefinitions(MArchitecture this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllEnumParameterDefinitions(
+			es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MEnumParameterDefinition] getAllEnumParameterDefinitions(MCompiler this, MArchitecture architecture) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllEnumParameterDefinitions(
+			es.uah.aut.srg.micobs.pdl.MCompiler,
+			es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MParameter] getAllParameters(MOperatingSystem this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllParameters(es.uah.aut.srg.micobs.pdl.MOperatingSystem,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+			
+Set[MParameter] getMPParameters(MMicroprocessor this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getParameters(es.uah.aut.srg.micobs.pdl.MMicroprocessor);
+
+Set[MParameter] getBoardParameters(MBoard this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getParameters(es.uah.aut.srg.micobs.pdl.MBoard);
+
+Set[MParameter] getParameters(MPlatform this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getParameters(es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Set[MOperatingSystemAPI] getInheritedOSAPIs(MOperatingSystemAPI this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getInheritedOSAPIs(es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI);
+	
+Set[MOperatingSystem] getInheritedOperatingSystems(MOperatingSystem this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getInheritedOperatingSystems(es.uah.aut.srg.micobs.pdl.MOperatingSystem);
+
+Set[MArchitecture] getExtendedArchitectures(MArchitecture this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getExtendedArchitectures(es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MCompiler] getExtendedCompilers(MCompiler this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getExtendedCompilers(es.uah.aut.srg.micobs.pdl.MCompiler);
+
+Set[MOperatingSystemAPI] getAllInheritedOSAPIs(MOperatingSystemAPI this) :
+	{}.add(this).addAll(this.getInheritedOSAPIs());
+	
+Set[MOperatingSystem] getAllInheritedOperatingSystems(MOperatingSystem this) :
+	{}.add(this).addAll(this.getInheritedOperatingSystems());
+
+Set[MArchitecture] getAllExtendedArchitectures(MArchitecture this) :
+	{}.add(this).addAll(this.getExtendedArchitectures());
+
+Set[MCompiler] getAllExtendedCompilers(MCompiler this) :
+	{}.add(this).addAll(this.getExtendedCompilers());
+
+Set[MParameter] getAllParameters(MCompiler this, MArchitecture arch) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllParameters(es.uah.aut.srg.micobs.pdl.MCompiler,
+			es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MParameter] getAllParameters(MArchitecture this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllParameters(es.uah.aut.srg.micobs.pdl.MArchitecture);
+	
+Set[MOperatingSystemAPI] getAllSupportedOSAPIs(MOperatingSystem this) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllSupportedOSAPIs(es.uah.aut.srg.micobs.pdl.MOperatingSystem);
+
+Set[MOSSupportedOSAPIPVA] getAllParameterValueAssignments(MOperatingSystem this, MOperatingSystemAPI osapi) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.getAllParameterValueAssignments(
+			es.uah.aut.srg.micobs.pdl.MOperatingSystem,
+			es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI);
+
+Boolean matchesPlatform(MOSSupportedPlatform this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.matchesPlatform(
+			es.uah.aut.srg.micobs.pdl.MOSSupportedPlatform,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+

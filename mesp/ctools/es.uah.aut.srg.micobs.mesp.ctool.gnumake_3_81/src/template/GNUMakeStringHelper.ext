@@ -1,0 +1,83 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+import pdl;
+import common;
+import mespdep;
+import mespswp;
+import mesposswp;
+import mespctool;
+
+extension template::MICOBSStringHelper;
+
+String getOSSwPackagesFolder() : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getOSSwPackagesFolder();
+
+String getOSSwInterfacesFolder() : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getOSSwInterfacesFolder();
+
+String getSwInterfacesFolder() : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getSwInterfacesFolder();
+
+String getSwPackagesFolder() : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getSwPackagesFolder();
+
+String getPlatformSwPackagesFolder() : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getPlatformSwPackagesFolder();
+
+String getMainFolder() : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getMainFolder();
+
+String getConfigFolder() : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getConfigFolder();
+
+String getSwPackageFolderName(MMESPSwPackageDeployment this): JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getSwPackageFolderName(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPSwPackageDeployment);
+
+String getOSSwPackageFolderName(MOSSwPackage this): JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getOSSwPackageFolderName(
+		es.uah.aut.srg.micobs.mesp.mesposswp.MOSSwPackage);
+
+String getPlatformSwPackageFolderName(MMESPDeploymentPlatform this): JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getPlatformSwPackageFolderName(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentPlatform);
+
+String getC_C99LanguageURI() :
+	"es.uah.aut.srg.micobs.langs.C";
+
+String getC_C99LanguageVersion() :
+	"C99";
+
+String getCPP_98LanguageURI() :
+	"es.uah.aut.srg.micobs.lang.CPP";
+
+String getCPP_98LanguageVersion() :
+	"98";
+
+String getDeploymentFolderName(MMESPDeployment this, MMESPDeploymentAlternative alternative, 
+			MMESPDeploymentPlatform platform) : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getDeploymentFolderName(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment,
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative,
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentPlatform);
+
+String getTargetName(MMESPDeployment this, 
+			MMESPDeploymentAlternative alternative,
+			MMESPDeploymentPlatform deploymentPlatform) : JAVA
+	es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.util.GNUMakeStringHelper.getTargetName(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment,
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative,
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentPlatform);
+
+String getMakefileName(MMESPDeployment this, 
+			MMESPDeploymentAlternative alternative,
+			MMESPDeploymentPlatform deploymentPlatform) :
+	this.getTargetName(alternative, deploymentPlatform) + ".mk";

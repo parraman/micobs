@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+!-->
+
+<plugin>
+
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="micobs_lang"
+            id="es.uah.aut.srg.micobs.lang.LANG"
+            name="LANG Editor">
+        </editor>
+    </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+        <handler
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference
+                    definitionId="es.uah.aut.srg.micobs.lang.LANG.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="es.uah.aut.srg.micobs.lang.LANG.validate">
+         <activeWhen>
+            <reference
+                    definitionId="es.uah.aut.srg.micobs.lang.LANG.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="es.uah.aut.srg.micobs.lang.LANG.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
+                        value="es.uah.aut.srg.micobs.lang.LANG" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <!--
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="es.uah.aut.srg.micobs.lang.LANG"
+            name="LANG">
+            <keywordReference id="es.uah.aut.srg.micobs.lang.ui.keyword_LANG"/>
+        </page>
+        <page
+            category="es.uah.aut.srg.micobs.lang.LANG"
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="es.uah.aut.srg.micobs.lang.LANG.coloring"
+            name="Syntax Coloring">
+            <keywordReference id="es.uah.aut.srg.micobs.lang.ui.keyword_LANG"/>
+        </page>
+        <page
+            category="es.uah.aut.srg.micobs.lang.LANG"
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="es.uah.aut.srg.micobs.lang.LANG.templates"
+            name="Templates">
+            <keywordReference id="es.uah.aut.srg.micobs.lang.ui.keyword_LANG"/>
+        </page>
+    </extension>
+    <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="es.uah.aut.srg.micobs.lang.LANG"
+            name="LANG">
+            <keywordReference id="es.uah.aut.srg.micobs.lang.ui.keyword_LANG"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    !-->
+    <extension
+        point="org.eclipse.ui.keywords">
+        <keyword
+            id="es.uah.aut.srg.micobs.lang.ui.keyword_LANG"
+            label="LANG"/>
+    </extension>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="Trigger expensive validation"
+            id="es.uah.aut.srg.micobs.lang.LANG.validate"
+            name="Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+             <command
+                 commandId="es.uah.aut.srg.micobs.lang.LANG.validate"
+                 style="push"
+                 tooltip="Trigger expensive validation">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="es.uah.aut.srg.micobs.lang.LANG.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+                	<reference definitionId="es.uah.aut.srg.micobs.lang.LANG.Editor.opened">
+                	</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	    <handler
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            commandId="org.eclipse.xtext.ui.editor.FindReferences">
+            <activeWhen>
+                <reference
+                    definitionId="es.uah.aut.srg.micobs.lang.LANG.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+    </extension>   
+
+<!-- adding resource factories -->
+
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="micobs_lang">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="micobs_lang">
+        </resourceServiceProvider>
+    </extension>
+
+
+    <!-- marker definitions for es.uah.aut.srg.micobs.lang.LANG -->
+    <extension
+            id="lang.check.fast"
+            name="LANG Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="lang.check.normal"
+            name="LANG Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="lang.check.expensive"
+            name="LANG Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
+    </extension>
+
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="es.uah.aut.srg.micobs.lang.LANG.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="es.uah.aut.srg.micobs.lang.LANG.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+
+  <extension point="org.eclipse.compare.contentViewers">
+    <viewer id="es.uah.aut.srg.micobs.lang.LANG.compare.contentViewers"
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="micobs_lang">
+    </viewer>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer id="es.uah.aut.srg.micobs.lang.LANG.compare.contentMergeViewers"
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="micobs_lang" label="LANG Compare">
+     </viewer>
+  </extension>
+  <extension point="org.eclipse.ui.editors.documentProviders">
+    <provider id="es.uah.aut.srg.micobs.lang.LANG.editors.documentProviders"
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+            extensions="micobs_lang">
+    </provider>
+  </extension>
+    <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.lang.LANG -->
+    <extension
+            point="org.eclipse.ui.ide.markerResolution">
+        <markerResolutionGenerator
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="es.uah.aut.srg.micobs.lang.ui.lang.check.fast">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="es.uah.aut.srg.micobs.lang.ui.lang.check.normal">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="es.uah.aut.srg.micobs.lang.ui.LANGExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="es.uah.aut.srg.micobs.lang.ui.lang.check.expensive">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+    </extension>
+
+   <extension
+         point="es.uah.aut.srg.micobs.keyset">
+      <keyset
+            keywords="package,import,language,extends,version">
+      </keyset>
+   </extension>
+
+</plugin>

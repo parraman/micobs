@@ -1,0 +1,500 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+grammar es.uah.aut.srg.micobs.mesp.lang.SWP with org.eclipse.xtext.common.Terminals
+
+import "http://srg.aut.uah.es/micobs/mesp/mespswp" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://srg.aut.uah.es/micobs/mesp/mespswi" as mespswi
+import "http://srg.aut.uah.es/micobs/mesp/mespcommon" as mespcommon
+import "http://srg.aut.uah.es/micobs/mesp/mespctool" as mespctool
+import "http://srg.aut.uah.es/micobs/pdl" as pdl
+import "http://srg.aut.uah.es/micobs/common" as common
+import "http://srg.aut.uah.es/micobs/system" as system
+import "http://srg.aut.uah.es/micobs/mesp/mesposswi" as mesposswi
+import "http://srg.aut.uah.es/micobs/mesp/library/mesplibrary" as mesplibrary
+
+MMESPSWPPackageFile returns MMESPSWPPackageFile:
+	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';'
+	('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
+	element=MMESPSWPPackageElement
+    ;
+
+MMESPSWPPackageElement returns MMESPSWPPackageElement:
+	MDriverSwPackage | MSwPackage | MAbstractSwPackage;
+
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*;
+
+Version returns ecore::EString:
+	(INT | ((INT)? ID)) ('.' (INT | ((INT)? ID)))*
+	;
+
+VersionedQualifiedName returns ecore::EString:
+	QualifiedName '(' Version ')'
+	;
+
+VersionedQualifiedReferenceName returns ecore::EString:
+	(VersionedQualifiedName '::')? ID ('::' ID)*;
+
+MAbstractSwPackage returns MAbstractSwPackage:
+	'abstract' 'swpackage'
+	name=ID
+	('inherits' inherits+=[MAbstractSwPackage|VersionedQualifiedName] ( "," inherits+=[MAbstractSwPackage|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('configuration' 'parameters' 
+			'{' 
+				(parameters+=MParameterWithoutSWPSP)+
+			'}' ';')?
+		& ('provided' 'interfaces' '{'
+			(provides+=MSwPackageProvidedInterface)+
+			'}' ';')?)
+    '}' ';';
+
+MSwPackageProvidedInterface returns MSwPackageProvidedInterface:
+	'provides' 
+	swinterface=[mespswi::MSwInterface|VersionedQualifiedName]
+	'{'
+		(parameterValueAssignments+=MSwPackageProvidedInterfacePVA)*
+	'}' ';'
+;
+
+MSwPackageProvidedInterfacePVA returns MSwPackageProvidedInterfacePVA:
+	MSwPackageProvidedInterfacePVAExpression |
+	MSwPackageProvidedInterfacePVASwitch
+;
+
+MSwPackageProvidedInterfacePVAExpression returns MSwPackageProvidedInterfacePVAExpression:
+	'parameter'
+	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	':='
+	parameterValue=MParameterValueExpression ';'
+;
+
+MSwPackageProvidedInterfacePVASwitch returns MSwPackageProvidedInterfacePVASwitch:
+	'parameter'
+	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	':='
+	'switch' 
+	'{'
+		(cases+=MSwPackageProvidedInterfacePVASwitchCase)+
+	'}' ';'
+;
+
+MSwPackageProvidedInterfacePVASwitchCase returns MSwPackageProvidedInterfacePVASwitchCase:
+	'case' platform=[MSwPackageSupportedPlatform|ID] ':'
+	parameterValue=MParameterValueExpression ';'
+;
+
+MSwPackageRequiredInterface returns MSwPackageRequiredInterface:
+	'requires' 
+	interface=[common::MCommonPackageElement|VersionedQualifiedName]
+	'{'
+		(resourceDemands+=MResourceDemand)*
+	'}' ';'
+;
+
+MSwPackage returns MSwPackage:
+	'swpackage'
+	name=ID
+	('inherits' inherits+=[MAbstractSwPackage|VersionedQualifiedName] ( "," inherits+=[MAbstractSwPackage|VersionedQualifiedName])* )?
+	('extends' extends+=[MSwPackage|VersionedQualifiedName] ( "," extends+=[MSwPackage|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')
+		& ('construction' 'tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';')
+		& ('configuration' 'parameters' 
+			'{' 
+				(parameters+=MParameter)+
+			'}' ';')?
+		& ('provided' 'interfaces' '{'
+			(provides+=MSwPackageProvidedInterface)+
+			'}' ';')?
+		& ('required' 'interfaces' '{'
+			(requires+=MSwPackageRequiredInterface)+
+			'}' ';' )?
+		& ('supported' 'platforms' 
+			'{' 
+				(supportedPlatforms+=MSwPackageSupportedPlatform)+
+			'}' ';' ))
+    '}' ';';
+
+MDriverSwPackage returns MDriverSwPackage:
+	'driver'
+	name=ID
+	('inherits' inherits+=[MAbstractSwPackage|VersionedQualifiedName] ( "," inherits+=[MAbstractSwPackage|VersionedQualifiedName])* )?
+	('extends' extends+=[MSwPackage|VersionedQualifiedName] ( "," extends+=[MSwPackage|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')
+		& ('construction' 'tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';')
+		& ('configuration' 'parameters' 
+			'{' 
+				(parameters+=MParameter)+
+			'}' ';')?
+		& ('provided' 'interfaces' '{'
+			(provides+=MSwPackageProvidedInterface)+
+			'}' ';')?
+		& ('required' 'interfaces' '{'
+			(requires+=MSwPackageRequiredInterface)+
+			'}' ';' )?
+		& ('supported' 'platforms' 
+			'{' 
+				(supportedPlatforms+=MDriverSwPackageSupportedPlatform)+
+			'}' ';' ))
+    '}' ';';
+
+MDriverSwPackageSupportedPlatform returns MDriverSwPackageSupportedPlatform:
+	{MDriverSwPackageSupportedPlatform}
+	'supported' 'platform'
+	name=ID
+	'{'
+		(('osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';')
+		& ('os' ':=' ('any' | os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';')
+		& ('architecture' ':=' ('any' | architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';')
+		& ('compiler' ':=' compiler=[pdl::MCompiler|VersionedQualifiedName] ';')?
+		& ('microprocessor' ':=' ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';')
+		& ('board' ':=' ('any' | board=[pdl::MBoard|VersionedQualifiedName]) ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+		& ('configuration' 'parameters' 
+			'{' 
+				(parameters+=MParameter)+
+			'}' ';')?
+		& (	'required' 'interfaces' '{'
+			(requires+=MSwPackageRequiredInterface)+
+			'}' ';' )?
+		& ('supported' 'devices' '{'
+			(supportedDevices+=MDriverSwPackageSupportedDevice)+
+			'}' ';')?)
+    '}' ';';
+
+MDriverSwPackageSupportedDevice returns MDriverSwPackageSupportedDevice:
+	'device' device=[pdl::MDevice|VersionedQualifiedName]
+	name=ID '{'
+		('required' ':=' required=MParameterValueExpression ';')?
+	'}' ';'
+;
+
+MSwPackageSupportedPlatform returns MSwPackageSupportedPlatform:
+	{MSwPackageSupportedPlatform}
+	'supported' 'platform'
+	name=ID
+	'{'
+		(('osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';')
+		& ('os' ':=' ('any' | os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';')
+		& ('architecture' ':=' ('any' | architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';')
+		& ('compiler' ':=' compiler=[pdl::MCompiler|VersionedQualifiedName] ';')?
+		& ('microprocessor' ':=' ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';')
+		& ('board' ':=' ('any' | board=[pdl::MBoard|VersionedQualifiedName]) ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+		& ('configuration' 'parameters' 
+			'{' 
+				(parameters+=MParameterWithoutSWPSP)+
+			'}' ';')?
+		& (	'required' 'interfaces' '{'
+			(requires+=MSwPackageRequiredInterface)+
+			'}' ';' )?)
+    '}' ';';
+
+
+MParameterValueAssignment returns common::MParameterValueAssignmentSingleExpression:
+	'parameter'
+	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	':='
+	parameterValue=MParameterValueExpression ';'
+	;
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+terminal HEXADECIMAL returns ecore::EString:
+	('0x' (('0'..'9') | ('a'..'f') | ('A'..'F'))+);
+
+INTEGER returns ecore::EString:
+	('-'? INT | HEXADECIMAL);
+
+REAL returns ecore::EString:
+	'-'? (INT '.' INT) ('e' ('-')? INT)?;
+
+MResourceDemand returns MResourceDemand:
+	MQuantifiableResourceDemand | MInstantiableResourceDemand;
+
+MInstantiableResourceDemand returns MInstantiableResourceDemand:
+	'instantiable' 'resource'
+	resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName]
+	name=ID
+	'{'
+		(parameterValueAssignments+=MParameterValueAssignment)*
+	'}'
+	';'
+;
+
+MQuantifiableResourceDemand returns MQuantifiableResourceDemand:
+	{MQuantifiableResourceDemand}
+	'quantifiable' 'resource'
+	resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName]
+	':='
+	resourceValue=MParameterValueExpression
+    ';';
+ 
+MParameter returns common::MParameter:
+	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | 
+	MBooleanParameterSingleExpression | MRealParameterSingleExpression |
+	MStringParameterSingleExpression | MEnumParameterDefinition |
+	MBooleanParamSWPSPSwitch | MStringParamSWPSPSwitch | 
+	MIntegerParamSWPSPSwitch | MRealParamSWPSPSwitch |
+	MEnumParamSWPSPSwitch;
+
+MParameterWithoutSWPSP returns common::MParameter:
+	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | 
+	MBooleanParameterSingleExpression | MRealParameterSingleExpression |
+	MStringParameterSingleExpression | MEnumParameterDefinition;
+
+MBooleanParamSWPSPSwitch returns MBooleanParamSWPSPSwitch:
+	(constant?='const')?
+	'boolean' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MBooleanParamSWPSPSwitchCase)+
+	'}' ';'
+;
+
+MBooleanParamSWPSPSwitchCase returns MBooleanParamSWPSPSwitchCase:
+	'case' platform=[MSwPackageSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression ';'
+;
+
+MStringParamSWPSPSwitch returns MStringParamSWPSPSwitch:
+	(constant?='const')?
+	'string' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MStringParamSWPSPSwitchCase)+
+	'}' ';'
+;
+
+MStringParamSWPSPSwitchCase returns MStringParamSWPSPSwitchCase:
+	'case' platform=[MSwPackageSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression ';'
+;
+
+MIntegerParamSWPSPSwitch returns MIntegerParamSWPSPSwitch:
+	(constant?='const')?
+	'integer' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MIntegerParamSWPSPSwitchCase)+
+	'}' ';'
+;
+
+MIntegerParamSWPSPSwitchCase returns MIntegerParamSWPSPSwitchCase:
+	'case' platform=[MSwPackageSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)? ';'
+;
+
+MRealParamSWPSPSwitch returns MRealParamSWPSPSwitch:
+	(constant?='const')?
+	'real' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MRealParamSWPSPSwitchCase)+
+	'}' ';'
+;
+
+MRealParamSWPSPSwitchCase returns MRealParamSWPSPSwitchCase:
+	'case' platform=[MSwPackageSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)? ';'
+;
+
+MEnumParamSWPSPSwitch returns MEnumParamSWPSPSwitch:
+	(constant?='const')?
+	'enum'
+	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
+	name=ID ':='
+	'switch'
+	'{'
+		(cases+=MEnumParamSWPSPSwitchCase)+
+	'}' ';'
+	;
+
+MEnumParamSWPSPSwitchCase returns MEnumParamSWPSPSwitchCase:
+	'case' platform=[MSwPackageSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression ';'
+;
+
+MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
+	(constant?='const')?
+	'boolean'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	';';
+
+MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
+	(constant?='const')?
+	'string'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	';';
+
+MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
+	(constant?='const')?
+	'integer'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)?
+    ';';
+
+MEnumParameterDefinition returns common::MEnumParameterDefinition:
+	'enum'
+	name=ID
+	'{'
+		literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+    '}'
+    ';';
+
+MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
+	(constant?='const')?
+	'enum'
+	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+    ';';
+
+MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
+	(constant?='const')?
+	'real'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)?
+    ';';
+
+MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
+	MEnumParameterLiteral |
+	MEnumParamIntegerLiteral |
+	MEnumParamRealLiteral |
+	MEnumParamStringLiteral
+	;
+
+MParameterValue returns common::MParameterValue:
+	MParameterValueLiteral | MParameterValueRefObject |
+	MParameterValuePAR
+	;
+
+MParameterValueLiteral returns common::MParameterValueLiteral:
+	MParameterValueBooleanLiteral | MParameterValueStringLiteral |
+	MParameterValueIntegerLiteral | MParameterValueRealLiteral
+;
+
+MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
+	{common::MParameterValueBooleanLiteral}
+	value=EBoolean;
+
+MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
+	{common::MParameterValueStringLiteral}
+	value=STRING;
+
+MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
+	{common::MParameterValueIntegerLiteral}
+	value=INTEGER;
+
+MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
+	{common::MParameterValueRealLiteral}
+	value=REAL;
+
+
+MParameterValueRefObject returns common::MParameterValueRefObject:
+	{common::MParameterValueRefObject}
+	object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+	;
+	
+MParameterValuePAR returns common::MParameterValuePAR:
+	'(' value=MParameterValueExpression ')'
+	;
+
+enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
+	plus = '+' | minus = '-';
+
+enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
+	mult = '*' | div = '/';
+	
+MParameterValueExpression returns common::MParameterValueExpression:
+	{common::MParameterValueExpression}
+	left=MParameterValueTERM (operation=MParameterValueExpressionOperators right=MParameterValueExpression)?
+	;	
+
+MParameterValueTERM returns common::MParameterValueTERM:
+	{common::MParameterValueTERM}
+	left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+	;
+
+MParameterRange returns common::MParameterRange:
+	MParameterOCR | MParameterOOR |
+	MParameterCOR | MParameterCCR;
+
+MParameterOCR returns common::MParameterOCR:
+	{common::MParameterOCR}
+	'('
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	']'
+	;
+
+MParameterOOR returns common::MParameterOOR:
+	{common::MParameterOOR}
+	'('
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	')'
+	;
+
+MParameterCOR returns common::MParameterCOR:
+	{common::MParameterCOR}
+	'['
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	')'
+	;
+
+MParameterCCR returns common::MParameterCCR:
+	{common::MParameterCCR}
+	'['
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	']'
+	;
+
+MEnumParameterLiteral returns common::MEnumParameterLiteral:
+	{common::MEnumParameterLiteral}
+	name=ID
+;
+
+MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
+	{common::MEnumParamIntegerLiteral}
+	name=ID
+	'='
+	value=INTEGER
+;
+
+MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
+	{common::MEnumParamRealLiteral}
+	name=ID
+	'='
+	value=REAL
+;
+
+MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
+	{common::MEnumParamStringLiteral}
+	name=ID
+	'='
+	value=STRING
+;

@@ -1,0 +1,12 @@
+package es.uah.aut.srg.micobs.mesp.ctools;
+
+import es.uah.aut.srg.micobs.langs;
+
+construction tool GNUMake {
+	
+	version := 3.81;
+	
+	supported languages := C(C99), CPP(98), asm_SPARC(v7),
+						   asm_SPARC(v8), asm_ia32(i686);
+		
+};

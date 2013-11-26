@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mespswi" nsURI="http://srg.aut.uah.es/micobs/mesp/mespswi" nsPrefix="micobs.mesp">
+  <eClassifiers xsi:type="ecore:EClass" name="MSwInterface" eSuperTypes="#//MMESPSWIPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//MSwInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="language" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="#//MSwInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedResources" upperBound="-1"
+        eType="ecore:EClass mespcommon.ecore#//MProvidedResource" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredOSAPI" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MOperatingSystemAPI"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPSWIPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPSWIPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+</ecore:EPackage>

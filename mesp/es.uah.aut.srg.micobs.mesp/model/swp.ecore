@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mespswp" nsURI="http://srg.aut.uah.es/micobs/mesp/mespswp" nsPrefix="micobs.mesp">
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackage" eSuperTypes="#//MMESPSWPPackageElement #//MAbstractSwPackage">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//MSwPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ctools" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ctool.ecore#//MConstructionTool"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="#//MSwPackageRequiredInterface" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedPlatforms" lowerBound="1"
+        upperBound="-1" eType="#//MSwPackageSupportedPlatform" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MDriverSwPackage" eSuperTypes="#//MMESPSWPPackageElement #//MSwPackage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackageProvidedInterface">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="swinterface" lowerBound="1"
+        eType="ecore:EClass swi.ecore#//MSwInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValueAssignments"
+        upperBound="-1" eType="#//MSwPackageProvidedInterfacePVA" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackageProvidedInterfacePVA" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackageProvidedInterfacePVASwitch"
+      eSuperTypes="#//MSwPackageProvidedInterfacePVA">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
+        eType="#//MSwPackageProvidedInterfacePVASwitchCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackageProvidedInterfacePVASwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//MSwPackageSupportedPlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackageProvidedInterfacePVAExpression"
+      eSuperTypes="#//MSwPackageProvidedInterfacePVA">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackageRequiredInterface">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceDemands" upperBound="-1"
+        eType="#//MResourceDemand" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MAbstractSwPackage" eSuperTypes="#//MMESPSWPPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MAbstractSwPackage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="provides" upperBound="-1"
+        eType="#//MSwPackageProvidedInterface" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MSwPackageSupportedPlatform" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="osapi" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MOperatingSystemAPI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="os" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MOperatingSystem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compiler" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MCompiler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="microprocessor" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MMicroprocessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="board" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MBoard"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="#//MSwPackageRequiredInterface" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MDriverSwPackageSupportedPlatform" eSuperTypes="#//MSwPackageSupportedPlatform">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedDevices" upperBound="-1"
+        eType="#//MDriverSwPackageSupportedDevice" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MDriverSwPackageSupportedDevice" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="required" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MDevice"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MResourceDemand" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MInstantiableResourceDemand" eSuperTypes="#//MResourceDemand ../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
+        eType="ecore:EClass mespcommon.ecore#//MInstantiableResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MQuantifiableResourceDemand" eSuperTypes="#//MResourceDemand">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resource" lowerBound="1"
+        eType="ecore:EClass mespcommon.ecore#//MQuantifiableResource"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resourceValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPSWPPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMESPSWPPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterSWPSPSwitch" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
+        eType="#//MParameterSWPSPSwitchCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterSWPSPSwitchCase" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//MSwPackageSupportedPlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamSWPSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MBooleanParameter #//MParameterSWPSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamSWPSPSwitchCase" eSuperTypes="#//MParameterSWPSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamSWPSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MStringParameter #//MParameterSWPSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamSWPSPSwitchCase" eSuperTypes="#//MParameterSWPSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamSWPSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MIntegerParameter #//MParameterSWPSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamSWPSPSwitchCase" eSuperTypes="#//MParameterSWPSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamSWPSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MEnumParameter #//MParameterSWPSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamSWPSPSwitchCase" eSuperTypes="#//MParameterSWPSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamSWPSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MRealParameter #//MParameterSWPSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamSWPSPSwitchCase" eSuperTypes="#//MParameterSWPSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

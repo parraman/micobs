@@ -1,0 +1,58 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mesppswp»
+«IMPORT common»
+
+«EXTENSION template::MESPStringHelper»
+
+«DEFINE main FOR MMESPPSWPPackageFile»
+«FILE this.element.name.toLowerDefString() + ".mesp_pswp" -»
+/*
+ * First we have to assign this file to a certain package.
+ */
+
+package «this.package.uri»;
+
+/*
+ * Optionally, we can import packages to use their elements as references.
+ */
+
+import «((MCommonPackageFile)((MPlatformSwPackage)this.element).referencedElement.eContainer).package.uri»;
+
+«FOREACH (((MPlatformSwPackage)this.element).ctools.eContainer).typeSelect(MCommonPackageFile).package.toSet() AS package -»
+«IF this.package != package -»
+import «package.uri»;
+«ENDIF -»
+«ENDFOREACH -»
+
+/*
+ * Definition of a platform software package.
+ * Every platform software package should have:
+ * - A name
+ * - A version
+ * - The corresponding platform
+ * - The reference to the corresponding osswpackages
+ */
+
+pswpackage «this.element.name»
+{
+	version := «this.element.version»;
+	
+	supported platform := «((MPlatformSwPackage)this.element).referencedElement.getElementName()»;
+	
+	construction tools := «((MPlatformSwPackage)this.element).ctools.first().getElementName()»«FOREACH ((MPlatformSwPackage)this.element).ctools.withoutFirst() AS ctool -», «ctool.getElementName()»«ENDFOREACH -»;
+	
+	osswpackages := /* comma separated list */;
+};
+«ENDFILE»
+«ENDDEFINE»

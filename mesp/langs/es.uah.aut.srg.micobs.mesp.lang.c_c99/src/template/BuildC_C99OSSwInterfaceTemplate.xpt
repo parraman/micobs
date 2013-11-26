@@ -1,0 +1,40 @@
+«IMPORT mesposswi»
+«IMPORT pdl»
+
+«EXTENSION template::MICOBSStringHelper»
+
+«DEFINE main FOR MOSSwInterface»
+«FILE this.getElementName().toLowerDefString() + ".h" -»
+#ifndef PUBLIC__«this.getElementName().toUpperDefString()»_H
+#define PUBLIC__«this.getElementName().toUpperDefString()»_H
+
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
+#include <public/config.h>
+#include <platform/basic_types.h>
+«IF this.extends.isEmpty == false -»
+
+// Extended interfaces
+«FOREACH this.extends.toSet() AS eswi -»
+#include <public/«eswi.getElementName().toLowerDefString()».h>
+«ENDFOREACH -»
+«ENDIF -»
+
+«PROTECT CSTART '/*' CEND '*/' ID "public_" + this.name.toLowerDefString() + "_h"»
+
+
+    // This is a protected region as long as you keep the marks :-)
+
+
+«ENDPROTECT»
+
+#ifdef __cplusplus
+}
+#endif
+
+#endif // PUBLIC__«this.getElementName().toUpperDefString()»_H
+«ENDFILE -»
+«ENDDEFINE»

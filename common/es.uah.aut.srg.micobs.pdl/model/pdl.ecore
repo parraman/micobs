@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pdl" nsURI="http://srg.aut.uah.es/micobs/pdl" nsPrefix="micobs">
+  <eClassifiers xsi:type="ecore:EClass" name="MBoard" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="microprocessor" lowerBound="1"
+        eType="#//MMicroprocessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedDevices" upperBound="-1"
+        eType="#//MBoardSupportedDevice" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MBoardSupportedDevice">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowerBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upperBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="device" lowerBound="1"
+        eType="#//MDevice"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMicroprocessor" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" lowerBound="1"
+        eType="#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MOperatingSystem" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MOperatingSystem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedPlatforms" lowerBound="1"
+        upperBound="-1" eType="#//MOSSupportedPlatform" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedOSAPIs" upperBound="-1"
+        eType="#//MOSSupportedOSAPI" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MOSSupportedPlatform" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" lowerBound="1"
+        eType="#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compiler" lowerBound="1"
+        eType="#//MCompiler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="microprocessor" eType="#//MMicroprocessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="board" eType="#//MBoard"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MOSSupportedOSAPI">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="osapi" lowerBound="1" eType="#//MOperatingSystemAPI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValueAssignments"
+        upperBound="-1" eType="#//MOSSupportedOSAPIPVA" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MOSSupportedOSAPIPVA" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MOSSupportedOSAPIPVAExpression" eSuperTypes="#//MOSSupportedOSAPIPVA">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MOSSupportedOSAPIPVASwitch" eSuperTypes="#//MOSSupportedOSAPIPVA">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
+        eType="#//MOSSupportedOSAPIPVASwitchCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MOSSupportedOSAPIPVASwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//MOSSupportedPlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameterValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MOperatingSystemAPI" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MOperatingSystemAPI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="language" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MArchitecture" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPlatform" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="osapi" lowerBound="1" eType="#//MOperatingSystemAPI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="os" lowerBound="1" eType="#//MOperatingSystem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" lowerBound="1"
+        eType="#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compiler" lowerBound="1"
+        eType="#//MCompiler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="microprocessor" eType="#//MMicroprocessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="board" eType="#//MBoard"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCompiler" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="frontends" upperBound="-1"
+        eType="#//MCompilerFrontend" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="extends" upperBound="-1"
+        eType="#//MCompiler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MCompilerFrontend" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="language" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architectures" lowerBound="1"
+        upperBound="-1" eType="#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MDevice" eSuperTypes="#//MPDLPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterOSSPSwitch" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
+        eType="#//MParameterOSSPSwitchCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterOSSPSwitchCase" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//MOSSupportedPlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamOSSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MBooleanParameter #//MParameterOSSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamOSSPSwitchCase" eSuperTypes="#//MParameterOSSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamOSSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MStringParameter #//MParameterOSSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamOSSPSwitchCase" eSuperTypes="#//MParameterOSSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamOSSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MIntegerParameter #//MParameterOSSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamOSSPSwitchCase" eSuperTypes="#//MParameterOSSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamOSSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MEnumParameter #//MParameterOSSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamOSSPSwitchCase" eSuperTypes="#//MParameterOSSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamOSSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MRealParameter #//MParameterOSSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamOSSPSwitchCase" eSuperTypes="#//MParameterOSSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

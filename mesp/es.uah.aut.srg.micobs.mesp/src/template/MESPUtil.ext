@@ -1,0 +1,259 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+import pdl;
+import system;
+import common;
+import mespdep;
+import mespswp;
+import mesppswp;
+import mesposswi;
+import mespcommon;
+
+MLanguage getLanguage(String uri, String version) : JAVA
+	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getLanguage(java.lang.String, java.lang.String);
+
+MEnumParameterLiteral parseEnumExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments, MPlatform platform) : JAVA
+	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.parseEnumExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, 
+		java.util.Collection, es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Boolean parseBooleanExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments, MPlatform platform) : JAVA
+	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.parseBooleanExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, 
+		java.util.Collection, es.uah.aut.srg.micobs.pdl.MPlatform);
+
+String parseStringExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments, MPlatform platform) : JAVA
+	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.parseStringExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, 
+		java.util.Collection, es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Integer parseIntegerExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments, MPlatform platform) : JAVA
+	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.parseIntegerExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, 
+		java.util.Collection, es.uah.aut.srg.micobs.pdl.MPlatform);
+	
+java::lang::Float parseRealExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments, MPlatform platform) : JAVA
+	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.parseRealExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, 
+		java.util.Collection, es.uah.aut.srg.micobs.pdl.MPlatform);
+
+String getSumDemands(MMESPDeployment this, MMESPDeploymentPlatform platform, MQuantifiableResource resource) :
+	JAVA  es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getSumDemands(es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment, 
+			es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentPlatform, 
+			es.uah.aut.srg.micobs.mesp.mespcommon.MQuantifiableResource);
+
+String getSumDemands(MMESPDeploymentAlternative this, MMESPDeploymentPlatform platform, MQuantifiableResource resource) :
+	JAVA  es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getSumDemands(es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative, 
+			es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentPlatform, 
+			es.uah.aut.srg.micobs.mesp.mespcommon.MQuantifiableResource);
+
+MPlatformSwPackage getPlatformSwPackage(MPlatform this) : 
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getPlatformSwPackage(es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Set[mespdep::MMESPSwPackageDeployment] getAllDeployedSwPackagesFromAlternative(mespdep::MMESPDeploymentAlternative this):
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllDeployedSwPackagesFromAlternative(es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative);
+
+Set[mespdep::MMESPDeploymentAlternative] getLeafDeploymentAlternatives(mespdep::MMESPDeploymentAlternative this):
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getLeafDeploymentAlternatives(es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative);
+
+Set[mespdep::MMESPDeploymentAlternative] getLeafDeploymentAlternatives(mespdep::MMESPDeployment this):
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getLeafDeploymentAlternatives(es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment);
+
+MMESPDeployment getDeploymentProject(mespdep::MMESPDeploymentAlternative this):
+	if (this.eContainer.metaType == MMESPDeploymentAlternative) then
+		((mespdep::MMESPDeploymentAlternative)this.eContainer).getDeploymentProject()
+	else
+		((MMESPDeployment)this.eContainer);
+
+MCommonPackage getPackage(mespswp::MSwPackage this):
+	((MCommonPackageFile)(this.eContainer)).package;
+		
+Boolean matchesPlatform(mespswp::MSwPackageSupportedPlatform this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.matchesPlatform(
+			es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageSupportedPlatform,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+
+mespswp::MSwPackageSupportedPlatform getMatchingPlatform(mespswp::MSwPackage this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getMatchingPlatform(
+			es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Set[mespswp::MQuantifiableResourceDemand] getQuantifiableResourceDemands(mespswp::MSwPackage this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getQuantifiableResourceDemands(
+		es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage, es.uah.aut.srg.micobs.pdl.MPlatform);
+
+MCommonPackageElement getContainingMCommonPackageElement(ecore::EObject this) :
+	if (this.eContainer == null) then
+		null
+	else if (this.metaType == MCommonPackageElement) then
+		this
+	else
+		this.getContainingMCommonPackageElement();
+
+Set[mespswi::MSwInterface] getExtendedSwInterfaces(mespswi::MSwInterface this) :
+	{}.addAll(this.extends).addAll(this.extends.getExtendedSwInterfaces());
+
+Set[mespswp::MSwPackage] getExtendedSwPackages(mespswp::MSwPackage this) :
+	{}.addAll(this.extends).addAll(this.extends.getExtendedSwPackages());
+
+Set[mespswp::MAbstractSwPackage] getInheritedSwPackages(mespswp::MAbstractSwPackage this) :
+	{}.addAll(this.inherits).addAll(this.inherits.getParentSwPackages());
+
+Set[mespswp::MAbstractSwPackage] getParentSwPackages(mespswp::MAbstractSwPackage this) :
+	if (this.metaType == mespswp::MAbstractSwPackage) then
+		{}.addAll(this.inherits).addAll(this.inherits.getParentSwPackages())
+	else
+		{}.addAll(this.inherits).addAll(this.inherits.getParentSwPackages()).addAll(((mespswp::MSwPackage)this).extends).addAll(((mespswp::MSwPackage)this).extends.getParentSwPackages());
+
+Set[mespswi::MSwInterface] getAllProvidedSwInterfaces(mespdep::MMESPDeploymentAlternative this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllProvidedSwInterfaces(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative);
+
+Set[mespswi::MSwInterface] getProvidedSwInterfaces(mespdep::MMESPDeployment this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getProvidedSwInterfaces(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment);
+
+Set[mespswi::MSwInterface] getAllProvidedSwInterfaces(mespswp::MAbstractSwPackage this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllProvidedSwInterfaces(
+		es.uah.aut.srg.micobs.mesp.mespswp.MAbstractSwPackage);
+
+Set[mespswi::MSwInterface] getAllEffectivelyProvidedSwInterfaces(mespswp::MSwPackage this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllEffectivelyProvidedSwInterfaces(
+		es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage);
+	
+Set[mespswp::MInstantiableResourceDemand] getInstantiableResourceDemands(mespswp::MSwPackage this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getInstantiableResourceDemands(
+		es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage, es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Set[mespcommon::MQuantifiableResource] getAllQuantifiableResources(mesposswi::MOSSwInterface this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllQuantifiableResources(
+		es.uah.aut.srg.micobs.mesp.mesposswi.MOSSwInterface);
+
+Set[mespcommon::MQuantifiableResource] getAllQuantifiableResources(mespswi::MSwInterface this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllQuantifiableResources(
+		es.uah.aut.srg.micobs.mesp.mespswi.MSwInterface);
+
+Set[common::MParameter] getAllParameters(mespswp::MSwPackage this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameters(
+		es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage,
+		es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Set[common::MEnumParameterDefinition] getAllEnumParameterDefinitions(mespswp::MAbstractSwPackage this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllEnumParameterDefinitions(
+		es.uah.aut.srg.micobs.mesp.mespswp.MAbstractSwPackage);
+
+Set[common::MParameterValueAssignment] getAllParameterValueAssignments(mespdep::MMESPSwPackageDeployment this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameterValueAssignments(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPSwPackageDeployment);
+
+Set[MMESPDeviceDriverMapping] getAllDriverMappings(mespdep::MMESPDriverSwPackageDeployment this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllDriverMappings(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDriverSwPackageDeployment);
+
+Set[MParameterValueAssignment] getAllParameterValueAssignments(
+		mespswp::MAbstractSwPackage this, 
+		mespswi::MSwInterface swi) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameterValueAssignments(
+		es.uah.aut.srg.micobs.mesp.mespswp.MAbstractSwPackage,
+		es.uah.aut.srg.micobs.mesp.mespswi.MSwInterface);
+
+Set[MParameterValueAssignment] getAllParameterValueAssignments(
+		mespswp::MAbstractSwPackage this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameterValueAssignments(
+		es.uah.aut.srg.micobs.mesp.mespswp.MAbstractSwPackage);
+
+Set[MEnumParameterDefinition] getAllEnumParameterDefinitions(MOperatingSystem this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllEnumParameterDefinitions(
+			es.uah.aut.srg.micobs.pdl.MOperatingSystem);
+
+Set[MEnumParameterDefinition] getAllEnumParameterDefinitions(MArchitecture this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllEnumParameterDefinitions(
+			es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MEnumParameterDefinition] getAllEnumParameterDefinitions(MCompiler this, MArchitecture architecture) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllEnumParameterDefinitions(
+			es.uah.aut.srg.micobs.pdl.MCompiler,
+			es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MParameter] getAllParameters(MOperatingSystem this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameters(es.uah.aut.srg.micobs.pdl.MOperatingSystem,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+			
+Set[MParameter] getMPParameters(MMicroprocessor this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getParameters(es.uah.aut.srg.micobs.pdl.MMicroprocessor);
+
+Set[MParameter] getBoardParameters(MBoard this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getParameters(es.uah.aut.srg.micobs.pdl.MBoard);
+
+Set[MParameter] getParameters(MPlatform this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getParameters(es.uah.aut.srg.micobs.pdl.MPlatform);
+
+Set[MOperatingSystemAPI] getInheritedOSAPIs(MOperatingSystemAPI this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getInheritedOSAPIs(es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI);
+	
+Set[MOperatingSystem] getInheritedOperatingSystems(MOperatingSystem this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getInheritedOperatingSystems(es.uah.aut.srg.micobs.pdl.MOperatingSystem);
+
+Set[MArchitecture] getExtendedArchitectures(MArchitecture this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getExtendedArchitectures(es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MCompiler] getExtendedCompilers(MCompiler this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getExtendedCompilers(es.uah.aut.srg.micobs.pdl.MCompiler);
+
+Set[MOperatingSystemAPI] getAllInheritedOSAPIs(MOperatingSystemAPI this) :
+	{}.add(this).addAll(this.getInheritedOSAPIs());
+	
+Set[MOperatingSystem] getAllInheritedOperatingSystems(MOperatingSystem this) :
+	{}.add(this).addAll(this.getInheritedOperatingSystems());
+
+Set[MArchitecture] getAllExtendedArchitectures(MArchitecture this) :
+	{}.add(this).addAll(this.getExtendedArchitectures());
+
+Set[MCompiler] getAllExtendedCompilers(MCompiler this) :
+	{}.add(this).addAll(this.getExtendedCompilers());
+
+Set[MParameter] getAllParameters(MCompiler this, MArchitecture arch) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameters(es.uah.aut.srg.micobs.pdl.MCompiler,
+			es.uah.aut.srg.micobs.pdl.MArchitecture);
+
+Set[MParameter] getAllParameters(MArchitecture this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameters(es.uah.aut.srg.micobs.pdl.MArchitecture);
+	
+Set[MOperatingSystemAPI] getAllSupportedOSAPIs(MOperatingSystem this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllSupportedOSAPIs(es.uah.aut.srg.micobs.pdl.MOperatingSystem);
+
+Set[MParameterValueAssignment] getAllParameterValueAssignments(MOperatingSystem this, MOperatingSystemAPI osapi) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameterValueAssignments(
+			es.uah.aut.srg.micobs.pdl.MOperatingSystem,
+			es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI);
+
+Set[MParameterValueAssignment] getAllParameterValueAssignments(MOperatingSystem this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllParameterValueAssignments(
+			es.uah.aut.srg.micobs.pdl.MOperatingSystem);
+
+Set[MParameterValueAssignment] getAllSwPackageParameterValueAssignments(MMESPDeployment this, MMESPDeploymentAlternative alternative) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllSwPackageParameterValueAssignments(
+			es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment,
+			es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative);
+
+Boolean matchesPlatform(MOSSupportedPlatform this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.matchesPlatform(
+			es.uah.aut.srg.micobs.pdl.MOSSupportedPlatform,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+
+MParameterValueExpression getParameterValue(MParameterValueAssignment this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getParameterValue(
+			es.uah.aut.srg.micobs.common.MParameterValueAssignment,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+
+MParameterValueExpression getDefaultValue(MParameter this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getDefaultValue(
+			es.uah.aut.srg.micobs.common.MParameter,
+			es.uah.aut.srg.micobs.pdl.MPlatform);
+
+MOSSwInterface getOSSwInterface(MOperatingSystemAPI osapi) : 
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getOSSwInterface(
+			es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI);

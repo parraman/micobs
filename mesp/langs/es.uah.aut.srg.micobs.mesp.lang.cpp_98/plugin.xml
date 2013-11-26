@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+!-->
+
+<plugin>
+
+   <extension
+         point="es.uah.aut.srg.micobs.languageAdapter">
+      <languageAdapter
+      		adapter="es.uah.aut.srg.micobs.mesp.lang.cpp_98.adapter.LanguageCPPAdapter"
+            uri="es.uah.aut.srg.micobs.langs.CPP"
+            version="98">
+      </languageAdapter>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swp.generatelocalconfigfiles.command.id"
+            name="Generate Local Config Files">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swp.createplatformfolderstree.command.id"
+            name="Create Platform Folders Tree">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswp.createplatformfolderstree.command.id"
+            name="Create Platform Folders Tree">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swi.generateincludefolders.command.id"
+            name="Generate Include Folders">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swi.generateswitemplate.command.id"
+            name="Generate Template Header File">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswi.generateincludefolders.command.id"
+            name="Generate Include Folders">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswi.generateosswitemplate.command.id"
+            name="Generate Template Header File">
+      </command>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.generator.ui.handlers.GenerateSwPackageLocalConfigFile"
+            commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swp.generatelocalconfigfiles.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.generator.ui.handlers.CreateSwPackagePlatformFoldersTree"
+            commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swp.createplatformfolderstree.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.generator.ui.handlers.CreateOSSwPackagePlatformFoldersTree"
+            commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswp.createplatformfolderstree.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.generator.ui.handlers.GenerateSwInterfaceIncludeFolders"
+            commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swi.generateincludefolders.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.generator.ui.handlers.GenerateOSSwInterfaceIncludeFolders"
+            commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswi.generateincludefolders.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.generator.ui.handlers.GenerateSwInterfaceTemplate"
+            commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swi.generateswitemplate.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.generator.ui.handlers.GenerateOSSwInterfaceTemplate"
+            commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswi.generateosswitemplate.command.id">
+      </handler>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.swp.menu.id?after=es.uah.aut.srg.micobs.mesp.swp.lang.separator">
+            <menu
+               label="CPP(98)">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swp.generatelocalconfigfiles.command.id"
+                  style="push">
+            </command>
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swp.createplatformfolderstree.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.lang.isCPP_98">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.osswp.menu.id?after=es.uah.aut.srg.micobs.mesp.osswp.lang.separator">
+            <menu
+               label="CPP(98)">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswp.createplatformfolderstree.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.lang.isCPP_98">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.swi.menu.id?after=es.uah.aut.srg.micobs.mesp.swi.lang.separator">
+            <menu
+               label="CPP(98)">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swi.generateincludefolders.command.id"
+                  style="push">
+            </command>
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.swi.generateswitemplate.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.lang.isCPP_98">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </menu>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mesp.osswi.menu.id?after=es.uah.aut.srg.micobs.mesp.osswi.lang.separator">
+            <menu
+               label="CPP(98)">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswi.generateincludefolders.command.id"
+                  style="push">
+            </command>
+            <command
+                  commandId="es.uah.aut.srg.micobs.mesp.lang.cpp_98.osswi.generateosswitemplate.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mesp.lang.isCPP_98">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+            </menu>
+      </menuContribution>
+   </extension>
+
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="es.uah.aut.srg.micobs.mesp.lang.cpp_98.tester.MESPLangCPP_98Tester"
+            id="es.uah.aut.srg.micobs.mesp.lang.cpp_98.tester"
+            namespace="es.uah.aut.srg.micobs.mesp.lang"
+            properties="isCPP_98"
+            type="org.eclipse.core.resources.IFile">
+      </propertyTester>
+   </extension>
+
+</plugin>

@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="pdllibrary" nsURI="http://srg.aut.uah.es/micobs/library/pdllibrary"
+    nsPrefix="micobs.library">
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLLibrary" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonLibrary"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLPackage" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackage"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLPackageItem" abstract="true" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLPackageVersionedItem" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemOperatingSystemAPI" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemOperatingSystemAPI"
+      eSuperTypes="#//MPDLPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemOperatingSystem" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemOperatingSystem" eSuperTypes="#//MPDLPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemArchitecture" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemArchitecture" eSuperTypes="#//MPDLPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemMicroprocessor" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemMicroprocessor" eSuperTypes="#//MPDLPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemBoard" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemBoard" eSuperTypes="#//MPDLPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemPlatform" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemPlatform" eSuperTypes="#//MPDLPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemCompiler" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemCompiler" eSuperTypes="#//MPDLPackageVersionedItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLItemDevice" eSuperTypes="#//MPDLPackageItem"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MPDLVersionedItemDevice" eSuperTypes="#//MPDLPackageVersionedItem"/>
+</ecore:EPackage>

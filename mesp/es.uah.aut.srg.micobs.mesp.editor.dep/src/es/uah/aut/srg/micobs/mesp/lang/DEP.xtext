@@ -1,0 +1,252 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+grammar es.uah.aut.srg.micobs.mesp.lang.DEP with org.eclipse.xtext.common.Terminals
+
+import "http://srg.aut.uah.es/micobs/mesp/mespdep" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://srg.aut.uah.es/micobs/mesp/mesppswp" as mesppswp
+import "http://srg.aut.uah.es/micobs/pdl" as pdl
+import "http://srg.aut.uah.es/micobs/mesp/mespswp" as mespswp
+import "http://srg.aut.uah.es/micobs/mesp/mespswi" as mespswi
+import "http://srg.aut.uah.es/micobs/mesp/mesposswi" as mesposswi
+import "http://srg.aut.uah.es/micobs/mesp/mespcommon" as mespcommon
+import "http://srg.aut.uah.es/micobs/mesp/mespctool" as mespctool
+import "http://srg.aut.uah.es/micobs/common" as common
+import "http://srg.aut.uah.es/micobs/system" as system
+import "http://srg.aut.uah.es/micobs/mesp/library/mesplibrary" as mesplibrary
+
+MMESPDEPPackageFile returns MMESPDEPPackageFile:
+	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';'
+	('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
+	element=MMESPDEPPackageElement
+	;
+
+MMESPDEPPackageElement returns MMESPDEPPackageElement:
+	MMESPDeployment
+;
+
+MMESPDeployment returns MMESPDeployment:
+	{MMESPDeployment}
+	'deployment' 'project'
+	name=ID
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('construction' 'tool' ':=' ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')?	
+		& ('deployment' 'platforms' '{'
+			(deploymentPlatforms+=MMESPDeploymentPlatform)+
+		'}' ';')
+		& ('required' 'interfaces' '{'
+		   		(requires+=MSwPackageRequiredInterface)+
+		   '}' ';')?
+		& ('swpackages' '{' 
+			(deployedSwPackages+=MMESPSwPackageDeployment)+
+		'}' ';')?
+		& ('deployment' 'alternatives' 
+		'{' 
+			(deploymentAlternatives+=MMESPDeploymentAlternative)+
+		'}' ';')?)
+    '}' ';';
+
+
+MSwPackageRequiredInterface returns mespswp::MSwPackageRequiredInterface:
+	'requires' 
+	interface=[common::MCommonPackageElement|VersionedQualifiedName]
+	'{'
+		(resourceDemands+=MResourceDemand)*
+	'}' ';'
+;
+
+MResourceDemand returns mespswp::MResourceDemand:
+	MQuantifiableResourceDemand | MInstantiableResourceDemand;
+
+MInstantiableResourceDemand returns mespswp::MInstantiableResourceDemand:
+	'instantiable' 'resource'
+	resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName]
+	name=ID
+	'{'
+		(parameterValueAssignments+=MParameterValueAssignment)*
+	'}'
+	';'
+;
+
+MQuantifiableResourceDemand returns mespswp::MQuantifiableResourceDemand:
+	{mespswp::MQuantifiableResourceDemand}
+	'quantifiable' 'resource'
+	resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName]
+	':='
+	resourceValue=MParameterValueExpression
+    ';';
+
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*;
+
+Version returns ecore::EString:
+	(INT | ((INT)? ID)) ('.' (INT | ((INT)? ID)))*
+	;
+
+VersionedQualifiedName returns ecore::EString:
+	QualifiedName '(' Version ')'
+	;
+
+VersionedQualifiedReferenceName returns ecore::EString:
+	(VersionedQualifiedName '::')? ID ('::' ID)*;
+
+MMESPSwPackageDeployment returns MMESPSwPackageDeployment:
+	MMESPRegularSwPackageDeployment | MMESPDriverSwPackageDeployment;
+
+MMESPRegularSwPackageDeployment returns MMESPSwPackageDeployment:
+	{MMESPSwPackageDeployment}
+	'swpackage' swPackage=[mespswp::MSwPackage|VersionedQualifiedName]
+	'{'
+		(parameterValueAssignments+=MParameterValueAssignment)*
+	'}' ';'
+	;
+
+MMESPDriverSwPackageDeployment returns MMESPDriverSwPackageDeployment:
+	{MMESPDriverSwPackageDeployment}
+	'driver' swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName]
+	'{'
+		(('parameter' 'values'
+		'{'
+			(parameterValueAssignments+=MParameterValueAssignment)+
+		'}' ';')?
+		& ('device' 'mappings' '{'
+			(deviceDriverMappings+=MMESPDeviceDriverMapping)+
+		'}' ';')?)
+	'}' ';'
+;
+
+MMESPDeviceDriverMapping returns MMESPDeviceDriverMapping:
+	'supported' 'device' supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName]
+	'->'
+	'deployed' 'device' deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName] ';'
+;
+
+
+MParameterValueAssignment returns common::MParameterValueAssignmentSingleExpression:
+	'parameter'
+	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	':='
+	parameterValue=MParameterValueExpression ';'
+	;
+
+MParameterValue returns common::MParameterValue:
+	MParameterValueLiteral | MParameterValueRefObject |
+	MParameterValuePAR
+	;
+
+MParameterValueLiteral returns common::MParameterValueLiteral:
+	MParameterValueBooleanLiteral | MParameterValueStringLiteral |
+	MParameterValueIntegerLiteral | MParameterValueRealLiteral
+;
+
+MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
+	{common::MParameterValueBooleanLiteral}
+	value=EBoolean;
+
+MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
+	{common::MParameterValueStringLiteral}
+	value=STRING;
+
+MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
+	{common::MParameterValueIntegerLiteral}
+	value=INTEGER;
+
+MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
+	{common::MParameterValueRealLiteral}
+	value=REAL;
+
+
+MParameterValueRefObject returns common::MParameterValueRefObject:
+	{common::MParameterValueRefObject}
+	object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+	;
+	
+MParameterValuePAR returns common::MParameterValuePAR:
+	'(' value=MParameterValueExpression ')'
+	;
+
+enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
+	plus = '+' | minus = '-';
+
+enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
+	mult = '*' | div = '/';
+	
+MParameterValueExpression returns common::MParameterValueExpression:
+	{common::MParameterValueExpression}
+	left=MParameterValueTERM (operation=MParameterValueExpressionOperators right=MParameterValueExpression)?
+	;	
+
+MParameterValueTERM returns common::MParameterValueTERM:
+	{common::MParameterValueTERM}
+	left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+	;
+
+
+MMESPDeploymentPlatform returns MMESPDeploymentPlatform:
+	'deployment' 'platform'
+	name=ID
+	'{'
+		(('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';')
+		& ('pswpackage' ':=' platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ';')
+		& ('deployed' 'devices' '{'
+			(deployedDevices+=MMESPDeployedDevice)+
+		'}' ';')?
+		& ('parameter' 'values'
+		'{'
+			(parameterValueAssignments+=MParameterValueAssignment)+
+		'}' ';')?)
+	'}'
+	';'
+	;
+
+MMESPDeployedDevice returns MMESPDeployedDevice:
+	'device'
+	device=[pdl::MDevice|VersionedQualifiedName]
+	name=ID
+	'{'
+		(parameterValueAssignments+=MParameterValueAssignment)*
+	'}' ';'
+;
+
+MMESPDeploymentAlternative returns MMESPDeploymentAlternative:
+	'deployment' 'alternative'
+	name=ID
+	'{'
+		(('deployment' 'platforms' ':=' deploymentPlatforms+=[MMESPDeploymentPlatform|ID] ( "," deploymentPlatforms+=[MMESPDeploymentPlatform|ID])* ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+		& ('swpackages' '{' 
+			(deployedSwPackages+=MMESPSwPackageDeployment)+
+		'}' ';')?
+		& ('required' 'interfaces' '{'
+		   		(requires+=MSwPackageRequiredInterface)+
+		'}' ';')?
+		& ('deployment' 'alternatives' 
+		'{' 
+			(deploymentAlternatives+=MMESPDeploymentAlternative)+
+		'}' ';')?)
+	'}' ';'
+	;
+
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+terminal HEXADECIMAL returns ecore::EString:
+	('0x' (('0'..'9') | ('a'..'f') | ('A'..'F'))+);
+
+INTEGER returns ecore::EString:
+	('-'? INT | HEXADECIMAL);
+
+REAL returns ecore::EString:
+	'-'? (INT '.' INT) ('e' ('-')? INT)?;
+

@@ -1,0 +1,502 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+grammar es.uah.aut.srg.micobs.lang.PDL with org.eclipse.xtext.common.Terminals
+
+import "http://srg.aut.uah.es/micobs/pdl" 
+import "http://srg.aut.uah.es/micobs/system" as system 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://srg.aut.uah.es/micobs/common" as common
+import "http://srg.aut.uah.es/micobs/library/pdllibrary" as pdllibrary
+
+MPDLPackageFile returns MPDLPackageFile:
+	'package' package=[pdllibrary::MPDLPackage|QualifiedName] ';'
+	('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
+	element=MPDLPackageElement
+    ;
+
+MPDLPackageElement returns MPDLPackageElement:
+	MBoard | MMicroprocessor | MOperatingSystem |
+	MOperatingSystemAPI | MArchitecture | MPlatform |
+	MCompiler | MDevice;
+
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*;
+
+Version returns ecore::EString:
+	(INT | ((INT)? ID)) ('.' (INT | ((INT)? ID)))*
+	;
+
+VersionedQualifiedName returns ecore::EString:
+	QualifiedName '(' Version ')'
+	;
+
+VersionedQualifiedReferenceName returns ecore::EString:
+	(VersionedQualifiedName '::')? ID ('::' ID)*;
+
+MCompiler returns MCompiler:
+	'compiler'
+	name=ID
+	('extends' extends+=[MCompiler|VersionedQualifiedName] ("," extends+=[MCompiler|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('frontends' '{'
+			(frontends+=MCompilerFrontend)+
+		'}' ';')? 
+		& ('configuration' 'parameters' 
+		   '{' 
+				(parameters+=MParameterWithoutOSSP)+
+		   '}' ';')?)
+	'}' ';'
+;
+
+MCompilerFrontend returns MCompilerFrontend:
+	'frontend'
+	name=ID
+	'{'
+		(('language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';')
+		& ('architectures' ':=' architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ';') 
+		& ('configuration' 'parameters' 
+		   '{' 
+				(parameters+=MParameterWithoutOSSP)+
+		   '}' ';')?)
+	'}' ';'
+;
+
+MBoard returns MBoard:
+	'board'
+	name=ID
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('supported' 'devices' '{'
+			(supportedDevices+=MBoardSupportedDevice)+
+		'}' ';')?
+		& ('microprocessor' ':=' microprocessor=[MMicroprocessor|VersionedQualifiedName] ';') 
+		& ('configuration' 'parameters' 
+		   '{' 
+				(parameters+=MParameterWithoutOSSP)+
+		   '}' ';')?)
+    '}'
+    ';';
+
+MBoardSupportedDevice returns MBoardSupportedDevice:
+	'device' device=[MDevice|VersionedQualifiedName]
+	'range' lowerBound=MParameterValueExpression 'to' upperBound=MParameterValueExpression
+	';'
+;
+
+MMicroprocessor returns MMicroprocessor:
+	'microprocessor'
+	name=ID
+	'{' (('version' ':=' version=Version ';') 
+		& ('architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';') 
+		& ('configuration' 'parameters' 
+		   '{' 
+				(parameters+=MParameterWithoutOSSP)+
+		   '}' ';')?)
+    '}'
+    ';';
+
+MOperatingSystem returns MOperatingSystem:
+	'os'
+	name=ID
+	('inherits' inherits+=[MOperatingSystem|VersionedQualifiedName] ("," inherits+=[MOperatingSystem|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')
+		& ('supported' 'osapis' '{'
+			(supportedOSAPIs+=MOSSupportedOSAPI)+
+			'}' ';')?
+		& ('supported' 'platforms' 
+		'{' 
+			(supportedPlatforms+=MOSSupportedPlatform)+
+		'}' ';')
+		& ('configuration' 'parameters' 
+		'{' 
+			(parameters+=MParameter)+
+		'}' ';')?)
+    '}'
+    ';';
+
+MOSSupportedOSAPI returns MOSSupportedOSAPI:
+	'supports' 
+	osapi=[MOperatingSystemAPI|VersionedQualifiedName]
+	'{'
+		(parameterValueAssignments+=MOSSupportedOSAPIPVA)*
+	'}' ';'
+;
+
+MOSSupportedOSAPIPVA returns MOSSupportedOSAPIPVA:
+	MOSSupportedOSAPIPVAExpression |
+	MOSSupportedOSAPIPVASwitch
+;
+
+MOSSupportedOSAPIPVAExpression returns MOSSupportedOSAPIPVAExpression:
+	'parameter'
+	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	':='
+	parameterValue=MParameterValueExpression ';'
+;
+
+MOSSupportedOSAPIPVASwitch returns MOSSupportedOSAPIPVASwitch:
+	'switch' '(' parameter=[common::MParameter|VersionedQualifiedReferenceName] ')'
+	'{'
+		(cases+=MOSSupportedOSAPIPVASwitchCase)
+	'}' ';'
+;
+
+MOSSupportedOSAPIPVASwitchCase returns MOSSupportedOSAPIPVASwitchCase:
+	'case' platform=[MOSSupportedPlatform|ID] ':'
+	parameterValue=MParameterValueExpression ';'
+;
+
+MParameter returns common::MParameter:
+	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | 
+	MBooleanParameterSingleExpression | MRealParameterSingleExpression |
+	MStringParameterSingleExpression | MEnumParameterDefinition |
+	MBooleanParamOSSPSwitch | MStringParamOSSPSwitch | 
+	MIntegerParamOSSPSwitch | MRealParamOSSPSwitch |
+	MEnumParamOSSPSwitch;
+
+MBooleanParamOSSPSwitch returns MBooleanParamOSSPSwitch:
+	(constant?='const')?
+	'boolean' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MBooleanParamOSSPSwitchCase)+
+	'}' ';'
+;
+
+MBooleanParamOSSPSwitchCase returns MBooleanParamOSSPSwitchCase:
+	'case' platform=[MOSSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression ';'
+;
+
+MStringParamOSSPSwitch returns MStringParamOSSPSwitch:
+	(constant?='const')?
+	'string' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MStringParamOSSPSwitchCase)+
+	'}' ';'
+;
+
+MStringParamOSSPSwitchCase returns MStringParamOSSPSwitchCase:
+	'case' platform=[MOSSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression ';'
+;
+
+MIntegerParamOSSPSwitch returns MIntegerParamOSSPSwitch:
+	(constant?='const')?
+	'integer' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MIntegerParamOSSPSwitchCase)+
+	'}' ';'
+;
+
+MIntegerParamOSSPSwitchCase returns MIntegerParamOSSPSwitchCase:
+	'case' platform=[MOSSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)? ';'
+;
+
+MRealParamOSSPSwitch returns MRealParamOSSPSwitch:
+	(constant?='const')?
+	'real' name=ID ':='
+	'switch'
+	'{'
+		(cases+=MRealParamOSSPSwitchCase)+
+	'}' ';'
+;
+
+MRealParamOSSPSwitchCase returns MRealParamOSSPSwitchCase:
+	'case' platform=[MOSSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)? ';'
+;
+
+MEnumParamOSSPSwitch returns MEnumParamOSSPSwitch:
+	(constant?='const')?
+	'enum'
+	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
+	name=ID ':='
+	'switch'
+	'{'
+		(cases+=MEnumParamOSSPSwitchCase)+
+	'}' ';'
+	;
+
+MEnumParamOSSPSwitchCase returns MEnumParamOSSPSwitchCase:
+	'case' platform=[MOSSupportedPlatform|ID] ':'
+	defaultValue=MParameterValueExpression ';'
+;
+
+MParameterWithoutOSSP returns common::MParameter:
+	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | 
+	MBooleanParameterSingleExpression | MRealParameterSingleExpression |
+	MStringParameterSingleExpression | MEnumParameterDefinition;
+
+MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
+	(constant?='const')?
+	'integer'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)?
+    ';';
+
+MEnumParameterDefinition returns common::MEnumParameterDefinition:
+	'enum'
+	name=ID
+	'{'
+		literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+    '}'
+    ';';
+
+MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
+	(constant?='const')?
+	'enum'
+	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+    ';';
+
+MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
+	(constant?='const')?
+	'real'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)?
+    ';';
+
+MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
+	MEnumParameterLiteral |
+	MEnumParamIntegerLiteral |
+	MEnumParamRealLiteral |
+	MEnumParamStringLiteral
+	;
+
+MEnumParameterLiteral returns common::MEnumParameterLiteral:
+	{common::MEnumParameterLiteral}
+	name=ID
+;
+
+MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
+	{common::MEnumParamIntegerLiteral}
+	name=ID
+	'='
+	value=INTEGER
+;
+
+MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
+	{common::MEnumParamRealLiteral}
+	name=ID
+	'='
+	value=REAL
+;
+
+MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
+	{common::MEnumParamStringLiteral}
+	name=ID
+	'='
+	value=STRING
+;
+
+MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
+	(constant?='const')?
+	'boolean'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	';';
+
+MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
+	(constant?='const')?
+	'string'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	';';
+
+MParameterValue returns common::MParameterValue:
+	MParameterValueLiteral | MParameterValueRefObject |
+	MParameterValuePAR
+	;
+
+MParameterValueLiteral returns common::MParameterValueLiteral:
+	MParameterValueBooleanLiteral | MParameterValueStringLiteral |
+	MParameterValueIntegerLiteral | MParameterValueRealLiteral
+;
+
+MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
+	{common::MParameterValueBooleanLiteral}
+	value=EBoolean;
+
+MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
+	{common::MParameterValueStringLiteral}
+	value=STRING;
+
+MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
+	{common::MParameterValueIntegerLiteral}
+	value=INTEGER;
+
+MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
+	{common::MParameterValueRealLiteral}
+	value=REAL;
+
+
+MParameterValueRefObject returns common::MParameterValueRefObject:
+	{common::MParameterValueRefObject}
+	object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+	;
+	
+MParameterValuePAR returns common::MParameterValuePAR:
+	'(' value=MParameterValueExpression ')'
+	;
+
+enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
+	plus = '+' | minus = '-';
+
+enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
+	mult = '*' | div = '/';
+	
+MParameterValueExpression returns common::MParameterValueExpression:
+	{common::MParameterValueExpression}
+	left=MParameterValueTERM (operation=MParameterValueExpressionOperators right=MParameterValueExpression)?
+	;	
+
+MParameterValueTERM returns common::MParameterValueTERM:
+	{common::MParameterValueTERM}
+	left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+	;
+
+MParameterRange returns common::MParameterRange:
+	MParameterOCR | MParameterOOR |
+	MParameterCOR | MParameterCCR;
+
+MParameterOCR returns common::MParameterOCR:
+	{common::MParameterOCR}
+	'('
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	']'
+	;
+
+MParameterOOR returns common::MParameterOOR:
+	{common::MParameterOOR}
+	'('
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	')'
+	;
+
+MParameterCOR returns common::MParameterCOR:
+	{common::MParameterCOR}
+	'['
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	')'
+	;
+
+MParameterCCR returns common::MParameterCCR:
+	{common::MParameterCCR}
+	'['
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	']'
+	;
+
+MOperatingSystemAPI returns MOperatingSystemAPI:
+	'osapi'
+	name=ID
+	('inherits' inherits+=[MOperatingSystemAPI|VersionedQualifiedName] ("," inherits+=[MOperatingSystemAPI|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';')
+		& ('configuration' 'parameters' 
+		'{' 
+			(parameters+=MParameterWithoutOSSP)+
+		'}' ';')?)
+    '}'
+    ';';
+
+MDevice returns MDevice:
+	'device'
+	name=ID
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('configuration' 'parameters' 
+		'{' 
+			(parameters+=MParameterWithoutOSSP)+
+		'}' ';')?)
+    '}'
+    ';';
+
+MArchitecture returns MArchitecture:
+	'architecture'
+	name=ID
+	('extends'
+	extends+=[MArchitecture|VersionedQualifiedName] ("," extends+=[MArchitecture|VersionedQualifiedName])*)?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('configuration' 'parameters' 
+		'{' 
+			(parameters+=MParameterWithoutOSSP)+
+		'}' ';')?)
+    '}'
+    ';';
+
+MOSSupportedPlatform returns MOSSupportedPlatform:
+	{MOSSupportedPlatform}
+	'supported' 'platform'
+	name=ID
+	'{'
+		(('architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';')
+		& ('compiler' ':=' compiler=[MCompiler|VersionedQualifiedName] ';')
+		& ('microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';')
+		& ('board' ':=' ('any' | board=[MBoard|VersionedQualifiedName]) ';')
+		& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+		& ('configuration' 'parameters' 
+		   '{' 
+				(parameters+=MParameterWithoutOSSP)+
+		   '}' ';')?)
+	'}'
+    ';';
+
+MPlatform returns MPlatform:
+	'platform'
+	name=ID
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('osapi' ':=' osapi=[MOperatingSystemAPI|VersionedQualifiedName] ';')
+		& ('os' ':=' os=[MOperatingSystem|VersionedQualifiedName] ';')
+		& ('architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';')
+		& ('compiler' ':=' compiler=[MCompiler|VersionedQualifiedName] ';')
+		& ('microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';')
+		& ('board' ':=' ('any' | board=[MBoard|VersionedQualifiedName]) ';')
+		& ('configuration' 'parameters' 
+		   '{' 
+				(parameters+=MParameterWithoutOSSP)+
+		   '}' ';')?)
+	'}'
+	';'
+	;
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+terminal HEXADECIMAL returns ecore::EString:
+	('0x' (('0'..'9') | ('a'..'f') | ('A'..'F'))+);
+
+INTEGER returns ecore::EString:
+	('-'? INT | HEXADECIMAL);
+
+REAL returns ecore::EString:
+	'-'? (INT '.' INT) ('e' ('-')? INT)?;
+
+

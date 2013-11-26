@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs/src" editDirectory="/es.uah.aut.srg.micobs/src"
+    modelPluginID="es.uah.aut.srg.micobs" modelName="Common" editPluginClass="es.uah.aut.srg.micobs.plugin.MICOBSPlugin"
+    rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" operationReflection="true" importOrganizing="true">
+  <foreignModel>common.ecore</foreignModel>
+  <genPackages prefix="common" basePackage="es.uah.aut.srg.micobs" disposableProviderFactory="true"
+      ecorePackage="common.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="common.ecore#//MParameterValueExpressionOperators">
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MParameterValueExpressionOperators/plus"/>
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MParameterValueExpressionOperators/minus"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="common.ecore#//MParameterValueTERMOperators">
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MParameterValueTERMOperators/mult"/>
+      <genEnumLiterals ecoreEnumLiteral="common.ecore#//MParameterValueTERMOperators/div"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonPackage">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackage/uri"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackage/items"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonPackageFile">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackageFile/package"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackageFile/imports"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackageFile/element"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonPackageElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageElement/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageElement/name"/>
+      <genFeatures property="Readonly" createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageElement/uri"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonPackageItem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackageItem/versionedItems"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageItem/uri"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonPackageVersionedItem">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageVersionedItem/localModelURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageVersionedItem/remoteModelURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageVersionedItem/repositoryFolderURI"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonPackageVersionedItem/version"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonLibrary">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MCommonLibrary/packages"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonPackageReferencingElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackageReferencingElement/referencedElement"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MCommonPackageParametricReferencingElement">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackageParametricReferencingElement/referencedElement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MCommonPackageParametricReferencingElement/parameterElement"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MCommonReferenceableObj">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonReferenceableObj/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MCommonReferenceableObj/description"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MParameter">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MParameter/constant"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MEnumParameterDefinition">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MEnumParameterDefinition/literals"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MBooleanParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MBooleanParameter/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MStringParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MStringParameter/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MIntegerParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MIntegerParameter/range"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MIntegerParameter/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MEnumParameter">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MEnumParameter/enumDefinition"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MEnumParameter/defaultValue"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MEnumParameterLiteral"/>
+    <genClasses ecoreClass="common.ecore#//MRealParameter">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MRealParameter/range"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MRealParameter/defaultValue"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MParameterRange">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterRange/lowerValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterRange/upperValue"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterOOR"/>
+    <genClasses ecoreClass="common.ecore#//MParameterOCR"/>
+    <genClasses ecoreClass="common.ecore#//MParameterCCR"/>
+    <genClasses ecoreClass="common.ecore#//MParameterCOR"/>
+    <genClasses ecoreClass="common.ecore#//MEnumParamIntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MEnumParamIntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MEnumParamRealLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MEnumParamRealLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MEnumParamStringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MEnumParamStringLiteral/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MParameterValue"/>
+    <genClasses image="false" ecoreClass="common.ecore#//MParameterValueLiteral"/>
+    <genClasses ecoreClass="common.ecore#//MParameterValueIntegerLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MParameterValueIntegerLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueRealLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MParameterValueRealLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueBooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MParameterValueBooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueStringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MParameterValueStringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueRefObject">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueRefObject/object"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueExpression/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MParameterValueExpression/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueExpression/right"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueTERM">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueTERM/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute common.ecore#//MParameterValueTERM/operation"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueTERM/right"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValuePAR">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValuePAR/value"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MParameterValueAssignment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueAssignment/parameter"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueAssignmentSingleExpression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueAssignmentSingleExpression/parameterValue"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueRange">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueRange/parameter"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueRange/parameterValue"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueRange/range"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="common.ecore#//MParameterValueDependentItem">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueDependentItem/ranges"/>
+    </genClasses>
+    <genClasses ecoreClass="common.ecore#//MParameterValueDependentItemsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference common.ecore#//MParameterValueDependentItemsList/items"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

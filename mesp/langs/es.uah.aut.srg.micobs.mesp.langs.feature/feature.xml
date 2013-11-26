@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="es.uah.aut.srg.micobs.mesp.langs"
+      label="%featureName"
+      version="2.1.2"
+      provider-name="%providerName">
+
+   <description url="http://www.micobs.com">
+      %description
+   </description>
+
+   <copyright url="&quot;ttp://www.eclipse.org/legal/epl-v10.html">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.0.x"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="es.uah.aut.srg.micobs"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="es.uah.aut.srg.modeling.util" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.xpand"/>
+      <import plugin="org.eclipse.xtend"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf"/>
+      <import plugin="org.tigris.subversion.subclipse.ui"/>
+      <import plugin="org.eclipse.team.core"/>
+      <import plugin="org.tigris.subversion.subclipse.core"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="es.uah.aut.srg.micobs.pdl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs.mesp" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui" version="1.0.1" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs.mesp.lang.c_c99" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs.lang.c_c99"/>
+      <import plugin="es.uah.aut.srg.micobs.lang.cpp_98"/>
+   </requires>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.lang.c_c99"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.lang.cpp_98"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="es.uah.aut.srg.micobs.mesp"
+      label="%featureName"
+      version="2.1.9"
+      provider-name="%providerName"
+      plugin="es.uah.aut.srg.micobs.mesp">
+
+   <description url="http://www.micobs.com">
+      %description
+   </description>
+
+   <copyright url="&quot;ttp://www.eclipse.org/legal/epl-v10.html">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.0.x"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="es.uah.aut.srg.micobs"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="es.uah.aut.srg.modeling.util"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.xpand"/>
+      <import plugin="org.eclipse.xtend"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf"/>
+      <import plugin="org.tigris.subversion.subclipse.ui"/>
+      <import plugin="org.eclipse.team.core"/>
+      <import plugin="org.tigris.subversion.subclipse.core"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="es.uah.aut.srg.micobs.pdl"/>
+      <import plugin="org.eclipse.xtext.ui"/>
+      <import plugin="org.eclipse.xtext"/>
+      <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="es.uah.aut.srg.micobs.pdl" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs.mesp" version="1.0.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.ctool"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.ctool.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.dep"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.dep.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.osswi"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.osswi.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.osswp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.osswp.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.pswp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.pswp.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.swi"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.swi.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.swp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mesp.editor.swp.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

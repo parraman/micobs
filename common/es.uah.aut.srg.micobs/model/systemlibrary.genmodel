@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/es.uah.aut.srg.micobs/src" editDirectory="/es.uah.aut.srg.micobs/src"
+    editorDirectory="/es.uah.aut.srg.micobs/src" modelPluginID="es.uah.aut.srg.micobs"
+    modelName="Systemlibrary" editPluginClass="es.uah.aut.srg.micobs.plugin.MICOBSPlugin"
+    editorPluginClass="es.uah.aut.srg.micobs.plugin.MICOBSPlugin" importerID="org.eclipse.emf.importer.ecore"
+    complianceLevel="6.0" copyrightFields="false" usedGenPackages="common.genmodel#//common">
+  <foreignModel>systemlibrary.ecore</foreignModel>
+  <genPackages prefix="systemlibrary" basePackage="es.uah.aut.srg.micobs.system.library"
+      disposableProviderFactory="true" multipleEditorPages="false" generateModelWizard="false"
+      ecorePackage="systemlibrary.ecore#/">
+    <genClasses ecoreClass="systemlibrary.ecore#//MSystemLibrary"/>
+    <genClasses ecoreClass="systemlibrary.ecore#//MSystemPackage"/>
+    <genClasses image="false" ecoreClass="systemlibrary.ecore#//MSystemPackageItem"/>
+    <genClasses ecoreClass="systemlibrary.ecore#//MSystemPackageVersionedItem"/>
+    <genClasses ecoreClass="systemlibrary.ecore#//MSystemItemLanguage"/>
+    <genClasses ecoreClass="systemlibrary.ecore#//MSystemVersionedItemLanguage"/>
+  </genPackages>
+</genmodel:GenModel>

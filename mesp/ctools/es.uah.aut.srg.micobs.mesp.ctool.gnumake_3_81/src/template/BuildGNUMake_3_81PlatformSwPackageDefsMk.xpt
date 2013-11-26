@@ -1,0 +1,80 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mesppswp»
+
+«DEFINE main FOR MMESPPSWPPackageFile»
+«FILE "defs.mk"»
+# This is an example of a platform defs.mk file. This file should define all
+# the necessary targets needed to perform the compilation and linking process.
+
+# First of all, the user can define a set of PHONY targets, e.g.:
+
+# .PHONY: g gdb
+
+# In this case, we have defined two phony targets: g and gdb. Both targets
+# can be used to run an instance of the GNU's Debugger GDB.
+
+# The next step is to define the remaining compiling and linking flags that
+# are going to be used when performing the compilation and linkage. As an 
+# example:
+
+# CPPFLAGS+=
+# CFLAGS+= -Wall -g
+# CXXFLAGS+=
+# LDFLAGS+=
+
+# Now we can define a set of names of the most common GCC utils, e.g.:
+
+# CROSS:=/opt/rtems-4.6/bin/sparc-rtems-
+
+AS:=$(CROSS)as
+LD:=$(CROSS)ld
+CC:=$(CROSS)gcc
+CXX:=$(CROSS)g++
+CPP:=$(CROSS)cpp
+AR:=$(CROSS)ar
+NM:=$(CROSS)nm
+OBJCPY:=$(CROSS)objcopy
+OBJDUMP:=$(CROSS)objdump
+STRIP:=$(CROSS)strip
+
+GDB:=$(CROSS)gdb
+
+# Now we have to define the default targets for all the types of source files:
+
+.c.o:
+	@echo " CC  $<"
+	@$(CC) $(CFLAGS) $(CPPFLAGS) -MD -c -o $@ $<
+
+.cpp.o:
+	@echo " CXX $<"
+	@$(CXX) $(CFLAGS) $(CPPFLAGS) $(CXXFLAGS) -MD -c -o $@ $<
+
+.S.o:
+	@echo " CC  $<"
+	@$(CC) $(ASMFLAGS) $(CPPFLAGS) -c -o $@ $<
+
+# Once defined the default targets, we have to define the main target of the
+# application, i.e. $(TARGET):
+
+#$(TARGET) : $(MOBJ) $(OBJS)
+#	@echo " LD  $@"
+#	@$(CC) -o $@ $^
+
+# To finish, we can define the g and gdb target to help us with the debugging
+# process of the application.
+
+#g gdb : $(TARGET)
+#	$(GDB) $(TARGET)
+«ENDFILE»
+«ENDDEFINE»

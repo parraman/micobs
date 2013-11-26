@@ -1,0 +1,70 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT pdl»
+«IMPORT common»
+
+«EXTENSION template::PDLStringHelper»
+
+«DEFINE main FOR MPDLPackageFile»
+«FILE this.element.name.toLowerDefString() + ".micobs_pdl" -»
+/*
+ * First we have to assign this file to a certain package.
+ */
+
+package «this.package.uri»;
+
+/*
+ * Optionally, we can import packages to use their elements as references.
+ */
+
+«IF this.package != ((MCommonPackageFile)((MBoard)this.element).microprocessor.eContainer) -»
+import «((MCommonPackageFile)((MBoard)this.element).microprocessor.eContainer).package.uri»;
+«ENDIF -»
+
+/**
+ * Definition of a Board. Every Board should have:
+ * - A name
+ * - A version
+ * - The corresponding microprocessor installed in the board
+ *
+ * An optionally, it can define the list of devices supported by the board and
+ * their cardinality, and a list of configuration parameters.
+ */
+
+board «this.element.name»
+{
+	version := «this.element.version»;
+	
+	microprocessor := «((MBoard)this.element).microprocessor.getElementName() -»;
+	
+// 	supported devices 
+// 	{
+//		device /* device */ /* name */ range /* min */ to /* max */;
+//		...
+//	};
+
+//	configuration parameters
+//	{ 
+//		boolean /* name */ := /* default */;
+//		integer /* name */ := /* default */ range /* ( / [ */ /* min */ , /* max */ /* ) / ] */;
+//		real /* name */ := /* default */ range /* ( / [ */ /* min */ , /* max */ /* ) / ] */;
+//		string /* name */ := /* default */;
+//		enum /* name */ {
+//			LITERAL_A, ...
+//		};
+//		enum /* definition */ /* name */ := /* default literal */;  
+// 	};
+
+};
+«ENDFILE»
+«ENDDEFINE»

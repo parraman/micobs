@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mesp/src" editDirectory="/es.uah.aut.srg.micobs.mesp/src"
+    modelPluginID="es.uah.aut.srg.micobs.mesp" modelName="Osswi" editPluginClass="es.uah.aut.srg.micobs.mesp.plugin.MESPPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common mespcommon.genmodel#//mespcommon ../../es.uah.aut.srg.micobs.pdl/model/pdl.genmodel#//pdl ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>osswi.ecore</foreignModel>
+  <genPackages prefix="mesposswi" basePackage="es.uah.aut.srg.micobs.mesp" disposableProviderFactory="true"
+      ecorePackage="osswi.ecore#/">
+    <genClasses ecoreClass="osswi.ecore#//MOSSwInterface">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference osswi.ecore#//MOSSwInterface/osapi"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference osswi.ecore#//MOSSwInterface/providedResources"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference osswi.ecore#//MOSSwInterface/inherits"/>
+    </genClasses>
+    <genClasses ecoreClass="osswi.ecore#//MMESPOSSWIPackageFile"/>
+    <genClasses image="false" ecoreClass="osswi.ecore#//MMESPOSSWIPackageElement"/>
+  </genPackages>
+</genmodel:GenModel>

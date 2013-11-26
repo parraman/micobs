@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mespcommon" nsURI="http://srg.aut.uah.es/micobs/mesp/mespcommon"
+    nsPrefix="micobs.mesp">
+  <eClassifiers xsi:type="ecore:EClass" name="MProvidedResource" abstract="true" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MQuantifiableResource" eSuperTypes="#//MProvidedResource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowerBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upperBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MInstantiableResource" eSuperTypes="#//MProvidedResource">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="parameters" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

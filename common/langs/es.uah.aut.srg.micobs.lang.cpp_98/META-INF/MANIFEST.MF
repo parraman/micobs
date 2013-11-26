@@ -1,0 +1,9 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MICOBS CPP(98) Language
+Bundle-SymbolicName: es.uah.aut.srg.micobs.lang.cpp_98;singleton:=true
+Bundle-Version: 2.0.0.qualifier
+Bundle-Vendor: UAH Space Research Group
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.uah.aut.srg.micobs;bundle-version="1.0.0"

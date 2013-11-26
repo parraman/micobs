@@ -1,0 +1,579 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT common»
+«IMPORT mespdep»
+«IMPORT mespcommon»
+«IMPORT mespswp»
+
+«EXTENSION template::MESPStringHelper»
+«EXTENSION template::MESPUtil»
+«EXTENSION template::GNUMakeStringHelper»
+
+«DEFINE main(MMESPDeploymentAlternative alternative, MMESPDeploymentPlatform deploymentPlatform) FOR MMESPDeployment»
+«IF this.deploymentAlternatives.isEmpty == true -»
+«FOREACH this.deploymentPlatforms AS platform -»
+«EXPAND generateMakefile(null, platform) FOR this -»
+«ENDFOREACH -»
+«ELSE -»
+«FOREACH this.getLeafDeploymentAlternatives() AS alt -»
+«FOREACH alt.deploymentPlatforms AS platform -»
+«EXPAND generateMakefile(alt, platform) FOR this -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«ENDIF -»
+«FILE "makefile" -»
+«IF this.deploymentAlternatives.isEmpty == true -»
+
+export R:=$(shell pwd)
+MAKE:=make
+
+include «this.getMakefileName(null, deploymentPlatform)»
+
+all:«FOREACH this.deploymentPlatforms AS dplt -» «this.getTargetName(null, dplt)»«ENDFOREACH -»
+
+
+clean-all: clean«FOREACH this.deploymentPlatforms.without({deploymentPlatform}) AS dplt -» «("clean_" + this.getTargetName(null, dplt)).toLowerDefString()»«ENDFOREACH -»
+
+
+distclean-all: distclean«FOREACH this.deploymentPlatforms.without({deploymentPlatform}) AS dplt -» «("distclean_" + this.getTargetName(null, dplt)).toLowerDefString()»«ENDFOREACH -»
+
+	@find . -name '*.d' -exec rm -f "{}" \;
+	@rm -rf $R/bin
+«FOREACH this.deploymentPlatforms.without({deploymentPlatform}) AS dplt -»
+«EXPAND makefileCallRule("", null, dplt) FOR this -»
+
+«EXPAND makefileCallRule("clean", null, dplt) FOR this -»
+
+«EXPAND makefileCallRule("distclean", null, dplt) FOR this -»
+
+«ENDFOREACH -»
+«ELSE -»
+
+export R:=$(shell pwd)
+MAKE:=make
+
+include «this.getMakefileName(alternative, deploymentPlatform)»
+
+all:«FOREACH this.getLeafDeploymentAlternatives() AS alt -»«FOREACH alt.deploymentPlatforms AS dplt -» «this.getTargetName(alt, dplt)»«ENDFOREACH -»«ENDFOREACH -»
+
+
+clean-all: clean«FOREACH alternative.deploymentPlatforms.without({deploymentPlatform}) AS platform -» «("clean_" + this.getTargetName(alternative, platform)).toLowerDefString()»«ENDFOREACH -»«FOREACH this.getLeafDeploymentAlternatives().without({alternative}) AS alt -»«FOREACH alt.deploymentPlatforms AS platform -» «("clean_" + this.getTargetName(alt, platform)).toLowerDefString()»«ENDFOREACH -»«ENDFOREACH -»
+
+
+distclean-all: distclean«FOREACH alternative.deploymentPlatforms.without({deploymentPlatform}) AS platform -» «("distclean_" + this.getTargetName(alternative, platform)).toLowerDefString()»«ENDFOREACH -»«FOREACH this.getLeafDeploymentAlternatives().without({alternative}) AS alt -»«FOREACH alt.deploymentPlatforms AS platform -» «("distclean_" + this.getTargetName(alt, platform)).toLowerDefString()»«ENDFOREACH -»«ENDFOREACH -»
+
+	@find . -name '*.d' -exec rm -f "{}" \;
+	@rm -rf $R/bin
+«FOREACH this.getLeafDeploymentAlternatives().without({alternative}) AS alt -»
+«FOREACH alt.deploymentPlatforms AS platform -»
+«EXPAND makefileCallRule("", alt, platform) FOR this -»
+
+«EXPAND makefileCallRule("clean", alt, platform) FOR this -»
+
+«EXPAND makefileCallRule("distclean", alt, platform) FOR this -»
+
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH alternative.deploymentPlatforms.without({deploymentPlatform}) AS platform -»
+«EXPAND makefileCallRule("", alternative, platform) FOR this -»
+
+«EXPAND makefileCallRule("clean", alternative, platform) FOR this -»
+
+«EXPAND makefileCallRule("distclean", alternative, platform) FOR this -»
+
+«ENDFOREACH -»
+«ENDIF -»
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE makefileCallRule(String order, MMESPDeploymentAlternative alternative, MMESPDeploymentPlatform deploymentPlatform) FOR MMESPDeployment»
+«IF order == null || order.matches("") -»
+«this.getTargetName(alternative, deploymentPlatform)»:
+«ELSE -»
+«(order + "_" + this.getTargetName(alternative, deploymentPlatform)).toLowerDefString()»:
+«ENDIF -»
+	$(MAKE) -f «this.getMakefileName(alternative, deploymentPlatform)» «IF order != null && !order.matches("") -»«order»«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE generateMakefile(MMESPDeploymentAlternative alternative, MMESPDeploymentPlatform deploymentPlatform) FOR MMESPDeployment»
+«FILE this.getMakefileName(alternative, deploymentPlatform) -»
+
+.PHONY: pswp-clean, pswp-distclean,
+		«this.getTargetName(alternative, deploymentPlatform)»
+
+«EXPAND deploymentPlatformConfiguration FOR deploymentPlatform -»
+
+«EXPAND printParameters FOR deploymentPlatform -»
+«IF alternative == null -»
+«EXPAND printParameters(deploymentPlatform, {}.addAll(this.getAllSwPackageParameterValueAssignments(alternative)).addAll(deploymentPlatform.parameterValueAssignments)) FOREACH this.deployedSwPackages -»
+«ELSE -»
+«EXPAND printParameters(deploymentPlatform, {}.addAll(this.getAllSwPackageParameterValueAssignments(alternative)).addAll(deploymentPlatform.parameterValueAssignments)) FOREACH alternative.getAllDeployedSwPackagesFromAlternative() -»
+«ENDIF -»
+«FOREACH deploymentPlatform.platformSwPackage.osSwPackages AS osswp -»
+
+«FOREACH osswp.providedOSSWIs.select(e|e.referencedElement == deploymentPlatform.platform.osapi).getAllQuantifiableResources() AS resource -»
+«IF alternative == null -»
+«("CONFIG_OSSWP_" + osswp.getElementName() + 
+		  "_DEMANDED_" + resource.getFullObjectNameToElement()).toUpperDefString()»=«this.getSumDemands(deploymentPlatform,resource).toString()»
+«ELSE -»
+«("CONFIG_OSSWP_" + osswp.getElementName() + 
+		  "_DEMANDED_" + resource.getFullObjectNameToElement()).toUpperDefString()»=«alternative.getSumDemands(deploymentPlatform,resource).toString()»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«IF alternative == null -»
+«FOREACH this.deployedSwPackages AS swpd -»
+
+«FOREACH swpd.swPackage.getAllEffectivelyProvidedSwInterfaces().getAllQuantifiableResources() AS resource -»
+«("CONFIG_SWP_" + swpd.swPackage.getElementName() + 
+		  "_DEMANDED_" + resource.getFullObjectNameToElement()).toUpperDefString()»=«this.getSumDemands(deploymentPlatform,resource)»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«ELSE -»
+«FOREACH alternative.getAllDeployedSwPackagesFromAlternative() AS swpd -»
+«FOREACH swpd.swPackage.getAllEffectivelyProvidedSwInterfaces().getAllQuantifiableResources() AS resource -»
+«("CONFIG_SWP_" + swpd.swPackage.getElementName() + 
+		  "_DEMANDED_" + resource.getFullObjectNameToElement()).toUpperDefString()»=«alternative.getSumDemands(deploymentPlatform,resource)»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«ENDIF -»
+«IF alternative == null -»
+«FOREACH this.deployedSwPackages.typeSelect(MMESPDriverSwPackageDeployment) AS dswpd -»
+
+«EXPAND printDeviceMappings(deploymentPlatform, {}.addAll(this.getAllSwPackageParameterValueAssignments(alternative)).addAll(deploymentPlatform.parameterValueAssignments)) FOR (MMESPDriverSwPackageDeployment)dswpd -»
+«ENDFOREACH -»
+«ELSE -»
+«FOREACH alternative.getAllDeployedSwPackagesFromAlternative().typeSelect(MMESPDriverSwPackageDeployment) AS dswpd -»
+
+«EXPAND printDeviceMappings(deploymentPlatform, {}.addAll(this.getAllSwPackageParameterValueAssignments(alternative)).addAll(deploymentPlatform.parameterValueAssignments)) FOR (MMESPDriverSwPackageDeployment)dswpd -»
+«ENDFOREACH -»
+«ENDIF -»
+SWPACKAGES_ROOT_FOLDER_NAME:=$R/«getSwPackagesFolder()»
+SWINTERFACES_ROOT_FOLDER_NAME:=$R/«getSwInterfacesFolder()»
+OSSWPACKAGES_ROOT_FOLDER_NAME:=$R/«getOSSwPackagesFolder()»
+OSSWINTERFACES_ROOT_FOLDER_NAME:=$R/«getOSSwInterfacesFolder()»
+PSWPACKAGES_ROOT_FOLDER_NAME:=$R/«getPlatformSwPackagesFolder()»
+
+MAIN_ROOT_FOLDER_NAME:=$R/«getMainFolder()»
+CONFIG_ROOT_FOLDER_NAME:=$R/«getConfigFolder()»
+
+PSWP_FOLDER_NAME:=«deploymentPlatform.getPlatformSwPackageFolderName()»
+DEP_FOLDER_NAME:=«this.getDeploymentFolderName(alternative, deploymentPlatform)»
+
+# Empty IMMEDIATE source files list
+SRCS:=
+
+«FOREACH deploymentPlatform.platformSwPackage.osSwPackages AS osswp -»
+OSSWPACKAGE_FOLDER_NAME:=$(OSSWPACKAGES_ROOT_FOLDER_NAME)/«osswp.getOSSwPackageFolderName()»
+include $(OSSWPACKAGE_FOLDER_NAME)/defs.mk
+
+«FOREACH osswp.providedOSSWIs AS osswi -»
+OSSWI_DIRS+=$(OSSWINTERFACES_ROOT_FOLDER_NAME)/«osswi.getElementName().toLowerDefString()»/include
+«ENDFOREACH -»
+«ENDFOREACH -»
+
+«IF alternative == null -»
+«FOREACH this.deployedSwPackages AS swpd -»
+SWPACKAGE_FOLDER_NAME:=$(SWPACKAGES_ROOT_FOLDER_NAME)/«swpd.getSwPackageFolderName()»
+include $(SWPACKAGE_FOLDER_NAME)/defs.mk
+
+«ENDFOREACH -»
+
+«FOREACH this.getProvidedSwInterfaces() AS swi -»
+SWI_DIRS+=$(SWINTERFACES_ROOT_FOLDER_NAME)/«swi.getElementName().toLowerDefString()»/include
+«ENDFOREACH -»
+«ELSE -»
+«FOREACH alternative.getAllDeployedSwPackagesFromAlternative() AS swpd -»
+SWPACKAGE_FOLDER_NAME:=$(SWPACKAGES_ROOT_FOLDER_NAME)/«swpd.getSwPackageFolderName()»
+include $(SWPACKAGE_FOLDER_NAME)/defs.mk
+
+«ENDFOREACH -»
+
+«FOREACH alternative.getAllProvidedSwInterfaces() AS swi -»
+SWI_DIRS+=$(SWINTERFACES_ROOT_FOLDER_NAME)/«swi.getElementName().toLowerDefString()»/include
+«ENDFOREACH -»
+«ENDIF -»
+
+CPPFLAGS+=$(if $(filter $(SWPACKAGES_ROOT_FOLDER_NAME)/%, $<), $(patsubst %,-I$(SWPACKAGES_ROOT_FOLDER_NAME)/%/include, $(firstword $(subst /, , $(strip $(patsubst $(SWPACKAGES_ROOT_FOLDER_NAME)/%, %, $<))))), $(if $(filter $(OSSWPACKAGES_ROOT_FOLDER_NAME)/%, $<), $(patsubst %,-I$(OSSWPACKAGES_ROOT_FOLDER_NAME)/%/include, $(firstword $(subst /, , $(strip $(patsubst $(OSSWPACKAGES_ROOT_FOLDER_NAME)/%, %, $<)))))))
+CPPFLAGS+=$(if $(filter $(MAIN_ROOT_FOLDER_NAME)/%, $<), $(patsubst %,-I$(MAIN_ROOT_FOLDER_NAME)/%/include, $(firstword $(subst /, , $(strip $(patsubst $(MAIN_ROOT_FOLDER_NAME)/%, %, $<))))))
+
+SWI_DIRS+=$(MAIN_ROOT_FOLDER_NAME)/$(DEP_FOLDER_NAME)/include
+SWI_DIRS+=$(CONFIG_ROOT_FOLDER_NAME)/$(DEP_FOLDER_NAME)
+
+CPPFLAGS+=$(patsubst %,-I %,$(SWI_DIRS))
+«IF deploymentPlatform.platformSwPackage.osSwPackages.providedOSSWIs.isEmpty == false -»
+CPPFLAGS+=$(patsubst %,-I %,$(OSSWI_DIRS))
+«ENDIF -»
+
+include $(MAIN_ROOT_FOLDER_NAME)/$(DEP_FOLDER_NAME)/defs.mk
+
+OBJS:=$(patsubst %.cpp,%.o, $(patsubst %.c,%.o, $(patsubst %.S, %.o, $(patsubst $R/%, $R/bin/$(DEP_FOLDER_NAME)/%, $(SRCS)))))
+
+# dependency files
+DEPS:=$(patsubst %.o,%.d,$(OBJS))
+
+# compilation targets
+TARGET:=$R/bin/$(DEP_FOLDER_NAME)/«this.name.toLowerDefString()»
+
+include $(PSWPACKAGES_ROOT_FOLDER_NAME)/$(PSWP_FOLDER_NAME)/defs.mk
+
+«this.getTargetName(alternative, deploymentPlatform)» : $(ALT_TARGETS) $(TARGET)
+
+clean: pswp-clean
+	@rm -f $(TARGET)
+	@rm -f $(OBJS) $(MOBJ)
+	@rm -f $(DEPS)
+	@echo Cleaning done.
+
+distclean : pswp-distclean clean
+	@rm -rf $R/bin/$(DEP_FOLDER_NAME)
+	@echo Mr. Proper done.
+
+-include $(DEPS)
+
+«ENDFILE»
+
+«ENDDEFINE»
+
+«DEFINE printDeviceMappings(MMESPDeploymentPlatform deploymentPlatform, Collection[common::MParameterValueAssignment] assignments) FOR MMESPDriverSwPackageDeployment -»
+«FOREACH ((MDriverSwPackageSupportedPlatform)(this.swPackage.getMatchingPlatform(deploymentPlatform.platform))).supportedDevices AS supportedDevice -»
+«IF this.deviceDriverMappings.supportedDevice.contains(supportedDevice) -»
+«LET this.deviceDriverMappings.selectFirst(e|e.supportedDevice == supportedDevice) AS mapping -»
+«("CONFIG_SWPDEV_" + mapping.supportedDevice.getFullObjectNameToElement()).toUpperDefString()»=y
+«("CONFIG_SWPDEV_" + mapping.supportedDevice.getFullObjectNameToElement() + "_NAME").toUpperDefString()»=«mapping.deployedDevice.name»
+«FOREACH mapping.supportedDevice.device.parameters AS parameter -»
+«IF mapping.deployedDevice.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty == false -»
+«EXPAND printParameterValueAssignment("SWPDEV_" + mapping.supportedDevice.getFullObjectNameToElement() + "_PARAM_" + parameter.name, assignments, deploymentPlatform) FOR
+	mapping.deployedDevice.parameterValueAssignments.select(e|e.parameter == parameter).toList().first() -»
+«ELSE -»
+«EXPAND printDefaultValue("SWPDEV_" + mapping.supportedDevice.getFullObjectNameToElement() + "_PARAM_" + parameter.name, assignments, deploymentPlatform) FOR parameter -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDLET»
+«ELSE -»
+«("CONFIG_SWPDEV_" + supportedDevice.getFullObjectNameToElement()).toUpperDefString()»=n
+«("CONFIG_SWPDEV_" + supportedDevice.getFullObjectNameToElement() + "_NAME").toUpperDefString()»=
+«FOREACH supportedDevice.device.parameters AS parameter -»
+«EXPAND printDefaultValue("SWPDEV_" + supportedDevice.getFullObjectNameToElement() + "_PARAM_" + parameter.name, assignments, deploymentPlatform) FOR parameter -»
+«ENDFOREACH -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDDEFINE»
+
+«DEFINE deploymentPlatformConfiguration FOR mespdep::MMESPDeploymentPlatform -»
+«FOREACH this.platform.osapi.getAllInheritedOSAPIs().name.toSet() AS name -»
+CONFIG_OSAPI_«name.toUpperDefString()»=y
+«ENDFOREACH -»
+«FOREACH this.platform.osapi.getAllInheritedOSAPIs() AS osapi -»
+CONFIG_OSAPI_«osapi.getElementName().toUpperDefString()»=y
+«ENDFOREACH -»
+«FOREACH this.platform.os.getAllInheritedOperatingSystems().name.toSet() AS name -»
+CONFIG_OS_«name.toUpperDefString()»=y
+«ENDFOREACH -»
+«FOREACH this.platform.os.getAllInheritedOperatingSystems() AS os -»
+CONFIG_OS_«os.getElementName().toUpperDefString()»=y
+«ENDFOREACH -»
+«FOREACH this.platform.architecture.getAllExtendedArchitectures().name.toSet() AS name -»
+CONFIG_ARCH_«name.toUpperDefString()»=y
+«ENDFOREACH -»
+«FOREACH this.platform.architecture.getAllExtendedArchitectures() AS arch -»
+CONFIG_ARCH_«arch.getElementName().toUpperDefString()»=y
+«ENDFOREACH -»
+«FOREACH this.platform.compiler.getAllExtendedCompilers().name.toSet() AS name -»
+CONFIG_COMPILER_«name.toUpperDefString()»=y
+«ENDFOREACH -»
+«FOREACH this.platform.compiler.getAllExtendedCompilers() AS compiler -»
+CONFIG_COMPILER_«compiler.getElementName().toUpperDefString()»=y
+«ENDFOREACH -»
+«IF this.platform.microprocessor != null -»
+CONFIG_MP_«this.platform.microprocessor.name.toUpperDefString()»=y
+CONFIG_MP_«this.platform.microprocessor.getElementName().toUpperDefString()»=y
+«ELSE -»
+CONFIG_MP_UNDEFINED=y
+«ENDIF -»
+«IF this.platform.board != null -»
+CONFIG_BOARD_«this.platform.board.name.toUpperCase()»=y
+CONFIG_BOARD_«this.platform.board.getElementName().toUpperDefString()»=y
+«ELSE -»
+CONFIG_BOARD_UNDEFINED=y
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE printParameters(MMESPDeploymentPlatform deploymentPlatform, Collection[common::MParameterValueAssignment] assignments) FOR MMESPSwPackageDeployment -»
+«FOREACH this.swPackage.getAllEffectivelyProvidedSwInterfaces() AS swi -»
+«FOREACH swi.parameters.typeSelect(MEnumParameterDefinition) AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH swi.parameters.select(e|e.metaType != MEnumParameterDefinition) AS parameter -»
+«IF this.swPackage.getAllParameterValueAssignments(swi).select(e|e.parameter == parameter).isEmpty == false -»
+«EXPAND printParameterValueAssignment("SWI_" + parameter.getFullObjectNameToElement(), assignments, deploymentPlatform) FOR
+	this.swPackage.getAllParameterValueAssignments(swi).select(e|e.parameter == parameter).toList().first() -»
+«ELSE -»
+«EXPAND printDefaultValue("SWI_" + parameter.getFullObjectNameToElement(), assignments, deploymentPlatform) FOR parameter -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.swPackage.getInstantiableResourceDemands(deploymentPlatform.platform) AS ird -»
+«FOREACH ird.resource.parameters.typeSelect(MEnumParameterDefinition) AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH ird.resource.parameters.select(e|e.metaType != MEnumParameterDefinition) AS parameter -»
+«IF ird.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue("SWI_" + ird.resource.getFullObjectNameToElement() + "_" + ird.getFullObjectNameToElement() + "_" + parameter.name, assignments, deploymentPlatform) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment("SWI_" + ird.resource.getFullObjectNameToElement() + "_" + ird.getFullObjectNameToElement() + "_" + parameter.name, assignments, deploymentPlatform) FOR ird.parameterValueAssignments.select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.swPackage.getAllEnumParameterDefinitions() AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.swPackage.getAllParameters(deploymentPlatform.platform) AS parameter -»
+«IF this.getAllParameterValueAssignments().select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue(("SWP_" + parameter.getFullObjectNameToElement()).toUpperDefString(), assignments, deploymentPlatform) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment(("SWP_" + parameter.getFullObjectNameToElement()).toUpperDefString(), assignments, deploymentPlatform) FOR this.getAllParameterValueAssignments().toList().select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDDEFINE»
+
+«DEFINE printParameterValueAssignment(String name, Collection[common::MParameterValueAssignment] assignments, MMESPDeploymentPlatform deploymentPlatform) FOR common::MParameterValueAssignment -»
+«IF this.parameter.metaType.superTypes.contains(common::MBooleanParameter) -»
+«IF this.getParameterValue(deploymentPlatform.platform).parseBooleanExpression(assignments, deploymentPlatform.platform) == false -»
+«("CONFIG_" + name).toUpperDefString()»=n
+«ELSE -»
+«("CONFIG_" + name).toUpperDefString()»=y
+«ENDIF -»
+«ELSEIF this.parameter.metaType.superTypes.contains(common::MEnumParameter) -»
+«LET this.getParameterValue(deploymentPlatform.platform).parseEnumExpression(assignments, deploymentPlatform.platform) AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_" + name).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_" + name).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_" + name).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ELSE -»
+«("CONFIG_" + name).toUpperDefString()»=y
+«ENDIF -»
+«FOREACH ((common::MEnumParameter)this.parameter).enumDefinition.literals AS lt -»
+«IF lt == literal -»
+«("CONFIG_" + name + "_" + lt.name).toUpperDefString()»=y
+«ELSE»
+«("CONFIG_" + name + "_" + lt.name).toUpperDefString()»=n
+«ENDIF -»
+«ENDFOREACH -»
+«ENDLET -»
+«ELSEIF this.parameter.metaType.superTypes.contains(common::MIntegerParameter) -»
+«("CONFIG_" + name).toUpperDefString()»=«this.getParameterValue(deploymentPlatform.platform).parseIntegerExpression(assignments, deploymentPlatform.platform).toString()»
+«ELSEIF this.parameter.metaType.superTypes.contains(common::MRealParameter) -»
+«("CONFIG_" + name).toUpperDefString()»=«this.getParameterValue(deploymentPlatform.platform).parseRealExpression(assignments, deploymentPlatform.platform).toString()»
+«ELSEIF this.parameter.metaType.superTypes.contains(common::MStringParameter) -»
+«("CONFIG_" + name).toUpperDefString()»=«this.getParameterValue(deploymentPlatform.platform).parseStringExpression(assignments, deploymentPlatform.platform)»
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE printDefaultValue(String name, Collection[common::MParameterValueAssignment] assignments, MMESPDeploymentPlatform deploymentPlatform) FOR common::MParameter -»
+«IF this.metaType.superTypes.contains(common::MBooleanParameter) -»
+«IF this.getDefaultValue(deploymentPlatform.platform).parseBooleanExpression(assignments, deploymentPlatform.platform) == false -»
+«("CONFIG_" + name).toUpperDefString()»=n
+«ELSE -»
+«("CONFIG_" + name).toUpperDefString()»=y
+«ENDIF -»
+«ELSEIF this.metaType.superTypes.contains(common::MEnumParameter) -»
+«LET this.getDefaultValue(deploymentPlatform.platform).parseEnumExpression(assignments, deploymentPlatform.platform) AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_" + name).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_" + name).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_" + name).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ELSE -»
+«("CONFIG_" + name).toUpperDefString()»=y
+«ENDIF -»
+«FOREACH ((common::MEnumParameter)this).enumDefinition.literals AS lt -»
+«IF lt == literal -»
+«("CONFIG_" + name + "_" + lt.name).toUpperDefString()»=y
+«ELSE»
+«("CONFIG_" + name + "_" + lt.name).toUpperDefString()»=n
+«ENDIF -»
+«ENDFOREACH -»
+«ENDLET -»
+«ELSEIF this.metaType.superTypes.contains(common::MIntegerParameter) -»
+«("CONFIG_" + name).toUpperDefString()»=«this.getDefaultValue(deploymentPlatform.platform).parseIntegerExpression(assignments, deploymentPlatform.platform).toString()»
+«ELSEIF this.metaType.superTypes.contains(common::MRealParameter) -»
+«("CONFIG_" + name).toUpperDefString()»=«this.getDefaultValue(deploymentPlatform.platform).parseRealExpression(assignments, deploymentPlatform.platform).toString()»
+«ELSEIF this.metaType.superTypes.contains(common::MStringParameter) -»
+«("CONFIG_" + name).toUpperDefString()»=«this.getDefaultValue(deploymentPlatform.platform).parseStringExpression(assignments, deploymentPlatform.platform)»
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE printParameters FOR mespdep::MMESPDeploymentPlatform -»
+«FOREACH this.platform.os.getAllSupportedOSAPIs() AS osapi -»
+«FOREACH osapi.parameters.typeSelect(MEnumParameterDefinition) AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_OSAPI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_OSAPI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_OSAPI_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH osapi.parameters.select(e|e.metaType != MEnumParameterDefinition) AS parameter -»
+«IF this.platform.os.getAllParameterValueAssignments(osapi).select(e|e.parameter == parameter).isEmpty == false -»
+«EXPAND printParameterValueAssignment("OSAPI_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR
+	this.platform.os.getAllParameterValueAssignments(osapi).select(e|e.parameter == parameter).toList().first() -»
+«ELSE -»
+«EXPAND printDefaultValue("OSAPI_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR parameter -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.platform.os.getAllEnumParameterDefinitions() AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_OS_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_OS_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_OS_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.platform.os.getAllParameters(this.platform) AS parameter -»
+«IF this.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue("OS_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment("OS_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR this.parameterValueAssignments.select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«FOREACH this.platform.architecture.getAllEnumParameterDefinitions() AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_ARCH_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_ARCH_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_ARCH_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.platform.architecture.getAllParameters() AS parameter -»
+«IF this.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue("ARCH_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment("ARCH_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR this.parameterValueAssignments.select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«FOREACH this.platform.compiler.getAllEnumParameterDefinitions(this.platform.architecture) AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_COMPILER_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_COMPILER_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_COMPILER_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.platform.compiler.getAllParameters(this.platform.architecture) AS parameter -»
+«IF this.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue("COMPILER_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment("COMPILER_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR this.parameterValueAssignments.select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«IF this.platform.microprocessor != null -»
+«FOREACH this.platform.microprocessor.parameters.typeSelect(MEnumParameterDefinition) AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_MP_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_MP_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_MP_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.platform.microprocessor.getMPParameters() AS parameter -»
+«IF this.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue("MP_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment("MP_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR this.parameterValueAssignments.select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDIF -»
+«IF this.platform.board != null -»
+«FOREACH this.platform.board.parameters.typeSelect(MEnumParameterDefinition) AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_BOARD_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_BOARD_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_BOARD_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.platform.board.getBoardParameters() AS parameter -»
+«IF this.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue("BOARD_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment("BOARD_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR this.parameterValueAssignments.select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDIF -»
+«FOREACH this.platform.parameters.typeSelect(MEnumParameterDefinition) AS enumDef -»
+«FOREACH enumDef.literals AS literal -»
+«IF literal.metaType == common::MEnumParamRealLiteral -»
+«("CONFIG_PLT_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamRealLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
+«("CONFIG_PLT_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamIntegerLiteral)literal).value»
+«ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
+«("CONFIG_PLT_" + literal.getFullObjectNameToElement()).toUpperDefString()»=«((common::MEnumParamStringLiteral)literal).value»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDFOREACH -»
+«FOREACH this.platform.getParameters() AS parameter -»
+«IF this.parameterValueAssignments.select(e|e.parameter == parameter).isEmpty -»
+«EXPAND printDefaultValue("PLT_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR parameter -»
+«ELSE -»
+«EXPAND printParameterValueAssignment("PLT_" + parameter.getFullObjectNameToElement(), {}.addAll(this.parameterValueAssignments).addAll(this.platform.os.getAllParameterValueAssignments()), this) FOR this.parameterValueAssignments.select(e|e.parameter == parameter).first() -»
+«ENDIF -»
+«ENDFOREACH -»
+«ENDDEFINE»
+
