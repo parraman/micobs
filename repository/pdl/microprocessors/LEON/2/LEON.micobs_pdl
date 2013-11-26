@@ -9,14 +9,20 @@
  *     MICOBS SRG Team - Initial API and implementation
  ******************************************************************************/
 
-package es.uah.aut.srg.micobs.pdl.common.arch;
+package es.uah.aut.srg.micobs.pdl.common.mp;
+
+import es.uah.aut.srg.micobs.pdl.common.arch;
 
 /**
- * SPARC(v7) architecture model file.
+ * LEON(2) microprocessor model file.
+ * 
+ * See http://www.gaiser.com
  */
 
-architecture SPARC {
+microprocessor LEON
+{
+	version := 2;
 	
-	version := v7;
-	
+	architecture := SPARC(v8);
+
 };

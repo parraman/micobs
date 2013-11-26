@@ -1,0 +1,71 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+package es.uah.aut.srg.micobs.pdl.common.compilers;
+
+import es.uah.aut.srg.micobs.langs;
+import es.uah.aut.srg.micobs.pdl.common.arch;
+
+/**
+ * GNU GCC Compiler.
+ * Version: 3.x.
+ *
+ * See http://gcc.gnu.org
+ */
+
+compiler GCC {
+	
+	version := 3.x;
+	
+	frontends {
+	
+		frontend C_C99 {
+			
+			language := C(C99);
+			
+			architectures := ia32(i686), SPARC(v7), SPARC(v8);
+			
+		};
+		
+		frontend CPP_98 {
+			
+			language := CPP(98);
+			
+			architectures := ia32(i686), SPARC(v7), SPARC(v8);
+			
+		};
+		
+		frontend ASM_IA32_I686 {
+			
+			language := asm_ia32(i686);
+			
+			architectures := ia32(i686);
+			
+		};
+		
+		frontend ASM_SPARC_V7 {
+			
+			language := asm_SPARC(v7);
+			
+			architectures := SPARC(v7);
+			
+		};
+	
+		frontend ASM_SPARC_V8 {
+			
+			language := asm_SPARC(v8);
+			
+			architectures := SPARC(v8);
+			
+		};
+	};
+	
+};

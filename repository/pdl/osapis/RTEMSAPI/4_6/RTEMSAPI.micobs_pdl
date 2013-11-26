@@ -9,14 +9,27 @@
  *     MICOBS SRG Team - Initial API and implementation
  ******************************************************************************/
 
-package es.uah.aut.srg.micobs.pdl.common.arch;
+package es.uah.aut.srg.micobs.pdl.common.osapi_;
+
+import es.uah.aut.srg.micobs.langs;
 
 /**
- * SPARC(v7) architecture model file.
+ * RTEMS Application Programming Interface.
+ * Version: 4.6.
+ *
+ * See http://www.rtems.org
  */
 
-architecture SPARC {
+osapi RTEMSAPI
+{
+	version := 4.6;
 	
-	version := v7;
+	language := C(C99);
 	
+	configuration parameters {
+		
+		integer MICROSECONDS_PER_TICK := 10000;
+		
+	};
+
 };

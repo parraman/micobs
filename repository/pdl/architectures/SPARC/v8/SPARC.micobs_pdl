@@ -12,11 +12,11 @@
 package es.uah.aut.srg.micobs.pdl.common.arch;
 
 /**
- * SPARC(v7) architecture model file.
+ * SPARC(v8) architecture model file.
  */
 
 architecture SPARC {
 	
-	version := v7;
+	version := v8;
 	
 };

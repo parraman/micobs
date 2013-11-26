@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+package es.uah.aut.srg.micobs.pdl.common.plts;
+
+import es.uah.aut.srg.micobs.pdl.common.osapi_;
+import es.uah.aut.srg.micobs.pdl.common.os_;
+import es.uah.aut.srg.micobs.pdl.common.arch;
+import es.uah.aut.srg.micobs.pdl.common.compilers;
+
+/**
+ * Platform POSIX(v13_trace).Linux(2.6).ia32(i686).GCC(4.x).any.any.
+ * 
+ * Version: v1.
+ * 
+ */
+
+platform POSIX_v13_trace_Linux_2_6_ia32_i686_GCC_4_x_any_any {
+	
+	version := v1;
+	
+	osapi := POSIX(v13_trace);
+	os := Linux(2.6);
+	architecture := ia32(i686);
+	compiler := GCC(4.x);
+	microprocessor := any;
+	board := any;
+	
+	configuration parameters {
+		
+		
+		/**
+		 * Specifies the maximum duration of the standard running
+		 * of the binary executed with the 'run' option.
+		 * 
+		 * The string format is a floating point number with an
+		 * optional suffix: 's' for seconds,
+		 * 'm' for minutes, 'h' for hours or 'd' for days.
+		 */
+		string TIMEOUT_LIMIT := "1h";
+		
+	};
+	
+};

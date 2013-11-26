@@ -1,0 +1,54 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+package es.uah.aut.srg.micobs.pdl.common.os_;
+
+import es.uah.aut.srg.micobs.pdl.common.osapi_;
+import es.uah.aut.srg.micobs.pdl.common.arch;
+import es.uah.aut.srg.micobs.pdl.common.mp;
+import es.uah.aut.srg.micobs.pdl.common.compilers;
+import es.uah.aut.srg.micobs.langs;
+
+/**
+ * RTEMS operating system.
+ * Version: 4.6.6.
+ *
+ * See http://www.rtems.org
+ */
+
+os RTEMS inherits RTEMS(4.6.5)
+{
+	version := 4.6.6;
+	
+	languages := C(C99);
+	
+	supported platforms
+	{
+		supported platform SPARC_v8_GCC_3_x_LEON_2_any
+		{
+			architecture := SPARC(v8);
+			compiler := GCC(3.x);
+			microprocessor := LEON(2);
+			board := any;
+			languages := asm_SPARC(v8);
+		};
+
+		supported platform SPARC_v8_GCC_3_x_LEON_3_any
+		{
+			architecture := SPARC(v8);
+			compiler := GCC(3.x);
+			microprocessor := LEON(3);
+			board := any;
+			languages := asm_SPARC(v8);
+		};
+	};
+
+};

@@ -1,9 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <micobs:MDescriptorList xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:micobs="http://srg.aut.uah.es/micobs/libdesc">
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.plts" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.osapi_" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.os_" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
   <descriptors uri="es.uah.aut.srg.micobs.pdl.common.arch" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.compilers" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.mp" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.board_" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.langs" library="es.uah.aut.srg.micobs.system.library.systemllibrary" item="MSystemPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.osapi_.RTEMSAPI" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemOperatingSystemAPI">
+    <fields name="version" value="4.6"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/osapis/RTEMSAPI/4_6/RTEMSAPI.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/osapis/RTEMSAPI/4_6"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.arch.SPARC" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemArchitecture">
+    <fields name="version" value="v8"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/SPARC/v8/SPARC.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/SPARC/v8"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.arch.ia32" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemArchitecture">
+    <fields name="version" value="i686"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/ia32/i686/ia32.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/ia32/i686"/>
+  </descriptors>
   <descriptors uri="es.uah.aut.srg.micobs.pdl.common.arch.SPARC" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemArchitecture">
     <fields name="version" value="v7"/>
     <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/SPARC/v7/SPARC.micobs_pdl"/>
     <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/architectures/SPARC/v7"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.compilers.GCC" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemCompiler">
+    <fields name="version" value="3.x"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/compilers/GCC/3_x/GCC.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/compilers/GCC/3_x"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.mp.LEON" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemMicroprocessor">
+    <fields name="version" value="2"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/microprocessors/LEON/2/LEON.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/microprocessors/LEON/2"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.mp.LEON" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemMicroprocessor">
+    <fields name="version" value="3"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/microprocessors/LEON/3/LEON.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/microprocessors/LEON/3"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.osapi_.POSIX" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemOperatingSystemAPI">
+    <fields name="version" value="v13"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/osapis/POSIX/v13/POSIX.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/osapis/POSIX/v13"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.os_.RTEMS" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemOperatingSystem">
+    <fields name="version" value="4.6.5"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/oss/RTEMS/4_6_5/RTEMS.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/oss/RTEMS/4_6_5"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.os_.RTEMS" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemOperatingSystem">
+    <fields name="version" value="4.6.6"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/oss/RTEMS/4_6_6/RTEMS.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/oss/RTEMS/4_6_6"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.device_" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLPackage"/>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.device_.APBUART" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemDevice">
+    <fields name="version" value="1.x"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/devices/APBUART/1_x/APBUART.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/devices/APBUART/1_x"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.board_.TSIM_LEON3" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemBoard">
+    <fields name="version" value="2.x"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/boards/TSIM_LEON3/2_x/TSIM_LEON3.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/boards/TSIM_LEON3/2_x"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_3_TSIM_LEON3_2_x" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemPlatform">
+    <fields name="version" value="v1"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/platforms/RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_3_TSIM_LEON3_2_x/v1/RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_3_TSIM_LEON3_2_x.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/platforms/RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_3_TSIM_LEON3_2_x/v1"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.board_.srg_a3p" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemBoard">
+    <fields name="version" value="v2.0"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/boards/srg_a3p/v2_0/srg_a3p.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/boards/srg_a3p/v2_0"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_2_srg_a3p_v2_0" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemPlatform">
+    <fields name="version" value="v1"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/platforms/RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_2_srg_a3p_v2_0/v1/RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_2_srg_a3p_v2_0.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/platforms/RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_2_srg_a3p_v2_0/v1"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.osapi_.POSIX" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemOperatingSystemAPI">
+    <fields name="version" value="v13_trace"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/osapis/POSIX/v13_trace/POSIX.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/osapis/POSIX/v13_trace"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.compilers.GCC" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemCompiler">
+    <fields name="version" value="4.x"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/compilers/GCC/4_x/GCC.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/compilers/GCC/4_x"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.os_.Linux" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemOperatingSystem">
+    <fields name="version" value="2.6"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/oss/Linux/2_6/Linux.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/oss/Linux/2_6"/>
+  </descriptors>
+  <descriptors uri="es.uah.aut.srg.micobs.pdl.common.plts.POSIX_v13_trace_Linux_2_6_ia32_i686_GCC_4_x_any_any" library="es.uah.aut.srg.micobs.pdl.library.pdllibrary" item="MPDLVersionedItemPlatform">
+    <fields name="version" value="v1"/>
+    <fields name="remoteModelURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/platforms/POSIX_v13_trace_Linux_2_6_ia32_i686_GCC_4_x_any_any/v1/POSIX_v13_trace_Linux_2_6_ia32_i686_GCC_4_x_any_any.micobs_pdl"/>
+    <fields name="repositoryFolderURI" value="https://github.com/parraman/micobs/trunk/repository/pdl/platforms/POSIX_v13_trace_Linux_2_6_ia32_i686_GCC_4_x_any_any/v1"/>
   </descriptors>
 </micobs:MDescriptorList>

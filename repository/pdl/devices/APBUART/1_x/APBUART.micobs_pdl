@@ -9,14 +9,14 @@
  *     MICOBS SRG Team - Initial API and implementation
  ******************************************************************************/
 
-package es.uah.aut.srg.micobs.pdl.common.arch;
+package es.uah.aut.srg.micobs.pdl.common.device_;
 
 /**
- * SPARC(v7) architecture model file.
+ * APBUART(1.x) device model file.
  */
 
-architecture SPARC {
-	
-	version := v7;
-	
+device APBUART
+{
+	version := 1.x;
+
 };

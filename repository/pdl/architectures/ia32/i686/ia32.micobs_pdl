@@ -12,11 +12,11 @@
 package es.uah.aut.srg.micobs.pdl.common.arch;
 
 /**
- * SPARC(v7) architecture model file.
+ * ia32(i686) architecture model file.
  */
 
-architecture SPARC {
+architecture ia32 {
 	
-	version := v7;
+	version := i686;
 	
 };

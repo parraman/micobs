@@ -9,14 +9,21 @@
  *     MICOBS SRG Team - Initial API and implementation
  ******************************************************************************/
 
-package es.uah.aut.srg.micobs.pdl.common.arch;
+package es.uah.aut.srg.micobs.pdl.common.osapi_;
+
+import es.uah.aut.srg.micobs.langs;
 
 /**
- * SPARC(v7) architecture model file.
+ * POSIX Application Programming Interface.
+ * Version: v13.
+ *
+ * See http://standards.ieee.org/regauth/posix/
  */
 
-architecture SPARC {
+osapi POSIX {
 	
-	version := v7;
+	version := v13;
+	
+	language := C(C99);
 	
 };
