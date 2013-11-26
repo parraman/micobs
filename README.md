@@ -5,7 +5,7 @@ MICOBS is a framework for developing component-based embedded software systems
 under a multi-platform approach and integrating different development and
 analysis technologies.
 
-It has been developed by the Space Research Group (http://srg.uah.es) 
+It has been developed by the Space Research Group (http://www.srg.uah.es) 
 of the University of Alcala (http://www.uah.es).
 
 The contents of the repository are as follows:
