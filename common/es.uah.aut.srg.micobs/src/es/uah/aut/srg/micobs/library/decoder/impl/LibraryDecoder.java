@@ -200,12 +200,6 @@ public class LibraryDecoder implements ILibraryDecoder {
 		ResourceSet resourceSet = new ResourceSetImpl();
 		Resource resource = resourceSet.getResource(tmpFile, true);
 		
-		Diagnostic diagnostic = MICOBSUtil.getDefault().validateResource(resource, adapterFactory);
-		if (diagnostic.getSeverity() != Diagnostic.OK)
-		{
-			return diagnostic;
-		}
-		
 		MCommonPackageFile packageFile = (MCommonPackageFile)resource.getContents().get(0);
 		
 		String elementURI = packageFile.getElement().getUri();
@@ -303,9 +297,10 @@ public class LibraryDecoder implements ILibraryDecoder {
 					MICOBSPlugin.INSTANCE.getString("_ERROR_LibrarySave"), descriptor);
 		}
 		
-		return CheckingDiagnostic.createOK(
-				MICOBSPlugin.INSTANCE.getString("_OK_ItemProcessed", 
-						new Object[] { descriptor.getItem() }), descriptor);
+		// If everything went OK, then we have to return the result of
+		// validating the resource.	
+		return MICOBSUtil.getDefault().validateResource(resource, adapterFactory);
+
 	}
 	
 	/**

@@ -3,7 +3,7 @@
    <description name="MICOBS update site" url="http://www.micobs.com/eclipse/update/2.1.x">
       MICOBS Framework update site
    </description>
-   <feature url="features/es.uah.aut.srg.micobs.common_2.1.11.jar" id="es.uah.aut.srg.micobs.common" version="2.1.11">
+   <feature url="features/es.uah.aut.srg.micobs.common_2.1.12.jar" id="es.uah.aut.srg.micobs.common" version="2.1.12">
       <category name="es.uah.aut.srg.micobs.common.category.id"/>
    </feature>
    <feature url="features/es.uah.aut.srg.micobs.langs_2.1.0.jar" id="es.uah.aut.srg.micobs.langs" version="2.1.0">
