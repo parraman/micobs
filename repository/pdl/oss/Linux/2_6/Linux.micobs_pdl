@@ -1,0 +1,56 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+package es.uah.aut.srg.micobs.pdl.common.os_;
+
+import es.uah.aut.srg.micobs.langs;
+import es.uah.aut.srg.micobs.pdl.common.osapi_;
+import es.uah.aut.srg.micobs.pdl.common.arch;
+import es.uah.aut.srg.micobs.pdl.common.compilers;
+
+/**
+ * Linux operating system.
+ * Version: 2.6.
+ */
+
+os Linux {
+	
+	version := 2.6;
+	
+	languages := C(C99);
+	
+	configuration parameters {
+		
+		integer TRACER_NLEVELS := 5;
+		
+	};
+	
+	supported osapis {
+		
+		supports POSIX(v13) {};
+		supports POSIX(v13_trace) {};
+		
+	};
+	
+	supported platforms {
+		
+		supported platform ia32_i686_GCC_4_x_any_any {
+			
+			architecture := ia32(i686);
+			compiler := GCC(4.x);
+			microprocessor := any;
+			board := any;
+			
+		};
+		
+	};
+	
+};

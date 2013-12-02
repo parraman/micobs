@@ -1,0 +1,36 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+package es.uah.aut.srg.micobs.pdl.common.board_;
+
+import es.uah.aut.srg.micobs.pdl.common.mp;
+import es.uah.aut.srg.micobs.pdl.common.device_;
+
+/**
+ * UAH Space Research Group A3P Board.
+ * Version: v2.0.
+ * 
+ * See https://srg.aut.uah.es
+ */
+ 
+board srg_a3p
+{
+	version := v2.0;
+	
+	microprocessor := LEON(2);
+	
+	supported devices {
+		
+		device APBUART(1.x) range 0 to 2;
+		
+	};
+
+};

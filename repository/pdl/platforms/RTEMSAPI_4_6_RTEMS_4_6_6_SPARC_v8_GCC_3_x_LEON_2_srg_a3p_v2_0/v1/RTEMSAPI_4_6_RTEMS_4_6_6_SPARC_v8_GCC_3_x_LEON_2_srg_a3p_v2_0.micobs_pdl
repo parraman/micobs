@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+package es.uah.aut.srg.micobs.pdl.common.plts;
+
+import es.uah.aut.srg.micobs.pdl.common.osapi_;
+import es.uah.aut.srg.micobs.pdl.common.os_;
+import es.uah.aut.srg.micobs.pdl.common.arch;
+import es.uah.aut.srg.micobs.pdl.common.compilers;
+import es.uah.aut.srg.micobs.pdl.common.mp;
+import es.uah.aut.srg.micobs.pdl.common.board_;
+
+/**
+ * Platform RTEMSAPI(4.6).RTEMS(4.6.6).SPARC(v8).GCC(3.x).LEON(3).srg_a3p(v2.0).
+ * 
+ * Version: v1.
+ */
+
+platform RTEMSAPI_4_6_RTEMS_4_6_6_SPARC_v8_GCC_3_x_LEON_2_srg_a3p_v2_0
+{
+	version := v1;
+	
+	osapi := RTEMSAPI(4.6);
+	os := RTEMS(4.6.6);
+	architecture := SPARC(v8);
+	compiler := GCC(3.x);
+	microprocessor := LEON(2);
+	board := srg_a3p(v2.0);
+	
+	configuration parameters {
+		
+		/** File system path where the binaries are located */
+		string RTEMS_BIN_PATH := "/opt/rtems-4.6/bin";
+		/** File system path where the binaries of the CPPCheck */
+		string CPPCHECK_PATH := "/opt/cppcheck";
+		/** 
+		 * Filename of the serial line that will be used in the connection
+		 * with the GRMON.
+		 */
+		string GRMON_DEBUG_UART := "/dev/ttyUSB2";
+		
+	};
+
+};

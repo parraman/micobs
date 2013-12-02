@@ -1,0 +1,70 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+package es.uah.aut.srg.micobs.pdl.common.board_;
+
+import es.uah.aut.srg.micobs.pdl.common.mp;
+import es.uah.aut.srg.micobs.pdl.common.device_;
+
+/**
+ * Gaisler Research TSIM LEON3 Simulator.
+ * Version: 2.x.
+ *
+ * See http://www.gaiser.com
+ */
+
+board TSIM_LEON3
+{
+	version := 2.x;
+	
+	microprocessor := LEON(3);
+	
+	configuration parameters {
+		
+		enum memory_size_in_kib {
+			
+			size_16_KiB  =     0x10,
+			size_32_KiB  =     0x20,
+			size_64_KiB  =     0x40,
+			size_128_KiB =     0x80,
+			size_256_KiB =    0x100,
+			size_512_KiB =    0x200,
+			size_1_MiB   =    0x400,
+			size_2_MiB   =    0x800,
+			size_4_MiB   =   0x1000,
+			size_8_MiB   =   0x2000,
+			size_16_MiB  =   0x4000,
+			size_32_MiB  =   0x8000,
+			size_64_MiB  =  0x10000,
+			size_128_MiB =  0x20000,
+			size_256_MiB =  0x40000,
+			size_512_MiB =  0x80000
+			
+		};
+		
+		integer ROM_INITIAL_ADDRESS := 0x00000000;
+		enum memory_size_in_kib ROM_SIZE_IN_KIB := size_2_MiB;
+		
+		integer RAM_INITIAL_ADDRESS := 0x40000000;
+		enum memory_size_in_kib RAM_SIZE_IN_KIB := size_4_MiB;
+		
+		integer SDRAM_INITIAL_ADDRESS := 0x60000000;
+		enum memory_size_in_kib SDRAM_SIZE_IN_KIB := size_16_MiB;
+					
+	};
+	
+	supported devices {
+		
+		device APBUART(1.x) range 0 to 2;
+		
+	};
+
+};
