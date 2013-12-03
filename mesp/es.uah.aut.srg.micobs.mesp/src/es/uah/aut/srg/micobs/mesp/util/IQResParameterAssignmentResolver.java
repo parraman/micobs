@@ -11,10 +11,10 @@
 package es.uah.aut.srg.micobs.mesp.util;
 
 import es.uah.aut.srg.micobs.mesp.mespcommon.MQuantifiableResource;
-import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
+import es.uah.aut.srg.micobs.pdl.util.IPlatformParameterAssignmentResolver;
 
 public interface IQResParameterAssignmentResolver extends
-		IParameterAssignmentResolver {
+		IPlatformParameterAssignmentResolver {
 
 	/**
 	 * Returns the quantifiable resource that is being demanded.

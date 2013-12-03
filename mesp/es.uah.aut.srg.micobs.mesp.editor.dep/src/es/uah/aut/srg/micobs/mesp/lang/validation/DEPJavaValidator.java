@@ -27,6 +27,7 @@ import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.library.ILibraryManager;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.MESPLibraryManager;
+import es.uah.aut.srg.micobs.mesp.mespcommon.MQuantifiableResource;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployedDevice;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative;
@@ -42,6 +43,7 @@ import es.uah.aut.srg.micobs.mesp.mespswp.MQuantifiableResourceDemand;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageRequiredInterface;
 import es.uah.aut.srg.micobs.mesp.mespswp.mespswpPackage;
+import es.uah.aut.srg.micobs.mesp.util.IQResParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.mesp.util.impl.MESPStringHelper;
 import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
 import es.uah.aut.srg.micobs.mesp.xtext.MESPAbstractJavaValidator;
@@ -49,7 +51,6 @@ import es.uah.aut.srg.micobs.pdl.MBoardSupportedDevice;
 import es.uah.aut.srg.micobs.pdl.MDevice;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.pdl.library.pdllibrary.manager.PDLLibraryManager;
-import es.uah.aut.srg.micobs.pdl.util.IPlatformParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 import es.uah.aut.srg.micobs.util.impl.MICOBSStringHelper;
 import es.uah.aut.srg.modeling.util.string.StringHelper;
@@ -450,14 +451,20 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 
 	
 	/**
-	 * Checks that every software interface provided by the deployed
-	 * software packages is provided only once and that every required
-	 * interface is provided by a software package.
+	 * Checks that every software interface provided by the 
+	 * software packages deployed for a given leaf deployment alternative
+	 * is provided only once and that every required interface is provided
+	 * by a software package.
+	 * 
+	 * The method returns the set of provided software interfaces.
+	 * 
 	 * This function is not part of the checking interface, it is only a
 	 * helper function.
+	 * 
 	 * @param deployedSwPackages the set of deployed software packages to
 	 * 	      check.
-	 * @return 
+	 * @param leafDeploymentAlternative the leaf deployment alternative.
+	 * @return the set of provided interfaces.
 	 */
 	protected Set<MSwInterface> checkSwInterfaces(Collection<MMESPSwPackageDeployment> deployedSwPackages, MMESPDeploymentAlternative leafDeploymentAlternative)
 	{
@@ -536,36 +543,56 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 	 * Checks that all the quantifiable resource demands defined by a software
 	 * package are within the limits of the resource.
 	 * 
+	 * @param deployment the root of the deployment model.
+	 * @param alternative the selected leaf deployment alternative or
+	 *        <code>null</code> if no alternative is defined/selected and the
+	 *        package is being deployed on the model root.
+	 * @param dplt the deployment platform on which the package is deployed.
 	 * @param swpdep the deployed software package.
 	 * @param assignments map with all the assignments to the different parameters.
-	 * @param platform the deployment platform on which the package is deployed.
 	 */
-	void checkQuantifiableResourceDemand(MMESPSwPackageDeployment swpdep, 
-			final Map<MParameter, MParameterValueAssignment> assignments, 
-			final MPlatform platform)
+	void checkQuantifiableResourceDemand(final MMESPDeployment deployment,
+			final MMESPDeploymentAlternative alternative, 
+			final MMESPDeploymentPlatform dplt,
+			final MMESPSwPackageDeployment swpdep, 
+			final Map<MParameter, MParameterValueAssignment> assignments)
 	{
-		IPlatformParameterAssignmentResolver resolver = new IPlatformParameterAssignmentResolver() {
-
-			@Override
-			public MParameter getParameter() {
-				return null;
-			}
-
-			@Override
-			public MParameterValueExpression getAssignmentExpression(
-					MParameter parameter) {
-				return (assignments.get(parameter) == null) ? null : 
-					pdlutil.getParameterValue(assignments.get(parameter), platform);
-			}
-
-			@Override
-			public MPlatform getPlatform() {
-				return platform;
-			}
-		};
 		
-		for (MQuantifiableResourceDemand demand : mesputil.getQuantifiableResourceDemands(swpdep.getSwPackage(), platform))
+		for (final MQuantifiableResourceDemand demand : 
+				mesputil.getQuantifiableResourceDemands(swpdep.getSwPackage(), dplt.getPlatform()))
 		{
+			IQResParameterAssignmentResolver resolver = new IQResParameterAssignmentResolver() {
+
+				@Override
+				public MParameter getParameter() {
+					return null;
+				}
+
+				@Override
+				public MParameterValueExpression getAssignmentExpression(
+						MParameter parameter) {
+					return (assignments.get(parameter) == null) ? null : 
+						pdlutil.getParameterValue(assignments.get(parameter), dplt.getPlatform());
+				}
+
+				@Override
+				public MPlatform getPlatform() {
+					return dplt.getPlatform();
+				}
+
+				@Override
+				public MQuantifiableResource getResource() {
+					return demand.getResource();
+				}
+
+				@Override
+				public Long getSumDemands(MQuantifiableResource resource) {
+					return (alternative == null ) ? 
+							mesputil.getSumDemands(deployment, dplt, resource) :
+							mesputil.getSumDemands(alternative, dplt, resource);
+				}
+			};
+			
 			Long value;
 			
 			try {
@@ -607,7 +634,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 				break;
 			}
 			
-			if (value < lowerBound)
+			if (value != 0 && value < lowerBound)
 			{					
 				error("The demand of quantifiable resource " + 
 					  MICOBSStringHelper.getInstance().getFullObjectNameToElement(demand.getResource()) +
@@ -658,7 +685,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 						assignments.put(pva.getParameter(), pva);
 					}
 					checkParameterValueAssignments(assignments, dplt.getPlatform());
-					checkQuantifiableResourceDemand(swpdep, assignments, dplt.getPlatform());
+					checkQuantifiableResourceDemand(dep, null, dplt, swpdep, assignments);
 				}
 
 			}
@@ -681,9 +708,8 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 							assignments.put(pva.getParameter(), pva);
 						}
 						checkParameterValueAssignments(assignments, dplt.getPlatform());
-						checkQuantifiableResourceDemand(swpdep, assignments, dplt.getPlatform());
+						checkQuantifiableResourceDemand(dep, ldalt, dplt, swpdep, assignments);
 					}
-
 				}
 			}
 		}		

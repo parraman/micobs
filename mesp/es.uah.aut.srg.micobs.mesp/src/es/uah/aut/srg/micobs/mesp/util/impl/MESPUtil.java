@@ -135,7 +135,7 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 		}
 		
 		protected MESPUtil MESPUtil;
-		
+
 		@Override
 		public MParameterValueExpression getParameterValue(MParameterValueAssignment assignment,
 					MPlatform platform)
@@ -221,6 +221,28 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 			}
 			return super.getParameterValue(assignment);
 		}
+
+		@Override
+		public Long parseIntegerReferencedObject(
+				MCommonReferenceableObj object,
+				IParameterAssignmentResolver resolver) {
+			
+			if (object instanceof MQuantifiableResource)
+			{
+				MQuantifiableResource qres = (MQuantifiableResource)object;
+				if (resolver != null && resolver instanceof IQResParameterAssignmentResolver)
+				{
+					if (qres == ((IQResParameterAssignmentResolver)resolver).getResource())
+					{
+						throw new IllegalArgumentException(PDLPlugin.INSTANCE.getString("_ERROR_ResourceDemandDefinitionLoop"));
+					}
+					return ((IQResParameterAssignmentResolver)resolver).getSumDemands(qres);
+				}
+				throw new IllegalArgumentException(PDLPlugin.INSTANCE.getString("_ERROR_UnableToParseResourceDemand"));
+			}
+			
+			return super.parseIntegerReferencedObject(object, resolver);
+		}
 	}
 
 	
@@ -272,6 +294,11 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 						public Long getSumDemands(MQuantifiableResource resource) {
 							return MESPUtil.this.getSumDemands(deployment, dplt, resource);
 						}
+
+						@Override
+						public MPlatform getPlatform() {
+							return dplt.getPlatform();
+						}
 					});
 
 				}
@@ -311,6 +338,11 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 							public Long getSumDemands(MQuantifiableResource resource) {
 								return MESPUtil.this.getSumDemands(deployment, dplt, resource);
 							}
+
+							@Override
+							public MPlatform getPlatform() {
+								return dplt.getPlatform();
+							}
 						});
 					}
 				}
@@ -347,6 +379,11 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 								@Override
 								public Long getSumDemands(MQuantifiableResource resource) {
 									return MESPUtil.this.getSumDemands(deployment, dplt, resource);
+								}
+
+								@Override
+								public MPlatform getPlatform() {
+									return dplt.getPlatform();
 								}
 							});
 						}
@@ -488,6 +525,11 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 						public Long getSumDemands(MQuantifiableResource resource) {
 							return MESPUtil.this.getSumDemands(alternative, dplt, resource);
 						}
+
+						@Override
+						public MPlatform getPlatform() {
+							return dplt.getPlatform();
+						}
 					});
 				}
 			}
@@ -522,6 +564,11 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 						@Override
 						public Long getSumDemands(MQuantifiableResource resource) {
 							return MESPUtil.this.getSumDemands(alternative, dplt, resource);
+						}
+
+						@Override
+						public MPlatform getPlatform() {
+							return dplt.getPlatform();
 						}
 					});
 

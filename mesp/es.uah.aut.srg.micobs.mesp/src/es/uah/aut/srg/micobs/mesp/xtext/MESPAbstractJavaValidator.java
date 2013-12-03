@@ -38,10 +38,9 @@ import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageRequiredInterface;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageSupportedPlatform;
 import es.uah.aut.srg.micobs.mesp.mespswp.mespswpPackage;
 import es.uah.aut.srg.micobs.mesp.util.IMESPUtil;
+import es.uah.aut.srg.micobs.mesp.util.IQResParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
-import es.uah.aut.srg.micobs.pdl.util.IPlatformParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.pdl.xtext.PDLAbstractJavaValidator;
-import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.util.impl.MICOBSStringHelper;
 
 /**
@@ -61,31 +60,10 @@ public abstract class MESPAbstractJavaValidator extends PDLAbstractJavaValidator
 	 * @param demand the quantifiable resource demand.
 	 * @param platform the platform.
 	 */
-	void checkQuantifiableResourceDemand(MQuantifiableResourceDemand demand, 
+	void checkQuantifiableResourceDemand(final MQuantifiableResourceDemand demand, 
 			final MPlatform platform)
 	{
-		IParameterAssignmentResolver resolver = null;
-		
-		if (platform == null)
-		{
-			resolver = new IParameterAssignmentResolver() {
-
-				@Override
-				public MParameter getParameter() {
-					return null;
-				}
-
-				@Override
-				public MParameterValueExpression getAssignmentExpression(
-						MParameter parameter) {
-					return null;
-				}
-
-			};
-		}
-		else
-		{
-			resolver = new IPlatformParameterAssignmentResolver() {
+		IQResParameterAssignmentResolver resolver = new IQResParameterAssignmentResolver() {
 
 				@Override
 				public MParameter getParameter() {
@@ -102,9 +80,18 @@ public abstract class MESPAbstractJavaValidator extends PDLAbstractJavaValidator
 				public MPlatform getPlatform() {
 					return platform;
 				}
-			};
-		}
 
+				@Override
+				public MQuantifiableResource getResource() {
+					return demand.getResource();
+				}
+
+				@Override
+				public Long getSumDemands(MQuantifiableResource resource) {
+					return new Long(0);
+				}
+
+			};
 		
 		Long value;
 		
@@ -147,7 +134,7 @@ public abstract class MESPAbstractJavaValidator extends PDLAbstractJavaValidator
 			return;
 		}
 		
-		if (value < lowerBound)
+		if (value != 0 && value < lowerBound)
 		{					
 			error("The demand of quantifiable resource " + 
 				  MICOBSStringHelper.getInstance().getFullObjectNameToElement(demand.getResource()) +
@@ -291,9 +278,9 @@ public abstract class MESPAbstractJavaValidator extends PDLAbstractJavaValidator
 			return;
 		}
 		
-		if (lowerBound < 0)
+		if (lowerBound <= 0)
 		{
-			error("The lower bound must always be greater than or equal to zero",
+			error("The lower bound must always be greater than zero",
 					mespcommonPackage.eINSTANCE.getMQuantifiableResource_LowerBound());
 		}
 		
