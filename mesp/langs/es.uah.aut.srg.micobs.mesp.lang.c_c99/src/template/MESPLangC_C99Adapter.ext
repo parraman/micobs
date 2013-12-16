@@ -1,7 +1,0 @@
-import pdl;
-import common;
-import mespdep;
-import mespswp;
-
-String getIncludeFolderName() :
-	"include";
