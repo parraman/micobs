@@ -22,6 +22,10 @@ import es.uah.aut.srg.micobs.mesp.lang.generator.IEmptySwInterfaceRepositoryCrea
 import es.uah.aut.srg.micobs.mesp.lang.generator.IEmptySwPackageProjectCreator;
 import es.uah.aut.srg.micobs.system.adapter.LanguageAdapter;
 
+/**
+ * Default implementation of the adapter for the C(C99) language.
+ *
+ */
 public class LanguageCAdapter extends LanguageAdapter {
 
 	EmptySwPackageProjectCreator emptySwPackageProjectCreator;
