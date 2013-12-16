@@ -45,7 +45,7 @@ import es.uah.aut.srg.modeling.util.xpand.XpandUtil;
 
 /**
  * Class that provides methods to launch model transformations on MESP models
- * attaced to the C(C99) language.
+ * attached to the C(C99) language.
  *
  */
 public class LanguageCGeneratorUtil {
