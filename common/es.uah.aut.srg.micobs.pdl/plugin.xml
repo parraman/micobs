@@ -197,24 +197,4 @@
       </category>
    </extension>
 
-   <extension point="org.eclipse.emf.ecore.generated_package">
-      <!-- @generated pdl -->
-      <package
-            uri="http://srg.aut.uah.es/micobs/pdl"
-            class="es.uah.aut.srg.micobs.pdl.pdlPackage"
-            genModel="model/pdl.genmodel"/>
-   </extension>
-
-   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
-      <!-- @generated pdl -->
-      <factory
-            uri="http://srg.aut.uah.es/micobs/pdl"
-            class="es.uah.aut.srg.micobs.pdl.provider.pdlItemProviderAdapterFactory"
-            supportedTypes=
-              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
-               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
-               org.eclipse.emf.edit.provider.ITreeItemContentProvider
-               org.eclipse.emf.edit.provider.IItemLabelProvider
-               org.eclipse.emf.edit.provider.IItemPropertySource"/>
-   </extension>
 </plugin>
