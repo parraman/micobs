@@ -1,3 +1,13 @@
+/*******************************************************************************
+ * Copyright (c) 2013 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
 package es.uah.aut.srg.micobs.mesp.lang.c_c99.plugin;
 
 import org.eclipse.emf.common.EMFPlugin;
@@ -14,24 +24,18 @@ public class MESPLangC_C99Plugin extends EMFPlugin {
 
 	/**
 	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public static final MESPLangC_C99Plugin INSTANCE = new MESPLangC_C99Plugin();
 
 	/**
 	 * Keep track of the singleton.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private static Implementation plugin;
 
 	/**
 	 * Create the instance.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public MESPLangC_C99Plugin() {
@@ -45,8 +49,6 @@ public class MESPLangC_C99Plugin extends EMFPlugin {
 
 	/**
 	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @return the singleton instance.
 	 * @generated
 	 */
@@ -57,8 +59,6 @@ public class MESPLangC_C99Plugin extends EMFPlugin {
 
 	/**
 	 * Returns the singleton instance of the Eclipse plugin.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @return the singleton instance.
 	 * @generated
 	 */
@@ -68,15 +68,11 @@ public class MESPLangC_C99Plugin extends EMFPlugin {
 
 	/**
 	 * The actual implementation of the Eclipse <b>Plugin</b>.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated NOT
 	 */
 	public static class Implementation extends EclipsePlugin {
 		/**
 		 * Creates an instance.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		public Implementation() {
