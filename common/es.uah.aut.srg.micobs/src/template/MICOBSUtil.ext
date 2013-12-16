@@ -31,3 +31,6 @@ Integer parseIntegerExpression(MParameterValueExpression this, Collection[MParam
 	
 java::lang::Float parseRealExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments) : JAVA
 	es.uah.aut.srg.micobs.util.impl.MICOBSBlackBoxUnit.parseRealExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, java.util.Collection);
+	
+MCommonPackage getPackage(MCommonPackageElement this):
+	((MCommonPackageFile)(this.eContainer)).package;
