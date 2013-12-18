@@ -30,7 +30,6 @@ import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.MESPLibraryManager;
 import es.uah.aut.srg.micobs.mesp.mespcommon.MInstantiableResource;
 import es.uah.aut.srg.micobs.mesp.mespswi.MSwInterface;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
 import es.uah.aut.srg.micobs.mesp.xtext.MESPElementAbstractScopeProvider;
 import es.uah.aut.srg.micobs.pdl.library.pdllibrary.manager.PDLLibraryManager;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
@@ -64,7 +63,7 @@ public class SWIScopeProvider extends MESPElementAbstractScopeProvider {
 			{
 				if (pswi.eIsProxy() == false)
 				{
-					params.addAll(MESPUtil.getDefault().getAllParameters(pswi));
+					params.addAll(mesputil.getAllParameters(pswi));
 				}
 			}
 			for (MParameter param : swi.getParameters())
@@ -107,7 +106,7 @@ public class SWIScopeProvider extends MESPElementAbstractScopeProvider {
 			{
 				if (pswi.eIsProxy() == false)
 				{
-					params.addAll(MESPUtil.getDefault().getAllParameters(pswi));
+					params.addAll(mesputil.getAllParameters(pswi));
 				}
 			}
 			
@@ -174,13 +173,13 @@ public class SWIScopeProvider extends MESPElementAbstractScopeProvider {
 		{
 			if (pswi.eIsProxy() == false)
 			{
-				outerDefs.addAll(MESPUtil.getDefault().getAllEnumParameterDefinitions(pswi));
+				outerDefs.addAll(mesputil.getAllEnumParameterDefinitions(pswi));
 			}
 		}
 		
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(MESPUtil.getDefault().getEnumParameterDefinitions(osswi), outerScope);
+		return getSimpleObjectScope(mesputil.getEnumParameterDefinitions(osswi), outerScope);
 	}
 
 	
@@ -199,18 +198,18 @@ public class SWIScopeProvider extends MESPElementAbstractScopeProvider {
 	{
 		MSwInterface swi = (MSwInterface)ires.eContainer().eContainer();
 		
-		Set<MEnumParameterDefinition> outerDefs = MESPUtil.getDefault().getEnumParameterDefinitions(swi);
+		Set<MEnumParameterDefinition> outerDefs = mesputil.getEnumParameterDefinitions(swi);
 		
 		for (MSwInterface posswi : swi.getExtends())
 		{
 			if (posswi.eIsProxy() == false)
 			{
-				outerDefs.addAll(MESPUtil.getDefault().getAllEnumParameterDefinitions(posswi));
+				outerDefs.addAll(mesputil.getAllEnumParameterDefinitions(posswi));
 			}
 		}
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(MESPUtil.getDefault().getEnumParameterDefinitions(ires), outerScope);
+		return getSimpleObjectScope(mesputil.getEnumParameterDefinitions(ires), outerScope);
 	}
 
 	/**

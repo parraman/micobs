@@ -17,7 +17,6 @@ import es.uah.aut.srg.micobs.mesp.mesposswi.MOSSwInterface;
 import es.uah.aut.srg.micobs.mesp.mesposswp.MOSSwPackage;
 import es.uah.aut.srg.micobs.mesp.mesposswp.mesposswpPackage;
 import es.uah.aut.srg.micobs.mesp.util.impl.MESPStringHelper;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
 import es.uah.aut.srg.micobs.mesp.xtext.MESPAbstractJavaValidator;
 import es.uah.aut.srg.micobs.pdl.MOSSupportedPlatform;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystem;
@@ -216,7 +215,7 @@ public class OSSWPJavaValidator extends MESPAbstractJavaValidator {
 				i++;
 				continue;
 			}
-			for (MOSSwInterface osswi : MESPUtil.getDefault().getAllProvidedOSSWIs(extended))
+			for (MOSSwInterface osswi : mesputil.getAllProvidedOSSWIs(extended))
 			{
 				extendedOSAPIs.add((MOperatingSystemAPI) osswi.getReferencedElement());
 				extendedOSSWIs.add(osswi);
@@ -232,7 +231,7 @@ public class OSSWPJavaValidator extends MESPAbstractJavaValidator {
 				i++;
 				continue;
 			}
-			if (MESPUtil.getDefault().getAllSupportedOSAPIs(os).contains(osswi.getReferencedElement()) == false)
+			if (pdlutil.getAllSupportedOSAPIs(os).contains(osswi.getReferencedElement()) == false)
 			{
 				error("Operating System API " +
 					  MESPStringHelper.getDefault().getElementName(osswi.getReferencedElement()) +
@@ -274,7 +273,7 @@ public class OSSWPJavaValidator extends MESPAbstractJavaValidator {
 		
 		// We're going to check the other restriction in the same
 		// function for performance purposes:
-		for (MOperatingSystemAPI osapi : MESPUtil.getDefault().getAllSupportedOSAPIs(os))
+		for (MOperatingSystemAPI osapi : pdlutil.getAllSupportedOSAPIs(os))
 		{
 			if (localOSAPIs.contains(osapi) == false &&
 				extendedOSAPIs.contains(osapi) == false)

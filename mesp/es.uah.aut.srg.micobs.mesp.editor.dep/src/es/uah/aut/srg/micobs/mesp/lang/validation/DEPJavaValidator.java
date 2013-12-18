@@ -45,7 +45,6 @@ import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageRequiredInterface;
 import es.uah.aut.srg.micobs.mesp.mespswp.mespswpPackage;
 import es.uah.aut.srg.micobs.mesp.util.IQResParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.mesp.util.impl.MESPStringHelper;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
 import es.uah.aut.srg.micobs.mesp.xtext.MESPAbstractJavaValidator;
 import es.uah.aut.srg.micobs.pdl.MBoardSupportedDevice;
 import es.uah.aut.srg.micobs.pdl.MDevice;
@@ -141,9 +140,9 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 		}
 		else
 		{
-			for (MMESPDeploymentAlternative alternative : MESPUtil.getDefault().getLeafDeploymentAlternatives(deployment))
+			for (MMESPDeploymentAlternative alternative : mesputil.getLeafDeploymentAlternatives(deployment))
 			{
-				checkExtendedPackages(MESPUtil.getDefault().getAllDeployedSwPackagesFromAlternative(alternative));
+				checkExtendedPackages(mesputil.getAllDeployedSwPackagesFromAlternative(alternative));
 			}
 		}
 	}
@@ -163,7 +162,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 		}
 		for (MMESPSwPackageDeployment swpd : deployedSwPackages)
 		{
-			for (MSwPackage extended : MESPUtil.getDefault().getAllExtendedSwPackages(swpd.getSwPackage()))
+			for (MSwPackage extended : mesputil.getAllExtendedSwPackages(swpd.getSwPackage()))
 			{
 				if (swps.contains(extended) == false)
 				{
@@ -354,9 +353,9 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 		}
 		else
 		{
-			for (MMESPDeploymentAlternative alternative : MESPUtil.getDefault().getLeafDeploymentAlternatives(deployment))
+			for (MMESPDeploymentAlternative alternative : mesputil.getLeafDeploymentAlternatives(deployment))
 			{
-				checkSupportedPlatforms(MESPUtil.getDefault().getAllDeployedSwPackagesFromAlternative(alternative));
+				checkSupportedPlatforms(mesputil.getAllDeployedSwPackagesFromAlternative(alternative));
 			}
 		}
 	}
@@ -390,7 +389,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 
 			for (MMESPDeploymentPlatform dplt : deploymentPlatforms)
 			{
-				if (MESPUtil.getDefault().supportsPlatform(dswp.getSwPackage(), dplt.getPlatform()) == false)
+				if (mesputil.supportsPlatform(dswp.getSwPackage(), dplt.getPlatform()) == false)
 				{
 					error("Software package does not support platform: " +
 						  MESPStringHelper.getDefault().getElementName(dplt.getPlatform()), dswp,
@@ -429,11 +428,11 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 		}
 		else
 		{
-			for (MMESPDeploymentAlternative alternative : MESPUtil.getDefault().getLeafDeploymentAlternatives(deployment))
+			for (MMESPDeploymentAlternative alternative : mesputil.getLeafDeploymentAlternatives(deployment))
 			{
-				Set<MSwInterface> pswis = checkSwInterfaces(MESPUtil.getDefault().getAllDeployedSwPackagesFromAlternative(alternative), alternative);
+				Set<MSwInterface> pswis = checkSwInterfaces(mesputil.getAllDeployedSwPackagesFromAlternative(alternative), alternative);
 				
-				Map<MSwInterface, MSwPackageRequiredInterface> rswis = MESPUtil.getDefault().getAllRequiredSwInterfacesMap(alternative);
+				Map<MSwInterface, MSwPackageRequiredInterface> rswis = mesputil.getAllRequiredSwInterfacesMap(alternative);
 				
 				for (MSwInterface rswi : rswis.keySet())
 				{
@@ -472,7 +471,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 		
 		for (MMESPSwPackageDeployment swpd : deployedSwPackages)
 		{
-			for (MSwInterface swi : MESPUtil.getDefault().getAllEffectivelyProvidedSwInterfaces(swpd.getSwPackage()))
+			for (MSwInterface swi : mesputil.getAllEffectivelyProvidedSwInterfaces(swpd.getSwPackage()))
 			{
 				if (providedInterfaces.add(swi) == false)
 				{
@@ -492,7 +491,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 				
 				for (MMESPDeploymentPlatform dplt : leafDeploymentAlternative.getDeploymentPlatforms())
 				{
-					for (MSwInterface swi : MESPUtil.getDefault().getAllRequiredSwInterfaces(swpd.getSwPackage(), dplt.getPlatform()))
+					for (MSwInterface swi : mesputil.getAllRequiredSwInterfaces(swpd.getSwPackage(), dplt.getPlatform()))
 					{
 						if (providedInterfaces.contains(swi) == false)
 						{
@@ -520,7 +519,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 					
 				for (MMESPDeploymentPlatform dplt : platforms)
 				{
-					for (MSwInterface swi : MESPUtil.getDefault().getAllRequiredSwInterfaces(swpd.getSwPackage(), dplt.getPlatform()))
+					for (MSwInterface swi : mesputil.getAllRequiredSwInterfaces(swpd.getSwPackage(), dplt.getPlatform()))
 					{
 						if (providedInterfaces.contains(swi) == false)
 						{
@@ -678,7 +677,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 				for (MMESPSwPackageDeployment swpdep : dep.getDeployedSwPackages())
 				{
 					// We have to obtain the value assignments
-					assignments.putAll(MESPUtil.getDefault().getMapAllParameterValueAssignments(swpdep, null));
+					assignments.putAll(mesputil.getMapAllParameterValueAssignments(swpdep, null));
 					
 					for (MParameterValueAssignment pva : dplt.getParameterValueAssignments())
 					{
@@ -692,16 +691,16 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 		}
 		else
 		{
-			for (MMESPDeploymentAlternative ldalt : MESPUtil.getDefault().getLeafDeploymentAlternatives(dep))
+			for (MMESPDeploymentAlternative ldalt : mesputil.getLeafDeploymentAlternatives(dep))
 			{	
 				for (MMESPDeploymentPlatform dplt : ldalt.getDeploymentPlatforms())
 				{
 					Map<MParameter, MParameterValueAssignment> assignments = new HashMap<MParameter, MParameterValueAssignment>();
 
-					for (MMESPSwPackageDeployment swpdep : MESPUtil.getDefault().getAllDeployedSwPackagesFromAlternative(ldalt))
+					for (MMESPSwPackageDeployment swpdep : mesputil.getAllDeployedSwPackagesFromAlternative(ldalt))
 					{
 						// We have to obtain the value assignments
-						assignments.putAll(MESPUtil.getDefault().getMapAllParameterValueAssignments(swpdep, null));
+						assignments.putAll(mesputil.getMapAllParameterValueAssignments(swpdep, null));
 						
 						for (MParameterValueAssignment pva : dplt.getParameterValueAssignments())
 						{
@@ -786,7 +785,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 		}
 		for (MDevice device : timesMap.keySet())
 		{
-			MBoardSupportedDevice supportedDevice = MESPUtil.getDefault().getBoardSupportedDevice(dplt.getPlatform().getBoard(), device);
+			MBoardSupportedDevice supportedDevice = pdlutil.getBoardSupportedDevice(dplt.getPlatform().getBoard(), device);
 			if (supportedDevice == null)
 			{
 				error("Device " + MESPStringHelper.getDefault().getFullElementName(device) +
@@ -799,7 +798,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 			Long upperBound;
 			
 			try {
-				upperBound = MESPUtil.getDefault().parseIntegerExpression(supportedDevice.getUpperBound(), dplt.getParameterValueAssignments());
+				upperBound = util.parseIntegerExpression(supportedDevice.getUpperBound(), dplt.getParameterValueAssignments());
 			} catch (NumberFormatException e)
 			{
 				error(e.getMessage(),
@@ -827,7 +826,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 			Long lowerBound;
 			
 			try {
-				lowerBound = MESPUtil.getDefault().parseIntegerExpression(supportedDevice.getLowerBound(), dplt.getParameterValueAssignments());
+				lowerBound = util.parseIntegerExpression(supportedDevice.getLowerBound(), dplt.getParameterValueAssignments());
 			} catch (NumberFormatException e)
 			{
 				error(e.getMessage(),
@@ -929,7 +928,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 				continue;
 			}
 			
-			MDriverSwPackageSupportedPlatform drvsp = (MDriverSwPackageSupportedPlatform) MESPUtil.getDefault().getMatchingPlatform(drvdep.getSwPackage(), dplt.getPlatform());
+			MDriverSwPackageSupportedPlatform drvsp = (MDriverSwPackageSupportedPlatform) mesputil.getMatchingPlatform(drvdep.getSwPackage(), dplt.getPlatform());
 			
 			if (drvsp == null)
 			{
@@ -941,7 +940,7 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 				Boolean required;
 				
 				try {
-					required = MESPUtil.getDefault().parseBooleanExpression(supportedDevice.getRequired(), drvdep.getParameterValueAssignments());
+					required = util.parseBooleanExpression(supportedDevice.getRequired(), drvdep.getParameterValueAssignments());
 				} catch (NumberFormatException e)
 				{
 					error(e.getMessage(),

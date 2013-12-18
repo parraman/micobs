@@ -19,7 +19,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 
 import es.uah.aut.srg.micobs.mesp.mesppswp.provider.mesppswpItemProviderAdapterFactory;
 import es.uah.aut.srg.micobs.mesp.plugin.MESPPlugin;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
+import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtilProvider;
 import es.uah.aut.srg.micobs.xtext.MICOBSCancelableDiagnostician;
 import es.uah.aut.srg.micobs.xtext.MICOBSDescriptionAssociator;
 import es.uah.aut.srg.micobs.xtext.MICOBSLazyLinker;
@@ -49,9 +49,9 @@ public class PSWPRuntimeModule extends es.uah.aut.srg.micobs.mesp.lang.AbstractP
 	
 	public void configureResourceLocator(com.google.inject.Binder binder) {
 		binder.bind(org.eclipse.emf.common.util.ResourceLocator.class).toInstance(MESPPlugin.INSTANCE);
-		binder.bind(es.uah.aut.srg.micobs.util.IMICOBSUtil.class).toInstance(MESPUtil.getDefault());
-		binder.bind(es.uah.aut.srg.micobs.pdl.util.IPDLUtil.class).toInstance(MESPUtil.getDefault());
-		binder.bind(es.uah.aut.srg.micobs.mesp.util.IMESPUtil.class).toInstance(MESPUtil.getDefault());
+		binder.bind(es.uah.aut.srg.micobs.util.IMICOBSUtil.class).toInstance(MESPUtilProvider.getMICOBSUtil());
+		binder.bind(es.uah.aut.srg.micobs.pdl.util.IPDLUtil.class).toInstance(MESPUtilProvider.getPDLUtil());
+		binder.bind(es.uah.aut.srg.micobs.mesp.util.IMESPUtil.class).toInstance(MESPUtilProvider.getMESPUtil());
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {

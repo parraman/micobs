@@ -31,7 +31,6 @@ import es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.MESPLibraryManager
 import es.uah.aut.srg.micobs.mesp.mespcommon.MInstantiableResource;
 import es.uah.aut.srg.micobs.mesp.mespcommon.MQuantifiableResource;
 import es.uah.aut.srg.micobs.mesp.mesposswi.MOSSwInterface;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
 import es.uah.aut.srg.micobs.mesp.xtext.MESPElementAbstractScopeProvider;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI;
 import es.uah.aut.srg.micobs.pdl.pdlPackage;
@@ -60,7 +59,7 @@ public class OSSWIScopeProvider extends MESPElementAbstractScopeProvider {
 			osswi.getReferencedElement().eIsProxy() == false &&
 			osswi.getReferencedElement() instanceof MOperatingSystemAPI)
 		{
-			return getFullObjectScope(MESPUtil.getDefault().getAllParameters((MOperatingSystemAPI)osswi.getReferencedElement()));
+			return getFullObjectScope(pdlutil.getAllParameters((MOperatingSystemAPI)osswi.getReferencedElement()));
 		}
 								
 		return IScope.NULLSCOPE;
@@ -86,7 +85,7 @@ public class OSSWIScopeProvider extends MESPElementAbstractScopeProvider {
 			osswi.getReferencedElement().eIsProxy() == false &&
 			osswi.getReferencedElement() instanceof MOperatingSystemAPI)
 		{
-			params.addAll(MESPUtil.getDefault().getAllParameters((MOperatingSystemAPI)osswi.getReferencedElement()));
+			params.addAll(pdlutil.getAllParameters((MOperatingSystemAPI)osswi.getReferencedElement()));
 		}
 					
 		for (MParameter param : ires.getParameters())
@@ -139,12 +138,12 @@ public class OSSWIScopeProvider extends MESPElementAbstractScopeProvider {
 			osswi.getReferencedElement().eIsProxy() == false &&
 			osswi.getReferencedElement() instanceof MOperatingSystemAPI)
 		{
-			outerDefs.addAll(MESPUtil.getDefault().getAllEnumParameterDefinitions((MOperatingSystemAPI)osswi.getReferencedElement()));
+			outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions((MOperatingSystemAPI)osswi.getReferencedElement()));
 		}
 
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(MESPUtil.getDefault().getEnumParameterDefinitions(ires), outerScope);
+		return getSimpleObjectScope(mesputil.getEnumParameterDefinitions(ires), outerScope);
 	}
 	
 	/**

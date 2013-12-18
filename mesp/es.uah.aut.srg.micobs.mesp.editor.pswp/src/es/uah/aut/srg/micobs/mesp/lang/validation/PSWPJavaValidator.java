@@ -27,7 +27,6 @@ import es.uah.aut.srg.micobs.mesp.mesposswp.MOSSwPackage;
 import es.uah.aut.srg.micobs.mesp.mesppswp.MPlatformSwPackage;
 import es.uah.aut.srg.micobs.mesp.mesppswp.mesppswpPackage;
 import es.uah.aut.srg.micobs.mesp.util.impl.MESPStringHelper;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
 import es.uah.aut.srg.micobs.mesp.xtext.MESPAbstractJavaValidator;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystem;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
@@ -164,7 +163,7 @@ public class PSWPJavaValidator extends MESPAbstractJavaValidator {
 				{
 					continue;
 				}
-				if (MESPUtil.getDefault().getAllExtendedOSSwPackages(mainOSSWP).contains(osswp) == false)
+				if (mesputil.getAllExtendedOSSwPackages(mainOSSWP).contains(osswp) == false)
 				{
 					error("OS software package " + 
 						  MESPStringHelper.getDefault().getElementName(osswp) + 
@@ -173,7 +172,7 @@ public class PSWPJavaValidator extends MESPAbstractJavaValidator {
 						  mesppswpPackage.eINSTANCE.getMPlatformSwPackage_OsSwPackages());
 				}
 			}
-			for (MOSSwPackage osswp : MESPUtil.getDefault().getAllExtendedOSSwPackages(mainOSSWP))
+			for (MOSSwPackage osswp : mesputil.getAllExtendedOSSwPackages(mainOSSWP))
 			{
 				if (osswps.contains(osswp) == false)
 				{

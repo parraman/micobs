@@ -48,7 +48,6 @@ import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageRequiredInterface;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageSupportedPlatform;
 import es.uah.aut.srg.micobs.mesp.mespswp.mespswpPackage;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
 import es.uah.aut.srg.micobs.mesp.xtext.MESPElementAbstractScopeProvider;
 import es.uah.aut.srg.micobs.pdl.MEnumParamOSSPSwitch;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI;
@@ -158,7 +157,7 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 					dplts.addAll(alt.getDeploymentPlatforms());
 				}
 							
-				params.addAll(MESPUtil.getDefault().getAllParameters(swp));
+				params.addAll(mesputil.getAllParameters(swp));
 
 				for (MSwPackageSupportedPlatform swrsp : swp.getSupportedPlatforms())
 				{
@@ -166,7 +165,7 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 					{
 						if (dplt.getPlatform() != null &&
 							dplt.getPlatform().eIsProxy() == false &&
-							MESPUtil.getDefault().matchesPlatform(swrsp, dplt.getPlatform()))
+							mesputil.matchesPlatform(swrsp, dplt.getPlatform()))
 						{
 							params.addAll(swrsp.getParameters());
 						}
@@ -180,16 +179,16 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 			MInstantiableResourceDemand dires = (MInstantiableResourceDemand)assignment.eContainer();
 			MSwPackageRequiredInterface riface = (MSwPackageRequiredInterface) dires.eContainer();
 			
-			params.addAll(MESPUtil.getDefault().getParameters(dires.getResource()));
+			params.addAll(mesputil.getParameters(dires.getResource()));
 			
 			if (riface.getInterface() instanceof MSwInterface)
 			{
-				params.addAll(MESPUtil.getDefault().getAllParameters((MSwInterface)riface.getInterface()));
+				params.addAll(mesputil.getAllParameters((MSwInterface)riface.getInterface()));
 			}
 			else
 			{
 				MOSSwInterface osswi = (MOSSwInterface)riface.getInterface();
-				params.addAll(MESPUtil.getDefault().getAllParameters((MOperatingSystemAPI) osswi.getReferencedElement()));
+				params.addAll(pdlutil.getAllParameters((MOperatingSystemAPI) osswi.getReferencedElement()));
 			}
 		}
 		else if (assignment.eContainer() instanceof MMESPDeploymentPlatform)
@@ -199,7 +198,7 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 			if (dplt.getPlatform() != null &&
 				dplt.getPlatform().eIsProxy() == false)
 			{
-				params.addAll(MESPUtil.getDefault().getAllParameters(dplt.getPlatform()));
+				params.addAll(pdlutil.getAllParameters(dplt.getPlatform()));
 			}
 			
 		}
@@ -210,7 +209,7 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 			if (depdev.getDevice() != null &&
 				depdev.getDevice().eIsProxy() == false)
 			{
-				params.addAll(MESPUtil.getDefault().getParameters(depdev.getDevice()));
+				params.addAll(pdlutil.getParameters(depdev.getDevice()));
 			}
 			
 			MMESPDeploymentPlatform dplt = (MMESPDeploymentPlatform)depdev.eContainer();
@@ -218,7 +217,7 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 			if (dplt.getPlatform() != null &&
 				dplt.getPlatform().eIsProxy() == false)
 			{
-				params.addAll(MESPUtil.getDefault().getAllParameters(dplt.getPlatform()));
+				params.addAll(pdlutil.getAllParameters(dplt.getPlatform()));
 			}
 			
 		}
@@ -306,24 +305,24 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 		{
 			return IScope.NULLSCOPE;
 		}
-		Set<MParameter> outer = MESPUtil.getDefault().getAllParameters(dplt.getPlatform().getOs());
-		outer.addAll(MESPUtil.getDefault().getParameters(MESPUtil.getDefault().getMatchingPlatform(dplt.getPlatform().getOs(), dplt.getPlatform())));
-		outer.addAll(MESPUtil.getDefault().getAllParameters(dplt.getPlatform().getArchitecture()));
-		outer.addAll(MESPUtil.getDefault().getAllParameters(dplt.getPlatform().getCompiler(),
+		Set<MParameter> outer = pdlutil.getAllParameters(dplt.getPlatform().getOs());
+		outer.addAll(pdlutil.getParameters(pdlutil.getMatchingPlatform(dplt.getPlatform().getOs(), dplt.getPlatform())));
+		outer.addAll(pdlutil.getAllParameters(dplt.getPlatform().getArchitecture()));
+		outer.addAll(pdlutil.getAllParameters(dplt.getPlatform().getCompiler(),
 				dplt.getPlatform().getArchitecture()));
 		
 		if (dplt.getPlatform().getMicroprocessor() != null)
 		{
-			outer.addAll(MESPUtil.getDefault().getParameters(dplt.getPlatform().getMicroprocessor()));
+			outer.addAll(pdlutil.getParameters(dplt.getPlatform().getMicroprocessor()));
 		}
 		if (dplt.getPlatform().getBoard() != null)
 		{
-			outer.addAll(MESPUtil.getDefault().getParameters(dplt.getPlatform().getBoard()));
+			outer.addAll(pdlutil.getParameters(dplt.getPlatform().getBoard()));
 		}
 		
 		IScope parentScope = getFullObjectScope(outer);
 		
-		return getSimpleObjectScope(MESPUtil.getDefault().getParameters(dplt.getPlatform()), parentScope);
+		return getSimpleObjectScope(pdlutil.getParameters(dplt.getPlatform()), parentScope);
 	}
 	
 	/**
@@ -341,7 +340,7 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 			return IScope.NULLSCOPE;
 		}
 		
-		return getSimpleObjectScope(MESPUtil.getDefault().getParameters(depdev.getDevice()));
+		return getSimpleObjectScope(pdlutil.getParameters(depdev.getDevice()));
 	}
 	
 	/**
@@ -379,23 +378,23 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 		
 		for (MAbstractSwPackage aswp : swp.getInherits())
 		{
-			outerParams.addAll(MESPUtil.getDefault().getAllParameters(aswp));
+			outerParams.addAll(mesputil.getAllParameters(aswp));
 		}
 		
 		IScope outerScope = getFullObjectScope(outerParams);
 		
 		Set<MParameter> innerParams = new HashSet<MParameter>();
-		innerParams.addAll(MESPUtil.getDefault().getParameters(swp));
+		innerParams.addAll(mesputil.getParameters(swp));
 		
 		for (MMESPDeploymentPlatform dplt : dplts)
 		{
 			if (dplt.getPlatform() != null &&
 				dplt.getPlatform().eIsProxy() == false)
 			{
-				MSwPackageSupportedPlatform swrsp = MESPUtil.getDefault().getMatchingPlatform(swp, dplt.getPlatform());
+				MSwPackageSupportedPlatform swrsp = mesputil.getMatchingPlatform(swp, dplt.getPlatform());
 				if (swrsp != null)
 				{
-					innerParams.addAll(MESPUtil.getDefault().getParameters(swrsp));
+					innerParams.addAll(mesputil.getParameters(swrsp));
 				}
 			}
 		}
@@ -504,11 +503,11 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 		
 		if (riface.getInterface() instanceof MSwInterface)
 		{
-			return getFullObjectScope(MESPUtil.getDefault().getAllQuantifiableResources((MSwInterface)riface.getInterface()));
+			return getFullObjectScope(mesputil.getAllQuantifiableResources((MSwInterface)riface.getInterface()));
 		}
 		else if (riface.getInterface() instanceof MOSSwInterface)
 		{
-			return getFullObjectScope(MESPUtil.getDefault().getAllQuantifiableResources((MOSSwInterface)riface.getInterface()));
+			return getFullObjectScope(mesputil.getAllQuantifiableResources((MOSSwInterface)riface.getInterface()));
 		}
 		else
 		{
@@ -536,11 +535,11 @@ public class DEPScopeProvider extends MESPElementAbstractScopeProvider {
 			
 		if (riface.getInterface() instanceof MSwInterface)
 		{
-			return getFullObjectScope(MESPUtil.getDefault().getAllInstantiableResources((MSwInterface)riface.getInterface()));
+			return getFullObjectScope(mesputil.getAllInstantiableResources((MSwInterface)riface.getInterface()));
 		}
 		else if (riface.getInterface() instanceof MOSSwInterface)
 		{
-			return getFullObjectScope(MESPUtil.getDefault().getAllInstantiableResources((MOSSwInterface)riface.getInterface()));
+			return getFullObjectScope(mesputil.getAllInstantiableResources((MOSSwInterface)riface.getInterface()));
 		}
 		else
 		{
