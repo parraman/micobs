@@ -48,7 +48,7 @@ import es.uah.aut.srg.micobs.library.IReferencingLibraryManager;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 import es.uah.aut.srg.micobs.util.impl.MICOBSStringHelper;
-import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
+import es.uah.aut.srg.micobs.util.impl.MICOBSUtilProvider;
 import es.uah.aut.srg.modeling.util.file.FileHelper;
 import es.uah.aut.srg.modeling.util.plugin.ModelingUtilPlugin;
 import es.uah.aut.srg.modeling.util.string.StringHelper;
@@ -152,7 +152,7 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 						return null;
 					}
 									    
-				    Diagnostic diagnostic = MICOBSUtil.getDefault().validateResource(emfResource, getModelAdapterFactory(packageFile));
+				    Diagnostic diagnostic = MICOBSUtilProvider.getMICOBSUtil().validateResource(emfResource, getModelAdapterFactory(packageFile));
 					
 				    if (diagnostic.getSeverity() != Diagnostic.OK)
 				    {

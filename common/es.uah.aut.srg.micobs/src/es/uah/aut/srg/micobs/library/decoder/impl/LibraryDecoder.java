@@ -39,7 +39,7 @@ import es.uah.aut.srg.micobs.library.LibraryDescriptor;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.library.decoder.ILibraryDecoder;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
-import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
+import es.uah.aut.srg.micobs.util.impl.MICOBSUtilProvider;
 import es.uah.aut.srg.modeling.util.file.FileHelper;
 import es.uah.aut.srg.modeling.util.string.StringHelper;
 import es.uah.aut.srg.modeling.util.svn.SVNUtil;
@@ -299,7 +299,7 @@ public class LibraryDecoder implements ILibraryDecoder {
 		
 		// If everything went OK, then we have to return the result of
 		// validating the resource.	
-		return MICOBSUtil.getDefault().validateResource(resource, adapterFactory);
+		return MICOBSUtilProvider.getMICOBSUtil().validateResource(resource, adapterFactory);
 
 	}
 	

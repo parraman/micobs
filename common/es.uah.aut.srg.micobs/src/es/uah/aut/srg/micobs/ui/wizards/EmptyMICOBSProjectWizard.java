@@ -52,7 +52,7 @@ import org.tigris.subversion.subclipse.ui.wizards.sharing.RepositorySelectionPag
 
 import es.uah.aut.srg.micobs.nature.MICOBSProjectNature;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
-import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
+import es.uah.aut.srg.micobs.util.impl.MICOBSUtilProvider;
 import es.uah.aut.srg.modeling.util.file.FileConverter;
 import es.uah.aut.srg.modeling.util.svn.SVNUtil;
 import es.uah.aut.srg.modeling.util.ui.GenDirectorySelectionPage;
@@ -263,7 +263,7 @@ public abstract class EmptyMICOBSProjectWizard extends
 	{
 		MICOBSProjectNature.addNature(project);
 		// And the Xtext nature:
-		MICOBSUtil.getDefault().addXtextNature(project); 
+		MICOBSUtilProvider.getMICOBSUtil().addXtextNature(project); 
 	}
 	
 	

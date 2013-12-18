@@ -51,7 +51,7 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import es.uah.aut.srg.micobs.diagnostic.CheckingDiagnostic;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
-import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
+import es.uah.aut.srg.micobs.util.impl.MICOBSUtilProvider;
 import es.uah.aut.srg.modeling.util.plugin.ModelingUtilPlugin;
 import es.uah.aut.srg.modeling.util.svn.SVNUtil;
 
@@ -200,7 +200,7 @@ public abstract class UpdateRemoteFoldersHandler extends AbstractHandler {
 					return null;
 				}
 
-				Diagnostic diagnostic = MICOBSUtil.getDefault().validateResource(resource, getItemProviderAdapterFactory());
+				Diagnostic diagnostic = MICOBSUtilProvider.getMICOBSUtil().validateResource(resource, getItemProviderAdapterFactory());
 
 			    if (diagnostic.getSeverity() != Diagnostic.OK)
 			    {

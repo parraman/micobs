@@ -63,7 +63,7 @@ import es.uah.aut.srg.micobs.library.adapter.LibraryAdapterFactory;
 import es.uah.aut.srg.micobs.library.ui.handlers.AddPackageAction;
 import es.uah.aut.srg.micobs.library.ui.handlers.DeletePackageItemAction;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
-import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
+import es.uah.aut.srg.micobs.util.impl.MICOBSUtilProvider;
 
 /**
  * Class that implements a generic action bar contributor for library editors.
@@ -234,7 +234,7 @@ public abstract class MICOBSLibraryEditorActionBarContributor extends
 			        						IResourceValidator validator = 
 			        							((XtextResource)modelResource).getResourceServiceProvider().getResourceValidator();
 			        						List<Issue> issues = validator.validate(modelResource, CheckMode.ALL, null);
-			        						Diagnostic diag = MICOBSUtil.getDefault().convertToDiagnostic(getObjectLabel(eObject), eObject, adapterFactory, issues);
+			        						Diagnostic diag = MICOBSUtilProvider.getMICOBSUtil().convertToDiagnostic(getObjectLabel(eObject), eObject, adapterFactory, issues);
 			        						if (diag.getSeverity() != Diagnostic.OK)
 			        						{
 			        							diagnostics.add(diag);

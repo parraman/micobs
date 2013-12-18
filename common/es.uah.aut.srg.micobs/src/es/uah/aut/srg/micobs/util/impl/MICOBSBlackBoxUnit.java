@@ -32,31 +32,31 @@ public class MICOBSBlackBoxUnit {
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Boolean parseBooleanExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments)
 	{
-		return MICOBSUtil.getDefault().parseBooleanExpression(self, assignments);
+		return MICOBSUtilProvider.getMICOBSUtil().parseBooleanExpression(self, assignments);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static String parseStringExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments)
 	{
-		return MICOBSUtil.getDefault().parseStringExpression(self, assignments);
+		return MICOBSUtilProvider.getMICOBSUtil().parseStringExpression(self, assignments);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Long parseIntegerExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments)
 	{
-		return MICOBSUtil.getDefault().parseIntegerExpression(self, assignments);
+		return MICOBSUtilProvider.getMICOBSUtil().parseIntegerExpression(self, assignments);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Float parseRealExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments)
 	{
-		return MICOBSUtil.getDefault().parseRealExpression(self, assignments);
+		return MICOBSUtilProvider.getMICOBSUtil().parseRealExpression(self, assignments);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static MEnumParameterLiteral parseEnumExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments)
 	{
-		return MICOBSUtil.getDefault().parseEnumExpression(self, assignments);
+		return MICOBSUtilProvider.getMICOBSUtil().parseEnumExpression(self, assignments);
 	}
 
 	@Operation(contextual = true, kind = Kind.HELPER)
@@ -116,6 +116,6 @@ public class MICOBSBlackBoxUnit {
 	@Operation(contextual = true, kind = Kind.HELPER)	
 	public static MLanguage getLanguage(String uri, String version)
 	{
-		return MICOBSUtil.getDefault().getLanguage(uri, version);
+		return MICOBSUtilProvider.getMICOBSUtil().getLanguage(uri, version);
 	}
 }

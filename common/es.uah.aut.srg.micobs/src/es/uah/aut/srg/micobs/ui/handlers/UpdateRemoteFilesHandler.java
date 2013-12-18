@@ -52,7 +52,7 @@ import org.tigris.subversion.svnclientadapter.SVNRevision;
 import org.tigris.subversion.svnclientadapter.SVNUrl;
 
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
-import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
+import es.uah.aut.srg.micobs.util.impl.MICOBSUtilProvider;
 import es.uah.aut.srg.modeling.util.file.FileHelper;
 import es.uah.aut.srg.modeling.util.plugin.ModelingUtilPlugin;
 
@@ -232,7 +232,7 @@ public abstract class UpdateRemoteFilesHandler extends AbstractHandler {
 					return null;
 				}
 				
-			    Diagnostic diagnostic = MICOBSUtil.getDefault().validateResource(resource, getItemProviderAdapterFactory());
+			    Diagnostic diagnostic = MICOBSUtilProvider.getMICOBSUtil().validateResource(resource, getItemProviderAdapterFactory());
 				
 			    if (diagnostic.getSeverity() != Diagnostic.OK)
 			    {
