@@ -18,6 +18,8 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 
+import com.google.inject.Inject;
+
 import es.uah.aut.srg.micobs.common.MCommonPackage;
 import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.common.MCommonPackageFile;
@@ -26,11 +28,19 @@ import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.MESPLibraryManager;
 import es.uah.aut.srg.micobs.mesp.mespctool.mespctoolPackage;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageSupportedPlatform;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
+import es.uah.aut.srg.micobs.mesp.util.IMESPUtil;
+import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtilProvider;
+import es.uah.aut.srg.micobs.pdl.util.IPDLUtil;
 import es.uah.aut.srg.micobs.xtext.MICOBSElementAbstractScopeProvider;
 
 public abstract class MESPElementAbstractScopeProvider extends
 	MICOBSElementAbstractScopeProvider {
+	
+	@Inject
+	protected IPDLUtil pdlutil;
+	
+	@Inject
+	protected IMESPUtil mesputil;
 
 	/**
 	 * Provides the scope for the list of construction tools installed in the
@@ -73,17 +83,17 @@ public abstract class MESPElementAbstractScopeProvider extends
 		if (swpsp.getOsapi() != null &&
 			swpsp.getOsapi().eIsProxy() == false)
 		{
-			params.addAll(MESPUtil.getDefault().getAllParameters(swpsp.getOsapi()));
+			params.addAll(MESPUtilProvider.getPDLUtil().getAllParameters(swpsp.getOsapi()));
 		}
 		if (swpsp.getOs() != null &&
 			swpsp.getOs().eIsProxy() == false)
 		{
-			params.addAll(MESPUtil.getDefault().getAllParameters(swpsp.getOs()));
+			params.addAll(MESPUtilProvider.getPDLUtil().getAllParameters(swpsp.getOs()));
 		}
 		if (swpsp.getArchitecture() != null &&
 			swpsp.getArchitecture().eIsProxy() == false)
 		{
-			params.addAll(MESPUtil.getDefault().getAllParameters(swpsp.getArchitecture()));
+			params.addAll(MESPUtilProvider.getPDLUtil().getAllParameters(swpsp.getArchitecture()));
 		}
 		if (swpsp.getCompiler() != null &&
 			swpsp.getCompiler().eIsProxy() == false)
@@ -91,22 +101,22 @@ public abstract class MESPElementAbstractScopeProvider extends
 			if (swpsp.getArchitecture() != null &&
 					swpsp.getArchitecture().eIsProxy() == false)
 			{
-				params.addAll(MESPUtil.getDefault().getAllParameters(swpsp.getCompiler()));
+				params.addAll(MESPUtilProvider.getPDLUtil().getAllParameters(swpsp.getCompiler()));
 			}
 			else
 			{
-				params.addAll(MESPUtil.getDefault().getAllParameters(swpsp.getCompiler(), swpsp.getArchitecture()));
+				params.addAll(MESPUtilProvider.getPDLUtil().getAllParameters(swpsp.getCompiler(), swpsp.getArchitecture()));
 			}
 		}
 		if (swpsp.getMicroprocessor() != null &&
 			swpsp.getMicroprocessor().eIsProxy() == false)
 		{
-			params.addAll(MESPUtil.getDefault().getParameters(swpsp.getMicroprocessor()));
+			params.addAll(MESPUtilProvider.getPDLUtil().getParameters(swpsp.getMicroprocessor()));
 		}
 		if (swpsp.getBoard() != null &&
 			swpsp.getBoard().eIsProxy() == false)
 		{
-			params.addAll(MESPUtil.getDefault().getParameters(swpsp.getBoard()));
+			params.addAll(MESPUtilProvider.getPDLUtil().getParameters(swpsp.getBoard()));
 		}
 		
 		return params;

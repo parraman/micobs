@@ -60,139 +60,139 @@ public class MESPBlackBoxUnit {
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static MParameterValueExpression getParameterValue(MParameterValueAssignment assignment, MPlatform platform)
 	{
-		return MESPUtil.getDefault().getParameterValue(assignment, platform);
+		return MESPUtilProvider.getPDLUtil().getParameterValue(assignment, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Boolean matchesPlatform(MOSSupportedPlatform supportedPlatform, MPlatform platform)
 	{
-		return MESPUtil.getDefault().matchesPlatform(supportedPlatform, platform);
+		return MESPUtilProvider.getPDLUtil().matchesPlatform(supportedPlatform, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameterValueAssignment> getAllParameterValueAssignments(MOperatingSystem os, MOperatingSystemAPI osapi)
 	{
-		return MESPUtil.getDefault().getAllParameterValueAssignments(os, osapi);
+		return MESPUtilProvider.getPDLUtil().getAllParameterValueAssignments(os, osapi);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameterValueAssignment> getAllParameterValueAssignments(MOperatingSystem os)
 	{
-		return MESPUtil.getDefault().getAllParameterValueAssignments(os);
+		return MESPUtilProvider.getPDLUtil().getAllParameterValueAssignments(os);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MCompiler> getExtendedCompilers(MCompiler compiler)
 	{
-		return MESPUtil.getDefault().getExtendedCompilers(compiler);
+		return MESPUtilProvider.getPDLUtil().getExtendedCompilers(compiler);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MArchitecture> getExtendedArchitectures(MArchitecture arch)
 	{
-		return MESPUtil.getDefault().getExtendedArchitectures(arch);
+		return MESPUtilProvider.getPDLUtil().getExtendedArchitectures(arch);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MOperatingSystemAPI> getAllSupportedOSAPIs(MOperatingSystem os)
 	{
-		return MESPUtil.getDefault().getAllSupportedOSAPIs(os);
+		return MESPUtilProvider.getPDLUtil().getAllSupportedOSAPIs(os);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MOperatingSystem> getInheritedOperatingSystems(MOperatingSystem os)
 	{
-		return MESPUtil.getDefault().getInheritedOperatingSystems(os);
+		return MESPUtilProvider.getPDLUtil().getInheritedOperatingSystems(os);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MOperatingSystemAPI> getInheritedOSAPIs(MOperatingSystemAPI osapi)
 	{
-		return MESPUtil.getDefault().getInheritedOSAPIs(osapi);
+		return MESPUtilProvider.getPDLUtil().getInheritedOSAPIs(osapi);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameter> getParameters(MPlatform platform)
 	{
-		return MESPUtil.getDefault().getParameters(platform);
+		return MESPUtilProvider.getPDLUtil().getParameters(platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameter> getParameters(MBoard board)
 	{
-		return MESPUtil.getDefault().getParameters(board);
+		return MESPUtilProvider.getPDLUtil().getParameters(board);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameter> getParameters(MMicroprocessor mp)
 	{
-		return MESPUtil.getDefault().getParameters(mp);
+		return MESPUtilProvider.getPDLUtil().getParameters(mp);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameter> getAllParameters(MOperatingSystem os, MPlatform platform)
 	{
-		return MESPUtil.getDefault().getAllParameters(os, platform);
+		return MESPUtilProvider.getPDLUtil().getAllParameters(os, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameter> getAllParameters(MArchitecture arch)
 	{
-		return MESPUtil.getDefault().getAllParameters(arch);
+		return MESPUtilProvider.getPDLUtil().getAllParameters(arch);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MParameter> getAllParameters(MCompiler compiler, MArchitecture arch)
 	{
-		return MESPUtil.getDefault().getAllParameters(compiler, arch);
+		return MESPUtilProvider.getPDLUtil().getAllParameters(compiler, arch);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MEnumParameterDefinition> getAllEnumParameterDefinitions(MCompiler compiler, MArchitecture arch)
 	{
-		return MESPUtil.getDefault().getAllEnumParameterDefinitions(compiler, arch);
+		return MESPUtilProvider.getPDLUtil().getAllEnumParameterDefinitions(compiler, arch);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MEnumParameterDefinition> getAllEnumParameterDefinitions(MArchitecture arch)
 	{
-		return MESPUtil.getDefault().getAllEnumParameterDefinitions(arch);
+		return MESPUtilProvider.getPDLUtil().getAllEnumParameterDefinitions(arch);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Set<MEnumParameterDefinition> getAllEnumParameterDefinitions(MOperatingSystem os)
 	{
-		return MESPUtil.getDefault().getAllEnumParameterDefinitions(os);
+		return MESPUtilProvider.getPDLUtil().getAllEnumParameterDefinitions(os);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Boolean parseBooleanExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments, MPlatform platform)
 	{
-		return MESPUtil.getDefault().parseBooleanExpression(self, assignments, platform);
+		return MESPUtilProvider.getPDLUtil().parseBooleanExpression(self, assignments, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static String parseStringExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments, MPlatform platform)
 	{
-		return MESPUtil.getDefault().parseStringExpression(self, assignments, platform);
+		return MESPUtilProvider.getPDLUtil().parseStringExpression(self, assignments, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Long parseIntegerExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments, MPlatform platform)
 	{
-		return MESPUtil.getDefault().parseIntegerExpression(self, assignments, platform);
+		return MESPUtilProvider.getPDLUtil().parseIntegerExpression(self, assignments, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static Float parseRealExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments, MPlatform platform)
 	{
-		return MESPUtil.getDefault().parseRealExpression(self, assignments, platform);
+		return MESPUtilProvider.getPDLUtil().parseRealExpression(self, assignments, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public static MEnumParameterLiteral parseEnumExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments, MPlatform platform)
 	{
-		return MESPUtil.getDefault().parseEnumExpression(self, assignments, platform);
+		return MESPUtilProvider.getPDLUtil().parseEnumExpression(self, assignments, platform);
 	}
 
 	@Operation(contextual = true, kind = Kind.HELPER)	
@@ -204,7 +204,7 @@ public class MESPBlackBoxUnit {
 	@Operation(contextual = true, kind = Kind.HELPER)	
 	public static MLanguage getLanguage(String uri, String version)
 	{
-		return MESPUtil.getDefault().getLanguage(uri, version);
+		return MESPUtilProvider.getMICOBSUtil().getLanguage(uri, version);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
@@ -258,25 +258,25 @@ public class MESPBlackBoxUnit {
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public String getSumDemands(MMESPDeployment deployment, MMESPDeploymentPlatform dplt, MQuantifiableResource resource)
 	{
-		return MESPUtil.getDefault().getSumDemands(deployment, dplt, resource).toString();
+		return MESPUtilProvider.getMESPUtil().getSumDemands(deployment, dplt, resource).toString();
 	}
 
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public String getSumDemands(MMESPDeploymentAlternative alternative, MMESPDeploymentPlatform dplt, MQuantifiableResource resource)
 	{
-		return MESPUtil.getDefault().getSumDemands(alternative, dplt, resource).toString();
+		return MESPUtilProvider.getMESPUtil().getSumDemands(alternative, dplt, resource).toString();
 	}
 
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public MPlatformSwPackage getPlatformSwPackage(MPlatform platform)
 	{
-		return MESPUtil.getDefault().getPlatformSwPackage(platform);
+		return MESPUtilProvider.getMESPUtil().getPlatformSwPackage(platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MMESPSwPackageDeployment> getAllDeployedSwPackagesFromAlternative(MMESPDeploymentAlternative alternative)
 	{
-		return MESPUtil.getDefault().getAllDeployedSwPackagesFromAlternative(alternative);
+		return MESPUtilProvider.getMESPUtil().getAllDeployedSwPackagesFromAlternative(alternative);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
@@ -284,7 +284,7 @@ public class MESPBlackBoxUnit {
 			MMESPDeploymentAlternative alternative)
 
 	{
-		return MESPUtil.getDefault().getLeafDeploymentAlternatives(alternative);
+		return MESPUtilProvider.getMESPUtil().getLeafDeploymentAlternatives(alternative);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
@@ -292,127 +292,127 @@ public class MESPBlackBoxUnit {
 			MMESPDeployment deployment)
 
 	{
-		return MESPUtil.getDefault().getLeafDeploymentAlternatives(deployment);
+		return MESPUtilProvider.getMESPUtil().getLeafDeploymentAlternatives(deployment);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public boolean matchesPlatform(MSwPackageSupportedPlatform supportedPlatform,
 			MPlatform platform)
 	{
-		return MESPUtil.getDefault().matchesPlatform(supportedPlatform, platform);
+		return MESPUtilProvider.getMESPUtil().matchesPlatform(supportedPlatform, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public MSwPackageSupportedPlatform getMatchingPlatform(MSwPackage swp,
 			MPlatform platform) {
-		return MESPUtil.getDefault().getMatchingPlatform(swp, platform);
+		return MESPUtilProvider.getMESPUtil().getMatchingPlatform(swp, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MQuantifiableResourceDemand> getQuantifiableResourceDemands(MSwPackage swp, MPlatform platform) {
-		return MESPUtil.getDefault().getQuantifiableResourceDemands(swp, platform);
+		return MESPUtilProvider.getMESPUtil().getQuantifiableResourceDemands(swp, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MSwInterface> getAllProvidedSwInterfaces(
 			MMESPDeploymentAlternative alternative) 
 	{
-		return MESPUtil.getDefault().getAllProvidedSwInterfaces(alternative);
+		return MESPUtilProvider.getMESPUtil().getAllProvidedSwInterfaces(alternative);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MSwInterface> getProvidedSwInterfaces(
 			MMESPDeployment deployment) 
 	{
-		return MESPUtil.getDefault().getProvidedSwInterfaces(deployment);
+		return MESPUtilProvider.getMESPUtil().getProvidedSwInterfaces(deployment);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MSwInterface> getAllProvidedSwInterfaces(
 			MAbstractSwPackage aswp) 
 	{
-		return MESPUtil.getDefault().getAllProvidedSwInterfaces(aswp);
+		return MESPUtilProvider.getMESPUtil().getAllProvidedSwInterfaces(aswp);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MSwInterface> getAllEffectivelyProvidedSwInterfaces(
 			MSwPackage swp)
 	{
-		return MESPUtil.getDefault().getAllEffectivelyProvidedSwInterfaces(swp);
+		return MESPUtilProvider.getMESPUtil().getAllEffectivelyProvidedSwInterfaces(swp);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MInstantiableResourceDemand> getInstantiableResourceDemands(
 			MSwPackage swp, MPlatform platform)
 	{
-		return MESPUtil.getDefault().getInstantiableResourceDemands(swp, platform);
+		return MESPUtilProvider.getMESPUtil().getInstantiableResourceDemands(swp, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MQuantifiableResource> getAllQuantifiableResources(MOSSwInterface osswi)
 	{
-		return MESPUtil.getDefault().getAllQuantifiableResources(osswi);
+		return MESPUtilProvider.getMESPUtil().getAllQuantifiableResources(osswi);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MQuantifiableResource> getAllQuantifiableResources(MSwInterface swi)
 	{
-		return MESPUtil.getDefault().getAllQuantifiableResources(swi);
+		return MESPUtilProvider.getMESPUtil().getAllQuantifiableResources(swi);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MParameter> getAllParameters(MSwPackage swp, MPlatform platform)
 	{
-		return MESPUtil.getDefault().getAllParameters(swp, platform);
+		return MESPUtilProvider.getMESPUtil().getAllParameters(swp, platform);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MEnumParameterDefinition> getAllEnumParameterDefinitions(
 			MAbstractSwPackage aswp)
 	{
-		return MESPUtil.getDefault().getAllEnumParameterDefinitions(aswp);
+		return MESPUtilProvider.getMESPUtil().getAllEnumParameterDefinitions(aswp);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MParameterValueAssignment> getAllParameterValueAssignments(MMESPSwPackageDeployment swpd)
 	{
-		return MESPUtil.getDefault().getAllParameterValueAssignments(swpd);
+		return MESPUtilProvider.getMESPUtil().getAllParameterValueAssignments(swpd);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MMESPDeviceDriverMapping> getAllDriverMappings(MMESPDriverSwPackageDeployment swpd)
 	{
-		return MESPUtil.getDefault().getAllDriverMappings(swpd);
+		return MESPUtilProvider.getMESPUtil().getAllDriverMappings(swpd);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MParameterValueAssignment> getAllParameterValueAssignments(MAbstractSwPackage swp, MSwInterface swi)
 	{
-		return MESPUtil.getDefault().getAllParameterValueAssignments(swp, swi);
+		return MESPUtilProvider.getMESPUtil().getAllParameterValueAssignments(swp, swi);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MParameterValueAssignment> getAllParameterValueAssignments(MAbstractSwPackage swp)
 	{
-		return MESPUtil.getDefault().getAllParameterValueAssignments(swp);
+		return MESPUtilProvider.getMESPUtil().getAllParameterValueAssignments(swp);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public Set<MParameterValueAssignment> getAllSwPackageParameterValueAssignments(MMESPDeployment deployment,
 			MMESPDeploymentAlternative alternative)
 	{
-		return MESPUtil.getDefault().getAllSwPackageParameterValueAssignments(deployment, alternative);
+		return MESPUtilProvider.getMESPUtil().getAllSwPackageParameterValueAssignments(deployment, alternative);
 	}
 
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public MOSSwInterface getOSSwInterface(MOperatingSystemAPI osapi)
 	{
-		return MESPUtil.getDefault().getOSSwInterface(osapi);
+		return MESPUtilProvider.getMESPUtil().getOSSwInterface(osapi);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
 	public MParameterValueExpression getDefaultValue(MParameter parameter, MPlatform platform)
 	{
-		return MESPUtil.getDefault().getDefaultValue(parameter, platform);
+		return MESPUtilProvider.getPDLUtil().getDefaultValue(parameter, platform);
 	}
 }

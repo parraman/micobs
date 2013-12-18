@@ -19,7 +19,7 @@ import org.eclipse.ui.dialogs.ElementListSelectionDialog;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentPlatform;
-import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtil;
+import es.uah.aut.srg.micobs.mesp.util.impl.MESPUtilProvider;
 
 /**
  * Helper methods related to the UI.
@@ -107,7 +107,7 @@ public class MESPUtilUI {
 		ElementListSelectionDialog select = new ElementListSelectionDialog(shell, 
 				new MMESPAlternativeLabelProvider());
 		select.setMultipleSelection(false);
-		Set<MMESPDeploymentAlternative> alternatives = MESPUtil.getDefault().getLeafDeploymentAlternatives(deployment);
+		Set<MMESPDeploymentAlternative> alternatives = MESPUtilProvider.getMESPUtil().getLeafDeploymentAlternatives(deployment);
 		select.setElements(alternatives.toArray(new MMESPDeploymentAlternative[alternatives.size()]));
 		select.setTitle("Alternative selection");
 		select.setMessage("Select the deployment alternative");

@@ -67,9 +67,6 @@ MMESPDeployment getDeploymentProject(mespdep::MMESPDeploymentAlternative this):
 		((mespdep::MMESPDeploymentAlternative)this.eContainer).getDeploymentProject()
 	else
 		((MMESPDeployment)this.eContainer);
-
-MCommonPackage getPackage(mespswp::MSwPackage this):
-	((MCommonPackageFile)(this.eContainer)).package;
 		
 Boolean matchesPlatform(mespswp::MSwPackageSupportedPlatform this, MPlatform platform) :
 	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.matchesPlatform(
@@ -244,11 +241,6 @@ Boolean matchesPlatform(MOSSupportedPlatform this, MPlatform platform) :
 			es.uah.aut.srg.micobs.pdl.MOSSupportedPlatform,
 			es.uah.aut.srg.micobs.pdl.MPlatform);
 
-MParameterValueExpression getParameterValue(MParameterValueAssignment this, MPlatform platform) :
-	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getParameterValue(
-			es.uah.aut.srg.micobs.common.MParameterValueAssignment,
-			es.uah.aut.srg.micobs.pdl.MPlatform);
-
 MParameterValueExpression getDefaultValue(MParameter this, MPlatform platform) :
 	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getDefaultValue(
 			es.uah.aut.srg.micobs.common.MParameter,
@@ -257,3 +249,8 @@ MParameterValueExpression getDefaultValue(MParameter this, MPlatform platform) :
 MOSSwInterface getOSSwInterface(MOperatingSystemAPI osapi) : 
 	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getOSSwInterface(
 			es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI);
+
+MParameterValueExpression getParameterValue(MParameterValueAssignment this, MPlatform platform) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getParameterValue(
+			es.uah.aut.srg.micobs.common.MParameterValueAssignment,
+			es.uah.aut.srg.micobs.pdl.MPlatform);

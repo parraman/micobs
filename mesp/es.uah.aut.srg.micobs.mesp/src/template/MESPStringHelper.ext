@@ -10,6 +10,8 @@
  ******************************************************************************/
 import common;
 import system;
+import mespswp;
+import pdl;
 
 String getElementName(MCommonPackageElement element) : JAVA
 	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getElementName(es.uah.aut.srg.micobs.common.MCommonPackageElement);
@@ -34,3 +36,12 @@ String toLowerDefString(String this) : JAVA
 
 String toPlainString(java::lang::Float this) : JAVA
 	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.toPlainString(java.lang.Float);
+
+String getParameterName(MParameter this, MSwPackage swp) :
+	if this.eContainer.metaType == MSwPackageSupportedPlatform ||
+	   this.eContainer.metaType == MDriverSwPackageSupportedPlatform then
+			this.getRelativeObjectName()
+	else if this.eContainer != swp then
+			this.getFullObjectNameToElement()
+	else
+			this.getRelativeObjectName();
