@@ -19,7 +19,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 import es.uah.aut.srg.micobs.system.provider.systemItemProviderAdapterFactory;
-import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
+import es.uah.aut.srg.micobs.util.impl.MICOBSUtilProvider;
 import es.uah.aut.srg.micobs.xtext.MICOBSCancelableDiagnostician;
 import es.uah.aut.srg.micobs.xtext.MICOBSDescriptionAssociator;
 import es.uah.aut.srg.micobs.xtext.MICOBSLazyLinker;
@@ -49,7 +49,7 @@ public class LANGRuntimeModule extends es.uah.aut.srg.micobs.lang.AbstractLANGRu
 
 	public void configureResourceLocator(com.google.inject.Binder binder) {
 		binder.bind(org.eclipse.emf.common.util.ResourceLocator.class).toInstance(MICOBSPlugin.INSTANCE);
-		binder.bind(es.uah.aut.srg.micobs.util.IMICOBSUtil.class).toInstance(MICOBSUtil.getDefault());
+		binder.bind(es.uah.aut.srg.micobs.util.IMICOBSUtil.class).toInstance(MICOBSUtilProvider.getMICOBSUtil());
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
