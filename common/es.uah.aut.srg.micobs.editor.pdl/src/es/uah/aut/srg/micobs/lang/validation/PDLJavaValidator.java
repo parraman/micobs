@@ -22,6 +22,8 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.xtext.validation.Check;
 
+import com.google.inject.Inject;
+
 import es.uah.aut.srg.micobs.common.MEnumParameterDefinition;
 import es.uah.aut.srg.micobs.common.MParameter;
 import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
@@ -46,8 +48,8 @@ import es.uah.aut.srg.micobs.pdl.MParameterOSSPSwitchCase;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.pdl.pdlPackage;
 import es.uah.aut.srg.micobs.pdl.library.pdllibrary.manager.PDLLibraryManager;
+import es.uah.aut.srg.micobs.pdl.util.IPDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLStringHelper;
-import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil;
 import es.uah.aut.srg.micobs.pdl.xtext.PDLAbstractJavaValidator;
 import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
@@ -55,7 +57,9 @@ import es.uah.aut.srg.modeling.util.string.StringHelper;
  
 
 public class PDLJavaValidator extends PDLAbstractJavaValidator {
-	
+
+	@Inject
+	protected IPDLUtil pdlutil;
 
 	@Override
 	public ILibraryManager getFileLibraryManager() throws LibraryManagerException {
@@ -221,7 +225,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 			{		
 				for (MOSSupportedPlatform ossp : os.getSupportedPlatforms())
 				{
-					if (PDLUtil.getDefault().platformIntersection(ossp, extendedOSSP))
+					if (pdlutil.platformIntersection(ossp, extendedOSSP))
 					{
 						found = true;
 						break;
@@ -295,7 +299,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 					{
 						continue;
 					}
-					if (PDLUtil.getDefault().supportsLanguageForArchitecture(ossp.getCompiler(), language, 
+					if (pdlutil.supportsLanguageForArchitecture(ossp.getCompiler(), language, 
 							ossp.getArchitecture()) == false)
 					{
 						error("The compiler " +
@@ -314,7 +318,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 					{
 						continue;
 					}
-					if (PDLUtil.getDefault().supportsLanguageForArchitecture(ossp.getCompiler(), language, 
+					if (pdlutil.supportsLanguageForArchitecture(ossp.getCompiler(), language, 
 							ossp.getArchitecture()) == false)
 					{
 						error("The compiler " +
@@ -373,7 +377,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 		i = 0;
 		for (MOperatingSystem parent : os.getInherits())
 		{
-			for (MOperatingSystemAPI parentOSAPI : PDLUtil.getDefault().getAllSupportedOSAPIs(parent))
+			for (MOperatingSystemAPI parentOSAPI : pdlutil.getAllSupportedOSAPIs(parent))
 			{
 				if (providedOSAPIs.add(parentOSAPI) == false)
 				{
@@ -430,7 +434,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 					{
 							continue;
 					}
-					if (PDLUtil.getDefault().platformIntersection(ossp, otherOSSP))
+					if (pdlutil.platformIntersection(ossp, otherOSSP))
 					{
 						error("OS Supported Platforms intersection is not zero", os,
 							  pdlPackage.eINSTANCE.getMOperatingSystem_SupportedPlatforms(), i);						
@@ -452,7 +456,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 	{
 		if (platform.getOs() != null &&
 			platform.getOs().eIsProxy() == false &&
-			!(PDLUtil.getDefault().getAllSupportedOSAPIs(platform.getOs()).contains(
+			!(pdlutil.getAllSupportedOSAPIs(platform.getOs()).contains(
 				platform.getOsapi())))
 		{
 			error("Operating system " +
@@ -474,7 +478,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 		Long lowerBound, upperBound;
 		
 		try {
-			lowerBound = PDLUtil.getDefault().parseIntegerExpression(supportedDevice.getLowerBound(), Collections.<MParameterValueAssignment> emptySet());
+			lowerBound = util.parseIntegerExpression(supportedDevice.getLowerBound(), Collections.<MParameterValueAssignment> emptySet());
 		} catch (NumberFormatException e)
 		{
 			error(e.getMessage(),
@@ -488,7 +492,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 		}
 		
 		try {
-			upperBound = PDLUtil.getDefault().parseIntegerExpression(supportedDevice.getUpperBound(), Collections.<MParameterValueAssignment> emptySet());
+			upperBound = util.parseIntegerExpression(supportedDevice.getUpperBound(), Collections.<MParameterValueAssignment> emptySet());
 		} catch (NumberFormatException e)
 		{
 			error(e.getMessage(),
@@ -599,7 +603,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 		}
 		MOperatingSystem os = platform.getOs();
 		
-		if (!PDLUtil.getDefault().supportsPlatform(os, platform))
+		if (!pdlutil.supportsPlatform(os, platform))
 		{
 			error("The implementations of the operating system " +
 				  PDLStringHelper.getInstance().getElementName(platform.getOs()) +
@@ -747,7 +751,7 @@ public class PDLJavaValidator extends PDLAbstractJavaValidator {
 					{
 						continue;
 					}
-					assignments.putAll(PDLUtil.getDefault().getMapAllParameterValueAssignments(parentOS,
+					assignments.putAll(pdlutil.getMapAllParameterValueAssignments(parentOS,
 						sosapi.getOsapi()));
 				}
 				

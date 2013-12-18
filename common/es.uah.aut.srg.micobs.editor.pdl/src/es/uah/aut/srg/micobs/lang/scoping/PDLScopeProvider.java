@@ -19,6 +19,8 @@ import java.util.Set;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.xtext.scoping.IScope;
 
+import com.google.inject.Inject;
+
 import es.uah.aut.srg.micobs.common.MCommonPackage;
 import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.common.MCommonPackageFile;
@@ -47,7 +49,7 @@ import es.uah.aut.srg.micobs.pdl.MParameterOSSPSwitch;
 import es.uah.aut.srg.micobs.pdl.MParameterOSSPSwitchCase;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.pdl.library.pdllibrary.manager.PDLLibraryManager;
-import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil;
+import es.uah.aut.srg.micobs.pdl.util.IPDLUtil;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 import es.uah.aut.srg.micobs.xtext.MICOBSElementAbstractScopeProvider;
 
@@ -55,6 +57,9 @@ import es.uah.aut.srg.micobs.xtext.MICOBSElementAbstractScopeProvider;
  * This class contains custom scoping description.
  */
 public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
+	
+	@Inject
+	protected IPDLUtil pdlutil;
 	
 	/**
 	 * Provides the scope for the parameters whose values can be assigned
@@ -79,13 +84,13 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		{
 			if (iosapi.eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(iosapi));
+				params.addAll(pdlutil.getAllParameters(iosapi));
 			}
 		}
 		
 		IScope outerScope = getFullObjectScope(params);
 		
-		return getRelativeObjectScope(PDLUtil.getDefault().getParameters(sosapi.getOsapi()), outerScope);
+		return getRelativeObjectScope(pdlutil.getParameters(sosapi.getOsapi()), outerScope);
 	}
 	
 	/**
@@ -103,20 +108,20 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 
 		MOperatingSystem os = (MOperatingSystem)sosapi.eContainer();
 		
-		Set<MParameter> params = PDLUtil.getDefault().getParameters(os);
+		Set<MParameter> params = pdlutil.getParameters(os);
 
 		for (MOperatingSystem ios : os.getInherits())
 		{
 			if (ios.eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(ios));
+				params.addAll(pdlutil.getAllParameters(ios));
 			}
 		}
 		
 		if (sosapi.getOsapi() != null &&
 			sosapi.getOsapi().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getAllParameters(sosapi.getOsapi()));
+			params.addAll(pdlutil.getAllParameters(sosapi.getOsapi()));
 		}
 		
 		if (pva.getParameter() != null &&
@@ -157,26 +162,26 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 
 		MOperatingSystem os = (MOperatingSystem)sosapi.eContainer();
 		
-		Set<MParameter> params = PDLUtil.getDefault().getParameters(os);
+		Set<MParameter> params = pdlutil.getParameters(os);
 
 		for (MOperatingSystem ios : os.getInherits())
 		{
 			if (ios.eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(ios));
+				params.addAll(pdlutil.getAllParameters(ios));
 			}
 		}
 		
 		if (sosapi.getOsapi() != null &&
 			sosapi.getOsapi().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getAllParameters(sosapi.getOsapi()));
+			params.addAll(pdlutil.getAllParameters(sosapi.getOsapi()));
 		}
 		
 		if (pvaSwitchCase.getPlatform() != null &&
 			pvaSwitchCase.getPlatform().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getParameters(pvaSwitchCase.getPlatform()));
+			params.addAll(pdlutil.getParameters(pvaSwitchCase.getPlatform()));
 		}
 		
 		if (pva.getParameter() != null &&
@@ -216,13 +221,13 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 
 		MOperatingSystem os = (MOperatingSystem)parameter.eContainer();
 		
-		Set<MParameter> params = PDLUtil.getDefault().getParameters(os);
+		Set<MParameter> params = pdlutil.getParameters(os);
 
 		for (MOperatingSystem ios : os.getInherits())
 		{
 			if (ios.eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(ios));
+				params.addAll(pdlutil.getAllParameters(ios));
 			}
 		}
 		
@@ -231,14 +236,14 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (sosapi.getOsapi() != null &&
 				sosapi.getOsapi().eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(sosapi.getOsapi()));
+				params.addAll(pdlutil.getAllParameters(sosapi.getOsapi()));
 			}
 		}
 		
 		if (switchCase.getPlatform() != null &&
 			switchCase.getPlatform().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getParameters(switchCase.getPlatform()));
+			params.addAll(pdlutil.getParameters(switchCase.getPlatform()));
 			params.addAll(getAllPlatformParameters(switchCase.getPlatform()));
 		}
 		
@@ -297,7 +302,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			{
 				if (iosapi.eIsProxy() == false)
 				{
-					params.addAll(PDLUtil.getDefault().getAllParameters(iosapi));
+					params.addAll(pdlutil.getAllParameters(iosapi));
 				}
 			}
 			for (MParameter param : osapi.getParameters())
@@ -336,7 +341,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			{
 				if (ios.eIsProxy() == false)
 				{
-					params.addAll(PDLUtil.getDefault().getAllParameters(ios));
+					params.addAll(pdlutil.getAllParameters(ios));
 				}
 			}
 			
@@ -370,13 +375,13 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			MOSSupportedPlatform ossp = (MOSSupportedPlatform)parameter.eContainer();
 			MOperatingSystem os = (MOperatingSystem)ossp.eContainer();
 			
-			Set<MParameter> params = PDLUtil.getDefault().getParameters(os);
+			Set<MParameter> params = pdlutil.getParameters(os);
 				
 			for (MOperatingSystem ios : os.getInherits())
 			{
 				if (ios.eIsProxy() == false)
 				{
-					params.addAll(PDLUtil.getDefault().getAllParameters(ios));
+					params.addAll(pdlutil.getAllParameters(ios));
 				}
 			}
 			
@@ -417,7 +422,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			{
 				if (eArch.eIsProxy() == false)
 				{
-					params.addAll(PDLUtil.getDefault().getAllParameters(eArch));
+					params.addAll(pdlutil.getAllParameters(eArch));
 				}
 			}
 			
@@ -456,7 +461,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			{
 				if (eComp.eIsProxy() == false)
 				{
-					params.addAll(PDLUtil.getDefault().getAllParameters(eComp));
+					params.addAll(pdlutil.getAllParameters(eComp));
 				}
 			}
 			
@@ -496,12 +501,12 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			{
 				if (architecture.eIsProxy() == false)
 				{
-					params.addAll(PDLUtil.getDefault().getAllParameters(architecture));
+					params.addAll(pdlutil.getAllParameters(architecture));
 					for (MCompiler eComp : compiler.getExtends())
 					{
 						if (eComp.eIsProxy() == false)
 						{
-							params.addAll(PDLUtil.getDefault().getAllParameters(eComp, architecture));
+							params.addAll(pdlutil.getAllParameters(eComp, architecture));
 						}
 					}
 				}
@@ -565,7 +570,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (microprocessor.getArchitecture() != null &&
 				microprocessor.getArchitecture().eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(microprocessor.getArchitecture()));
+				params.addAll(pdlutil.getAllParameters(microprocessor.getArchitecture()));
 			}
 			
 			IScope outerScope = getFullObjectScope(params);
@@ -602,7 +607,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (board.getMicroprocessor() != null &&
 				board.getMicroprocessor().eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getParameters(board.getMicroprocessor()));
+				params.addAll(pdlutil.getParameters(board.getMicroprocessor()));
 			}
 			
 			IScope outerScope = getFullObjectScope(params);
@@ -671,17 +676,17 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		if (platform.getOsapi() != null &&
 			platform.getOsapi().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(platform.getOsapi()));
+			outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(platform.getOsapi()));
 		}
 		if (platform.getOs() != null &&
 			platform.getOs().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(platform.getOs(), platform));
+			outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(platform.getOs(), platform));
 		}
 		if (platform.getArchitecture() != null &&
 			platform.getArchitecture().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(platform.getArchitecture()));	
+			outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(platform.getArchitecture()));	
 		}
 		if (platform.getCompiler() != null &&
 			platform.getCompiler().eIsProxy() == false)
@@ -689,29 +694,29 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (platform.getArchitecture() != null &&
 				platform.getArchitecture().eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(platform.getCompiler(), platform.getArchitecture()));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(platform.getCompiler(), platform.getArchitecture()));
 			}
 			else
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(platform.getCompiler()));	
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(platform.getCompiler()));	
 			}
 		}
 		if (platform.getMicroprocessor() != null &&
 			platform.getMicroprocessor().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getEnumParameterDefinitions(platform.getMicroprocessor()));
+			outerDefs.addAll(pdlutil.getEnumParameterDefinitions(platform.getMicroprocessor()));
 		}
 		if (platform.getBoard() != null &&
 			platform.getBoard().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getEnumParameterDefinitions(platform.getBoard()));
+			outerDefs.addAll(pdlutil.getEnumParameterDefinitions(platform.getBoard()));
 			for (MBoardSupportedDevice sdevice : platform.getBoard().getSupportedDevices())
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getEnumParameterDefinitions(sdevice.getDevice()));
+				outerDefs.addAll(pdlutil.getEnumParameterDefinitions(sdevice.getDevice()));
 			}
 		}
 		IScope outerScope = getFullObjectScope(outerDefs);
-		return getSimpleObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(platform), outerScope);
+		return getSimpleObjectScope(pdlutil.getEnumParameterDefinitions(platform), outerScope);
 	}
 
 	/**
@@ -730,7 +735,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		{
 			if (ios.eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(ios));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(ios));
 			}
 		}
 
@@ -739,12 +744,12 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (sosapi.getOsapi() != null &&
 				sosapi.getOsapi().eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(sosapi.getOsapi()));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(sosapi.getOsapi()));
 			}
 		}
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(os), outerScope);
+		return getSimpleObjectScope(pdlutil.getEnumParameterDefinitions(os), outerScope);
 	}
 	
 	/**
@@ -760,13 +765,13 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 	{	
 		MOperatingSystem os = (MOperatingSystem)ossp.eContainer().eContainer();
 
-		Set<MEnumParameterDefinition> outerDefs = PDLUtil.getDefault().getEnumParameterDefinitions(os);
+		Set<MEnumParameterDefinition> outerDefs = pdlutil.getEnumParameterDefinitions(os);
 		
 		for (MOperatingSystem ios : os.getInherits())
 		{
 			if (ios.eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(ios));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(ios));
 			}
 		}
 		for (MOSSupportedOSAPI sosapi : os.getSupportedOSAPIs())
@@ -774,14 +779,14 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (sosapi.getOsapi() != null &&
 				sosapi.getOsapi().eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(sosapi.getOsapi()));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(sosapi.getOsapi()));
 			}
 		}
 		
 		if (ossp.getArchitecture() != null &&
 			ossp.getArchitecture().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(ossp.getArchitecture()));
+			outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(ossp.getArchitecture()));
 		}
 		if (ossp.getCompiler() != null &&
 			ossp.getCompiler().eIsProxy() == false)
@@ -789,31 +794,31 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (ossp.getArchitecture() != null &&
 					ossp.getArchitecture().eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(ossp.getCompiler(), ossp.getArchitecture()));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(ossp.getCompiler(), ossp.getArchitecture()));
 			}
 			else
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(ossp.getCompiler()));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(ossp.getCompiler()));
 			}
 		}	
 		if (ossp.getMicroprocessor() != null &&
 			ossp.getMicroprocessor().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getEnumParameterDefinitions(ossp.getMicroprocessor()));
+			outerDefs.addAll(pdlutil.getEnumParameterDefinitions(ossp.getMicroprocessor()));
 		}
 		if (ossp.getBoard() != null &&
 			ossp.getBoard().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getEnumParameterDefinitions(ossp.getBoard()));
+			outerDefs.addAll(pdlutil.getEnumParameterDefinitions(ossp.getBoard()));
 			for (MBoardSupportedDevice sdevice : ossp.getBoard().getSupportedDevices())
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getEnumParameterDefinitions(sdevice.getDevice()));
+				outerDefs.addAll(pdlutil.getEnumParameterDefinitions(sdevice.getDevice()));
 			}
 		}
 	
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(ossp), outerScope);
+		return getSimpleObjectScope(pdlutil.getEnumParameterDefinitions(ossp), outerScope);
 	}
 	
 	/**
@@ -832,13 +837,13 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		{
 			if (iosapi.eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(iosapi));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(iosapi));
 			}
 		}
 		
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(osapi), outerScope);
+		return getSimpleObjectScope(pdlutil.getEnumParameterDefinitions(osapi), outerScope);
 	}
 	
 	/**
@@ -857,12 +862,12 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		{
 			if (eArch.eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(eArch));
+				outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(eArch));
 			}
 		}
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(architecture), outerScope);
+		return getSimpleObjectScope(pdlutil.getEnumParameterDefinitions(architecture), outerScope);
 	}
 	
 	/**
@@ -880,12 +885,12 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		if (microprocessor.getArchitecture() != null &&
 			microprocessor.getArchitecture().eIsProxy() == false)
 		{
-			outerDefs.addAll(PDLUtil.getDefault().getAllEnumParameterDefinitions(microprocessor.getArchitecture()));
+			outerDefs.addAll(pdlutil.getAllEnumParameterDefinitions(microprocessor.getArchitecture()));
 		}
 		
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(microprocessor), outerScope);
+		return getSimpleObjectScope(pdlutil.getEnumParameterDefinitions(microprocessor), outerScope);
 	}
 	
 	/**
@@ -905,13 +910,13 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (sdevice.getDevice() != null &&
 				sdevice.getDevice().eIsProxy() == false)
 			{
-				outerDefs.addAll(PDLUtil.getDefault().getEnumParameterDefinitions(sdevice.getDevice()));
+				outerDefs.addAll(pdlutil.getEnumParameterDefinitions(sdevice.getDevice()));
 			}
 		}
 		
 		IScope outerScope = getFullObjectScope(outerDefs);
 		
-		return getSimpleObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(board), outerScope);
+		return getSimpleObjectScope(pdlutil.getEnumParameterDefinitions(board), outerScope);
 	}
 	
 	/**
@@ -924,7 +929,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 	 */
 	public IScope scope_MEnumParameter_enumDefinition(final MDevice device, EReference reference)
 	{	
-		return getFullObjectScope(PDLUtil.getDefault().getEnumParameterDefinitions(device));
+		return getFullObjectScope(pdlutil.getEnumParameterDefinitions(device));
 	}
 			
 	/**
@@ -1132,7 +1137,7 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		if (ossp.getArchitecture() != null &&
 			ossp.getArchitecture().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getAllParameters(ossp.getArchitecture()));
+			params.addAll(pdlutil.getAllParameters(ossp.getArchitecture()));
 		}
 		if (ossp.getCompiler() != null &&
 			ossp.getCompiler().eIsProxy() == false)
@@ -1140,22 +1145,22 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (ossp.getArchitecture() != null &&
 				ossp.getArchitecture().eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(ossp.getCompiler()));
+				params.addAll(pdlutil.getAllParameters(ossp.getCompiler()));
 			}
 			else
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(ossp.getCompiler(), ossp.getArchitecture()));
+				params.addAll(pdlutil.getAllParameters(ossp.getCompiler(), ossp.getArchitecture()));
 			}
 		}
 		if (ossp.getMicroprocessor() != null &&
 			ossp.getMicroprocessor().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getParameters(ossp.getMicroprocessor()));
+			params.addAll(pdlutil.getParameters(ossp.getMicroprocessor()));
 		}
 		if (ossp.getBoard() != null &&
 			ossp.getBoard().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getParameters(ossp.getBoard()));
+			params.addAll(pdlutil.getParameters(ossp.getBoard()));
 		}
 		
 		return params;
@@ -1175,17 +1180,17 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 		if (platform.getOsapi() != null &&
 			platform.getOsapi().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getAllParameters(platform.getOsapi()));
+			params.addAll(pdlutil.getAllParameters(platform.getOsapi()));
 		}
 		if (platform.getOs() != null &&
 			platform.getOs().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getAllParameters(platform.getOs()));
+			params.addAll(pdlutil.getAllParameters(platform.getOs()));
 		}
 		if (platform.getArchitecture() != null &&
 			platform.getArchitecture().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getAllParameters(platform.getArchitecture()));
+			params.addAll(pdlutil.getAllParameters(platform.getArchitecture()));
 		}
 		if (platform.getCompiler() != null &&
 			platform.getCompiler().eIsProxy() == false)
@@ -1193,22 +1198,22 @@ public class PDLScopeProvider extends MICOBSElementAbstractScopeProvider {
 			if (platform.getArchitecture() != null &&
 				platform.getArchitecture().eIsProxy() == false)
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(platform.getCompiler()));
+				params.addAll(pdlutil.getAllParameters(platform.getCompiler()));
 			}
 			else
 			{
-				params.addAll(PDLUtil.getDefault().getAllParameters(platform.getCompiler(), platform.getArchitecture()));
+				params.addAll(pdlutil.getAllParameters(platform.getCompiler(), platform.getArchitecture()));
 			}
 		}
 		if (platform.getMicroprocessor() != null &&
 			platform.getMicroprocessor().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getParameters(platform.getMicroprocessor()));
+			params.addAll(pdlutil.getParameters(platform.getMicroprocessor()));
 		}
 		if (platform.getBoard() != null &&
 			platform.getBoard().eIsProxy() == false)
 		{
-			params.addAll(PDLUtil.getDefault().getParameters(platform.getBoard()));
+			params.addAll(pdlutil.getParameters(platform.getBoard()));
 		}
 		
 		return params;

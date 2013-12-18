@@ -19,7 +19,7 @@ import org.eclipse.xtext.naming.IQualifiedNameProvider;
 
 import es.uah.aut.srg.micobs.pdl.plugin.PDLPlugin;
 import es.uah.aut.srg.micobs.pdl.provider.pdlItemProviderAdapterFactory;
-import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil;
+import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtilProvider;
 import es.uah.aut.srg.micobs.xtext.MICOBSCancelableDiagnostician;
 import es.uah.aut.srg.micobs.xtext.MICOBSDescriptionAssociator;
 import es.uah.aut.srg.micobs.xtext.MICOBSLazyLinker;
@@ -49,8 +49,8 @@ public class PDLRuntimeModule extends es.uah.aut.srg.micobs.lang.AbstractPDLRunt
 	
 	public void configureResourceLocator(com.google.inject.Binder binder) {
 		binder.bind(org.eclipse.emf.common.util.ResourceLocator.class).toInstance(PDLPlugin.INSTANCE);
-		binder.bind(es.uah.aut.srg.micobs.util.IMICOBSUtil.class).toInstance(PDLUtil.getDefault());
-		binder.bind(es.uah.aut.srg.micobs.pdl.util.IPDLUtil.class).toInstance(PDLUtil.getDefault());
+		binder.bind(es.uah.aut.srg.micobs.util.IMICOBSUtil.class).toInstance(PDLUtilProvider.getMICOBSUtil());
+		binder.bind(es.uah.aut.srg.micobs.pdl.util.IPDLUtil.class).toInstance(PDLUtilProvider.getPDLUtil());
 	}
 	
 	public Class<? extends ILinkingDiagnosticMessageProvider> bindILinkingDiagnosticMessageProvider() {
