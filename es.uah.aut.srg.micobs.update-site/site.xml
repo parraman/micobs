@@ -3,19 +3,19 @@
    <description name="MICOBS update site" url="http://www.micobs.com/eclipse/update/2.1.x">
       MICOBS Framework update site
    </description>
-   <feature url="features/es.uah.aut.srg.micobs.common_2.1.12.jar" id="es.uah.aut.srg.micobs.common" version="2.1.12">
+   <feature url="features/es.uah.aut.srg.micobs.common_2.1.13.jar" id="es.uah.aut.srg.micobs.common" version="2.1.13">
       <category name="es.uah.aut.srg.micobs.common.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.langs_2.1.0.jar" id="es.uah.aut.srg.micobs.langs" version="2.1.0">
+   <feature url="features/es.uah.aut.srg.micobs.langs_2.1.1.jar" id="es.uah.aut.srg.micobs.langs" version="2.1.1">
       <category name="es.uah.aut.srg.micobs.common.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp_2.1.10.jar" id="es.uah.aut.srg.micobs.mesp" version="2.1.10">
+   <feature url="features/es.uah.aut.srg.micobs.mesp_2.1.11.jar" id="es.uah.aut.srg.micobs.mesp" version="2.1.11">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp.ctools_2.1.7.jar" id="es.uah.aut.srg.micobs.mesp.ctools" version="2.1.7">
+   <feature url="features/es.uah.aut.srg.micobs.mesp.ctools_2.1.8.jar" id="es.uah.aut.srg.micobs.mesp.ctools" version="2.1.8">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp.langs_2.1.2.jar" id="es.uah.aut.srg.micobs.mesp.langs" version="2.1.2">
+   <feature url="features/es.uah.aut.srg.micobs.mesp.langs_2.1.3.jar" id="es.uah.aut.srg.micobs.mesp.langs" version="2.1.3">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
    <category-def name="es.uah.aut.srg.micobs.common.category.id" label="MICOBS Common">
