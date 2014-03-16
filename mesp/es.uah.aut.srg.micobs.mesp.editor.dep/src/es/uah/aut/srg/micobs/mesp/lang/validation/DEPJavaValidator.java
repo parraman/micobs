@@ -883,6 +883,20 @@ public class DEPJavaValidator extends MESPAbstractJavaValidator {
 						MESPStringHelper.getDefault().getElementName(map.getDeployedDevice().getDevice()),
 						map, mespdepPackage.eINSTANCE.getMMESPDeviceDriverMapping_SupportedDevice(), -1);
 			}
+			MMESPDeploymentPlatform dplt = (MMESPDeploymentPlatform) map.getDeployedDevice().eContainer();
+			MDriverSwPackageSupportedPlatform swpsp = (MDriverSwPackageSupportedPlatform) map.getSupportedDevice().eContainer();
+			
+			if (dplt.getPlatform() != null &&
+				dplt.getPlatform().eIsProxy() == false &&
+				mesputil.matchesPlatform(swpsp, dplt.getPlatform()) == false)
+			{
+				error("The supported platform " +
+						MESPStringHelper.getDefault().getRelativeObjectName(swpsp) +
+						" does not match with deployment platform " +
+						MESPStringHelper.getDefault().getElementName(dplt.getPlatform()),
+						map, mespdepPackage.eINSTANCE.getMMESPDeviceDriverMapping_SupportedDevice(), -1);
+			}
+			
 			if (devmap.get(map.getSupportedDevice()) == null)
 			{
 				devmap.put(map.getSupportedDevice(), new HashSet<MMESPDeployedDevice>());
