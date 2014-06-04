@@ -14,6 +14,7 @@ import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.lang.asm_SPARC_v8.plugin.LangAsm_SPARC_v8Plugin;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.systemPackage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 
 
@@ -38,7 +39,9 @@ public class LangAsm_SPARC_v8Util {
 		{
 			try {
 				MCommonPackageElement element = 
-						SystemLibraryManager.getLibraryManager().getElement(LANGUAGE_ASM_SPARC_V8_URI, LANGUAGE_ASM_SPARC_V8_VERSION);
+						SystemLibraryManager.getLibraryManager().getElement(
+								systemPackage.eINSTANCE.getMLanguage(),
+								LANGUAGE_ASM_SPARC_V8_URI, LANGUAGE_ASM_SPARC_V8_VERSION);
 				if (element != null &&
 					element instanceof MLanguage)
 				{

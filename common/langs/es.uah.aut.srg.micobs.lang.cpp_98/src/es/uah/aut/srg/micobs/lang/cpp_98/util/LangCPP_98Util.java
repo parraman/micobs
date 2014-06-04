@@ -14,6 +14,7 @@ import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.lang.cpp_98.plugin.LangCPP_98Plugin;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.systemPackage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 
 
@@ -38,7 +39,9 @@ public class LangCPP_98Util {
 		{
 			try {
 				MCommonPackageElement element = 
-						SystemLibraryManager.getLibraryManager().getElement(LANGUAGE_CPP_98_URI, LANGUAGE_CPP_98_VERSION);
+						SystemLibraryManager.getLibraryManager().getElement(
+								systemPackage.eINSTANCE.getMLanguage(),
+								LANGUAGE_CPP_98_URI, LANGUAGE_CPP_98_VERSION);
 				if (element != null &&
 					element instanceof MLanguage)
 				{

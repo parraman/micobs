@@ -14,6 +14,7 @@ import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.lang.c_c99.plugin.LangC_C99Plugin;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.systemPackage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 
 
@@ -38,7 +39,9 @@ public class LangC_C99Util {
 		{
 			try {
 				MCommonPackageElement element = 
-						SystemLibraryManager.getLibraryManager().getElement(LANGUAGE_C_C99_URI, LANGUAGE_C_C99_VERSION);
+						SystemLibraryManager.getLibraryManager().getElement(
+								systemPackage.eINSTANCE.getMLanguage(),
+								LANGUAGE_C_C99_URI, LANGUAGE_C_C99_VERSION);
 				if (element != null &&
 					element instanceof MLanguage)
 				{
