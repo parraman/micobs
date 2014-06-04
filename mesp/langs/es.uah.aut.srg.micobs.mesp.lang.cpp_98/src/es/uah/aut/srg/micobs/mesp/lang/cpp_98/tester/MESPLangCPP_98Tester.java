@@ -8,15 +8,14 @@ import org.eclipse.xtext.resource.XtextResourceSet;
 
 import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.common.MCommonPackageFile;
-import es.uah.aut.srg.micobs.library.LibraryManagerException;
-import es.uah.aut.srg.micobs.mesp.lang.cpp_98.plugin.MESPLangCPP_98Plugin;
+import es.uah.aut.srg.micobs.lang.cpp_98.util.LangCPP_98Util;
 import es.uah.aut.srg.micobs.mesp.mesposswi.MOSSwInterface;
 import es.uah.aut.srg.micobs.mesp.mesposswp.MOSSwPackage;
 import es.uah.aut.srg.micobs.mesp.mespswi.MSwInterface;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystem;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI;
-import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
+import es.uah.aut.srg.micobs.system.MLanguage;
 
 public class MESPLangCPP_98Tester extends PropertyTester {
 
@@ -39,43 +38,44 @@ public class MESPLangCPP_98Tester extends PropertyTester {
 			MCommonPackageFile newPack = (MCommonPackageFile)destRes.getContents().get(0);
 			MCommonPackageElement newElement = newPack.getElement();
 			
-			try {
-				if (newElement instanceof MSwPackage &&
-					((MSwPackage)newElement).getLanguages().contains(SystemLibraryManager.getLibraryManager().getElement(LANGUAGE_CPP_98_URI, LANGUAGE_CPP_98_VERSION)))
-				{
-					return true;
-				}
-				else if (newElement instanceof MSwInterface &&
-					((MSwInterface)newElement).getLanguage() == SystemLibraryManager.getLibraryManager().getElement(LANGUAGE_CPP_98_URI, LANGUAGE_CPP_98_VERSION))
-				{
-					return true;
-				}
-				else if (newElement instanceof MOSSwInterface)
-				{
-					MOSSwInterface osswi = (MOSSwInterface) newElement;
-					if (osswi.getReferencedElement() != null &&
-						osswi.getReferencedElement() instanceof MOperatingSystemAPI &&
-						((MOperatingSystemAPI)osswi.getReferencedElement()).getLanguage() ==
-						SystemLibraryManager.getLibraryManager().getElement(LANGUAGE_CPP_98_URI, LANGUAGE_CPP_98_VERSION))
-					{
-						return true;
-					}
-				}
-				else if (newElement instanceof MOSSwPackage)
-				{
-					MOSSwPackage osswp = (MOSSwPackage) newElement;
-					if (osswp.getReferencedElement() != null &&
-						osswp.getReferencedElement() instanceof MOperatingSystem &&
-						((MOperatingSystem)osswp.getReferencedElement()).getLanguages().contains(
-						SystemLibraryManager.getLibraryManager().getElement(LANGUAGE_CPP_98_URI, LANGUAGE_CPP_98_VERSION)))
-					{
-						return true;
-					}
-				}
-			} catch (LibraryManagerException e) {
-				MESPLangCPP_98Plugin.INSTANCE.log(e);
+			MLanguage cpp_98 = LangCPP_98Util.getLanguageCPP_98();
+			
+			if (cpp_98 == null)
+			{
+				// Weird error has happened...
 				return false;
-			}			
+			}
+			
+			if (newElement instanceof MSwPackage &&
+					((MSwPackage)newElement).getLanguages().contains(cpp_98))
+			{
+				return true;
+			}
+			else if (newElement instanceof MSwInterface &&
+				((MSwInterface)newElement).getLanguage() == cpp_98)
+			{
+				return true;
+			}
+			else if (newElement instanceof MOSSwInterface)
+			{
+				MOSSwInterface osswi = (MOSSwInterface) newElement;
+				if (osswi.getReferencedElement() != null &&
+					osswi.getReferencedElement() instanceof MOperatingSystemAPI &&
+					((MOperatingSystemAPI)osswi.getReferencedElement()).getLanguage() == cpp_98)
+				{
+					return true;
+				}
+			}
+			else if (newElement instanceof MOSSwPackage)
+			{
+				MOSSwPackage osswp = (MOSSwPackage) newElement;
+				if (osswp.getReferencedElement() != null &&
+					osswp.getReferencedElement() instanceof MOperatingSystem &&
+					((MOperatingSystem)osswp.getReferencedElement()).getLanguages().contains(cpp_98))
+				{
+					return true;
+				}
+			}
 		}
 		return false;
 	}
