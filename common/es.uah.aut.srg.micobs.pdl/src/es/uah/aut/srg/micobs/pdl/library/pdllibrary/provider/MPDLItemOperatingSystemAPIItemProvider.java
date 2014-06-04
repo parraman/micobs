@@ -25,7 +25,6 @@ import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.jface.viewers.StyledString;
 
 import es.uah.aut.srg.micobs.common.MCommonPackageItem;
-import es.uah.aut.srg.micobs.pdl.library.pdllibrary.MPDLItemOperatingSystemAPI;
 import es.uah.aut.srg.micobs.util.impl.MICOBSAdapterFactoryLabelProvider.IStyledTextProvider;
 
 /**
@@ -78,7 +77,10 @@ public class MPDLItemOperatingSystemAPIItemProvider
 	 */
 	@Override
 	public String getText(Object object) {
-		String label = ((MPDLItemOperatingSystemAPI)object).getUri();
+		String[] tmp = ((MCommonPackageItem)object).getUri().split("[.]");
+		String label = "";
+		if (tmp != null && tmp.length >= 1)
+			label = tmp[tmp.length-1];
 		return label == null || label.length() == 0 ?
 			getString("_UI_MPDLItemOperatingSystemAPI_type") :
 			getString("_UI_MPDLItemOperatingSystemAPI_type") + " " + label;
