@@ -22,6 +22,7 @@ import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.systemPackage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 
 /**
@@ -103,7 +104,9 @@ public class LanguageAdapterFactory {
 				MCommonPackageElement element = null;
 				
 				try {
-					element = SystemLibraryManager.getLibraryManager().getElement(uri, version);
+					element = SystemLibraryManager.getLibraryManager().getElement(
+							systemPackage.eINSTANCE.getMLanguage(),
+							uri, version);
 				} catch (LibraryManagerException e) {
 					MICOBSPlugin.INSTANCE.log(e);
 					continue;

@@ -159,21 +159,25 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 						handleDiagnostic(diagnostic);
 						return null;
 				    }
-						
+					
+				    String elementClassifier = packageFile.getElement().eClass().getName();
 					String elementURI = packageFile.getElement().getUri();
 					String elementVersion = packageFile.getElement().getVersion();
 					
 					MCommonPackageVersionedItem oldItem = null;
+					MCommonPackageElement oldElement = null;
 					
 					try {
-						if ((oldItem = getLibraryManager().getVersionedItem(elementURI, elementVersion)) != null)
+						if ((oldElement = getLibraryManager().getElement(packageFile.getElement().eClass(), 
+								elementURI, elementVersion)) != null)
 						{
 							// There was a previous element with the same name!
+							oldItem = getLibraryManager().getVersionedItem(oldElement);
 							if (MessageDialog.openQuestion(parentShell, "Item previously exists!", "Item with the same URI <" +
 									elementURI + "> and version <" + elementVersion + "> previously exists. Overwrite?"))
 							{
 								try {
-									getLibraryManager().removeElement(elementURI, elementVersion);
+									getLibraryManager().removeElement(oldElement.eClass(), elementURI, elementVersion);
 								} catch (LibraryManagerException e) {
 									MessageDialog.openError(parentShell, "Remove Element", "Error when removing the element");
 									return null;
@@ -199,7 +203,8 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 										MICOBSStringHelper.getInstance().getElementName(referencedElement) + " previously exists. Overwrite?"))
 								{
 									try {
-										getLibraryManager().removeElement(referencingElement.getUri(), referencingElement.getVersion());
+										getLibraryManager().removeElement(referencingElement.eClass(), 
+												referencingElement.getUri(), referencingElement.getVersion());
 									} catch (LibraryManagerException e) {
 										MessageDialog.openError(parentShell, "Remove Element", "Error when removing the element");
 										return null;
@@ -232,7 +237,8 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 										MICOBSStringHelper.getInstance().getElementName(parameterElement) + " previously exists. Overwrite?"))
 								{
 									try {
-										getLibraryManager().removeElement(referencingElement.getUri(), referencingElement.getVersion());
+										getLibraryManager().removeElement(referencingElement.eClass(),
+												referencingElement.getUri(), referencingElement.getVersion());
 									} catch (LibraryManagerException e) {
 										MessageDialog.openError(parentShell, "Remove Element", "Error when removing the element");
 										return null;
@@ -256,7 +262,9 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 					destPath = destPath.append(ILibraryManager.PACKAGES_FOLDER);
 					destPath = destPath.append(StringHelper.toLowerDefString(packageFile.getPackage().getUri()));
 						
-					destPath = destPath.append(StringHelper.toLowerDefString(elementURI, elementVersion) + "." + resourceExtension);
+					destPath = destPath.append(StringHelper.toLowerDefString(
+							elementClassifier, elementURI, elementVersion) +
+							"." + resourceExtension);
 					
 					File destFile = new File(destPath.toOSString());
 					
@@ -280,7 +288,7 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 								ILibraryManager.LIBRARY_FOLDER + "/" +
 								ILibraryManager.PACKAGES_FOLDER + "/" +
 								StringHelper.toLowerDefString(packageFile.getPackage().getUri()) + "/" +
-								StringHelper.toLowerDefString(elementURI, elementVersion) +
+								StringHelper.toLowerDefString(elementClassifier, elementURI, elementVersion) +
 								"." + resourceExtension, true);
 					} catch (LibraryManagerException e) {
 						throw new ExecutionException(e.toString());

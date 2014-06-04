@@ -19,6 +19,7 @@ import org.eclipse.core.runtime.IExtension;
 import org.eclipse.core.runtime.IPath;
 import org.eclipse.core.runtime.Platform;
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.EClass;
 
 import es.uah.aut.srg.micobs.library.ILibraryManager;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
@@ -27,11 +28,11 @@ import es.uah.aut.srg.modeling.util.file.FileHelper;
 import es.uah.aut.srg.modeling.util.string.StringHelper;
 
 /**
- * This class is used to load a set of model elements when the associated
- * library is loaded. For example, this is used to automatically include
- * the models corresponding to the different supported programming languages.
- * These models are located in specific plugins and loaded when the system
- * library is first recalled.
+ * This class is used to load a set of model elements of a particular class
+ * when the associated library is loaded. For example, this is used to
+ * automatically include the models corresponding to the different supported
+ * programming languages. These models are located in specific plugins and
+ * loaded when the system library is first recalled.
  *
  */
 public class LibraryManagerExtensionHook {
@@ -43,6 +44,7 @@ public class LibraryManagerExtensionHook {
 	private ILibraryManager libraryManager;
 	private String extensionPluginName;
 	private String extensionName;
+	private EClass classifier;
 	
 	/**
 	 * Constructor.
@@ -51,12 +53,17 @@ public class LibraryManagerExtensionHook {
 	 * 						 will be loaded.
 	 * @param extensionPluginName the symbolic name of the plugin that stores the library.
 	 * @param extensionName the name of the extension point used to identify the models.
+	 * @param classifier the class of the elements that will be loaded.
 	 */
-	public LibraryManagerExtensionHook(ILibraryManager libraryManager, String extensionPluginName, String extensionName)
+	public LibraryManagerExtensionHook(ILibraryManager libraryManager, 
+			String extensionPluginName, 
+			String extensionName,
+			EClass classifier)
 	{
 		this.extensionPluginName = extensionPluginName;
 		this.libraryManager = libraryManager;
 		this.extensionName = extensionName;
+		this.classifier = classifier;
 	}
 	
 	/**
@@ -133,9 +140,9 @@ public class LibraryManagerExtensionHook {
 		            libraryManager.addPackage(packageURI);
 				}
 				
-				if (libraryManager.getVersionedItem(uri, version) != null)
+				if (libraryManager.getElement(classifier, uri, version) != null)
 				{
-					libraryManager.removeElement(uri, version);
+					libraryManager.removeElement(classifier, uri, version);
 				}
 				
 				String sourceString = null;
@@ -157,7 +164,8 @@ public class LibraryManagerExtensionHook {
 				destPath = destPath.append(ILibraryManager.LIBRARY_FOLDER);
 				destPath = destPath.append(ILibraryManager.PACKAGES_FOLDER);
 				destPath = destPath.append(StringHelper.toLowerDefString(packageURI));
-				destPath = destPath.append(StringHelper.toLowerDefString(uri, version) + "." + resourceExtension);
+				destPath = destPath.append(StringHelper.toLowerDefString(
+						this.classifier.getName(), uri, version) + "." + resourceExtension);
 				
 				File destFile = new File(destPath.toOSString());
 				try {
@@ -178,7 +186,7 @@ public class LibraryManagerExtensionHook {
 						ILibraryManager.LIBRARY_FOLDER + "/" +
 						ILibraryManager.PACKAGES_FOLDER + "/" +
 						StringHelper.toLowerDefString(packageURI) + "/" +
-						StringHelper.toLowerDefString(uri, version) +
+						StringHelper.toLowerDefString(this.classifier.getName(), uri, version) +
 						"." + resourceExtension, true);
 				
 				libraryManager.putElement(modelURI);

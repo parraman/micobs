@@ -125,7 +125,7 @@ public class LibraryEncoder implements ILibraryEncoder {
 		packDesc.setUri(pack.getUri());
 		descriptors.add(packDesc);
 		
-		MCommonPackageElement element = libraryManager.getElement(item.getUri(), versionedItem.getVersion());
+		MCommonPackageElement element = libraryManager.getElement(versionedItem);
 		
 		if (element == null)
 		{
@@ -179,7 +179,12 @@ public class LibraryEncoder implements ILibraryEncoder {
 			
 			if (elemLibraryManager != null && encoder != null)
 			{
-				MCommonPackageVersionedItem vitem = elemLibraryManager.getVersionedItem(elem.getUri(), elem.getVersion());
+				MCommonPackageVersionedItem vitem = elemLibraryManager.getVersionedItem(elem);
+				if (vitem == null)
+				{
+					// Something really weird happened...
+					return descriptors;
+				}
 				descriptors.addAll(encoder.getDescriptors(vitem));
 			}
 		}

@@ -18,8 +18,8 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EFactory;
 
 import es.uah.aut.srg.micobs.common.MCommonPackageElement;
-import es.uah.aut.srg.micobs.common.MCommonPackageItem;
 import es.uah.aut.srg.micobs.common.MCommonPackageParametricReferencingElement;
+import es.uah.aut.srg.micobs.common.MCommonPackageVersionedItem;
 import es.uah.aut.srg.micobs.common.commonPackage;
 import es.uah.aut.srg.micobs.library.ILibraryManagerPlugin;
 import es.uah.aut.srg.micobs.library.IParametricReferencingLibraryManager;
@@ -148,10 +148,10 @@ public class ParametricReferencingLibraryManager extends ReferencingLibraryManag
 	}
 
 	@Override
-	protected void registerElement(MCommonPackageItem item,
+	protected void registerElement(MCommonPackageVersionedItem versionedItem,
 			MCommonPackageElement element) throws LibraryManagerException {
 
-		super.registerElement(item, element);
+		super.registerElement(versionedItem, element);
 		
 		if (element instanceof MCommonPackageParametricReferencingElement)
 		{
@@ -181,10 +181,11 @@ public class ParametricReferencingLibraryManager extends ReferencingLibraryManag
 	}
 
 	@Override
-	protected void deregisterElement(MCommonPackageElement element)
+	protected void deregisterElement(MCommonPackageVersionedItem versionedItem,
+			MCommonPackageElement element)
 			throws LibraryManagerException {
 
-		super.deregisterElement(element);
+		super.deregisterElement(versionedItem, element);
 		
 		if (element instanceof MCommonPackageParametricReferencingElement)
 		{

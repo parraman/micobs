@@ -73,6 +73,7 @@ import es.uah.aut.srg.micobs.diagnostic.CheckingDiagnostic;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.systemPackage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
@@ -1063,7 +1064,9 @@ public class MICOBSUtil implements IMICOBSUtil {
 		try
 		{
 			MCommonPackageElement element =
-				SystemLibraryManager.getLibraryManager().getElement(uri, version);
+				SystemLibraryManager.getLibraryManager().getElement(
+						systemPackage.eINSTANCE.getMLanguage(),
+						uri, version);
 			if (element instanceof MLanguage)
 			{
 				return (MLanguage) element;

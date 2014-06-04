@@ -22,6 +22,7 @@ import org.eclipse.core.runtime.IPath;
 import org.eclipse.emf.common.command.AbstractCommand;
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.EAttribute;
+import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EStructuralFeature;
 import org.eclipse.emf.ecore.EcorePackage;
 import org.eclipse.emf.edit.EMFEditPlugin;
@@ -74,48 +75,54 @@ public class DeletePackageItemCommand extends AbstractCommand {
      */
     protected abstract class LibraryGhost {
     	
-    	protected String uri;
-
-		public String getUri() {
-			return uri;
-		}
-
-		public LibraryGhost(String uri) {
+		public LibraryGhost() {
 			super();
-			this.uri = uri;
 		}
     	
     };
     
     protected class PackageGhost extends LibraryGhost {
 
-		public PackageGhost(String uri) {
-			super(uri);
-		}
-    
-    };
-    
-    protected class LibraryItemGhost extends LibraryGhost {
+    	private String uri;
 
-		public LibraryItemGhost(String uri) {
-			super(uri);
+		public String getUri() {
+			return uri;
 		}
     	
+		public PackageGhost(String uri) {
+			super();
+			this.uri = uri;
+		}
+    
     };
     
-    protected class LibraryVersionedItemGhost extends LibraryGhost {
+    protected class ElementGhost extends LibraryGhost {
     	
+    	private EClass classifier;
+    	private String uri;
     	private String version;
 
-		public String getVersion() {
-			return version;
-		}
-
-		public LibraryVersionedItemGhost(String uri, String version) {
-			super(uri);
+		public ElementGhost(EClass classifier, String uri, String version) {
+			super();
+			this.classifier = classifier;
+			this.uri = uri;
 			this.version = version;
 		}
     	
+		public EClass getEClass()
+		{
+			return this.classifier;
+		}
+		
+		public String getUri()
+		{
+			return this.uri;
+		}
+		
+		public String getVersion()
+		{
+			return this.version;
+		}
     };
     
     /**
@@ -386,13 +393,29 @@ public class DeletePackageItemCommand extends AbstractCommand {
                 else if (object instanceof MCommonPackageItem)
                 {
                 	MCommonPackageItem item = (MCommonPackageItem)object;
-                	ghosts.add(new LibraryItemGhost(item.getUri()));
+                	for (MCommonPackageVersionedItem versionedItem : item.getVersionedItems())
+                	{
+                    	MCommonPackageElement element;
+    					try {
+    						element = mainLibraryManager.getElement(versionedItem);
+    					} catch (LibraryManagerException e) {
+    						MICOBSPlugin.getPlugin().log(e);
+    						return;
+    					}
+                    	ghosts.add(new ElementGhost(element.eClass(), element.getUri(), element.getVersion()));
+                	}
                 }
                 else if (object instanceof MCommonPackageVersionedItem)
                 {
                 	MCommonPackageVersionedItem versionedItem = (MCommonPackageVersionedItem)object;
-                	MCommonPackageItem item = (MCommonPackageItem)versionedItem.eContainer();
-                	ghosts.add(new LibraryVersionedItemGhost(item.getUri(), versionedItem.getVersion()));
+                	MCommonPackageElement element;
+					try {
+						element = mainLibraryManager.getElement(versionedItem);
+					} catch (LibraryManagerException e) {
+						MICOBSPlugin.getPlugin().log(e);
+						return;
+					}
+                	ghosts.add(new ElementGhost(element.eClass(), element.getUri(), element.getVersion()));
                 }
                 else
                 {
@@ -405,7 +428,8 @@ public class DeletePackageItemCommand extends AbstractCommand {
 	
 	protected void doExecute()
     {	
-		LinkedHashMap<MCommonPackageElement, LibraryManagerElement> elementsToErase = new LinkedHashMap<MCommonPackageElement, LibraryManagerElement>();
+		LinkedHashMap<MCommonPackageElement, LibraryManagerElement> elementsToErase = 
+				new LinkedHashMap<MCommonPackageElement, LibraryManagerElement>();
         
     	modelFiles.clear();
     	packageURIs.clear();
@@ -417,26 +441,18 @@ public class DeletePackageItemCommand extends AbstractCommand {
         	// derived from the user's selection, and the referenced list,
         	// which is the list of elements that reference the elements we
         	// want to delete.
-            if (object instanceof LibraryVersionedItemGhost)
+            if (object instanceof ElementGhost)
             {
             	// We have to add the elements to the list of elements to erase
-            	LibraryVersionedItemGhost ghost = (LibraryVersionedItemGhost)object;
+            	ElementGhost ghost = (ElementGhost)object;
             	
-            	MCommonPackageElement element;
-				try {
-	            	MCommonPackageVersionedItem versionedItem = mainLibraryManager.getVersionedItem(ghost.getUri(), ghost.getVersion());;
-	            	MCommonPackageItem item = (MCommonPackageItem)versionedItem.eContainer();
-					element = mainLibraryManager.getElement(item.getUri(), versionedItem.getVersion());
-				} catch (LibraryManagerException e) {
-					MICOBSPlugin.INSTANCE.log(e);
-					modelFiles.clear();
-					packageURIs.clear();
-					return;
-				}
+            	MCommonPackageElement element = null;
             	
             	// Now we have to add first all the versioned items
             	// corresponding to the elements that this item represents
             	try {
+            		element = mainLibraryManager.getElement(ghost.getEClass(), 
+                			ghost.getUri(), ghost.getVersion());
 					elementsToErase.putAll(getReferencingElements(element, mainLibraryManager));
 				} catch (LibraryManagerException e) {
 					MICOBSPlugin.INSTANCE.log(e);
@@ -445,44 +461,6 @@ public class DeletePackageItemCommand extends AbstractCommand {
 					return;
 				}
             	elementsToErase.put(element, new LibraryManagerElement(element, mainLibraryManager));
-            }
-            else if (object instanceof LibraryItemGhost)
-            {
-            	LibraryItemGhost ghost = (LibraryItemGhost)object;
-            	MCommonPackageItem item;
-            	
-				try {
-					item = mainLibraryManager.getItem(ghost.getUri());
-				} catch (LibraryManagerException e) {
-					MICOBSPlugin.INSTANCE.log(e);
-					modelFiles.clear();
-					packageURIs.clear();
-					return;
-				}
-            	
-            	for (MCommonPackageVersionedItem versionedItem : item.getVersionedItems())
-            	{
-            		MCommonPackageElement element;
-					try {
-						element = mainLibraryManager.getElement(item.getUri(), versionedItem.getVersion());
-					} catch (LibraryManagerException e) {
-						MICOBSPlugin.INSTANCE.log(e);
-						modelFiles.clear();
-						packageURIs.clear();
-						return;
-					}
-            		// Now we have to add first all the versioned items
-                	// corresponding to the elements that this item represents
-                	try {
-						elementsToErase.putAll(getReferencingElements(element, mainLibraryManager));
-					} catch (LibraryManagerException e) {
-						MICOBSPlugin.INSTANCE.log(e);
-						modelFiles.clear();
-						packageURIs.clear();
-						return;
-					}
-                	elementsToErase.put(element, new LibraryManagerElement(element, mainLibraryManager));
-            	}
             }
             else
             {
@@ -496,7 +474,7 @@ public class DeletePackageItemCommand extends AbstractCommand {
                 	{
                 		MCommonPackageElement element;
 						try {
-							element = mainLibraryManager.getElement(item.getUri(), versionedItem.getVersion());
+							element = mainLibraryManager.getElement(versionedItem);
 						} catch (LibraryManagerException e) {
 							MICOBSPlugin.INSTANCE.log(e);
 							modelFiles.clear();
@@ -550,7 +528,7 @@ public class DeletePackageItemCommand extends AbstractCommand {
         	
         	MCommonPackageVersionedItem versionedItem;
 			try {
-				versionedItem = manager.getVersionedItem(element.getUri(), element.getVersion());
+				versionedItem = manager.getVersionedItem(element);
 			} catch (LibraryManagerException e) {
 				MICOBSPlugin.INSTANCE.log(e);
 				modelFiles.clear();
@@ -594,7 +572,7 @@ public class DeletePackageItemCommand extends AbstractCommand {
                 }
             }
             try {
-				manager.removeElement(element.getUri(), element.getVersion());
+				manager.removeElement(element.eClass(), element.getUri(), element.getVersion());
 				manager.saveLibrary();
 			} catch (LibraryManagerException e) {
 				MICOBSPlugin.INSTANCE.log(e);

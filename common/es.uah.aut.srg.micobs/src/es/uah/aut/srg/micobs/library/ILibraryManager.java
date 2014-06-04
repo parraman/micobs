@@ -50,11 +50,28 @@ public interface ILibraryManager {
 	 * The method will thrown a {@link LibraryManagerException} if there was a
 	 * problem when accessing the library.
 	 * 
+	 * @param classifier the class of the element that is being searched for.
 	 * @param uri the URI of the element that is being searched for.
 	 * @param version the version of the element that is being searched for.
 	 * @return the element if found or <code>null</code> otherwise.
 	 */
-	public MCommonPackageElement getElement(String uri, String version) throws LibraryManagerException;
+	public MCommonPackageElement getElement(EClass classifier, 
+				String uri, String version) throws LibraryManagerException;
+	
+	/**
+	 * Returns the element to which a versioned library items corresponds.
+	 * 
+	 * The method will thrown a {@link LibraryManagerException} if there was a
+	 * problem when accessing the library, if the item does not belong to the
+	 * library.
+	 * 
+	 * @param classifier the class of the element that is being searched for.
+	 * @param uri the URI of the element that is being searched for.
+	 * @param version the version of the element that is being searched for.
+	 * @return the element if found or <code>null</code> otherwise.
+	 */
+	public MCommonPackageElement getElement(
+				MCommonPackageVersionedItem versionedItem) throws LibraryManagerException;	
 	
 	/**
 	 * Stores an element in the library. The method receives the local URI of
@@ -106,10 +123,12 @@ public interface ILibraryManager {
 	 *         to the element.</li>
 	 * </ul>
 	 * 
+	 * @param classifier the class of the element that is to be deleted.
 	 * @param old the URI of the element that is to be deleted.
 	 * @param version the version of the element that is to be deleted.
 	 */
-	public void removeElement(String old, String version) throws LibraryManagerException;
+	public void removeElement(EClass classifier, 
+					String old, String version) throws LibraryManagerException;
 	
 	/**
 	 * Removes all the versions of a given element given its URI.
@@ -124,9 +143,10 @@ public interface ILibraryManager {
 	 *         to the element.</li>
 	 * </ul>
 	 * 
+	 * @param classifier the class of the element that is to be deleted.
 	 * @param old the URI of the element that is to be deleted.
 	 */
-	public void removeElements(String old) throws LibraryManagerException;
+	public void removeElements(EClass classifier, String old) throws LibraryManagerException;
 
 	/**
 	 * Returns a list with all the elements of a given class that are part of
@@ -212,28 +232,32 @@ public interface ILibraryManager {
 	public void removePackage(String uri) throws LibraryManagerException;
 	
 	/**
-	 * Returns a library item from a given URI.
+	 * Returns a library item from a given URI and a given class.
 	 * 
 	 * The method will throw a {@link LibraryManagerException} if there was
 	 * a problem when accessing the library.
 	 * 
+	 * @param the class of the item.
 	 * @param uri the URI of the requested item.
 	 * @return the requested library item or <code>null</code> if no item
 	 *         was found.
 	 */
-	public MCommonPackageItem getItem(String uri) throws LibraryManagerException;
+	public MCommonPackageItem getItem(EClass classifier, 
+			String uri) throws LibraryManagerException;
 	
 	/**
-	 * Returns a library versioned item from a given URI and a given version.
+	 * Returns the library versioned item corresponding to a given element. If
+	 * the element does not belong to the library, the method will return
+	 * <code>null</code>.
 	 * 
 	 * The method will throw a {@link LibraryManagerException} if there was
 	 * a problem when accessing the library.
 	 * 
-	 * @param uri the URI of the requested versioned item.
-	 * @param version the version of the requested item.
+	 * @param element the element.
 	 * @return the library versioned item.
 	 */
-	public MCommonPackageVersionedItem getVersionedItem(String uri, String version) throws LibraryManagerException;
+	public MCommonPackageVersionedItem getVersionedItem(MCommonPackageElement element)
+			throws LibraryManagerException;
 
 	/**
 	 * Returns all the packages present in the library.

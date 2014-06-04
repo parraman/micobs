@@ -36,11 +36,13 @@ import org.eclipse.ui.handlers.HandlerUtil;
 
 import es.uah.aut.srg.micobs.common.MCommonLibrary;
 import es.uah.aut.srg.micobs.common.MCommonPackage;
+import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.common.MCommonPackageItem;
 import es.uah.aut.srg.micobs.common.MCommonPackageVersionedItem;
 import es.uah.aut.srg.micobs.common.commonPackage;
 import es.uah.aut.srg.micobs.diagnostic.CheckingDiagnostic;
 import es.uah.aut.srg.micobs.library.ILibraryManager;
+import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.library.adapter.LibraryAdapter;
 import es.uah.aut.srg.micobs.library.adapter.LibraryAdapterFactory;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
@@ -185,7 +187,15 @@ public class UpdateRemoteModelFile extends AbstractHandler {
 							continue;
 						}
 						
-						MCommonPackageItem item = (MCommonPackageItem) versionedItem.eContainer();
+						MCommonPackageElement element;
+						
+						try {
+							element = manager.getElement(versionedItem);					
+						} catch (LibraryManagerException e)
+						{
+							MICOBSPlugin.INSTANCE.log(e);
+							throw new InvocationTargetException(e);
+						}
 						
 						String remoteModelURI = versionedItem.getRemoteModelURI();
 						String localModelURI = versionedItem.getLocalModelURI();
@@ -217,7 +227,7 @@ public class UpdateRemoteModelFile extends AbstractHandler {
 						{
 							destFile = FileConverter.platformPluginURItoFile(resourceURI);
 							destString = destFile.getAbsolutePath();
-							manager.removeElement(item.getUri(), versionedItem.getVersion());
+							manager.removeElement(element.eClass(), element.getUri(), element.getVersion());
 						} 
 						catch (Throwable e)
 						{

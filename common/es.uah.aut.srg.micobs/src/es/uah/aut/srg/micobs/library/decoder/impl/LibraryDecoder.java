@@ -202,6 +202,7 @@ public class LibraryDecoder implements ILibraryDecoder {
 		
 		MCommonPackageFile packageFile = (MCommonPackageFile)resource.getContents().get(0);
 		
+		String elementClassifier = packageFile.getElement().eClass().getName();
 		String elementURI = packageFile.getElement().getUri();
 		String elementVersion = packageFile.getElement().getVersion();
 		
@@ -225,11 +226,11 @@ public class LibraryDecoder implements ILibraryDecoder {
 		}
 		
 		try {
-			if ((libraryManager.getElement(elementURI, elementVersion)) != null)
+			if ((libraryManager.getElement(elementClass, elementURI, elementVersion)) != null)
 			{
 				// There was a previous element with the same name!
 				// We have to remove it and update it
-				libraryManager.removeElement(elementURI, elementVersion);
+				libraryManager.removeElement(elementClass, elementURI, elementVersion);
 			}
 		} catch (LibraryManagerException e2) {
 			return CheckingDiagnostic.createError(
@@ -243,7 +244,9 @@ public class LibraryDecoder implements ILibraryDecoder {
 					ILibraryManager.LIBRARY_FOLDER);
 		destPath = destPath.append(ILibraryManager.PACKAGES_FOLDER);
 		destPath = destPath.append(StringHelper.toLowerDefString(packageFile.getPackage().getUri()));
-		destPath = destPath.append(StringHelper.toLowerDefString(elementURI, elementVersion) + "." + modelFileExtension);
+		destPath = destPath.append(StringHelper.toLowerDefString(
+				elementClassifier, elementURI, elementVersion) + 
+				"." + modelFileExtension);
 		
 		File destFile = new File(destPath.toOSString());
 		
@@ -266,7 +269,7 @@ public class LibraryDecoder implements ILibraryDecoder {
 				ILibraryManager.LIBRARY_FOLDER + "/" +
 				ILibraryManager.PACKAGES_FOLDER + "/" +
 				StringHelper.toLowerDefString(packageFile.getPackage().getUri()) + "/" +
-				StringHelper.toLowerDefString(elementURI, elementVersion) +
+				StringHelper.toLowerDefString(elementClassifier, elementURI, elementVersion) +
 				"." + modelFileExtension, true);
 		
 		

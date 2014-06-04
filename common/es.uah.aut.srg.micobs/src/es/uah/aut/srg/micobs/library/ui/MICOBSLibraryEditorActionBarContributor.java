@@ -209,7 +209,6 @@ public abstract class MICOBSLibraryEditorActionBarContributor extends
 			        		{
 			        			// We have to check also the element
 			        			MCommonPackageVersionedItem versionedItem = (MCommonPackageVersionedItem) eObject;
-			        			MCommonPackageItem item = (MCommonPackageItem) versionedItem.eContainer();
 			        			
 			        			EObject root = EcoreUtil.getRootContainer(versionedItem);
 			        			String libraryID = LibraryAdapterFactory.getAdapterFactory().getLibraryID(root.eClass().getName());
@@ -221,7 +220,7 @@ public abstract class MICOBSLibraryEditorActionBarContributor extends
 			        				libraryManager = (ILibraryManager) adapter.adapt(ILibraryManager.class);
 			        				MCommonPackageElement element;
 			        				try {
-										element = libraryManager.getElement(item.getUri(), versionedItem.getVersion());
+										element = libraryManager.getElement(versionedItem);
 									} catch (LibraryManagerException e) {
 										MICOBSPlugin.INSTANCE.log(e);
 										return super.validate(eClass, eObject, diagnostics, context);

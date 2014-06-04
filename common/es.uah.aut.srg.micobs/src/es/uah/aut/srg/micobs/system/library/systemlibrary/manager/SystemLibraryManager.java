@@ -62,7 +62,9 @@ public class SystemLibraryManager {
 						systemPackage.eINSTANCE.getMLanguage()
 					});
 			
-			extensionHook = new LibraryManagerExtensionHook(INSTANCE, MICOBSPlugin.getPlugin().getSymbolicName(), EXTENSION);
+			extensionHook = new LibraryManagerExtensionHook(
+					INSTANCE, MICOBSPlugin.getPlugin().getSymbolicName(), EXTENSION, 
+					systemPackage.eINSTANCE.getMLanguage());
 			extensionHook.loadExtensionModels();
 		}
 		return INSTANCE;

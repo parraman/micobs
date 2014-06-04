@@ -17,6 +17,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.LinkedHashMap;
 import java.util.List;
 
 import org.eclipse.core.runtime.IPath;
@@ -53,9 +54,11 @@ import es.uah.aut.srg.modeling.util.string.StringHelper;
  */
 public class LibraryManager implements ILibraryManager {
 	
-	protected EClass libraryItemClasses[];
-	protected EClass libraryVersionedItemClasses[];
-	protected EClass libraryElementClasses[];
+	protected LinkedHashMap<EClass, EClass> elementToItemClassMap = new LinkedHashMap<EClass, EClass>();
+	protected LinkedHashMap<EClass, EClass> itemToElementClassMap = new LinkedHashMap<EClass, EClass>();
+	protected LinkedHashMap<EClass, EClass> itemToVersionedItemClassMap = new LinkedHashMap<EClass, EClass>();
+	protected LinkedHashMap<EClass, EClass> versionedItemToItemClassMap = new LinkedHashMap<EClass, EClass>();
+	
 	protected EFactory libraryItemFactory;
 	
 	protected EClass libraryClass;
@@ -142,6 +145,50 @@ public class LibraryManager implements ILibraryManager {
 		}
 		return packageElementsClassifiedList;
 	}
+	
+	/**
+	 * Returns the hash map between the elements of the library and
+	 * their corresponding versioned items.
+	 * 
+	 * This function lazily loads the library items the first time it is
+	 * called. If an error happens when loading the library items,
+	 * the method will throw a {@link LibraryManagerException}.
+	 * 
+	 * @return the hash map between the elements of the library and
+	 * their corresponding versioned items.
+	 */
+	protected HashMap<MCommonPackageElement, MCommonPackageVersionedItem> getElementToVersionedItemMap() throws LibraryManagerException
+	{
+		if (elementToVersionedItemMap == null)
+		{
+			loadLibraryItems();
+		}
+		return elementToVersionedItemMap;
+	}
+	
+	private HashMap<MCommonPackageElement, MCommonPackageVersionedItem> elementToVersionedItemMap;
+	
+	/**
+	 * Returns the hash map between the versioned items of the library and
+	 * their corresponding elements.
+	 * 
+	 * This function lazily loads the library items the first time it is
+	 * called. If an error happens when loading the library items,
+	 * the method will throw a {@link LibraryManagerException}.
+	 * 
+	 * @return the hash map between the versioned items of the library and
+	 * their corresponding elements.
+	 */
+	protected HashMap<MCommonPackageVersionedItem, MCommonPackageElement> getVersionedItemToElementMap() throws LibraryManagerException
+	{
+		if (versionedItemToElementMap == null)
+		{
+			loadLibraryItems();
+		}
+		return versionedItemToElementMap;
+	}
+	
+	private HashMap<MCommonPackageVersionedItem, MCommonPackageElement> versionedItemToElementMap;
 	
 	private HashMap<String, MCommonPackageElement> elementHash;
 	
@@ -232,10 +279,21 @@ public class LibraryManager implements ILibraryManager {
 				ILibraryManager.LIBRARY_FOLDER + "/" +
 				libraryFilename, true);
 		
-		// These arrays should have the same size...
-		this.libraryItemClasses = itemClasses;
-		this.libraryVersionedItemClasses = versionedItemClasses;
-		this.libraryElementClasses = elementClasses;
+		// All the arrays must be of the same size
+		
+		if (elementClasses.length != itemClasses.length ||
+			itemClasses.length != versionedItemClasses.length)
+		{
+			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_ClassArraysOfDifferentSize"));
+		}
+		
+		for (int i = 0; i < elementClasses.length; i++)
+		{
+			this.elementToItemClassMap.put(elementClasses[i], itemClasses[i]);
+			this.itemToElementClassMap.put(itemClasses[i], elementClasses[i]);
+			this.versionedItemToItemClassMap.put(versionedItemClasses[i], itemClasses[i]);
+			this.itemToVersionedItemClassMap.put(itemClasses[i], versionedItemClasses[i]);
+		}
 		
 		this.libraryItemFactory = libraryItemFactory;
 		this.libraryClass = libraryClass;
@@ -334,13 +392,13 @@ public class LibraryManager implements ILibraryManager {
 		{
 			return 0;
 		}
-		for (int i = 0; i < this.libraryItemClasses.length; i++)
+		for (EClass cls : itemToElementClassMap.keySet())
 		{
-			if (item0.eClass() == this.libraryItemClasses[i])
+			if (item0.eClass() == cls)
 			{
 				return -1;
 			}
-			if (item1.eClass() == this.libraryItemClasses[i])
+			if (item1.eClass() == cls)
 			{
 				return 1;
 			}
@@ -429,11 +487,12 @@ public class LibraryManager implements ILibraryManager {
 	/**
 	 * Returns the hash key of an item by its URI.
 	 * 
+	 * @param classifier the class of the item.
 	 * @param uri the URI of the item.
 	 * @return the hash key of an item.
 	 */
-	protected String getItemHashKey(String uri) {
-		return StringHelper.toLowerDefString(uri);
+	protected String getItemHashKey(EClass classifier, String uri) {
+		return StringHelper.toLowerDefString(classifier.getName(), uri);
 	}
 	
 	/**
@@ -443,18 +502,19 @@ public class LibraryManager implements ILibraryManager {
 	 * @return the hash key of the item.
 	 */
 	protected String getItemHashKey(MCommonPackageItem item) {
-		return StringHelper.toLowerDefString(item.getUri());
+		return StringHelper.toLowerDefString(item.eClass().getName(), item.getUri());
 	}
 	
 	/**
 	 * Returns the hash key of an element by its URI and version.
 	 * 
+	 * @param classifier the class of the element.
 	 * @param uri the URI of the element.
 	 * @param version the version of the element.
 	 * @return the hash key of the element
 	 */
-	protected String getElementHashKey(String uri, String version) {
-		return StringHelper.toLowerDefString(uri, version);
+	protected String getElementHashKey(EClass classifier, String uri, String version) {
+		return StringHelper.toLowerDefString(classifier.getName(), uri, version);
 	}
 	
 	/**
@@ -464,12 +524,13 @@ public class LibraryManager implements ILibraryManager {
 	 * @return the hash key of the element.
 	 */
 	protected String getElementHashKey(MCommonPackageElement element) {
-		return StringHelper.toLowerDefString(element.getUri(), element.getVersion());
+		return StringHelper.toLowerDefString(element.eClass().getName(), element.getUri(), element.getVersion());
 	}
 
 	@Override
-	public MCommonPackageElement getElement(String uri, String version) throws LibraryManagerException {
-		return getElementHash().get(getElementHashKey(uri, version));
+	public MCommonPackageElement getElement(EClass classifier, 
+					String uri, String version) throws LibraryManagerException {
+		return getElementHash().get(getElementHashKey(classifier, uri, version));
 	}
 
 	@Override
@@ -500,91 +561,88 @@ public class LibraryManager implements ILibraryManager {
 		MCommonPackageVersionedItem versionedItem = null;
 		
 		// If there was not a previous item, we have to create it:
-		if ((item = getItemHash().get(getItemHashKey(element.getUri()))) == null)
+		if ((item = getItemHash().get(getItemHashKey(elementToItemClassMap.get(element.eClass()), element.getUri()))) == null)
 		{
 			// We have to find first if the class of the element belongs
 			// to the list of classes introduced when the library was created.
-			for (int i = 0; i < libraryElementClasses.length; i++)
+			
+			if (elementToItemClassMap.keySet().contains(element.eClass()))
 			{
-				if (element.eClass() == libraryElementClasses[i])
+				// We found it! Now we have to create a new item:
+				item = (MCommonPackageItem) libraryItemFactory.create(elementToItemClassMap.get(element.eClass()));
+				// Then a new versioned item:
+				versionedItem = (MCommonPackageVersionedItem) libraryItemFactory.create(itemToVersionedItemClassMap.get(item.eClass()));
+				// This is extremely strange that it might happen, but just in case...
+				if (item == null || versionedItem == null)
 				{
-					// We found it! Now we have to create a new item:
-					item = (MCommonPackageItem) libraryItemFactory.create(libraryItemClasses[i]);
-					// Then a new versioned item:
-					versionedItem = (MCommonPackageVersionedItem) libraryItemFactory.create(libraryVersionedItemClasses[i]);
-					// This is extremely strange that it might happen, but just in case...
-					if (item == null || versionedItem == null)
-					{
-						resource.unload();
-						throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_CreatingLibraryItem"));
-					}
-					
-					try
-					{
-						checkElement(element);
-					} catch (LibraryManagerException e)
-					{
-						resource.unload();
-						throw e;
-					}
-					
-					item.setUri(element.getUri());
-					item.getVersionedItems().add(versionedItem);
-					versionedItem.setVersion(element.getVersion());
-					versionedItem.setLocalModelURI(modelURI.toString());
-					
-					// Adding the item to the library
-					_package.getItems().add(item);
-					
-					// We have to re-sort the items
-					sortPackageItems(_package);
-					
-					getItemHash().put(getItemHashKey(item), item);
-					
-					registerElement(item, element);
-
-					return versionedItem;
+					resource.unload();
+					throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_CreatingLibraryItem"));
 				}
+				
+				try
+				{
+					checkElement(element);
+				} catch (LibraryManagerException e)
+				{
+					resource.unload();
+					throw e;
+				}
+				
+				item.setUri(element.getUri());
+				item.getVersionedItems().add(versionedItem);
+				versionedItem.setVersion(element.getVersion());
+				versionedItem.setLocalModelURI(modelURI.toString());
+				
+				// Adding the item to the library
+				_package.getItems().add(item);
+				
+				// We have to re-sort the items
+				sortPackageItems(_package);
+				
+				getItemHash().put(getItemHashKey(item), item);
+				
+				registerElement(versionedItem, element);
+
+				return versionedItem;
 			}
+			
 			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_UnableToFindElementClass", new Object[] { element.eClass().getName() }));
 		}
 		else
 		{
-			// There was already an item!
-			for (int i = 0; i < libraryElementClasses.length; i++)
+			// We have to look up for the element's class
+			if (elementToItemClassMap.keySet().contains(element.eClass()))
 			{
-				// We have to look up for the element's class
-				if (element.eClass() == libraryElementClasses[i])
+				// We create a new versioned item
+				versionedItem = (MCommonPackageVersionedItem) libraryItemFactory.create(
+								itemToVersionedItemClassMap.get(
+										elementToItemClassMap.get(element.eClass())));
+				
+				// oops: something weird would happen if..
+				if (versionedItem == null)
 				{
-					// We create a new versioned item
-					versionedItem = (MCommonPackageVersionedItem) libraryItemFactory.create(libraryVersionedItemClasses[i]);
-					
-					// oops: something weird would happen if..
-					if (versionedItem == null)
-					{
-						resource.unload();
-						throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_CreatingLibraryItem"));
-					}
-					
-					try
-					{
-						checkElement(element);
-					} catch (LibraryManagerException e)
-					{
-						resource.unload();
-						throw e;
-					}
-
-					// OK. Now we have to add the item
-					item.getVersionedItems().add(versionedItem);
-					versionedItem.setVersion(element.getVersion());
-					versionedItem.setLocalModelURI(modelURI.toString());
-					
-					// We have to order the versioned items
-					sortItemVersionedItems(item);
-					registerElement(item, element);
-					return versionedItem;
+					resource.unload();
+					throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_CreatingLibraryItem"));
 				}
+				
+				try
+				{
+					checkElement(element);
+				} catch (LibraryManagerException e)
+				{
+					resource.unload();
+					throw e;
+				}
+
+				// OK. Now we have to add the item
+				item.getVersionedItems().add(versionedItem);
+				versionedItem.setVersion(element.getVersion());
+				versionedItem.setLocalModelURI(modelURI.toString());
+				
+				// We have to order the versioned items
+				sortItemVersionedItems(item);
+				registerElement(versionedItem, element);
+				return versionedItem;
 			}
 			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_UnableToFindElementClass", new Object[] { element.eClass().getName() }));
 		}
@@ -615,9 +673,9 @@ public class LibraryManager implements ILibraryManager {
 	}
 
 	@Override
-	public void removeElement(String uri, String version) throws LibraryManagerException
+	public void removeElement(EClass classifier, String uri, String version) throws LibraryManagerException
 	{
-		MCommonPackageItem item = getItemHash().get(getItemHashKey(uri));
+		MCommonPackageItem item = getItemHash().get(getItemHashKey(elementToItemClassMap.get(classifier), uri));
 		if (item == null)
 		{
 			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_LibraryNoItemFound", new Object[] {uri}));
@@ -640,7 +698,7 @@ public class LibraryManager implements ILibraryManager {
 			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_LibraryNoVersionedItemFound", new Object[] {uri, version}));
 		}
 		
-		MCommonPackageElement element = getElementHash().get(getElementHashKey(uri, version));
+		MCommonPackageElement element = getElementHash().get(getElementHashKey(classifier, uri, version));
 		if (element == null)
 		{
 			EcoreUtil.remove(versionedItem);
@@ -653,7 +711,7 @@ public class LibraryManager implements ILibraryManager {
 		}
 		
 		try {
-			deregisterElement(element);
+			deregisterElement(versionedItem, element);
 		} catch (LibraryManagerException e)
 		{
 			MICOBSPlugin.INSTANCE.log(e);
@@ -781,12 +839,15 @@ public class LibraryManager implements ILibraryManager {
 		elementClassifiedList = new HashMap<EClass, List<MCommonPackageElement>>();
 		packageElementsClassifiedList = new HashMap<MCommonPackage, HashMap<EClass,List<MCommonPackageElement>>>();
 		
-		for (int i = 0; i < libraryItemClasses.length; i++)
+		versionedItemToElementMap = new HashMap<MCommonPackageVersionedItem, MCommonPackageElement>();
+		elementToVersionedItemMap = new HashMap<MCommonPackageElement, MCommonPackageVersionedItem>();
+		
+		for (EClass cls : elementToItemClassMap.keySet())
 		{
 			// We will not check for repeated classes
 			List<MCommonPackageElement> elementClassifiedHash = new ArrayList<MCommonPackageElement>();
 			 
-			elementClassifiedList.put(libraryElementClasses[i], elementClassifiedHash);
+			elementClassifiedList.put(cls, elementClassifiedHash);
 		}
 
 		for (MCommonPackage _package : library.getPackages())
@@ -856,7 +917,7 @@ public class LibraryManager implements ILibraryManager {
 					}
 					// Since the checking has passed, we can now assume that the element
 					// is going to be successfully registered
-					registerElement(item, element);
+					registerElement(versionedItem, element);
 				}
 				if (item.getVersionedItems().isEmpty() == false)
 				{
@@ -895,7 +956,9 @@ public class LibraryManager implements ILibraryManager {
 		
 		if (getElementHash().get(getElementHashKey(element)) != null)
 		{
-			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_ElementWithSameURIAndVersionAlreadyExists", new Object[] { element.getUri(), element.getVersion() }));
+			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString(
+					"_ERROR_ElementWithSameURIAndVersionAlreadyExists", 
+					new Object[] { element.getUri(), element.getVersion() }));
 		}
 		
 		
@@ -911,7 +974,8 @@ public class LibraryManager implements ILibraryManager {
 	 * @param item the item of the element.
 	 * @param element the element to be registered.
 	 */
-	protected void registerElement(MCommonPackageItem item, MCommonPackageElement element) throws LibraryManagerException {
+	protected void registerElement(MCommonPackageVersionedItem versionedItem, 
+			MCommonPackageElement element) throws LibraryManagerException {
 		
 		MCommonPackage _package = ((MCommonPackageFile)element.eContainer()).getPackage();
 		
@@ -936,6 +1000,9 @@ public class LibraryManager implements ILibraryManager {
 		packageElementList.add(element);
 		Collections.sort(packageElementList, elementURIComparator);
 		getElementHash().put(getElementHashKey(element), element);
+		getVersionedItemToElementMap().put(versionedItem, element);
+		getElementToVersionedItemMap().put(element, versionedItem);
+
 	}
 	
 	/**
@@ -977,11 +1044,12 @@ public class LibraryManager implements ILibraryManager {
 	 * 
 	 * @param element the element to be unloaded from the library.
 	 */
-	protected void unloadPackageElement(MCommonPackageElement element) throws LibraryManagerException
+	protected void unloadPackageElement(MCommonPackageVersionedItem versionedItem, 
+			MCommonPackageElement element) throws LibraryManagerException
 	{
 		try
 		{
-			deregisterElement(element);
+			deregisterElement(versionedItem, element);
 		} catch (LibraryManagerException e)
 		{
 			MICOBSPlugin.INSTANCE.log(e);
@@ -1008,7 +1076,8 @@ public class LibraryManager implements ILibraryManager {
 	 * 
 	 * @param element the element to be deregistered.
 	 */
-	protected void deregisterElement(MCommonPackageElement element) throws LibraryManagerException {
+	protected void deregisterElement(MCommonPackageVersionedItem versionedItem, 
+			MCommonPackageElement element) throws LibraryManagerException {
 		
 		Collection<MCommonPackageElement> elementList =
 			getElementClassifiedList().get(element.eClass());
@@ -1031,6 +1100,25 @@ public class LibraryManager implements ILibraryManager {
 		{
 			getPackageElementsClassifiedList().get(_package).get(element.eClass()).remove(element);
 		}
+		
+		if (getVersionedItemToElementMap().get(versionedItem) != element)
+		{
+			getVersionedItemToElementMap().remove(versionedItem);
+			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_LibraryVersionedItemMismatch"));
+		}
+		else
+		{
+			getVersionedItemToElementMap().remove(versionedItem);
+		}
+		if (getElementToVersionedItemMap().get(element) != versionedItem)
+		{
+			getElementToVersionedItemMap().remove(element);
+			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_LibraryVersionedItemMismatch"));
+		}
+		else
+		{
+			getElementToVersionedItemMap().remove(element);
+		}
 	}
 	
 	/**
@@ -1048,10 +1136,12 @@ public class LibraryManager implements ILibraryManager {
 			MCommonPackageVersionedItem versionedItem = i.next(); 
 			try
 			{
-				MCommonPackageElement element = getElementHash().get(getElementHashKey(item.getUri(), versionedItem.getVersion()));
+				MCommonPackageElement element = getElementHash().get(
+						getElementHashKey(itemToElementClassMap.get(item.eClass()), 
+						item.getUri(), versionedItem.getVersion()));
 				if (element != null)
 				{
-					unloadPackageElement(element);
+					unloadPackageElement(versionedItem, element);
 				}
 			} catch (LibraryManagerException e)
 			{
@@ -1082,14 +1172,14 @@ public class LibraryManager implements ILibraryManager {
 	}
 
 	@Override
-	public MCommonPackageItem getItem(String uri) throws LibraryManagerException {
-		return getItemHash().get(getItemHashKey(uri));
+	public MCommonPackageItem getItem(EClass classifier, String uri) throws LibraryManagerException {
+		return getItemHash().get(getItemHashKey(classifier, uri));
 	}
 
 	@Override
-	public void removeElements(String uri) throws LibraryManagerException {
+	public void removeElements(EClass classifier, String uri) throws LibraryManagerException {
 		
-		MCommonPackageItem item = getItemHash().get(getItemHashKey(uri));
+		MCommonPackageItem item = getItemHash().get(getItemHashKey(classifier, uri));
 		
 		if (item == null)
 		{
@@ -1101,22 +1191,11 @@ public class LibraryManager implements ILibraryManager {
 	}
 
 	@Override
-	public MCommonPackageVersionedItem getVersionedItem(String uri,
-			String version) throws LibraryManagerException {
-		MCommonPackageItem item = getItemHash().get(getItemHashKey(uri));
-		if (item == null)
-		{
-			return null;
-		}
-		for (Iterator<MCommonPackageVersionedItem> i = item.getVersionedItems().iterator(); i.hasNext(); )
-		{
-			MCommonPackageVersionedItem versionedItem = i.next();
-			if (versionedItem.getVersion().matches(version))
-			{
-				return versionedItem;
-			}
-		}
-		return null;
+	public MCommonPackageVersionedItem getVersionedItem(MCommonPackageElement element)
+			throws LibraryManagerException {
+		
+		return getElementToVersionedItemMap().get(element);
+
 	}
 
 	@Override
@@ -1136,7 +1215,20 @@ public class LibraryManager implements ILibraryManager {
 
 	@Override
 	public EClass[] getLibraryElementClasses() {
-		return libraryElementClasses;
+		return elementToItemClassMap.keySet().toArray(new EClass[elementToItemClassMap.keySet().size()]);
+	}
+
+	@Override
+	public MCommonPackageElement getElement(
+			MCommonPackageVersionedItem versionedItem)
+			throws LibraryManagerException {
+		
+		if (getVersionedItemToElementMap().get(versionedItem) == null)
+		{
+			throw new LibraryManagerException(MICOBSPlugin.INSTANCE.getString("_ERROR_LibraryNoVersionedItemFound"));
+		}
+		return getVersionedItemToElementMap().get(versionedItem);
+
 	}
 
 }
