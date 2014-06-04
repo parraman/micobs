@@ -94,8 +94,7 @@ public class UpdateDeploymentOSSwPackages extends UpdateRemoteFoldersHandler {
 			{
 				MCommonPackageVersionedItem item;
 				try {
-					item = libraryManager.getVersionedItem(osswp.getUri(),
-							osswp.getVersion());
+					item = libraryManager.getVersionedItem(osswp);
 				} catch (LibraryManagerException e) {
 					GNUMakePlugin.INSTANCE.log(e);
 					diagnostic.add(CheckingDiagnostic.createError(

@@ -90,8 +90,7 @@ public class UpdateDeploymentPlatformSwPackages extends UpdateRemoteFoldersHandl
 		{
 			MCommonPackageVersionedItem item;
 			try {
-				item = libraryManager.getVersionedItem(deploymentPlatform.getPlatformSwPackage().getUri(),
-						deploymentPlatform.getPlatformSwPackage().getVersion());
+				item = libraryManager.getVersionedItem(deploymentPlatform.getPlatformSwPackage());
 			} catch (LibraryManagerException e) {
 				GNUMakePlugin.INSTANCE.log(e);
 				diagnostic.add(CheckingDiagnostic.createError(

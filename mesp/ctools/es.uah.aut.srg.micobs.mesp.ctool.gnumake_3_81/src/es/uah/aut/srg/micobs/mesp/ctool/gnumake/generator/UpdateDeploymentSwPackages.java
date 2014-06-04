@@ -112,10 +112,10 @@ public class UpdateDeploymentSwPackages extends UpdateRemoteFoldersHandler {
 		
 		for (Iterator<MMESPSwPackageDeployment> s = swpds.iterator(); s.hasNext(); )
 		{
-			MSwPackage swr = s.next().getSwPackage();
+			MSwPackage swp = s.next().getSwPackage();
 			MCommonPackageVersionedItem item;
 			try {
-				item = libraryManager.getVersionedItem(swr.getUri(), swr.getVersion());
+				item = libraryManager.getVersionedItem(swp);
 			} catch (LibraryManagerException e) {
 				GNUMakePlugin.INSTANCE.log(e);
 				diagnostic.add(CheckingDiagnostic.createError(
@@ -130,7 +130,7 @@ public class UpdateDeploymentSwPackages extends UpdateRemoteFoldersHandler {
 					((MMESPVersionedItemSwPackage)item).getRepositoryFolderURI().length() != 0)
 				{
 					swResourcesMap.put(
-							StringHelper.toLowerDefString(MESPStringHelper.getDefault().getElementName(swr)),
+							StringHelper.toLowerDefString(MESPStringHelper.getDefault().getElementName(swp)),
 							((MMESPVersionedItemSwPackage)item).getRepositoryFolderURI());
 				}
 				else
@@ -138,7 +138,7 @@ public class UpdateDeploymentSwPackages extends UpdateRemoteFoldersHandler {
 					diagnostic.add(CheckingDiagnostic.createError(
 							GNUMakePlugin.INSTANCE.getString(
 									"_ERROR_MSwResourceStorageURINotDefined", 
-									new Object[] { swr.getName() }), swr));
+									new Object[] { swp.getName() }), swp));
 				}
 			}
 			else if (item instanceof MMESPVersionedItemDriverSwPackage)
@@ -147,7 +147,7 @@ public class UpdateDeploymentSwPackages extends UpdateRemoteFoldersHandler {
 					((MMESPVersionedItemDriverSwPackage)item).getRepositoryFolderURI().length() != 0)
 				{
 					swResourcesMap.put(
-							StringHelper.toLowerDefString(MESPStringHelper.getDefault().getElementName(swr)),
+							StringHelper.toLowerDefString(MESPStringHelper.getDefault().getElementName(swp)),
 							((MMESPVersionedItemDriverSwPackage)item).getRepositoryFolderURI());
 				}
 				else
@@ -155,15 +155,15 @@ public class UpdateDeploymentSwPackages extends UpdateRemoteFoldersHandler {
 					diagnostic.add(CheckingDiagnostic.createError(
 							GNUMakePlugin.INSTANCE.getString(
 									"_ERROR_MSwResourceStorageURINotDefined", 
-									new Object[] { swr.getName() }), swr));
+									new Object[] { swp.getName() }), swp));
 				}
 			}
 			else {
 				diagnostic.add(CheckingDiagnostic.createError(
 						GNUMakePlugin.INSTANCE.getString(
 								"_ERROR_WrongModelItem", 
-								new Object[] { MESPStringHelper.getDefault().getElementName(swr),
-										 	   mesplibraryPackage.eINSTANCE.getMMESPItemSwPackage().getName()}), swr));
+								new Object[] { MESPStringHelper.getDefault().getElementName(swp),
+										 	   mesplibraryPackage.eINSTANCE.getMMESPItemSwPackage().getName()}), swp));
 			}
 
 		}			

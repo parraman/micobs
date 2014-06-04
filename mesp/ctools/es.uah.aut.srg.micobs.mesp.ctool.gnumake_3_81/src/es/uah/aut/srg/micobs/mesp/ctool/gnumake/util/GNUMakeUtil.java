@@ -15,6 +15,7 @@ import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.mesp.ctool.gnumake.plugin.GNUMakePlugin;
 import es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.MESPLibraryManager;
 import es.uah.aut.srg.micobs.mesp.mespctool.MConstructionTool;
+import es.uah.aut.srg.micobs.mesp.mespctool.mespctoolPackage;
 
 /**
  * GNU Make Construction tool helper functions.
@@ -49,7 +50,9 @@ public class GNUMakeUtil {
 		{
 			try {
 				MCommonPackageElement element = 
-						MESPLibraryManager.getLibraryManager().getElement(CTOOL_GNUMAKE_URI, CTOOL_GNUMAKE_VERSION);
+						MESPLibraryManager.getLibraryManager().getElement(
+								mespctoolPackage.eINSTANCE.getMConstructionTool(),
+								CTOOL_GNUMAKE_URI, CTOOL_GNUMAKE_VERSION);
 				if (element != null &&
 					element instanceof MConstructionTool)
 				{

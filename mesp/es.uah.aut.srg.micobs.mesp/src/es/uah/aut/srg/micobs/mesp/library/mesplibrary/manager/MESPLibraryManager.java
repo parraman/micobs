@@ -89,7 +89,9 @@ public class MESPLibraryManager {
 						mespdepPackage.eINSTANCE.getMMESPDeployment()
 					});
 			
-			extensionHook = new LibraryManagerExtensionHook(INSTANCE, MESPPlugin.getPlugin().getSymbolicName(), EXTENSION);
+			extensionHook = new LibraryManagerExtensionHook(
+					INSTANCE, MESPPlugin.getPlugin().getSymbolicName(), EXTENSION,
+					mespctoolPackage.eINSTANCE.getMConstructionTool());
 			extensionHook.loadExtensionModels();
 
 		}

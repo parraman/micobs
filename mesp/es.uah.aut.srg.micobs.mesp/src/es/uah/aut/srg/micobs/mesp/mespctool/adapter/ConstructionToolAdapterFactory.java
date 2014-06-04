@@ -22,6 +22,7 @@ import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.mesp.library.mesplibrary.manager.MESPLibraryManager;
 import es.uah.aut.srg.micobs.mesp.mespctool.MConstructionTool;
+import es.uah.aut.srg.micobs.mesp.mespctool.mespctoolPackage;
 import es.uah.aut.srg.micobs.mesp.plugin.MESPPlugin;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 
@@ -105,7 +106,9 @@ public class ConstructionToolAdapterFactory {
 				MCommonPackageElement element = null;
 				
 				try {
-					element = MESPLibraryManager.getLibraryManager().getElement(uri, version);
+					element = MESPLibraryManager.getLibraryManager().getElement(
+							mespctoolPackage.eINSTANCE.getMConstructionTool(),
+							uri, version);
 				} catch (LibraryManagerException e) {
 					MICOBSPlugin.INSTANCE.log(e);
 					continue;

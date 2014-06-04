@@ -99,7 +99,7 @@ public class UpdateDeploymentSwInterfaces extends UpdateRemoteFoldersHandler {
 		{
 			MCommonPackageVersionedItem item;
 			try {
-				item = libraryManager.getVersionedItem(swi.getUri(), swi.getVersion());
+				item = libraryManager.getVersionedItem(swi);
 			} catch (LibraryManagerException e) {
 				GNUMakePlugin.INSTANCE.log(e);
 				diagnostic.add(CheckingDiagnostic.createError(
