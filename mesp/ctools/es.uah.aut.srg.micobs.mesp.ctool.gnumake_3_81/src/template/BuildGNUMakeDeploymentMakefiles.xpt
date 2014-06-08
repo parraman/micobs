@@ -111,6 +111,10 @@ distclean-all: distclean«FOREACH alternative.deploymentPlatforms.without({deplo
 .PHONY: pswp-clean, pswp-distclean,
 		«this.getTargetName(alternative, deploymentPlatform)»
 
+ifeq (,$R)
+export R:=$(shell pwd)
+endif
+
 «EXPAND deploymentPlatformConfiguration FOR deploymentPlatform -»
 
 «EXPAND printParameters FOR deploymentPlatform -»
