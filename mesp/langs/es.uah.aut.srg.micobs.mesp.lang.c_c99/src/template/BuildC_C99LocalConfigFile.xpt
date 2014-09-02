@@ -16,15 +16,11 @@
 «LET (MSwPackage)this.element AS swp -»
 «FOREACH swp.getAllEnumParameterDefinitions() AS enumDef -»
 «FOREACH enumDef.literals AS literal -»
-«IF literal.metaType == common::MEnumParamRealLiteral ||
-	literal.metaType == common::MEnumParamIntegerLiteral ||
-	literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_SWP_" + literal.getFullObjectNameToElementWithoutVersion()).toUpperDefString()» «("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()»
-«ENDIF -»
 «ENDFOREACH -»
-«ENDFOREACH -»
+«ENDFOREACH»
 «FOREACH swp.getAllParameters(null) AS parameter -»
-«IF parameter.metaType == common::MEnumParameter -»
+«IF parameter.metaType == common::MEnumParameterSingleExpression -»
 #define «("CONFIG_SWP_" + parameter.getFullObjectNameToElementWithoutVersion()).toUpperDefString()» «("CONFIG_SWP_" + parameter.getFullObjectNameToElement()).toUpperDefString()»
 «FOREACH ((common::MEnumParameter)parameter).enumDefinition.literals AS literal -»
 #define «("CONFIG_SWP_" + ((common::MEnumParameter)parameter).getFullObjectNameToElementWithoutVersion() + "_" + literal.name).toUpperDefString()» «("CONFIG_SWP_" + ((common::MEnumParameter)parameter).getFullObjectNameToElement() + "_" + literal.name).toUpperDefString()»
@@ -41,18 +37,14 @@
 «FOREACH swp.supportedPlatforms AS swpsp -»
 «FOREACH swpsp.parameters.typeSelect(common::MEnumParameterDefinition) AS enumDef -»
 «FOREACH enumDef.literals AS literal -»
-«IF literal.metaType == common::MEnumParamRealLiteral ||
-	literal.metaType == common::MEnumParamIntegerLiteral ||
-	literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_SWP_" + literal.getFullObjectNameToElementWithoutVersion()).toUpperDefString()» «("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()»
-«ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
 «FOREACH swpsp.parameters AS parameter -»
 «IF parameter.metaType != common::MEnumParameterDefinition -»
 #define «("CONFIG_SWP_" + parameter.getFullObjectNameToElementWithoutVersion()).toUpperDefString()» «("CONFIG_SWP_" + parameter.getFullObjectNameToElement()).toUpperDefString()»
 «ENDIF -»
-«IF parameter.metaType == common::MEnumParameter -»
+«IF parameter.metaType == common::MEnumParameterSingleExpression -»
 «FOREACH ((common::MEnumParameter)parameter).enumDefinition.literals AS literal -»
 #define «("CONFIG_SWP_" + ((common::MEnumParameter)parameter).getFullObjectNameToElementWithoutVersion() + "_" + literal.name).toUpperDefString()» «("CONFIG_SWP_" + ((common::MEnumParameter)parameter).getFullObjectNameToElement() + "_" + literal.name).toUpperDefString()»
 «ENDFOREACH -»
@@ -71,7 +63,7 @@
 «IF parameter.metaType != common::MEnumParameterDefinition -»
 #define «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElementWithoutVersion() + "_" + parameter.name).toUpperDefString()» «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElement() + "_" + parameter.name).toUpperDefString()»
 «ENDIF -»
-«IF parameter.metaType == common::MEnumParameter -»
+«IF parameter.metaType == common::MEnumParameterSingleExpression -»
 «FOREACH ((common::MEnumParameter)parameter).enumDefinition.literals AS literal -»
 #define «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElementWithoutVersion() + "_" + parameter.name + "_" + literal.name).toUpperDefString()» «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElement() + "_" + parameter.name + "_" + literal.name).toUpperDefString()»
 «ENDFOREACH -»
@@ -88,7 +80,7 @@
 #else
 #undef «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElementWithoutVersion() + "_" + parameter.name).toUpperDefString()»
 #endif
-«ELSEIF parameter.metaType == common::MEnumParameter -»
+«ELSEIF parameter.metaType == common::MEnumParameterSingleExpression -»
 #define «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElementWithoutVersion() + "_" + parameter.name).toUpperDefString()» «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElement() + "_" + parameter.name).toUpperDefString()»
 «FOREACH ((common::MEnumParameter)parameter).enumDefinition.literals AS literal -»
 #ifdef «("CONFIG_SWI_" + demand.resource.getFullObjectNameToElement() + "_" + demand.getFullObjectNameToElement() + "_" + parameter.name + "_" + literal.name).toUpperDefString()»
@@ -116,7 +108,7 @@
 #else 
 #undef «("CONFIG_SWPDEV_" + supportedDevice.getFullObjectNameToElementWithoutVersion() + "_PARAM_" + parameter.name).toUpperDefString()»
 #endif
-«ELSEIF parameter.metaType == common::MEnumParameter -»
+«ELSEIF parameter.metaType == common::MEnumParameterSingleExpression -»
 #define «("CONFIG_SWPDEV_" + supportedDevice.getFullObjectNameToElementWithoutVersion() + "_PARAM_" + parameter.name).toUpperDefString()» «("CONFIG_SWPDEV_" + supportedDevice.getFullObjectNameToElement() + "_PARAM_" + parameter.name).toUpperDefString()»
 «FOREACH ((common::MEnumParameter)parameter).enumDefinition.literals AS literal -»
 #ifdef «("CONFIG_SWPDEV_" + supportedDevice.getFullObjectNameToElement() + "_PARAM_" + parameter.name + "_" + literal.name).toUpperDefString()»

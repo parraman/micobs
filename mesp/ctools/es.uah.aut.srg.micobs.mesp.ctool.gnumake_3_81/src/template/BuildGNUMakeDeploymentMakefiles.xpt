@@ -47,7 +47,6 @@ clean-all: clean«FOREACH this.deploymentPlatforms.without({deploymentPlatform})
 
 distclean-all: distclean«FOREACH this.deploymentPlatforms.without({deploymentPlatform}) AS dplt -» «("distclean_" + this.getTargetName(null, dplt)).toLowerDefString()»«ENDFOREACH -»
 
-	@find . -name '*.d' -exec rm -f "{}" \;
 	@rm -rf $R/bin
 «FOREACH this.deploymentPlatforms.without({deploymentPlatform}) AS dplt -»
 «EXPAND makefileCallRule("", null, dplt) FOR this -»
@@ -72,7 +71,6 @@ clean-all: clean«FOREACH alternative.deploymentPlatforms.without({deploymentPla
 
 distclean-all: distclean«FOREACH alternative.deploymentPlatforms.without({deploymentPlatform}) AS platform -» «("distclean_" + this.getTargetName(alternative, platform)).toLowerDefString()»«ENDFOREACH -»«FOREACH this.getLeafDeploymentAlternatives().without({alternative}) AS alt -»«FOREACH alt.deploymentPlatforms AS platform -» «("distclean_" + this.getTargetName(alt, platform)).toLowerDefString()»«ENDFOREACH -»«ENDFOREACH -»
 
-	@find . -name '*.d' -exec rm -f "{}" \;
 	@rm -rf $R/bin
 «FOREACH this.getLeafDeploymentAlternatives().without({alternative}) AS alt -»
 «FOREACH alt.deploymentPlatforms AS platform -»
