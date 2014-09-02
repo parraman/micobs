@@ -15,7 +15,7 @@
    <feature url="features/es.uah.aut.srg.micobs.mesp.ctools_2.1.11.jar" id="es.uah.aut.srg.micobs.mesp.ctools" version="2.1.11">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp.langs_2.1.4.jar" id="es.uah.aut.srg.micobs.mesp.langs" version="2.1.4">
+   <feature url="features/es.uah.aut.srg.micobs.mesp.langs_2.1.5.jar" id="es.uah.aut.srg.micobs.mesp.langs" version="2.1.5">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
    <category-def name="es.uah.aut.srg.micobs.common.category.id" label="MICOBS Common">
