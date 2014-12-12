@@ -170,6 +170,7 @@ public class ParametricReferencingLibraryManager extends ReferencingLibraryManag
 				HashMap<MCommonPackageElement, MCommonPackageParametricReferencingElement> parametricHash = 
 						new HashMap<MCommonPackageElement, MCommonPackageParametricReferencingElement>();
 				parametricHash.put(parameterElement, referencingElement);
+				parametricElementHash.put(referencedElement, parametricHash);
 			}
 			else
 			{
