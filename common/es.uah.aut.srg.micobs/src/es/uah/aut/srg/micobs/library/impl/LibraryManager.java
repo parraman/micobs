@@ -748,6 +748,7 @@ public class LibraryManager implements ILibraryManager {
 	public List<MCommonPackageElement> getElementsOfClass(MCommonPackage pack, EClass classifier) throws LibraryManagerException
 	{
 		if (!library.getPackages().contains(pack) ||
+			getPackageElementsClassifiedList().get(pack) == null ||
 			getPackageElementsClassifiedList().get(pack).get(classifier) == null)
 		{
 			return new ArrayList<MCommonPackageElement>();
@@ -765,9 +766,16 @@ public class LibraryManager implements ILibraryManager {
 			MCommonPackage pack = p.next();
 			if (library.getPackages().contains(pack))
 			{
-				if (getPackageElementsClassifiedList().get(pack).get(classifier) != null)
+				HashMap<EClass, List<MCommonPackageElement>> classMap = getPackageElementsClassifiedList().get(pack);
+				
+				if (classMap == null)
 				{
-					metaList.addAll(getPackageElementsClassifiedList().get(pack).get(classifier));
+					continue;
+				}
+				
+				if (classMap.get(classifier) != null)
+				{
+					metaList.addAll(classMap.get(classifier));
 				}
 			}
 		}
