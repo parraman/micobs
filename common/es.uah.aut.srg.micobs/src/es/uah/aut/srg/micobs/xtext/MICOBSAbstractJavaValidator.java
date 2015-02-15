@@ -1,5 +1,5 @@
 /*******************************************************************************
- * Copyright (c) 2013 UAH Space Research Group.
+ * Copyright (c) 2013-2015 UAH Space Research Group.
  * All rights reserved. This program and the accompanying materials
  * are made available under the terms of the Eclipse Public License v1.0
  * which accompanies this distribution, and is available at
@@ -146,17 +146,19 @@ public abstract class MICOBSAbstractJavaValidator extends AbstractDeclarativeVal
 					{
 						continue;
 					}
-					for (int j = 0; 
-						 j < (packElements.size() < impElements.size() ? packElements.size() : impElements.size());
-						 j++)
+					for (MCommonPackageElement packElem : packElements)
 					{
-						if (StringHelper.toLowerDefString(MICOBSStringHelper.getInstance().getElementName(packElements.get(j)))
-							.compareTo(StringHelper.toLowerDefString(MICOBSStringHelper.getInstance().getElementName(impElements.get(j)))) == 0)
+						String elemName = StringHelper.toLowerDefString(MICOBSStringHelper.getInstance().getElementName(packElem));
+						
+						for (MCommonPackageElement itemElem : impElements)
 						{
-							error("Duplicated element " + packElements.get(j).eClass().getName() + " " +
-									MICOBSStringHelper.getInstance().getElementName(packElements.get(j)) +
-									" in packages " + pack.getUri() + " and " + imp.getUri(),
-								  file, commonPackage.eINSTANCE.getMCommonPackageFile_Imports(), count);
+							String impName = StringHelper.toLowerDefString(MICOBSStringHelper.getInstance().getElementName(itemElem));
+							if (elemName.compareTo(impName) == 0)
+							{
+								error("Duplicated element " + elemName + " in packages " + pack.getUri() +
+									  " and " + imp.getUri(),
+									  file, commonPackage.eINSTANCE.getMCommonPackageFile_Imports(), count);
+							}
 						}
 					}
 				}
@@ -209,17 +211,19 @@ public abstract class MICOBSAbstractJavaValidator extends AbstractDeclarativeVal
 					{
 						continue;
 					}
-					for (int k = 0; 
-						 k < (packElements.size() < impElements.size() ? packElements.size() : impElements.size());
-						 k++)
+					for (MCommonPackageElement packElem : packElements)
 					{
-						if (MICOBSStringHelper.getInstance().getElementName(packElements.get(k))
-							.compareTo(MICOBSStringHelper.getInstance().getElementName(impElements.get(k))) == 0)
+						String elemName = StringHelper.toLowerDefString(MICOBSStringHelper.getInstance().getElementName(packElem));
+						
+						for (MCommonPackageElement itemElem : impElements)
 						{
-							error("Duplicated element name " + packElements.get(k).eClass().getName() + " " +
-									MICOBSStringHelper.getInstance().getElementName(packElements.get(k)) +
-									" in packages " + pack.getUri() + " and " + imp.getUri(),
-								  file, commonPackage.eINSTANCE.getMCommonPackageFile_Imports(), count);
+							String impName = StringHelper.toLowerDefString(MICOBSStringHelper.getInstance().getElementName(itemElem));
+							if (elemName.compareTo(impName) == 0)
+							{
+								error("Duplicated element " + elemName + " in packages " + pack.getUri() +
+									  " and " + imp.getUri(),
+									  file, commonPackage.eINSTANCE.getMCommonPackageFile_Imports(), count);
+							}
 						}
 					}
 				}
