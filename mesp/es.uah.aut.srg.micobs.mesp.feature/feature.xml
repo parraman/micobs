@@ -2,7 +2,7 @@
 <feature
       id="es.uah.aut.srg.micobs.mesp"
       label="%featureName"
-      version="2.1.13"
+      version="2.2.0"
       provider-name="%providerName"
       plugin="es.uah.aut.srg.micobs.mesp">
 

@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: es.uah.aut.srg.micobs.mesp.editor.osswi.ui
 Bundle-Vendor: UAH Space Research Group
-Bundle-Version: 2.1.0.qualifier
+Bundle-Version: 2.2.0.qualifier
 Bundle-SymbolicName: es.uah.aut.srg.micobs.mesp.editor.osswi.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: es.uah.aut.srg.micobs.mesp.editor.osswi;visibility:=reexport,

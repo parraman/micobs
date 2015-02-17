@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Cpp_98
 Bundle-SymbolicName: es.uah.aut.srg.micobs.mesp.lang.cpp_98;singleton:=true
-Bundle-Version: 2.1.0.qualifier
+Bundle-Version: 2.2.0.qualifier
 Bundle-Vendor: UAH Space Research Group
 Bundle-Activator: es.uah.aut.srg.micobs.mesp.lang.cpp_98.plugin.MESPLangCPP_98Plugin$Implementation
 Require-Bundle: org.eclipse.ui,
