@@ -10,6 +10,7 @@
  ******************************************************************************/
 package es.uah.aut.srg.micobs.library.decoder.impl;
 
+import java.util.UUID;
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
@@ -244,8 +245,8 @@ public class LibraryDecoder implements ILibraryDecoder {
 					ILibraryManager.LIBRARY_FOLDER);
 		destPath = destPath.append(ILibraryManager.PACKAGES_FOLDER);
 		destPath = destPath.append(StringHelper.toLowerDefString(packageFile.getPackage().getUri()));
-		destPath = destPath.append(StringHelper.toLowerDefString(
-				elementClassifier, elementURI, elementVersion) + 
+		destPath = destPath.append(UUID.nameUUIDFromBytes(StringHelper.toLowerDefString(
+				elementClassifier, elementURI, elementVersion).getBytes()).toString() + 
 				"." + modelFileExtension);
 		
 		File destFile = new File(destPath.toOSString());
@@ -269,7 +270,8 @@ public class LibraryDecoder implements ILibraryDecoder {
 				ILibraryManager.LIBRARY_FOLDER + "/" +
 				ILibraryManager.PACKAGES_FOLDER + "/" +
 				StringHelper.toLowerDefString(packageFile.getPackage().getUri()) + "/" +
-				StringHelper.toLowerDefString(elementClassifier, elementURI, elementVersion) +
+				UUID.nameUUIDFromBytes(StringHelper.toLowerDefString(elementClassifier, 
+						elementURI, elementVersion).getBytes()).toString() +
 				"." + modelFileExtension, true);
 		
 		

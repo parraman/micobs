@@ -13,6 +13,7 @@ package es.uah.aut.srg.micobs.library.ui.handlers;
 import java.io.File;
 import java.io.IOException;
 import java.util.Iterator;
+import java.util.UUID;
 
 import org.eclipse.core.commands.AbstractHandler;
 import org.eclipse.core.commands.ExecutionEvent;
@@ -262,8 +263,8 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 					destPath = destPath.append(ILibraryManager.PACKAGES_FOLDER);
 					destPath = destPath.append(StringHelper.toLowerDefString(packageFile.getPackage().getUri()));
 						
-					destPath = destPath.append(StringHelper.toLowerDefString(
-							elementClassifier, elementURI, elementVersion) +
+					destPath = destPath.append(UUID.nameUUIDFromBytes(StringHelper.toLowerDefString(
+							elementClassifier, elementURI, elementVersion).getBytes()).toString() +
 							"." + resourceExtension);
 					
 					File destFile = new File(destPath.toOSString());
@@ -288,7 +289,8 @@ public abstract class UploadToLibraryHandler extends AbstractHandler {
 								ILibraryManager.LIBRARY_FOLDER + "/" +
 								ILibraryManager.PACKAGES_FOLDER + "/" +
 								StringHelper.toLowerDefString(packageFile.getPackage().getUri()) + "/" +
-								StringHelper.toLowerDefString(elementClassifier, elementURI, elementVersion) +
+								UUID.nameUUIDFromBytes(StringHelper.toLowerDefString(elementClassifier, 
+										elementURI, elementVersion).getBytes()).toString() +
 								"." + resourceExtension, true);
 					} catch (LibraryManagerException e) {
 						throw new ExecutionException(e.toString());

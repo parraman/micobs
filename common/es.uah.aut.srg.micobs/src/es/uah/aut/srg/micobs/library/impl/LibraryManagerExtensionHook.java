@@ -12,6 +12,7 @@ package es.uah.aut.srg.micobs.library.impl;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.UUID;
 
 import org.eclipse.core.runtime.FileLocator;
 import org.eclipse.core.runtime.IConfigurationElement;
@@ -164,8 +165,8 @@ public class LibraryManagerExtensionHook {
 				destPath = destPath.append(ILibraryManager.LIBRARY_FOLDER);
 				destPath = destPath.append(ILibraryManager.PACKAGES_FOLDER);
 				destPath = destPath.append(StringHelper.toLowerDefString(packageURI));
-				destPath = destPath.append(StringHelper.toLowerDefString(
-						this.classifier.getName(), uri, version) + "." + resourceExtension);
+				destPath = destPath.append(UUID.nameUUIDFromBytes(StringHelper.toLowerDefString(
+						this.classifier.getName(), uri, version).getBytes()).toString() + "." + resourceExtension);
 				
 				File destFile = new File(destPath.toOSString());
 				try {
@@ -186,7 +187,8 @@ public class LibraryManagerExtensionHook {
 						ILibraryManager.LIBRARY_FOLDER + "/" +
 						ILibraryManager.PACKAGES_FOLDER + "/" +
 						StringHelper.toLowerDefString(packageURI) + "/" +
-						StringHelper.toLowerDefString(this.classifier.getName(), uri, version) +
+						UUID.nameUUIDFromBytes(StringHelper.toLowerDefString(this.classifier.getName(), 
+								uri, version).getBytes()).toString() +
 						"." + resourceExtension, true);
 				
 				libraryManager.putElement(modelURI);
