@@ -28,6 +28,9 @@ import org.tigris.subversion.subclipse.ui.dialogs.ChooseUrlDialog;
 import org.tigris.subversion.subclipse.ui.util.UrlCombo;
 import org.tigris.subversion.svnclientadapter.SVNUrl;
 
+import es.uah.aut.srg.micobs.common.MCommonPackageItem;
+import es.uah.aut.srg.micobs.common.MCommonPackageVersionedItem;
+
 /**
  * Page to select the version and the repository folder where the new version
  * of an element that is being version-tagged.
@@ -42,10 +45,12 @@ public class NewRepositoryFolderLocationPage extends WizardPage implements Liste
 	protected Button makeParentsButton;
     
     private SVNUrl url;
+    private MCommonPackageItem item;
 	
-	public NewRepositoryFolderLocationPage(SVNUrl defaultUrl) {
+	public NewRepositoryFolderLocationPage(SVNUrl defaultUrl, MCommonPackageItem item) {
 		super("NewRepositoryFileLocationPage");
 		this.url = defaultUrl;
+		this.item = item;
 	}
 	
 	public String getUrl() {
@@ -175,6 +180,15 @@ public class NewRepositoryFolderLocationPage extends WizardPage implements Liste
 		{
 			setMessage("Version must be specified");
 			return false;
+		}
+		
+		for (MCommonPackageVersionedItem v : item.getVersionedItems())
+		{
+			if (v.getVersion().equals(getVersion()))
+			{
+				setMessage("Version " + getVersion() + " already exists");
+				return false;
+			}
 		}
     	    	
         for (int i = 0; i < getVersion().length(); i++)

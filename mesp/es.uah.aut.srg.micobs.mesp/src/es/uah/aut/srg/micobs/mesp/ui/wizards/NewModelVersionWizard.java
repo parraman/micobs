@@ -24,6 +24,7 @@ import org.tigris.subversion.svnclientadapter.ISVNClientAdapter;
 import org.tigris.subversion.svnclientadapter.ISVNInfo;
 import org.tigris.subversion.svnclientadapter.SVNUrl;
 
+import es.uah.aut.srg.micobs.common.MCommonPackageItem;
 import es.uah.aut.srg.micobs.mesp.plugin.MESPPlugin;
 import es.uah.aut.srg.micobs.mesp.ui.handlers.CreateNewPackageVersionHandler;
 
@@ -45,15 +46,19 @@ public class NewModelVersionWizard extends Wizard {
 	private String elementName;
 	private String version;
 	
-	public NewModelVersionWizard(String elementName, ISVNRemoteResource resource)
+	private MCommonPackageItem item;
+	
+	public NewModelVersionWizard(String elementName, MCommonPackageItem item,
+			ISVNRemoteResource resource)
 	{
 		this.resource = resource;
 		this.elementName = elementName;
+		this.item = item;
 	}
 	
 	@Override
 	public void addPages() {
-		newfileLocationPage = new NewRepositoryFolderLocationPage(resource.getRepository().getUrl());
+		newfileLocationPage = new NewRepositoryFolderLocationPage(resource.getRepository().getUrl(), item);
 		newfileLocationPage.setTitle(MESPPlugin.INSTANCE.getString("_UI_NewPackageVersionWizardPageTitle"));
 		newfileLocationPage.setDescription(MESPPlugin.INSTANCE.getString("_UI_NewPackageVersionWizardPageDescription"));
 		addPage(newfileLocationPage);
@@ -65,8 +70,7 @@ public class NewModelVersionWizard extends Wizard {
 		version = newfileLocationPage.getVersion();
 		
 		try {
-			destinationUrl = new SVNUrl(newfileLocationPage.getUrl() + "/" + elementName +
-					"_" + version);
+			destinationUrl = new SVNUrl(newfileLocationPage.getUrl() + "/" + elementName);
 		} catch (MalformedURLException e) {
 			MessageDialog.openError(getShell(), Policy.bind("BranchTagDialog.title"), e.getMessage()); //$NON-NLS-1$
             return false;
