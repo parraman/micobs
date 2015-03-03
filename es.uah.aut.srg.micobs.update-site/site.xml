@@ -9,7 +9,7 @@
    <feature url="features/es.uah.aut.srg.micobs.langs_2.2.0.jar" id="es.uah.aut.srg.micobs.langs" version="2.2.0">
       <category name="es.uah.aut.srg.micobs.common.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp_2.2.0.jar" id="es.uah.aut.srg.micobs.mesp" version="2.2.2">
+   <feature url="features/es.uah.aut.srg.micobs.mesp_2.2.0.jar" id="es.uah.aut.srg.micobs.mesp" version="2.2.0">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
    <feature url="features/es.uah.aut.srg.micobs.mesp.ctools_2.2.0.jar" id="es.uah.aut.srg.micobs.mesp.ctools" version="2.2.0">
