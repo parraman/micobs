@@ -153,15 +153,11 @@ public class mesplibraryPackageImpl extends EPackageImpl implements mesplibraryP
 	private EClass mmespVersionedItemConstructionToolEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass mmespItemDriverSwPackageEClass = null;
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	private EClass mmespVersionedItemDriverSwPackageEClass = null;
@@ -372,8 +368,6 @@ public class mesplibraryPackageImpl extends EPackageImpl implements mesplibraryP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getMMESPItemDriverSwPackage() {
@@ -381,8 +375,6 @@ public class mesplibraryPackageImpl extends EPackageImpl implements mesplibraryP
 	}
 
 	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
 	 * @generated
 	 */
 	public EClass getMMESPVersionedItemDriverSwPackage() {
