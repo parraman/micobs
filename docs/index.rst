@@ -10,8 +10,12 @@ Contents:
 
 .. toctree::
    :maxdepth: 1
+
    platform-model
 
+Links:
+
+- Code: https://github.com/parraman/micobs
 
 
 Indices and tables
