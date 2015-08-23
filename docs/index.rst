@@ -6,6 +6,13 @@
 MICOBS documentation
 ====================
 
+MICOBS is a framework for developing component-based embedded software systems
+under a multi-platform approach and integrating different development and
+analysis technologies.
+
+It has been developed by the Space Research Group (http://www.srg.uah.es) of
+the University of Alcala (http://www.uah.es).
+
 Contents:
 
 .. toctree::
