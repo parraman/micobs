@@ -1,0 +1,674 @@
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+import es.uah.aut.srg.micobs.mclev.MCLEVBlackBoxUnit;
+
+modeltype mclevdom uses "http://srg.aut.uah.es/micobs/mclev/mclevdom";
+modeltype mclevimap uses "http://srg.aut.uah.es/micobs/mclev/mclevimap";
+modeltype mclevmcad uses "http://srg.aut.uah.es/micobs/mclev/mclevmcad";
+modeltype mclevslib uses "http://srg.aut.uah.es/micobs/mclev/mclevslib";
+modeltype mclevflatmcad uses "http://srg.aut.uah.es/micobs/mclev/mclevflatmcad";
+modeltype mclevcmp uses "http://srg.aut.uah.es/micobs/mclev/mclevcmp";
+modeltype common uses "http://srg.aut.uah.es/micobs/common";
+modeltype pdl uses "http://srg.aut.uah.es/micobs/pdl";
+	
+
+transformation generateFlatMCAD(in input : mclevmcad, out output : mclevflatmcad);
+
+main() {
+	input.objects()![mclevmcad::MMCLEVMCADPackageFile]->map GenerateFlatMCADFile();
+	
+}
+
+mapping mclevmcad::MMCLEVMCADPackageFile::GenerateFlatMCADFile() : mclevflatmcad::MMCLEVFLATMCADPackageFile {
+	
+	result.package := self.package;
+	result.imports += self.imports;
+	result.element := self.element.oclAsType(mclevmcad::MMCADeployment).map GenerateFlatMCAD();
+	
+}
+
+mapping mclevmcad::MMCADeployment::GenerateFlatMCAD() : MFlatMCAD {
+	
+	result.name := self.name + "_flat";
+	result.version := self.version;
+	result.referencedElement := self;
+	
+	if self.deploymentAlternatives->isEmpty() then
+	{
+		var i : Integer := 1;
+		while (i <= self.deploymentPlatforms->size())
+		{
+			result.targets += self.GenerateMainTarget(self.deploymentPlatforms->at(i));
+			i := i + 1;
+		}
+	}
+	else
+	{
+		var leafAlts := self.getLeafDeploymentAlternatives()->asOrderedSet();
+		var i : Integer := 1;
+		while (i <= leafAlts->size())
+		{
+			var dplts := leafAlts->at(i).deploymentPlatforms;
+			var j : Integer := 1;
+			while (j <= dplts->size())
+			{
+				result.targets += leafAlts->at(i).GenerateAlternativeTarget(dplts->at(j));
+				j := j + 1;
+			};
+			i := i + 1;
+		}
+	}
+	endif
+	
+}
+
+helper mclevmcad::MDeploymentAlternative::GenerateFlatCommonConnections(in target : MFlatMCADTarget) : OrderedSet(MFlatConnection)
+{
+	var connections := object OrderedSet(MFlatConnection) {};
+	
+	var i : Integer := 1;
+	while (i <= self.connections[MCommonConnection]->size())
+	{
+		var connection := self.connections[MCommonConnection]->at(i);
+		connections += generateFlatConnection(
+				connection.clientInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				connection.clientPort,
+				connection.serverInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				connection.serverPort,
+				connection.connector,
+				connection.ifaceMapping,
+				connection.attributeValueAssignments);
+		i := i + 1;
+	};
+	return connections;
+}
+
+helper mclevmcad::MDeploymentAlternative::GenerateAllFlatConnections(in target : MFlatMCADTarget) : OrderedSet(MFlatConnection)
+{
+	var connections := object OrderedSet(MFlatConnection) {};
+	connections += self.GenerateFlatCommonConnections(target);
+	
+	if self.container().oclIsTypeOf(MDeploymentAlternative) then
+	{
+		var parent := self.container().oclAsType(MDeploymentAlternative);
+		var i : Integer := 1;
+		while (i <= parent.connections[MConnectionSwitch]->size())
+		{
+			var connection := parent.connections[MConnectionSwitch]->at(i);
+			var csw := connection.cases->selectOne(c | c.alternative = self);
+			connections += generateFlatConnection(
+				connection.clientInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				connection.clientPort,
+				csw.serverInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				csw.serverPort,
+				csw.connector,
+				csw.ifaceMapping,
+				csw.attributeValueAssignments);
+			i := i + 1;
+		};
+		connections += parent.GenerateAllFlatConnections(target);
+	}
+	else
+	{
+		var deployment := self.container().oclAsType(MMCADeployment);
+		var i : Integer := 1;
+		while (i <= deployment.connections[MConnectionSwitch]->size())
+		{
+			var connection := deployment.connections[MConnectionSwitch]->at(i);
+			var csw := connection.cases->selectOne(c | c.alternative = self);
+			connections += generateFlatConnection(
+				connection.clientInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				connection.clientPort,
+				csw.serverInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				csw.serverPort,
+				csw.connector,
+				csw.ifaceMapping,
+				csw.attributeValueAssignments);
+			i := i + 1;
+		};
+		i := 1;
+		while (i <= deployment.connections[MCommonConnection]->size())
+		{
+			var connection := deployment.connections[MCommonConnection]->at(i);
+			var cvas := object OrderedSet(MParameterValueAssignment) {};
+		
+			connections += generateFlatConnection(
+				connection.clientInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				connection.clientPort,
+				connection.serverInstance.resolveone(t : MFlatComponentInstance | t.container() = target),
+				connection.serverPort,
+				connection.connector,
+				connection.ifaceMapping,
+				connection.attributeValueAssignments);
+			i := i + 1;
+		};
+	}
+	endif;
+	
+	return connections;
+}
+
+helper mclevmcad::MDeploymentAlternative::GenerateAlternativeTarget(in deploymentPlatform : MDeploymentPlatform) : MFlatMCADTarget {
+	
+	var target := object MFlatMCADTarget {};
+		
+	target.deploymentPlatform := deploymentPlatform;
+	target.leafDeploymentAlternative := self;
+	
+	target.components += self.GetAllComponentInstances().GenerateFlatComponentInstances(self, deploymentPlatform);
+	target.libraries += self.getAllServiceLibraryInstances()->select(e | e.oclIsTypeOf(MDriverSLibInstance) = false)->map GenerateFlatServiceLibraryInstance(self, deploymentPlatform);
+	target.libraries += self.getAllServiceLibraryInstances()->selectByType(MDriverSLibInstance)->map GenerateFlatDriverSLibInstance(self, deploymentPlatform);
+
+	target.attributeValueAssignments += self.attributeValueAssignments->copy();
+
+	target.connections += self.GenerateAllFlatConnections(target);
+
+	var i : Integer := 1;
+	var cvas := object OrderedSet(MParameterValueAssignment) {};
+	
+	while (i <= target.components->size())
+	{
+		var inst := target.components->at(i);
+		target.connections += inst.GenerateFlatComponentInternalConnections(target,
+					deploymentPlatform.platform,
+					target.connections->select(e | e.clientInstance = inst or
+						e.serverInstance = inst));
+		i := i + 1;
+	};
+	
+	return target;	
+}
+
+helper mclevmcad::MMCADeployment::GenerateMainTarget(in deploymentPlatform : MDeploymentPlatform) : MFlatMCADTarget {
+	
+	var target := object MFlatMCADTarget {};
+	
+	target.deploymentPlatform := deploymentPlatform;
+	
+	target.components += self.components.GenerateFlatComponentInstances(null, deploymentPlatform);
+	target.libraries += self.libraries->select(e | e.oclIsTypeOf(MDriverSLibInstance) = false)->map GenerateFlatServiceLibraryInstance(null, deploymentPlatform);
+	target.libraries += self.libraries->selectByType(MDriverSLibInstance)->map GenerateFlatDriverSLibInstance(null, deploymentPlatform);
+
+	target.attributeValueAssignments += self.attributeValueAssignments->copy();
+
+	var i : Integer := 1;
+	while (i <= self.connections[MCommonConnection]->size())
+	{
+		var connection := self.connections[MCommonConnection]->at(i);
+		target.connections += generateFlatConnection(
+			connection.clientInstance.resolveone(MFlatComponentInstance),
+			connection.clientPort,
+			connection.serverInstance.resolveone(MFlatComponentInstance),
+			connection.serverPort,
+			connection.connector,
+			connection.ifaceMapping,
+			connection.attributeValueAssignments);
+		i := i + 1;
+	};
+
+	i := 1;
+	var cvas := object OrderedSet(MParameterValueAssignment) {};
+	
+	while (i <= target.components->size())
+	{
+		var inst := target.components->at(i);
+		target.connections += inst.GenerateFlatComponentInternalConnections(target, deploymentPlatform.platform,
+					target.connections->select(e | e.clientInstance = inst or
+						e.serverInstance = inst));
+		i := i + 1;
+	};
+	
+	return target;	
+}
+
+helper MDeploymentAlternative::GetAllComponentInstances() : OrderedSet(MComponentInstance) {
+	var insts := object OrderedSet(MComponentInstance) {};
+	
+	insts += self.components;
+	
+	if self.container().oclIsTypeOf(MDeploymentAlternative) then
+	{
+		insts += self.container().oclAsType(MDeploymentAlternative).GetAllComponentInstances();
+	}
+	else
+	{
+		insts += self.container().oclAsType(MMCADeployment).components;
+	}
+	endif;
+	return insts;
+}
+
+helper generateFlatConnection(in clientComponent : MFlatComponentInstance,
+							  in clientPort : MClientPort,
+							  in serverComponent : MFlatComponentInstance,
+							  in serverPort : MServerPort,
+				              in connector : MConnector,
+							  in ifaceMapping : MInterfaceMapping,
+				              in attributeValues : OrderedSet(MParameterValueAssignment)) : MFlatConnection {
+	
+	var flatConnection := object MFlatConnection {};
+	flatConnection.clientPort := clientPort;
+	flatConnection.serverPort := serverPort;
+	flatConnection.clientInstance := clientComponent;
+	flatConnection.serverInstance := serverComponent;
+	flatConnection.connector := connector;
+	flatConnection.ifaceMapping := ifaceMapping;
+	flatConnection.attributeValueAssignments += attributeValues->copy();
+	
+	return flatConnection;
+
+}
+
+helper generateFlatConnection(in clientComponent : MFlatComponentInstance,
+							  in clientPort : MClientPort,
+							  in serverComponent : MFlatComponentInstance,
+							  in serverPort : MServerPort,
+				              in connector : MConnector,
+							  in ifaceMapping : MInterfaceMapping,
+				              in attributeValues : OrderedSet(MParameterValueAssignment),
+				              in outerAttributeValues : OrderedSet(MParameterValueAssignment),
+				              in platform : MPlatform) : MFlatConnection {
+	
+	var flatConnection := object MFlatConnection {};
+	var allAttributes := object OrderedSet(MParameterValueAssignment) {};
+	allAttributes += attributeValues;
+	allAttributes += outerAttributeValues;
+	flatConnection.clientPort := clientPort;
+	flatConnection.serverPort := serverPort;
+	flatConnection.clientInstance := clientComponent;
+	flatConnection.serverInstance := serverComponent;
+	flatConnection.connector := connector;
+	flatConnection.ifaceMapping := ifaceMapping;
+	flatConnection.attributeValueAssignments += attributeValues->copy();
+	
+	return flatConnection;
+
+}
+
+helper MFlatComponentInstance::GenerateFlatComponentInternalConnections(in target : MFlatMCADTarget,
+			in platform : MPlatform,
+			in outerConns : OrderedSet(mclevflatmcad::MFlatConnection))
+	 : OrderedSet(mclevflatmcad::MFlatConnection) {
+
+
+	var csp : MComponentSupportedPlatform := self.component.getMatchingPlatform(platform);
+	
+	var icnxs := object OrderedSet(mclevflatmcad::MFlatConnection) {};
+	
+	var i : Integer := 1;
+	while (i <= self.component.connections->size())
+	{
+		var cnx : MInternalConnection := self.component.connections->at(i);
+			
+		switch {
+			case (cnx.oclIsTypeOf(MInternalComponentConnection))
+			{
+				var icnx : MInternalComponentConnection := cnx.oclAsType(MInternalComponentConnection);
+				switch
+				{
+					case (icnx.connector = null and icnx.clientInstance = null and
+						  icnx.serverInstance = null and
+				  	  	  self.component.externalPorts->includes(icnx.clientPort))
+					{
+						// It must be of the external membrane and the second instance must
+						// be null
+						var outConn : MFlatConnection := outerConns->selectOne(e | e.clientPort = icnx.clientPort and
+							e.clientInstance.name.matches(self.name));
+					
+						var innConns : OrderedSet(MInternalComponentConnection) := 
+							self.component.connections->excluding(icnx)[MInternalComponentConnection]->select(e | e.serverInstance = null and
+									 e.serverPort = icnx.serverPort)->asOrderedSet();
+						
+						var j : Integer := 1;
+						while (j <= innConns->size())
+						{
+							var iinst : MFlatComponentInstance := 
+									innConns->at(j).clientInstance
+										.resolveone(t : MFlatComponentInstance | t.container() = target and
+											t.name.matches(self.name + "_" + innConns->at(j).clientInstance.name));
+							icnxs += generateFlatConnection(iinst, innConns->at(j).clientPort, 
+															outConn.serverInstance,
+															innConns->at(j).serverPort,
+															outConn.connector, 
+															outConn.ifaceMapping, 
+															outConn.attributeValueAssignments);
+							j := j + 1;
+						};
+
+						if csp <> null then
+						{	
+							innConns := csp.connections[MInternalComponentConnection]->select(e | e.serverInstance = null and
+								 e.serverPort = icnx.serverPort);
+							j := 1;
+							while (j <= innConns->size())
+							{
+								var iinst : MFlatComponentInstance := 
+									innConns->at(j).clientInstance
+										.resolveone(t : MFlatComponentInstance | t.container() = target and
+										t.name.matches(self.name + "_" + innConns->at(j).clientInstance.name));
+								
+								icnxs += generateFlatConnection(iinst, innConns->at(j).clientPort,
+																outConn.serverInstance,
+																innConns->at(j).serverPort,
+																outConn.connector, 
+																outConn.ifaceMapping, 
+																outConn.attributeValueAssignments);
+								j := j + 1;
+							};
+						}
+						endif;
+						output.removeElement(outConn);
+					}
+					case (icnx.connector = null and icnx.clientInstance = null and
+						  icnx.serverInstance = null and
+					  	  self.component.externalPorts->includes(icnx.serverPort))
+					{
+						var outConns : OrderedSet(MFlatConnection) := outerConns->select(e | e.serverPort = icnx.serverPort and
+							e.serverInstance.name.matches(self.name));
+					
+						switch {				
+							case (self.component.connections->excluding(icnx)[MInternalComponentConnection]
+									->selectOne(e | e.clientInstance = null and e.clientPort = icnx.clientPort) <> null)
+							{
+								// It is a simple component connection
+								var innConn := self.component.connections->excluding(icnx)[MInternalComponentConnection]->selectOne(e | e.clientInstance = null and
+									 e.clientPort = icnx.clientPort);
+								var j : Integer := 1;
+							
+								var iinst : MFlatComponentInstance := 
+									innConn.serverInstance.resolve(t : MFlatComponentInstance | 
+										t.name.matches(self.name + "_" + innConn.serverInstance.name))->first();
+								while (j <= outConns->size())
+								{
+									outConns->at(j).serverInstance := iinst;
+									outConns->at(j).serverPort := innConn.serverPort;
+									j := j + 1;
+								};
+							}
+							case (self.component.connections[MInternalComponentPlatformSwitch]
+								->selectOne(e | e.clientInstance = null and e.clientPort = icnx.clientPort) <> null)
+							{
+								var innConn := self.component.connections[MInternalComponentPlatformSwitch]
+									->selectOne(e | e.clientInstance = null and e.clientPort = icnx.clientPort);
+								var pswcase := innConn.cases->selectOne(e | e.platform = csp);
+							
+								var j : Integer := 1;
+									
+								var iinst : MFlatComponentInstance := 
+									pswcase.serverInstance
+										.resolveone(t : MFlatComponentInstance | t.container() = target and
+											t.name.matches(self.name + "_" + csp.name + "_" + 
+												   pswcase.serverInstance.name));
+								while (j <= outConns->size())
+								{
+									outConns->at(j).serverInstance := iinst;
+									outConns->at(j).serverPort := pswcase.serverPort;
+									j := j + 1;
+								};		
+							}
+						};
+					}
+					case (icnx.connector <> null and icnx.clientInstance = null and
+						  icnx.serverInstance <> null)
+					{
+						icnxs += generateFlatConnection(self,
+								icnx.clientPort,
+								icnx.serverInstance.resolveone(t : MFlatComponentInstance | 
+									t.container() = target and
+									t.name.matches(self.name + "_" + icnx.serverInstance.name)),
+								icnx.serverPort,
+							  	icnx.connector, icnx.ifaceMapping, icnx.attributeValueAssignments);
+					}
+					case (icnx.connector <> null and icnx.clientInstance <> null and
+						  icnx.serverInstance = null)
+					{
+						icnxs += generateFlatConnection(icnx.clientInstance.resolveone(t : MFlatComponentInstance | 
+									t.container() = target and
+									t.name.matches(self.name + "_" + icnx.clientInstance.name)),
+								icnx.clientPort,
+								self,
+								icnx.serverPort,
+							  	icnx.connector, icnx.ifaceMapping, icnx.attributeValueAssignments);
+					}
+					case (icnx.connector <> null and icnx.clientInstance <> null and
+						  icnx.serverInstance <> null)
+					{
+						// It is a regular connection
+						icnxs += generateFlatConnection(icnx.clientInstance.resolveone(t : MFlatComponentInstance | 
+										t.container() = target and
+										t.name.matches(self.name + "_" + icnx.clientInstance.name)),
+									icnx.clientPort,
+									icnx.serverInstance.resolveone(t : MFlatComponentInstance | 
+										t.container() = target and
+										t.name.matches(self.name + "_" + icnx.serverInstance.name)),
+									icnx.serverPort,
+								  	icnx.connector, icnx.ifaceMapping, icnx.attributeValueAssignments);
+					}
+				};
+			}
+			case (cnx.oclIsTypeOf(MInternalComponentPlatformSwitch))
+			{
+				var icnx : MInternalComponentPlatformSwitch := cnx.oclAsType(MInternalComponentPlatformSwitch);
+					
+				switch
+				{
+					case (icnx.clientInstance <> null)
+					{
+						var pswcase := icnx.cases->selectOne(e | e.platform = csp);
+							icnxs += generateFlatConnection(icnx.clientInstance.resolveone(t : MFlatComponentInstance | 
+									t.container() = target and
+									t.name.matches(self.name + "_" + icnx.clientInstance.name)),
+								icnx.clientPort,
+								pswcase.serverInstance.resolveone(t : MFlatComponentInstance | 
+										t.container() = target and
+										t.name.matches(self.name + "_" + csp.name + "_" +
+										pswcase.serverInstance.name)),
+								pswcase.serverPort,
+								pswcase.connector, 
+								pswcase.ifaceMapping,
+								pswcase.attributeValueAssignments);
+					}
+					case (icnx.clientInstance = null and
+						  self.component.connections->
+								excluding(icnx)[MInternalComponentConnection]->
+									selectOne(t | t.clientPort = icnx.clientPort) = null)
+					{
+						var pswcase := icnx.cases->selectOne(e | e.platform = csp);
+							icnxs += generateFlatConnection(self,
+								icnx.clientPort,
+								pswcase.serverInstance.resolveone(t : MFlatComponentInstance | 
+										t.container() = target and
+										t.name.matches(self.name + "_" + csp.name + "_" +
+										pswcase.serverInstance.name)),
+								pswcase.serverPort,
+								pswcase.connector, 
+								pswcase.ifaceMapping,
+								pswcase.attributeValueAssignments);						
+					}
+				};
+			}
+		};
+		i := i + 1;
+	};
+
+	i := 1;
+	while (i <= csp.connections->size())
+	{
+		var icnx := csp.connections->at(i);
+		
+		switch
+		{
+			case (icnx.connector <> null and icnx.clientInstance <> null and
+				  icnx.serverInstance = null)
+			{
+				icnxs += generateFlatConnection(icnx.clientInstance.resolveone(t : MFlatComponentInstance | 
+							t.container() = target and
+							t.name.matches(self.name + "_" + csp.name + "_" + icnx.clientInstance.name)),
+						icnx.clientPort,
+						self,
+						icnx.serverPort,
+					  	icnx.connector, icnx.ifaceMapping, icnx.attributeValueAssignments);
+			}
+			case (icnx.connector <> null and icnx.clientInstance <> null and
+				  icnx.serverInstance <> null)
+			{
+				 icnxs += generateFlatConnection(icnx.clientInstance.resolveone(t : MFlatComponentInstance | 
+				 			t.container() = target and
+							t.name.matches(self.name + "_" + csp.name + icnx.clientInstance.name)),
+						icnx.clientPort,
+						icnx.clientInstance.resolveone(t : MFlatComponentInstance | 
+							t.container() = target and
+							t.name.matches(self.name + "_" + csp.name + icnx.serverInstance.name)),
+						icnx.serverPort,
+					  	icnx.connector, icnx.ifaceMapping, icnx.attributeValueAssignments);
+			}
+
+		};
+		
+		i := i + 1;
+	};
+	
+	i := 1;
+	
+	while (i <= self.component.internalComponents->size())
+	{
+		var inst := self.component.internalComponents->at(i).resolveone(t : MFlatComponentInstance | 
+						t.container() = target and
+						t.name.matches(self.name + "_" + self.component.internalComponents->at(i).name));
+		icnxs += inst.GenerateFlatComponentInternalConnections(target, platform, icnxs->select(e | e.clientInstance = inst or
+								e.serverInstance = inst));
+		i := i + 1;
+	};
+	
+	i := 1;
+	
+	while (i <= csp.internalComponents->size())
+	{
+		var inst := csp.internalComponents->at(i).resolveone(t : MFlatComponentInstance | 
+						t.container() = target and
+						t.name.matches(self.name + "_" + csp.name + "_" + self.component.internalComponents->at(i).name));
+		icnxs += inst.GenerateFlatComponentInternalConnections(target, platform, icnxs->select(e | e.clientInstance = inst or
+								e.serverInstance = inst));
+		i := i + 1;
+	};
+	
+	return icnxs;
+}
+
+helper MInternalComponentInstance::GenerateFlatComponentInternalInstances(in leafAlternative : MDeploymentAlternative, 
+			in deploymentPlatform : MDeploymentPlatform, in prefix : String) : OrderedSet(mclevflatmcad::MFlatComponentInstance) {
+	
+	var iinsts := object OrderedSet(mclevflatmcad::MFlatComponentInstance) {};
+	iinsts += self.map GenerateFlatComponentInstance(leafAlternative, deploymentPlatform, prefix, self.attributeValueAssignments);
+	
+	var csp : MComponentSupportedPlatform := self.component.getMatchingPlatform(deploymentPlatform.platform);
+	
+	if not self.component.internalComponents->isEmpty() then
+	{
+		iinsts += self.component.internalComponents.GenerateFlatComponentInternalInstances(leafAlternative, deploymentPlatform, prefix + "_" + self.name)
+	}
+	endif;
+	if csp <> null and not csp.internalComponents->isEmpty() then
+	{
+		iinsts += csp.internalComponents.GenerateFlatComponentInternalInstances(leafAlternative, deploymentPlatform, prefix + "_" + self.name + "_" + csp.name)
+	}
+	endif;
+
+	return iinsts;
+	
+}
+
+helper MComponentInstance::GenerateFlatComponentInstances(in leafAlternative : MDeploymentAlternative, in deploymentPlatform : MDeploymentPlatform) : OrderedSet(mclevflatmcad::MFlatComponentInstance) {
+	
+	var iinsts := object OrderedSet(mclevflatmcad::MFlatComponentInstance) {};
+	iinsts += self.map GenerateFlatComponentInstance(leafAlternative, deploymentPlatform);
+	var csp : MComponentSupportedPlatform := self.component.getMatchingPlatform(deploymentPlatform.platform);
+	
+	if not self.component.internalComponents->isEmpty() then
+	{
+		iinsts += self.component.internalComponents.GenerateFlatComponentInternalInstances(leafAlternative, deploymentPlatform, self.getRelativeObjectName().toDefString());
+	}
+	endif;
+	if csp <> null and not csp.internalComponents->isEmpty() then
+	{
+		iinsts += csp.internalComponents.GenerateFlatComponentInternalInstances(leafAlternative, deploymentPlatform, self.getRelativeObjectName().toDefString() + "_" + csp.name)
+	}
+	endif;
+	
+	return iinsts;
+	
+}
+
+mapping MInternalComponentInstance::GenerateFlatComponentInstance(in leafAlternative : MDeploymentAlternative, 
+			in deploymentPlatform : MDeploymentPlatform,
+			in prefix : String, in pvas : OrderedSet(MParameterValueAssignment)) : mclevflatmcad::MFlatComponentInstance {
+
+	result.name := prefix + "_" + self.name;
+	result.component := self.component;
+	result.attributeValueAssignments += self.attributeValueAssignments
+			->select(e | e.parameter.container().oclIsKindOf(MAbstractComponent) or 
+				e.parameter.container().oclAsType(MComponentSupportedPlatform).matchesPlatform(deploymentPlatform.platform))
+			->copy();
+
+}
+
+mapping MComponentInstance::GenerateFlatComponentInstance(in leafAlternative : MDeploymentAlternative,
+			in deploymentPlatform : MDeploymentPlatform) : mclevflatmcad::MFlatComponentInstance {
+
+	result.name := self.getRelativeObjectName().toDefString();
+	
+	result.component := self.component;
+	
+	result.attributeValueAssignments += self.attributeValueAssignments
+			->select(e | e.parameter.container().oclIsKindOf(MAbstractComponent) or 
+				e.parameter.container().oclAsType(MComponentSupportedPlatform).matchesPlatform(deploymentPlatform.platform))
+			->copy();
+
+}
+
+mapping MServiceLibraryInstance::GenerateFlatServiceLibraryInstance(in leafAlternative : MDeploymentAlternative,
+			in deploymentPlatform : MDeploymentPlatform) : MFlatServiceLibraryInstance {
+	
+	result._library := self._library;
+	
+	result.attributeValueAssignments += self.getAllAttributeValueAssignments()
+			->select(e | e.parameter.container().oclIsKindOf(MAbstractServiceLibrary) or
+				e.parameter.container().oclAsType(MServiceLibrarySupportedPlatform).matchesPlatform(deploymentPlatform.platform))
+			->copy();
+	
+}
+
+helper MDeviceDriverMapping::GenerateFlatDeviceDriverMapping() : MFlatDeviceDriverMapping {
+
+	var devMap := object MFlatDeviceDriverMapping {
+		supportedDevice := self.supportedDevice;
+		deployedDevice := self.deployedDevice;
+	};
+	
+	return devMap;
+		
+}
+
+mapping MDriverSLibInstance::GenerateFlatDriverSLibInstance(in leafAlternative : MDeploymentAlternative,
+			in deploymentPlatform : MDeploymentPlatform) : MFlatDriverSLibInstance {
+	
+	result._library := self._library;
+	
+	result.attributeValueAssignments += self.getAllAttributeValueAssignments()
+			->select(e | e.parameter.container().oclIsKindOf(MAbstractServiceLibrary) or
+				e.parameter.container().oclAsType(MServiceLibrarySupportedPlatform).matchesPlatform(deploymentPlatform.platform))
+			->copy();
+	
+	result.deviceDriverMappings += self.getAllDriverMappings()
+			->select(e | e.deployedDevice.container() = deploymentPlatform)
+			->GenerateFlatDeviceDriverMapping();
+}
+

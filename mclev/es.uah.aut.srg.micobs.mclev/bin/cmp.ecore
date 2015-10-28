@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mclevcmp" nsURI="http://srg.aut.uah.es/micobs/mclev/mclevcmp"
+    nsPrefix="micobs.mclev">
+  <eClassifiers xsi:type="ecore:EClass" name="MComponent" eSuperTypes="#//MMCLEVCMPPackageElement #//MAbstractComponent">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="ecore:EClass sai.ecore#//MSAI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="internalPorts" upperBound="-1"
+        eType="#//MPort" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedPlatforms" upperBound="-1"
+        eType="#//MComponentSupportedPlatform" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="internalComponents" upperBound="-1"
+        eType="#//MInternalComponentInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
+        eType="#//MInternalConnection" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MAbstractComponent" eSuperTypes="#//MMCLEVCMPPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domain" lowerBound="1"
+        eType="ecore:EClass dom.ecore#//MDomain"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass dom.ecore#//MComponentType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MAbstractComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="externalPorts" upperBound="-1"
+        eType="#//MPort" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MComponentSupportedPlatform" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="osapi" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MOperatingSystemAPI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="os" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MOperatingSystem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compiler" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MCompiler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="microprocessor" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MMicroprocessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="board" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MBoard"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="ecore:EClass sai.ecore#//MSAI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="internalComponents" upperBound="-1"
+        eType="#//MInternalComponentInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connections" upperBound="-1"
+        eType="#//MInternalComponentConnection" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalComponentInstance" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="component" lowerBound="1"
+        eType="#//MComponent"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isSingleton" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MPort" abstract="true" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass dom.ecore#//MPortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interface" lowerBound="1"
+        eType="ecore:EClass iface.ecore#//MInterface"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MServerPort" eSuperTypes="#//MPort"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MClientPort" eSuperTypes="#//MPort"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalConnection" abstract="true"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalComponentConnection" eSuperTypes="#//MInternalConnection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientInstance" eType="#//MInternalComponentInstance"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientPort" lowerBound="1"
+        eType="#//MClientPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverInstance" eType="#//MInternalComponentInstance"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverPort" lowerBound="1"
+        eType="#//MServerPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="ecore:EClass dom.ecore#//MConnector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifaceMapping" eType="ecore:EClass imap.ecore#//MInterfaceMapping"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalComponentPlatformSwitch" eSuperTypes="#//MInternalConnection">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientInstance" eType="#//MInternalComponentInstance"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientPort" lowerBound="1"
+        eType="#//MClientPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
+        eType="#//MInternalComponentPlatformSwitchCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalComponentPlatformSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//MComponentSupportedPlatform"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverInstance" eType="#//MInternalComponentInstance"
+        resolveProxies="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverPort" lowerBound="1"
+        eType="#//MServerPort"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connector" eType="ecore:EClass dom.ecore#//MConnector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="ifaceMapping" eType="ecore:EClass imap.ecore#//MInterfaceMapping"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributeValueAssignments"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueAssignment"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMCLEVCMPPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMCLEVCMPPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterCSPSwitch" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
+        eType="#//MParameterCSPSwitchCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterCSPSwitchCase" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//MComponentSupportedPlatform"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamCSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MBooleanParameter #//MParameterCSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamCSPSwitchCase" eSuperTypes="#//MParameterCSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamCSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MStringParameter #//MParameterCSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamCSPSwitchCase" eSuperTypes="#//MParameterCSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamCSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MIntegerParameter #//MParameterCSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamCSPSwitchCase" eSuperTypes="#//MParameterCSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamCSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MEnumParameter #//MParameterCSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamCSPSwitchCase" eSuperTypes="#//MParameterCSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamCSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MRealParameter #//MParameterCSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamCSPSwitchCase" eSuperTypes="#//MParameterCSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mclevimap" nsURI="http://srg.aut.uah.es/micobs/mclev/mclevimap"
+    nsPrefix="micobs.mclev">
+  <eClassifiers xsi:type="ecore:EClass" name="MInterfaceMapping" eSuperTypes="#//MMCLEVIMAPPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="domain" lowerBound="1"
+        eType="ecore:EClass dom.ecore#//MIODomain"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="type" lowerBound="1" eType="ecore:EClass dom.ecore#//MExchangeModel"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaces" lowerBound="2"
+        upperBound="2" eType="ecore:EClass iface.ecore#//MInterface"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMCLEVIMAPPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMCLEVIMAPPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+</ecore:EPackage>

@@ -1,0 +1,132 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mclev/src" editDirectory="/es.uah.aut.srg.micobs.mclev/src"
+    modelPluginID="es.uah.aut.srg.micobs.mclev" modelName="Dom" editPluginClass="es.uah.aut.srg.micobs.mclev.plugin.MCLEVPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common ../../es.uah.aut.srg.micobs.pdl/model/pdl.genmodel#//pdl sai.genmodel#//mclevsai ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>dom.ecore</foreignModel>
+  <genPackages prefix="mclevdom" basePackage="es.uah.aut.srg.micobs.mclev" disposableProviderFactory="true"
+      ecorePackage="dom.ecore#/">
+    <genClasses image="false" ecoreClass="dom.ecore#//MDomain">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dom.ecore#//MDomain/allowsSingleton"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MDomain/attributesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MDomain/portTypesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MDomain/interfaceTypesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MDomain/connectorsList"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MPortTypesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MPortTypesList/portTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MInterfaceTypesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MInterfaceTypesList/interfaceTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MConnectorsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MConnectorsList/connectors"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MAODomain">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MAODomain/outputIODomains"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MAODomain/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MAODomain/componentTypesInstancesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MAODomain/componentTypesList"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MAODComponentTypesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MAODComponentTypesList/componentTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MAODComponentTypeInstancesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MAODComponentTypeInstancesList/componentTypeInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MIODomain">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomain/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomain/supportedPlatformsList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomain/languages"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomain/requires"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomain/componentTypesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomain/componentTypesInstancesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomain/exchangeModelsList"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MIODComponentTypesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODComponentTypesList/componentTypes"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MIODComponentTypeInstancesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODComponentTypeInstancesList/componentTypeInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MExchangeModelsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MExchangeModelsList/exchangeModels"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dom.ecore#//MComponentType">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MComponentType/attributesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MComponentType/portTypeInstancesList"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MPortTypeInstancesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MPortTypeInstancesList/portTypeInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MIODAbstractComponentType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODAbstractComponentType/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODAbstractComponentType/componentTypeInternalInstances"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MIODComponentType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODComponentType/language"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MAODComponentType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MAODComponentType/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MAODComponentType/componentTypeInternalInstances"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dom.ecore#//MComponentTypeInstance">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MComponentTypeInstance/lowerBound"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MComponentTypeInstance/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MIODComponentTypeInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODComponentTypeInstance/componentType"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MAODComponentTypeInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MAODComponentTypeInstance/componentType"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dom.ecore#//MPortTypeInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MPortTypeInstance/portType"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MPortTypeInstance/lowerBound"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MPortTypeInstance/upperBound"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MInternalPortTypeInstance"/>
+    <genClasses ecoreClass="dom.ecore#//MInternalClientPortTypeInstance"/>
+    <genClasses ecoreClass="dom.ecore#//MInternalServerPortTypeInstance"/>
+    <genClasses ecoreClass="dom.ecore#//MExternalPortTypeInstance"/>
+    <genClasses ecoreClass="dom.ecore#//MExternalClientPortTypeInstance"/>
+    <genClasses ecoreClass="dom.ecore#//MExternalServerPortTypeInstance"/>
+    <genClasses ecoreClass="dom.ecore#//MConnector">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MConnector/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MConnector/attributes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MConnector/clientPortTypes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MConnector/serverPortTypes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MConnector/exchangeModel"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MPortType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MPortType/inherits"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MPortType/interfaceTypes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MPortType/attributesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MPortType/clientAttributesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MPortType/serverAttributesList"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MInterfaceType">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MInterfaceType/inherits"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MExchangeModel">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MExchangeModel/interfaceTypes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MExchangeModel/inherits"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MMCLEVDOMPackageFile"/>
+    <genClasses image="false" ecoreClass="dom.ecore#//MMCLEVDOMPackageElement"/>
+    <genClasses ecoreClass="dom.ecore#//MIODomainSupportedPlatform">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/osapi"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/os"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/architecture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/compiler"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/microprocessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/board"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/attributesList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dom.ecore#//MIODomainSupportedPlatform/requires"/>
+    </genClasses>
+    <genClasses ecoreClass="dom.ecore#//MIODSupportedPlatformsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dom.ecore#//MIODSupportedPlatformsList/supportedPlatforms"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>

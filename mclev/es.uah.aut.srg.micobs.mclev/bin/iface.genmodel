@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mclev/src" editDirectory="/es.uah.aut.srg.micobs.mclev/src"
+    modelPluginID="es.uah.aut.srg.micobs.mclev" modelName="Iface" editPluginClass="es.uah.aut.srg.micobs.mclev.plugin.MCLEVPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common dom.genmodel#//mclevdom ../../es.uah.aut.srg.micobs.pdl/model/pdl.genmodel#//pdl sai.genmodel#//mclevsai ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>iface.ecore</foreignModel>
+  <genPackages prefix="mcleviface" basePackage="es.uah.aut.srg.micobs.mclev" disposableProviderFactory="true"
+      ecorePackage="iface.ecore#/">
+    <genClasses ecoreClass="iface.ecore#//MInterface">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iface.ecore#//MInterface/extends"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iface.ecore#//MInterface/domain"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference iface.ecore#//MInterface/type"/>
+    </genClasses>
+    <genClasses ecoreClass="iface.ecore#//MMCLEVIFACEPackageFile"/>
+    <genClasses image="false" ecoreClass="iface.ecore#//MMCLEVIFACEPackageElement"/>
+  </genPackages>
+</genmodel:GenModel>

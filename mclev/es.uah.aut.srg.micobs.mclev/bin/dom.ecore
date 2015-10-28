@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="mclevdom" nsURI="http://srg.aut.uah.es/micobs/mclev/mclevdom"
+    nsPrefix="micobs.mclev">
+  <eClassifiers xsi:type="ecore:EClass" name="MDomain" abstract="true" eSuperTypes="#//MMCLEVDOMPackageElement">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="allowsSingleton" lowerBound="1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean" defaultValueLiteral="false"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portTypes" upperBound="-1"
+        eType="#//MPortType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceTypes" upperBound="-1"
+        eType="#//MInterfaceType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="connectors" upperBound="-1"
+        eType="#//MConnector" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MAODomain" eSuperTypes="#//MDomain">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outputIODomains" lowerBound="1"
+        upperBound="-1" eType="#//MIODomain"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MAODomain"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentTypeInstances"
+        upperBound="-1" eType="#//MAODComponentTypeInstance" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentTypes" lowerBound="1"
+        upperBound="-1" eType="#//MAODComponentType" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MIODomain" eSuperTypes="#//MDomain">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MIODomain"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" lowerBound="1"
+        upperBound="-1" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="ecore:EClass sai.ecore#//MSAI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exchangeModels" upperBound="-1"
+        eType="#//MExchangeModel" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedPlatforms" lowerBound="1"
+        upperBound="-1" eType="#//MIODomainSupportedPlatform" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentTypes" lowerBound="1"
+        upperBound="-1" eType="#//MIODAbstractComponentType" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentTypeInstances"
+        upperBound="-1" eType="#//MIODComponentTypeInstance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MComponentType" abstract="true" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portTypeInstances" upperBound="-1"
+        eType="#//MPortTypeInstance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MIODAbstractComponentType" eSuperTypes="#//MComponentType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MIODAbstractComponentType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentTypeInstances"
+        upperBound="-1" eType="#//MIODComponentTypeInstance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MIODComponentType" eSuperTypes="#//MIODAbstractComponentType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="language" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MAODComponentType" eSuperTypes="#//MComponentType">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MAODComponentType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentTypeInstances"
+        upperBound="-1" eType="#//MAODComponentTypeInstance" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MComponentTypeInstance" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowerBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upperBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MIODComponentTypeInstance" eSuperTypes="#//MComponentTypeInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentType" lowerBound="1"
+        eType="#//MIODAbstractComponentType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MAODComponentTypeInstance" eSuperTypes="#//MComponentTypeInstance">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="componentType" lowerBound="1"
+        eType="#//MAODComponentType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MPortTypeInstance" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portType" lowerBound="1"
+        eType="#//MPortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="lowerBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="upperBound" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalPortTypeInstance" eSuperTypes="#//MPortTypeInstance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalClientPortTypeInstance" eSuperTypes="#//MInternalPortTypeInstance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MInternalServerPortTypeInstance" eSuperTypes="#//MInternalPortTypeInstance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MExternalPortTypeInstance" eSuperTypes="#//MPortTypeInstance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MExternalClientPortTypeInstance" eSuperTypes="#//MExternalPortTypeInstance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MExternalServerPortTypeInstance" eSuperTypes="#//MExternalPortTypeInstance"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MConnector" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MConnector"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientPortTypes" lowerBound="1"
+        upperBound="-1" eType="#//MPortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverPortTypes" lowerBound="1"
+        upperBound="-1" eType="#//MPortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="exchangeModel" eType="#//MExchangeModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MPortType" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MPortType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceTypes" lowerBound="1"
+        upperBound="-1" eType="#//MInterfaceType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="clientAttributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serverAttributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MInterfaceType" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MInterfaceType"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MExchangeModel" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="interfaceTypes" lowerBound="2"
+        upperBound="-1" eType="#//MInterfaceType"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="inherits" upperBound="-1"
+        eType="#//MExchangeModel"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MMCLEVDOMPackageFile" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageFile"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MMCLEVDOMPackageElement" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonPackageElement"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIODomainSupportedPlatform" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MCommonReferenceableObj">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="osapi" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MOperatingSystemAPI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="os" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MOperatingSystem"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="architecture" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MArchitecture"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="compiler" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MCompiler"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="microprocessor" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MMicroprocessor"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="board" eType="ecore:EClass ../../es.uah.aut.srg.micobs.pdl/model/pdl.ecore#//MBoard"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="attributes" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requires" upperBound="-1"
+        eType="ecore:EClass sai.ecore#//MSAI"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="languages" upperBound="-1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/system.ecore#//MLanguage"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterIODSPSwitch" abstract="true"
+      eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MParameter">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cases" lowerBound="1" upperBound="-1"
+        eType="#//MParameterIODSPSwitchCase" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MParameterIODSPSwitchCase" abstract="true">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="defaultValue" lowerBound="1"
+        eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterValueExpression"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="platform" lowerBound="1"
+        eType="#//MIODomainSupportedPlatform"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamIODSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MBooleanParameter #//MParameterIODSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MBooleanParamIODSPSwitchCase" eSuperTypes="#//MParameterIODSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamIODSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MStringParameter #//MParameterIODSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MStringParamIODSPSwitchCase" eSuperTypes="#//MParameterIODSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamIODSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MIntegerParameter #//MParameterIODSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MIntegerParamIODSPSwitchCase" eSuperTypes="#//MParameterIODSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamIODSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MEnumParameter #//MParameterIODSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MEnumParamIODSPSwitchCase" eSuperTypes="#//MParameterIODSPSwitchCase"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamIODSPSwitch" eSuperTypes="../../es.uah.aut.srg.micobs/model/common.ecore#//MRealParameter #//MParameterIODSPSwitch"/>
+  <eClassifiers xsi:type="ecore:EClass" name="MRealParamIODSPSwitchCase" eSuperTypes="#//MParameterIODSPSwitchCase">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="range" eType="ecore:EClass ../../es.uah.aut.srg.micobs/model/common.ecore#//MParameterRange"
+        containment="true"/>
+  </eClassifiers>
+</ecore:EPackage>

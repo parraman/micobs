@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mclev/src" editDirectory="/es.uah.aut.srg.micobs.mclev/src"
+    modelPluginID="es.uah.aut.srg.micobs.mclev" modelName="Cmp" editPluginClass="es.uah.aut.srg.micobs.mclev.plugin.MCLEVPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common dom.genmodel#//mclevdom iface.genmodel#//mcleviface imap.genmodel#//mclevimap ../../es.uah.aut.srg.micobs.pdl/model/pdl.genmodel#//pdl sai.genmodel#//mclevsai ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>cmp.ecore</foreignModel>
+  <genPackages prefix="mclevcmp" basePackage="es.uah.aut.srg.micobs.mclev" disposableProviderFactory="true"
+      ecorePackage="cmp.ecore#/">
+    <genClasses ecoreClass="cmp.ecore#//MComponent">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponent/requires"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponent/languages"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponent/supportedPlaformsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponent/internalPortsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponent/internalComponentsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponent/internalConnectionsList"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MPortsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MPortsList/ports"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MAbstractComponent">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MAbstractComponent/attributeValueAssignmentsList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MAbstractComponent/domain"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MAbstractComponent/type"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MAbstractComponent/attributesList"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MAbstractComponent/inherits"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MAbstractComponent/externalPortsList"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MComponentSupportedPlatform">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/osapi"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/os"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/architecture"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/compiler"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/microprocessor"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/board"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/requires"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/attributesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/internalComponentsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/internalConnectionsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatform/attributeValueAssignmentsList"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MComponentSupportedPlatformsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MComponentSupportedPlatformsList/supportedPlatforms"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MInternalComponentInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentInstance/component"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute cmp.ecore#//MInternalComponentInstance/isSingleton"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentInstance/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="cmp.ecore#//MPort">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MPort/type"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MPort/interface"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MPort/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MServerPort"/>
+    <genClasses ecoreClass="cmp.ecore#//MClientPort"/>
+    <genClasses image="false" ecoreClass="cmp.ecore#//MInternalConnection"/>
+    <genClasses ecoreClass="cmp.ecore#//MInternalComponentsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentsList/internalComponents"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MInternalConnectionsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalConnectionsList/connections"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MInternalComponentConnection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentConnection/componentInstance1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentConnection/clientPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentConnection/componentInstance2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentConnection/serverPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentConnection/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentConnection/ifaceMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentConnection/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MInternalComponentPlatformSwitch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitch/componentInstance1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitch/clientPort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitch/cases"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MInternalComponentPlatformSwitchCase">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitchCase/platform"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitchCase/componentInstance2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitchCase/serverPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitchCase/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitchCase/ifaceMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference cmp.ecore#//MInternalComponentPlatformSwitchCase/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="cmp.ecore#//MMCLEVCMPPackageFile"/>
+    <genClasses image="false" ecoreClass="cmp.ecore#//MMCLEVCMPPackageElement"/>
+  </genPackages>
+</genmodel:GenModel>

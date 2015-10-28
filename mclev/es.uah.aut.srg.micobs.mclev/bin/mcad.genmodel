@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mclev/src" editDirectory="/es.uah.aut.srg.micobs.mclev/src"
+    modelPluginID="es.uah.aut.srg.micobs.mclev" modelName="Mcad" editPluginClass="es.uah.aut.srg.micobs.mclev.plugin.MCLEVPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="cmp.genmodel#//mclevcmp ../../es.uah.aut.srg.micobs/model/common.genmodel#//common dom.genmodel#//mclevdom iface.genmodel#//mcleviface imap.genmodel#//mclevimap ../../es.uah.aut.srg.micobs.pdl/model/pdl.genmodel#//pdl sai.genmodel#//mclevsai slib.genmodel#//mclevslib ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>mcad.ecore</foreignModel>
+  <genPackages prefix="mclevmcad" basePackage="es.uah.aut.srg.micobs.mclev" disposableProviderFactory="true"
+      ecorePackage="mcad.ecore#/">
+    <genClasses ecoreClass="mcad.ecore#//MMCADeployment">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MMCADeployment/domain"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MMCADeployment/componentInstancesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MMCADeployment/connectionsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MMCADeployment/deploymentAlternativesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MMCADeployment/serviceLibrariesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MMCADeployment/deploymentPlatformsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MMCADeployment/attributeValueAssignmentsList"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MServiceLibraryInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MServiceLibraryInstance/library"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MServiceLibraryInstance/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MServiceLibraryInstancesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MServiceLibraryInstancesList/libraries"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MComponentInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MComponentInstance/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MComponentInstance/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MComponentInstancesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MComponentInstancesList/components"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MDeploymentAlternative">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentAlternative/deploymentPlatforms"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentAlternative/componentInstancesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentAlternative/attributeValueAssignmentsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentAlternative/connectionsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentAlternative/deploymentAlternativesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentAlternative/serviceLibrariesList"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MDeploymentAlternativesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentAlternativesList/deploymentAlternatives"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="mcad.ecore#//MConnection"/>
+    <genClasses ecoreClass="mcad.ecore#//MConnectionsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionsList/connections"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MCommonConnection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MCommonConnection/componentInstance1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MCommonConnection/externalClientPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MCommonConnection/componentInstance2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MCommonConnection/externalServerPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MCommonConnection/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MCommonConnection/ifaceMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MCommonConnection/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MConnectionSwitch">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitch/componentInstance1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitch/externalClientPort"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitch/cases"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MConnectionSwitchCase">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitchCase/alternative"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitchCase/componentInstance2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitchCase/externalServerPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitchCase/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitchCase/ifaceMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MConnectionSwitchCase/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MDeploymentPlatform">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentPlatform/platform"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentPlatform/parametersValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MDeploymentPlatformsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference mcad.ecore#//MDeploymentPlatformsList/deploymentPlatforms"/>
+    </genClasses>
+    <genClasses ecoreClass="mcad.ecore#//MMCLEVMCADPackageFile"/>
+    <genClasses image="false" ecoreClass="mcad.ecore#//MMCLEVMCADPackageElement"/>
+  </genPackages>
+</genmodel:GenModel>

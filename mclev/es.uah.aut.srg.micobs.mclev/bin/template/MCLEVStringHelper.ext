@@ -1,0 +1,74 @@
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+import common;
+import mclevdom;
+import mclevcmp;
+import mclevslib;
+
+String getElementName(MCommonPackageElement element) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.getElementName(es.uah.aut.srg.micobs.common.MCommonPackageElement);
+
+String getFullObjectNameToElement(MCommonReferenceableObj object) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.getFullObjectNameToElement(es.uah.aut.srg.micobs.common.MCommonReferenceableObj);
+
+String getFullObjectNameToElementWithoutVersion(MCommonReferenceableObj object) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.getFullObjectNameToElementWithoutVersion(es.uah.aut.srg.micobs.common.MCommonReferenceableObj);
+
+String getRelativeObjectName(MCommonReferenceableObj object) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.getRelativeObjectName(es.uah.aut.srg.micobs.common.MCommonReferenceableObj);	
+
+String toDefString(String this) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.toDefString(java.lang.String);
+
+String toUpperDefString(String this) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.toUpperDefString(java.lang.String);
+
+String toLowerDefString(String this) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.toLowerDefString(java.lang.String);
+
+String toPlainString(java::lang::Float this) : JAVA
+	es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit.toPlainString(java.lang.Float);
+
+
+String getParameterName(MParameter this, MDomain domain) :
+	if this.eContainer != domain then
+			this.getFullObjectNameToElement()
+	else
+			this.getRelativeObjectName();
+
+String getConnectorName(MConnector this, MDomain domain) :
+	if this.eContainer != domain then
+			this.getFullObjectNameToElement()
+	else
+			this.getRelativeObjectName();
+
+String getParameterName(MParameter this, MServiceLibrary slib) :
+	if this.eContainer.metaType == MServiceLibrarySupportedPlatform ||
+	   this.eContainer.metaType == MDriverSLibSupportedPlatform then
+			this.getRelativeObjectName()
+	else if this.eContainer != slib then
+			this.getFullObjectNameToElement()
+	else
+			this.getRelativeObjectName();
+
+String getParameterName(MParameter this, MComponent cmp) :
+	if this.eContainer.metaType == MComponentSupportedPlatform then
+			this.getRelativeObjectName()
+	else if this.eContainer != cmp then
+			this.getFullObjectNameToElement()
+	else
+			this.getRelativeObjectName();
+	
+String getParameterName(MParameter this, MConnector conn) :
+	if this.eContainer != conn then
+			this.getFullObjectNameToElement()
+	else
+			this.getRelativeObjectName();

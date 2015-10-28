@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+-->
+
+<plugin>
+   <extension-point id="domain" name="MICOBS MCLEV Domain" schema="schema/domain.exsd"/>
+   <extension-point id="domainAdapter" name="MICOBS MCLEV Domain Adapter" schema="schema/domainAdapter.exsd"/>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevcmp"
+            class="es.uah.aut.srg.micobs.mclev.mclevcmp.provider.mclevcmpItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevdom"
+            class="es.uah.aut.srg.micobs.mclev.mclevdom.provider.mclevdomItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mcleviface"
+            class="es.uah.aut.srg.micobs.mclev.mcleviface.provider.mclevifaceItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevimap"
+            class="es.uah.aut.srg.micobs.mclev.mclevimap.provider.mclevimapItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevmcad"
+            class="es.uah.aut.srg.micobs.mclev.mclevmcad.provider.mclevmcadItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/library/mclevlibrary"
+            class="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.provider.mclevlibraryItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevsai"
+            class="es.uah.aut.srg.micobs.mclev.mclevsai.provider.mclevsaiItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevslib"
+            class="es.uah.aut.srg.micobs.mclev.mclevslib.provider.mclevslibItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevflatmcad"
+            class="es.uah.aut.srg.micobs.mclev.mclevflatmcad.provider.mclevflatmcadItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevcmp"
+            class="es.uah.aut.srg.micobs.mclev.mclevcmp.mclevcmpPackage"
+            genModel="model/cmp.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevdom"
+            class="es.uah.aut.srg.micobs.mclev.mclevdom.mclevdomPackage"
+            genModel="model/dom.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mcleviface"
+            class="es.uah.aut.srg.micobs.mclev.mcleviface.mclevifacePackage"
+            genModel="model/iface.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevimap"
+            class="es.uah.aut.srg.micobs.mclev.mclevimap.mclevimapPackage"
+            genModel="model/imap.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevmcad"
+            class="es.uah.aut.srg.micobs.mclev.mclevmcad.mclevmcadPackage"
+            genModel="model/mcad.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/library/mclevlibrary"
+            class="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.mclevlibraryPackage"
+            genModel="model/mclevlibrary.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevsai"
+            class="es.uah.aut.srg.micobs.mclev.mclevsai.mclevsaiPackage"
+            genModel="model/sai.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevslib"
+            class="es.uah.aut.srg.micobs.mclev.mclevslib.mclevslibPackage"
+            genModel="model/slib.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/mclevflatmcad"
+            class="es.uah.aut.srg.micobs.mclev.mclevflatmcad.mclevflatmcadPackage"
+            genModel="model/flatmcad.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.presentation.mclevlibraryEditor"
+            contributorClass="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.presentation.mclevlibraryActionBarContributor"
+            extensions="mclevlibrary"
+            icon="icons/full/obj16/mclevlibraryModelFile.gif"
+            id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.presentation.mclevlibraryEditorID"
+            name="%_UI_mclevlibraryEditor_label">
+      </editor>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.OpenLibrary"
+            name="Open MCLEV Library">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+            name="Upload to Library">
+      </command>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mclev.mclevmcad.GenerateFlatMCAD"
+            name="Generate Flat MCAD">
+      </command>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.ui.OpenMCLEVLibrary"
+            commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.OpenLibrary">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.ui.UploadToMCLEVLibraryHandler"
+            commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary">
+      </handler>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mclev.ui.handlers.GenerateFlatMCAD"
+            commandId="es.uah.aut.srg.micobs.mclev.mclevmcad.GenerateFlatMCAD">
+      </handler>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:es.uah.aut.srg.micobs.menu.id?before=es.uah.aut.srg.micobs.menu.separator.id">
+         <command
+               commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.OpenLibrary"
+               id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.menu.OpenLibrary"
+               mnemonic="C"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+
+   <extension
+         point="es.uah.aut.srg.micobs.library">
+      <library
+            adapter="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.adapters.MCLEVLibraryAdapter"
+            id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary"
+            name="MMCLEVLibrary">
+         <depends
+               library="es.uah.aut.srg.micobs.pdl.library.pdllibrary">
+         </depends>
+      </library>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:org.eclipse.ui.popup.any?after=additions">
+         <menu
+               id="es.uah.aut.srg.micobs.mclev.iface.menu.id"
+               label="MCLEV Interface">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mclev_iface">
+                        </test>                   
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mclev.sai.menu.id"
+               label="MCLEV SAI">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mclev_sai">      
+                        </test>                   
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mclev.cmp.menu.id"
+               label="MCLEV Component">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mclev_cmp">
+                        </test>                   
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mclev.slib.menu.id"
+               label="MCLEV Service Library">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mclev_slib">
+                        </test>                   
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mclev.imap.menu.id"
+               label="MCLEV Iface Mapping">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mclev_imap">
+                        </test>                   
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mclev.mcad.menu.id"
+               label="MCLEV Deployment">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.mclevmcad.GenerateFlatMCAD"
+                  id="es.uah.aut.srg.micobs.mclev.mclevmcad.popup.GenerateFlatMCAD"
+                  mnemonic="G"
+                  style="push">
+            </command>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mclev_mcad">
+                        </test>                   
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+         <menu
+               id="es.uah.aut.srg.micobs.mclev.flatmcad.menu.id"
+               label="MCLEV Flat Deployment">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.UploadToLibrary"
+                  id="es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.popup.UploadToLibrary"
+                  mnemonic="U"
+                  style="push">
+            </command>
+            <separator
+                  name="es.uah.aut.srg.micobs.mclev.flatmcad.domain.separator">
+            </separator>
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="selection">
+                   <iterate operator="and" ifEmpty="false">
+                        <instanceof
+                       		value="org.eclipse.core.resources.IResource">
+                        </instanceof>
+                        <test
+                           property="org.eclipse.core.resources.extension"
+                           value="mclev_flatmcad">
+                        </test>                   
+                        <test
+                        	forcePluginActivation="true"
+                        	property="org.eclipse.core.resources.projectNature"
+                        	value="es.uah.aut.srg.micobs.nature.project">
+                        </test>
+                  </iterate>
+               </with>
+            </visibleWhen>
+         </menu>
+
+      </menuContribution>
+   </extension>
+   <extension
+         point="org.eclipse.m2m.qvt.oml.javaBlackboxUnits">
+      <unit
+            name="MCLEVBlackBoxUnit"
+            namespace="es.uah.aut.srg.micobs.mclev">
+         <library
+               class="es.uah.aut.srg.micobs.mclev.util.impl.MCLEVBlackBoxUnit"
+               name="MCLEVBlackBoxUnit">
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/mclev/mclevcmp">
+            </metamodel>
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/mclev/mclevslib">
+            </metamodel>
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/mclev/mclevmcad">
+            </metamodel>
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/pdl">
+            </metamodel>
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/common">
+            </metamodel>
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/system">
+            </metamodel>
+         </library>
+      </unit>
+   </extension>
+</plugin>

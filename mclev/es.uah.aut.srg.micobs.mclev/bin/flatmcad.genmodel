@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mclev/src" editDirectory="/es.uah.aut.srg.micobs.mclev/src"
+    modelPluginID="es.uah.aut.srg.micobs.mclev" modelName="Flatmcad" editPluginClass="es.uah.aut.srg.micobs.mclev.plugin.MCLEVPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="cmp.genmodel#//mclevcmp ../../es.uah.aut.srg.micobs/model/common.genmodel#//common dom.genmodel#//mclevdom iface.genmodel#//mcleviface imap.genmodel#//mclevimap mcad.genmodel#//mclevmcad ../../es.uah.aut.srg.micobs.pdl/model/pdl.genmodel#//pdl sai.genmodel#//mclevsai slib.genmodel#//mclevslib ../../es.uah.aut.srg.micobs/model/system.genmodel#//system">
+  <foreignModel>flatmcad.ecore</foreignModel>
+  <genPackages prefix="mclevflatmcad" basePackage="es.uah.aut.srg.micobs.mclev" disposableProviderFactory="true"
+      ecorePackage="flatmcad.ecore#/">
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatMCAD">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatMCAD/targets"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatMCADTarget">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatMCADTarget/deploymentPlatform"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatMCADTarget/leafDeploymentAlternative"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatMCADTarget/componentInstancesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatMCADTarget/connectionsList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatMCADTarget/serviceLibrariesList"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatMCADTarget/attributeValueAssignmentsList"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatServiceLibraryInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatServiceLibraryInstance/library"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatServiceLibraryInstance/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatServiceLibraryInstancesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatServiceLibraryInstancesList/libraries"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatComponentInstance">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatComponentInstance/component"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatComponentInstance/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatComponentInstancesList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatComponentInstancesList/components"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatConnectionsList">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnectionsList/connections"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MFlatConnection">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnection/componentInstance1"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnection/clientPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnection/componentInstance2"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnection/serverPort"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnection/connector"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnection/ifaceMapping"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference flatmcad.ecore#//MFlatConnection/attributesValueAssignments"/>
+    </genClasses>
+    <genClasses ecoreClass="flatmcad.ecore#//MMCLEVFLATMCADPackageFile"/>
+    <genClasses image="false" ecoreClass="flatmcad.ecore#//MMCLEVFLATMCADPackageElement"/>
+  </genPackages>
+</genmodel:GenModel>
