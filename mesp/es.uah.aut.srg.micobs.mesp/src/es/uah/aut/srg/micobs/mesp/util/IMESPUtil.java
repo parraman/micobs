@@ -516,7 +516,7 @@ public interface IMESPUtil {
 
 	/**
 	 * Returns all the interfaces required by a given interface. This set
-	 * includes the one required by the interface itself plus the ones
+	 * includes the ones required by the interface itself plus the ones
 	 * required by the interfaces it extends.
 	 * 
 	 * @param swi the software interface.
@@ -612,8 +612,8 @@ public interface IMESPUtil {
 	/**
 	 * Returns the set of parameters defined by a software interface.
 	 * 
-	 * @param swi The software interface.
-	 * @return The set of parameters.
+	 * @param swi the software interface.
+	 * @return the set of parameters.
 	 */
 	public Set<MParameter> getParameters(MSwInterface swi);
 

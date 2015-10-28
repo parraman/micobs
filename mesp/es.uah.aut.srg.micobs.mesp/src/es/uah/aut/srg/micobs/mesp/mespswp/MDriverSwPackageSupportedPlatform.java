@@ -28,19 +28,13 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface MDriverSwPackageSupportedPlatform extends MSwPackageSupportedPlatform {
 	/**
-	 * Returns the value of the '<em><b>Supported Devices</b></em>' containment reference list.
-	 * The list contents are of type {@link es.uah.aut.srg.micobs.mesp.mespswp.MDriverSwPackageSupportedDevice}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Supported Devices</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Supported Devices</em>' containment reference list.
+	 * Returns the list of devices supported by the device software package
+	 * for the given platform.
+	 * @return the list of supported devices.
 	 * @see es.uah.aut.srg.micobs.mesp.mespswp.mespswpPackage#getMDriverSwPackageSupportedPlatform_SupportedDevices()
 	 * @model containment="true"
 	 * @generated
 	 */
 	EList<MDriverSwPackageSupportedDevice> getSupportedDevices();
 
-} // MDriverSwPackageSupportedPlatform
+}

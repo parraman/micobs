@@ -12,7 +12,6 @@ package es.uah.aut.srg.micobs.mesp.mespswp;
 
 import es.uah.aut.srg.micobs.common.MRealParameter;
 
-
 /**
  * A representation of a real parameter of a software package whose default
  * value is defined depending on the different supported platforms.

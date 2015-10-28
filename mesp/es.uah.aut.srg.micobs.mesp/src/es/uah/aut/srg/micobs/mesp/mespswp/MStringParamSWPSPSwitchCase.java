@@ -10,7 +10,6 @@
  ******************************************************************************/
 package es.uah.aut.srg.micobs.mesp.mespswp;
 
-
 /**
  * A representation of a default value assignment for a software package
  * string parameter for a given platform.

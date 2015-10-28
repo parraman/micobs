@@ -29,15 +29,9 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface MMESPDriverSwPackageDeployment extends MMESPSwPackageDeployment {
 	/**
-	 * Returns the value of the '<em><b>Device Driver Mappings</b></em>' containment reference list.
-	 * The list contents are of type {@link es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeviceDriverMapping}.
-	 * <!-- begin-user-doc -->
-	 * <p>
-	 * If the meaning of the '<em>Device Driver Mappings</em>' containment reference list isn't clear,
-	 * there really should be more of a description here...
-	 * </p>
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Device Driver Mappings</em>' containment reference list.
+	 * Returns the list of device driver mappings defined between the
+	 * driver software package's supported devices and the deployed ones.
+	 * @return the list of device driver mappings.
 	 * @see es.uah.aut.srg.micobs.mesp.mespdep.mespdepPackage#getMMESPDriverSwPackageDeployment_DeviceDriverMappings()
 	 * @model containment="true"
 	 * @generated

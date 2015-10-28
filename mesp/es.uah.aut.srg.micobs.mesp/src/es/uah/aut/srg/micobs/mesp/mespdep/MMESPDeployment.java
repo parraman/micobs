@@ -84,7 +84,7 @@ public interface MMESPDeployment extends MMESPDEPPackageElement {
 	/**
 	 * Returns the list of software packages deployed independently of the
 	 * deployment platform or alternative.
-	 * @return the value of the '<em>DeployedSwPackages</em>' containment reference list.
+	 * @return the list of deployed software packages.
 	 * @see es.uah.aut.srg.micobs.mesp.mespdep.mespdepPackage#getMMESPDeployment_DeployedSwPackages()
 	 * @model containment="true"
 	 * @generated
