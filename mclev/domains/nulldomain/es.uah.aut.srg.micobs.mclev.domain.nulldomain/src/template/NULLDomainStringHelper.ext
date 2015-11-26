@@ -1,0 +1,28 @@
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+import common;
+import pdl;
+import mclevmcad;
+import mclevslib;
+
+extension template::MICOBSStringHelper;
+
+String getDeploymentFolderName(MMCADeployment this, 
+			MDeploymentAlternative alternative, 
+			MDeploymentPlatform platform) : JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainStringHelper.getDeploymentFolderName(
+		es.uah.aut.srg.micobs.mclev.mclevmcad.MMCADeployment,
+		es.uah.aut.srg.micobs.mclev.mclevmcad.MDeploymentAlternative,
+		es.uah.aut.srg.micobs.mclev.mclevmcad.MDeploymentPlatform);
+
+String getPlatformParameterName(MParameter this) :
+	if (this.eContainer.metaType == pdl::MPlatform) then this.name else
+		this.getFullObjectNameToElement();

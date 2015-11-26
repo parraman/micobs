@@ -1,0 +1,76 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mclevmcad»
+«IMPORT pdl»
+«IMPORT mclevflatmcad»
+
+«EXTENSION template::NULLDomainStringHelper»
+«EXTENSION template::NULLDomainUtil»
+«EXTENSION template::MESPUtil»
+«EXTENSION template::MESPStringHelper»
+«EXTENSION template::MCLEVStringHelper»
+
+«DEFINE main FOR mclevflatmcad::MMCLEVFLATMCADPackageFile»
+«LET ((MMCADeployment)((MFlatMCAD)this.element).referencedElement) AS deployment»
+«FOREACH ((MFlatMCAD)this.element).targets AS target -»
+«FILE deployment.getDeploymentFolderName(target.leafDeploymentAlternative, target.deploymentPlatform) + "/defs.mk"»
+
+# PROTECTED REGION ID(«deployment.getDeploymentFolderName(target.leafDeploymentAlternative, target.deploymentPlatform)»_src) ENABLED START
+
+SRCS+=$(wildcard $R/main/«deployment.getDeploymentFolderName(target.leafDeploymentAlternative, target.deploymentPlatform)»/src/*.c)
+
+# PROTECTED REGION END
+
+«ENDFILE»
+«FILE deployment.getDeploymentFolderName(target.leafDeploymentAlternative, target.deploymentPlatform) + "/src/main.c" - »
+// -- This file has been automatically generated. Do NOT edit! --
+
+#include <public/config.h>
+#include <platform/basic_types.h>
+
+#include <public/nulldomain_iface_v1.h>
+
+«IF target.deploymentPlatform.platform.osapi == getOsapiPOSIX_v13() || 
+	target.deploymentPlatform.platform.osapi.getAllInheritedOSAPIs().contains(getOsapiPOSIX_v13()) -»
+int main(int argc, char * argv[])
+{
+	
+	return nulldomain_main_cmp_run(argc, argv);
+	
+}
+«ELSEIF target.deploymentPlatform.platform.osapi == getOsapiRTEMSAPI_4_6() -»
+#include <platform/rtems_config.h>
+
+rtems_task Init(rtems_task_argument arg)
+{
+
+	rtems_shutdown_executive(nulldomain_main_cmp_run(1, arg));
+ 
+}
+«ELSEIF target.deploymentPlatform.platform.osapi == getOsapiRTEMSAPI_4_8_impr() -»
+#include <platform/rtems_config.h>
+
+rtems_task Init(rtems_task_argument arg)
+{
+	nulldomain_main_cmp_run(1, arg);
+}
+«ELSEIF target.deploymentPlatform.platform.osapi == getOsapiPBOOTAPI_v1() -»
+int main(void)
+{
+	return nulldomain_main_cmp_run(1, NULL);
+}
+«ENDIF -»
+«ENDFILE»
+«ENDFOREACH»
+«ENDLET -»
+«ENDDEFINE»
