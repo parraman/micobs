@@ -1,0 +1,23 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: es.uah.aut.srg.micobs.mclev.editor.dom.ui
+Bundle-Vendor: My Company
+Bundle-Version: 2.0.0.qualifier
+Bundle-SymbolicName: es.uah.aut.srg.micobs.mclev.editor.dom.ui;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.uah.aut.srg.micobs.mclev.editor.dom;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.antlr.runtime,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder,
+ es.uah.aut.srg.micobs.mclev
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: es.uah.aut.srg.micobs.mclev.lang.ui.contentassist,
+ es.uah.aut.srg.micobs.mclev.lang.ui.contentassist.antlr,
+ es.uah.aut.srg.micobs.mclev.lang.ui.quickfix
+Bundle-Activator: es.uah.aut.srg.micobs.mclev.lang.ui.internal.DOMActivator
