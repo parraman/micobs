@@ -16,6 +16,7 @@ import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MComponent;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MComponentSupportedPlatform;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MInternalComponentInstance;
+import es.uah.aut.srg.micobs.mclev.mcleviface.MInterface;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MComponentInstance;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MConnection;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MDeploymentAlternative;
@@ -214,6 +215,12 @@ public class MCLEVBlackBoxUnit {
 	public static MParameterValueExpression getDefaultValue(MParameter self, MPlatform platform)
 	{
 		return MCLEVUtil.getDefault().getDefaultValue(self, platform);
+	}
+	
+	@Operation(contextual = true, kind = Kind.HELPER)	
+	public static MInterface getInterface(final String self, String version)
+	{
+		return MCLEVUtil.getDefault().getInterface(self, version);
 	}
 
 }

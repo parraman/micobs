@@ -15,6 +15,7 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Issue;
 
+import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.common.MCommonReferenceableObj;
 import es.uah.aut.srg.micobs.common.MEnumParameterDefinition;
 import es.uah.aut.srg.micobs.common.MEnumParameterLiteral;
@@ -24,6 +25,8 @@ import es.uah.aut.srg.micobs.common.MParameterValue;
 import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
 import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.common.MParameterValueTERM;
+import es.uah.aut.srg.micobs.library.LibraryManagerException;
+import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.MCLEVLibraryManager;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MAbstractComponent;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MClientPort;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MComponent;
@@ -65,6 +68,7 @@ import es.uah.aut.srg.micobs.mclev.mclevdom.MPortTypeInstance;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MRealParamIODSPSwitch;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MRealParamIODSPSwitchCase;
 import es.uah.aut.srg.micobs.mclev.mcleviface.MInterface;
+import es.uah.aut.srg.micobs.mclev.mcleviface.mclevifacePackage;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MComponentInstance;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MConnection;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MDeploymentAlternative;
@@ -105,6 +109,7 @@ import es.uah.aut.srg.micobs.pdl.plugin.PDLPlugin;
 import es.uah.aut.srg.micobs.pdl.util.IPDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.DefaultPDLMICOBSUtil;
+import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
@@ -3205,5 +3210,24 @@ public class MCLEVUtil implements IMCLEVUtil, IPDLUtil, IMICOBSUtil {
 		platform.setBoard(csp.getBoard());
 		
 		return platform;
+	}
+
+	@Override
+	public MInterface getInterface(String uri, String version) {
+		
+		try
+		{
+			MCommonPackageElement element =
+				MCLEVLibraryManager.getLibraryManager().getElement(
+						mclevifacePackage.eINSTANCE.getMInterface(),
+						uri, version);
+			if (element instanceof MInterface)
+			{
+				return (MInterface) element;
+			}
+		} catch (LibraryManagerException e) {
+			MICOBSPlugin.INSTANCE.log(e);
+		}
+		return null;
 	}
 }

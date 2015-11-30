@@ -1257,5 +1257,17 @@ public interface IMCLEVUtil {
 	 */
 	public Set<MEnumParameterDefinition> getEnumAttributeDefinitions(
 			MAbstractComponent acmp);
+	
+	
+	/**
+	 * Returns an interface object from its URI and version. If no interface
+	 * can be found, the method will return <code>null</code>.
+	 * 
+	 * @param uri the URI of the interface.
+	 * @param version the version of the interface.
+	 * @return the interface object or <code>null</code> if no interface could
+	 *         be found.
+	 */
+	public MInterface getInterface(String uri, String version);
 
 }
