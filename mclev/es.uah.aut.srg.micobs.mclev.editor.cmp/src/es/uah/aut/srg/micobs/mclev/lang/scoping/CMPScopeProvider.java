@@ -57,6 +57,9 @@ import es.uah.aut.srg.micobs.pdl.library.pdllibrary.manager.PDLLibraryManager;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 
+/**
+ * This class contains custom scoping description.
+ */
 public class CMPScopeProvider extends MCLEVElementAbstractScopeProvider {
 			
 	/**

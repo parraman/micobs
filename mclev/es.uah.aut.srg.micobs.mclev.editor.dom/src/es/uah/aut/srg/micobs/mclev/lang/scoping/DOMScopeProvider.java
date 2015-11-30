@@ -40,6 +40,9 @@ import es.uah.aut.srg.micobs.pdl.library.pdllibrary.manager.PDLLibraryManager;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 import es.uah.aut.srg.micobs.xtext.MICOBSElementAbstractScopeProvider;
 
+/**
+ * This class contains custom scoping description.
+ */
 public class DOMScopeProvider extends MICOBSElementAbstractScopeProvider {
 
 	
