@@ -463,6 +463,9 @@
                   nsURI="http://srg.aut.uah.es/micobs/mclev/mclevcmp">
             </metamodel>
             <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/mclev/mcleviface">
+            </metamodel>
+            <metamodel
                   nsURI="http://srg.aut.uah.es/micobs/mclev/mclevslib">
             </metamodel>
             <metamodel
