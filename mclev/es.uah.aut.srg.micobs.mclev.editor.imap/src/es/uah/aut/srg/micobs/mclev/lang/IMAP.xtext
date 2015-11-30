@@ -1,0 +1,52 @@
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+grammar es.uah.aut.srg.micobs.mclev.lang.IMAP with org.eclipse.xtext.common.Terminals
+
+import "http://srg.aut.uah.es/micobs/mclev/mclevimap" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://srg.aut.uah.es/micobs/mclev/mclevdom" as mclevdom
+import "http://srg.aut.uah.es/micobs/mclev/mcleviface" as mcleviface
+import "http://srg.aut.uah.es/micobs/common" as common
+import "http://srg.aut.uah.es/micobs/mclev/library/mclevlibrary" as mclevlibrary
+
+MMCLEVIMAPPackageFile returns MMCLEVIMAPPackageFile:
+	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';'
+	('import' imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')*
+	element=MMCLEVIMAPPackageElement
+    ;
+
+MMCLEVIMAPPackageElement returns MMCLEVIMAPPackageElement:
+	MInterfaceMapping;
+
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*;
+
+Version returns ecore::EString:
+	(INT | ((INT)? ID)) ('.' (INT | ((INT)? ID)))*
+	;
+
+VersionedQualifiedName returns ecore::EString:
+	QualifiedName '(' Version ')'
+	;
+
+VersionedQualifiedReferenceName returns ecore::EString:
+	(VersionedQualifiedName '::')? ID ('::' ID)*;
+
+MInterfaceMapping returns MInterfaceMapping:
+	'mapping'
+	domain=[mclevdom::MIODomain|VersionedQualifiedName] '::'
+	type=[mclevdom::MExchangeModel|VersionedQualifiedReferenceName]
+	name=ID
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('interfaces' ':=' interfaces+=[mcleviface::MInterface|VersionedQualifiedName] ',' interfaces+=[mcleviface::MInterface|VersionedQualifiedName] ';'))
+    '}'
+    ';';
