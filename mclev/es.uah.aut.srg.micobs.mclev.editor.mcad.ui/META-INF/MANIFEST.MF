@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: es.uah.aut.srg.micobs.mclev.editor.mcad.ui
-Bundle-Vendor: My Company
-Bundle-Version: 2.0.0.qualifier
+Bundle-Name: MCLEV MCAD Editor UI
+Bundle-Vendor: UAH Space Research Group
+Bundle-Version: 2.2.0.qualifier
 Bundle-SymbolicName: es.uah.aut.srg.micobs.mclev.editor.mcad.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: es.uah.aut.srg.micobs.mclev.editor.mcad;visibility:=reexport,
