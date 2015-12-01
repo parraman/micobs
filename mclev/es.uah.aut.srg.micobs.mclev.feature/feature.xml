@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="es.uah.aut.srg.micobs.mclev.feature"
+      label="%featureName"
+      version="2.2.0"
+      provider-name="%providerName"
+      plugin="es.uah.aut.srg.micobs.mclev">
+
+   <description url="http://www.micobs.com">
+      %description
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.2.x"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="es.uah.aut.srg.micobs"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="es.uah.aut.srg.modeling.util"/>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.xpand"/>
+      <import plugin="org.eclipse.xtend"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf"/>
+      <import plugin="org.tigris.subversion.subclipse.ui"/>
+      <import plugin="org.eclipse.team.core"/>
+      <import plugin="org.tigris.subversion.subclipse.core"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="es.uah.aut.srg.micobs.pdl"/>
+      <import plugin="org.eclipse.xtext.ui"/>
+      <import plugin="org.eclipse.m2m.qvt.oml"/>
+      <import plugin="org.eclipse.xtext"/>
+      <import plugin="org.eclipse.xtext.util"/>
+      <import plugin="org.antlr.runtime"/>
+      <import plugin="es.uah.aut.srg.modeling.util" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="org.apache.log4j"/>
+      <import plugin="org.eclipse.ui.editors" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.ui.ide" version="3.5.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.xtext.ui.shared"/>
+      <import plugin="org.eclipse.compare"/>
+      <import plugin="org.eclipse.xtext.builder"/>
+      <import plugin="es.uah.aut.srg.micobs" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs.pdl" version="2.2.0" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.cmp"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.cmp.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.dom"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.dom.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.flatmcad"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.flatmcad.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.iface"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.iface.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.imap"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.imap.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.mcad"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.mcad.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.sai"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.sai.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.slib"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.editor.slib.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>
