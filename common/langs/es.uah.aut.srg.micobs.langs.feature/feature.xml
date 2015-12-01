@@ -2,7 +2,7 @@
 <feature
       id="es.uah.aut.srg.micobs.langs"
       label="%featureName"
-      version="2.2.0"
+      version="2.2.1"
       provider-name="%providerName">
 
    <description url="http://www.micobs.com">
@@ -22,7 +22,7 @@
    </url>
 
    <requires>
-      <import plugin="es.uah.aut.srg.micobs" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs" version="2.2.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

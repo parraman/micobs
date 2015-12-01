@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: es.uah.aut.srg.micobs.lang.cpp_98;singleton:=true
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.2.1.qualifier
 Bundle-Localization: plugin
 Bundle-Vendor: %providerName
 Bundle-ClassPath: .
@@ -11,9 +11,8 @@ Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Require-Bundle: org.eclipse.ui,
  org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- es.uah.aut.srg.micobs;visibility:=reexport,
+ es.uah.aut.srg.micobs;bundle-version="2.2.0",
  org.eclipse.emf.edit;visibility:=reexport,
- org.eclipse.core.resources,
- es.uah.aut.srg.modeling.util;bundle-version="1.0.0"
+ org.eclipse.core.resources
 Bundle-ActivationPolicy: lazy
 Export-Package: es.uah.aut.srg.micobs.lang.cpp_98.util

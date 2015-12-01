@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: %pluginName
 Bundle-SymbolicName: es.uah.aut.srg.micobs.mclev;singleton:=true
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.2.1.qualifier
 Bundle-ClassPath: .
 Bundle-Activator: es.uah.aut.srg.micobs.mclev.plugin.MCLEVPlugin$Implementation
 Bundle-Vendor: %providerName
@@ -52,10 +52,8 @@ Export-Package: es.uah.aut.srg.micobs.mclev.library.mclevlibrary,
  template
 Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.emf.ecore;visibility:=reexport,
- es.uah.aut.srg.micobs;visibility:=reexport,
  org.eclipse.emf.edit;visibility:=reexport,
  org.eclipse.core.resources,
- es.uah.aut.srg.modeling.util,
  org.eclipse.ui,
  org.eclipse.core.filesystem,
  org.eclipse.emf.edit.ui,
@@ -68,8 +66,8 @@ Require-Bundle: org.eclipse.core.runtime,
  org.eclipse.team.core,
  org.tigris.subversion.subclipse.core,
  org.eclipse.core.expressions,
- es.uah.aut.srg.micobs.pdl,
- es.uah.aut.srg.micobs.mclev;visibility:=reexport,
+ es.uah.aut.srg.micobs;bundle-version="2.2.0";visibility:=reexport,
+ es.uah.aut.srg.micobs.pdl;bundle-version="2.2.0";visibility:=reexport,
  org.eclipse.xtext.ui,
  org.eclipse.m2m.qvt.oml
 Bundle-ActivationPolicy: lazy

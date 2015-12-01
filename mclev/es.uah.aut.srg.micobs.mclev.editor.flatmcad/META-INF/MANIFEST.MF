@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: MCLEV Flat MCAD Editor
 Bundle-Vendor: UAH Space Research Group
-Bundle-Version: 2.2.0.qualifier
+Bundle-Version: 2.2.1.qualifier
 Bundle-SymbolicName: es.uah.aut.srg.micobs.mclev.editor.flatmcad;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: org.eclipse.xtext;visibility:=reexport,
@@ -12,11 +12,9 @@ Require-Bundle: org.eclipse.xtext;visibility:=reexport,
  org.eclipse.emf.codegen.ecore;resolution:=optional,
  org.eclipse.emf.mwe.utils;resolution:=optional,
  org.eclipse.emf.mwe2.launch;resolution:=optional,
- es.uah.aut.srg.micobs.mclev,
+ es.uah.aut.srg.micobs.mclev;bundle-version="2.2.0";visibility:=reexport,
  org.eclipse.xtext.util,
- org.antlr.runtime,
- es.uah.aut.srg.micobs.pdl,
- es.uah.aut.srg.modeling.util;bundle-version="2.0.0"
+ org.antlr.runtime
 Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: J2SE-1.5
 Export-Package: es.uah.aut.srg.micobs.mclev.lang,
