@@ -675,8 +675,6 @@ public class mclevlibraryEditor
 	 */
 	public class ReverseAdapterFactoryContentProvider extends AdapterFactoryContentProvider {
 		/**
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		public ReverseAdapterFactoryContentProvider(AdapterFactory adapterFactory) {
