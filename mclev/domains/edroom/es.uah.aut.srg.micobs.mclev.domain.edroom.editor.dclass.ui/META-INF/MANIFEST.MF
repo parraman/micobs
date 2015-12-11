@@ -1,8 +1,8 @@
 Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
-Bundle-Name: es.uah.aut.srg.micobs.mclev.domain.edroom.editor.dclass.ui
-Bundle-Vendor: My Company
-Bundle-Version: 2.0.0.qualifier
+Bundle-Name: EDROOM Domain Data Class Editor UI
+Bundle-Vendor: UAH Space Research Group
+Bundle-Version: 2.2.1.qualifier
 Bundle-SymbolicName: es.uah.aut.srg.micobs.mclev.domain.edroom.editor.dclass.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: es.uah.aut.srg.micobs.mclev.domain.edroom.editor.dclass;visibility:=reexport,
