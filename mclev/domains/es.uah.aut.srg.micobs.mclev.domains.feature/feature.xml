@@ -1,20 +1,25 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <feature
       id="es.uah.aut.srg.micobs.mclev.domains.feature"
-      label="Feature"
-      version="2.2.1">
+      label="%featureName"
+      version="2.2.1"
+      provider-name="%providerName">
 
-   <description url="http://www.example.com/description">
-      [Enter Feature Description here.]
+   <description url="http://www.micobs.com">
+      %description
    </description>
 
-   <copyright url="http://www.example.com/copyright">
-      [Enter Copyright Description here.]
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      %copyright
    </copyright>
 
-   <license url="http://www.example.com/license">
-      [Enter License Description here.]
+   <license url="%licenseURL">
+      %license
    </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.2.x"/>
+   </url>
 
    <requires>
       <import plugin="org.eclipse.ui"/>
@@ -45,6 +50,41 @@
 
    <plugin
          id="es.uah.aut.srg.micobs.mclev.domain.nulldomain"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.dclass"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.dclass.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.prot"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.prot.ui"
          download-size="0"
          install-size="0"
          version="0.0.0"
