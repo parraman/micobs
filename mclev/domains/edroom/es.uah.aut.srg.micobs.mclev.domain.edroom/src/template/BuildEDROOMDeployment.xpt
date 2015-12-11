@@ -1,0 +1,177 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mclevmcad»
+«IMPORT pdl»
+«IMPORT common»
+
+«EXTENSION template::MICOBSUtil»
+«EXTENSION template::EDROOMUtil»
+«EXTENSION template::EDROOMStringHelper»
+«EXTENSION template::LangCPP_98»
+«EXTENSION template::MESPUtil»
+«EXTENSION template::MCLEVUtil»
+«EXTENSION template::MCLEVStringHelper»
+
+«DEFINE main(MCommonPackage pack) FOR mclevmcad::MMCLEVMCADPackageFile»
+«LET (MMCADeployment)this.element AS deployment»
+«FILE deployment.getElementName().toLowerDefString() + ".mesp_dep" -»
+package «pack.uri»;
+
+import «getLanguageCPP_98().getPackage().uri»;
+«FOREACH this.imports.typeSelect(pdllibrary::MPDLPackage) AS pdlPackage -»
+import «pdlPackage.uri»;
+«ENDFOREACH -»
+«IF deployment.deploymentAlternatives.isEmpty -»
+«FOREACH deployment.components.component.getSwPackageOfComponent().select(e|e != null)
+		.addAll(deployment.libraries.library.getSwPackageOfServiceLibrary().select(e|e != null)).getPackage().toSet() AS package -»
+import «package.uri»;
+«ENDFOREACH -»
+«ELSE -»
+«FOREACH deployment.getLeafDeploymentAlternatives().getAllComponentInstances().component.getSwPackageOfComponent().toSet().toList().getPackage().toSet() AS package -»
+import «package.uri»;
+«ENDFOREACH -»
+«ENDIF -»
+
+deployment project «deployment.name»
+{
+	version := «deployment.version»;
+
+	deployment platforms {
+
+«FOREACH deployment.deploymentPlatforms AS deploymentPlatform -»
+		deployment platform «deploymentPlatform.name» {
+
+			platform := «deploymentPlatform.platform.getElementName()»;
+«IF deploymentPlatform.platform.getPlatformSwPackage() != null -»
+			pswpackage := «deploymentPlatform.platform.getPlatformSwPackage().getElementName()»;
+«ELSE -»
+			pswpackage := ;
+«ENDIF -»
+
+«IF deploymentPlatform.parameterValueAssignments.isEmpty == false -»
+			parameter values {
+			
+«FOREACH deploymentPlatform.parameterValueAssignments AS assignment -»
+«EXPAND PrintValueAssignment(assignment.parameter.getPlatformParameterName(), "				") FOR assignment -»
+«ENDFOREACH -»
+			
+			};
+«ENDIF -»
+		};
+
+«ENDFOREACH -»
+	};
+
+«IF deployment.deploymentAlternatives.isEmpty == false»
+	deployment alternatives {
+	
+«FOREACH deployment.deploymentAlternatives AS deploymentAlternative -»
+«EXPAND GenerateDeploymentAlternative("		") FOR deploymentAlternative -»
+
+«ENDFOREACH -»
+	};
+«ENDIF -»
+«IF deployment.components.isEmpty == false ||
+	deployment.libraries.isEmpty == false -»
+	swpackages {
+
+«FOREACH deployment.components.component.getAllInternalComponents(deployment.deploymentPlatforms.platform) AS component -»
+«EXPAND GenerateSwPackageDeployment("		") FOR component -»	
+
+«ENDFOREACH -»
+«FOREACH deployment.libraries AS library -»
+«FOREACH deployment.deploymentPlatforms AS dplt -»
+«EXPAND GenerateSwPackageDeployment("		", dplt) FOR library -»	
+
+«ENDFOREACH -»
+«ENDFOREACH -»
+	};
+«ENDIF -»
+
+};
+«ENDFILE»
+«ENDLET»
+«ENDDEFINE»
+
+
+«DEFINE GenerateDeploymentAlternative(String indent) FOR mclevmcad::MDeploymentAlternative -»
+«indent»deployment alternative «this.name» {
+«indent»
+«indent»	platforms := «this.deploymentPlatforms.first().platform.name»«FOREACH this.deploymentPlatforms.withoutFirst() AS platform -», «platform.platform.name»«ENDFOREACH -»;	
+«indent»
+«IF this.deploymentAlternatives.isEmpty == false -»
+«indent»	deployment alternatives {
+«indent»
+«FOREACH this.deploymentAlternatives AS deploymentAlternative -»
+«EXPAND GenerateDeploymentAlternative(indent + "		") FOR deploymentAlternative -»
+«indent»
+«ENDFOREACH -»
+«indent»	};
+«ENDIF -»
+«IF this.components.isEmpty == false ||
+	this.libraries.isEmpty == false -»
+	swpackages {
+
+«FOREACH this.components.component.getAllInternalComponents(this.deploymentPlatforms.platform) AS component -»
+«EXPAND GenerateSwPackageDeployment(indent + "		") FOR component -»	
+
+«ENDFOREACH -»
+«FOREACH this.libraries AS library -»
+«FOREACH this.deploymentPlatforms AS dplt -»
+«EXPAND GenerateSwPackageDeployment(indent + "		", dplt) FOR library -»	
+
+«ENDFOREACH -»
+«ENDFOREACH -»
+	};
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE GenerateSwPackageDeployment(String indent) FOR mclevcmp::MComponent -»
+«IF this.getSwPackageOfComponent() == null -»
+«indent»swpackage unknown { }; // MComponent == «this.name»(«this.version»)
+«ELSE -»
+«indent»swpackage «this.getSwPackageOfComponent().name»(«this.getSwPackageOfComponent().version») { };
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE GenerateSwPackageDeployment(String indent, MDeploymentPlatform dplt) FOR mclevmcad::MServiceLibraryInstance -»
+«IF this.library.getSwPackageOfServiceLibrary() == null -»
+«indent»swpackage unknown { }; // MServiceLibrary == «this.library.name»(«this.library.version»)
+«ELSE -»
+«LET this.library.getSwPackageOfServiceLibrary() AS swr -»
+«indent»swpackage «this.library.getSwPackageOfServiceLibrary().name»(«this.library.getSwPackageOfServiceLibrary().version») {
+«indent»
+«FOREACH this.attributeValueAssignments AS assignment -»
+«EXPAND PrintValueAssignment(assignment.parameter.getParameterName(this.library), indent + "	") FOR assignment -»
+«ENDFOREACH -»
+«indent»};
+«ENDLET -»
+«ENDIF -»
+«ENDDEFINE»
+
+
+«DEFINE PrintValueAssignment(String name, String indent) FOR common::MParameterValueAssignment -»
+«indent»parameter «name» := «EXPAND PrintExpression FOR this.getParameterValue() -»;
+«ENDDEFINE»
+
+«DEFINE PrintExpression FOR common::MParameterValueExpression -»
+«EXPAND PrintParameterValueTERM FOR this.left -»«IF this.right != null -»«IF this.operation == MParameterValueExpressionOperators::plus -»+«ELSE -»-«ENDIF -»«EXPAND PrintExpression FOR this.right -»«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE PrintParameterValueTERM FOR common::MParameterValueTERM -»
+«EXPAND PrintParameterValue FOR this.left -»«IF this.right != null -»«IF this.operation == MParameterValueTERMOperators::mult -»*«ELSE -»/«ENDIF -»«EXPAND PrintParameterValueTERM FOR this.right -»«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE PrintParameterValue FOR common::MParameterValue -»
+«IF this.metaType == common::MParameterValueBooleanLiteral -»«((common::MParameterValueBooleanLiteral)this).value.toString()»«ELSEIF this.metaType == common::MParameterValueStringLiteral -»"«((common::MParameterValueStringLiteral)this).value»"«ELSEIF this.metaType == common::MParameterValueIntegerLiteral -»«((common::MParameterValueIntegerLiteral)this).value.toString()»«ELSEIF this.metaType == common::MParameterValueRealLiteral -»«((common::MParameterValueRealLiteral)this).value.toString()»«ELSEIF this.metaType == common::MParameterValueRefObject -»«LET ((common::MParameterValueRefObject)this).object AS object -»«IF object.metaType == MEnumParameterLiteral -»«object.name»«ELSE -»«object.getFullObjectNameToElement()»«ENDIF -»«ENDLET -»«ENDIF -»
+«ENDDEFINE»

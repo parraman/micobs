@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+-->
+
+<plugin>
+   <extension
+         point="es.uah.aut.srg.micobs.mclev.domain">
+      <domain
+            model="model/edroom.mclev_dom"
+            uri="es.uah.aut.srg.micobs.mclev.domains.EDROOM"
+            version="v1">
+      </domain>
+   </extension>
+
+   <extension point="org.eclipse.emf.edit.itemProviderAdapterFactories">
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/domain/edroom/library/edroomlibrary"
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.provider.edroomlibraryItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>   
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/domain/edroom/edroomdclass"
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.edroomdclass.provider.edroomdclassItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>   
+      <factory
+            uri="http://srg.aut.uah.es/micobs/mclev/domain/edroom/edroomprot"
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.edroomprot.provider.edroomprotItemProviderAdapterFactory"
+            supportedTypes=
+              "org.eclipse.emf.edit.provider.IEditingDomainItemProvider
+               org.eclipse.emf.edit.provider.IStructuredItemContentProvider
+               org.eclipse.emf.edit.provider.ITreeItemContentProvider
+               org.eclipse.emf.edit.provider.IItemLabelProvider
+               org.eclipse.emf.edit.provider.IItemPropertySource"/>   
+   </extension>
+
+   <extension point="org.eclipse.emf.ecore.generated_package">
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/domain/edroom/library/edroomlibrary"
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.edroomlibraryPackage"
+            genModel="model/edroomlibrary.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/domain/edroom/edroomdclass"
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.edroomdclass.edroomdclassPackage"
+            genModel="model/dclass.genmodel"/>
+      <package
+            uri="http://srg.aut.uah.es/micobs/mclev/domain/edroom/edroomprot"
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.edroomprot.edroomprotPackage"
+            genModel="model/prot.genmodel"/>
+   </extension>
+
+   <extension point="org.eclipse.ui.editors">
+      <editor
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.presentation.edroomlibraryEditor"
+            contributorClass="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.presentation.edroomlibraryActionBarContributor"
+            extensions="edroomlibrary"
+            icon="icons/full/obj16/edroomlibraryModelFile.gif"
+            id="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.presentation.edroomlibraryEditorID"
+            name="%_UI_edroomlibraryEditor_label">
+      </editor>
+   </extension>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.OpenLibrary"
+            name="Open EDROOM Library">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.UploadToLibrary"
+            name="Upload to Library">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.ui.OpenEDROOMLibrary"
+            commandId="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.OpenLibrary">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.ui.UploadToEDROOMLibraryHandler"
+            commandId="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.UploadToLibrary">
+      </handler>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:es.uah.aut.srg.micobs.menu.id?before=es.uah.aut.srg.micobs.menu.separator.id">
+         <command
+               commandId="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.OpenLibrary"
+               id="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.menu.OpenLibrary"
+               mnemonic="E"
+               style="push">
+         </command>
+      </menuContribution>
+   </extension>
+   
+   <extension
+         point="es.uah.aut.srg.micobs.library">
+      <library
+            adapter="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.adapters.EDROOMLibraryAdapter"
+            id="es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary"
+            name="EDROOMLibrary">
+         <depends
+               library="es.uah.aut.srg.micobs.mclev.library.mclevlibrary">
+         </depends>
+      </library>
+   </extension>
+   <extension
+         point="es.uah.aut.srg.micobs.mclev.domainAdapter">
+      <domainAdapter
+            adapter="es.uah.aut.srg.micobs.mclev.domain.edroom.adapter.EDROOMDomainAdapter"
+            uri="es.uah.aut.srg.micobs.mclev.domains.EDROOM"
+            version="v1">
+      </domainAdapter>
+   </extension>
+   
+</plugin>
