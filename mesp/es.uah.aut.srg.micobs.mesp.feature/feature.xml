@@ -2,7 +2,7 @@
 <feature
       id="es.uah.aut.srg.micobs.mesp"
       label="%featureName"
-      version="2.2.0"
+      version="2.2.1"
       provider-name="%providerName"
       plugin="es.uah.aut.srg.micobs.mesp">
 
@@ -10,7 +10,7 @@
       %description
    </description>
 
-   <copyright url="&quot;ttp://www.eclipse.org/legal/epl-v10.html">
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
       %copyright
    </copyright>
 
@@ -19,7 +19,7 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.0.x"/>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.2.x"/>
    </url>
 
    <requires>
@@ -52,8 +52,8 @@
       <import plugin="org.eclipse.xtext.ui.shared"/>
       <import plugin="org.eclipse.compare"/>
       <import plugin="org.eclipse.xtext.builder"/>
-      <import plugin="es.uah.aut.srg.micobs.pdl" version="1.0.0" match="greaterOrEqual"/>
-      <import plugin="es.uah.aut.srg.micobs.mesp" version="1.0.0" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs.pdl" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="es.uah.aut.srg.micobs.mesp" version="2.2.0" match="greaterOrEqual"/>
    </requires>
 
    <plugin

@@ -1,0 +1,241 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT edroomdclass»
+
+«EXTENSION template::MICOBSStringHelper»
+«EXTENSION template::EDROOMUtil»
+
+«DEFINE main FOR EDROOMDataClass»
+«FILE "include/public/" + this.name.toLowerDefString() + ".h" -»
+#ifndef __PUBLIC__«this.name.toUpperDefString()»_H__
+#define __PUBLIC__«this.name.toUpperDefString()»_H__
+
+#include <public/edroomsl_types.h>
+
+«FOREACH this.getAllRelatedDataClasses() AS dataClass -»
+#include <public/«dataClass.name.toLowerDefString()».h>
+
+«ENDFOREACH -»
+class «this.name»«IF !this.inherits.isEmpty -» : «this.inherits.first().name»«FOREACH this.inherits.withoutFirst() AS class -», «class.name»«ENDFOREACH -»«ENDIF -»
+{
+
+	public:
+
+«EXPAND printDefinition FOREACH this.definitions -»
+«EXPAND printField FOREACH this.fields -»
+«EXPAND declareDefinitionSerialize FOREACH this.definitions -»
+	static TEDROOMUInt32 Serialize(const void * source, void * destination);
+
+};
+
+#endif // __PUBLIC__«this.name.toUpperDefString()»_H__
+«ENDFILE»
+«FILE "src/" + this.name.toLowerDefString() + ".cpp" -»
+
+#include <public/«this.name.toLowerDefString()».h>
+
+«EXPAND defineDefinitionSerialize(this.name) FOREACH this.definitions.typeSelect(EDROOMDataDefinitionEnum)»
+
+TEDROOMUInt32 «this.name»::Serialize(const void * source, void * destination)
+{
+	const «this.name» * pSource = («this.name» *)source;
+	«this.name» * pDestination = («this.name» *)destination;
+
+«EXPAND printSerialize FOREACH this.fields -»    
+    return sizeof («this.name»);
+}
+
+«ENDFILE»
+«ENDDEFINE»
+
+«DEFINE declareDefinitionSerialize FOR EDROOMDataDefinition -»
+	static TEDROOMUInt32 «this.name»_Serialize(const void * source, void * destination); 
+
+«ENDDEFINE»
+
+«DEFINE defineDefinitionSerialize(String className) FOR EDROOMDataDefinitionEnum -»
+TEDROOMUInt32 «className»::«this.name»_Serialize(const void * source, void * destination)
+{
+	return ::TEDROOMInt32_Serialize(source, destination);
+}
+«ENDDEFINE»
+
+«DEFINE printField FOR EDROOMDataField -»
+«IF this.metaType == EDROOMDataFieldBasic -»
+	«((EDROOMDataFieldBasic)this).type.toString()» «this.name»;
+
+«ELSEIF this.metaType == EDROOMDataFieldBasicArray -»
+	«((EDROOMDataFieldBasic)this).type.toString()» «this.name»[«((EDROOMDataFieldBasicArray)this).elements.toString()»];
+
+«ELSEIF this.metaType == EDROOMDataFieldClass -»
+	«((EDROOMDataFieldClass)this).type.name.toString()» «this.name»;
+
+«ELSEIF this.metaType == EDROOMDataFieldClassArray -»
+	«((EDROOMDataFieldClass)this).type.name.toString()» «this.name»[«((EDROOMDataFieldClassArray)this).elements.toString()»];
+
+«ELSEIF this.metaType == EDROOMDataFieldEnum -»
+«LET ((EDROOMDataFieldEnum)this) AS field -»
+«IF field.eContainer != field.type.eContainer -»
+	enum «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»;
+
+«ELSE -»
+	enum «field.type.name.toString()» «this.name»;
+
+«ENDIF -»
+«ENDLET -»
+«ELSEIF this.metaType == EDROOMDataFieldEnumArray -»
+«LET ((EDROOMDataFieldEnumArray)this) AS field -»
+«IF field.eContainer != field.type.eContainer -»
+	enum «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»[«((EDROOMDataFieldEnumArray)this).elements.toString()»];
+
+«ELSE -»
+	enum «field.type.name.toString()» «this.name»[«((EDROOMDataFieldEnumArray)this).elements.toString()»];
+
+«ENDIF -»
+«ENDLET -»
+«ELSEIF this.metaType == EDROOMDataFieldUnion -»
+«LET ((EDROOMDataFieldUnion)this) AS field -»
+«IF field.eContainer != field.type.eContainer -»
+	union «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»;
+
+«ELSE -»
+	union «field.type.name.toString()» «this.name»;
+
+«ENDIF -»
+«ENDLET -»
+«ELSEIF this.metaType == EDROOMDataFieldUnionArray -»
+«LET ((EDROOMDataFieldUnionArray)this) AS field -»
+«IF field.eContainer != field.type.eContainer -»
+	union «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»[«((EDROOMDataFieldUnionArray)this).elements.toString()»];
+
+«ELSE -»
+	union «field.type.name.toString()» «this.name»[«((EDROOMDataFieldUnionArray)this).elements.toString()»];
+
+«ENDIF -»
+«ENDLET -»
+«ENDIF -»
+«ENDDEFINE»
+
+«DEFINE printSerialize FOR EDROOMDataField -»
+«IF this.metaType == EDROOMDataFieldBasic -»
+	::«((EDROOMDataFieldBasic)this).type.toString()»_Serialize((const void *)(&pSource->«this.name»), (void *)(&pDestination->«this.name»));
+
+«ELSEIF this.metaType == EDROOMDataFieldBasicArray -»
+	for (int i = 0; i < «((EDROOMDataFieldBasicArray)this).elements.toString()»; i++)
+	{
+		::«((EDROOMDataFieldBasic)this).type.toString()»_Serialize((const void *)(&(pSource->«this.name»[i])), (void *)(&(pDestination->«this.name»[i])));
+	}
+
+«ELSEIF this.metaType == EDROOMDataFieldClass -»
+	«((EDROOMDataFieldClass)this).type.name.toString()»::Serialize((const void *)(&pSource->«this.name»), (void *)(&pDestination->«this.name»));
+
+«ELSEIF this.metaType == EDROOMDataFieldClassArray -»
+	for (int i = 0; i < «((EDROOMDataFieldBasicArray)this).elements.toString()»; i++)
+	{
+		«((EDROOMDataFieldClass)this).type.name.toString()»::Serialize((const void *)(&(pSource->«this.name»[i])), (void *)(&(pDestination->«this.name»[i])));
+	}
+
+«ELSEIF this.metaType == EDROOMDataFieldEnum -»
+«LET ((EDROOMDataFieldEnum)this) AS field -»
+	«((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()»_Serialize((const void *)(&pSource->«this.name»), (void *)(&pDestination->«this.name»));
+
+«ENDLET -»
+«ELSEIF this.metaType == EDROOMDataFieldEnumArray -»
+«LET ((EDROOMDataFieldEnumArray)this) AS field -»
+	for (int i = 0; i < «((EDROOMDataFieldBasicArray)this).elements.toString()»; i++)
+	{
+		«((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()»_Serialize((const void *)(&(pSource->«this.name»[i])), (void *)(&(pDestination->«this.name»[i])));
+	}
+
+«ENDLET -»
+«ENDIF -»
+«ENDDEFINE»
+
+
+«DEFINE printElement FOR edroomdclass::EDROOMDataDefinitionUnionElement -»
+«IF this.metaType == EDROOMDataDefinitionUnionElementBasic -»
+		«((EDROOMDataDefinitionUnionElementBasic)this).type.toString()» «this.name»;
+
+«ELSEIF this.metaType == EDROOMDataDefinitionUnionElementBasicArray -»
+		«((EDROOMDataDefinitionUnionElementBasic)this).type.toString()» «this.name»[«((EDROOMDataDefinitionUnionElementBasicArray)this).elements.toString()»];
+
+«ELSEIF this.metaType == EDROOMDataDefinitionUnionElementClass -»
+		«((EDROOMDataDefinitionUnionElementClass)this).type.name.toString()» «this.name»;
+
+«ELSEIF this.metaType == EDROOMDataDefinitionUnionElementClassArray -»
+		«((EDROOMDataDefinitionUnionElementClass)this).type.name.toString()» «this.name»[«((EDROOMDataDefinitionUnionElementClassArray)this).elements.toString()»];
+
+«ELSEIF this.metaType == EDROOMDataDefinitionUnionElementEnum -»
+«LET ((EDROOMDataDefinitionUnionElementEnum)this) AS field -»
+«IF field.eContainer.eContainer != field.type.eContainer -»
+	enum «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»;
+
+«ELSE -»
+	enum «field.type.name.toString()» «this.name»;
+
+«ENDIF -»
+«ENDLET -»
+«ELSEIF this.metaType == EDROOMDataDefinitionUnionElementEnumArray -»
+«LET ((EDROOMDataDefinitionUnionElementEnumArray)this) AS field -»
+«IF field.eContainer.eContainer != field.type.eContainer -»
+	enum «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»[«((EDROOMDataDefinitionUnionElementEnumArray)this).elements.toString()»];
+
+«ELSE -»
+	enum «field.type.name.toString()» «this.name»[«((EDROOMDataDefinitionUnionElementEnumArray)this).elements.toString()»];
+
+«ENDIF -»
+«ENDLET -»
+«ELSEIF this.metaType == EDROOMDataDefinitionUnionElementUnion -»
+«LET ((EDROOMDataDefinitionUnionElementUnion)this) AS field -»
+«IF field.eContainer.eContainer != field.type.eContainer -»
+	union «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»;
+
+«ELSE -»
+	union «field.type.name.toString()» «this.name»;
+
+«ENDIF -»
+«ENDLET -»
+«ELSEIF this.metaType == EDROOMDataDefinitionUnionElementUnionArray -»
+«LET ((EDROOMDataDefinitionUnionElementUnionArray)this) AS field -»
+«IF field.eContainer.eContainer != field.type.eContainer -»	
+	union «((EDROOMDataClass)field.type.eContainer).name»::«field.type.name.toString()» «this.name»[«((EDROOMDataDefinitionUnionElementUnionArray)this).elements.toString()»];
+
+«ELSE -»
+	union «field.type.name.toString()» «this.name»[«((EDROOMDataDefinitionUnionElementUnionArray)this).elements.toString()»];
+
+«ENDIF -»
+«ENDLET -»
+«ENDIF -»
+«ENDDEFINE»
+
+
+«DEFINE printDefinition FOR EDROOMDataDefinition -»
+«IF this.metaType == EDROOMDataDefinitionEnum -»
+	enum «((EDROOMDataDefinitionEnum)this).name» {
+«IF ((EDROOMDataDefinitionEnum)this).elements.size == 1 -»
+		«((EDROOMDataDefinitionEnum)this).elements.first().name»
+«ELSE -»
+«FOREACH ((EDROOMDataDefinitionEnum)this).elements.withoutLast() AS element -»
+		«element.name»,
+«ENDFOREACH -»
+		«((EDROOMDataDefinitionEnum)this).elements.last().name»
+«ENDIF -»		
+	};
+
+«ELSE -»
+	union «((EDROOMDataDefinitionUnion)this).name» {
+«EXPAND printElement FOREACH ((EDROOMDataDefinitionUnion)this).elements -»
+	};
+
+«ENDIF -»
+«ENDDEFINE»

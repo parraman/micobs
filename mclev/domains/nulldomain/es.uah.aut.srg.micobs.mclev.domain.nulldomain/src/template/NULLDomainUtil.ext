@@ -1,0 +1,49 @@
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+
+import mclevslib;
+import mclevcmp;
+import mclevdom;
+import mespswi;
+import mespswp;
+import mesppswp;
+import common;
+import pdl;
+
+extension template::MICOBSStringHelper;
+extension template::MCLEVUtil;
+
+pdl::MOperatingSystemAPI getOsapiPBOOTAPI_v1() : JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getOsapiPBOOTAPI_v1();
+
+pdl::MOperatingSystemAPI getOsapiPOSIX_v13() : JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getOsapiPOSIX_v13();
+
+pdl::MOperatingSystemAPI getOsapiRTEMSAPI_4_6() : JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getOsapiRTEMSAPI_4_6();
+
+pdl::MOperatingSystemAPI getOsapiRTEMSAPI_4_8_impr() : JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getOsapiRTEMSAPI_4_8_impr();
+
+mespswi::MSwInterface getNULLDomainSwInterface() : JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getNULLDomainSwInterface();
+	
+mespswp::MSwPackage getSwPackageOfServiceLibrary(MServiceLibrary this): JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getSwPackageOfServiceLibrary(es.uah.aut.srg.micobs.mclev.mclevslib.MServiceLibrary);
+
+mespswp::MSwPackage getSwPackageOfDriverServiceLibrary(MDriverServiceLibrary this): JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getSwPackageOfDriverServiceLibrary(es.uah.aut.srg.micobs.mclev.mclevslib.MDriverServiceLibrary);
+
+mespswp::MSwPackage getSwPackageOfComponent(MComponent this): JAVA
+	es.uah.aut.srg.micobs.mclev.domain.nulldomain.util.NULLDomainUtil.getSwPackageOfComponent(es.uah.aut.srg.micobs.mclev.mclevcmp.MComponent);
+
+MPlatformSwPackage getPlatformSwPackage(MPlatform this) : 
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getPlatformSwPackage(es.uah.aut.srg.micobs.pdl.MPlatform);

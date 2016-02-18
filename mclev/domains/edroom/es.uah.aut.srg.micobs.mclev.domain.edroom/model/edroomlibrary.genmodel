@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel"
+    modelDirectory="/es.uah.aut.srg.micobs.mclev.domain.edroom/src"
+    editDirectory="/es.uah.aut.srg.micobs.mclev.domain.edroom/src" editorDirectory="/es.uah.aut.srg.micobs.mclev.domain.edroom/src"
+    modelPluginID="es.uah.aut.srg.micobs.mclev.domain.edroom" modelName="Edroomlibrary"
+    editPluginClass="es.uah.aut.srg.micobs.mclev.domain.edroom.plugin.EDROOMPlugin"
+    editorPluginClass="es.uah.aut.srg.micobs.mclev.domain.edroom.plugin.EDROOMPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common">
+  <foreignModel>edroomlibrary.ecore</foreignModel>
+  <genPackages prefix="edroomlibrary" basePackage="es.uah.aut.srg.micobs.mclev.domain.edroom.library"
+      disposableProviderFactory="true" multipleEditorPages="false" generateModelWizard="false"
+      ecorePackage="edroomlibrary.ecore#/">
+    <genClasses ecoreClass="edroomlibrary.ecore#//EDROOMLibrary"/>
+    <genClasses ecoreClass="edroomlibrary.ecore#//EDROOMPackage"/>
+    <genClasses image="false" ecoreClass="edroomlibrary.ecore#//EDROOMPackageItem"/>
+    <genClasses image="false" ecoreClass="edroomlibrary.ecore#//EDROOMPackageVersionedItem"/>
+    <genClasses ecoreClass="edroomlibrary.ecore#//EDROOMItemDataClass"/>
+    <genClasses ecoreClass="edroomlibrary.ecore#//EDROOMVersionedItemDataClass"/>
+    <genClasses ecoreClass="edroomlibrary.ecore#//EDROOMItemProtocol"/>
+    <genClasses ecoreClass="edroomlibrary.ecore#//EDROOMVersionedItemProtocol"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -1,0 +1,258 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+
+<plugin>
+
+    <extension
+            point="org.eclipse.ui.editors">
+        <editor
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.XtextEditor"
+            contributorClass="org.eclipse.ui.editors.text.TextEditorActionContributor"
+            default="true"
+            extensions="mclev_iface"
+            id="es.uah.aut.srg.micobs.mclev.lang.IFACE"
+            name="IFACE Editor">
+        </editor>
+    </extension>
+    <extension
+        point="org.eclipse.ui.handlers">
+        <handler
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclarationHandler"
+            commandId="org.eclipse.xtext.ui.editor.hyperlinking.OpenDeclaration">
+            <activeWhen>
+                <reference
+                    definitionId="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+        <handler
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.handler.ValidateActionHandler"
+            commandId="es.uah.aut.srg.micobs.mclev.lang.IFACE.validate">
+         <activeWhen>
+            <reference
+                    definitionId="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened">
+            </reference>
+         </activeWhen>
+      </handler>
+    </extension>
+    <extension point="org.eclipse.core.expressions.definitions">
+        <definition id="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened">
+            <and>
+                <reference definitionId="isActiveEditorAnInstanceOfXtextEditor"/>
+                <with variable="activeEditor">
+                    <test property="org.eclipse.xtext.ui.editor.XtextEditor.languageName" 
+                        value="es.uah.aut.srg.micobs.mclev.lang.IFACE" 
+                        forcePluginActivation="true"/>
+                </with>        
+            </and>
+        </definition>
+    </extension>
+    <extension
+            point="org.eclipse.ui.preferencePages">
+        <page
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="es.uah.aut.srg.micobs.mclev.lang.IFACE"
+            name="IFACE">
+            <keywordReference id="es.uah.aut.srg.micobs.mclev.lang.ui.keyword_IFACE"/>
+        </page>
+        <page
+            category="es.uah.aut.srg.micobs.mclev.lang.IFACE"
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.syntaxcoloring.SyntaxColoringPreferencePage"
+            id="es.uah.aut.srg.micobs.mclev.lang.IFACE.coloring"
+            name="Syntax Coloring">
+            <keywordReference id="es.uah.aut.srg.micobs.mclev.lang.ui.keyword_IFACE"/>
+        </page>
+        <page
+            category="es.uah.aut.srg.micobs.mclev.lang.IFACE"
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.templates.XtextTemplatePreferencePage"
+            id="es.uah.aut.srg.micobs.mclev.lang.IFACE.templates"
+            name="Templates">
+            <keywordReference id="es.uah.aut.srg.micobs.mclev.lang.ui.keyword_IFACE"/>
+        </page>
+    </extension>
+    <extension
+            point="org.eclipse.ui.propertyPages">
+        <page
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.preferences.LanguageRootPreferencePage"
+            id="es.uah.aut.srg.micobs.mclev.lang.IFACE"
+            name="IFACE">
+            <keywordReference id="es.uah.aut.srg.micobs.mclev.lang.ui.keyword_IFACE"/>
+            <enabledWhen>
+	            <adapt type="org.eclipse.core.resources.IProject"/>
+			</enabledWhen>
+	        <filter name="projectNature" value="org.eclipse.xtext.ui.shared.xtextNature"/>
+        </page>
+    </extension>
+    <extension
+        point="org.eclipse.ui.keywords">
+        <keyword
+            id="es.uah.aut.srg.micobs.mclev.lang.ui.keyword_IFACE"
+            label="IFACE"/>
+    </extension>
+    <extension
+         point="org.eclipse.ui.commands">
+      <command
+            description="Trigger expensive validation"
+            id="es.uah.aut.srg.micobs.mclev.lang.IFACE.validate"
+            name="Validate">
+      </command>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+        <menuContribution
+            locationURI="popup:#TextEditorContext?after=group.edit">
+             <command
+                 commandId="es.uah.aut.srg.micobs.mclev.lang.IFACE.validate"
+                 style="push"
+                 tooltip="Trigger expensive validation">
+            <visibleWhen checkEnabled="false">
+                <reference
+                    definitionId="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened">
+                </reference>
+            </visibleWhen>
+         </command>  
+         </menuContribution>
+    </extension>
+    <extension point="org.eclipse.ui.menus">
+		<menuContribution locationURI="popup:#TextEditorContext?endof=group.find">
+			<command commandId="org.eclipse.xtext.ui.editor.FindReferences">
+				<visibleWhen checkEnabled="false">
+                	<reference definitionId="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened">
+                	</reference>
+            	</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+	<extension point="org.eclipse.ui.handlers">
+	    <handler
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.findrefs.FindReferencesHandler"
+            commandId="org.eclipse.xtext.ui.editor.FindReferences">
+            <activeWhen>
+                <reference
+                    definitionId="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened">
+                </reference>
+            </activeWhen>
+        </handler>
+    </extension>   
+
+<!-- adding resource factories -->
+
+	<extension
+		point="org.eclipse.emf.ecore.extension_parser">
+		<parser
+			class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.resource.IResourceFactory"
+			type="mclev_iface">
+		</parser>
+	</extension>
+	<extension point="org.eclipse.xtext.extension_resourceServiceProvider">
+        <resourceServiceProvider
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.resource.IResourceUIServiceProvider"
+            uriExtension="mclev_iface">
+        </resourceServiceProvider>
+    </extension>
+
+
+    <!-- marker definitions for es.uah.aut.srg.micobs.mclev.lang.IFACE -->
+    <extension
+            id="iface.check.fast"
+            name="IFACE Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.fast"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="iface.check.normal"
+            name="IFACE Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.normal"/>
+        <persistent value="true"/>
+    </extension>
+    <extension
+            id="iface.check.expensive"
+            name="IFACE Problem"
+            point="org.eclipse.core.resources.markers">
+        <super type="org.eclipse.xtext.ui.check.expensive"/>
+        <persistent value="true"/>
+    </extension>
+
+	<!-- Quick Outline -->
+	<extension
+		point="org.eclipse.ui.handlers">
+		<handler 
+			class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.outline.quickoutline.ShowQuickOutlineActionHandler"
+			commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline">
+			<activeWhen>
+				<reference
+					definitionId="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened">
+				</reference>
+			</activeWhen>
+		</handler>
+	</extension>
+	<extension
+		point="org.eclipse.ui.commands">
+		<command
+			description="Open the quick outline."
+			id="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+			name="Quick Outline">
+		</command>
+	</extension>
+	<extension point="org.eclipse.ui.menus">
+		<menuContribution
+			locationURI="popup:#TextEditorContext?after=group.open">
+			<command commandId="org.eclipse.xtext.ui.editor.outline.QuickOutline"
+				style="push"
+				tooltip="Open Quick Outline">
+				<visibleWhen checkEnabled="false">
+					<reference definitionId="es.uah.aut.srg.micobs.mclev.lang.IFACE.Editor.opened"/>
+				</visibleWhen>
+			</command>
+		</menuContribution>
+	</extension>
+
+  <extension point="org.eclipse.compare.contentViewers">
+    <viewer id="es.uah.aut.srg.micobs.mclev.lang.IFACE.compare.contentViewers"
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="mclev_iface">
+    </viewer>
+  </extension>
+  <extension point="org.eclipse.compare.contentMergeViewers">
+    <viewer id="es.uah.aut.srg.micobs.mclev.lang.IFACE.compare.contentMergeViewers"
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.compare.InjectableViewerCreator"
+            extensions="mclev_iface" label="IFACE Compare">
+     </viewer>
+  </extension>
+  <extension point="org.eclipse.ui.editors.documentProviders">
+    <provider id="es.uah.aut.srg.micobs.mclev.lang.IFACE.editors.documentProviders"
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.model.XtextDocumentProvider"
+            extensions="mclev_iface">
+    </provider>
+  </extension>
+    <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.mclev.lang.IFACE -->
+    <extension
+            point="org.eclipse.ui.ide.markerResolution">
+        <markerResolutionGenerator
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="es.uah.aut.srg.micobs.mclev.lang.ui.iface.check.fast">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="es.uah.aut.srg.micobs.mclev.lang.ui.iface.check.normal">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+        <markerResolutionGenerator
+            class="es.uah.aut.srg.micobs.mclev.lang.ui.IFACEExecutableExtensionFactory:org.eclipse.xtext.ui.editor.quickfix.MarkerResolutionGenerator"
+            markerType="es.uah.aut.srg.micobs.mclev.lang.ui.iface.check.expensive">
+            <attribute
+                name="FIXABLE_KEY"
+                value="true">
+            </attribute>
+        </markerResolutionGenerator>
+    </extension>
+
+</plugin>

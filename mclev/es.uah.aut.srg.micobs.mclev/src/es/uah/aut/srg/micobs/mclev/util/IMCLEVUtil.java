@@ -1259,12 +1259,47 @@ public interface IMCLEVUtil {
 	public Set<MEnumParameterDefinition> getEnumAttributeDefinitions(
 			MAbstractComponent acmp);
 	
-	public MInterface getInterface(String uri, String version);
-	
+	/**
+	 * Returns an SAI object from its URI and version. If no SAI
+	 * can be found, the method will return <code>null</code>.
+	 * 
+	 * @param uri the URI of the SAI.
+	 * @param version the version of the SAI.
+	 * @return the SAI object or <code>null</code> if no SAI could
+	 *         be found.
+	 */
 	public MSAI getSAI(String uri, String version);
 
+	/**
+	 * Returns an component object from its URI and version. If no component
+	 * can be found, the method will return <code>null</code>.
+	 * 
+	 * @param uri the URI of the component.
+	 * @param version the version of the component.
+	 * @return the component object or <code>null</code> if no component could
+	 *         be found.
+	 */
 	public MComponent getComponent(String uri, String version);
 
+	/**
+	 * Returns an MCLEV Package from its URI. If no package
+	 * can be found, the method will return <code>null</code>.
+	 * 
+	 * @param uri the URI of the package.
+	 * @return the package or <code>null</code> if no package could
+	 *         be found.
+	 */
 	public MMCLEVPackage getMCLEVPackage(String uri);
+	
+	/**
+	 * Returns an interface object from its URI and version. If no interface
+	 * can be found, the method will return <code>null</code>.
+	 * 
+	 * @param uri the URI of the interface.
+	 * @param version the version of the interface.
+	 * @return the interface object or <code>null</code> if no interface could
+	 *         be found.
+	 */
+	public MInterface getInterface(String uri, String version);
 
 }

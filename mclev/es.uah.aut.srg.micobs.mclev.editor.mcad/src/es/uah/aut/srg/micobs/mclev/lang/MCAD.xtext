@@ -1,0 +1,285 @@
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+grammar es.uah.aut.srg.micobs.mclev.lang.MCAD with org.eclipse.xtext.common.Terminals
+
+import "http://srg.aut.uah.es/micobs/mclev/mclevmcad" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://srg.aut.uah.es/micobs/mclev/mclevdom" as mclevdom
+import "http://srg.aut.uah.es/micobs/mclev/mclevslib" as mclevslib
+import "http://srg.aut.uah.es/micobs/mclev/mclevcmp" as mclevcmp
+import "http://srg.aut.uah.es/micobs/mclev/mclevimap" as mclevimap
+import "http://srg.aut.uah.es/micobs/pdl" as pdl
+import "http://srg.aut.uah.es/micobs/common" as common
+import "http://srg.aut.uah.es/micobs/mclev/library/mclevlibrary" as mclevlibrary
+
+MMCLEVMCADPackageFile returns MMCLEVMCADPackageFile:
+	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';'
+	('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
+	element=MMCLEVMCADPackageElement
+;
+
+MMCLEVMCADPackageElement returns MMCLEVMCADPackageElement:
+	MMCADeployment
+	;
+
+MMCADeployment returns MMCADeployment:
+	'deployment' 'project'
+	domain=[mclevdom::MDomain|VersionedQualifiedName]
+	name=ID
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('attribute' 'values'
+		'{'
+			(attributeValueAssignments+=MAttributeValueAssignment)+
+		'}' ';')?
+		& ('deployment' 'platforms' 
+		'{'
+			(deploymentPlatforms+=MDeploymentPlatform)+
+		'}' ';')?
+		& ('deployment' 'alternatives' 
+		'{' 
+			(deploymentAlternatives+=MDeploymentAlternative)+
+		'}' ';')?
+		& ('components' 
+		'{' 
+			(components+=MComponentInstance)+
+		'}' ';')?
+		& ('connections' 
+		'{' 
+			(connections+=MConnection)+
+		'}' ';')?
+		& ('libraries' 
+		'{' 
+			(libraries+=MServiceLibraryInstance)+
+		'}' ';')?)
+    '}' ';';
+
+MConnection returns MConnection:
+	MCommonConnection | MConnectionSwitch;
+
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*;
+
+Version returns ecore::EString:
+	(INT | ((INT)? ID)) ('.' (INT | ((INT)? ID)))*
+	;
+
+VersionedQualifiedName returns ecore::EString:
+	QualifiedName '(' Version ')'
+	;
+
+VersionedQualifiedReferenceName returns ecore::EString:
+	(VersionedQualifiedName '::')? ID ('::' ID)*;
+
+MCommonConnection returns MCommonConnection:
+	{MCommonConnection}
+	'connection' clientInstance=[MComponentInstance|ID] '.'
+	clientPort=[mclevcmp::MClientPort|ID] '<->'
+	serverInstance=[MComponentInstance|ID] '.'
+	serverPort=[mclevcmp::MServerPort|ID] 'using'
+	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
+	'{'
+		('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+		(attributeValueAssignments+=MAttributeValueAssignment)*
+    '}' ';';
+
+MConnectionSwitch returns MConnectionSwitch:
+	{MConnectionSwitch}
+	'switch' '(' clientInstance=[MComponentInstance|ID] '.'
+	clientPort=[mclevcmp::MClientPort|ID] ')'
+	'{'
+		(cases+=MConnectionSwitchCase)+
+    '}' ';';
+
+MConnectionSwitchCase returns MConnectionSwitchCase:
+	{MConnectionSwitchCase}
+	'case' alternative=[MDeploymentAlternative|ID] ':'
+	serverInstance=[MComponentInstance|ID] '.'
+	serverPort=[mclevcmp::MServerPort|ID]
+	'using' connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
+	'{'
+		('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+		(attributeValueAssignments+=MAttributeValueAssignment)*
+    '}' ';';
+
+MComponentInstance returns MComponentInstance:
+	{MComponentInstance}
+	'instance'
+	component=[mclevcmp::MComponent|VersionedQualifiedName]
+	name=ID
+	'{'
+		(attributeValueAssignments+=MAttributeValueAssignment)*
+    '}' ';';
+
+MServiceLibraryInstance returns MServiceLibraryInstance:
+	MRegularServiceLibraryInstance | MDriverSLibInstance
+;
+
+MRegularServiceLibraryInstance returns MServiceLibraryInstance:
+	'library'
+	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+	'{'
+		(attributeValueAssignments+=MAttributeValueAssignment)*
+    '}' ';';
+
+MDriverSLibInstance returns MDriverSLibInstance:
+	{MDriverSLibInstance}
+	'driver'
+	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+	'{'
+		(('attribute' 'values'
+		'{'
+			(attributeValueAssignments+=MAttributeValueAssignment)+
+		'}' ';')?
+		& ('device' 'mappings' '{'
+			(deviceDriverMappings+=MDeviceDriverMapping)+
+		'}' ';')?)
+	'}' ';'
+;
+
+MDeviceDriverMapping returns MDeviceDriverMapping:
+	'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName]
+	'->'
+	'deployed' 'device' deployedDevice=[MDeployedDevice|VersionedQualifiedReferenceName] ';'
+;
+
+MDeploymentAlternative returns MDeploymentAlternative:
+	{MDeploymentAlternative}
+	'deployment' 'alternative'
+	name=ID
+	'{'
+		(('deployment' 'platforms' ':=' deploymentPlatforms+=[MDeploymentPlatform|ID] ( "," deploymentPlatforms+=[MDeploymentPlatform|ID])* ';')
+		& ('attribute' 'values'
+		'{'
+			(attributeValueAssignments+=MAttributeValueAssignment)+
+		'}' ';')?
+		& ('deployment' 'alternatives' 
+		'{' 
+			(deploymentAlternatives+=MDeploymentAlternative)+
+		'}' ';')?
+		& ('components' 
+		'{' 
+			(components+=MComponentInstance)+
+		'}' ';')?
+		& ('connections' 
+		'{' 
+			(connections+=MConnection)+
+		'}' ';')?
+		& ('libraries' 
+		'{' 
+			(libraries+=MServiceLibraryInstance)+
+		'}' ';')?)
+    '}' ';';
+
+MDeploymentPlatform returns MDeploymentPlatform:
+	'deployment' 'platform'
+	name=ID
+	'{'
+		(('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';')
+		& ('deployed' 'devices' '{'
+			(deployedDevices+=MDeployedDevice)+
+		'}' ';')?
+		& ('parameter' 'values'
+		'{'
+			(parameterValueAssignments+=MParameterValueAssignment)+
+		'}' ';')?)
+	'}'
+	';'
+	;
+
+MDeployedDevice returns MDeployedDevice:
+	'device'
+	device=[pdl::MDevice|VersionedQualifiedName]
+	name=ID
+	'{'
+		(parameterValueAssignments+=MParameterValueAssignment)*
+	'}' ';'
+;
+
+MAttributeValueAssignment returns common::MParameterValueAssignmentSingleExpression:
+	'attribute'
+	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	':='
+	parameterValue=MParameterValueExpression ';'
+	;
+
+MParameterValueAssignment returns common::MParameterValueAssignmentSingleExpression:
+	'parameter'
+	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	':='
+	parameterValue=MParameterValueExpression ';'
+	;
+
+MParameterValue returns common::MParameterValue:
+	MParameterValueLiteral | MParameterValueRefObject |
+	MParameterValuePAR
+	;
+
+MParameterValueLiteral returns common::MParameterValueLiteral:
+	MParameterValueBooleanLiteral | MParameterValueStringLiteral |
+	MParameterValueIntegerLiteral | MParameterValueRealLiteral
+;
+
+MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
+	{common::MParameterValueBooleanLiteral}
+	value=EBoolean;
+
+MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
+	{common::MParameterValueStringLiteral}
+	value=STRING;
+
+MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
+	{common::MParameterValueIntegerLiteral}
+	value=INTEGER;
+
+MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
+	{common::MParameterValueRealLiteral}
+	value=REAL;
+
+
+MParameterValueRefObject returns common::MParameterValueRefObject:
+	{common::MParameterValueRefObject}
+	object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+	;
+	
+MParameterValuePAR returns common::MParameterValuePAR:
+	'(' value=MParameterValueExpression ')'
+	;
+
+enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
+	plus = '+' | minus = '-';
+
+enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
+	mult = '*' | div = '/';
+	
+MParameterValueExpression returns common::MParameterValueExpression:
+	{common::MParameterValueExpression}
+	left=MParameterValueTERM (operation=MParameterValueExpressionOperators right=MParameterValueExpression)?
+	;	
+
+MParameterValueTERM returns common::MParameterValueTERM:
+	{common::MParameterValueTERM}
+	left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+	;
+
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+terminal HEXADECIMAL returns ecore::EString:
+	('0x' (('0'..'9') | ('a'..'f') | ('A'..'F'))+);
+
+INTEGER returns ecore::EString:
+	('-'? INT | HEXADECIMAL);
+
+REAL returns ecore::EString:
+	'-'? (INT '.' INT) ('e' ('-')? INT)?;
+

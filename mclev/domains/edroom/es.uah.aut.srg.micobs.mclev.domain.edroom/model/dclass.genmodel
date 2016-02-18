@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/es.uah.aut.srg.micobs.mclev.domain.edroom/src"
+    editDirectory="/es.uah.aut.srg.micobs.mclev.domain.edroom/src" modelPluginID="es.uah.aut.srg.micobs.mclev.domain.edroom"
+    modelName="Dclass" editPluginClass="es.uah.aut.srg.micobs.mclev.domain.edroom.plugin.EDROOMPlugin"
+    importerID="org.eclipse.emf.importer.ecore" complianceLevel="6.0" copyrightFields="false"
+    usedGenPackages="../../es.uah.aut.srg.micobs/model/common.genmodel#//common">
+  <foreignModel>dclass.ecore</foreignModel>
+  <genPackages prefix="edroomdclass" basePackage="es.uah.aut.srg.micobs.mclev.domain.edroom"
+      disposableProviderFactory="true" ecorePackage="dclass.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="dclass.ecore#//EDROOMBasicType">
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMBool"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMByte"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMWord16"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMWord32"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMWord64"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMUInt8"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMUInt16"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMUInt32"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMUInt64"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMInt8"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMInt16"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMInt32"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMInt64"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMFloat"/>
+      <genEnumLiterals ecoreEnumLiteral="dclass.ecore#//EDROOMBasicType/TEDROOMDouble"/>
+    </genEnums>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataClass">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataClass/fields"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataClass/definitions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataClass/inherits"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dclass.ecore#//EDROOMDataField">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataField/name"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldBasic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataFieldBasic/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldBasicArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataFieldBasicArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldClass">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataFieldClass/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldClassArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataFieldClassArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldUnionArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataFieldUnionArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldUnion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataFieldUnion/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldEnumArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataFieldEnumArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataFieldEnum">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataFieldEnum/type"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dclass.ecore#//EDROOMDataDefinition"/>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnion">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataDefinitionUnion/elements"/>
+    </genClasses>
+    <genClasses image="false" ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionUnionElement/name"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementBasic">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionUnionElementBasic/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementClass">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataDefinitionUnionElementClass/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementBasicArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionUnionElementBasicArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementClassArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionUnionElementClassArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementUnion">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataDefinitionUnionElementUnion/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementUnionArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionUnionElementUnionArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionEnum">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataDefinitionEnum/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionEnumElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionEnumElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionEnumElement/value"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementEnum">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference dclass.ecore#//EDROOMDataDefinitionUnionElementEnum/type"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDataDefinitionUnionElementEnumArray">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute dclass.ecore#//EDROOMDataDefinitionUnionElementEnumArray/elements"/>
+    </genClasses>
+    <genClasses ecoreClass="dclass.ecore#//EDROOMDCLASSPackageFile"/>
+    <genClasses image="false" ecoreClass="dclass.ecore#//EDROOMDCLASSPackageElement"/>
+  </genPackages>
+</genmodel:GenModel>

@@ -2,14 +2,14 @@
 <feature
       id="es.uah.aut.srg.micobs.common"
       label="%featureName"
-      version="2.2.0"
+      version="2.2.1"
       provider-name="%providerName">
 
    <description url="http://www.micobs.com">
       %description
    </description>
 
-   <copyright url="&quot;ttp://www.eclipse.org/legal/epl-v10.html">
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
       %copyright
    </copyright>
 
@@ -18,7 +18,7 @@
    </license>
 
    <url>
-      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.0.x"/>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.2.x"/>
    </url>
 
    <requires>

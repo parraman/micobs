@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature
+      id="es.uah.aut.srg.micobs.mclev.domains.feature"
+      label="%featureName"
+      version="2.2.1"
+      provider-name="%providerName">
+
+   <description url="http://www.micobs.com">
+      %description
+   </description>
+
+   <copyright url="http://www.eclipse.org/legal/epl-v10.html">
+      %copyright
+   </copyright>
+
+   <license url="%licenseURL">
+      %license
+   </license>
+
+   <url>
+      <update label="%updateSiteName" url="http://www.micobs.com/eclipse/update/2.2.x"/>
+   </url>
+
+   <requires>
+      <import plugin="org.eclipse.ui"/>
+      <import plugin="org.eclipse.core.runtime"/>
+      <import plugin="org.eclipse.emf.ecore"/>
+      <import plugin="org.eclipse.emf.edit"/>
+      <import plugin="org.eclipse.core.resources"/>
+      <import plugin="es.uah.aut.srg.modeling.util" version="2.2.0" match="greaterOrEqual"/>
+      <import plugin="org.eclipse.core.filesystem"/>
+      <import plugin="org.eclipse.emf.edit.ui"/>
+      <import plugin="org.eclipse.ui.ide"/>
+      <import plugin="org.eclipse.emf.ecore.xmi"/>
+      <import plugin="org.eclipse.xpand"/>
+      <import plugin="org.eclipse.xtend"/>
+      <import plugin="org.eclipse.xtend.typesystem.emf"/>
+      <import plugin="org.tigris.subversion.subclipse.ui"/>
+      <import plugin="org.eclipse.team.core"/>
+      <import plugin="org.tigris.subversion.subclipse.core"/>
+      <import plugin="org.eclipse.core.expressions"/>
+      <import plugin="es.uah.aut.srg.micobs"/>
+      <import plugin="es.uah.aut.srg.micobs.pdl"/>
+      <import plugin="es.uah.aut.srg.micobs.mesp"/>
+      <import plugin="es.uah.aut.srg.micobs.mclev"/>
+      <import plugin="es.uah.aut.srg.micobs.lang.c_c99"/>
+      <import plugin="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81"/>
+      <import plugin="org.eclipse.xtext.ui" version="1.0.1" match="greaterOrEqual"/>
+   </requires>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.nulldomain"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.dclass"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.dclass.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.prot"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+   <plugin
+         id="es.uah.aut.srg.micobs.mclev.domain.edroom.editor.prot.ui"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
+</feature>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+
+<!--
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+-->
+
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            id="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generatemespdeployment.command.id"
+            name="Generate MESP Deployment">
+      </command>
+      <command
+            id="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generatemaincode.command.id"
+            name="Generate Main Code">
+      </command>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.handlers">
+      <handler
+            class="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generator.GenerateMESPDeployment"
+            commandId="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generatemespdeployment.command.id">
+      </handler>
+      <handler
+            class="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generator.GenerateMainCode"
+            commandId="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generatemaincode.command.id">
+      </handler>
+   </extension>
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="popup:es.uah.aut.srg.micobs.mclev.flatmcad.menu.id?after=es.uah.aut.srg.micobs.mclev.flatmcad.domain.separator">
+         <menu
+               label="%_Domain_NULLDomain_ElementName">
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generatemespdeployment.command.id"
+                  style="push">
+            </command>
+            <command
+                  commandId="es.uah.aut.srg.micobs.mclev.domain.nulldomain.generatemaincode.command.id"
+                  style="push">
+            </command>
+            <visibleWhen
+                     checkEnabled="false">
+                  <with
+                        variable="selection">
+                     <count
+                           value="1">
+                     </count>
+                     <iterate
+                           ifEmpty="false">
+                        <test
+                              forcePluginActivation="true"
+                              property="es.uah.aut.srg.micobs.mclev.domain.isNULLDomain_v1">
+                        </test>
+                     </iterate>
+                  </with>
+               </visibleWhen>
+         </menu>
+      </menuContribution>
+   </extension>
+   
+   
+   <extension
+         point="org.eclipse.core.expressions.propertyTesters">
+      <propertyTester
+            class="es.uah.aut.srg.micobs.mclev.domain.nulldomain.tester.NULLDomainTester"
+            id="es.uah.aut.srg.micobs.mclev.domain.nulldomain_v1.tester"
+            namespace="es.uah.aut.srg.micobs.mclev.domain"
+            properties="isNULLDomain_v1"
+            type="org.eclipse.core.resources.IResource">
+      </propertyTester>
+   </extension>
+   
+   <extension
+         point="es.uah.aut.srg.micobs.mclev.domain">
+      <domain
+            model="model/nulldomain.mclev_dom"
+            uri="es.uah.aut.srg.micobs.mclev.domains.NULLDomain"
+            version="v1">
+      </domain>
+   </extension>
+   <extension
+         point="es.uah.aut.srg.micobs.mclev.domainAdapter">
+      <domainAdapter
+            adapter="es.uah.aut.srg.micobs.mclev.domain.nulldomain.adapter.NULLDomainDomainAdapter"
+            uri="es.uah.aut.srg.micobs.mclev.domains.NULLDomain"
+            version="v1">
+      </domainAdapter>
+   </extension>   
+</plugin>

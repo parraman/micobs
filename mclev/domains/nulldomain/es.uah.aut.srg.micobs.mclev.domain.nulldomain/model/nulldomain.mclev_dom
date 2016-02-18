@@ -1,0 +1,68 @@
+package es.uah.aut.srg.micobs.mclev.domains;
+
+import es.uah.aut.srg.micobs.langs;
+import es.uah.aut.srg.micobs.pdl.common.osapi_;
+
+iodomain NULLDomain {
+	
+	version := v1;
+	
+	languages := C(C99);
+	
+	component types {
+		
+		abstract component type NULLMainComponent {
+			
+		};
+		
+		component type NULLCMainComponent inherits NULLMainComponent {
+			language := C(C99);
+		};
+		
+	};
+	
+	supported platforms {
+		
+		supported platform POSIX_v13_any_any_any_any
+		{
+			osapi := POSIX(v13);
+			os := any;
+			architecture := any;
+			microprocessor := any;
+			board := any;
+		};
+		
+		supported platform RTEMSAPI_4_8_impr_any_any_any_any
+		{
+			osapi := RTEMSAPI(4.8_impr);
+			os := any;
+			architecture := any;
+			microprocessor := any;
+			board := any;
+		};
+		
+		supported platform RTEMSAPI_4_6_any_any_any_any
+		{
+			osapi := RTEMSAPI(4.6);
+			os := any;
+			architecture := any;
+			microprocessor := any;
+			board := any;
+		};
+		
+		supported platform pbootapi_v1_any_any_any_any
+		{
+			osapi := pbootapi(v1);
+			os := any;
+			architecture := any;
+			microprocessor := any;
+			board := any;
+		};
+		
+	};
+	
+	internal instances {
+		type NULLMainComponent range 1 to 1;
+	};
+	
+};

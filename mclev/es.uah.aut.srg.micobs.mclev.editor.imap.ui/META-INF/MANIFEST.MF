@@ -1,0 +1,21 @@
+Manifest-Version: 1.0
+Bundle-ManifestVersion: 2
+Bundle-Name: MCLEV Interface Mapping Editor UI
+Bundle-Vendor: UAH Space Research Group
+Bundle-Version: 2.2.1.qualifier
+Bundle-SymbolicName: es.uah.aut.srg.micobs.mclev.editor.imap.ui;singleton:=true
+Bundle-ActivationPolicy: lazy
+Require-Bundle: es.uah.aut.srg.micobs.mclev.editor.imap;visibility:=reexport,
+ org.eclipse.xtext.ui,
+ org.eclipse.ui.editors;bundle-version="3.5.0",
+ org.eclipse.ui.ide;bundle-version="3.5.0",
+ org.eclipse.xtext.ui.shared,
+ org.eclipse.ui,
+ org.antlr.runtime,
+ org.eclipse.compare,
+ org.eclipse.xtext.builder
+Import-Package: org.apache.log4j
+Bundle-RequiredExecutionEnvironment: JavaSE-1.6
+Export-Package: es.uah.aut.srg.micobs.mclev.lang.ui.contentassist,
+ es.uah.aut.srg.micobs.mclev.lang.ui.contentassist.antlr
+Bundle-Activator: es.uah.aut.srg.micobs.mclev.lang.ui.internal.IMAPActivator

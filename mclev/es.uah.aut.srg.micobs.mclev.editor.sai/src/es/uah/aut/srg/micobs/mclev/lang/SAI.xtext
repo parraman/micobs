@@ -1,0 +1,242 @@
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+grammar es.uah.aut.srg.micobs.mclev.lang.SAI with org.eclipse.xtext.common.Terminals
+
+import "http://srg.aut.uah.es/micobs/mclev/mclevsai" 
+import "http://www.eclipse.org/emf/2002/Ecore" as ecore
+import "http://srg.aut.uah.es/micobs/system" as system
+import "http://srg.aut.uah.es/micobs/common" as common
+import "http://srg.aut.uah.es/micobs/pdl" as pdl
+import "http://srg.aut.uah.es/micobs/mclev/library/mclevlibrary" as mclevlibrary
+
+MMCLEVSAIPackageFile returns MMCLEVSAIPackageFile:
+	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';'
+	('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
+	element=MMCLEVSAIPackageElement
+    ;
+
+QualifiedName returns ecore::EString:
+	ID ('.' ID)*;
+
+Version returns ecore::EString:
+	(INT | ((INT)? ID)) ('.' (INT | ((INT)? ID)))*
+	;
+
+VersionedQualifiedName returns ecore::EString:
+	QualifiedName '(' Version ')'
+	;
+
+VersionedQualifiedReferenceName returns ecore::EString:
+	(VersionedQualifiedName '::')? ID ('::' ID)*;
+
+MMCLEVSAIPackageElement returns MMCLEVSAIPackageElement:
+	MSAI;
+
+MSAI returns MSAI:
+	'sai'
+	name=ID
+	('extends' extends+=[MSAI|VersionedQualifiedName] ( "," extends+=[MSAI|VersionedQualifiedName])* )?
+	'{'
+		(('version' ':=' version=Version ';')
+		& ('language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';')
+		& ('attributes' 
+		'{' 
+			(attributes+=MParameter)+
+		'}' ';')?
+		& ('requires' ':=' requires+=[MSAI|VersionedQualifiedName] ( "," requires+=[MSAI|VersionedQualifiedName])* ';' )?
+		& ('required' 'osapi' ':=' requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ';' )?)
+    '}'
+    ';';
+
+MParameter returns common::MParameter:
+	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | 
+	MBooleanParameterSingleExpression | MRealParameterSingleExpression |
+	MStringParameterSingleExpression | MEnumParameterDefinition;
+
+MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
+	(constant?='const')?
+	'integer'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)?
+    ';';
+
+MEnumParameterDefinition returns common::MEnumParameterDefinition:
+	{common::MEnumParameterDefinition}
+	'enum'
+	name=ID
+	'{'
+		literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+    '}'
+    ';';
+
+MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
+	(constant?='const')?
+	'enum'
+	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+    ';';
+
+MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
+	(constant?='const')?
+	'real'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	('range' range=MParameterRange)?
+    ';';
+
+MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
+	MEnumParameterLiteral |
+	MEnumParamIntegerLiteral |
+	MEnumParamRealLiteral |
+	MEnumParamStringLiteral
+	;
+
+MEnumParameterLiteral returns common::MEnumParameterLiteral:
+	{common::MEnumParameterLiteral}
+	name=ID
+;
+
+MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
+	{common::MEnumParamIntegerLiteral}
+	name=ID
+	'='
+	value=INTEGER
+;
+
+MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
+	{common::MEnumParamRealLiteral}
+	name=ID
+	'='
+	value=REAL
+;
+
+MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
+	{common::MEnumParamStringLiteral}
+	name=ID
+	'='
+	value=STRING
+;
+
+MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
+	(constant?='const')?
+	'boolean'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	';';
+
+MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
+	(constant?='const')?
+	'string'
+	name=ID
+	':=' defaultValue=MParameterValueExpression
+	';';
+
+EBoolean returns ecore::EBoolean:
+	'true' | 'false';
+
+terminal HEXADECIMAL returns ecore::EString:
+	('0x' (('0'..'9') | ('a'..'f') | ('A'..'F'))+);
+
+INTEGER returns ecore::EString:
+	('-'? INT | HEXADECIMAL);
+
+REAL returns ecore::EString:
+	'-'? (INT '.' INT) ('e' ('-')? INT)?;
+
+MParameterValue returns common::MParameterValue:
+	MParameterValueLiteral | MParameterValueRefObject |
+	MParameterValuePAR
+	;
+
+MParameterValueLiteral returns common::MParameterValueLiteral:
+	MParameterValueBooleanLiteral | MParameterValueStringLiteral |
+	MParameterValueIntegerLiteral | MParameterValueRealLiteral
+;
+
+MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
+	{common::MParameterValueBooleanLiteral}
+	value=EBoolean;
+
+MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
+	{common::MParameterValueStringLiteral}
+	value=STRING;
+
+MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
+	{common::MParameterValueIntegerLiteral}
+	value=INTEGER;
+
+MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
+	{common::MParameterValueRealLiteral}
+	value=REAL;
+
+
+MParameterValueRefObject returns common::MParameterValueRefObject:
+	{common::MParameterValueRefObject}
+	object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+	;
+	
+MParameterValuePAR returns common::MParameterValuePAR:
+	'(' value=MParameterValueExpression ')'
+	;
+
+enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
+	plus = '+' | minus = '-';
+
+enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
+	mult = '*' | div = '/';
+	
+MParameterValueExpression returns common::MParameterValueExpression:
+	{common::MParameterValueExpression}
+	left=MParameterValueTERM (operation=MParameterValueExpressionOperators right=MParameterValueExpression)?
+	;	
+
+MParameterValueTERM returns common::MParameterValueTERM:
+	{common::MParameterValueTERM}
+	left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+	;
+
+MParameterRange returns common::MParameterRange:
+	MParameterOCR | MParameterOOR |
+	MParameterCOR | MParameterCCR;
+
+MParameterOCR returns common::MParameterOCR:
+	{common::MParameterOCR}
+	'('
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	']'
+	;
+
+MParameterOOR returns common::MParameterOOR:
+	{common::MParameterOOR}
+	'('
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	')'
+	;
+
+MParameterCOR returns common::MParameterCOR:
+	{common::MParameterCOR}
+	'['
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	')'
+	;
+
+MParameterCCR returns common::MParameterCOR:
+	{common::MParameterCOR}
+	'['
+	lowerValue=MParameterValueExpression ','
+	upperValue=MParameterValueExpression
+	']'
+	;
