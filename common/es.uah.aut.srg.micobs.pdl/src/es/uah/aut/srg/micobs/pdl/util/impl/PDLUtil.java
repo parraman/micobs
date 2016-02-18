@@ -65,6 +65,7 @@ import es.uah.aut.srg.micobs.pdl.plugin.PDLPlugin;
 import es.uah.aut.srg.micobs.pdl.util.IPDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.IPlatformParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
 import es.uah.aut.srg.micobs.util.impl.MICOBSUtil;
@@ -1576,5 +1577,10 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 	public MParameterRange getRange(MParameter parameter)
 			throws IllegalArgumentException {
 		return MICOBSUtil.getRange(parameter);
+	}
+
+	@Override
+	public MSystemPackage getSystemPackage(String uri) {
+		return MICOBSUtil.getSystemPackage(uri);
 	}
 }

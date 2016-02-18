@@ -15,6 +15,8 @@ import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.validation.Issue;
 
+import es.uah.aut.srg.micobs.common.MCommonPackage;
+import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.common.MCommonReferenceableObj;
 import es.uah.aut.srg.micobs.common.MEnumParameterDefinition;
 import es.uah.aut.srg.micobs.common.MEnumParameterLiteral;
@@ -24,6 +26,9 @@ import es.uah.aut.srg.micobs.common.MParameterValue;
 import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
 import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.common.MParameterValueTERM;
+import es.uah.aut.srg.micobs.library.LibraryManagerException;
+import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVPackage;
+import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.manager.MCLEVLibraryManager;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MAbstractComponent;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MClientPort;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MComponent;
@@ -39,6 +44,7 @@ import es.uah.aut.srg.micobs.mclev.mclevcmp.MPort;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MRealParamCSPSwitch;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MRealParamCSPSwitchCase;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MServerPort;
+import es.uah.aut.srg.micobs.mclev.mclevcmp.mclevcmpPackage;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MAODComponentType;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MAODComponentTypeInstance;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MAODomain;
@@ -65,6 +71,7 @@ import es.uah.aut.srg.micobs.mclev.mclevdom.MPortTypeInstance;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MRealParamIODSPSwitch;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MRealParamIODSPSwitchCase;
 import es.uah.aut.srg.micobs.mclev.mcleviface.MInterface;
+import es.uah.aut.srg.micobs.mclev.mcleviface.mclevifacePackage;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MComponentInstance;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MConnection;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MDeploymentAlternative;
@@ -73,6 +80,7 @@ import es.uah.aut.srg.micobs.mclev.mclevmcad.MDriverSLibInstance;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MMCADeployment;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MServiceLibraryInstance;
 import es.uah.aut.srg.micobs.mclev.mclevsai.MSAI;
+import es.uah.aut.srg.micobs.mclev.mclevsai.mclevsaiPackage;
 import es.uah.aut.srg.micobs.mclev.mclevslib.MAbstractServiceLibrary;
 import es.uah.aut.srg.micobs.mclev.mclevslib.MDriverSLibSupportedDevice;
 import es.uah.aut.srg.micobs.mclev.mclevslib.MIntegerParamSLSPSwitch;
@@ -105,7 +113,9 @@ import es.uah.aut.srg.micobs.pdl.plugin.PDLPlugin;
 import es.uah.aut.srg.micobs.pdl.util.IPDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.DefaultPDLMICOBSUtil;
+import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
 
@@ -3206,4 +3216,80 @@ public class MCLEVUtil implements IMCLEVUtil, IPDLUtil, IMICOBSUtil {
 		
 		return platform;
 	}
+
+	@Override
+	public MInterface getInterface(String uri, String version) {
+		try
+		{
+			MCommonPackageElement element =
+				MCLEVLibraryManager.getLibraryManager().getElement(
+						mclevifacePackage.eINSTANCE.getMInterface(),
+						uri, version);
+			if (element instanceof MInterface)
+			{
+				return (MInterface) element;
+			}
+		} catch (LibraryManagerException e) {
+			MICOBSPlugin.INSTANCE.log(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public MSAI getSAI(String uri, String version) {
+		try
+		{
+			MCommonPackageElement element =
+				MCLEVLibraryManager.getLibraryManager().getElement(
+						mclevsaiPackage.eINSTANCE.getMSAI(),
+						uri, version);
+			if (element instanceof MSAI)
+			{
+				return (MSAI) element;
+			}
+		} catch (LibraryManagerException e) {
+			MICOBSPlugin.INSTANCE.log(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public MComponent getComponent(String uri, String version) {
+		try
+		{
+			MCommonPackageElement element =
+				MCLEVLibraryManager.getLibraryManager().getElement(
+						mclevcmpPackage.eINSTANCE.getMComponent(),
+						uri, version);
+			if (element instanceof MComponent)
+			{
+				return (MComponent) element;
+			}
+		} catch (LibraryManagerException e) {
+			MICOBSPlugin.INSTANCE.log(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public MMCLEVPackage getMCLEVPackage(String uri) {
+		try
+		{
+			MCommonPackage _package =
+				MCLEVLibraryManager.getLibraryManager().getPackage(uri);
+			if (_package instanceof MMCLEVPackage)
+			{
+				return (MMCLEVPackage) _package;
+			}
+		} catch (LibraryManagerException e) {
+			MICOBSPlugin.INSTANCE.log(e);
+		}
+		return null;
+	}
+
+	@Override
+	public MSystemPackage getSystemPackage(String uri) {
+		return MICOBSUtil.getSystemPackage(uri);
+	}
+	
 }

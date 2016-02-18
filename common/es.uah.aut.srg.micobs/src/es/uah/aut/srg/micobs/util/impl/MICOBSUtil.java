@@ -40,6 +40,7 @@ import org.eclipse.xtext.validation.IResourceValidator;
 import org.eclipse.xtext.validation.Issue;
 
 import es.uah.aut.srg.micobs.common.MBooleanParameter;
+import es.uah.aut.srg.micobs.common.MCommonPackage;
 import es.uah.aut.srg.micobs.common.MCommonPackageElement;
 import es.uah.aut.srg.micobs.common.MCommonReferenceableObj;
 import es.uah.aut.srg.micobs.common.MEnumParamIntegerLiteral;
@@ -74,6 +75,7 @@ import es.uah.aut.srg.micobs.library.LibraryManagerException;
 import es.uah.aut.srg.micobs.plugin.MICOBSPlugin;
 import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.system.systemPackage;
+import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
@@ -1070,6 +1072,23 @@ public class MICOBSUtil implements IMICOBSUtil {
 			if (element instanceof MLanguage)
 			{
 				return (MLanguage) element;
+			}
+		} catch (LibraryManagerException e) {
+			MICOBSPlugin.INSTANCE.log(e);
+		}
+		return null;
+	}
+	
+	@Override
+	public MSystemPackage getSystemPackage(String uri)
+	{
+		try
+		{
+			MCommonPackage _package =
+				SystemLibraryManager.getLibraryManager().getPackage(uri);
+			if (_package instanceof MSystemPackage)
+			{
+				return (MSystemPackage) _package;
 			}
 		} catch (LibraryManagerException e) {
 			MICOBSPlugin.INSTANCE.log(e);

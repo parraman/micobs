@@ -17,6 +17,7 @@ import java.util.Set;
 import es.uah.aut.srg.micobs.common.MEnumParameterDefinition;
 import es.uah.aut.srg.micobs.common.MParameter;
 import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
+import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVPackage;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MAbstractComponent;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MClientPort;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MComponent;
@@ -1257,5 +1258,13 @@ public interface IMCLEVUtil {
 	 */
 	public Set<MEnumParameterDefinition> getEnumAttributeDefinitions(
 			MAbstractComponent acmp);
+	
+	public MInterface getInterface(String uri, String version);
+	
+	public MSAI getSAI(String uri, String version);
+
+	public MComponent getComponent(String uri, String version);
+
+	public MMCLEVPackage getMCLEVPackage(String uri);
 
 }

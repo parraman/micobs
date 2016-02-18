@@ -91,6 +91,7 @@ import es.uah.aut.srg.micobs.pdl.util.IPDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil;
 import es.uah.aut.srg.micobs.pdl.util.impl.PDLUtil.DefaultPDLMICOBSUtil;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
 
@@ -2441,5 +2442,10 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 	public MParameterValueExpression getDefaultValue(MParameter parameter,
 			MPlatform platform) {
 		return PDLUtil.getDefaultValue(parameter, platform);
+	}
+
+	@Override
+	public MSystemPackage getSystemPackage(String uri) {
+		return MICOBSUtil.getSystemPackage(uri);
 	}
 }

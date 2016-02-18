@@ -13,9 +13,11 @@ import es.uah.aut.srg.micobs.common.MEnumParameterLiteral;
 import es.uah.aut.srg.micobs.common.MParameter;
 import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
 import es.uah.aut.srg.micobs.common.MParameterValueExpression;
+import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVPackage;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MComponent;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MComponentSupportedPlatform;
 import es.uah.aut.srg.micobs.mclev.mclevcmp.MInternalComponentInstance;
+import es.uah.aut.srg.micobs.mclev.mcleviface.MInterface;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MComponentInstance;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MConnection;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MDeploymentAlternative;
@@ -23,6 +25,7 @@ import es.uah.aut.srg.micobs.mclev.mclevmcad.MDeviceDriverMapping;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MDriverSLibInstance;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MMCADeployment;
 import es.uah.aut.srg.micobs.mclev.mclevmcad.MServiceLibraryInstance;
+import es.uah.aut.srg.micobs.mclev.mclevsai.MSAI;
 import es.uah.aut.srg.micobs.mclev.mclevslib.MServiceLibrary;
 import es.uah.aut.srg.micobs.mclev.mclevslib.MServiceLibrarySupportedPlatform;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
@@ -214,6 +217,30 @@ public class MCLEVBlackBoxUnit {
 	public static MParameterValueExpression getDefaultValue(MParameter self, MPlatform platform)
 	{
 		return MCLEVUtil.getDefault().getDefaultValue(self, platform);
+	}
+	
+	@Operation(contextual = true, kind = Kind.HELPER)	
+	public static MInterface getInterface(String uri, String version)
+	{
+		return MCLEVUtil.getDefault().getInterface(uri, version);
+	}
+	
+	@Operation(contextual = true, kind = Kind.HELPER)	
+	public static MSAI getSAI(String uri, String version)
+	{
+		return MCLEVUtil.getDefault().getSAI(uri, version);
+	}
+	
+	@Operation(contextual = true, kind = Kind.HELPER)	
+	public static MComponent getComponent(String uri, String version)
+	{
+		return MCLEVUtil.getDefault().getComponent(uri, version);
+	}
+	
+	@Operation(contextual = true, kind = Kind.HELPER)	
+	public static MMCLEVPackage getMCLEVPackage(String uri)
+	{
+		return MCLEVUtil.getDefault().getMCLEVPackage(uri);
 	}
 
 }

@@ -22,6 +22,7 @@ import es.uah.aut.srg.micobs.common.MEnumParameterLiteral;
 import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
 import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 
 /**
  * QVT and Xpand black box unit with common MICOBS functions.
@@ -117,5 +118,11 @@ public class MICOBSBlackBoxUnit {
 	public static MLanguage getLanguage(String uri, String version)
 	{
 		return MICOBSUtilProvider.getMICOBSUtil().getLanguage(uri, version);
+	}
+	
+	@Operation(contextual = true, kind = Kind.HELPER)	
+	public static MSystemPackage getSystemPackage(String uri)
+	{
+		return MICOBSUtilProvider.getMICOBSUtil().getSystemPackage(uri);
 	}
 }

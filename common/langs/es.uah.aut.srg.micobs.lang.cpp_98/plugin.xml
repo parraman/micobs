@@ -25,4 +25,22 @@
       </language>
    </extension>
 
+      <extension
+         point="org.eclipse.m2m.qvt.oml.javaBlackboxUnits">
+      <unit
+            name="LangCPP_98BlackBoxUnit"
+            namespace="es.uah.aut.srg.micobs.lang">
+         <library
+               class="es.uah.aut.srg.micobs.lang.cpp_98.util.LangCPP_98BlackBoxUnit"
+               name="LangCPP_98BlackBoxUnit">
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/common">
+            </metamodel>
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/system">
+            </metamodel>
+         </library>
+      </unit>
+   </extension>
+
 </plugin>

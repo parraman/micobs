@@ -31,6 +31,7 @@ import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
 import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.common.MParameterValueTERM;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 
 public interface IMICOBSUtil {
 
@@ -627,5 +628,14 @@ public interface IMICOBSUtil {
 	 * @return the parameter range.
 	 */
 	MParameterRange getRange(MParameter parameter) throws IllegalArgumentException;
+
+	/**
+	 * Returns a package with a given URI from the System Library. If the
+	 * is not found, it returns <code>null</code>.
+	 * @param uri the URI of the package to look for.
+	 * @return the package or <code>null</code> if the package could not be
+	 *         found. 
+	 */
+	MSystemPackage getSystemPackage(String uri);
 	
 }
