@@ -138,4 +138,22 @@
       </domainAdapter>
    </extension>
    
+         <extension
+         point="org.eclipse.m2m.qvt.oml.javaBlackboxUnits">
+      <unit
+            name="EDROOMBlackBoxUnit"
+            namespace="es.uah.aut.srg.micobs.mclev.domain.edroom">
+         <library
+               class="es.uah.aut.srg.micobs.mclev.domain.edroom.util.EDROOMBlackBoxUnit"
+               name="EDROOMBlackBoxUnit">
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/mclev/mclevdom">
+            </metamodel>
+            <metamodel
+                  nsURI="http://srg.aut.uah.es/micobs/mclev/library/mclevlibrary">
+            </metamodel>    
+         </library>
+      </unit>
+   </extension>
+   
 </plugin>

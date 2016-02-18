@@ -29,6 +29,7 @@ import es.uah.aut.srg.micobs.mclev.domain.edroom.edroomprot.EDROOMReplyMessage;
 import es.uah.aut.srg.micobs.mclev.domain.edroom.edroomprot.edroomprotPackage;
 import es.uah.aut.srg.micobs.mclev.domain.edroom.library.edroomlibrary.manager.EDROOMLibraryManager;
 import es.uah.aut.srg.micobs.mclev.domain.edroom.plugin.EDROOMPlugin;
+import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVPackage;
 import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemComponent;
 import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemDriverServiceLibrary;
 import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemServiceLibrary;
@@ -38,6 +39,7 @@ import es.uah.aut.srg.micobs.mclev.mclevdom.MConnector;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MIODAbstractComponentType;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MIODComponentType;
 import es.uah.aut.srg.micobs.mclev.mclevdom.MIODomain;
+import es.uah.aut.srg.micobs.mclev.mclevdom.MPortType;
 import es.uah.aut.srg.micobs.mclev.mclevdom.mclevdomPackage;
 import es.uah.aut.srg.micobs.mclev.mclevflatmcad.MFlatComponentInstance;
 import es.uah.aut.srg.micobs.mclev.mcleviface.MInterface;
@@ -64,17 +66,33 @@ public class EDROOMUtil {
 
 	public static final EDROOMUtil INSTANCE = new EDROOMUtil();
 
-	public static final String EDROOM_DOMAIN_URI = "es.uah.aut.srg.micobs.mclev.domains.EDROOM";
+	public static final String EDROOM_PACKAGE_URI = "es.uah.aut.srg.micobs.mclev.domains";
+	public static final String EDROOM_DOMAIN_URI = EDROOM_PACKAGE_URI + ".EDROOM";
 	public static final String EDROOM_DOMAIN_VERSION = "v1";
 	public static final String EDROOM_CPP_COMPONENT_TYPE_NAME = "EDROOMCPPComponent";
 	public static final String EDROOM_STARTUP_PRIORITY_ATTRIBUTE_NAME = "startup_priority";
 	public static final String EDROOM_STACK_SIZE_ATTRIBUTE_NAME = "stack_size";
 	public static final String EDROOM_MSG_QUEUE_DIMENSION_ATTRIBUTE_NAME = "msg_queue_dimension";
+	public static final String EDROOM_PORT_NAME = "EDROOMPort";
 	public static final String EDROOM_CONNECTOR_NAME = "EDROOMConnector";
 
 	private MIODomain edroom = null;
 	private MIODComponentType edroomCPPComponentType = null;
 	private MConnector edroomConnector = null;
+	private MPortType edroomPort = null;
+	
+	/**
+	 * Returns the model element corresponding to the package that contains the
+	 * EDROOM domain model. If the package is not present in the library 
+	 * (mainly due to an error), the method will return <code>null</code>.
+	 * 
+	 * @return the model element corresponding to the package that contains the
+	 * 		EDROOM domain model.
+	 */
+	public MMCLEVPackage getEDROOMPackage()
+	{
+		return MCLEVUtil.getDefault().getMCLEVPackage(EDROOM_PACKAGE_URI);
+	}
 
 	/**
 	 * Returns the model element corresponding to the EDROOM domain. If the model
@@ -131,6 +149,32 @@ public class EDROOMUtil {
 			}
 		}
 		return edroomCPPComponentType;
+	}
+
+	/**
+	 * Returns the object corresponding to the generic EDROOM port type. 
+	 * If the object cannot be found (mainly due to an error), the method will
+	 * return <code>null</code>.
+	 * 
+	 * @return the object corresponding to the generic EDROOM port type. 
+	 */
+	public MPortType getEDROOMPort()
+	{
+		if (edroomPort == null)
+		{
+			if (getEDROOMDomain() != null)
+			{
+				for (MPortType port : getEDROOMDomain().getPortTypes())
+				{
+					if (port.getName().matches(EDROOM_PORT_NAME))
+					{
+						edroomPort = port;
+						break;
+					}
+				}
+			}
+		}
+		return edroomPort;
 	}
 
 	/**
