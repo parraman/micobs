@@ -38,6 +38,7 @@ import es.uah.aut.srg.micobs.mesp.mespswp.MAbstractSwPackage;
 import es.uah.aut.srg.micobs.mesp.mespswp.MInstantiableResourceDemand;
 import es.uah.aut.srg.micobs.mesp.mespswp.MQuantifiableResourceDemand;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackage;
+import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageRequiredInterface;
 import es.uah.aut.srg.micobs.mesp.mespswp.MSwPackageSupportedPlatform;
 import es.uah.aut.srg.micobs.pdl.MArchitecture;
 import es.uah.aut.srg.micobs.pdl.MBoard;
@@ -318,6 +319,13 @@ public class MESPBlackBoxUnit {
 			MMESPDeploymentAlternative alternative) 
 	{
 		return MESPUtilProvider.getMESPUtil().getAllProvidedSwInterfaces(alternative);
+	}
+	
+	@Operation(contextual = true, kind = Kind.HELPER)
+	public Set<MSwPackageRequiredInterface> getAllRequiredInterfaces(
+			MMESPDeploymentAlternative alternative) 
+	{
+		return MESPUtilProvider.getMESPUtil().getAllRequiredInterfaces(alternative);
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)

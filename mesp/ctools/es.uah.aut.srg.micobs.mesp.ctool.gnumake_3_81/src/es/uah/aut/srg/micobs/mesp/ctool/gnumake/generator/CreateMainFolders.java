@@ -17,16 +17,22 @@ import org.eclipse.core.resources.IContainer;
 import org.eclipse.core.resources.IResource;
 import org.eclipse.core.runtime.CoreException;
 import org.eclipse.core.runtime.IProgressMonitor;
+import org.eclipse.core.runtime.NullProgressMonitor;
+import org.eclipse.core.runtime.Path;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 
 import es.uah.aut.srg.micobs.mesp.ctool.gnumake.generator.util.GNUMakeGeneratorUtil;
 import es.uah.aut.srg.micobs.mesp.ctool.gnumake.plugin.GNUMakePlugin;
+import es.uah.aut.srg.micobs.mesp.ctool.gnumake.util.GNUMakeStringHelper;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDEPPackageFile;
 import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment;
+import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative;
+import es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentPlatform;
 import es.uah.aut.srg.micobs.mesp.mespdep.mespdepPackage;
 import es.uah.aut.srg.micobs.mesp.mespdep.provider.mespdepItemProviderAdapterFactory;
+import es.uah.aut.srg.micobs.mesp.util.ui.MESPUtilUI;
 import es.uah.aut.srg.micobs.ui.handlers.GenerateResourcesHandler;
 
 /**
@@ -52,8 +58,70 @@ public class CreateMainFolders extends GenerateResourcesHandler {
 	protected void generateResources(EObject model, IContainer rootFolder,
 			IProgressMonitor monitor) {
 		
-		GNUMakeGeneratorUtil.createMainFolders((MMESPDeployment) ((MMESPDEPPackageFile)model).getElement(),
-				rootFolder);
+		MMESPDeployment deployment = (MMESPDeployment) ((MMESPDEPPackageFile)model).getElement();
+		
+		GNUMakeGeneratorUtil.createMainFolders(deployment, rootFolder);
+		
+		if (deployment.getDeploymentAlternatives().isEmpty())
+		{
+			MMESPDeploymentPlatform deploymentPlatform = 
+				MESPUtilUI.selectDeploymentPlatform(shell, deployment);
+			if (deploymentPlatform == null)
+			{
+				return;
+			}
+			try{
+				GNUMakeGeneratorUtil.generateMainTemplateFiles(
+					rootFolder.getFolder(
+						new Path(GNUMakeStringHelper.getMainFolder())).getLocation().toPortableString(), 
+					deployment,
+					null,
+					deploymentPlatform,
+					new NullProgressMonitor());
+			} catch (Exception e)
+			{
+				GNUMakePlugin.INSTANCE.log(e);
+			}
+		}
+		else
+		{
+			MMESPDeploymentAlternative deploymentAlternative = 
+					MESPUtilUI.selectLeafAlternative(shell, deployment);
+			if (deploymentAlternative == null)
+			{
+				return;
+			}
+			MMESPDeploymentPlatform deploymentPlatform = 
+					MESPUtilUI.selectDeploymentPlatform(shell, deploymentAlternative);
+			if (deploymentPlatform == null)
+			{
+				return;
+			}
+			try {
+				
+				GNUMakeGeneratorUtil.generateMainTemplateFiles(
+					rootFolder.getFolder(
+						new Path(GNUMakeStringHelper.getMainFolder())).getLocation().toPortableString(), 
+					deployment,
+					deploymentAlternative,
+					deploymentPlatform,
+					new NullProgressMonitor());
+			} catch (Exception e)
+			{
+				GNUMakePlugin.INSTANCE.log(e);
+			}
+		}
+		
+		try {
+			GNUMakeGeneratorUtil.generateMainConstructionFiles(
+					rootFolder.getFolder(
+						new Path(GNUMakeStringHelper.getMainFolder())).getLocation().toPortableString(), 
+				deployment,
+				new NullProgressMonitor());
+		} catch (Exception e)
+		{
+			GNUMakePlugin.INSTANCE.log(e);
+		}
 
 	}
 

@@ -54,12 +54,8 @@
             name="Generate Construction Files">
       </command>
       <command
-            id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generatemainconstructionfiles.command.id"
-            name="Generate Construction Files">
-      </command>
-      <command
             id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.createmainfolders.command.id"
-            name="Create Main Folders">
+            name="Create Main Template Folders">
       </command>
       <command
             id="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanconfigfolders.command.id"
@@ -180,10 +176,6 @@
                      commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.cleanmainfolders.command.id"
                      style="push">
                </command>
-               <command
-                     commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generatemainconstructionfiles.command.id"
-                     style="push">
-               </command>
             </menu>
             <menu
                   label="Config Files">
@@ -294,10 +286,6 @@
       <handler
             class="es.uah.aut.srg.micobs.mesp.ctool.gnumake.generator.GenerateDeploymentGNUMakeConstructionFiles"
             commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generateprojectconstructionfiles.command.id">
-      </handler>
-      <handler
-            class="es.uah.aut.srg.micobs.mesp.ctool.gnumake.generator.GenerateMainGNUMakeConstructionFiles"
-            commandId="es.uah.aut.srg.micobs.mesp.ctool.gnumake_3_81.dep.generatemainconstructionfiles.command.id">
       </handler>
       <handler
             class="es.uah.aut.srg.micobs.mesp.ctool.gnumake.generator.CreateMainFolders"

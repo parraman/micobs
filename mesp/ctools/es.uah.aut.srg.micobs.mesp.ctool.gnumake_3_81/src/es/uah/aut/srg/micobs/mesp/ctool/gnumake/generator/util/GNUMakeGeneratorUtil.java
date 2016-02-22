@@ -21,6 +21,7 @@ import org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel;
 
 import es.uah.aut.srg.micobs.common.commonPackage;
 import es.uah.aut.srg.micobs.mesp.ctool.gnumake.plugin.GNUMakePlugin;
+import es.uah.aut.srg.micobs.mesp.ctool.gnumake.util.GNUMakeMainTemplate;
 import es.uah.aut.srg.micobs.mesp.ctool.gnumake.util.GNUMakeStringHelper;
 import es.uah.aut.srg.micobs.mesp.mespcommon.mespcommonPackage;
 import es.uah.aut.srg.micobs.mesp.mespctool.mespctoolPackage;
@@ -62,6 +63,30 @@ public class GNUMakeGeneratorUtil {
 				mesppswpPackage.eINSTANCE,
 				mespdepPackage.eINSTANCE };
     	}
+	};
+	
+	protected static GNUMakeMainTemplate[] mainTemplates = {
+		new GNUMakeMainTemplate(
+				"es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_8_impr_RTEMS_4_8_impr_SPARC_v8_GCC_4_x_LEON_2_Leon2ViP_1_x",
+				"v1", "rtemsapi_4_8_impr_rtems_4_8_impr"),
+		new GNUMakeMainTemplate(
+				"es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_8_impr_RTEMS_4_8_impr_SPARC_v8_GCC_4_x_LEON_2_cdpu_v1",
+				"v1", "rtemsapi_4_8_impr_rtems_4_8_impr"),
+		new GNUMakeMainTemplate(
+				"es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_8_impr_RTEMS_4_8_impr_SPARC_v8_GCC_4_x_LEON_2_emulator_cdpu_a3p_v2_fpga_v5_4",
+				"v1", "rtemsapi_4_8_impr_rtems_4_8_impr"),
+		new GNUMakeMainTemplate(
+				"es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_8_impr_RTEMS_4_8_impr_SPARC_v8_GCC_4_x_LEON_2_srg_a3p_v2_0",
+				"v1", "rtemsapi_4_8_impr_rtems_4_8_impr"),
+		new GNUMakeMainTemplate(
+				"es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_8_impr_RTEMS_4_8_impr_SPARC_v8_GCC_4_x_LEON_2_cdpu_euclid_v1",
+				"v1", "rtemsapi_4_8_impr_rtems_4_8_impr"),	
+		new GNUMakeMainTemplate(
+				"es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_8_impr_RTEMS_4_8_impr_SPARC_v8_GCC_4_x_LEON_2_TSIM_LEON2_2_x",
+				"v1", "rtemsapi_4_8_impr_rtems_4_8_impr"),
+		new GNUMakeMainTemplate(
+				"es.uah.aut.srg.micobs.pdl.common.plts.RTEMSAPI_4_8_impr_RTEMS_4_8_impr_SPARC_v8_GCC_4_x_LEON_3_TSIM_LEON3_2_x",
+				"v1", "rtemsapi_4_8_impr_rtems_4_8_impr")
 	};
 	
 	/**
@@ -231,11 +256,13 @@ public class GNUMakeGeneratorUtil {
 	
 	/**
 	 * Launches a M2T transformation to generate the construction
-	 * files of a deployment project.
+	 * files of a deployment project fir a given target.
 	 * 
 	 * @param containerName the name of the container folder where the resulting
 	 * files will be stored.
 	 * @param model the model to be transformed.
+	 * @param alternative the target deployment alternative.
+	 * @param deploymentPlatform the target deployment platform.
 	 * @param monitor the progress monitor that controls the activity.
 	 */
 	public static void generateConstructionFiles(String containerName, 
@@ -251,5 +278,41 @@ public class GNUMakeGeneratorUtil {
 					false,
 					alternative,
 					deploymentPlatform);			
+	}
+	
+	/**
+	 * Launches a M2T transformation to generate the default main template
+	 * for a given platform. If the template is not present, the function
+	 * will do nothing.
+	 * 
+	 * @param containerName the name of the container folder where the resulting
+	 * files will be stored.
+	 * @param model the model to be transformed.
+	 * @param alternative the target deployment alternative.
+	 * @param deploymentPlatform the target deployment platform.
+	 * @param monitor the progress monitor that controls the activity.
+	 */
+	public static void generateMainTemplateFiles(String containerName, 
+			EObject model,
+			MMESPDeploymentAlternative alternative,
+			MMESPDeploymentPlatform deploymentPlatform,
+			IProgressMonitor monitor)
+	{
+		for (GNUMakeMainTemplate template : mainTemplates)
+		{
+			if (template.getPlatform() != null &&
+				template.getPlatform() == deploymentPlatform.getPlatform())
+			{
+				XpandUtil.generate(containerName, 
+						model, 
+						metamodel, 
+						"template::main::" + template.getTemplateName() + "::main",
+						false,
+						alternative,
+						deploymentPlatform);
+				break;
+			}
+		}
+		
 	}
 }

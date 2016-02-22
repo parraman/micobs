@@ -1,0 +1,82 @@
+«REM»
+/*******************************************************************************
+ * Copyright (c) 2013-2015 UAH Space Research Group.
+ * All rights reserved. This program and the accompanying materials
+ * are made available under the terms of the Eclipse Public License v1.0
+ * which accompanies this distribution, and is available at
+ * http://www.eclipse.org/legal/epl-v10.html
+ *
+ * Contributors:
+ *     MICOBS SRG Team - Initial API and implementation
+ ******************************************************************************/
+«ENDREM»
+«IMPORT mespdep»
+
+«EXTENSION template::MICOBSStringHelper»
+«EXTENSION template::MESPUtil»
+«EXTENSION template::GNUMakeStringHelper»
+
+«DEFINE main(MMESPDeploymentAlternative alternative, MMESPDeploymentPlatform deploymentPlatform) FOR MMESPDeployment»
+«FILE "/" + this.getDeploymentFolderName(alternative, deploymentPlatform) + "/src/main.c" -»
+#include <public/config.h>
+#include <platform/basic_types.h>
+«IF alternative == null -»
+«IF this.requires.isEmpty == false -»
+
+// Required software interfaces
+«FOREACH this.requires.interface.toSet() AS iface -»
+#include <public/«iface.getElementName().toLowerDefString()».h>
+«ENDFOREACH -»
+«ENDIF -»
+«ELSE -»
+«IF alternative.getAllRequiredInterfaces().isEmpty == false -»
+
+// Required software interfaces
+«FOREACH alternative.getAllRequiredInterfaces.interface.toSet() AS iface -»
+#include <public/«iface.getElementName().toLowerDefString()».h>
+«ENDFOREACH -»
+«ENDIF -»
+«ENDIF -»
+
+«PROTECT CSTART '/*' CEND '*/' ID this.getDeploymentFolderName(alternative, deploymentPlatform) + "_main_include"»
+
+	// Include your custom main header files
+    // This is a protected region as long as you keep the marks :-)
+
+«ENDPROTECT»
+
+#include <platform/rtems_config.h>
+
+rtems_task Init(rtems_task_argument arg)
+{
+
+«PROTECT CSTART '/*' CEND '*/' ID this.getDeploymentFolderName(alternative, deploymentPlatform) + "_main_function"»
+
+	// Include your custom code
+    // This is a protected region as long as you keep the marks :-)
+
+«ENDPROTECT»
+
+}
+
+«ENDFILE»
+«FILE "/" + this.getDeploymentFolderName(alternative, deploymentPlatform) + "/defs.mk" -»
+# Label SRCS contains a list of all the source files that are to be compiled
+# following the rules specifies by the chosen platform. All the source files
+# included in this list are going to be compiled and linked to create the
+# project executable. A common example of use for this label would be:
+# 
+# SRCS+=$(wildcard $R/«getMainFolder()»/«this.getDeploymentFolderName(alternative, deploymentPlatform)»/src/*.c)
+# SRCS+=$(wildcard $R/«getMainFolder()»/«this.getDeploymentFolderName(alternative, deploymentPlatform)»/src/*.cpp)
+# 
+# The previous lines would include in the list all the source files contained
+# in the source root folder.
+#
+
+«PROTECT CSTART '# ' CEND '' ID this.getDeploymentFolderName(alternative, deploymentPlatform) + "_src"»
+
+SRCS+=$(wildcard $R/«getMainFolder()»/«this.getDeploymentFolderName(alternative, deploymentPlatform)»/src/*.c)
+
+«ENDPROTECT»
+«ENDFILE»
+«ENDDEFINE»

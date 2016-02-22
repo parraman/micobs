@@ -109,6 +109,10 @@ Set[mespswi::MSwInterface] getAllProvidedSwInterfaces(mespdep::MMESPDeploymentAl
 	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllProvidedSwInterfaces(
 		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative);
 
+Set[mespswp::MSwPackageRequiredInterface] getAllRequiredInterfaces(mespdep::MMESPDeploymentAlternative this) :
+	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getAllRequiredInterfaces(
+		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeploymentAlternative);
+
 Set[mespswi::MSwInterface] getProvidedSwInterfaces(mespdep::MMESPDeployment this) :
 	JAVA es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getProvidedSwInterfaces(
 		es.uah.aut.srg.micobs.mesp.mespdep.MMESPDeployment);
