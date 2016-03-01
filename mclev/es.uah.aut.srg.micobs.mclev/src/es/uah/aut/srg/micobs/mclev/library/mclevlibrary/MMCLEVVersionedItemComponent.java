@@ -72,4 +72,56 @@ public interface MMCLEVVersionedItemComponent extends MMCLEVPackageVersionedItem
 	 */
 	void setSwPackageVersion(String value);
 
+	/**
+	 * Returns the value of the '<em><b>Sw Interface URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sw Interface URI</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sw Interface URI</em>' attribute.
+	 * @see #setSwInterfaceURI(String)
+	 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.mclevlibraryPackage#getMMCLEVVersionedItemComponent_SwInterfaceURI()
+	 * @model
+	 * @generated
+	 */
+	String getSwInterfaceURI();
+
+	/**
+	 * Sets the value of the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemComponent#getSwInterfaceURI <em>Sw Interface URI</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sw Interface URI</em>' attribute.
+	 * @see #getSwInterfaceURI()
+	 * @generated
+	 */
+	void setSwInterfaceURI(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Sw Interface Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <p>
+	 * If the meaning of the '<em>Sw Interface Version</em>' attribute isn't clear,
+	 * there really should be more of a description here...
+	 * </p>
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Sw Interface Version</em>' attribute.
+	 * @see #setSwInterfaceVersion(String)
+	 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.mclevlibraryPackage#getMMCLEVVersionedItemComponent_SwInterfaceVersion()
+	 * @model
+	 * @generated
+	 */
+	String getSwInterfaceVersion();
+
+	/**
+	 * Sets the value of the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemComponent#getSwInterfaceVersion <em>Sw Interface Version</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Sw Interface Version</em>' attribute.
+	 * @see #getSwInterfaceVersion()
+	 * @generated
+	 */
+	void setSwInterfaceVersion(String value);
+
 }

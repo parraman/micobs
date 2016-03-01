@@ -258,11 +258,29 @@ public interface mclevlibraryPackage extends EPackage {
 	int MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION = MMCLEV_PACKAGE_VERSIONED_ITEM_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Sw Interface URI</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI = MMCLEV_PACKAGE_VERSIONED_ITEM_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>Sw Interface Version</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION = MMCLEV_PACKAGE_VERSIONED_ITEM_FEATURE_COUNT + 3;
+
+	/**
 	 * The number of structural features of the '<em>MMCLEVVersionedItemComponent</em>' class.
 	 * @generated
 	 * @ordered
 	 */
-	int MMCLEV_VERSIONED_ITEM_COMPONENT_FEATURE_COUNT = MMCLEV_PACKAGE_VERSIONED_ITEM_FEATURE_COUNT + 2;
+	int MMCLEV_VERSIONED_ITEM_COMPONENT_FEATURE_COUNT = MMCLEV_PACKAGE_VERSIONED_ITEM_FEATURE_COUNT + 4;
 
 	/**
 	 * The meta object id for the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVItemSAIImpl <em>MMCLEVItemSAI</em>}' class.
@@ -1166,6 +1184,28 @@ public interface mclevlibraryPackage extends EPackage {
 	EAttribute getMMCLEVVersionedItemComponent_SwPackageVersion();
 
 	/**
+	 * Returns the meta object for the attribute '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemComponent#getSwInterfaceURI <em>Sw Interface URI</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sw Interface URI</em>'.
+	 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemComponent#getSwInterfaceURI()
+	 * @see #getMMCLEVVersionedItemComponent()
+	 * @generated
+	 */
+	EAttribute getMMCLEVVersionedItemComponent_SwInterfaceURI();
+
+	/**
+	 * Returns the meta object for the attribute '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemComponent#getSwInterfaceVersion <em>Sw Interface Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Sw Interface Version</em>'.
+	 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVVersionedItemComponent#getSwInterfaceVersion()
+	 * @see #getMMCLEVVersionedItemComponent()
+	 * @generated
+	 */
+	EAttribute getMMCLEVVersionedItemComponent_SwInterfaceVersion();
+
+	/**
 	 * Returns the meta object for class '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVItemSAI <em>MMCLEVItemSAI</em>}'.
 	 * @return the meta object for class '<em>MMCLEVItemSAI</em>'.
 	 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.MMCLEVItemSAI
@@ -1475,6 +1515,22 @@ public interface mclevlibraryPackage extends EPackage {
 		EAttribute MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION = eINSTANCE.getMMCLEVVersionedItemComponent_SwPackageVersion();
 
 		/**
+		 * The meta object literal for the '<em><b>Sw Interface URI</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI = eINSTANCE.getMMCLEVVersionedItemComponent_SwInterfaceURI();
+
+		/**
+		 * The meta object literal for the '<em><b>Sw Interface Version</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION = eINSTANCE.getMMCLEVVersionedItemComponent_SwInterfaceVersion();
+
+		/**
 		 * The meta object literal for the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVItemSAIImpl <em>MMCLEVItemSAI</em>}' class.
 		 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVItemSAIImpl
 		 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.mclevlibraryPackageImpl#getMMCLEVItemSAI()
@@ -1659,7 +1715,7 @@ public interface mclevlibraryPackage extends EPackage {
 		EClass MMCLEV_VERSIONED_ITEM_FLAT_MCAD = eINSTANCE.getMMCLEVVersionedItemFlatMCAD();
 
 		/**
-		 * The meta object literal for the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVItemDriverServiceLibraryImpl <em>MMCLEVItemDriverServiceLibrary</em>}' class.
+		 * The meta object literal for the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVItemDriverServiceLibraryImpl <em>MMCLEV Item Driver Service Library</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVItemDriverServiceLibraryImpl
@@ -1669,7 +1725,7 @@ public interface mclevlibraryPackage extends EPackage {
 		EClass MMCLEV_ITEM_DRIVER_SERVICE_LIBRARY = eINSTANCE.getMMCLEVItemDriverServiceLibrary();
 
 		/**
-		 * The meta object literal for the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVVersionedItemDriverServiceLibraryImpl <em>MMCLEVVersionedItemDriverServiceLibrary</em>}' class.
+		 * The meta object literal for the '{@link es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVVersionedItemDriverServiceLibraryImpl <em>MMCLEV Versioned Item Driver Service Library</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @see es.uah.aut.srg.micobs.mclev.library.mclevlibrary.impl.MMCLEVVersionedItemDriverServiceLibraryImpl
@@ -1679,7 +1735,7 @@ public interface mclevlibraryPackage extends EPackage {
 		EClass MMCLEV_VERSIONED_ITEM_DRIVER_SERVICE_LIBRARY = eINSTANCE.getMMCLEVVersionedItemDriverServiceLibrary();
 
 		/**
-		 * The meta object literal for the '<em><b>SwPackageURI</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sw Package URI</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -1687,7 +1743,7 @@ public interface mclevlibraryPackage extends EPackage {
 		EAttribute MMCLEV_VERSIONED_ITEM_DRIVER_SERVICE_LIBRARY__SW_PACKAGE_URI = eINSTANCE.getMMCLEVVersionedItemDriverServiceLibrary_SwPackageURI();
 
 		/**
-		 * The meta object literal for the '<em><b>SwPackageVersion</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Sw Package Version</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

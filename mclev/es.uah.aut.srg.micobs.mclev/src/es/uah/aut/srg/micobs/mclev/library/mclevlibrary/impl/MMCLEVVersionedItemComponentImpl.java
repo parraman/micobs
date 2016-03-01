@@ -64,6 +64,38 @@ public class MMCLEVVersionedItemComponentImpl extends MMCLEVPackageVersionedItem
 	protected String swPackageVersion = SW_PACKAGE_VERSION_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #getSwInterfaceURI() <em>SwInterfaceURI</em>}' attribute.
+	 * @see #getSwInterfaceURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SW_INTERFACE_URI_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSwInterfaceURI() <em>SwInterfaceURI</em>}' attribute.
+	 * @see #getSwInterfaceURI()
+	 * @generated
+	 * @ordered
+	 */
+	protected String swInterfaceURI = SW_INTERFACE_URI_EDEFAULT;
+
+	/**
+	 * The default value of the '{@link #getSwInterfaceVersion() <em>SwInterfaceVersion</em>}' attribute.
+	 * @see #getSwInterfaceVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String SW_INTERFACE_VERSION_EDEFAULT = null;
+
+	/**
+	 * The cached value of the '{@link #getSwInterfaceVersion() <em>SwInterfaceVersion</em>}' attribute.
+	 * @see #getSwInterfaceVersion()
+	 * @generated
+	 * @ordered
+	 */
+	protected String swInterfaceVersion = SW_INTERFACE_VERSION_EDEFAULT;
+
+	/**
 	 * @generated
 	 */
 	protected MMCLEVVersionedItemComponentImpl() {
@@ -115,6 +147,40 @@ public class MMCLEVVersionedItemComponentImpl extends MMCLEVPackageVersionedItem
 	/**
 	 * @generated
 	 */
+	public String getSwInterfaceURI() {
+		return swInterfaceURI;
+	}
+
+	/**
+	 * @generated
+	 */
+	public void setSwInterfaceURI(String newSwInterfaceURI) {
+		String oldSwInterfaceURI = swInterfaceURI;
+		swInterfaceURI = newSwInterfaceURI;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI, oldSwInterfaceURI, swInterfaceURI));
+	}
+
+	/**
+	 * @generated
+	 */
+	public String getSwInterfaceVersion() {
+		return swInterfaceVersion;
+	}
+
+	/**
+	 * @generated
+	 */
+	public void setSwInterfaceVersion(String newSwInterfaceVersion) {
+		String oldSwInterfaceVersion = swInterfaceVersion;
+		swInterfaceVersion = newSwInterfaceVersion;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION, oldSwInterfaceVersion, swInterfaceVersion));
+	}
+
+	/**
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
@@ -122,6 +188,10 @@ public class MMCLEVVersionedItemComponentImpl extends MMCLEVPackageVersionedItem
 				return getSwPackageURI();
 			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION:
 				return getSwPackageVersion();
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI:
+				return getSwInterfaceURI();
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION:
+				return getSwInterfaceVersion();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -137,6 +207,12 @@ public class MMCLEVVersionedItemComponentImpl extends MMCLEVPackageVersionedItem
 				return;
 			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION:
 				setSwPackageVersion((String)newValue);
+				return;
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI:
+				setSwInterfaceURI((String)newValue);
+				return;
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION:
+				setSwInterfaceVersion((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -154,6 +230,12 @@ public class MMCLEVVersionedItemComponentImpl extends MMCLEVPackageVersionedItem
 			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION:
 				setSwPackageVersion(SW_PACKAGE_VERSION_EDEFAULT);
 				return;
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI:
+				setSwInterfaceURI(SW_INTERFACE_URI_EDEFAULT);
+				return;
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION:
+				setSwInterfaceVersion(SW_INTERFACE_VERSION_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -168,6 +250,10 @@ public class MMCLEVVersionedItemComponentImpl extends MMCLEVPackageVersionedItem
 				return SW_PACKAGE_URI_EDEFAULT == null ? swPackageURI != null : !SW_PACKAGE_URI_EDEFAULT.equals(swPackageURI);
 			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION:
 				return SW_PACKAGE_VERSION_EDEFAULT == null ? swPackageVersion != null : !SW_PACKAGE_VERSION_EDEFAULT.equals(swPackageVersion);
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI:
+				return SW_INTERFACE_URI_EDEFAULT == null ? swInterfaceURI != null : !SW_INTERFACE_URI_EDEFAULT.equals(swInterfaceURI);
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION:
+				return SW_INTERFACE_VERSION_EDEFAULT == null ? swInterfaceVersion != null : !SW_INTERFACE_VERSION_EDEFAULT.equals(swInterfaceVersion);
 		}
 		return super.eIsSet(featureID);
 	}
@@ -184,6 +270,10 @@ public class MMCLEVVersionedItemComponentImpl extends MMCLEVPackageVersionedItem
 		result.append(swPackageURI);
 		result.append(", swPackageVersion: ");
 		result.append(swPackageVersion);
+		result.append(", swInterfaceURI: ");
+		result.append(swInterfaceURI);
+		result.append(", swInterfaceVersion: ");
+		result.append(swInterfaceVersion);
 		result.append(')');
 		return result.toString();
 	}

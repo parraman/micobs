@@ -17,12 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -34,13 +29,7 @@ import es.uah.aut.srg.micobs.mclev.library.mclevlibrary.mclevlibraryPackage;
  * @generated
  */
 public class MMCLEVVersionedItemComponentItemProvider
-	extends MMCLEVPackageVersionedItemItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends MMCLEVPackageVersionedItemItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * @generated
@@ -60,6 +49,8 @@ public class MMCLEVVersionedItemComponentItemProvider
 
 			addSwPackageURIPropertyDescriptor(object);
 			addSwPackageVersionPropertyDescriptor(object);
+			addSwInterfaceURIPropertyDescriptor(object);
+			addSwInterfaceVersionPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -105,6 +96,46 @@ public class MMCLEVVersionedItemComponentItemProvider
 	}
 
 	/**
+	 * This adds a property descriptor for the Sw Interface URI feature.
+	 * @generated
+	 */
+	protected void addSwInterfaceURIPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MMCLEVVersionedItemComponent_swInterfaceURI_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MMCLEVVersionedItemComponent_swInterfaceURI_feature", "_UI_MMCLEVVersionedItemComponent_type"),
+				 mclevlibraryPackage.Literals.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Sw Interface Version feature.
+	 * @generated
+	 */
+	protected void addSwInterfaceVersionPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MMCLEVVersionedItemComponent_swInterfaceVersion_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MMCLEVVersionedItemComponent_swInterfaceVersion_feature", "_UI_MMCLEVVersionedItemComponent_type"),
+				 mclevlibraryPackage.Literals.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
 	 * This returns Version.gif.
 	 * @generated NOT
 	 */
@@ -137,6 +168,8 @@ public class MMCLEVVersionedItemComponentItemProvider
 		switch (notification.getFeatureID(MMCLEVVersionedItemComponent.class)) {
 			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_URI:
 			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION:
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI:
+			case mclevlibraryPackage.MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

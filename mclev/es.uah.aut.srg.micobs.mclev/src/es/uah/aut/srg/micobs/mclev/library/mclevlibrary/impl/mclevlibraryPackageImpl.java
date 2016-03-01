@@ -310,6 +310,20 @@ public class mclevlibraryPackageImpl extends EPackageImpl implements mclevlibrar
 	/**
 	 * @generated
 	 */
+	public EAttribute getMMCLEVVersionedItemComponent_SwInterfaceURI() {
+		return (EAttribute)mmclevVersionedItemComponentEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * @generated
+	 */
+	public EAttribute getMMCLEVVersionedItemComponent_SwInterfaceVersion() {
+		return (EAttribute)mmclevVersionedItemComponentEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * @generated
+	 */
 	public EClass getMMCLEVItemSAI() {
 		return mmclevItemSAIEClass;
 	}
@@ -538,6 +552,8 @@ public class mclevlibraryPackageImpl extends EPackageImpl implements mclevlibrar
 		mmclevVersionedItemComponentEClass = createEClass(MMCLEV_VERSIONED_ITEM_COMPONENT);
 		createEAttribute(mmclevVersionedItemComponentEClass, MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_URI);
 		createEAttribute(mmclevVersionedItemComponentEClass, MMCLEV_VERSIONED_ITEM_COMPONENT__SW_PACKAGE_VERSION);
+		createEAttribute(mmclevVersionedItemComponentEClass, MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_URI);
+		createEAttribute(mmclevVersionedItemComponentEClass, MMCLEV_VERSIONED_ITEM_COMPONENT__SW_INTERFACE_VERSION);
 
 		mmclevItemSAIEClass = createEClass(MMCLEV_ITEM_SAI);
 
@@ -660,6 +676,8 @@ public class mclevlibraryPackageImpl extends EPackageImpl implements mclevlibrar
 		initEClass(mmclevVersionedItemComponentEClass, MMCLEVVersionedItemComponent.class, "MMCLEVVersionedItemComponent", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMMCLEVVersionedItemComponent_SwPackageURI(), ecorePackage.getEString(), "swPackageURI", null, 0, 1, MMCLEVVersionedItemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getMMCLEVVersionedItemComponent_SwPackageVersion(), ecorePackage.getEString(), "swPackageVersion", null, 0, 1, MMCLEVVersionedItemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMMCLEVVersionedItemComponent_SwInterfaceURI(), ecorePackage.getEString(), "swInterfaceURI", null, 0, 1, MMCLEVVersionedItemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMMCLEVVersionedItemComponent_SwInterfaceVersion(), ecorePackage.getEString(), "swInterfaceVersion", null, 0, 1, MMCLEVVersionedItemComponent.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mmclevItemSAIEClass, MMCLEVItemSAI.class, "MMCLEVItemSAI", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 

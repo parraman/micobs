@@ -57,7 +57,7 @@ public class mclevlibraryFactoryImpl extends EFactoryImpl implements mclevlibrar
 	 */
 	public static mclevlibraryFactory init() {
 		try {
-			mclevlibraryFactory themclevlibraryFactory = (mclevlibraryFactory)EPackage.Registry.INSTANCE.getEFactory("http://srg.aut.uah.es/micobs/mclev/library/mclevlibrary"); 
+			mclevlibraryFactory themclevlibraryFactory = (mclevlibraryFactory)EPackage.Registry.INSTANCE.getEFactory(mclevlibraryPackage.eNS_URI);
 			if (themclevlibraryFactory != null) {
 				return themclevlibraryFactory;
 			}

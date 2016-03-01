@@ -11,6 +11,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="MMCLEVVersionedItemComponent" eSuperTypes="#//MMCLEVPackageVersionedItem">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="swPackageURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="swPackageVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="swInterfaceURI" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="swInterfaceVersion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MMCLEVItemSAI" eSuperTypes="#//MMCLEVPackageItem"/>
   <eClassifiers xsi:type="ecore:EClass" name="MMCLEVVersionedItemSAI" eSuperTypes="#//MMCLEVPackageVersionedItem">
