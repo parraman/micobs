@@ -309,6 +309,10 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 		
 		for (MSwPackageRequiredInterface rswi : deployment.getRequires())
 		{
+			if (rswi.getInterface() == null || rswi.getInterface().eIsProxy())
+			{
+				continue;
+			}
 			if (rswi.getInterface() instanceof MSwInterface)
 			{
 				for (final MResourceDemand demand : rswi.getResourceDemands())

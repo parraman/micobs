@@ -11,8 +11,11 @@
  ******************************************************************************/
 «ENDREM»
 «IMPORT mespdep»
+«IMPORT mespswi»
+«IMPORT mesposswi»
 
 «EXTENSION template::MICOBSStringHelper»
+«EXTENSION template::LangC_C99»
 «EXTENSION template::MESPUtil»
 «EXTENSION template::GNUMakeStringHelper»
 
@@ -24,9 +27,14 @@
 «IF this.requires.isEmpty == false -»
 
 // Required software interfaces
-«FOREACH this.requires.interface.toSet() AS iface -»
+«FOREACH this.requires.interface.typeSelect(MSwInterface).select(e|e.language == getLanguageC_C99()).toSet() AS iface -»
 #include <public/«iface.getElementName().toLowerDefString()».h>
 «ENDFOREACH -»
+«IF this.requires.interface.typeSelect(MSwInterface).select(e|e.language != getLanguageC_C99()).toSet().isEmpty == false -»
+«FOREACH this.requires.interface.typeSelect(MSwInterface).select(e|e.language != getLanguageC_C99()).toSet() AS iface -»
+// Software interface «iface.getElementName()» was not be added because it is not C
+«ENDFOREACH -»
+«ENDIF -»
 «ENDIF -»
 «ELSE -»
 «IF alternative.getAllRequiredInterfaces().isEmpty == false -»
@@ -56,8 +64,6 @@ rtems_task Init(rtems_task_argument arg)
     // This is a protected region as long as you keep the marks :-)
 
 «ENDPROTECT»
-
-	rtems_shutdown_executive(0);
 
 }
 
