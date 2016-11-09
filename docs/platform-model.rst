@@ -138,7 +138,6 @@ Compiler
 		};
 
 Microprocessor
-
 	The microprocessor that is at the core of the hardware platform. E.g.
 	LEON(2) or LEON(3). If the specific microprocessor is not relevant to the
 	development process, the corresponding field of the platform tuple can be left
@@ -155,7 +154,6 @@ Microprocessor
 
 
 Board
-
 	The development board that will execute the software application. If the
 	board itself is not relevant to the development process, e.g. the applications
 	do not depend on the characterstics of the board, the corresponding field of
