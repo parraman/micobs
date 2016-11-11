@@ -26,7 +26,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MPDLPackageFileElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MPDLPackageFile");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MPDLPackageFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -43,15 +43,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cElementMPDLPackageElementParserRuleCall_4_0 = (RuleCall)cElementAssignment_4.eContents().get(0);
 		
 		//MPDLPackageFile:
-		//	"package" package=[pdllibrary::MPDLPackage|QualifiedName] ";" ("import"
-		//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MPDLPackageElement;
-		public ParserRule getRule() { return rule; }
+		//	'package' package=[pdllibrary::MPDLPackage|QualifiedName] ';' ('import'
+		//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+		//	element=MPDLPackageElement;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"package" package=[pdllibrary::MPDLPackage|QualifiedName] ";" ("import" imports+=[common::MCommonPackage|QualifiedName]
-		//";")* element=MPDLPackageElement
+		//'package' package=[pdllibrary::MPDLPackage|QualifiedName] ';' ('import' imports+=[common::MCommonPackage|QualifiedName]
+		//';')* element=MPDLPackageElement
 		public Group getGroup() { return cGroup; }
 
-		//"package"
+		//'package'
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
 		//package=[pdllibrary::MPDLPackage|QualifiedName]
@@ -63,13 +64,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getPackageMPDLPackageQualifiedNameParserRuleCall_1_0_1() { return cPackageMPDLPackageQualifiedNameParserRuleCall_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 
-		//("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+		//('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"import"
+		//'import'
 		public Keyword getImportKeyword_3_0() { return cImportKeyword_3_0; }
 
 		//imports+=[common::MCommonPackage|QualifiedName]
@@ -81,7 +82,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1() { return cImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2() { return cSemicolonKeyword_3_2; }
 
 		//element=MPDLPackageElement
@@ -92,7 +93,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MPDLPackageElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MPDLPackageElement");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MPDLPackageElement");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMBoardParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMMicroprocessorParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
@@ -105,7 +106,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		
 		//MPDLPackageElement:
 		//	MBoard | MMicroprocessor | MOperatingSystem | MOperatingSystemAPI | MArchitecture | MPlatform | MCompiler | MDevice;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MBoard | MMicroprocessor | MOperatingSystem | MOperatingSystemAPI | MArchitecture | MPlatform | MCompiler | MDevice
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -136,27 +137,27 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//QualifiedName returns ecore::EString:
-		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
+		//QualifiedName:
+		//	ID ('.' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)*
+		//ID ('.' ID)*
 		public Group getGroup() { return cGroup; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//("." ID)*
+		//('.' ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
 		//ID
@@ -164,7 +165,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Version");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.Version");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
@@ -179,11 +180,11 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_1_1_1_0 = (RuleCall)cGroup_1_1_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1_1_1 = (RuleCall)cGroup_1_1_1.eContents().get(1);
 		
-		//Version returns ecore::EString:
-		//	(INT | INT? ID) ("." (INT | INT? ID))*;
-		public ParserRule getRule() { return rule; }
+		//Version:
+		//	(INT | INT? ID) ('.' (INT | INT? ID))*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(INT | INT? ID) ("." (INT | INT? ID))*
+		//(INT | INT? ID) ('.' (INT | INT? ID))*
 		public Group getGroup() { return cGroup; }
 
 		//INT | INT? ID
@@ -201,10 +202,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_0_1_1() { return cIDTerminalRuleCall_0_1_1; }
 
-		//("." (INT | INT? ID))*
+		//('.' (INT | INT? ID))*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
 		//INT | INT? ID
@@ -224,35 +225,35 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionedQualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.VersionedQualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final RuleCall cVersionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//VersionedQualifiedName returns ecore::EString:
-		//	QualifiedName "(" Version ")";
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedName:
+		//	QualifiedName '(' Version ')';
+		@Override public ParserRule getRule() { return rule; }
 
-		//QualifiedName "(" Version ")"
+		//QualifiedName '(' Version ')'
 		public Group getGroup() { return cGroup; }
 
 		//QualifiedName
 		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//Version
 		public RuleCall getVersionParserRuleCall_2() { return cVersionParserRuleCall_2; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 
 	public class VersionedQualifiedReferenceNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedReferenceName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.VersionedQualifiedReferenceName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final RuleCall cVersionedQualifiedNameParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
@@ -262,29 +263,29 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		
-		//VersionedQualifiedReferenceName returns ecore::EString:
-		//	(VersionedQualifiedName "::")? ID ("::" ID)*;
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedReferenceName:
+		//	(VersionedQualifiedName '::')? ID ('::' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(VersionedQualifiedName "::")? ID ("::" ID)*
+		//(VersionedQualifiedName '::')? ID ('::' ID)*
 		public Group getGroup() { return cGroup; }
 
-		//(VersionedQualifiedName "::")?
+		//(VersionedQualifiedName '::')?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//VersionedQualifiedName
 		public RuleCall getVersionedQualifiedNameParserRuleCall_0_0() { return cVersionedQualifiedNameParserRuleCall_0_0; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_0_1() { return cColonColonKeyword_0_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 
-		//("::" ID)*
+		//('::' ID)*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_2_0() { return cColonColonKeyword_2_0; }
 
 		//ID
@@ -292,7 +293,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MCompilerElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MCompiler");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MCompiler");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCompilerKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -334,19 +335,25 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MCompiler:
-		//	"compiler" name=ID ("extends" extends+=[MCompiler|VersionedQualifiedName] (","
-		//	extends+=[MCompiler|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("frontends" "{"
-		//	frontends+=MCompilerFrontend+ "}" ";")? & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}"
-		//	";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'compiler'
+		//	name=ID ('extends' extends+=[MCompiler|VersionedQualifiedName] ("," extends+=[MCompiler|VersionedQualifiedName])*)?
+		//	'{' ('version' ':=' version=Version ';' & ('frontends' '{'
+		//	frontends+=MCompilerFrontend+
+		//	'}' ';')?
+		//	& ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"compiler" name=ID ("extends" extends+=[MCompiler|VersionedQualifiedName] (","
-		//extends+=[MCompiler|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("frontends" "{"
-		//frontends+=MCompilerFrontend+ "}" ";")? & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}"
-		//";")?) "}" ";"
+		//'compiler' name=ID ('extends' extends+=[MCompiler|VersionedQualifiedName] (","
+		//extends+=[MCompiler|VersionedQualifiedName])*)? '{' ('version' ':=' version=Version ';' & ('frontends' '{'
+		//frontends+=MCompilerFrontend+ '}' ';')? & ('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}'
+		//';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"compiler"
+		//'compiler'
 		public Keyword getCompilerKeyword_0() { return cCompilerKeyword_0; }
 
 		//name=ID
@@ -355,10 +362,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("extends" extends+=[MCompiler|VersionedQualifiedName] ("," extends+=[MCompiler|VersionedQualifiedName])*)?
+		//('extends' extends+=[MCompiler|VersionedQualifiedName] ("," extends+=[MCompiler|VersionedQualifiedName])*)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"extends"
+		//'extends'
 		public Keyword getExtendsKeyword_2_0() { return cExtendsKeyword_2_0; }
 
 		//extends+=[MCompiler|VersionedQualifiedName]
@@ -385,20 +392,20 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getExtendsMCompilerVersionedQualifiedNameParserRuleCall_2_2_1_0_1() { return cExtendsMCompilerVersionedQualifiedNameParserRuleCall_2_2_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"version" ":=" version=Version ";" & ("frontends" "{" frontends+=MCompilerFrontend+ "}" ";")? & ("configuration"
-		//"parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'version' ':=' version=Version ';' & ('frontends' '{' frontends+=MCompilerFrontend+ '}' ';')? & ('configuration'
+		//'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_4_0_0() { return cVersionKeyword_4_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_0_1() { return cColonEqualsSignKeyword_4_0_1; }
 
 		//version=Version
@@ -407,16 +414,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_4_0_2_0() { return cVersionVersionParserRuleCall_4_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_3() { return cSemicolonKeyword_4_0_3; }
 
-		//("frontends" "{" frontends+=MCompilerFrontend+ "}" ";")?
+		//('frontends' '{' frontends+=MCompilerFrontend+ '}' ';')?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"frontends"
+		//'frontends'
 		public Keyword getFrontendsKeyword_4_1_0() { return cFrontendsKeyword_4_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_1_1() { return cLeftCurlyBracketKeyword_4_1_1; }
 
 		//frontends+=MCompilerFrontend+
@@ -425,22 +432,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MCompilerFrontend
 		public RuleCall getFrontendsMCompilerFrontendParserRuleCall_4_1_2_0() { return cFrontendsMCompilerFrontendParserRuleCall_4_1_2_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_1_3() { return cRightCurlyBracketKeyword_4_1_3; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_4() { return cSemicolonKeyword_4_1_4; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_4_2_0() { return cConfigurationKeyword_4_2_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_4_2_1() { return cParametersKeyword_4_2_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_2_2() { return cLeftCurlyBracketKeyword_4_2_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -449,21 +456,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_4_2_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_4_2_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_2_4() { return cRightCurlyBracketKeyword_4_2_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_2_5() { return cSemicolonKeyword_4_2_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MCompilerFrontendElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MCompilerFrontend");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MCompilerFrontend");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cFrontendKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -501,17 +508,23 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MCompilerFrontend:
-		//	"frontend" name=ID "{" ("language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" & "architectures" ":="
-		//	architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ";"
-		//	& ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'frontend'
+		//	name=ID
+		//	'{' ('language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' & 'architectures' ':='
+		//	architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ';'
+		//	& ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"frontend" name=ID "{" ("language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" & "architectures" ":="
-		//architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ";"
-		//& ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";"
+		//'frontend' name=ID '{' ('language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' & 'architectures' ':='
+		//architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ';'
+		//& ('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"frontend"
+		//'frontend'
 		public Keyword getFrontendKeyword_0() { return cFrontendKeyword_0; }
 
 		//name=ID
@@ -520,21 +533,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" & "architectures" ":="
-		//architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ";"
-		//& ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' & 'architectures' ':='
+		//architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ';'
+		//& ('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//"language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";"
+		//'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';'
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//"language"
+		//'language'
 		public Keyword getLanguageKeyword_3_0_0() { return cLanguageKeyword_3_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_0_1() { return cColonEqualsSignKeyword_3_0_1; }
 
 		//language=[system::MLanguage|VersionedQualifiedName]
@@ -546,17 +559,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLanguageMLanguageVersionedQualifiedNameParserRuleCall_3_0_2_0_1() { return cLanguageMLanguageVersionedQualifiedNameParserRuleCall_3_0_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
 
-		//"architectures" ":=" architectures+=[MArchitecture|VersionedQualifiedName] (","
-		//architectures+=[MArchitecture|VersionedQualifiedName])* ";"
+		//'architectures' ':=' architectures+=[MArchitecture|VersionedQualifiedName] (","
+		//architectures+=[MArchitecture|VersionedQualifiedName])* ';'
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"architectures"
+		//'architectures'
 		public Keyword getArchitecturesKeyword_3_1_0() { return cArchitecturesKeyword_3_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_1_1() { return cColonEqualsSignKeyword_3_1_1; }
 
 		//architectures+=[MArchitecture|VersionedQualifiedName]
@@ -583,19 +596,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getArchitecturesMArchitectureVersionedQualifiedNameParserRuleCall_3_1_3_1_0_1() { return cArchitecturesMArchitectureVersionedQualifiedNameParserRuleCall_3_1_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_1_4() { return cSemicolonKeyword_3_1_4; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_3_2() { return cGroup_3_2; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_3_2_0() { return cConfigurationKeyword_3_2_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_3_2_1() { return cParametersKeyword_3_2_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_2_2() { return cLeftCurlyBracketKeyword_3_2_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -604,21 +617,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_3_2_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_3_2_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_2_4() { return cRightCurlyBracketKeyword_3_2_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2_5() { return cSemicolonKeyword_3_2_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MBoardElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MBoard");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MBoard");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cBoardKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -658,19 +671,26 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MBoard:
-		//	"board" name=ID "{" ("version" ":=" version=Version ";" & ("supported" "devices" "{"
-		//	supportedDevices+=MBoardSupportedDevice+ "}" ";")? & "microprocessor" ":="
-		//	microprocessor=[MMicroprocessor|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-		//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'board'
+		//	name=ID
+		//	'{' ('version' ':=' version=Version ';' & ('supported' 'devices' '{'
+		//	supportedDevices+=MBoardSupportedDevice+
+		//	'}' ';')?
+		//	& 'microprocessor' ':=' microprocessor=[MMicroprocessor|VersionedQualifiedName] ';' & ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"board" name=ID "{" ("version" ":=" version=Version ";" & ("supported" "devices" "{"
-		//supportedDevices+=MBoardSupportedDevice+ "}" ";")? & "microprocessor" ":="
-		//microprocessor=[MMicroprocessor|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-		//parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";"
+		//'board' name=ID '{' ('version' ':=' version=Version ';' & ('supported' 'devices' '{'
+		//supportedDevices+=MBoardSupportedDevice+ '}' ';')? & 'microprocessor' ':='
+		//microprocessor=[MMicroprocessor|VersionedQualifiedName] ';' & ('configuration' 'parameters' '{'
+		//parameters+=MParameterWithoutOSSP+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"board"
+		//'board'
 		public Keyword getBoardKeyword_0() { return cBoardKeyword_0; }
 
 		//name=ID
@@ -679,21 +699,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"version" ":=" version=Version ";" & ("supported" "devices" "{" supportedDevices+=MBoardSupportedDevice+ "}" ";")? &
-		//"microprocessor" ":=" microprocessor=[MMicroprocessor|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-		//parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'version' ':=' version=Version ';' & ('supported' 'devices' '{' supportedDevices+=MBoardSupportedDevice+ '}' ';')? &
+		//'microprocessor' ':=' microprocessor=[MMicroprocessor|VersionedQualifiedName] ';' & ('configuration' 'parameters' '{'
+		//parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_3_0_0() { return cVersionKeyword_3_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_0_1() { return cColonEqualsSignKeyword_3_0_1; }
 
 		//version=Version
@@ -702,19 +722,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_3_0_2_0() { return cVersionVersionParserRuleCall_3_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
 
-		//("supported" "devices" "{" supportedDevices+=MBoardSupportedDevice+ "}" ";")?
+		//('supported' 'devices' '{' supportedDevices+=MBoardSupportedDevice+ '}' ';')?
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"supported"
+		//'supported'
 		public Keyword getSupportedKeyword_3_1_0() { return cSupportedKeyword_3_1_0; }
 
-		//"devices"
+		//'devices'
 		public Keyword getDevicesKeyword_3_1_1() { return cDevicesKeyword_3_1_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_1_2() { return cLeftCurlyBracketKeyword_3_1_2; }
 
 		//supportedDevices+=MBoardSupportedDevice+
@@ -723,19 +743,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MBoardSupportedDevice
 		public RuleCall getSupportedDevicesMBoardSupportedDeviceParserRuleCall_3_1_3_0() { return cSupportedDevicesMBoardSupportedDeviceParserRuleCall_3_1_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_1_4() { return cRightCurlyBracketKeyword_3_1_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_1_5() { return cSemicolonKeyword_3_1_5; }
 
-		//"microprocessor" ":=" microprocessor=[MMicroprocessor|VersionedQualifiedName] ";"
+		//'microprocessor' ':=' microprocessor=[MMicroprocessor|VersionedQualifiedName] ';'
 		public Group getGroup_3_2() { return cGroup_3_2; }
 
-		//"microprocessor"
+		//'microprocessor'
 		public Keyword getMicroprocessorKeyword_3_2_0() { return cMicroprocessorKeyword_3_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_2_1() { return cColonEqualsSignKeyword_3_2_1; }
 
 		//microprocessor=[MMicroprocessor|VersionedQualifiedName]
@@ -747,19 +767,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getMicroprocessorMMicroprocessorVersionedQualifiedNameParserRuleCall_3_2_2_0_1() { return cMicroprocessorMMicroprocessorVersionedQualifiedNameParserRuleCall_3_2_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2_3() { return cSemicolonKeyword_3_2_3; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_3_3() { return cGroup_3_3; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_3_3_0() { return cConfigurationKeyword_3_3_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_3_3_1() { return cParametersKeyword_3_3_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_3_2() { return cLeftCurlyBracketKeyword_3_3_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -768,21 +788,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_3_3_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_3_3_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_3_4() { return cRightCurlyBracketKeyword_3_3_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_3_5() { return cSemicolonKeyword_3_3_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MBoardSupportedDeviceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MBoardSupportedDevice");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MBoardSupportedDevice");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDeviceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cDeviceAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -797,15 +817,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MBoardSupportedDevice:
-		//	"device" device=[MDevice|VersionedQualifiedName] "range" lowerBound=MParameterValueExpression "to"
-		//	upperBound=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//	'device' device=[MDevice|VersionedQualifiedName]
+		//	'range' lowerBound=MParameterValueExpression 'to' upperBound=MParameterValueExpression
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"device" device=[MDevice|VersionedQualifiedName] "range" lowerBound=MParameterValueExpression "to"
-		//upperBound=MParameterValueExpression ";"
+		//'device' device=[MDevice|VersionedQualifiedName] 'range' lowerBound=MParameterValueExpression 'to'
+		//upperBound=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_0() { return cDeviceKeyword_0; }
 
 		//device=[MDevice|VersionedQualifiedName]
@@ -817,7 +838,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getDeviceMDeviceVersionedQualifiedNameParserRuleCall_1_0_1() { return cDeviceMDeviceVersionedQualifiedNameParserRuleCall_1_0_1; }
 
-		//"range"
+		//'range'
 		public Keyword getRangeKeyword_2() { return cRangeKeyword_2; }
 
 		//lowerBound=MParameterValueExpression
@@ -826,7 +847,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerBoundMParameterValueExpressionParserRuleCall_3_0() { return cLowerBoundMParameterValueExpressionParserRuleCall_3_0; }
 
-		//"to"
+		//'to'
 		public Keyword getToKeyword_4() { return cToKeyword_4; }
 
 		//upperBound=MParameterValueExpression
@@ -835,12 +856,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperBoundMParameterValueExpressionParserRuleCall_5_0() { return cUpperBoundMParameterValueExpressionParserRuleCall_5_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MMicroprocessorElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMicroprocessor");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MMicroprocessor");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cMicroprocessorKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -872,17 +893,23 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MMicroprocessor:
-		//	"microprocessor" name=ID "{" ("version" ":=" version=Version ";" & "architecture" ":="
-		//	architecture=[MArchitecture|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-		//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'microprocessor'
+		//	name=ID
+		//	'{' ('version' ':=' version=Version ';' & 'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';'
+		//	& ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"microprocessor" name=ID "{" ("version" ":=" version=Version ";" & "architecture" ":="
-		//architecture=[MArchitecture|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-		//parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";"
+		//'microprocessor' name=ID '{' ('version' ':=' version=Version ';' & 'architecture' ':='
+		//architecture=[MArchitecture|VersionedQualifiedName] ';' & ('configuration' 'parameters' '{'
+		//parameters+=MParameterWithoutOSSP+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"microprocessor"
+		//'microprocessor'
 		public Keyword getMicroprocessorKeyword_0() { return cMicroprocessorKeyword_0; }
 
 		//name=ID
@@ -891,20 +918,20 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"version" ":=" version=Version ";" & "architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";" &
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'version' ':=' version=Version ';' & 'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';' &
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_3_0_0() { return cVersionKeyword_3_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_0_1() { return cColonEqualsSignKeyword_3_0_1; }
 
 		//version=Version
@@ -913,16 +940,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_3_0_2_0() { return cVersionVersionParserRuleCall_3_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
 
-		//"architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";"
+		//'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';'
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"architecture"
+		//'architecture'
 		public Keyword getArchitectureKeyword_3_1_0() { return cArchitectureKeyword_3_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_1_1() { return cColonEqualsSignKeyword_3_1_1; }
 
 		//architecture=[MArchitecture|VersionedQualifiedName]
@@ -934,19 +961,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getArchitectureMArchitectureVersionedQualifiedNameParserRuleCall_3_1_2_0_1() { return cArchitectureMArchitectureVersionedQualifiedNameParserRuleCall_3_1_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_1_3() { return cSemicolonKeyword_3_1_3; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_3_2() { return cGroup_3_2; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_3_2_0() { return cConfigurationKeyword_3_2_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_3_2_1() { return cParametersKeyword_3_2_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_2_2() { return cLeftCurlyBracketKeyword_3_2_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -955,21 +982,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_3_2_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_3_2_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_2_4() { return cRightCurlyBracketKeyword_3_2_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2_5() { return cSemicolonKeyword_3_2_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MOperatingSystemElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOperatingSystem");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOperatingSystem");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cOsKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1032,23 +1059,33 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MOperatingSystem:
-		//	"os" name=ID ("inherits" inherits+=[MOperatingSystem|VersionedQualifiedName] (","
-		//	inherits+=[MOperatingSystem|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & "languages" ":="
-		//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ";"
-		//	& ("supported" "osapis" "{" supportedOSAPIs+=MOSSupportedOSAPI+ "}" ";")? & "supported" "platforms" "{"
-		//	supportedPlatforms+=MOSSupportedPlatform+ "}" ";" & ("configuration" "parameters" "{" parameters+=MParameter+ "}"
-		//	";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'os'
+		//	name=ID ('inherits' inherits+=[MOperatingSystem|VersionedQualifiedName] (","
+		//	inherits+=[MOperatingSystem|VersionedQualifiedName])*)?
+		//	'{' ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+		//	languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('supported' 'osapis' '{'
+		//	supportedOSAPIs+=MOSSupportedOSAPI+
+		//	'}' ';')?
+		//	& 'supported' 'platforms'
+		//	'{'
+		//	supportedPlatforms+=MOSSupportedPlatform+
+		//	'}' ';' & ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameter+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"os" name=ID ("inherits" inherits+=[MOperatingSystem|VersionedQualifiedName] (","
-		//inherits+=[MOperatingSystem|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & "languages" ":="
-		//languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ";"
-		//& ("supported" "osapis" "{" supportedOSAPIs+=MOSSupportedOSAPI+ "}" ";")? & "supported" "platforms" "{"
-		//supportedPlatforms+=MOSSupportedPlatform+ "}" ";" & ("configuration" "parameters" "{" parameters+=MParameter+ "}"
-		//";")?) "}" ";"
+		//'os' name=ID ('inherits' inherits+=[MOperatingSystem|VersionedQualifiedName] (","
+		//inherits+=[MOperatingSystem|VersionedQualifiedName])*)? '{' ('version' ':=' version=Version ';' & 'languages' ':='
+		//languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ';'
+		//& ('supported' 'osapis' '{' supportedOSAPIs+=MOSSupportedOSAPI+ '}' ';')? & 'supported' 'platforms' '{'
+		//supportedPlatforms+=MOSSupportedPlatform+ '}' ';' & ('configuration' 'parameters' '{' parameters+=MParameter+ '}'
+		//';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"os"
+		//'os'
 		public Keyword getOsKeyword_0() { return cOsKeyword_0; }
 
 		//name=ID
@@ -1057,11 +1094,11 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("inherits" inherits+=[MOperatingSystem|VersionedQualifiedName] (","
+		//('inherits' inherits+=[MOperatingSystem|VersionedQualifiedName] (","
 		//inherits+=[MOperatingSystem|VersionedQualifiedName])*)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"inherits"
+		//'inherits'
 		public Keyword getInheritsKeyword_2_0() { return cInheritsKeyword_2_0; }
 
 		//inherits+=[MOperatingSystem|VersionedQualifiedName]
@@ -1088,22 +1125,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getInheritsMOperatingSystemVersionedQualifiedNameParserRuleCall_2_2_1_0_1() { return cInheritsMOperatingSystemVersionedQualifiedNameParserRuleCall_2_2_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"version" ":=" version=Version ";" & "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-		//languages+=[system::MLanguage|VersionedQualifiedName])* ";" & ("supported" "osapis" "{"
-		//supportedOSAPIs+=MOSSupportedOSAPI+ "}" ";")? & "supported" "platforms" "{" supportedPlatforms+=MOSSupportedPlatform+
-		//"}" ";" & ("configuration" "parameters" "{" parameters+=MParameter+ "}" ";")?
+		//'version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+		//languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('supported' 'osapis' '{'
+		//supportedOSAPIs+=MOSSupportedOSAPI+ '}' ';')? & 'supported' 'platforms' '{' supportedPlatforms+=MOSSupportedPlatform+
+		//'}' ';' & ('configuration' 'parameters' '{' parameters+=MParameter+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_4_0_0() { return cVersionKeyword_4_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_0_1() { return cColonEqualsSignKeyword_4_0_1; }
 
 		//version=Version
@@ -1112,17 +1149,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_4_0_2_0() { return cVersionVersionParserRuleCall_4_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_3() { return cSemicolonKeyword_4_0_3; }
 
-		//"languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-		//languages+=[system::MLanguage|VersionedQualifiedName])* ";"
+		//'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+		//languages+=[system::MLanguage|VersionedQualifiedName])* ';'
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"languages"
+		//'languages'
 		public Keyword getLanguagesKeyword_4_1_0() { return cLanguagesKeyword_4_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_1_1() { return cColonEqualsSignKeyword_4_1_1; }
 
 		//languages+=[system::MLanguage|VersionedQualifiedName]
@@ -1149,19 +1186,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLanguagesMLanguageVersionedQualifiedNameParserRuleCall_4_1_3_1_0_1() { return cLanguagesMLanguageVersionedQualifiedNameParserRuleCall_4_1_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_4() { return cSemicolonKeyword_4_1_4; }
 
-		//("supported" "osapis" "{" supportedOSAPIs+=MOSSupportedOSAPI+ "}" ";")?
+		//('supported' 'osapis' '{' supportedOSAPIs+=MOSSupportedOSAPI+ '}' ';')?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 
-		//"supported"
+		//'supported'
 		public Keyword getSupportedKeyword_4_2_0() { return cSupportedKeyword_4_2_0; }
 
-		//"osapis"
+		//'osapis'
 		public Keyword getOsapisKeyword_4_2_1() { return cOsapisKeyword_4_2_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_2_2() { return cLeftCurlyBracketKeyword_4_2_2; }
 
 		//supportedOSAPIs+=MOSSupportedOSAPI+
@@ -1170,22 +1207,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MOSSupportedOSAPI
 		public RuleCall getSupportedOSAPIsMOSSupportedOSAPIParserRuleCall_4_2_3_0() { return cSupportedOSAPIsMOSSupportedOSAPIParserRuleCall_4_2_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_2_4() { return cRightCurlyBracketKeyword_4_2_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_2_5() { return cSemicolonKeyword_4_2_5; }
 
-		//"supported" "platforms" "{" supportedPlatforms+=MOSSupportedPlatform+ "}" ";"
+		//'supported' 'platforms' '{' supportedPlatforms+=MOSSupportedPlatform+ '}' ';'
 		public Group getGroup_4_3() { return cGroup_4_3; }
 
-		//"supported"
+		//'supported'
 		public Keyword getSupportedKeyword_4_3_0() { return cSupportedKeyword_4_3_0; }
 
-		//"platforms"
+		//'platforms'
 		public Keyword getPlatformsKeyword_4_3_1() { return cPlatformsKeyword_4_3_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_3_2() { return cLeftCurlyBracketKeyword_4_3_2; }
 
 		//supportedPlatforms+=MOSSupportedPlatform+
@@ -1194,22 +1231,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MOSSupportedPlatform
 		public RuleCall getSupportedPlatformsMOSSupportedPlatformParserRuleCall_4_3_3_0() { return cSupportedPlatformsMOSSupportedPlatformParserRuleCall_4_3_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_3_4() { return cRightCurlyBracketKeyword_4_3_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_3_5() { return cSemicolonKeyword_4_3_5; }
 
-		//("configuration" "parameters" "{" parameters+=MParameter+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameter+ '}' ';')?
 		public Group getGroup_4_4() { return cGroup_4_4; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_4_4_0() { return cConfigurationKeyword_4_4_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_4_4_1() { return cParametersKeyword_4_4_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_4_2() { return cLeftCurlyBracketKeyword_4_4_2; }
 
 		//parameters+=MParameter+
@@ -1218,21 +1255,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameter
 		public RuleCall getParametersMParameterParserRuleCall_4_4_3_0() { return cParametersMParameterParserRuleCall_4_4_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_4_4() { return cRightCurlyBracketKeyword_4_4_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_4_5() { return cSemicolonKeyword_4_4_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MOSSupportedOSAPIElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOSSupportedOSAPI");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOSSupportedOSAPI");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSupportsKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cOsapiAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1245,15 +1282,18 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MOSSupportedOSAPI:
-		//	"supports" osapi=[MOperatingSystemAPI|VersionedQualifiedName] "{" parameterValueAssignments+=MOSSupportedOSAPIPVA* "}"
-		//	";";
-		public ParserRule getRule() { return rule; }
+		//	'supports'
+		//	osapi=[MOperatingSystemAPI|VersionedQualifiedName]
+		//	'{'
+		//	parameterValueAssignments+=MOSSupportedOSAPIPVA*
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"supports" osapi=[MOperatingSystemAPI|VersionedQualifiedName] "{" parameterValueAssignments+=MOSSupportedOSAPIPVA* "}"
-		//";"
+		//'supports' osapi=[MOperatingSystemAPI|VersionedQualifiedName] '{' parameterValueAssignments+=MOSSupportedOSAPIPVA* '}'
+		//';'
 		public Group getGroup() { return cGroup; }
 
-		//"supports"
+		//'supports'
 		public Keyword getSupportsKeyword_0() { return cSupportsKeyword_0; }
 
 		//osapi=[MOperatingSystemAPI|VersionedQualifiedName]
@@ -1265,7 +1305,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getOsapiMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_1_0_1() { return cOsapiMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//parameterValueAssignments+=MOSSupportedOSAPIPVA*
@@ -1274,22 +1314,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MOSSupportedOSAPIPVA
 		public RuleCall getParameterValueAssignmentsMOSSupportedOSAPIPVAParserRuleCall_3_0() { return cParameterValueAssignmentsMOSSupportedOSAPIPVAParserRuleCall_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MOSSupportedOSAPIPVAElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOSSupportedOSAPIPVA");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOSSupportedOSAPIPVA");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMOSSupportedOSAPIPVAExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMOSSupportedOSAPIPVASwitchParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//MOSSupportedOSAPIPVA:
 		//	MOSSupportedOSAPIPVAExpression | MOSSupportedOSAPIPVASwitch;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MOSSupportedOSAPIPVAExpression | MOSSupportedOSAPIPVASwitch
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1302,7 +1342,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MOSSupportedOSAPIPVAExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOSSupportedOSAPIPVAExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOSSupportedOSAPIPVAExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cParameterKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cParameterAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1314,15 +1354,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MOSSupportedOSAPIPVAExpression:
-		//	"parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
-		//	parameterValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//	'parameter'
+		//	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+		//	':='
+		//	parameterValue=MParameterValueExpression ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" parameterValue=MParameterValueExpression
-		//";"
+		//'parameter' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' parameterValue=MParameterValueExpression
+		//';'
 		public Group getGroup() { return cGroup; }
 
-		//"parameter"
+		//'parameter'
 		public Keyword getParameterKeyword_0() { return cParameterKeyword_0; }
 
 		//parameter=[common::MParameter|VersionedQualifiedReferenceName]
@@ -1334,7 +1376,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_1_0_1() { return cParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_1_0_1; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_2() { return cColonEqualsSignKeyword_2; }
 
 		//parameterValue=MParameterValueExpression
@@ -1343,12 +1385,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getParameterValueMParameterValueExpressionParserRuleCall_3_0() { return cParameterValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class MOSSupportedOSAPIPVASwitchElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOSSupportedOSAPIPVASwitch");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOSSupportedOSAPIPVASwitch");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSwitchKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1363,18 +1405,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//MOSSupportedOSAPIPVASwitch:
-		//	"switch" "(" parameter=[common::MParameter|VersionedQualifiedReferenceName] ")" "{"
-		//	cases+=MOSSupportedOSAPIPVASwitchCase "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'switch' '(' parameter=[common::MParameter|VersionedQualifiedReferenceName] ')'
+		//	'{'
+		//	cases+=MOSSupportedOSAPIPVASwitchCase '}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"switch" "(" parameter=[common::MParameter|VersionedQualifiedReferenceName] ")" "{"
-		//cases+=MOSSupportedOSAPIPVASwitchCase "}" ";"
+		//'switch' '(' parameter=[common::MParameter|VersionedQualifiedReferenceName] ')' '{'
+		//cases+=MOSSupportedOSAPIPVASwitchCase '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"switch"
+		//'switch'
 		public Keyword getSwitchKeyword_0() { return cSwitchKeyword_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//parameter=[common::MParameter|VersionedQualifiedReferenceName]
@@ -1386,10 +1429,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_2_0_1() { return cParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_2_0_1; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
 		//cases+=MOSSupportedOSAPIPVASwitchCase
@@ -1398,15 +1441,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MOSSupportedOSAPIPVASwitchCase
 		public RuleCall getCasesMOSSupportedOSAPIPVASwitchCaseParserRuleCall_5_0() { return cCasesMOSSupportedOSAPIPVASwitchCaseParserRuleCall_5_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MOSSupportedOSAPIPVASwitchCaseElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOSSupportedOSAPIPVASwitchCase");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOSSupportedOSAPIPVASwitchCase");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCaseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPlatformAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1418,13 +1461,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MOSSupportedOSAPIPVASwitchCase:
-		//	"case" platform=[MOSSupportedPlatform] ":" parameterValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//	'case' platform=[MOSSupportedPlatform] ':'
+		//	parameterValue=MParameterValueExpression ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"case" platform=[MOSSupportedPlatform] ":" parameterValue=MParameterValueExpression ";"
+		//'case' platform=[MOSSupportedPlatform] ':' parameterValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//"case"
+		//'case'
 		public Keyword getCaseKeyword_0() { return cCaseKeyword_0; }
 
 		//platform=[MOSSupportedPlatform]
@@ -1436,7 +1480,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1() { return cPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1; }
 
-		//":"
+		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//parameterValue=MParameterValueExpression
@@ -1445,12 +1489,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getParameterValueMParameterValueExpressionParserRuleCall_3_0() { return cParameterValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class MParameterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameter");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameter");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMIntegerParameterSingleExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMEnumParameterSingleExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
@@ -1464,11 +1508,11 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMRealParamOSSPSwitchParserRuleCall_9 = (RuleCall)cAlternatives.eContents().get(9);
 		private final RuleCall cMEnumParamOSSPSwitchParserRuleCall_10 = (RuleCall)cAlternatives.eContents().get(10);
 		
-		//MParameter returns common::MParameter:
+		//MParameter common::MParameter:
 		//	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
 		//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition | MBooleanParamOSSPSwitch
-		//	| MStringParamOSSPSwitch | MIntegerParamOSSPSwitch | MRealParamOSSPSwitch | MEnumParamOSSPSwitch;
-		public ParserRule getRule() { return rule; }
+		//	| MStringParamOSSPSwitch | MIntegerParamOSSPSwitch | MRealParamOSSPSwitch | MEnumParamOSSPSwitch
+		@Override public ParserRule getRule() { return rule; }
 
 		//MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
 		//MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition | MBooleanParamOSSPSwitch
@@ -1510,7 +1554,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MBooleanParamOSSPSwitchElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MBooleanParamOSSPSwitch");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MBooleanParamOSSPSwitch");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -1526,19 +1570,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//MBooleanParamOSSPSwitch:
-		//	constant?="const"? "boolean" name=ID ":=" "switch" "{" cases+=MBooleanParamOSSPSwitchCase+ "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	constant?='const'?
+		//	'boolean' name=ID ':='
+		//	'switch'
+		//	'{'
+		//	cases+=MBooleanParamOSSPSwitchCase+
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "boolean" name=ID ":=" "switch" "{" cases+=MBooleanParamOSSPSwitchCase+ "}" ";"
+		//constant?='const'? 'boolean' name=ID ':=' 'switch' '{' cases+=MBooleanParamOSSPSwitchCase+ '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"boolean"
+		//'boolean'
 		public Keyword getBooleanKeyword_1() { return cBooleanKeyword_1; }
 
 		//name=ID
@@ -1547,13 +1596,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
-		//"switch"
+		//'switch'
 		public Keyword getSwitchKeyword_4() { return cSwitchKeyword_4; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
 		//cases+=MBooleanParamOSSPSwitchCase+
@@ -1562,15 +1611,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MBooleanParamOSSPSwitchCase
 		public RuleCall getCasesMBooleanParamOSSPSwitchCaseParserRuleCall_6_0() { return cCasesMBooleanParamOSSPSwitchCaseParserRuleCall_6_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 	}
 
 	public class MBooleanParamOSSPSwitchCaseElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MBooleanParamOSSPSwitchCase");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MBooleanParamOSSPSwitchCase");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCaseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPlatformAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1582,13 +1631,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MBooleanParamOSSPSwitchCase:
-		//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//	'case' platform=[MOSSupportedPlatform] ':'
+		//	defaultValue=MParameterValueExpression ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";"
+		//'case' platform=[MOSSupportedPlatform] ':' defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//"case"
+		//'case'
 		public Keyword getCaseKeyword_0() { return cCaseKeyword_0; }
 
 		//platform=[MOSSupportedPlatform]
@@ -1600,7 +1650,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1() { return cPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1; }
 
-		//":"
+		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//defaultValue=MParameterValueExpression
@@ -1609,12 +1659,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_3_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class MStringParamOSSPSwitchElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MStringParamOSSPSwitch");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MStringParamOSSPSwitch");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -1630,19 +1680,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//MStringParamOSSPSwitch:
-		//	constant?="const"? "string" name=ID ":=" "switch" "{" cases+=MStringParamOSSPSwitchCase+ "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	constant?='const'?
+		//	'string' name=ID ':='
+		//	'switch'
+		//	'{'
+		//	cases+=MStringParamOSSPSwitchCase+
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "string" name=ID ":=" "switch" "{" cases+=MStringParamOSSPSwitchCase+ "}" ";"
+		//constant?='const'? 'string' name=ID ':=' 'switch' '{' cases+=MStringParamOSSPSwitchCase+ '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"string"
+		//'string'
 		public Keyword getStringKeyword_1() { return cStringKeyword_1; }
 
 		//name=ID
@@ -1651,13 +1706,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
-		//"switch"
+		//'switch'
 		public Keyword getSwitchKeyword_4() { return cSwitchKeyword_4; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
 		//cases+=MStringParamOSSPSwitchCase+
@@ -1666,15 +1721,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MStringParamOSSPSwitchCase
 		public RuleCall getCasesMStringParamOSSPSwitchCaseParserRuleCall_6_0() { return cCasesMStringParamOSSPSwitchCaseParserRuleCall_6_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 	}
 
 	public class MStringParamOSSPSwitchCaseElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MStringParamOSSPSwitchCase");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MStringParamOSSPSwitchCase");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCaseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPlatformAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1686,13 +1741,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MStringParamOSSPSwitchCase:
-		//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//	'case' platform=[MOSSupportedPlatform] ':'
+		//	defaultValue=MParameterValueExpression ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";"
+		//'case' platform=[MOSSupportedPlatform] ':' defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//"case"
+		//'case'
 		public Keyword getCaseKeyword_0() { return cCaseKeyword_0; }
 
 		//platform=[MOSSupportedPlatform]
@@ -1704,7 +1760,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1() { return cPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1; }
 
-		//":"
+		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//defaultValue=MParameterValueExpression
@@ -1713,12 +1769,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_3_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class MIntegerParamOSSPSwitchElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MIntegerParamOSSPSwitch");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MIntegerParamOSSPSwitch");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -1734,19 +1790,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//MIntegerParamOSSPSwitch:
-		//	constant?="const"? "integer" name=ID ":=" "switch" "{" cases+=MIntegerParamOSSPSwitchCase+ "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	constant?='const'?
+		//	'integer' name=ID ':='
+		//	'switch'
+		//	'{'
+		//	cases+=MIntegerParamOSSPSwitchCase+
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "integer" name=ID ":=" "switch" "{" cases+=MIntegerParamOSSPSwitchCase+ "}" ";"
+		//constant?='const'? 'integer' name=ID ':=' 'switch' '{' cases+=MIntegerParamOSSPSwitchCase+ '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"integer"
+		//'integer'
 		public Keyword getIntegerKeyword_1() { return cIntegerKeyword_1; }
 
 		//name=ID
@@ -1755,13 +1816,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
-		//"switch"
+		//'switch'
 		public Keyword getSwitchKeyword_4() { return cSwitchKeyword_4; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
 		//cases+=MIntegerParamOSSPSwitchCase+
@@ -1770,15 +1831,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MIntegerParamOSSPSwitchCase
 		public RuleCall getCasesMIntegerParamOSSPSwitchCaseParserRuleCall_6_0() { return cCasesMIntegerParamOSSPSwitchCaseParserRuleCall_6_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 	}
 
 	public class MIntegerParamOSSPSwitchCaseElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MIntegerParamOSSPSwitchCase");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MIntegerParamOSSPSwitchCase");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCaseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPlatformAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1794,14 +1855,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MIntegerParamOSSPSwitchCase:
-		//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ("range" range=MParameterRange)?
-		//	";";
-		public ParserRule getRule() { return rule; }
+		//	'case' platform=[MOSSupportedPlatform] ':'
+		//	defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+		//'case' platform=[MOSSupportedPlatform] ':' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 		public Group getGroup() { return cGroup; }
 
-		//"case"
+		//'case'
 		public Keyword getCaseKeyword_0() { return cCaseKeyword_0; }
 
 		//platform=[MOSSupportedPlatform]
@@ -1813,7 +1874,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1() { return cPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1; }
 
-		//":"
+		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//defaultValue=MParameterValueExpression
@@ -1822,10 +1883,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_3_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//("range" range=MParameterRange)?
+		//('range' range=MParameterRange)?
 		public Group getGroup_4() { return cGroup_4; }
 
-		//"range"
+		//'range'
 		public Keyword getRangeKeyword_4_0() { return cRangeKeyword_4_0; }
 
 		//range=MParameterRange
@@ -1834,12 +1895,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterRange
 		public RuleCall getRangeMParameterRangeParserRuleCall_4_1_0() { return cRangeMParameterRangeParserRuleCall_4_1_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MRealParamOSSPSwitchElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MRealParamOSSPSwitch");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MRealParamOSSPSwitch");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -1855,19 +1916,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_8 = (Keyword)cGroup.eContents().get(8);
 		
 		//MRealParamOSSPSwitch:
-		//	constant?="const"? "real" name=ID ":=" "switch" "{" cases+=MRealParamOSSPSwitchCase+ "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	constant?='const'?
+		//	'real' name=ID ':='
+		//	'switch'
+		//	'{'
+		//	cases+=MRealParamOSSPSwitchCase+
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "real" name=ID ":=" "switch" "{" cases+=MRealParamOSSPSwitchCase+ "}" ";"
+		//constant?='const'? 'real' name=ID ':=' 'switch' '{' cases+=MRealParamOSSPSwitchCase+ '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"real"
+		//'real'
 		public Keyword getRealKeyword_1() { return cRealKeyword_1; }
 
 		//name=ID
@@ -1876,13 +1942,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
-		//"switch"
+		//'switch'
 		public Keyword getSwitchKeyword_4() { return cSwitchKeyword_4; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5() { return cLeftCurlyBracketKeyword_5; }
 
 		//cases+=MRealParamOSSPSwitchCase+
@@ -1891,15 +1957,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MRealParamOSSPSwitchCase
 		public RuleCall getCasesMRealParamOSSPSwitchCaseParserRuleCall_6_0() { return cCasesMRealParamOSSPSwitchCaseParserRuleCall_6_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_7() { return cRightCurlyBracketKeyword_7; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_8() { return cSemicolonKeyword_8; }
 	}
 
 	public class MRealParamOSSPSwitchCaseElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MRealParamOSSPSwitchCase");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MRealParamOSSPSwitchCase");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCaseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPlatformAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1915,14 +1981,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MRealParamOSSPSwitchCase:
-		//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ("range" range=MParameterRange)?
-		//	";";
-		public ParserRule getRule() { return rule; }
+		//	'case' platform=[MOSSupportedPlatform] ':'
+		//	defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+		//'case' platform=[MOSSupportedPlatform] ':' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 		public Group getGroup() { return cGroup; }
 
-		//"case"
+		//'case'
 		public Keyword getCaseKeyword_0() { return cCaseKeyword_0; }
 
 		//platform=[MOSSupportedPlatform]
@@ -1934,7 +2000,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1() { return cPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1; }
 
-		//":"
+		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//defaultValue=MParameterValueExpression
@@ -1943,10 +2009,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_3_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//("range" range=MParameterRange)?
+		//('range' range=MParameterRange)?
 		public Group getGroup_4() { return cGroup_4; }
 
-		//"range"
+		//'range'
 		public Keyword getRangeKeyword_4_0() { return cRangeKeyword_4_0; }
 
 		//range=MParameterRange
@@ -1955,12 +2021,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterRange
 		public RuleCall getRangeMParameterRangeParserRuleCall_4_1_0() { return cRangeMParameterRangeParserRuleCall_4_1_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MEnumParamOSSPSwitchElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamOSSPSwitch");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParamOSSPSwitch");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -1979,21 +2045,26 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_9 = (Keyword)cGroup.eContents().get(9);
 		
 		//MEnumParamOSSPSwitch:
-		//	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
-		//	":=" "switch" "{" cases+=MEnumParamOSSPSwitchCase+ "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	constant?='const'?
+		//	'enum'
+		//	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+		//	'switch'
+		//	'{'
+		//	cases+=MEnumParamOSSPSwitchCase+
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ":="
-		//"switch" "{" cases+=MEnumParamOSSPSwitchCase+ "}" ";"
+		//constant?='const'? 'enum' enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+		//'switch' '{' cases+=MEnumParamOSSPSwitchCase+ '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"enum"
+		//'enum'
 		public Keyword getEnumKeyword_1() { return cEnumKeyword_1; }
 
 		//enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
@@ -2011,13 +2082,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4() { return cColonEqualsSignKeyword_4; }
 
-		//"switch"
+		//'switch'
 		public Keyword getSwitchKeyword_5() { return cSwitchKeyword_5; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_6() { return cLeftCurlyBracketKeyword_6; }
 
 		//cases+=MEnumParamOSSPSwitchCase+
@@ -2026,15 +2097,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MEnumParamOSSPSwitchCase
 		public RuleCall getCasesMEnumParamOSSPSwitchCaseParserRuleCall_7_0() { return cCasesMEnumParamOSSPSwitchCaseParserRuleCall_7_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_8() { return cRightCurlyBracketKeyword_8; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_9() { return cSemicolonKeyword_9; }
 	}
 
 	public class MEnumParamOSSPSwitchCaseElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamOSSPSwitchCase");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParamOSSPSwitchCase");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cCaseKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPlatformAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -2046,13 +2117,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
 		//MEnumParamOSSPSwitchCase:
-		//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//	'case' platform=[MOSSupportedPlatform] ':'
+		//	defaultValue=MParameterValueExpression ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";"
+		//'case' platform=[MOSSupportedPlatform] ':' defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//"case"
+		//'case'
 		public Keyword getCaseKeyword_0() { return cCaseKeyword_0; }
 
 		//platform=[MOSSupportedPlatform]
@@ -2064,7 +2136,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1() { return cPlatformMOSSupportedPlatformIDTerminalRuleCall_1_0_1; }
 
-		//":"
+		//':'
 		public Keyword getColonKeyword_2() { return cColonKeyword_2; }
 
 		//defaultValue=MParameterValueExpression
@@ -2073,12 +2145,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_3_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class MParameterWithoutOSSPElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterWithoutOSSP");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterWithoutOSSP");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMIntegerParameterSingleExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMEnumParameterSingleExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
@@ -2087,10 +2159,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMStringParameterSingleExpressionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cMEnumParameterDefinitionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
-		//MParameterWithoutOSSP returns common::MParameter:
+		//MParameterWithoutOSSP common::MParameter:
 		//	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
-		//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition;
-		public ParserRule getRule() { return rule; }
+		//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition
+		@Override public ParserRule getRule() { return rule; }
 
 		//MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
 		//MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition
@@ -2116,7 +2188,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MIntegerParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MIntegerParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MIntegerParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -2132,20 +2204,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRangeMParameterRangeParserRuleCall_5_1_0 = (RuleCall)cRangeAssignment_5_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
-		//	constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
-		public ParserRule getRule() { return rule; }
+		//MIntegerParameterSingleExpression common::MIntegerParameterSingleExpression:
+		//	constant?='const'?
+		//	'integer'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+		//constant?='const'? 'integer' name=ID ':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"integer"
+		//'integer'
 		public Keyword getIntegerKeyword_1() { return cIntegerKeyword_1; }
 
 		//name=ID
@@ -2154,7 +2230,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -2163,10 +2239,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//("range" range=MParameterRange)?
+		//('range' range=MParameterRange)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"range"
+		//'range'
 		public Keyword getRangeKeyword_5_0() { return cRangeKeyword_5_0; }
 
 		//range=MParameterRange
@@ -2175,12 +2251,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterRange
 		public RuleCall getRangeMParameterRangeParserRuleCall_5_1_0() { return cRangeMParameterRangeParserRuleCall_5_1_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MEnumParameterDefinitionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterDefinition");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParameterDefinition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cEnumKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -2195,14 +2271,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MEnumParameterDefinition returns common::MEnumParameterDefinition:
-		//	"enum" name=ID "{" literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterDefinition common::MEnumParameterDefinition:
+		//	'enum'
+		//	name=ID
+		//	'{'
+		//	literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+		//	'}'
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"enum" name=ID "{" literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)* "}" ";"
+		//'enum' name=ID '{' literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)* '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"enum"
+		//'enum'
 		public Keyword getEnumKeyword_0() { return cEnumKeyword_0; }
 
 		//name=ID
@@ -2211,7 +2292,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//literals+=MEnumParameterLiteralRule
@@ -2232,15 +2313,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MEnumParameterLiteralRule
 		public RuleCall getLiteralsMEnumParameterLiteralRuleParserRuleCall_4_1_0() { return cLiteralsMEnumParameterLiteralRuleParserRuleCall_4_1_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MEnumParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -2255,22 +2336,25 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefaultValueMParameterValueExpressionParserRuleCall_5_0 = (RuleCall)cDefaultValueAssignment_5.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
-		//	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
-		//	":=" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterSingleExpression common::MEnumParameterSingleExpression:
+		//	constant?='const'?
+		//	'enum'
+		//	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
+		//	':=' defaultValue=MParameterValueExpression
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ":="
-		//defaultValue=MParameterValueExpression ";"
+		//constant?='const'? 'enum' enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+		//defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"enum"
+		//'enum'
 		public Keyword getEnumKeyword_1() { return cEnumKeyword_1; }
 
 		//enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
@@ -2288,7 +2372,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4() { return cColonEqualsSignKeyword_4; }
 
 		//defaultValue=MParameterValueExpression
@@ -2297,12 +2381,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_5_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_5_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MRealParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MRealParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MRealParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -2318,20 +2402,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRangeMParameterRangeParserRuleCall_5_1_0 = (RuleCall)cRangeAssignment_5_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
-		//	constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
-		public ParserRule getRule() { return rule; }
+		//MRealParameterSingleExpression common::MRealParameterSingleExpression:
+		//	constant?='const'?
+		//	'real'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+		//constant?='const'? 'real' name=ID ':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"real"
+		//'real'
 		public Keyword getRealKeyword_1() { return cRealKeyword_1; }
 
 		//name=ID
@@ -2340,7 +2428,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -2349,10 +2437,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//("range" range=MParameterRange)?
+		//('range' range=MParameterRange)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"range"
+		//'range'
 		public Keyword getRangeKeyword_5_0() { return cRangeKeyword_5_0; }
 
 		//range=MParameterRange
@@ -2361,23 +2449,23 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterRange
 		public RuleCall getRangeMParameterRangeParserRuleCall_5_1_0() { return cRangeMParameterRangeParserRuleCall_5_1_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MEnumParameterLiteralRuleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterLiteralRule");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParameterLiteralRule");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMEnumParameterLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMEnumParamIntegerLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMEnumParamRealLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
-		private final RuleCall cMEnumParamStringLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
+		private final RuleCall cMEnumParamStringLiteralRegularParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
-		//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral;
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterLiteralRule common::MEnumParameterLiteral:
+		//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteralRegular
+		@Override public ParserRule getRule() { return rule; }
 
-		//MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral
+		//MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteralRegular
 		public Alternatives getAlternatives() { return cAlternatives; }
 
 		//MEnumParameterLiteral
@@ -2389,20 +2477,20 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MEnumParamRealLiteral
 		public RuleCall getMEnumParamRealLiteralParserRuleCall_2() { return cMEnumParamRealLiteralParserRuleCall_2; }
 
-		//MEnumParamStringLiteral
-		public RuleCall getMEnumParamStringLiteralParserRuleCall_3() { return cMEnumParamStringLiteralParserRuleCall_3; }
+		//MEnumParamStringLiteralRegular
+		public RuleCall getMEnumParamStringLiteralRegularParserRuleCall_3() { return cMEnumParamStringLiteralRegularParserRuleCall_3; }
 	}
 
 	public class MEnumParameterLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParameterLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParameterLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
-		//MEnumParameterLiteral returns common::MEnumParameterLiteral:
-		//	{common::MEnumParameterLiteral} name=ID;
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterLiteral common::MEnumParameterLiteral:
+		//	{common::MEnumParameterLiteral} name=ID
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MEnumParameterLiteral} name=ID
 		public Group getGroup() { return cGroup; }
@@ -2418,7 +2506,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MEnumParamIntegerLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamIntegerLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParamIntegerLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParamIntegerLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -2427,11 +2515,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cValueINTEGERParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
-		//MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
-		//	{common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER;
-		public ParserRule getRule() { return rule; }
+		//MEnumParamIntegerLiteral common::MEnumParamIntegerLiteral:
+		//	{common::MEnumParamIntegerLiteral} name=ID
+		//	'='
+		//	value=INTEGER
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER
+		//{common::MEnumParamIntegerLiteral} name=ID '=' value=INTEGER
 		public Group getGroup() { return cGroup; }
 
 		//{common::MEnumParamIntegerLiteral}
@@ -2443,7 +2533,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"="
+		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 
 		//value=INTEGER
@@ -2454,7 +2544,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MEnumParamRealLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamRealLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParamRealLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParamRealLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -2463,11 +2553,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cValueREALParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
-		//MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
-		//	{common::MEnumParamRealLiteral} name=ID "=" value=REAL;
-		public ParserRule getRule() { return rule; }
+		//MEnumParamRealLiteral common::MEnumParamRealLiteral:
+		//	{common::MEnumParamRealLiteral} name=ID
+		//	'='
+		//	value=REAL
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MEnumParamRealLiteral} name=ID "=" value=REAL
+		//{common::MEnumParamRealLiteral} name=ID '=' value=REAL
 		public Group getGroup() { return cGroup; }
 
 		//{common::MEnumParamRealLiteral}
@@ -2479,7 +2571,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"="
+		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 
 		//value=REAL
@@ -2489,21 +2581,26 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		public RuleCall getValueREALParserRuleCall_3_0() { return cValueREALParserRuleCall_3_0; }
 	}
 
-	public class MEnumParamStringLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamStringLiteral");
+	public class MEnumParamStringLiteralRegularElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MEnumParamStringLiteralRegular");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParamStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValueSTRINGTerminalRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
+		private final Assignment cIsRawAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cIsRawRawKeyword_3_0 = (Keyword)cIsRawAssignment_3.eContents().get(0);
+		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cValueSTRINGTerminalRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		
-		//MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
-		//	{common::MEnumParamStringLiteral} name=ID "=" value=STRING;
-		public ParserRule getRule() { return rule; }
+		//MEnumParamStringLiteralRegular common::MEnumParamStringLiteral:
+		//	{common::MEnumParamStringLiteral} name=ID
+		//	'='
+		//	isRaw?='raw'?
+		//	value=STRING
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MEnumParamStringLiteral} name=ID "=" value=STRING
+		//{common::MEnumParamStringLiteral} name=ID '=' isRaw?='raw'? value=STRING
 		public Group getGroup() { return cGroup; }
 
 		//{common::MEnumParamStringLiteral}
@@ -2515,18 +2612,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"="
+		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 
+		//isRaw?='raw'?
+		public Assignment getIsRawAssignment_3() { return cIsRawAssignment_3; }
+
+		//'raw'
+		public Keyword getIsRawRawKeyword_3_0() { return cIsRawRawKeyword_3_0; }
+
 		//value=STRING
-		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
+		public Assignment getValueAssignment_4() { return cValueAssignment_4; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_3_0() { return cValueSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_4_0() { return cValueSTRINGTerminalRuleCall_4_0; }
 	}
 
 	public class MBooleanParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MBooleanParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MBooleanParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -2538,20 +2641,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefaultValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cDefaultValueAssignment_4.eContents().get(0);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
-		//	constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MBooleanParameterSingleExpression common::MBooleanParameterSingleExpression:
+		//	constant?='const'?
+		//	'boolean'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";"
+		//constant?='const'? 'boolean' name=ID ':=' defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"boolean"
+		//'boolean'
 		public Keyword getBooleanKeyword_1() { return cBooleanKeyword_1; }
 
 		//name=ID
@@ -2560,7 +2667,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -2569,12 +2676,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MStringParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MStringParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MStringParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -2586,20 +2693,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefaultValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cDefaultValueAssignment_4.eContents().get(0);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
-		//	constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MStringParameterSingleExpression common::MStringParameterSingleExpression:
+		//	constant?='const'?
+		//	'string'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";"
+		//constant?='const'? 'string' name=ID ':=' defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"string"
+		//'string'
 		public Keyword getStringKeyword_1() { return cStringKeyword_1; }
 
 		//name=ID
@@ -2608,7 +2719,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -2617,20 +2728,20 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MParameterValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValue");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueRefObjectParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValuePARParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//MParameterValue returns common::MParameterValue:
-		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
-		public ParserRule getRule() { return rule; }
+		//MParameterValue common::MParameterValue:
+		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -2646,17 +2757,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueLiteral");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueBooleanLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueStringLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValueIntegerLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cMParameterValueRealLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MParameterValueLiteral returns common::MParameterValueLiteral:
+		//MParameterValueLiteral common::MParameterValueLiteral:
 		//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-		//	MParameterValueRealLiteral;
-		public ParserRule getRule() { return rule; }
+		//	MParameterValueRealLiteral
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
 		//MParameterValueRealLiteral
@@ -2676,15 +2787,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueBooleanLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueBooleanLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueBooleanLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueBooleanLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueEBooleanParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-		//	{common::MParameterValueBooleanLiteral} value=EBoolean;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+		//	{common::MParameterValueBooleanLiteral} value=EBoolean
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueBooleanLiteral} value=EBoolean
 		public Group getGroup() { return cGroup; }
@@ -2700,39 +2811,48 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueStringLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueStringLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueStringLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final Assignment cIsRawAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cIsRawRawKeyword_1_0 = (Keyword)cIsRawAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
-		//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-		//	{common::MParameterValueStringLiteral} value=STRING;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+		//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+		//	value=STRING
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterValueStringLiteral} value=STRING
+		//{common::MParameterValueStringLiteral} isRaw?='raw'? value=STRING
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterValueStringLiteral}
 		public Action getMParameterValueStringLiteralAction_0() { return cMParameterValueStringLiteralAction_0; }
 
+		//isRaw?='raw'?
+		public Assignment getIsRawAssignment_1() { return cIsRawAssignment_1; }
+
+		//'raw'
+		public Keyword getIsRawRawKeyword_1_0() { return cIsRawRawKeyword_1_0; }
+
 		//value=STRING
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class MParameterValueIntegerLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueIntegerLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueIntegerLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueIntegerLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueINTEGERParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-		//	{common::MParameterValueIntegerLiteral} value=INTEGER;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+		//	{common::MParameterValueIntegerLiteral} value=INTEGER
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueIntegerLiteral} value=INTEGER
 		public Group getGroup() { return cGroup; }
@@ -2748,15 +2868,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRealLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRealLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueRealLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRealLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueREALParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-		//	{common::MParameterValueRealLiteral} value=REAL;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+		//	{common::MParameterValueRealLiteral} value=REAL
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRealLiteral} value=REAL
 		public Group getGroup() { return cGroup; }
@@ -2772,16 +2892,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRefObjectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRefObject");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueRefObject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRefObjectAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cObjectAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cObjectMCommonReferenceableObjCrossReference_1_0 = (CrossReference)cObjectAssignment_1.eContents().get(0);
 		private final RuleCall cObjectMCommonReferenceableObjVersionedQualifiedReferenceNameParserRuleCall_1_0_1 = (RuleCall)cObjectMCommonReferenceableObjCrossReference_1_0.eContents().get(1);
 		
-		//MParameterValueRefObject returns common::MParameterValueRefObject:
-		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRefObject common::MParameterValueRefObject:
+		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 		public Group getGroup() { return cGroup; }
@@ -2800,21 +2920,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValuePARElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValuePAR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValuePAR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueMParameterValueExpressionParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//MParameterValuePAR returns common::MParameterValuePAR:
-		//	"(" value=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterValuePAR common::MParameterValuePAR:
+		//	'(' value=MParameterValueExpression ')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"(" value=MParameterValueExpression ")"
+		//'(' value=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 
 		//value=MParameterValueExpression
@@ -2823,12 +2943,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getValueMParameterValueExpressionParserRuleCall_1_0() { return cValueMParameterValueExpressionParserRuleCall_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 
 	public class MParameterValueExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueExpressionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -2839,10 +2959,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueExpressionParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueExpression returns common::MParameterValueExpression:
+		//MParameterValueExpression common::MParameterValueExpression:
 		//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-		//	right=MParameterValueExpression)?;
-		public ParserRule getRule() { return rule; }
+		//	right=MParameterValueExpression)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
 		//right=MParameterValueExpression)?
@@ -2874,7 +2994,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueTERMElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERM");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueTERM");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueTERMAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -2885,10 +3005,9 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueTERMParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueTERM returns common::MParameterValueTERM:
-		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-		//	right=MParameterValueTERM)?;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueTERM common::MParameterValueTERM:
+		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 		public Group getGroup() { return cGroup; }
@@ -2919,16 +3038,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterRangeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterRange");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterRange");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterOCRParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterOORParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterCORParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cMParameterCCRParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MParameterRange returns common::MParameterRange:
-		//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR;
-		public ParserRule getRule() { return rule; }
+		//MParameterRange common::MParameterRange:
+		//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -2947,7 +3066,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterOCRElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterOCR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterOCR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterOCRAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -2958,17 +3077,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterOCR returns common::MParameterOCR:
-		//	{common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
-		public ParserRule getRule() { return rule; }
+		//MParameterOCR common::MParameterOCR:
+		//	{common::MParameterOCR}
+		//	'('
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	']'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]"
+		//{common::MParameterOCR} '(' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ']'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterOCR}
 		public Action getMParameterOCRAction_0() { return cMParameterOCRAction_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -2977,7 +3100,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -2986,12 +3109,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//"]"
+		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
 
 	public class MParameterOORElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterOOR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterOOR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterOORAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -3002,17 +3125,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterOOR returns common::MParameterOOR:
-		//	{common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterOOR common::MParameterOOR:
+		//	{common::MParameterOOR}
+		//	'('
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")"
+		//{common::MParameterOOR} '(' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterOOR}
 		public Action getMParameterOORAction_0() { return cMParameterOORAction_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -3021,7 +3148,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -3030,12 +3157,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 
 	public class MParameterCORElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterCOR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterCOR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterCORAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -3046,17 +3173,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterCOR returns common::MParameterCOR:
-		//	{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterCOR common::MParameterCOR:
+		//	{common::MParameterCOR}
+		//	'['
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")"
+		//{common::MParameterCOR} '[' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterCOR}
 		public Action getMParameterCORAction_0() { return cMParameterCORAction_0; }
 
-		//"["
+		//'['
 		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -3065,7 +3196,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -3074,12 +3205,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 
 	public class MParameterCCRElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterCCR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterCCR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterCCRAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -3090,17 +3221,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterCCR returns common::MParameterCCR:
-		//	{common::MParameterCCR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
-		public ParserRule getRule() { return rule; }
+		//MParameterCCR common::MParameterCCR:
+		//	{common::MParameterCCR}
+		//	'['
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	']'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterCCR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]"
+		//{common::MParameterCCR} '[' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ']'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterCCR}
 		public Action getMParameterCCRAction_0() { return cMParameterCCRAction_0; }
 
-		//"["
+		//'['
 		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -3109,7 +3244,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -3118,12 +3253,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//"]"
+		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
 
 	public class MOperatingSystemAPIElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOperatingSystemAPI");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOperatingSystemAPI");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cOsapiKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -3165,19 +3300,25 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MOperatingSystemAPI:
-		//	"osapi" name=ID ("inherits" inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
-		//	inherits+=[MOperatingSystemAPI|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & "language" ":="
-		//	language=[system::MLanguage|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-		//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'osapi'
+		//	name=ID ('inherits' inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
+		//	inherits+=[MOperatingSystemAPI|VersionedQualifiedName])*)?
+		//	'{' ('version' ':=' version=Version ';' & 'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' &
+		//	('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"osapi" name=ID ("inherits" inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
-		//inherits+=[MOperatingSystemAPI|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & "language" ":="
-		//language=[system::MLanguage|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-		//parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";"
+		//'osapi' name=ID ('inherits' inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
+		//inherits+=[MOperatingSystemAPI|VersionedQualifiedName])*)? '{' ('version' ':=' version=Version ';' & 'language' ':='
+		//language=[system::MLanguage|VersionedQualifiedName] ';' & ('configuration' 'parameters' '{'
+		//parameters+=MParameterWithoutOSSP+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"osapi"
+		//'osapi'
 		public Keyword getOsapiKeyword_0() { return cOsapiKeyword_0; }
 
 		//name=ID
@@ -3186,11 +3327,11 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("inherits" inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
+		//('inherits' inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
 		//inherits+=[MOperatingSystemAPI|VersionedQualifiedName])*)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"inherits"
+		//'inherits'
 		public Keyword getInheritsKeyword_2_0() { return cInheritsKeyword_2_0; }
 
 		//inherits+=[MOperatingSystemAPI|VersionedQualifiedName]
@@ -3217,20 +3358,20 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getInheritsMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_2_2_1_0_1() { return cInheritsMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_2_2_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"version" ":=" version=Version ";" & "language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" &
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'version' ':=' version=Version ';' & 'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' &
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_4_0_0() { return cVersionKeyword_4_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_0_1() { return cColonEqualsSignKeyword_4_0_1; }
 
 		//version=Version
@@ -3239,16 +3380,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_4_0_2_0() { return cVersionVersionParserRuleCall_4_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_3() { return cSemicolonKeyword_4_0_3; }
 
-		//"language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";"
+		//'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';'
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"language"
+		//'language'
 		public Keyword getLanguageKeyword_4_1_0() { return cLanguageKeyword_4_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_1_1() { return cColonEqualsSignKeyword_4_1_1; }
 
 		//language=[system::MLanguage|VersionedQualifiedName]
@@ -3260,19 +3401,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLanguageMLanguageVersionedQualifiedNameParserRuleCall_4_1_2_0_1() { return cLanguageMLanguageVersionedQualifiedNameParserRuleCall_4_1_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_3() { return cSemicolonKeyword_4_1_3; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_4_2_0() { return cConfigurationKeyword_4_2_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_4_2_1() { return cParametersKeyword_4_2_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_2_2() { return cLeftCurlyBracketKeyword_4_2_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -3281,21 +3422,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_4_2_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_4_2_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_2_4() { return cRightCurlyBracketKeyword_4_2_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_2_5() { return cSemicolonKeyword_4_2_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MDeviceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MDevice");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MDevice");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDeviceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -3320,15 +3461,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MDevice:
-		//	"device" name=ID "{" ("version" ":=" version=Version ";" & ("configuration" "parameters" "{"
-		//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'device'
+		//	name=ID
+		//	'{' ('version' ':=' version=Version ';' & ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"device" name=ID "{" ("version" ":=" version=Version ";" & ("configuration" "parameters" "{"
-		//parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";"
+		//'device' name=ID '{' ('version' ':=' version=Version ';' & ('configuration' 'parameters' '{'
+		//parameters+=MParameterWithoutOSSP+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_0() { return cDeviceKeyword_0; }
 
 		//name=ID
@@ -3337,19 +3484,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"version" ":=" version=Version ";" & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'version' ':=' version=Version ';' & ('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_3_0_0() { return cVersionKeyword_3_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_0_1() { return cColonEqualsSignKeyword_3_0_1; }
 
 		//version=Version
@@ -3358,19 +3505,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_3_0_2_0() { return cVersionVersionParserRuleCall_3_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_3_1_0() { return cConfigurationKeyword_3_1_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_3_1_1() { return cParametersKeyword_3_1_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_1_2() { return cLeftCurlyBracketKeyword_3_1_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -3379,21 +3526,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_3_1_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_3_1_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_1_4() { return cRightCurlyBracketKeyword_3_1_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_1_5() { return cSemicolonKeyword_3_1_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MArchitectureElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MArchitecture");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MArchitecture");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cArchitectureKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -3428,17 +3575,23 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MArchitecture:
-		//	"architecture" name=ID ("extends" extends+=[MArchitecture|VersionedQualifiedName] (","
-		//	extends+=[MArchitecture|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("configuration"
-		//	"parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'architecture'
+		//	name=ID ('extends'
+		//	extends+=[MArchitecture|VersionedQualifiedName] ("," extends+=[MArchitecture|VersionedQualifiedName])*)?
+		//	'{' ('version' ':=' version=Version ';' & ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"architecture" name=ID ("extends" extends+=[MArchitecture|VersionedQualifiedName] (","
-		//extends+=[MArchitecture|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("configuration"
-		//"parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";"
+		//'architecture' name=ID ('extends' extends+=[MArchitecture|VersionedQualifiedName] (","
+		//extends+=[MArchitecture|VersionedQualifiedName])*)? '{' ('version' ':=' version=Version ';' & ('configuration'
+		//'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"architecture"
+		//'architecture'
 		public Keyword getArchitectureKeyword_0() { return cArchitectureKeyword_0; }
 
 		//name=ID
@@ -3447,10 +3600,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("extends" extends+=[MArchitecture|VersionedQualifiedName] ("," extends+=[MArchitecture|VersionedQualifiedName])*)?
+		//('extends' extends+=[MArchitecture|VersionedQualifiedName] ("," extends+=[MArchitecture|VersionedQualifiedName])*)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"extends"
+		//'extends'
 		public Keyword getExtendsKeyword_2_0() { return cExtendsKeyword_2_0; }
 
 		//extends+=[MArchitecture|VersionedQualifiedName]
@@ -3477,19 +3630,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getExtendsMArchitectureVersionedQualifiedNameParserRuleCall_2_2_1_0_1() { return cExtendsMArchitectureVersionedQualifiedNameParserRuleCall_2_2_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"version" ":=" version=Version ";" & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'version' ':=' version=Version ';' & ('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_4_0_0() { return cVersionKeyword_4_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_0_1() { return cColonEqualsSignKeyword_4_0_1; }
 
 		//version=Version
@@ -3498,19 +3651,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_4_0_2_0() { return cVersionVersionParserRuleCall_4_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_3() { return cSemicolonKeyword_4_0_3; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_4_1_0() { return cConfigurationKeyword_4_1_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_4_1_1() { return cParametersKeyword_4_1_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_1_2() { return cLeftCurlyBracketKeyword_4_1_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -3519,21 +3672,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_4_1_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_4_1_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_1_4() { return cRightCurlyBracketKeyword_4_1_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_5() { return cSemicolonKeyword_4_1_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MOSSupportedPlatformElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MOSSupportedPlatform");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MOSSupportedPlatform");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMOSSupportedPlatformAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cSupportedKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -3598,29 +3751,37 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//MOSSupportedPlatform:
-		//	{MOSSupportedPlatform} "supported" "platform" name=ID "{" ("architecture" ":="
-		//	architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":=" compiler=[MCompiler|VersionedQualifiedName]
-		//	";" & "microprocessor" ":=" ("any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":="
-		//	("any" | board=[MBoard|VersionedQualifiedName]) ";" & ("languages" ":="
-		//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-		//	";")? & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	{MOSSupportedPlatform}
+		//	'supported' 'platform'
+		//	name=ID
+		//	'{' ('architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':='
+		//	compiler=[MCompiler|VersionedQualifiedName] ';' & 'microprocessor' ':=' ('any' |
+		//	microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+		//	board=[MBoard|VersionedQualifiedName]) ';' & ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName]
+		//	("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+		//	& ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//{MOSSupportedPlatform} "supported" "platform" name=ID "{" ("architecture" ":="
-		//architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":=" compiler=[MCompiler|VersionedQualifiedName]
-		//";" & "microprocessor" ":=" ("any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any"
-		//| board=[MBoard|VersionedQualifiedName]) ";" & ("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName]
-		//("," languages+=[system::MLanguage|VersionedQualifiedName])* ";")? & ("configuration" "parameters" "{"
-		//parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";"
+		//{MOSSupportedPlatform} 'supported' 'platform' name=ID '{' ('architecture' ':='
+		//architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':=' compiler=[MCompiler|VersionedQualifiedName]
+		//';' & 'microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any'
+		//| board=[MBoard|VersionedQualifiedName]) ';' & ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName]
+		//("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')? & ('configuration' 'parameters' '{'
+		//parameters+=MParameterWithoutOSSP+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{MOSSupportedPlatform}
 		public Action getMOSSupportedPlatformAction_0() { return cMOSSupportedPlatformAction_0; }
 
-		//"supported"
+		//'supported'
 		public Keyword getSupportedKeyword_1() { return cSupportedKeyword_1; }
 
-		//"platform"
+		//'platform'
 		public Keyword getPlatformKeyword_2() { return cPlatformKeyword_2; }
 
 		//name=ID
@@ -3629,24 +3790,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
-		//"architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":="
-		//compiler=[MCompiler|VersionedQualifiedName] ";" & "microprocessor" ":=" ("any" |
-		//microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-		//board=[MBoard|VersionedQualifiedName]) ";" & ("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName]
-		//("," languages+=[system::MLanguage|VersionedQualifiedName])* ";")? & ("configuration" "parameters" "{"
-		//parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':='
+		//compiler=[MCompiler|VersionedQualifiedName] ';' & 'microprocessor' ':=' ('any' |
+		//microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+		//board=[MBoard|VersionedQualifiedName]) ';' & ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName]
+		//("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')? & ('configuration' 'parameters' '{'
+		//parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public UnorderedGroup getUnorderedGroup_5() { return cUnorderedGroup_5; }
 
-		//"architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";"
+		//'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';'
 		public Group getGroup_5_0() { return cGroup_5_0; }
 
-		//"architecture"
+		//'architecture'
 		public Keyword getArchitectureKeyword_5_0_0() { return cArchitectureKeyword_5_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_0_1() { return cColonEqualsSignKeyword_5_0_1; }
 
 		//architecture=[MArchitecture|VersionedQualifiedName]
@@ -3658,16 +3819,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getArchitectureMArchitectureVersionedQualifiedNameParserRuleCall_5_0_2_0_1() { return cArchitectureMArchitectureVersionedQualifiedNameParserRuleCall_5_0_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_0_3() { return cSemicolonKeyword_5_0_3; }
 
-		//"compiler" ":=" compiler=[MCompiler|VersionedQualifiedName] ";"
+		//'compiler' ':=' compiler=[MCompiler|VersionedQualifiedName] ';'
 		public Group getGroup_5_1() { return cGroup_5_1; }
 
-		//"compiler"
+		//'compiler'
 		public Keyword getCompilerKeyword_5_1_0() { return cCompilerKeyword_5_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_1_1() { return cColonEqualsSignKeyword_5_1_1; }
 
 		//compiler=[MCompiler|VersionedQualifiedName]
@@ -3679,22 +3840,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getCompilerMCompilerVersionedQualifiedNameParserRuleCall_5_1_2_0_1() { return cCompilerMCompilerVersionedQualifiedNameParserRuleCall_5_1_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_1_3() { return cSemicolonKeyword_5_1_3; }
 
-		//"microprocessor" ":=" ("any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";"
+		//'microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';'
 		public Group getGroup_5_2() { return cGroup_5_2; }
 
-		//"microprocessor"
+		//'microprocessor'
 		public Keyword getMicroprocessorKeyword_5_2_0() { return cMicroprocessorKeyword_5_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_2_1() { return cColonEqualsSignKeyword_5_2_1; }
 
-		//"any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]
+		//'any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]
 		public Alternatives getAlternatives_5_2_2() { return cAlternatives_5_2_2; }
 
-		//"any"
+		//'any'
 		public Keyword getAnyKeyword_5_2_2_0() { return cAnyKeyword_5_2_2_0; }
 
 		//microprocessor=[MMicroprocessor|VersionedQualifiedName]
@@ -3706,22 +3867,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getMicroprocessorMMicroprocessorVersionedQualifiedNameParserRuleCall_5_2_2_1_0_1() { return cMicroprocessorMMicroprocessorVersionedQualifiedNameParserRuleCall_5_2_2_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_2_3() { return cSemicolonKeyword_5_2_3; }
 
-		//"board" ":=" ("any" | board=[MBoard|VersionedQualifiedName]) ";"
+		//'board' ':=' ('any' | board=[MBoard|VersionedQualifiedName]) ';'
 		public Group getGroup_5_3() { return cGroup_5_3; }
 
-		//"board"
+		//'board'
 		public Keyword getBoardKeyword_5_3_0() { return cBoardKeyword_5_3_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_3_1() { return cColonEqualsSignKeyword_5_3_1; }
 
-		//"any" | board=[MBoard|VersionedQualifiedName]
+		//'any' | board=[MBoard|VersionedQualifiedName]
 		public Alternatives getAlternatives_5_3_2() { return cAlternatives_5_3_2; }
 
-		//"any"
+		//'any'
 		public Keyword getAnyKeyword_5_3_2_0() { return cAnyKeyword_5_3_2_0; }
 
 		//board=[MBoard|VersionedQualifiedName]
@@ -3733,17 +3894,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getBoardMBoardVersionedQualifiedNameParserRuleCall_5_3_2_1_0_1() { return cBoardMBoardVersionedQualifiedNameParserRuleCall_5_3_2_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_3_3() { return cSemicolonKeyword_5_3_3; }
 
-		//("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-		//languages+=[system::MLanguage|VersionedQualifiedName])* ";")?
+		//('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+		//languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
 		public Group getGroup_5_4() { return cGroup_5_4; }
 
-		//"languages"
+		//'languages'
 		public Keyword getLanguagesKeyword_5_4_0() { return cLanguagesKeyword_5_4_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_4_1() { return cColonEqualsSignKeyword_5_4_1; }
 
 		//languages+=[system::MLanguage|VersionedQualifiedName]
@@ -3770,19 +3931,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLanguagesMLanguageVersionedQualifiedNameParserRuleCall_5_4_3_1_0_1() { return cLanguagesMLanguageVersionedQualifiedNameParserRuleCall_5_4_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_4_4() { return cSemicolonKeyword_5_4_4; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_5_5() { return cGroup_5_5; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_5_5_0() { return cConfigurationKeyword_5_5_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_5_5_1() { return cParametersKeyword_5_5_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5_5_2() { return cLeftCurlyBracketKeyword_5_5_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -3791,21 +3952,21 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_5_5_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_5_5_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_5_4() { return cRightCurlyBracketKeyword_5_5_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_5_5() { return cSemicolonKeyword_5_5_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MPlatformElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MPlatform");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MPlatform");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPlatformKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -3876,25 +4037,30 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MPlatform:
-		//	"platform" name=ID "{" ("version" ":=" version=Version ";" & "osapi" ":="
-		//	osapi=[MOperatingSystemAPI|VersionedQualifiedName] ";" & "os" ":=" os=[MOperatingSystem|VersionedQualifiedName] ";" &
-		//	"architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":="
-		//	compiler=[MCompiler|VersionedQualifiedName] ";" & "microprocessor" ":=" ("any" |
-		//	microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-		//	board=[MBoard|VersionedQualifiedName]) ";" & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}"
-		//	";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'platform'
+		//	name=ID
+		//	'{' ('version' ':=' version=Version ';' & 'osapi' ':=' osapi=[MOperatingSystemAPI|VersionedQualifiedName] ';' & 'os'
+		//	':=' os=[MOperatingSystem|VersionedQualifiedName] ';' & 'architecture' ':='
+		//	architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':=' compiler=[MCompiler|VersionedQualifiedName]
+		//	';' & 'microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':='
+		//	('any' | board=[MBoard|VersionedQualifiedName]) ';' & ('configuration' 'parameters'
+		//	'{'
+		//	parameters+=MParameterWithoutOSSP+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"platform" name=ID "{" ("version" ":=" version=Version ";" & "osapi" ":="
-		//osapi=[MOperatingSystemAPI|VersionedQualifiedName] ";" & "os" ":=" os=[MOperatingSystem|VersionedQualifiedName] ";" &
-		//"architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":="
-		//compiler=[MCompiler|VersionedQualifiedName] ";" & "microprocessor" ":=" ("any" |
-		//microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-		//board=[MBoard|VersionedQualifiedName]) ";" & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}"
-		//";")?) "}" ";"
+		//'platform' name=ID '{' ('version' ':=' version=Version ';' & 'osapi' ':='
+		//osapi=[MOperatingSystemAPI|VersionedQualifiedName] ';' & 'os' ':=' os=[MOperatingSystem|VersionedQualifiedName] ';' &
+		//'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':='
+		//compiler=[MCompiler|VersionedQualifiedName] ';' & 'microprocessor' ':=' ('any' |
+		//microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+		//board=[MBoard|VersionedQualifiedName]) ';' & ('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}'
+		//';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"platform"
+		//'platform'
 		public Keyword getPlatformKeyword_0() { return cPlatformKeyword_0; }
 
 		//name=ID
@@ -3903,24 +4069,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"version" ":=" version=Version ";" & "osapi" ":=" osapi=[MOperatingSystemAPI|VersionedQualifiedName] ";" & "os" ":="
-		//os=[MOperatingSystem|VersionedQualifiedName] ";" & "architecture" ":="
-		//architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":=" compiler=[MCompiler|VersionedQualifiedName]
-		//";" & "microprocessor" ":=" ("any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any"
-		//| board=[MBoard|VersionedQualifiedName]) ";" & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}"
-		//";")?
+		//'version' ':=' version=Version ';' & 'osapi' ':=' osapi=[MOperatingSystemAPI|VersionedQualifiedName] ';' & 'os' ':='
+		//os=[MOperatingSystem|VersionedQualifiedName] ';' & 'architecture' ':='
+		//architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':=' compiler=[MCompiler|VersionedQualifiedName]
+		//';' & 'microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any'
+		//| board=[MBoard|VersionedQualifiedName]) ';' & ('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}'
+		//';')?
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_3_0_0() { return cVersionKeyword_3_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_0_1() { return cColonEqualsSignKeyword_3_0_1; }
 
 		//version=Version
@@ -3929,16 +4095,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_3_0_2_0() { return cVersionVersionParserRuleCall_3_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
 
-		//"osapi" ":=" osapi=[MOperatingSystemAPI|VersionedQualifiedName] ";"
+		//'osapi' ':=' osapi=[MOperatingSystemAPI|VersionedQualifiedName] ';'
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"osapi"
+		//'osapi'
 		public Keyword getOsapiKeyword_3_1_0() { return cOsapiKeyword_3_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_1_1() { return cColonEqualsSignKeyword_3_1_1; }
 
 		//osapi=[MOperatingSystemAPI|VersionedQualifiedName]
@@ -3950,16 +4116,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getOsapiMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_3_1_2_0_1() { return cOsapiMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_3_1_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_1_3() { return cSemicolonKeyword_3_1_3; }
 
-		//"os" ":=" os=[MOperatingSystem|VersionedQualifiedName] ";"
+		//'os' ':=' os=[MOperatingSystem|VersionedQualifiedName] ';'
 		public Group getGroup_3_2() { return cGroup_3_2; }
 
-		//"os"
+		//'os'
 		public Keyword getOsKeyword_3_2_0() { return cOsKeyword_3_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_2_1() { return cColonEqualsSignKeyword_3_2_1; }
 
 		//os=[MOperatingSystem|VersionedQualifiedName]
@@ -3971,16 +4137,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getOsMOperatingSystemVersionedQualifiedNameParserRuleCall_3_2_2_0_1() { return cOsMOperatingSystemVersionedQualifiedNameParserRuleCall_3_2_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2_3() { return cSemicolonKeyword_3_2_3; }
 
-		//"architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";"
+		//'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';'
 		public Group getGroup_3_3() { return cGroup_3_3; }
 
-		//"architecture"
+		//'architecture'
 		public Keyword getArchitectureKeyword_3_3_0() { return cArchitectureKeyword_3_3_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_3_1() { return cColonEqualsSignKeyword_3_3_1; }
 
 		//architecture=[MArchitecture|VersionedQualifiedName]
@@ -3992,16 +4158,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getArchitectureMArchitectureVersionedQualifiedNameParserRuleCall_3_3_2_0_1() { return cArchitectureMArchitectureVersionedQualifiedNameParserRuleCall_3_3_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_3_3() { return cSemicolonKeyword_3_3_3; }
 
-		//"compiler" ":=" compiler=[MCompiler|VersionedQualifiedName] ";"
+		//'compiler' ':=' compiler=[MCompiler|VersionedQualifiedName] ';'
 		public Group getGroup_3_4() { return cGroup_3_4; }
 
-		//"compiler"
+		//'compiler'
 		public Keyword getCompilerKeyword_3_4_0() { return cCompilerKeyword_3_4_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_4_1() { return cColonEqualsSignKeyword_3_4_1; }
 
 		//compiler=[MCompiler|VersionedQualifiedName]
@@ -4013,22 +4179,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getCompilerMCompilerVersionedQualifiedNameParserRuleCall_3_4_2_0_1() { return cCompilerMCompilerVersionedQualifiedNameParserRuleCall_3_4_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_4_3() { return cSemicolonKeyword_3_4_3; }
 
-		//"microprocessor" ":=" ("any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";"
+		//'microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';'
 		public Group getGroup_3_5() { return cGroup_3_5; }
 
-		//"microprocessor"
+		//'microprocessor'
 		public Keyword getMicroprocessorKeyword_3_5_0() { return cMicroprocessorKeyword_3_5_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_5_1() { return cColonEqualsSignKeyword_3_5_1; }
 
-		//"any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]
+		//'any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]
 		public Alternatives getAlternatives_3_5_2() { return cAlternatives_3_5_2; }
 
-		//"any"
+		//'any'
 		public Keyword getAnyKeyword_3_5_2_0() { return cAnyKeyword_3_5_2_0; }
 
 		//microprocessor=[MMicroprocessor|VersionedQualifiedName]
@@ -4040,22 +4206,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getMicroprocessorMMicroprocessorVersionedQualifiedNameParserRuleCall_3_5_2_1_0_1() { return cMicroprocessorMMicroprocessorVersionedQualifiedNameParserRuleCall_3_5_2_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_5_3() { return cSemicolonKeyword_3_5_3; }
 
-		//"board" ":=" ("any" | board=[MBoard|VersionedQualifiedName]) ";"
+		//'board' ':=' ('any' | board=[MBoard|VersionedQualifiedName]) ';'
 		public Group getGroup_3_6() { return cGroup_3_6; }
 
-		//"board"
+		//'board'
 		public Keyword getBoardKeyword_3_6_0() { return cBoardKeyword_3_6_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_6_1() { return cColonEqualsSignKeyword_3_6_1; }
 
-		//"any" | board=[MBoard|VersionedQualifiedName]
+		//'any' | board=[MBoard|VersionedQualifiedName]
 		public Alternatives getAlternatives_3_6_2() { return cAlternatives_3_6_2; }
 
-		//"any"
+		//'any'
 		public Keyword getAnyKeyword_3_6_2_0() { return cAnyKeyword_3_6_2_0; }
 
 		//board=[MBoard|VersionedQualifiedName]
@@ -4067,19 +4233,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getBoardMBoardVersionedQualifiedNameParserRuleCall_3_6_2_1_0_1() { return cBoardMBoardVersionedQualifiedNameParserRuleCall_3_6_2_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_6_3() { return cSemicolonKeyword_3_6_3; }
 
-		//("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?
+		//('configuration' 'parameters' '{' parameters+=MParameterWithoutOSSP+ '}' ';')?
 		public Group getGroup_3_7() { return cGroup_3_7; }
 
-		//"configuration"
+		//'configuration'
 		public Keyword getConfigurationKeyword_3_7_0() { return cConfigurationKeyword_3_7_0; }
 
-		//"parameters"
+		//'parameters'
 		public Keyword getParametersKeyword_3_7_1() { return cParametersKeyword_3_7_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_7_2() { return cLeftCurlyBracketKeyword_3_7_2; }
 
 		//parameters+=MParameterWithoutOSSP+
@@ -4088,58 +4254,58 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterWithoutOSSP
 		public RuleCall getParametersMParameterWithoutOSSPParserRuleCall_3_7_3_0() { return cParametersMParameterWithoutOSSPParserRuleCall_3_7_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_7_4() { return cRightCurlyBracketKeyword_3_7_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_7_5() { return cSemicolonKeyword_3_7_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class EBooleanElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EBoolean");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.EBoolean");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
-		//EBoolean returns ecore::EBoolean:
-		//	"true" | "false";
-		public ParserRule getRule() { return rule; }
+		//EBoolean ecore::EBoolean:
+		//	'true' | 'false'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"true" | "false"
+		//'true' | 'false'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"true"
+		//'true'
 		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
 
-		//"false"
+		//'false'
 		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
 	}
 
 	public class INTEGERElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "INTEGER");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.INTEGER");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final RuleCall cHEXADECIMALTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//INTEGER returns ecore::EString:
-		//	"-"? INT | HEXADECIMAL;
-		public ParserRule getRule() { return rule; }
+		//INTEGER:
+		//	'-'? INT | HEXADECIMAL;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? INT | HEXADECIMAL
+		//'-'? INT | HEXADECIMAL
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"-"? INT
+		//'-'? INT
 		public Group getGroup_0() { return cGroup_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0_0() { return cHyphenMinusKeyword_0_0; }
 
 		//INT
@@ -4150,7 +4316,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class REALElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "REAL");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.REAL");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -4162,35 +4328,35 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cHyphenMinusKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final RuleCall cINTTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
-		//REAL returns ecore::EString:
-		//	"-"? (INT "." INT) ("e" "-"? INT)?;
-		public ParserRule getRule() { return rule; }
+		//REAL:
+		//	'-'? (INT '.' INT) ('e' '-'? INT)?;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? (INT "." INT) ("e" "-"? INT)?
+		//'-'? (INT '.' INT) ('e' '-'? INT)?
 		public Group getGroup() { return cGroup; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
 
-		//INT "." INT
+		//INT '.' INT
 		public Group getGroup_1() { return cGroup_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_1() { return cFullStopKeyword_1_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_2() { return cINTTerminalRuleCall_1_2; }
 
-		//("e" "-"? INT)?
+		//('e' '-'? INT)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"e"
+		//'e'
 		public Keyword getEKeyword_2_0() { return cEKeyword_2_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_2_1() { return cHyphenMinusKeyword_2_1; }
 
 		//INT
@@ -4199,7 +4365,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MParameterValueExpressionOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpressionOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueExpressionOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cPlusEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cPlusPlusSignKeyword_0_0 = (Keyword)cPlusEnumLiteralDeclaration_0.eContents().get(0);
@@ -4207,27 +4373,27 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMinusHyphenMinusKeyword_1_0 = (Keyword)cMinusEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-		//	plus="+" | minus="-";
+		//	plus='+' | minus='-';
 		public EnumRule getRule() { return rule; }
 
-		//plus="+" | minus="-"
+		//plus='+' | minus='-'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//plus="+"
+		//plus='+'
 		public EnumLiteralDeclaration getPlusEnumLiteralDeclaration_0() { return cPlusEnumLiteralDeclaration_0; }
 
-		//"+"
+		//'+'
 		public Keyword getPlusPlusSignKeyword_0_0() { return cPlusPlusSignKeyword_0_0; }
 
-		//minus="-"
+		//minus='-'
 		public EnumLiteralDeclaration getMinusEnumLiteralDeclaration_1() { return cMinusEnumLiteralDeclaration_1; }
 
-		//"-"
+		//'-'
 		public Keyword getMinusHyphenMinusKeyword_1_0() { return cMinusHyphenMinusKeyword_1_0; }
 	}
 
 	public class MParameterValueTERMOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERMOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.MParameterValueTERMOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cMultEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cMultAsteriskKeyword_0_0 = (Keyword)cMultEnumLiteralDeclaration_0.eContents().get(0);
@@ -4235,101 +4401,167 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDivSolidusKeyword_1_0 = (Keyword)cDivEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-		//	mult="*" | div="/";
+		//	mult='*' | div='/';
 		public EnumRule getRule() { return rule; }
 
-		//mult="*" | div="/"
+		//mult='*' | div='/'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//mult="*"
+		//mult='*'
 		public EnumLiteralDeclaration getMultEnumLiteralDeclaration_0() { return cMultEnumLiteralDeclaration_0; }
 
-		//"*"
+		//'*'
 		public Keyword getMultAsteriskKeyword_0_0() { return cMultAsteriskKeyword_0_0; }
 
-		//div="/"
+		//div='/'
 		public EnumLiteralDeclaration getDivEnumLiteralDeclaration_1() { return cDivEnumLiteralDeclaration_1; }
 
-		//"/"
+		//'/'
 		public Keyword getDivSolidusKeyword_1_0() { return cDivSolidusKeyword_1_0; }
 	}
 	
-	private MPDLPackageFileElements pMPDLPackageFile;
-	private MPDLPackageElementElements pMPDLPackageElement;
-	private QualifiedNameElements pQualifiedName;
-	private VersionElements pVersion;
-	private VersionedQualifiedNameElements pVersionedQualifiedName;
-	private VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
-	private MCompilerElements pMCompiler;
-	private MCompilerFrontendElements pMCompilerFrontend;
-	private MBoardElements pMBoard;
-	private MBoardSupportedDeviceElements pMBoardSupportedDevice;
-	private MMicroprocessorElements pMMicroprocessor;
-	private MOperatingSystemElements pMOperatingSystem;
-	private MOSSupportedOSAPIElements pMOSSupportedOSAPI;
-	private MOSSupportedOSAPIPVAElements pMOSSupportedOSAPIPVA;
-	private MOSSupportedOSAPIPVAExpressionElements pMOSSupportedOSAPIPVAExpression;
-	private MOSSupportedOSAPIPVASwitchElements pMOSSupportedOSAPIPVASwitch;
-	private MOSSupportedOSAPIPVASwitchCaseElements pMOSSupportedOSAPIPVASwitchCase;
-	private MParameterElements pMParameter;
-	private MBooleanParamOSSPSwitchElements pMBooleanParamOSSPSwitch;
-	private MBooleanParamOSSPSwitchCaseElements pMBooleanParamOSSPSwitchCase;
-	private MStringParamOSSPSwitchElements pMStringParamOSSPSwitch;
-	private MStringParamOSSPSwitchCaseElements pMStringParamOSSPSwitchCase;
-	private MIntegerParamOSSPSwitchElements pMIntegerParamOSSPSwitch;
-	private MIntegerParamOSSPSwitchCaseElements pMIntegerParamOSSPSwitchCase;
-	private MRealParamOSSPSwitchElements pMRealParamOSSPSwitch;
-	private MRealParamOSSPSwitchCaseElements pMRealParamOSSPSwitchCase;
-	private MEnumParamOSSPSwitchElements pMEnumParamOSSPSwitch;
-	private MEnumParamOSSPSwitchCaseElements pMEnumParamOSSPSwitchCase;
-	private MParameterWithoutOSSPElements pMParameterWithoutOSSP;
-	private MIntegerParameterSingleExpressionElements pMIntegerParameterSingleExpression;
-	private MEnumParameterDefinitionElements pMEnumParameterDefinition;
-	private MEnumParameterSingleExpressionElements pMEnumParameterSingleExpression;
-	private MRealParameterSingleExpressionElements pMRealParameterSingleExpression;
-	private MEnumParameterLiteralRuleElements pMEnumParameterLiteralRule;
-	private MEnumParameterLiteralElements pMEnumParameterLiteral;
-	private MEnumParamIntegerLiteralElements pMEnumParamIntegerLiteral;
-	private MEnumParamRealLiteralElements pMEnumParamRealLiteral;
-	private MEnumParamStringLiteralElements pMEnumParamStringLiteral;
-	private MBooleanParameterSingleExpressionElements pMBooleanParameterSingleExpression;
-	private MStringParameterSingleExpressionElements pMStringParameterSingleExpression;
-	private MParameterValueElements pMParameterValue;
-	private MParameterValueLiteralElements pMParameterValueLiteral;
-	private MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
-	private MParameterValueStringLiteralElements pMParameterValueStringLiteral;
-	private MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
-	private MParameterValueRealLiteralElements pMParameterValueRealLiteral;
-	private MParameterValueRefObjectElements pMParameterValueRefObject;
-	private MParameterValuePARElements pMParameterValuePAR;
-	private MParameterValueExpressionOperatorsElements unknownRuleMParameterValueExpressionOperators;
-	private MParameterValueTERMOperatorsElements unknownRuleMParameterValueTERMOperators;
-	private MParameterValueExpressionElements pMParameterValueExpression;
-	private MParameterValueTERMElements pMParameterValueTERM;
-	private MParameterRangeElements pMParameterRange;
-	private MParameterOCRElements pMParameterOCR;
-	private MParameterOORElements pMParameterOOR;
-	private MParameterCORElements pMParameterCOR;
-	private MParameterCCRElements pMParameterCCR;
-	private MOperatingSystemAPIElements pMOperatingSystemAPI;
-	private MDeviceElements pMDevice;
-	private MArchitectureElements pMArchitecture;
-	private MOSSupportedPlatformElements pMOSSupportedPlatform;
-	private MPlatformElements pMPlatform;
-	private EBooleanElements pEBoolean;
-	private TerminalRule tHEXADECIMAL;
-	private INTEGERElements pINTEGER;
-	private REALElements pREAL;
+	private final MPDLPackageFileElements pMPDLPackageFile;
+	private final MPDLPackageElementElements pMPDLPackageElement;
+	private final QualifiedNameElements pQualifiedName;
+	private final VersionElements pVersion;
+	private final VersionedQualifiedNameElements pVersionedQualifiedName;
+	private final VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
+	private final MCompilerElements pMCompiler;
+	private final MCompilerFrontendElements pMCompilerFrontend;
+	private final MBoardElements pMBoard;
+	private final MBoardSupportedDeviceElements pMBoardSupportedDevice;
+	private final MMicroprocessorElements pMMicroprocessor;
+	private final MOperatingSystemElements pMOperatingSystem;
+	private final MOSSupportedOSAPIElements pMOSSupportedOSAPI;
+	private final MOSSupportedOSAPIPVAElements pMOSSupportedOSAPIPVA;
+	private final MOSSupportedOSAPIPVAExpressionElements pMOSSupportedOSAPIPVAExpression;
+	private final MOSSupportedOSAPIPVASwitchElements pMOSSupportedOSAPIPVASwitch;
+	private final MOSSupportedOSAPIPVASwitchCaseElements pMOSSupportedOSAPIPVASwitchCase;
+	private final MParameterElements pMParameter;
+	private final MBooleanParamOSSPSwitchElements pMBooleanParamOSSPSwitch;
+	private final MBooleanParamOSSPSwitchCaseElements pMBooleanParamOSSPSwitchCase;
+	private final MStringParamOSSPSwitchElements pMStringParamOSSPSwitch;
+	private final MStringParamOSSPSwitchCaseElements pMStringParamOSSPSwitchCase;
+	private final MIntegerParamOSSPSwitchElements pMIntegerParamOSSPSwitch;
+	private final MIntegerParamOSSPSwitchCaseElements pMIntegerParamOSSPSwitchCase;
+	private final MRealParamOSSPSwitchElements pMRealParamOSSPSwitch;
+	private final MRealParamOSSPSwitchCaseElements pMRealParamOSSPSwitchCase;
+	private final MEnumParamOSSPSwitchElements pMEnumParamOSSPSwitch;
+	private final MEnumParamOSSPSwitchCaseElements pMEnumParamOSSPSwitchCase;
+	private final MParameterWithoutOSSPElements pMParameterWithoutOSSP;
+	private final MIntegerParameterSingleExpressionElements pMIntegerParameterSingleExpression;
+	private final MEnumParameterDefinitionElements pMEnumParameterDefinition;
+	private final MEnumParameterSingleExpressionElements pMEnumParameterSingleExpression;
+	private final MRealParameterSingleExpressionElements pMRealParameterSingleExpression;
+	private final MEnumParameterLiteralRuleElements pMEnumParameterLiteralRule;
+	private final MEnumParameterLiteralElements pMEnumParameterLiteral;
+	private final MEnumParamIntegerLiteralElements pMEnumParamIntegerLiteral;
+	private final MEnumParamRealLiteralElements pMEnumParamRealLiteral;
+	private final MEnumParamStringLiteralRegularElements pMEnumParamStringLiteralRegular;
+	private final MBooleanParameterSingleExpressionElements pMBooleanParameterSingleExpression;
+	private final MStringParameterSingleExpressionElements pMStringParameterSingleExpression;
+	private final MParameterValueElements pMParameterValue;
+	private final MParameterValueLiteralElements pMParameterValueLiteral;
+	private final MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
+	private final MParameterValueStringLiteralElements pMParameterValueStringLiteral;
+	private final MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
+	private final MParameterValueRealLiteralElements pMParameterValueRealLiteral;
+	private final MParameterValueRefObjectElements pMParameterValueRefObject;
+	private final MParameterValuePARElements pMParameterValuePAR;
+	private final MParameterValueExpressionOperatorsElements eMParameterValueExpressionOperators;
+	private final MParameterValueTERMOperatorsElements eMParameterValueTERMOperators;
+	private final MParameterValueExpressionElements pMParameterValueExpression;
+	private final MParameterValueTERMElements pMParameterValueTERM;
+	private final MParameterRangeElements pMParameterRange;
+	private final MParameterOCRElements pMParameterOCR;
+	private final MParameterOORElements pMParameterOOR;
+	private final MParameterCORElements pMParameterCOR;
+	private final MParameterCCRElements pMParameterCCR;
+	private final MOperatingSystemAPIElements pMOperatingSystemAPI;
+	private final MDeviceElements pMDevice;
+	private final MArchitectureElements pMArchitecture;
+	private final MOSSupportedPlatformElements pMOSSupportedPlatform;
+	private final MPlatformElements pMPlatform;
+	private final EBooleanElements pEBoolean;
+	private final TerminalRule tHEXADECIMAL;
+	private final INTEGERElements pINTEGER;
+	private final REALElements pREAL;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public PDLGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMPDLPackageFile = new MPDLPackageFileElements();
+		this.pMPDLPackageElement = new MPDLPackageElementElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pVersion = new VersionElements();
+		this.pVersionedQualifiedName = new VersionedQualifiedNameElements();
+		this.pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements();
+		this.pMCompiler = new MCompilerElements();
+		this.pMCompilerFrontend = new MCompilerFrontendElements();
+		this.pMBoard = new MBoardElements();
+		this.pMBoardSupportedDevice = new MBoardSupportedDeviceElements();
+		this.pMMicroprocessor = new MMicroprocessorElements();
+		this.pMOperatingSystem = new MOperatingSystemElements();
+		this.pMOSSupportedOSAPI = new MOSSupportedOSAPIElements();
+		this.pMOSSupportedOSAPIPVA = new MOSSupportedOSAPIPVAElements();
+		this.pMOSSupportedOSAPIPVAExpression = new MOSSupportedOSAPIPVAExpressionElements();
+		this.pMOSSupportedOSAPIPVASwitch = new MOSSupportedOSAPIPVASwitchElements();
+		this.pMOSSupportedOSAPIPVASwitchCase = new MOSSupportedOSAPIPVASwitchCaseElements();
+		this.pMParameter = new MParameterElements();
+		this.pMBooleanParamOSSPSwitch = new MBooleanParamOSSPSwitchElements();
+		this.pMBooleanParamOSSPSwitchCase = new MBooleanParamOSSPSwitchCaseElements();
+		this.pMStringParamOSSPSwitch = new MStringParamOSSPSwitchElements();
+		this.pMStringParamOSSPSwitchCase = new MStringParamOSSPSwitchCaseElements();
+		this.pMIntegerParamOSSPSwitch = new MIntegerParamOSSPSwitchElements();
+		this.pMIntegerParamOSSPSwitchCase = new MIntegerParamOSSPSwitchCaseElements();
+		this.pMRealParamOSSPSwitch = new MRealParamOSSPSwitchElements();
+		this.pMRealParamOSSPSwitchCase = new MRealParamOSSPSwitchCaseElements();
+		this.pMEnumParamOSSPSwitch = new MEnumParamOSSPSwitchElements();
+		this.pMEnumParamOSSPSwitchCase = new MEnumParamOSSPSwitchCaseElements();
+		this.pMParameterWithoutOSSP = new MParameterWithoutOSSPElements();
+		this.pMIntegerParameterSingleExpression = new MIntegerParameterSingleExpressionElements();
+		this.pMEnumParameterDefinition = new MEnumParameterDefinitionElements();
+		this.pMEnumParameterSingleExpression = new MEnumParameterSingleExpressionElements();
+		this.pMRealParameterSingleExpression = new MRealParameterSingleExpressionElements();
+		this.pMEnumParameterLiteralRule = new MEnumParameterLiteralRuleElements();
+		this.pMEnumParameterLiteral = new MEnumParameterLiteralElements();
+		this.pMEnumParamIntegerLiteral = new MEnumParamIntegerLiteralElements();
+		this.pMEnumParamRealLiteral = new MEnumParamRealLiteralElements();
+		this.pMEnumParamStringLiteralRegular = new MEnumParamStringLiteralRegularElements();
+		this.pMBooleanParameterSingleExpression = new MBooleanParameterSingleExpressionElements();
+		this.pMStringParameterSingleExpression = new MStringParameterSingleExpressionElements();
+		this.pMParameterValue = new MParameterValueElements();
+		this.pMParameterValueLiteral = new MParameterValueLiteralElements();
+		this.pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements();
+		this.pMParameterValueStringLiteral = new MParameterValueStringLiteralElements();
+		this.pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements();
+		this.pMParameterValueRealLiteral = new MParameterValueRealLiteralElements();
+		this.pMParameterValueRefObject = new MParameterValueRefObjectElements();
+		this.pMParameterValuePAR = new MParameterValuePARElements();
+		this.eMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements();
+		this.eMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements();
+		this.pMParameterValueExpression = new MParameterValueExpressionElements();
+		this.pMParameterValueTERM = new MParameterValueTERMElements();
+		this.pMParameterRange = new MParameterRangeElements();
+		this.pMParameterOCR = new MParameterOCRElements();
+		this.pMParameterOOR = new MParameterOORElements();
+		this.pMParameterCOR = new MParameterCORElements();
+		this.pMParameterCCR = new MParameterCCRElements();
+		this.pMOperatingSystemAPI = new MOperatingSystemAPIElements();
+		this.pMDevice = new MDeviceElements();
+		this.pMArchitecture = new MArchitectureElements();
+		this.pMOSSupportedPlatform = new MOSSupportedPlatformElements();
+		this.pMPlatform = new MPlatformElements();
+		this.pEBoolean = new EBooleanElements();
+		this.tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.lang.PDL.HEXADECIMAL");
+		this.pINTEGER = new INTEGERElements();
+		this.pREAL = new REALElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -4348,7 +4580,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-	
+	@Override
 	public Grammar getGrammar() {
 		return grammar;
 	}
@@ -4360,10 +4592,11 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//MPDLPackageFile:
-	//	"package" package=[pdllibrary::MPDLPackage|QualifiedName] ";" ("import"
-	//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MPDLPackageElement;
+	//	'package' package=[pdllibrary::MPDLPackage|QualifiedName] ';' ('import'
+	//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+	//	element=MPDLPackageElement;
 	public MPDLPackageFileElements getMPDLPackageFileAccess() {
-		return (pMPDLPackageFile != null) ? pMPDLPackageFile : (pMPDLPackageFile = new MPDLPackageFileElements());
+		return pMPDLPackageFile;
 	}
 	
 	public ParserRule getMPDLPackageFileRule() {
@@ -4373,47 +4606,47 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	//MPDLPackageElement:
 	//	MBoard | MMicroprocessor | MOperatingSystem | MOperatingSystemAPI | MArchitecture | MPlatform | MCompiler | MDevice;
 	public MPDLPackageElementElements getMPDLPackageElementAccess() {
-		return (pMPDLPackageElement != null) ? pMPDLPackageElement : (pMPDLPackageElement = new MPDLPackageElementElements());
+		return pMPDLPackageElement;
 	}
 	
 	public ParserRule getMPDLPackageElementRule() {
 		return getMPDLPackageElementAccess().getRule();
 	}
 
-	//QualifiedName returns ecore::EString:
-	//	ID ("." ID)*;
+	//QualifiedName:
+	//	ID ('.' ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
 		return getQualifiedNameAccess().getRule();
 	}
 
-	//Version returns ecore::EString:
-	//	(INT | INT? ID) ("." (INT | INT? ID))*;
+	//Version:
+	//	(INT | INT? ID) ('.' (INT | INT? ID))*;
 	public VersionElements getVersionAccess() {
-		return (pVersion != null) ? pVersion : (pVersion = new VersionElements());
+		return pVersion;
 	}
 	
 	public ParserRule getVersionRule() {
 		return getVersionAccess().getRule();
 	}
 
-	//VersionedQualifiedName returns ecore::EString:
-	//	QualifiedName "(" Version ")";
+	//VersionedQualifiedName:
+	//	QualifiedName '(' Version ')';
 	public VersionedQualifiedNameElements getVersionedQualifiedNameAccess() {
-		return (pVersionedQualifiedName != null) ? pVersionedQualifiedName : (pVersionedQualifiedName = new VersionedQualifiedNameElements());
+		return pVersionedQualifiedName;
 	}
 	
 	public ParserRule getVersionedQualifiedNameRule() {
 		return getVersionedQualifiedNameAccess().getRule();
 	}
 
-	//VersionedQualifiedReferenceName returns ecore::EString:
-	//	(VersionedQualifiedName "::")? ID ("::" ID)*;
+	//VersionedQualifiedReferenceName:
+	//	(VersionedQualifiedName '::')? ID ('::' ID)*;
 	public VersionedQualifiedReferenceNameElements getVersionedQualifiedReferenceNameAccess() {
-		return (pVersionedQualifiedReferenceName != null) ? pVersionedQualifiedReferenceName : (pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements());
+		return pVersionedQualifiedReferenceName;
 	}
 	
 	public ParserRule getVersionedQualifiedReferenceNameRule() {
@@ -4421,12 +4654,18 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MCompiler:
-	//	"compiler" name=ID ("extends" extends+=[MCompiler|VersionedQualifiedName] (","
-	//	extends+=[MCompiler|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("frontends" "{"
-	//	frontends+=MCompilerFrontend+ "}" ";")? & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}"
-	//	";")?) "}" ";";
+	//	'compiler'
+	//	name=ID ('extends' extends+=[MCompiler|VersionedQualifiedName] ("," extends+=[MCompiler|VersionedQualifiedName])*)?
+	//	'{' ('version' ':=' version=Version ';' & ('frontends' '{'
+	//	frontends+=MCompilerFrontend+
+	//	'}' ';')?
+	//	& ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}' ';';
 	public MCompilerElements getMCompilerAccess() {
-		return (pMCompiler != null) ? pMCompiler : (pMCompiler = new MCompilerElements());
+		return pMCompiler;
 	}
 	
 	public ParserRule getMCompilerRule() {
@@ -4434,11 +4673,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MCompilerFrontend:
-	//	"frontend" name=ID "{" ("language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" & "architectures" ":="
-	//	architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ";"
-	//	& ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
+	//	'frontend'
+	//	name=ID
+	//	'{' ('language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' & 'architectures' ':='
+	//	architectures+=[MArchitecture|VersionedQualifiedName] ("," architectures+=[MArchitecture|VersionedQualifiedName])* ';'
+	//	& ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}' ';';
 	public MCompilerFrontendElements getMCompilerFrontendAccess() {
-		return (pMCompilerFrontend != null) ? pMCompilerFrontend : (pMCompilerFrontend = new MCompilerFrontendElements());
+		return pMCompilerFrontend;
 	}
 	
 	public ParserRule getMCompilerFrontendRule() {
@@ -4446,12 +4691,19 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MBoard:
-	//	"board" name=ID "{" ("version" ":=" version=Version ";" & ("supported" "devices" "{"
-	//	supportedDevices+=MBoardSupportedDevice+ "}" ";")? & "microprocessor" ":="
-	//	microprocessor=[MMicroprocessor|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-	//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
+	//	'board'
+	//	name=ID
+	//	'{' ('version' ':=' version=Version ';' & ('supported' 'devices' '{'
+	//	supportedDevices+=MBoardSupportedDevice+
+	//	'}' ';')?
+	//	& 'microprocessor' ':=' microprocessor=[MMicroprocessor|VersionedQualifiedName] ';' & ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MBoardElements getMBoardAccess() {
-		return (pMBoard != null) ? pMBoard : (pMBoard = new MBoardElements());
+		return pMBoard;
 	}
 	
 	public ParserRule getMBoardRule() {
@@ -4459,10 +4711,11 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MBoardSupportedDevice:
-	//	"device" device=[MDevice|VersionedQualifiedName] "range" lowerBound=MParameterValueExpression "to"
-	//	upperBound=MParameterValueExpression ";";
+	//	'device' device=[MDevice|VersionedQualifiedName]
+	//	'range' lowerBound=MParameterValueExpression 'to' upperBound=MParameterValueExpression
+	//	';';
 	public MBoardSupportedDeviceElements getMBoardSupportedDeviceAccess() {
-		return (pMBoardSupportedDevice != null) ? pMBoardSupportedDevice : (pMBoardSupportedDevice = new MBoardSupportedDeviceElements());
+		return pMBoardSupportedDevice;
 	}
 	
 	public ParserRule getMBoardSupportedDeviceRule() {
@@ -4470,11 +4723,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MMicroprocessor:
-	//	"microprocessor" name=ID "{" ("version" ":=" version=Version ";" & "architecture" ":="
-	//	architecture=[MArchitecture|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-	//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
+	//	'microprocessor'
+	//	name=ID
+	//	'{' ('version' ':=' version=Version ';' & 'architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';'
+	//	& ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MMicroprocessorElements getMMicroprocessorAccess() {
-		return (pMMicroprocessor != null) ? pMMicroprocessor : (pMMicroprocessor = new MMicroprocessorElements());
+		return pMMicroprocessor;
 	}
 	
 	public ParserRule getMMicroprocessorRule() {
@@ -4482,14 +4741,24 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MOperatingSystem:
-	//	"os" name=ID ("inherits" inherits+=[MOperatingSystem|VersionedQualifiedName] (","
-	//	inherits+=[MOperatingSystem|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & "languages" ":="
-	//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])* ";"
-	//	& ("supported" "osapis" "{" supportedOSAPIs+=MOSSupportedOSAPI+ "}" ";")? & "supported" "platforms" "{"
-	//	supportedPlatforms+=MOSSupportedPlatform+ "}" ";" & ("configuration" "parameters" "{" parameters+=MParameter+ "}"
-	//	";")?) "}" ";";
+	//	'os'
+	//	name=ID ('inherits' inherits+=[MOperatingSystem|VersionedQualifiedName] (","
+	//	inherits+=[MOperatingSystem|VersionedQualifiedName])*)?
+	//	'{' ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+	//	languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('supported' 'osapis' '{'
+	//	supportedOSAPIs+=MOSSupportedOSAPI+
+	//	'}' ';')?
+	//	& 'supported' 'platforms'
+	//	'{'
+	//	supportedPlatforms+=MOSSupportedPlatform+
+	//	'}' ';' & ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameter+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MOperatingSystemElements getMOperatingSystemAccess() {
-		return (pMOperatingSystem != null) ? pMOperatingSystem : (pMOperatingSystem = new MOperatingSystemElements());
+		return pMOperatingSystem;
 	}
 	
 	public ParserRule getMOperatingSystemRule() {
@@ -4497,10 +4766,13 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MOSSupportedOSAPI:
-	//	"supports" osapi=[MOperatingSystemAPI|VersionedQualifiedName] "{" parameterValueAssignments+=MOSSupportedOSAPIPVA* "}"
-	//	";";
+	//	'supports'
+	//	osapi=[MOperatingSystemAPI|VersionedQualifiedName]
+	//	'{'
+	//	parameterValueAssignments+=MOSSupportedOSAPIPVA*
+	//	'}' ';';
 	public MOSSupportedOSAPIElements getMOSSupportedOSAPIAccess() {
-		return (pMOSSupportedOSAPI != null) ? pMOSSupportedOSAPI : (pMOSSupportedOSAPI = new MOSSupportedOSAPIElements());
+		return pMOSSupportedOSAPI;
 	}
 	
 	public ParserRule getMOSSupportedOSAPIRule() {
@@ -4510,7 +4782,7 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	//MOSSupportedOSAPIPVA:
 	//	MOSSupportedOSAPIPVAExpression | MOSSupportedOSAPIPVASwitch;
 	public MOSSupportedOSAPIPVAElements getMOSSupportedOSAPIPVAAccess() {
-		return (pMOSSupportedOSAPIPVA != null) ? pMOSSupportedOSAPIPVA : (pMOSSupportedOSAPIPVA = new MOSSupportedOSAPIPVAElements());
+		return pMOSSupportedOSAPIPVA;
 	}
 	
 	public ParserRule getMOSSupportedOSAPIPVARule() {
@@ -4518,10 +4790,12 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MOSSupportedOSAPIPVAExpression:
-	//	"parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
-	//	parameterValue=MParameterValueExpression ";";
+	//	'parameter'
+	//	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	//	':='
+	//	parameterValue=MParameterValueExpression ';';
 	public MOSSupportedOSAPIPVAExpressionElements getMOSSupportedOSAPIPVAExpressionAccess() {
-		return (pMOSSupportedOSAPIPVAExpression != null) ? pMOSSupportedOSAPIPVAExpression : (pMOSSupportedOSAPIPVAExpression = new MOSSupportedOSAPIPVAExpressionElements());
+		return pMOSSupportedOSAPIPVAExpression;
 	}
 	
 	public ParserRule getMOSSupportedOSAPIPVAExpressionRule() {
@@ -4529,10 +4803,11 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MOSSupportedOSAPIPVASwitch:
-	//	"switch" "(" parameter=[common::MParameter|VersionedQualifiedReferenceName] ")" "{"
-	//	cases+=MOSSupportedOSAPIPVASwitchCase "}" ";";
+	//	'switch' '(' parameter=[common::MParameter|VersionedQualifiedReferenceName] ')'
+	//	'{'
+	//	cases+=MOSSupportedOSAPIPVASwitchCase '}' ';';
 	public MOSSupportedOSAPIPVASwitchElements getMOSSupportedOSAPIPVASwitchAccess() {
-		return (pMOSSupportedOSAPIPVASwitch != null) ? pMOSSupportedOSAPIPVASwitch : (pMOSSupportedOSAPIPVASwitch = new MOSSupportedOSAPIPVASwitchElements());
+		return pMOSSupportedOSAPIPVASwitch;
 	}
 	
 	public ParserRule getMOSSupportedOSAPIPVASwitchRule() {
@@ -4540,21 +4815,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MOSSupportedOSAPIPVASwitchCase:
-	//	"case" platform=[MOSSupportedPlatform] ":" parameterValue=MParameterValueExpression ";";
+	//	'case' platform=[MOSSupportedPlatform] ':'
+	//	parameterValue=MParameterValueExpression ';';
 	public MOSSupportedOSAPIPVASwitchCaseElements getMOSSupportedOSAPIPVASwitchCaseAccess() {
-		return (pMOSSupportedOSAPIPVASwitchCase != null) ? pMOSSupportedOSAPIPVASwitchCase : (pMOSSupportedOSAPIPVASwitchCase = new MOSSupportedOSAPIPVASwitchCaseElements());
+		return pMOSSupportedOSAPIPVASwitchCase;
 	}
 	
 	public ParserRule getMOSSupportedOSAPIPVASwitchCaseRule() {
 		return getMOSSupportedOSAPIPVASwitchCaseAccess().getRule();
 	}
 
-	//MParameter returns common::MParameter:
+	//MParameter common::MParameter:
 	//	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
 	//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition | MBooleanParamOSSPSwitch
-	//	| MStringParamOSSPSwitch | MIntegerParamOSSPSwitch | MRealParamOSSPSwitch | MEnumParamOSSPSwitch;
+	//	| MStringParamOSSPSwitch | MIntegerParamOSSPSwitch | MRealParamOSSPSwitch | MEnumParamOSSPSwitch
 	public MParameterElements getMParameterAccess() {
-		return (pMParameter != null) ? pMParameter : (pMParameter = new MParameterElements());
+		return pMParameter;
 	}
 	
 	public ParserRule getMParameterRule() {
@@ -4562,9 +4838,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MBooleanParamOSSPSwitch:
-	//	constant?="const"? "boolean" name=ID ":=" "switch" "{" cases+=MBooleanParamOSSPSwitchCase+ "}" ";";
+	//	constant?='const'?
+	//	'boolean' name=ID ':='
+	//	'switch'
+	//	'{'
+	//	cases+=MBooleanParamOSSPSwitchCase+
+	//	'}' ';';
 	public MBooleanParamOSSPSwitchElements getMBooleanParamOSSPSwitchAccess() {
-		return (pMBooleanParamOSSPSwitch != null) ? pMBooleanParamOSSPSwitch : (pMBooleanParamOSSPSwitch = new MBooleanParamOSSPSwitchElements());
+		return pMBooleanParamOSSPSwitch;
 	}
 	
 	public ParserRule getMBooleanParamOSSPSwitchRule() {
@@ -4572,9 +4853,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MBooleanParamOSSPSwitchCase:
-	//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
+	//	'case' platform=[MOSSupportedPlatform] ':'
+	//	defaultValue=MParameterValueExpression ';';
 	public MBooleanParamOSSPSwitchCaseElements getMBooleanParamOSSPSwitchCaseAccess() {
-		return (pMBooleanParamOSSPSwitchCase != null) ? pMBooleanParamOSSPSwitchCase : (pMBooleanParamOSSPSwitchCase = new MBooleanParamOSSPSwitchCaseElements());
+		return pMBooleanParamOSSPSwitchCase;
 	}
 	
 	public ParserRule getMBooleanParamOSSPSwitchCaseRule() {
@@ -4582,9 +4864,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MStringParamOSSPSwitch:
-	//	constant?="const"? "string" name=ID ":=" "switch" "{" cases+=MStringParamOSSPSwitchCase+ "}" ";";
+	//	constant?='const'?
+	//	'string' name=ID ':='
+	//	'switch'
+	//	'{'
+	//	cases+=MStringParamOSSPSwitchCase+
+	//	'}' ';';
 	public MStringParamOSSPSwitchElements getMStringParamOSSPSwitchAccess() {
-		return (pMStringParamOSSPSwitch != null) ? pMStringParamOSSPSwitch : (pMStringParamOSSPSwitch = new MStringParamOSSPSwitchElements());
+		return pMStringParamOSSPSwitch;
 	}
 	
 	public ParserRule getMStringParamOSSPSwitchRule() {
@@ -4592,9 +4879,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MStringParamOSSPSwitchCase:
-	//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
+	//	'case' platform=[MOSSupportedPlatform] ':'
+	//	defaultValue=MParameterValueExpression ';';
 	public MStringParamOSSPSwitchCaseElements getMStringParamOSSPSwitchCaseAccess() {
-		return (pMStringParamOSSPSwitchCase != null) ? pMStringParamOSSPSwitchCase : (pMStringParamOSSPSwitchCase = new MStringParamOSSPSwitchCaseElements());
+		return pMStringParamOSSPSwitchCase;
 	}
 	
 	public ParserRule getMStringParamOSSPSwitchCaseRule() {
@@ -4602,9 +4890,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MIntegerParamOSSPSwitch:
-	//	constant?="const"? "integer" name=ID ":=" "switch" "{" cases+=MIntegerParamOSSPSwitchCase+ "}" ";";
+	//	constant?='const'?
+	//	'integer' name=ID ':='
+	//	'switch'
+	//	'{'
+	//	cases+=MIntegerParamOSSPSwitchCase+
+	//	'}' ';';
 	public MIntegerParamOSSPSwitchElements getMIntegerParamOSSPSwitchAccess() {
-		return (pMIntegerParamOSSPSwitch != null) ? pMIntegerParamOSSPSwitch : (pMIntegerParamOSSPSwitch = new MIntegerParamOSSPSwitchElements());
+		return pMIntegerParamOSSPSwitch;
 	}
 	
 	public ParserRule getMIntegerParamOSSPSwitchRule() {
@@ -4612,10 +4905,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MIntegerParamOSSPSwitchCase:
-	//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ("range" range=MParameterRange)?
-	//	";";
+	//	'case' platform=[MOSSupportedPlatform] ':'
+	//	defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';';
 	public MIntegerParamOSSPSwitchCaseElements getMIntegerParamOSSPSwitchCaseAccess() {
-		return (pMIntegerParamOSSPSwitchCase != null) ? pMIntegerParamOSSPSwitchCase : (pMIntegerParamOSSPSwitchCase = new MIntegerParamOSSPSwitchCaseElements());
+		return pMIntegerParamOSSPSwitchCase;
 	}
 	
 	public ParserRule getMIntegerParamOSSPSwitchCaseRule() {
@@ -4623,9 +4916,14 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MRealParamOSSPSwitch:
-	//	constant?="const"? "real" name=ID ":=" "switch" "{" cases+=MRealParamOSSPSwitchCase+ "}" ";";
+	//	constant?='const'?
+	//	'real' name=ID ':='
+	//	'switch'
+	//	'{'
+	//	cases+=MRealParamOSSPSwitchCase+
+	//	'}' ';';
 	public MRealParamOSSPSwitchElements getMRealParamOSSPSwitchAccess() {
-		return (pMRealParamOSSPSwitch != null) ? pMRealParamOSSPSwitch : (pMRealParamOSSPSwitch = new MRealParamOSSPSwitchElements());
+		return pMRealParamOSSPSwitch;
 	}
 	
 	public ParserRule getMRealParamOSSPSwitchRule() {
@@ -4633,10 +4931,10 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MRealParamOSSPSwitchCase:
-	//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ("range" range=MParameterRange)?
-	//	";";
+	//	'case' platform=[MOSSupportedPlatform] ':'
+	//	defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';';
 	public MRealParamOSSPSwitchCaseElements getMRealParamOSSPSwitchCaseAccess() {
-		return (pMRealParamOSSPSwitchCase != null) ? pMRealParamOSSPSwitchCase : (pMRealParamOSSPSwitchCase = new MRealParamOSSPSwitchCaseElements());
+		return pMRealParamOSSPSwitchCase;
 	}
 	
 	public ParserRule getMRealParamOSSPSwitchCaseRule() {
@@ -4644,10 +4942,15 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MEnumParamOSSPSwitch:
-	//	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
-	//	":=" "switch" "{" cases+=MEnumParamOSSPSwitchCase+ "}" ";";
+	//	constant?='const'?
+	//	'enum'
+	//	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+	//	'switch'
+	//	'{'
+	//	cases+=MEnumParamOSSPSwitchCase+
+	//	'}' ';';
 	public MEnumParamOSSPSwitchElements getMEnumParamOSSPSwitchAccess() {
-		return (pMEnumParamOSSPSwitch != null) ? pMEnumParamOSSPSwitch : (pMEnumParamOSSPSwitch = new MEnumParamOSSPSwitchElements());
+		return pMEnumParamOSSPSwitch;
 	}
 	
 	public ParserRule getMEnumParamOSSPSwitchRule() {
@@ -4655,212 +4958,245 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MEnumParamOSSPSwitchCase:
-	//	"case" platform=[MOSSupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
+	//	'case' platform=[MOSSupportedPlatform] ':'
+	//	defaultValue=MParameterValueExpression ';';
 	public MEnumParamOSSPSwitchCaseElements getMEnumParamOSSPSwitchCaseAccess() {
-		return (pMEnumParamOSSPSwitchCase != null) ? pMEnumParamOSSPSwitchCase : (pMEnumParamOSSPSwitchCase = new MEnumParamOSSPSwitchCaseElements());
+		return pMEnumParamOSSPSwitchCase;
 	}
 	
 	public ParserRule getMEnumParamOSSPSwitchCaseRule() {
 		return getMEnumParamOSSPSwitchCaseAccess().getRule();
 	}
 
-	//MParameterWithoutOSSP returns common::MParameter:
+	//MParameterWithoutOSSP common::MParameter:
 	//	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
-	//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition;
+	//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition
 	public MParameterWithoutOSSPElements getMParameterWithoutOSSPAccess() {
-		return (pMParameterWithoutOSSP != null) ? pMParameterWithoutOSSP : (pMParameterWithoutOSSP = new MParameterWithoutOSSPElements());
+		return pMParameterWithoutOSSP;
 	}
 	
 	public ParserRule getMParameterWithoutOSSPRule() {
 		return getMParameterWithoutOSSPAccess().getRule();
 	}
 
-	//MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
-	//	constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
+	//MIntegerParameterSingleExpression common::MIntegerParameterSingleExpression:
+	//	constant?='const'?
+	//	'integer'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+	//	';'
 	public MIntegerParameterSingleExpressionElements getMIntegerParameterSingleExpressionAccess() {
-		return (pMIntegerParameterSingleExpression != null) ? pMIntegerParameterSingleExpression : (pMIntegerParameterSingleExpression = new MIntegerParameterSingleExpressionElements());
+		return pMIntegerParameterSingleExpression;
 	}
 	
 	public ParserRule getMIntegerParameterSingleExpressionRule() {
 		return getMIntegerParameterSingleExpressionAccess().getRule();
 	}
 
-	//MEnumParameterDefinition returns common::MEnumParameterDefinition:
-	//	"enum" name=ID "{" literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)* "}" ";";
+	//MEnumParameterDefinition common::MEnumParameterDefinition:
+	//	'enum'
+	//	name=ID
+	//	'{'
+	//	literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+	//	'}'
+	//	';'
 	public MEnumParameterDefinitionElements getMEnumParameterDefinitionAccess() {
-		return (pMEnumParameterDefinition != null) ? pMEnumParameterDefinition : (pMEnumParameterDefinition = new MEnumParameterDefinitionElements());
+		return pMEnumParameterDefinition;
 	}
 	
 	public ParserRule getMEnumParameterDefinitionRule() {
 		return getMEnumParameterDefinitionAccess().getRule();
 	}
 
-	//MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
-	//	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
-	//	":=" defaultValue=MParameterValueExpression ";";
+	//MEnumParameterSingleExpression common::MEnumParameterSingleExpression:
+	//	constant?='const'?
+	//	'enum'
+	//	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
+	//	':=' defaultValue=MParameterValueExpression
+	//	';'
 	public MEnumParameterSingleExpressionElements getMEnumParameterSingleExpressionAccess() {
-		return (pMEnumParameterSingleExpression != null) ? pMEnumParameterSingleExpression : (pMEnumParameterSingleExpression = new MEnumParameterSingleExpressionElements());
+		return pMEnumParameterSingleExpression;
 	}
 	
 	public ParserRule getMEnumParameterSingleExpressionRule() {
 		return getMEnumParameterSingleExpressionAccess().getRule();
 	}
 
-	//MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
-	//	constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
+	//MRealParameterSingleExpression common::MRealParameterSingleExpression:
+	//	constant?='const'?
+	//	'real'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+	//	';'
 	public MRealParameterSingleExpressionElements getMRealParameterSingleExpressionAccess() {
-		return (pMRealParameterSingleExpression != null) ? pMRealParameterSingleExpression : (pMRealParameterSingleExpression = new MRealParameterSingleExpressionElements());
+		return pMRealParameterSingleExpression;
 	}
 	
 	public ParserRule getMRealParameterSingleExpressionRule() {
 		return getMRealParameterSingleExpressionAccess().getRule();
 	}
 
-	//MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
-	//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral;
+	//MEnumParameterLiteralRule common::MEnumParameterLiteral:
+	//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteralRegular
 	public MEnumParameterLiteralRuleElements getMEnumParameterLiteralRuleAccess() {
-		return (pMEnumParameterLiteralRule != null) ? pMEnumParameterLiteralRule : (pMEnumParameterLiteralRule = new MEnumParameterLiteralRuleElements());
+		return pMEnumParameterLiteralRule;
 	}
 	
 	public ParserRule getMEnumParameterLiteralRuleRule() {
 		return getMEnumParameterLiteralRuleAccess().getRule();
 	}
 
-	//MEnumParameterLiteral returns common::MEnumParameterLiteral:
-	//	{common::MEnumParameterLiteral} name=ID;
+	//MEnumParameterLiteral common::MEnumParameterLiteral:
+	//	{common::MEnumParameterLiteral} name=ID
 	public MEnumParameterLiteralElements getMEnumParameterLiteralAccess() {
-		return (pMEnumParameterLiteral != null) ? pMEnumParameterLiteral : (pMEnumParameterLiteral = new MEnumParameterLiteralElements());
+		return pMEnumParameterLiteral;
 	}
 	
 	public ParserRule getMEnumParameterLiteralRule() {
 		return getMEnumParameterLiteralAccess().getRule();
 	}
 
-	//MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
-	//	{common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER;
+	//MEnumParamIntegerLiteral common::MEnumParamIntegerLiteral:
+	//	{common::MEnumParamIntegerLiteral} name=ID
+	//	'='
+	//	value=INTEGER
 	public MEnumParamIntegerLiteralElements getMEnumParamIntegerLiteralAccess() {
-		return (pMEnumParamIntegerLiteral != null) ? pMEnumParamIntegerLiteral : (pMEnumParamIntegerLiteral = new MEnumParamIntegerLiteralElements());
+		return pMEnumParamIntegerLiteral;
 	}
 	
 	public ParserRule getMEnumParamIntegerLiteralRule() {
 		return getMEnumParamIntegerLiteralAccess().getRule();
 	}
 
-	//MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
-	//	{common::MEnumParamRealLiteral} name=ID "=" value=REAL;
+	//MEnumParamRealLiteral common::MEnumParamRealLiteral:
+	//	{common::MEnumParamRealLiteral} name=ID
+	//	'='
+	//	value=REAL
 	public MEnumParamRealLiteralElements getMEnumParamRealLiteralAccess() {
-		return (pMEnumParamRealLiteral != null) ? pMEnumParamRealLiteral : (pMEnumParamRealLiteral = new MEnumParamRealLiteralElements());
+		return pMEnumParamRealLiteral;
 	}
 	
 	public ParserRule getMEnumParamRealLiteralRule() {
 		return getMEnumParamRealLiteralAccess().getRule();
 	}
 
-	//MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
-	//	{common::MEnumParamStringLiteral} name=ID "=" value=STRING;
-	public MEnumParamStringLiteralElements getMEnumParamStringLiteralAccess() {
-		return (pMEnumParamStringLiteral != null) ? pMEnumParamStringLiteral : (pMEnumParamStringLiteral = new MEnumParamStringLiteralElements());
+	//MEnumParamStringLiteralRegular common::MEnumParamStringLiteral:
+	//	{common::MEnumParamStringLiteral} name=ID
+	//	'='
+	//	isRaw?='raw'?
+	//	value=STRING
+	public MEnumParamStringLiteralRegularElements getMEnumParamStringLiteralRegularAccess() {
+		return pMEnumParamStringLiteralRegular;
 	}
 	
-	public ParserRule getMEnumParamStringLiteralRule() {
-		return getMEnumParamStringLiteralAccess().getRule();
+	public ParserRule getMEnumParamStringLiteralRegularRule() {
+		return getMEnumParamStringLiteralRegularAccess().getRule();
 	}
 
-	//MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
-	//	constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";";
+	//MBooleanParameterSingleExpression common::MBooleanParameterSingleExpression:
+	//	constant?='const'?
+	//	'boolean'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression
+	//	';'
 	public MBooleanParameterSingleExpressionElements getMBooleanParameterSingleExpressionAccess() {
-		return (pMBooleanParameterSingleExpression != null) ? pMBooleanParameterSingleExpression : (pMBooleanParameterSingleExpression = new MBooleanParameterSingleExpressionElements());
+		return pMBooleanParameterSingleExpression;
 	}
 	
 	public ParserRule getMBooleanParameterSingleExpressionRule() {
 		return getMBooleanParameterSingleExpressionAccess().getRule();
 	}
 
-	//MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
-	//	constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";";
+	//MStringParameterSingleExpression common::MStringParameterSingleExpression:
+	//	constant?='const'?
+	//	'string'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression
+	//	';'
 	public MStringParameterSingleExpressionElements getMStringParameterSingleExpressionAccess() {
-		return (pMStringParameterSingleExpression != null) ? pMStringParameterSingleExpression : (pMStringParameterSingleExpression = new MStringParameterSingleExpressionElements());
+		return pMStringParameterSingleExpression;
 	}
 	
 	public ParserRule getMStringParameterSingleExpressionRule() {
 		return getMStringParameterSingleExpressionAccess().getRule();
 	}
 
-	//MParameterValue returns common::MParameterValue:
-	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
+	//MParameterValue common::MParameterValue:
+	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 	public MParameterValueElements getMParameterValueAccess() {
-		return (pMParameterValue != null) ? pMParameterValue : (pMParameterValue = new MParameterValueElements());
+		return pMParameterValue;
 	}
 	
 	public ParserRule getMParameterValueRule() {
 		return getMParameterValueAccess().getRule();
 	}
 
-	//MParameterValueLiteral returns common::MParameterValueLiteral:
+	//MParameterValueLiteral common::MParameterValueLiteral:
 	//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-	//	MParameterValueRealLiteral;
+	//	MParameterValueRealLiteral
 	public MParameterValueLiteralElements getMParameterValueLiteralAccess() {
-		return (pMParameterValueLiteral != null) ? pMParameterValueLiteral : (pMParameterValueLiteral = new MParameterValueLiteralElements());
+		return pMParameterValueLiteral;
 	}
 	
 	public ParserRule getMParameterValueLiteralRule() {
 		return getMParameterValueLiteralAccess().getRule();
 	}
 
-	//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-	//	{common::MParameterValueBooleanLiteral} value=EBoolean;
+	//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+	//	{common::MParameterValueBooleanLiteral} value=EBoolean
 	public MParameterValueBooleanLiteralElements getMParameterValueBooleanLiteralAccess() {
-		return (pMParameterValueBooleanLiteral != null) ? pMParameterValueBooleanLiteral : (pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements());
+		return pMParameterValueBooleanLiteral;
 	}
 	
 	public ParserRule getMParameterValueBooleanLiteralRule() {
 		return getMParameterValueBooleanLiteralAccess().getRule();
 	}
 
-	//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-	//	{common::MParameterValueStringLiteral} value=STRING;
+	//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+	//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+	//	value=STRING
 	public MParameterValueStringLiteralElements getMParameterValueStringLiteralAccess() {
-		return (pMParameterValueStringLiteral != null) ? pMParameterValueStringLiteral : (pMParameterValueStringLiteral = new MParameterValueStringLiteralElements());
+		return pMParameterValueStringLiteral;
 	}
 	
 	public ParserRule getMParameterValueStringLiteralRule() {
 		return getMParameterValueStringLiteralAccess().getRule();
 	}
 
-	//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-	//	{common::MParameterValueIntegerLiteral} value=INTEGER;
+	//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+	//	{common::MParameterValueIntegerLiteral} value=INTEGER
 	public MParameterValueIntegerLiteralElements getMParameterValueIntegerLiteralAccess() {
-		return (pMParameterValueIntegerLiteral != null) ? pMParameterValueIntegerLiteral : (pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements());
+		return pMParameterValueIntegerLiteral;
 	}
 	
 	public ParserRule getMParameterValueIntegerLiteralRule() {
 		return getMParameterValueIntegerLiteralAccess().getRule();
 	}
 
-	//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-	//	{common::MParameterValueRealLiteral} value=REAL;
+	//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+	//	{common::MParameterValueRealLiteral} value=REAL
 	public MParameterValueRealLiteralElements getMParameterValueRealLiteralAccess() {
-		return (pMParameterValueRealLiteral != null) ? pMParameterValueRealLiteral : (pMParameterValueRealLiteral = new MParameterValueRealLiteralElements());
+		return pMParameterValueRealLiteral;
 	}
 	
 	public ParserRule getMParameterValueRealLiteralRule() {
 		return getMParameterValueRealLiteralAccess().getRule();
 	}
 
-	//MParameterValueRefObject returns common::MParameterValueRefObject:
-	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
+	//MParameterValueRefObject common::MParameterValueRefObject:
+	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 	public MParameterValueRefObjectElements getMParameterValueRefObjectAccess() {
-		return (pMParameterValueRefObject != null) ? pMParameterValueRefObject : (pMParameterValueRefObject = new MParameterValueRefObjectElements());
+		return pMParameterValueRefObject;
 	}
 	
 	public ParserRule getMParameterValueRefObjectRule() {
 		return getMParameterValueRefObjectAccess().getRule();
 	}
 
-	//MParameterValuePAR returns common::MParameterValuePAR:
-	//	"(" value=MParameterValueExpression ")";
+	//MParameterValuePAR common::MParameterValuePAR:
+	//	'(' value=MParameterValueExpression ')'
 	public MParameterValuePARElements getMParameterValuePARAccess() {
-		return (pMParameterValuePAR != null) ? pMParameterValuePAR : (pMParameterValuePAR = new MParameterValuePARElements());
+		return pMParameterValuePAR;
 	}
 	
 	public ParserRule getMParameterValuePARRule() {
@@ -4868,9 +5204,9 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-	//	plus="+" | minus="-";
+	//	plus='+' | minus='-';
 	public MParameterValueExpressionOperatorsElements getMParameterValueExpressionOperatorsAccess() {
-		return (unknownRuleMParameterValueExpressionOperators != null) ? unknownRuleMParameterValueExpressionOperators : (unknownRuleMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements());
+		return eMParameterValueExpressionOperators;
 	}
 	
 	public EnumRule getMParameterValueExpressionOperatorsRule() {
@@ -4878,81 +5214,96 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-	//	mult="*" | div="/";
+	//	mult='*' | div='/';
 	public MParameterValueTERMOperatorsElements getMParameterValueTERMOperatorsAccess() {
-		return (unknownRuleMParameterValueTERMOperators != null) ? unknownRuleMParameterValueTERMOperators : (unknownRuleMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements());
+		return eMParameterValueTERMOperators;
 	}
 	
 	public EnumRule getMParameterValueTERMOperatorsRule() {
 		return getMParameterValueTERMOperatorsAccess().getRule();
 	}
 
-	//MParameterValueExpression returns common::MParameterValueExpression:
+	//MParameterValueExpression common::MParameterValueExpression:
 	//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-	//	right=MParameterValueExpression)?;
+	//	right=MParameterValueExpression)?
 	public MParameterValueExpressionElements getMParameterValueExpressionAccess() {
-		return (pMParameterValueExpression != null) ? pMParameterValueExpression : (pMParameterValueExpression = new MParameterValueExpressionElements());
+		return pMParameterValueExpression;
 	}
 	
 	public ParserRule getMParameterValueExpressionRule() {
 		return getMParameterValueExpressionAccess().getRule();
 	}
 
-	//MParameterValueTERM returns common::MParameterValueTERM:
-	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-	//	right=MParameterValueTERM)?;
+	//MParameterValueTERM common::MParameterValueTERM:
+	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 	public MParameterValueTERMElements getMParameterValueTERMAccess() {
-		return (pMParameterValueTERM != null) ? pMParameterValueTERM : (pMParameterValueTERM = new MParameterValueTERMElements());
+		return pMParameterValueTERM;
 	}
 	
 	public ParserRule getMParameterValueTERMRule() {
 		return getMParameterValueTERMAccess().getRule();
 	}
 
-	//MParameterRange returns common::MParameterRange:
-	//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR;
+	//MParameterRange common::MParameterRange:
+	//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR
 	public MParameterRangeElements getMParameterRangeAccess() {
-		return (pMParameterRange != null) ? pMParameterRange : (pMParameterRange = new MParameterRangeElements());
+		return pMParameterRange;
 	}
 	
 	public ParserRule getMParameterRangeRule() {
 		return getMParameterRangeAccess().getRule();
 	}
 
-	//MParameterOCR returns common::MParameterOCR:
-	//	{common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
+	//MParameterOCR common::MParameterOCR:
+	//	{common::MParameterOCR}
+	//	'('
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	']'
 	public MParameterOCRElements getMParameterOCRAccess() {
-		return (pMParameterOCR != null) ? pMParameterOCR : (pMParameterOCR = new MParameterOCRElements());
+		return pMParameterOCR;
 	}
 	
 	public ParserRule getMParameterOCRRule() {
 		return getMParameterOCRAccess().getRule();
 	}
 
-	//MParameterOOR returns common::MParameterOOR:
-	//	{common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
+	//MParameterOOR common::MParameterOOR:
+	//	{common::MParameterOOR}
+	//	'('
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	')'
 	public MParameterOORElements getMParameterOORAccess() {
-		return (pMParameterOOR != null) ? pMParameterOOR : (pMParameterOOR = new MParameterOORElements());
+		return pMParameterOOR;
 	}
 	
 	public ParserRule getMParameterOORRule() {
 		return getMParameterOORAccess().getRule();
 	}
 
-	//MParameterCOR returns common::MParameterCOR:
-	//	{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
+	//MParameterCOR common::MParameterCOR:
+	//	{common::MParameterCOR}
+	//	'['
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	')'
 	public MParameterCORElements getMParameterCORAccess() {
-		return (pMParameterCOR != null) ? pMParameterCOR : (pMParameterCOR = new MParameterCORElements());
+		return pMParameterCOR;
 	}
 	
 	public ParserRule getMParameterCORRule() {
 		return getMParameterCORAccess().getRule();
 	}
 
-	//MParameterCCR returns common::MParameterCCR:
-	//	{common::MParameterCCR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
+	//MParameterCCR common::MParameterCCR:
+	//	{common::MParameterCCR}
+	//	'['
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	']'
 	public MParameterCCRElements getMParameterCCRAccess() {
-		return (pMParameterCCR != null) ? pMParameterCCR : (pMParameterCCR = new MParameterCCRElements());
+		return pMParameterCCR;
 	}
 	
 	public ParserRule getMParameterCCRRule() {
@@ -4960,12 +5311,18 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MOperatingSystemAPI:
-	//	"osapi" name=ID ("inherits" inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
-	//	inherits+=[MOperatingSystemAPI|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & "language" ":="
-	//	language=[system::MLanguage|VersionedQualifiedName] ";" & ("configuration" "parameters" "{"
-	//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
+	//	'osapi'
+	//	name=ID ('inherits' inherits+=[MOperatingSystemAPI|VersionedQualifiedName] (","
+	//	inherits+=[MOperatingSystemAPI|VersionedQualifiedName])*)?
+	//	'{' ('version' ':=' version=Version ';' & 'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' &
+	//	('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MOperatingSystemAPIElements getMOperatingSystemAPIAccess() {
-		return (pMOperatingSystemAPI != null) ? pMOperatingSystemAPI : (pMOperatingSystemAPI = new MOperatingSystemAPIElements());
+		return pMOperatingSystemAPI;
 	}
 	
 	public ParserRule getMOperatingSystemAPIRule() {
@@ -4973,10 +5330,16 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MDevice:
-	//	"device" name=ID "{" ("version" ":=" version=Version ";" & ("configuration" "parameters" "{"
-	//	parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
+	//	'device'
+	//	name=ID
+	//	'{' ('version' ':=' version=Version ';' & ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MDeviceElements getMDeviceAccess() {
-		return (pMDevice != null) ? pMDevice : (pMDevice = new MDeviceElements());
+		return pMDevice;
 	}
 	
 	public ParserRule getMDeviceRule() {
@@ -4984,11 +5347,17 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MArchitecture:
-	//	"architecture" name=ID ("extends" extends+=[MArchitecture|VersionedQualifiedName] (","
-	//	extends+=[MArchitecture|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("configuration"
-	//	"parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
+	//	'architecture'
+	//	name=ID ('extends'
+	//	extends+=[MArchitecture|VersionedQualifiedName] ("," extends+=[MArchitecture|VersionedQualifiedName])*)?
+	//	'{' ('version' ':=' version=Version ';' & ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MArchitectureElements getMArchitectureAccess() {
-		return (pMArchitecture != null) ? pMArchitecture : (pMArchitecture = new MArchitectureElements());
+		return pMArchitecture;
 	}
 	
 	public ParserRule getMArchitectureRule() {
@@ -4996,14 +5365,22 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MOSSupportedPlatform:
-	//	{MOSSupportedPlatform} "supported" "platform" name=ID "{" ("architecture" ":="
-	//	architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":=" compiler=[MCompiler|VersionedQualifiedName]
-	//	";" & "microprocessor" ":=" ("any" | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":="
-	//	("any" | board=[MBoard|VersionedQualifiedName]) ";" & ("languages" ":="
-	//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-	//	";")? & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}" ";")?) "}" ";";
+	//	{MOSSupportedPlatform}
+	//	'supported' 'platform'
+	//	name=ID
+	//	'{' ('architecture' ':=' architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':='
+	//	compiler=[MCompiler|VersionedQualifiedName] ';' & 'microprocessor' ':=' ('any' |
+	//	microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+	//	board=[MBoard|VersionedQualifiedName]) ';' & ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName]
+	//	("," languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+	//	& ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MOSSupportedPlatformElements getMOSSupportedPlatformAccess() {
-		return (pMOSSupportedPlatform != null) ? pMOSSupportedPlatform : (pMOSSupportedPlatform = new MOSSupportedPlatformElements());
+		return pMOSSupportedPlatform;
 	}
 	
 	public ParserRule getMOSSupportedPlatformRule() {
@@ -5011,25 +5388,30 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MPlatform:
-	//	"platform" name=ID "{" ("version" ":=" version=Version ";" & "osapi" ":="
-	//	osapi=[MOperatingSystemAPI|VersionedQualifiedName] ";" & "os" ":=" os=[MOperatingSystem|VersionedQualifiedName] ";" &
-	//	"architecture" ":=" architecture=[MArchitecture|VersionedQualifiedName] ";" & "compiler" ":="
-	//	compiler=[MCompiler|VersionedQualifiedName] ";" & "microprocessor" ":=" ("any" |
-	//	microprocessor=[MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-	//	board=[MBoard|VersionedQualifiedName]) ";" & ("configuration" "parameters" "{" parameters+=MParameterWithoutOSSP+ "}"
-	//	";")?) "}" ";";
+	//	'platform'
+	//	name=ID
+	//	'{' ('version' ':=' version=Version ';' & 'osapi' ':=' osapi=[MOperatingSystemAPI|VersionedQualifiedName] ';' & 'os'
+	//	':=' os=[MOperatingSystem|VersionedQualifiedName] ';' & 'architecture' ':='
+	//	architecture=[MArchitecture|VersionedQualifiedName] ';' & 'compiler' ':=' compiler=[MCompiler|VersionedQualifiedName]
+	//	';' & 'microprocessor' ':=' ('any' | microprocessor=[MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':='
+	//	('any' | board=[MBoard|VersionedQualifiedName]) ';' & ('configuration' 'parameters'
+	//	'{'
+	//	parameters+=MParameterWithoutOSSP+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MPlatformElements getMPlatformAccess() {
-		return (pMPlatform != null) ? pMPlatform : (pMPlatform = new MPlatformElements());
+		return pMPlatform;
 	}
 	
 	public ParserRule getMPlatformRule() {
 		return getMPlatformAccess().getRule();
 	}
 
-	//EBoolean returns ecore::EBoolean:
-	//	"true" | "false";
+	//EBoolean ecore::EBoolean:
+	//	'true' | 'false'
 	public EBooleanElements getEBooleanAccess() {
-		return (pEBoolean != null) ? pEBoolean : (pEBoolean = new EBooleanElements());
+		return pEBoolean;
 	}
 	
 	public ParserRule getEBooleanRule() {
@@ -5037,25 +5419,25 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal HEXADECIMAL:
-	//	"0x" ("0".."9" | "a".."f" | "A".."F")+;
+	//	'0x' ('0'..'9' | 'a'..'f' | 'A'..'F')+;
 	public TerminalRule getHEXADECIMALRule() {
-		return (tHEXADECIMAL != null) ? tHEXADECIMAL : (tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEXADECIMAL"));
+		return tHEXADECIMAL;
 	} 
 
-	//INTEGER returns ecore::EString:
-	//	"-"? INT | HEXADECIMAL;
+	//INTEGER:
+	//	'-'? INT | HEXADECIMAL;
 	public INTEGERElements getINTEGERAccess() {
-		return (pINTEGER != null) ? pINTEGER : (pINTEGER = new INTEGERElements());
+		return pINTEGER;
 	}
 	
 	public ParserRule getINTEGERRule() {
 		return getINTEGERAccess().getRule();
 	}
 
-	//REAL returns ecore::EString:
-	//	"-"? (INT "." INT) ("e" "-"? INT)?;
+	//REAL:
+	//	'-'? (INT '.' INT) ('e' '-'? INT)?;
 	public REALElements getREALAccess() {
-		return (pREAL != null) ? pREAL : (pREAL = new REALElements());
+		return pREAL;
 	}
 	
 	public ParserRule getREALRule() {
@@ -5063,38 +5445,38 @@ public class PDLGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
+	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
+	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 

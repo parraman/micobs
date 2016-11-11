@@ -17,12 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -34,13 +29,7 @@ import es.uah.aut.srg.micobs.common.commonPackage;
  * @generated
  */
 public class MEnumParamStringLiteralItemProvider
-	extends MEnumParameterLiteralItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends MEnumParameterLiteralItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * @generated
@@ -59,6 +48,7 @@ public class MEnumParamStringLiteralItemProvider
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
+			addIsRawPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -79,6 +69,26 @@ public class MEnumParamStringLiteralItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Raw feature.
+	 * @generated
+	 */
+	protected void addIsRawPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MEnumParamStringLiteral_isRaw_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MEnumParamStringLiteral_isRaw_feature", "_UI_MEnumParamStringLiteral_type"),
+				 commonPackage.Literals.MENUM_PARAM_STRING_LITERAL__IS_RAW,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -115,6 +125,7 @@ public class MEnumParamStringLiteralItemProvider
 
 		switch (notification.getFeatureID(MEnumParamStringLiteral.class)) {
 			case commonPackage.MENUM_PARAM_STRING_LITERAL__VALUE:
+			case commonPackage.MENUM_PARAM_STRING_LITERAL__IS_RAW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}

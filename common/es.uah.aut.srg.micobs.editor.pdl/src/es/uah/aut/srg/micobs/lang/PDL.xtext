@@ -280,7 +280,7 @@ MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
 	MEnumParameterLiteral |
 	MEnumParamIntegerLiteral |
 	MEnumParamRealLiteral |
-	MEnumParamStringLiteral
+	MEnumParamStringLiteralRegular
 	;
 
 MEnumParameterLiteral returns common::MEnumParameterLiteral:
@@ -302,10 +302,11 @@ MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
 	value=REAL
 ;
 
-MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
+MEnumParamStringLiteralRegular returns common::MEnumParamStringLiteral:
 	{common::MEnumParamStringLiteral}
 	name=ID
 	'='
+	(isRaw?='raw')?
 	value=STRING
 ;
 
@@ -339,6 +340,7 @@ MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
 
 MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
 	{common::MParameterValueStringLiteral}
+	(isRaw?='raw')?
 	value=STRING;
 
 MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:

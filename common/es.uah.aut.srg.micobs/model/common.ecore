@@ -105,6 +105,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MEnumParamStringLiteral" eSuperTypes="#//MEnumParameterLiteral">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRaw" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MParameterValue" abstract="true"/>
   <eClassifiers xsi:type="ecore:EClass" name="MParameterValueLiteral" abstract="true"
@@ -120,6 +121,7 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MParameterValueStringLiteral" eSuperTypes="#//MParameterValueLiteral">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="isRaw" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="MParameterValueRefObject" eSuperTypes="#//MParameterValue">
     <eStructuralFeatures xsi:type="ecore:EReference" name="object" lowerBound="1"

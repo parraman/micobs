@@ -803,6 +803,15 @@ public class commonPackageImpl extends EPackageImpl implements commonPackage {
 	}
 
 	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMEnumParamStringLiteral_IsRaw() {
+		return (EAttribute)mEnumParamStringLiteralEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
 	 * @generated
 	 */
 	public EClass getMParameterValue() {
@@ -870,6 +879,15 @@ public class commonPackageImpl extends EPackageImpl implements commonPackage {
 	 */
 	public EAttribute getMParameterValueStringLiteral_Value() {
 		return (EAttribute)mParameterValueStringLiteralEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public EAttribute getMParameterValueStringLiteral_IsRaw() {
+		return (EAttribute)mParameterValueStringLiteralEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1168,6 +1186,7 @@ public class commonPackageImpl extends EPackageImpl implements commonPackage {
 
 		mEnumParamStringLiteralEClass = createEClass(MENUM_PARAM_STRING_LITERAL);
 		createEAttribute(mEnumParamStringLiteralEClass, MENUM_PARAM_STRING_LITERAL__VALUE);
+		createEAttribute(mEnumParamStringLiteralEClass, MENUM_PARAM_STRING_LITERAL__IS_RAW);
 
 		mParameterValueEClass = createEClass(MPARAMETER_VALUE);
 
@@ -1184,6 +1203,7 @@ public class commonPackageImpl extends EPackageImpl implements commonPackage {
 
 		mParameterValueStringLiteralEClass = createEClass(MPARAMETER_VALUE_STRING_LITERAL);
 		createEAttribute(mParameterValueStringLiteralEClass, MPARAMETER_VALUE_STRING_LITERAL__VALUE);
+		createEAttribute(mParameterValueStringLiteralEClass, MPARAMETER_VALUE_STRING_LITERAL__IS_RAW);
 
 		mParameterValueRefObjectEClass = createEClass(MPARAMETER_VALUE_REF_OBJECT);
 		createEReference(mParameterValueRefObjectEClass, MPARAMETER_VALUE_REF_OBJECT__OBJECT);
@@ -1377,6 +1397,7 @@ public class commonPackageImpl extends EPackageImpl implements commonPackage {
 
 		initEClass(mEnumParamStringLiteralEClass, MEnumParamStringLiteral.class, "MEnumParamStringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMEnumParamStringLiteral_Value(), ecorePackage.getEString(), "value", null, 1, 1, MEnumParamStringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMEnumParamStringLiteral_IsRaw(), ecorePackage.getEBoolean(), "isRaw", null, 1, 1, MEnumParamStringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mParameterValueEClass, MParameterValue.class, "MParameterValue", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1393,6 +1414,7 @@ public class commonPackageImpl extends EPackageImpl implements commonPackage {
 
 		initEClass(mParameterValueStringLiteralEClass, MParameterValueStringLiteral.class, "MParameterValueStringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getMParameterValueStringLiteral_Value(), ecorePackage.getEString(), "value", null, 1, 1, MParameterValueStringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getMParameterValueStringLiteral_IsRaw(), ecorePackage.getEBoolean(), "isRaw", null, 1, 1, MParameterValueStringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(mParameterValueRefObjectEClass, MParameterValueRefObject.class, "MParameterValueRefObject", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getMParameterValueRefObject_Object(), this.getMCommonReferenceableObj(), null, "object", null, 1, 1, MParameterValueRefObject.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

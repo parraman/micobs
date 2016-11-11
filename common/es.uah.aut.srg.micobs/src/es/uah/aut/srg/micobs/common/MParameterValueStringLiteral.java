@@ -45,4 +45,24 @@ public interface MParameterValueStringLiteral extends MParameterValueLiteral {
 	 */
 	void setValue(String value);
 
+	/**
+	 * Returns whether the string literal is raw (it should be interpreted
+	 * without quoting or not.
+	 * @return the <code>true</code> if the string literal is raw or
+	 * <code>false</code> otherwise.
+	 * @see #setIsRaw(boolean)
+	 * @see es.uah.aut.srg.micobs.common.commonPackage#getMParameterValueStringLiteral_IsRaw()
+	 * @model required="true"
+	 * @generated
+	 */
+	boolean isIsRaw();
+
+	/**
+	 * Sets the type of string literal, regular o raw.
+	 * @param value the new value of the type of string literal.
+	 * @see #isIsRaw()
+	 * @generated
+	 */
+	void setIsRaw(boolean value);
+
 }

@@ -15,6 +15,7 @@ import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class PDLAntlrTokenFileProvider implements IAntlrTokenFileProvider {
 	
+	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
     	return classLoader.getResourceAsStream("es/uah/aut/srg/micobs/lang/parser/antlr/internal/InternalPDL.tokens");

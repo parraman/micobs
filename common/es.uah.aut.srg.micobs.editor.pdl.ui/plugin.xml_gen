@@ -299,6 +299,12 @@
             extensions="micobs_pdl">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="micobs_pdl"
+            type="text">
+    </fileTypes>
+  </extension>
     <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.lang.PDL -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

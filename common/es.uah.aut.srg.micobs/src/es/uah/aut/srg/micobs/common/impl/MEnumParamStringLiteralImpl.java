@@ -47,6 +47,22 @@ public class MEnumParamStringLiteralImpl extends MEnumParameterLiteralImpl imple
 	protected String value = VALUE_EDEFAULT;
 
 	/**
+	 * The default value of the '{@link #isIsRaw() <em>IsRaw</em>}' attribute.
+	 * @see #isIsRaw()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final boolean IS_RAW_EDEFAULT = false;
+
+	/**
+	 * The cached value of the '{@link #isIsRaw() <em>IsRaw</em>}' attribute.
+	 * @see #isIsRaw()
+	 * @generated
+	 * @ordered
+	 */
+	protected boolean isRaw = IS_RAW_EDEFAULT;
+
+	/**
 	 * @generated
 	 */
 	protected MEnumParamStringLiteralImpl() {
@@ -81,11 +97,30 @@ public class MEnumParamStringLiteralImpl extends MEnumParameterLiteralImpl imple
 	/**
 	 * @generated
 	 */
+	public boolean isIsRaw() {
+		return isRaw;
+	}
+
+	/**
+	 * @generated
+	 */
+	public void setIsRaw(boolean newIsRaw) {
+		boolean oldIsRaw = isRaw;
+		isRaw = newIsRaw;
+		if (eNotificationRequired())
+			eNotify(new ENotificationImpl(this, Notification.SET, commonPackage.MENUM_PARAM_STRING_LITERAL__IS_RAW, oldIsRaw, isRaw));
+	}
+
+	/**
+	 * @generated
+	 */
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case commonPackage.MENUM_PARAM_STRING_LITERAL__VALUE:
 				return getValue();
+			case commonPackage.MENUM_PARAM_STRING_LITERAL__IS_RAW:
+				return isIsRaw();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -98,6 +133,9 @@ public class MEnumParamStringLiteralImpl extends MEnumParameterLiteralImpl imple
 		switch (featureID) {
 			case commonPackage.MENUM_PARAM_STRING_LITERAL__VALUE:
 				setValue((String)newValue);
+				return;
+			case commonPackage.MENUM_PARAM_STRING_LITERAL__IS_RAW:
+				setIsRaw((Boolean)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -112,6 +150,9 @@ public class MEnumParamStringLiteralImpl extends MEnumParameterLiteralImpl imple
 			case commonPackage.MENUM_PARAM_STRING_LITERAL__VALUE:
 				setValue(VALUE_EDEFAULT);
 				return;
+			case commonPackage.MENUM_PARAM_STRING_LITERAL__IS_RAW:
+				setIsRaw(IS_RAW_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -124,6 +165,8 @@ public class MEnumParamStringLiteralImpl extends MEnumParameterLiteralImpl imple
 		switch (featureID) {
 			case commonPackage.MENUM_PARAM_STRING_LITERAL__VALUE:
 				return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+			case commonPackage.MENUM_PARAM_STRING_LITERAL__IS_RAW:
+				return isRaw != IS_RAW_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -138,6 +181,8 @@ public class MEnumParamStringLiteralImpl extends MEnumParameterLiteralImpl imple
 		StringBuffer result = new StringBuffer(super.toString());
 		result.append(" (value: ");
 		result.append(value);
+		result.append(", isRaw: ");
+		result.append(isRaw);
 		result.append(')');
 		return result.toString();
 	}

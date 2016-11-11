@@ -1403,11 +1403,18 @@ public interface commonPackage extends EPackage {
 	int MENUM_PARAM_STRING_LITERAL__VALUE = MENUM_PARAMETER_LITERAL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>IsRaw</b></em>' attribute.
+	 * @generated
+	 * @ordered
+	 */
+	int MENUM_PARAM_STRING_LITERAL__IS_RAW = MENUM_PARAMETER_LITERAL_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>MEnumParamStringLiteral</em>' class.
 	 * @generated
 	 * @ordered
 	 */
-	int MENUM_PARAM_STRING_LITERAL_FEATURE_COUNT = MENUM_PARAMETER_LITERAL_FEATURE_COUNT + 1;
+	int MENUM_PARAM_STRING_LITERAL_FEATURE_COUNT = MENUM_PARAMETER_LITERAL_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>MEnum Param String Literal</em>' class.
@@ -1563,11 +1570,18 @@ public interface commonPackage extends EPackage {
 	int MPARAMETER_VALUE_STRING_LITERAL__VALUE = MPARAMETER_VALUE_LITERAL_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>IsRaw</b></em>' attribute.
+	 * @generated
+	 * @ordered
+	 */
+	int MPARAMETER_VALUE_STRING_LITERAL__IS_RAW = MPARAMETER_VALUE_LITERAL_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>MParameterValueStringLiteral</em>' class.
 	 * @generated
 	 * @ordered
 	 */
-	int MPARAMETER_VALUE_STRING_LITERAL_FEATURE_COUNT = MPARAMETER_VALUE_LITERAL_FEATURE_COUNT + 1;
+	int MPARAMETER_VALUE_STRING_LITERAL_FEATURE_COUNT = MPARAMETER_VALUE_LITERAL_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>MParameter Value String Literal</em>' class.
@@ -2430,6 +2444,15 @@ public interface commonPackage extends EPackage {
 	EAttribute getMEnumParamStringLiteral_Value();
 
 	/**
+	 * Returns the meta object for the attribute '{@link es.uah.aut.srg.micobs.common.MEnumParamStringLiteral#isIsRaw <em>IsRaw</em>}'.
+	 * @return the meta object for the attribute '<em>IsRaw</em>'.
+	 * @see es.uah.aut.srg.micobs.common.MEnumParamStringLiteral#isIsRaw()
+	 * @see #getMEnumParamStringLiteral()
+	 * @generated
+	 */
+	EAttribute getMEnumParamStringLiteral_IsRaw();
+
+	/**
 	 * Returns the meta object for class '{@link es.uah.aut.srg.micobs.common.MParameterValue <em>MParameterValue</em>}'.
 	 * @return the meta object for class '<em>MParameterValue</em>'.
 	 * @see es.uah.aut.srg.micobs.common.MParameterValue
@@ -2514,8 +2537,17 @@ public interface commonPackage extends EPackage {
 	EAttribute getMParameterValueStringLiteral_Value();
 
 	/**
+	 * Returns the meta object for the attribute '{@link es.uah.aut.srg.micobs.common.MParameterValueStringLiteral#isIsRaw <em>IsRaw</em>}'.
+	 * @return the meta object for the attribute '<em>IsRaw</em>'.
+	 * @see es.uah.aut.srg.micobs.common.MParameterValueStringLiteral#isIsRaw()
+	 * @see #getMParameterValueStringLiteral()
+	 * @generated
+	 */
+	EAttribute getMParameterValueStringLiteral_IsRaw();
+
+	/**
 	 * Returns the meta object for class '{@link es.uah.aut.srg.micobs.common.MParameterValueRefObject <em>MParameterValueRef Object</em>}'.
-	 * @return the meta object for class '<em>MParameterValueRef Object</em>'.
+	 * @return the meta object for class '<em>MParameterValueRefObject</em>'.
 	 * @see es.uah.aut.srg.micobs.common.MParameterValueRefObject
 	 * @generated
 	 */
@@ -3189,6 +3221,14 @@ public interface commonPackage extends EPackage {
 		EAttribute MENUM_PARAM_STRING_LITERAL__VALUE = eINSTANCE.getMEnumParamStringLiteral_Value();
 
 		/**
+		 * The meta object literal for the '<em><b>IsRaw</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MENUM_PARAM_STRING_LITERAL__IS_RAW = eINSTANCE.getMEnumParamStringLiteral_IsRaw();
+
+		/**
 		 * The meta object literal for the '{@link es.uah.aut.srg.micobs.common.impl.MParameterValueImpl <em>MParameterValue</em>}' class.
 		 * @see es.uah.aut.srg.micobs.common.impl.MParameterValueImpl
 		 * @see es.uah.aut.srg.micobs.common.impl.commonPackageImpl#getMParameterValue()
@@ -3259,6 +3299,14 @@ public interface commonPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MPARAMETER_VALUE_STRING_LITERAL__VALUE = eINSTANCE.getMParameterValueStringLiteral_Value();
+
+		/**
+		 * The meta object literal for the '<em><b>IsRaw</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MPARAMETER_VALUE_STRING_LITERAL__IS_RAW = eINSTANCE.getMParameterValueStringLiteral_IsRaw();
 
 		/**
 		 * The meta object literal for the '{@link es.uah.aut.srg.micobs.common.impl.MParameterValueRefObjectImpl <em>MParameterValueRef Object</em>}' class.

@@ -17,12 +17,7 @@ import java.util.List;
 import org.eclipse.emf.common.notify.AdapterFactory;
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.edit.provider.ComposeableAdapterFactory;
-import org.eclipse.emf.edit.provider.IEditingDomainItemProvider;
-import org.eclipse.emf.edit.provider.IItemLabelProvider;
 import org.eclipse.emf.edit.provider.IItemPropertyDescriptor;
-import org.eclipse.emf.edit.provider.IItemPropertySource;
-import org.eclipse.emf.edit.provider.IStructuredItemContentProvider;
-import org.eclipse.emf.edit.provider.ITreeItemContentProvider;
 import org.eclipse.emf.edit.provider.ItemPropertyDescriptor;
 import org.eclipse.emf.edit.provider.ViewerNotification;
 
@@ -34,13 +29,7 @@ import es.uah.aut.srg.micobs.common.commonPackage;
  * @generated
  */
 public class MParameterValueStringLiteralItemProvider
-	extends MParameterValueLiteralItemProvider
-	implements
-		IEditingDomainItemProvider,
-		IStructuredItemContentProvider,
-		ITreeItemContentProvider,
-		IItemLabelProvider,
-		IItemPropertySource {
+	extends MParameterValueLiteralItemProvider {
 	/**
 	 * This constructs an instance from a factory and a notifier.
 	 * @generated
@@ -59,6 +48,7 @@ public class MParameterValueStringLiteralItemProvider
 			super.getPropertyDescriptors(object);
 
 			addValuePropertyDescriptor(object);
+			addIsRawPropertyDescriptor(object);
 		}
 		return itemPropertyDescriptors;
 	}
@@ -79,6 +69,26 @@ public class MParameterValueStringLiteralItemProvider
 				 false,
 				 false,
 				 ItemPropertyDescriptor.GENERIC_VALUE_IMAGE,
+				 null,
+				 null));
+	}
+
+	/**
+	 * This adds a property descriptor for the Is Raw feature.
+	 * @generated
+	 */
+	protected void addIsRawPropertyDescriptor(Object object) {
+		itemPropertyDescriptors.add
+			(createItemPropertyDescriptor
+				(((ComposeableAdapterFactory)adapterFactory).getRootAdapterFactory(),
+				 getResourceLocator(),
+				 getString("_UI_MParameterValueStringLiteral_isRaw_feature"),
+				 getString("_UI_PropertyDescriptor_description", "_UI_MParameterValueStringLiteral_isRaw_feature", "_UI_MParameterValueStringLiteral_type"),
+				 commonPackage.Literals.MPARAMETER_VALUE_STRING_LITERAL__IS_RAW,
+				 true,
+				 false,
+				 false,
+				 ItemPropertyDescriptor.BOOLEAN_VALUE_IMAGE,
 				 null,
 				 null));
 	}
@@ -115,6 +125,7 @@ public class MParameterValueStringLiteralItemProvider
 
 		switch (notification.getFeatureID(MParameterValueStringLiteral.class)) {
 			case commonPackage.MPARAMETER_VALUE_STRING_LITERAL__VALUE:
+			case commonPackage.MPARAMETER_VALUE_STRING_LITERAL__IS_RAW:
 				fireNotifyChanged(new ViewerNotification(notification, notification.getNotifier(), false, true));
 				return;
 		}
