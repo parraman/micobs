@@ -17,6 +17,12 @@ import mesppswp;
 import mesposswi;
 import mespcommon;
 
+/*
+ * If you want this to work, you have to activate at workspace level the use of
+ * the JavaBeans Metamodel (Preferences -> Xpand/Xtend)
+ */
+import es::uah::aut::srg::micobs::util;
+
 MLanguage getLanguage(String uri, String version) : JAVA
 	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.getLanguage(java.lang.String, java.lang.String);
 
@@ -28,7 +34,7 @@ Boolean parseBooleanExpression(MParameterValueExpression this, Collection[MParam
 	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.parseBooleanExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, 
 		java.util.Collection, es.uah.aut.srg.micobs.pdl.MPlatform);
 
-String parseStringExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments, MPlatform platform) : JAVA
+StringValue parseStringExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments, MPlatform platform) : JAVA
 	es.uah.aut.srg.micobs.mesp.util.impl.MESPBlackBoxUnit.parseStringExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, 
 		java.util.Collection, es.uah.aut.srg.micobs.pdl.MPlatform);
 

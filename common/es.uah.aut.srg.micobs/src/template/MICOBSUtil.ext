@@ -10,6 +10,13 @@
  ******************************************************************************/
 import common;
 import system;
+import java::lang;
+
+/*
+ * If you want this to work, you have to activate at workspace level the use of
+ * the JavaBeans Metamodel (Preferences -> Xpand/Xtend)
+ */
+import es::uah::aut::srg::micobs::util;
 
 Integer getSum(List[Integer] values) :
 	values.size == 0 ? 0 : values.first() + values.withoutFirst().getSum();
@@ -23,13 +30,13 @@ MEnumParameterLiteral parseEnumExpression(MParameterValueExpression this, Collec
 Boolean parseBooleanExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments) : JAVA
 	es.uah.aut.srg.micobs.util.impl.MICOBSBlackBoxUnit.parseBooleanExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, java.util.Collection);
 
-String parseStringExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments) : JAVA
+StringValue parseStringExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments) : JAVA
 	es.uah.aut.srg.micobs.util.impl.MICOBSBlackBoxUnit.parseStringExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, java.util.Collection);
 
 Integer parseIntegerExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments) : JAVA
 	es.uah.aut.srg.micobs.util.impl.MICOBSBlackBoxUnit.parseIntegerExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, java.util.Collection);
 	
-java::lang::Float parseRealExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments) : JAVA
+Float parseRealExpression(MParameterValueExpression this, Collection[MParameterValueAssignment] assignments) : JAVA
 	es.uah.aut.srg.micobs.util.impl.MICOBSBlackBoxUnit.parseRealExpression(es.uah.aut.srg.micobs.common.MParameterValueExpression, java.util.Collection);
 	
 MCommonPackage getPackage(MCommonPackageElement this):

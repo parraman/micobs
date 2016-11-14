@@ -20,6 +20,7 @@ import org.eclipse.xpand2.XpandFacade;
 import org.eclipse.xpand2.output.Outlet;
 import org.eclipse.xpand2.output.OutputImpl;
 import org.eclipse.xtend.expression.Variable;
+import org.eclipse.xtend.type.impl.java.JavaMetaModel;
 import org.eclipse.xtend.typesystem.emf.EmfRegistryMetaModel;
 
 /**
@@ -111,7 +112,15 @@ public class XpandUtil {
 	    Map<String, Variable> globalVarsMap = new HashMap<String, Variable>();
 	    XpandExecutionContextImpl execCtx = new XpandExecutionContextImpl(output, resolv, globalVarsMap, null, null);
 
+	    // Register the EMF MetaModel with the metamodels used within the transformation
 	    execCtx.registerMetaModel(metamodel);
+	    
+	    // Register the JAVA MetaModel. This is added in order to be able to
+	    // use Java Classes as Types within the transformation. If you also
+	    // want the Xpand/Xtend editors not to generate any errors, you have
+	    // activate the use of the JavaBeans MetaModel on the menu
+	    // Preferences -> Xpand/Xtend.
+	    execCtx.registerMetaModel(new JavaMetaModel());
 	    
 	    XpandFacade facade = XpandFacade.create(execCtx);
 

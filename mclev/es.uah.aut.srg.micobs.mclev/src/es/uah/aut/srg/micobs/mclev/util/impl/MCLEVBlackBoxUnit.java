@@ -30,7 +30,7 @@ import es.uah.aut.srg.micobs.mclev.mclevslib.MServiceLibrary;
 import es.uah.aut.srg.micobs.mclev.mclevslib.MServiceLibrarySupportedPlatform;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.system.MLanguage;
-import es.uah.aut.srg.micobs.util.IMICOBSUtil.StringValue;
+import es.uah.aut.srg.micobs.util.StringValue;
 
 public class MCLEVBlackBoxUnit {
 	

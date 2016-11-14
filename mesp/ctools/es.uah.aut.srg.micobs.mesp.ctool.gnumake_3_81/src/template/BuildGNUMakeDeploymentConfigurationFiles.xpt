@@ -15,6 +15,7 @@
 «IMPORT common»
 «IMPORT mespswp»
 «IMPORT mespswi»
+«IMPORT es::uah::aut::srg::micobs::util»
 
 «EXTENSION template::MESPStringHelper»
 «EXTENSION template::MESPUtil»
@@ -174,7 +175,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -196,7 +203,12 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ENDIF -»
+#define «("CONFIG_SWI_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -216,7 +228,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_SWP_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -244,7 +262,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_" + name).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_" + name).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_" + name).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_" + name).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ELSE -»
 #define «("CONFIG_" + name).toUpperDefString()» 1
 «ENDIF -»
@@ -261,7 +285,13 @@
 «ELSEIF this.parameter.metaType.superTypes.contains(common::MRealParameter) -»
 #define «("CONFIG_" + name).toUpperDefString()» «this.getParameterValue(deploymentPlatform.platform).parseRealExpression(assignments, deploymentPlatform.platform).toString()»
 «ELSEIF this.parameter.metaType.superTypes.contains(common::MStringParameter) -»
-#define «("CONFIG_" + name).toUpperDefString()» "«this.getParameterValue(deploymentPlatform.platform).parseStringExpression(assignments, deploymentPlatform.platform)»"
+«LET this.getParameterValue(deploymentPlatform.platform).parseStringExpression(assignments, deploymentPlatform.platform) AS resolv -»
+«IF resolv.raw == true -»
+#define «("CONFIG_" + name).toUpperDefString()» «resolv.string»
+«ELSE -»
+#define «("CONFIG_" + name).toUpperDefString()» "«resolv.string»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDDEFINE»
 
@@ -279,7 +309,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_" + name).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_" + name).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_" + name).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_" + name).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ELSE -»
 #define «("CONFIG_" + name).toUpperDefString()» 1
 «ENDIF -»
@@ -296,7 +332,13 @@
 «ELSEIF this.metaType.superTypes.contains(common::MRealParameter) -»
 #define «("CONFIG_" + name).toUpperDefString()» «this.getDefaultValue(deploymentPlatform.platform).parseRealExpression(assignments, deploymentPlatform.platform).toString()»
 «ELSEIF this.metaType.superTypes.contains(common::MStringParameter) -»
-#define «("CONFIG_" + name).toUpperDefString()» "«this.getDefaultValue(deploymentPlatform.platform).parseStringExpression(assignments, deploymentPlatform.platform)»"
+«LET this.getDefaultValue(deploymentPlatform.platform).parseStringExpression(assignments, deploymentPlatform.platform) AS resolv -»
+«IF ((StringValue)resolv).raw == true -»
+#define «("CONFIG_" + name).toUpperDefString()» «resolv.string»
+«ELSE -»
+#define «("CONFIG_" + name).toUpperDefString()» "«resolv.string»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDDEFINE»
 
@@ -309,7 +351,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_OSAPI_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_OSAPI_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_OSAPI_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_OSAPI_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -330,7 +378,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_OS_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_OS_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_OS_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_OS_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -349,7 +403,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_ARCH_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_ARCH_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_ARCH_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_ARCH_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -368,7 +428,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_COMPILER_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_COMPILER_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_COMPILER_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_COMPILER_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -388,7 +454,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_MP_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_MP_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_MP_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_MP_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -408,7 +480,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_BOARD_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_BOARD_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_BOARD_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_BOARD_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
@@ -428,7 +506,13 @@
 «ELSEIF literal.metaType == common::MEnumParamIntegerLiteral -»
 #define «("CONFIG_PLT_" + literal.getFullObjectNameToElement()).toUpperDefString()» «((common::MEnumParamIntegerLiteral)literal).value»
 «ELSEIF literal.metaType == common::MEnumParamStringLiteral -»
-#define «("CONFIG_PLT_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«((common::MEnumParamStringLiteral)literal).value»"
+«LET (common::MEnumParamStringLiteral)literal AS literal -»
+«IF literal.isRaw == true -»
+#define «("CONFIG_PLT_" + literal.getFullObjectNameToElement()).toUpperDefString()» «literal.value»
+«ELSE -»
+#define «("CONFIG_PLT_" + literal.getFullObjectNameToElement()).toUpperDefString()» "«literal.value»"
+«ENDIF -»
+«ENDLET -»
 «ENDIF -»
 «ENDFOREACH -»
 «ENDFOREACH -»
