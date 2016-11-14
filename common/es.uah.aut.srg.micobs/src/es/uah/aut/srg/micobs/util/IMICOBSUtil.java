@@ -34,6 +34,41 @@ import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 
 public interface IMICOBSUtil {
+	
+	public class StringValue {
+
+		public String getString() {
+			return theString;
+		}
+
+		public void setString(String string) {
+			this.theString = string;
+		}
+
+		public boolean isRaw() {
+			return isRaw;
+		}
+
+		public void setRaw(boolean isRaw) {
+			this.isRaw = isRaw;
+		}
+
+		protected String theString;
+		protected boolean isRaw;
+		
+		public StringValue(String theString, boolean isRaw) {
+			super();
+			this.theString = theString;
+			this.isRaw = isRaw;
+		}
+		
+		@Override
+		public String toString() {
+			return theString;
+		}
+		
+	}
+	
 
 	/**
 	 * Returns the literal value corresponding to an enumerated expression.
@@ -229,7 +264,7 @@ public interface IMICOBSUtil {
 	 * @return the string value of the expression.
 	 * @see #parseStringExpression(MParameterValueExpression, IParameterAssignmentResolver)
 	 */
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression expression,
 			Collection<MParameterValueAssignment> assignments)
 			throws IllegalArgumentException;
@@ -248,7 +283,7 @@ public interface IMICOBSUtil {
 	 * @return the string value pointed by the expression.
 	 * @throws IllegalArgumentException
 	 */
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression expression,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException;
@@ -267,7 +302,7 @@ public interface IMICOBSUtil {
 	 * @return the string value of the left hand term.
 	 * @throws IllegalArgumentException
 	 */
-	String parseStringExpression(MParameterValueTERM term,
+	StringValue parseStringExpression(MParameterValueTERM term,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException;
 
@@ -286,7 +321,7 @@ public interface IMICOBSUtil {
 	 * @return the string parameter value.
 	 * @throws IllegalArgumentException
 	 */
-	String parseStringExpression(MParameterValue pva,
+	StringValue parseStringExpression(MParameterValue pva,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException;
 	
@@ -305,7 +340,7 @@ public interface IMICOBSUtil {
 	 * @return the associated string value.
 	 * @throws IllegalArgumentException
 	 */
-	String parseStringReferencedObject(MCommonReferenceableObj object,
+	StringValue parseStringReferencedObject(MCommonReferenceableObj object,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException;
 	

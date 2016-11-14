@@ -23,6 +23,7 @@ import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
 import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
+import es.uah.aut.srg.micobs.util.IMICOBSUtil.StringValue;
 
 /**
  * QVT and Xpand black box unit with common MICOBS functions.
@@ -37,7 +38,7 @@ public class MICOBSBlackBoxUnit {
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
-	public static String parseStringExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments)
+	public static StringValue parseStringExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments)
 	{
 		return MICOBSUtilProvider.getMICOBSUtil().parseStringExpression(self, assignments);
 	}

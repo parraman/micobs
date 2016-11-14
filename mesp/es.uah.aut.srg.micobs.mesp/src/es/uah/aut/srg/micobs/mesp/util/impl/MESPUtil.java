@@ -2084,7 +2084,7 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 	}
 
 	@Override
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression self,
 			Collection<MParameterValueAssignment> assignments)
 			throws IllegalArgumentException {
@@ -2092,7 +2092,7 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 	}
 
 	@Override
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression expression,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
@@ -2208,7 +2208,7 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 	}
 
 	@Override
-	public String parseStringExpression(MParameterValueTERM term,
+	public StringValue parseStringExpression(MParameterValueTERM term,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
 		return MICOBSUtil.parseStringExpression(term, resolver);
@@ -2238,7 +2238,7 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 	}
 	
 	@Override
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression self,
 			Collection<MParameterValueAssignment> assignments,
 			MPlatform platform) throws IllegalArgumentException {
@@ -2290,7 +2290,7 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 	}
 
 	@Override
-	public String parseStringExpression(MParameterValue pva,
+	public StringValue parseStringExpression(MParameterValue pva,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
 		return MICOBSUtil.parseStringExpression(pva, resolver);
@@ -2311,7 +2311,7 @@ public class MESPUtil implements IMICOBSUtil, IPDLUtil, IMESPUtil {
 	}
 
 	@Override
-	public String parseStringReferencedObject(MCommonReferenceableObj object,
+	public StringValue parseStringReferencedObject(MCommonReferenceableObj object,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
 		return MICOBSUtil.parseStringReferencedObject(object, resolver);

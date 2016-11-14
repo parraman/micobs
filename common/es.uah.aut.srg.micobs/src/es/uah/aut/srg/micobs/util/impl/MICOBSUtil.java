@@ -86,6 +86,7 @@ import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
  */
 public class MICOBSUtil implements IMICOBSUtil {
 	
+	
 	private static MICOBSUtil DEFAULT;
 	
 	/**
@@ -359,7 +360,7 @@ public class MICOBSUtil implements IMICOBSUtil {
 	}
 	
 	@Override
-	public String parseStringExpression(final MParameterValueExpression self, 
+	public StringValue parseStringExpression(final MParameterValueExpression self, 
 							Collection<MParameterValueAssignment> assignments)
 							throws IllegalArgumentException
 	{
@@ -390,7 +391,7 @@ public class MICOBSUtil implements IMICOBSUtil {
 	}
 
 	@Override
-	public String parseStringExpression(MParameterValueExpression expression,
+	public StringValue parseStringExpression(MParameterValueExpression expression,
 			IParameterAssignmentResolver resolver) throws IllegalArgumentException
 	{
 		if (expression.getLeft() == null)
@@ -408,7 +409,7 @@ public class MICOBSUtil implements IMICOBSUtil {
 	}
 	
 	@Override
-	public String parseStringExpression(MParameterValueTERM term, 
+	public StringValue parseStringExpression(MParameterValueTERM term, 
 			IParameterAssignmentResolver resolver) 
 			throws IllegalArgumentException {
 		
@@ -427,7 +428,7 @@ public class MICOBSUtil implements IMICOBSUtil {
 	}
 	
 	@Override
-	public String parseStringReferencedObject(MCommonReferenceableObj object, IParameterAssignmentResolver resolver)
+	public StringValue parseStringReferencedObject(MCommonReferenceableObj object, IParameterAssignmentResolver resolver)
 	{
 		if (object instanceof MStringParameter)
 		{
@@ -470,7 +471,7 @@ public class MICOBSUtil implements IMICOBSUtil {
 			MEnumParamStringLiteral literal = 
 					(MEnumParamStringLiteral) object;
 			
-			return literal.getValue();
+			return new StringValue(literal.getValue(), literal.isIsRaw());
 		}
 		else
 		{
@@ -479,7 +480,7 @@ public class MICOBSUtil implements IMICOBSUtil {
 	}
 	
 	@Override
-	public String parseStringExpression(MParameterValue pva, 
+	public StringValue parseStringExpression(MParameterValue pva, 
 			IParameterAssignmentResolver resolver) 
 			throws IllegalArgumentException
 	{
@@ -497,7 +498,8 @@ public class MICOBSUtil implements IMICOBSUtil {
 		}
 		else if (pva instanceof MParameterValueStringLiteral)
 		{
-			return ((MParameterValueStringLiteral)pva).getValue();
+			MParameterValueStringLiteral literal = ((MParameterValueStringLiteral)pva);
+			return new StringValue(literal.getValue(), literal.isIsRaw());
 		}
 		else
 		{

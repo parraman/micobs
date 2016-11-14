@@ -176,7 +176,7 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 		}
 		
 		@Override
-		public String parseStringReferencedObject(
+		public StringValue parseStringReferencedObject(
 				MCommonReferenceableObj object,
 				IParameterAssignmentResolver resolver) {
 			
@@ -1143,7 +1143,7 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 	}
 
 	@Override
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression expression,
 			Collection<MParameterValueAssignment> assignments)
 			throws IllegalArgumentException {
@@ -1151,7 +1151,7 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 	}
 
 	@Override
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression expression,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
@@ -1275,7 +1275,7 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 	}
 
 	@Override
-	public String parseStringExpression(MParameterValueTERM term,
+	public StringValue parseStringExpression(MParameterValueTERM term,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
 		return MICOBSUtil.parseStringExpression(term, resolver);
@@ -1363,7 +1363,7 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 	}
 	
 	@Override
-	public String parseStringExpression(final MParameterValueExpression self, 
+	public StringValue parseStringExpression(final MParameterValueExpression self, 
 							Collection<MParameterValueAssignment> assignments,
 							final MPlatform platform)
 							throws IllegalArgumentException
@@ -1496,7 +1496,7 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 	}
 
 	@Override
-	public String parseStringExpression(MParameterValue pva,
+	public StringValue parseStringExpression(MParameterValue pva,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
 		return MICOBSUtil.parseStringExpression(pva, resolver);
@@ -1517,7 +1517,7 @@ public class PDLUtil implements IMICOBSUtil, IPDLUtil {
 	}
 
 	@Override
-	public String parseStringReferencedObject(MCommonReferenceableObj object,
+	public StringValue parseStringReferencedObject(MCommonReferenceableObj object,
 			IParameterAssignmentResolver resolver)
 			throws IllegalArgumentException {
 		return MICOBSUtil.parseStringReferencedObject(object, resolver);

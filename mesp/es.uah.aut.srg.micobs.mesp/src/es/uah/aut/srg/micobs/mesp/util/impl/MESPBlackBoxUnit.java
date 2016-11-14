@@ -49,6 +49,7 @@ import es.uah.aut.srg.micobs.pdl.MOperatingSystem;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.util.IMICOBSUtil.StringValue;
 
 
 /**
@@ -173,7 +174,7 @@ public class MESPBlackBoxUnit {
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
-	public static String parseStringExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments, MPlatform platform)
+	public static StringValue parseStringExpression(final MParameterValueExpression self, Collection<MParameterValueAssignment> assignments, MPlatform platform)
 	{
 		return MESPUtilProvider.getPDLUtil().parseStringExpression(self, assignments, platform);
 	}

@@ -33,6 +33,7 @@ import es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
+import es.uah.aut.srg.micobs.util.IMICOBSUtil.StringValue;
 
 public interface IPDLUtil {
 
@@ -582,7 +583,7 @@ public interface IPDLUtil {
 	 * @return the value assigned to the parameter.
 	 * @see IMICOBSUtil#parseBooleanParameterValueAssignment(MParameterValueAssignment, Collection)
 	 */
-	public String parseStringExpression(
+	public StringValue parseStringExpression(
 			MParameterValueExpression expression,
 			Collection<MParameterValueAssignment> assignments,
 			MPlatform platform) throws IllegalArgumentException;

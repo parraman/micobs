@@ -30,6 +30,7 @@ import es.uah.aut.srg.micobs.mclev.mclevslib.MServiceLibrary;
 import es.uah.aut.srg.micobs.mclev.mclevslib.MServiceLibrarySupportedPlatform;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.system.MLanguage;
+import es.uah.aut.srg.micobs.util.IMICOBSUtil.StringValue;
 
 public class MCLEVBlackBoxUnit {
 	
@@ -42,7 +43,7 @@ public class MCLEVBlackBoxUnit {
 	}
 	
 	@Operation(contextual = true, kind = Kind.HELPER)
-	public static String parseStringExpression(final MParameterValueExpression self, 
+	public static StringValue parseStringExpression(final MParameterValueExpression self, 
 			Collection<MParameterValueAssignment> assignments,
 			MPlatform platform)
 	{
