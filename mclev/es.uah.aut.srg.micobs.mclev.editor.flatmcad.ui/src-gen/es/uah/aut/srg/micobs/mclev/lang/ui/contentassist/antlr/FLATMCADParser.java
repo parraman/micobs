@@ -56,9 +56,9 @@ public class FLATMCADParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMMCLEVFLATMCADPackageFileAccess().getGroup(), "rule__MMCLEVFLATMCADPackageFile__Group__0");
 					put(grammarAccess.getMMCLEVFLATMCADPackageFileAccess().getGroup_3(), "rule__MMCLEVFLATMCADPackageFile__Group_3__0");
 					put(grammarAccess.getMFlatMCADAccess().getGroup(), "rule__MFlatMCAD__Group__0");
-					put(grammarAccess.getMFlatMCADAccess().getGroup_3_0(), "rule__MFlatMCAD__Group_3_0__0");
-					put(grammarAccess.getMFlatMCADAccess().getGroup_3_1(), "rule__MFlatMCAD__Group_3_1__0");
-					put(grammarAccess.getMFlatMCADAccess().getGroup_3_2(), "rule__MFlatMCAD__Group_3_2__0");
+					put(grammarAccess.getMFlatMCADAccess().getGroup_4_0(), "rule__MFlatMCAD__Group_4_0__0");
+					put(grammarAccess.getMFlatMCADAccess().getGroup_4_1(), "rule__MFlatMCAD__Group_4_1__0");
+					put(grammarAccess.getMFlatMCADAccess().getGroup_4_2(), "rule__MFlatMCAD__Group_4_2__0");
 					put(grammarAccess.getMFlatMCADTargetAccess().getGroup(), "rule__MFlatMCADTarget__Group__0");
 					put(grammarAccess.getMFlatMCADTargetAccess().getGroup_1_0(), "rule__MFlatMCADTarget__Group_1_0__0");
 					put(grammarAccess.getMFlatMCADTargetAccess().getGroup_1_1(), "rule__MFlatMCADTarget__Group_1_1__0");
@@ -102,10 +102,10 @@ public class FLATMCADParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMMCLEVFLATMCADPackageFileAccess().getPackageAssignment_1(), "rule__MMCLEVFLATMCADPackageFile__PackageAssignment_1");
 					put(grammarAccess.getMMCLEVFLATMCADPackageFileAccess().getImportsAssignment_3_1(), "rule__MMCLEVFLATMCADPackageFile__ImportsAssignment_3_1");
 					put(grammarAccess.getMMCLEVFLATMCADPackageFileAccess().getElementAssignment_4(), "rule__MMCLEVFLATMCADPackageFile__ElementAssignment_4");
-					put(grammarAccess.getMFlatMCADAccess().getNameAssignment_1(), "rule__MFlatMCAD__NameAssignment_1");
-					put(grammarAccess.getMFlatMCADAccess().getVersionAssignment_3_0_2(), "rule__MFlatMCAD__VersionAssignment_3_0_2");
-					put(grammarAccess.getMFlatMCADAccess().getReferencedElementAssignment_3_1_3(), "rule__MFlatMCAD__ReferencedElementAssignment_3_1_3");
-					put(grammarAccess.getMFlatMCADAccess().getTargetsAssignment_3_2_3(), "rule__MFlatMCAD__TargetsAssignment_3_2_3");
+					put(grammarAccess.getMFlatMCADAccess().getNameAssignment_2(), "rule__MFlatMCAD__NameAssignment_2");
+					put(grammarAccess.getMFlatMCADAccess().getVersionAssignment_4_0_2(), "rule__MFlatMCAD__VersionAssignment_4_0_2");
+					put(grammarAccess.getMFlatMCADAccess().getReferencedElementAssignment_4_1_3(), "rule__MFlatMCAD__ReferencedElementAssignment_4_1_3");
+					put(grammarAccess.getMFlatMCADAccess().getTargetsAssignment_4_2_3(), "rule__MFlatMCAD__TargetsAssignment_4_2_3");
 					put(grammarAccess.getMFlatMCADTargetAccess().getDeploymentPlatformAssignment_1_0_1(), "rule__MFlatMCADTarget__DeploymentPlatformAssignment_1_0_1");
 					put(grammarAccess.getMFlatMCADTargetAccess().getLeafDeploymentAlternativeAssignment_1_1_1(), "rule__MFlatMCADTarget__LeafDeploymentAlternativeAssignment_1_1_1");
 					put(grammarAccess.getMFlatMCADTargetAccess().getAttributeValueAssignmentsAssignment_3_0_3(), "rule__MFlatMCADTarget__AttributeValueAssignmentsAssignment_3_0_3");
@@ -132,7 +132,8 @@ public class FLATMCADParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMAttributeValueAssignmentAccess().getParameterAssignment_1(), "rule__MAttributeValueAssignment__ParameterAssignment_1");
 					put(grammarAccess.getMAttributeValueAssignmentAccess().getParameterValueAssignment_3(), "rule__MAttributeValueAssignment__ParameterValueAssignment_3");
 					put(grammarAccess.getMParameterValueBooleanLiteralAccess().getValueAssignment_1(), "rule__MParameterValueBooleanLiteral__ValueAssignment_1");
-					put(grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_1(), "rule__MParameterValueStringLiteral__ValueAssignment_1");
+					put(grammarAccess.getMParameterValueStringLiteralAccess().getIsRawAssignment_1(), "rule__MParameterValueStringLiteral__IsRawAssignment_1");
+					put(grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_2(), "rule__MParameterValueStringLiteral__ValueAssignment_2");
 					put(grammarAccess.getMParameterValueIntegerLiteralAccess().getValueAssignment_1(), "rule__MParameterValueIntegerLiteral__ValueAssignment_1");
 					put(grammarAccess.getMParameterValueRealLiteralAccess().getValueAssignment_1(), "rule__MParameterValueRealLiteral__ValueAssignment_1");
 					put(grammarAccess.getMParameterValueRefObjectAccess().getObjectAssignment_1(), "rule__MParameterValueRefObject__ObjectAssignment_1");
@@ -143,7 +144,7 @@ public class FLATMCADParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMParameterValueTERMAccess().getLeftAssignment_1(), "rule__MParameterValueTERM__LeftAssignment_1");
 					put(grammarAccess.getMParameterValueTERMAccess().getOperationAssignment_2_0(), "rule__MParameterValueTERM__OperationAssignment_2_0");
 					put(grammarAccess.getMParameterValueTERMAccess().getRightAssignment_2_1(), "rule__MParameterValueTERM__RightAssignment_2_1");
-					put(grammarAccess.getMFlatMCADAccess().getUnorderedGroup_3(), "rule__MFlatMCAD__UnorderedGroup_3");
+					put(grammarAccess.getMFlatMCADAccess().getUnorderedGroup_4(), "rule__MFlatMCAD__UnorderedGroup_4");
 					put(grammarAccess.getMFlatMCADTargetAccess().getUnorderedGroup_1(), "rule__MFlatMCADTarget__UnorderedGroup_1");
 					put(grammarAccess.getMFlatMCADTargetAccess().getUnorderedGroup_3(), "rule__MFlatMCADTarget__UnorderedGroup_3");
 					put(grammarAccess.getMFlatDriverSLibInstanceAccess().getUnorderedGroup_4(), "rule__MFlatDriverSLibInstance__UnorderedGroup_4");

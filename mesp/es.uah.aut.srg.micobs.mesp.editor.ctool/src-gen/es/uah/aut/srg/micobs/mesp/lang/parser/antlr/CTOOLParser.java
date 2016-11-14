@@ -10,10 +10,9 @@
  ******************************************************************************/
 package es.uah.aut.srg.micobs.mesp.lang.parser.antlr;
 
-import org.eclipse.xtext.parser.antlr.XtextTokenStream;
-
 import com.google.inject.Inject;
 
+import org.eclipse.xtext.parser.antlr.XtextTokenStream;
 import es.uah.aut.srg.micobs.mesp.lang.services.CTOOLGrammarAccess;
 
 public class CTOOLParser extends org.eclipse.xtext.parser.antlr.AbstractAntlrParser {

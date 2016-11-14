@@ -22,53 +22,54 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalOSSWILexer extends Lexer {
-    public static final int RULE_ID=4;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int T__21=21;
-    public static final int RULE_ANY_OTHER=11;
-    public static final int T__20=20;
-    public static final int EOF=-1;
+    public static final int T__50=50;
     public static final int T__19=19;
-    public static final int T__16=16;
     public static final int T__15=15;
-    public static final int T__18=18;
+    public static final int T__16=16;
     public static final int T__17=17;
+    public static final int T__18=18;
     public static final int T__12=12;
-    public static final int T__14=14;
     public static final int T__13=13;
+    public static final int T__14=14;
+    public static final int RULE_ID=4;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
     public static final int RULE_INT=5;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int RULE_HEXADECIMAL=7;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int RULE_SL_COMMENT=9;
+    public static final int T__29=29;
+    public static final int T__22=22;
     public static final int RULE_ML_COMMENT=8;
-    public static final int T__30=30;
-    public static final int T__31=31;
+    public static final int T__23=23;
+    public static final int RULE_HEXADECIMAL=7;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
     public static final int RULE_STRING=6;
-    public static final int T__32=32;
+    public static final int RULE_SL_COMMENT=9;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_WS=10;
+    public static final int RULE_ANY_OTHER=11;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -81,15 +82,15 @@ public class InternalOSSWILexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g"; }
+    public String getGrammarFileName() { return "InternalOSSWI.g"; }
 
     // $ANTLR start "T__12"
     public final void mT__12() throws RecognitionException {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:11:7: ( 'package' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:11:9: 'package'
+            // InternalOSSWI.g:11:7: ( 'package' )
+            // InternalOSSWI.g:11:9: 'package'
             {
             match("package"); 
 
@@ -109,8 +110,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:12:7: ( ';' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:12:9: ';'
+            // InternalOSSWI.g:12:7: ( ';' )
+            // InternalOSSWI.g:12:9: ';'
             {
             match(';'); 
 
@@ -129,8 +130,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:13:7: ( 'import' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:13:9: 'import'
+            // InternalOSSWI.g:13:7: ( 'import' )
+            // InternalOSSWI.g:13:9: 'import'
             {
             match("import"); 
 
@@ -150,8 +151,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:14:7: ( '.' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:14:9: '.'
+            // InternalOSSWI.g:14:7: ( '.' )
+            // InternalOSSWI.g:14:9: '.'
             {
             match('.'); 
 
@@ -170,8 +171,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:15:7: ( '(' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:15:9: '('
+            // InternalOSSWI.g:15:7: ( '(' )
+            // InternalOSSWI.g:15:9: '('
             {
             match('('); 
 
@@ -190,8 +191,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:16:7: ( ')' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:16:9: ')'
+            // InternalOSSWI.g:16:7: ( ')' )
+            // InternalOSSWI.g:16:9: ')'
             {
             match(')'); 
 
@@ -210,8 +211,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:17:7: ( '::' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:17:9: '::'
+            // InternalOSSWI.g:17:7: ( '::' )
+            // InternalOSSWI.g:17:9: '::'
             {
             match("::"); 
 
@@ -231,8 +232,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:18:7: ( 'osswinterface' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:18:9: 'osswinterface'
+            // InternalOSSWI.g:18:7: ( 'osswinterface' )
+            // InternalOSSWI.g:18:9: 'osswinterface'
             {
             match("osswinterface"); 
 
@@ -252,8 +253,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:19:7: ( 'extends' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:19:9: 'extends'
+            // InternalOSSWI.g:19:7: ( 'extends' )
+            // InternalOSSWI.g:19:9: 'extends'
             {
             match("extends"); 
 
@@ -273,8 +274,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:20:7: ( ',' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:20:9: ','
+            // InternalOSSWI.g:20:7: ( ',' )
+            // InternalOSSWI.g:20:9: ','
             {
             match(','); 
 
@@ -293,8 +294,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:21:7: ( '{' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:21:9: '{'
+            // InternalOSSWI.g:21:7: ( '{' )
+            // InternalOSSWI.g:21:9: '{'
             {
             match('{'); 
 
@@ -313,8 +314,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:22:7: ( 'version' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:22:9: 'version'
+            // InternalOSSWI.g:22:7: ( 'version' )
+            // InternalOSSWI.g:22:9: 'version'
             {
             match("version"); 
 
@@ -334,8 +335,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:23:7: ( ':=' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:23:9: ':='
+            // InternalOSSWI.g:23:7: ( ':=' )
+            // InternalOSSWI.g:23:9: ':='
             {
             match(":="); 
 
@@ -355,8 +356,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:24:7: ( 'osapi' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:24:9: 'osapi'
+            // InternalOSSWI.g:24:7: ( 'osapi' )
+            // InternalOSSWI.g:24:9: 'osapi'
             {
             match("osapi"); 
 
@@ -376,8 +377,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:25:7: ( 'provided' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:25:9: 'provided'
+            // InternalOSSWI.g:25:7: ( 'provided' )
+            // InternalOSSWI.g:25:9: 'provided'
             {
             match("provided"); 
 
@@ -397,8 +398,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:26:7: ( 'resources' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:26:9: 'resources'
+            // InternalOSSWI.g:26:7: ( 'resources' )
+            // InternalOSSWI.g:26:9: 'resources'
             {
             match("resources"); 
 
@@ -418,8 +419,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:27:7: ( '}' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:27:9: '}'
+            // InternalOSSWI.g:27:7: ( '}' )
+            // InternalOSSWI.g:27:9: '}'
             {
             match('}'); 
 
@@ -438,8 +439,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:28:7: ( 'quantifiable' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:28:9: 'quantifiable'
+            // InternalOSSWI.g:28:7: ( 'quantifiable' )
+            // InternalOSSWI.g:28:9: 'quantifiable'
             {
             match("quantifiable"); 
 
@@ -459,8 +460,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:29:7: ( 'resource' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:29:9: 'resource'
+            // InternalOSSWI.g:29:7: ( 'resource' )
+            // InternalOSSWI.g:29:9: 'resource'
             {
             match("resource"); 
 
@@ -480,8 +481,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:30:7: ( 'step' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:30:9: 'step'
+            // InternalOSSWI.g:30:7: ( 'step' )
+            // InternalOSSWI.g:30:9: 'step'
             {
             match("step"); 
 
@@ -501,8 +502,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:31:7: ( 'to' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:31:9: 'to'
+            // InternalOSSWI.g:31:7: ( 'to' )
+            // InternalOSSWI.g:31:9: 'to'
             {
             match("to"); 
 
@@ -522,8 +523,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:32:7: ( 'instantiable' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:32:9: 'instantiable'
+            // InternalOSSWI.g:32:7: ( 'instantiable' )
+            // InternalOSSWI.g:32:9: 'instantiable'
             {
             match("instantiable"); 
 
@@ -543,8 +544,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:33:7: ( 'integer' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:33:9: 'integer'
+            // InternalOSSWI.g:33:7: ( 'integer' )
+            // InternalOSSWI.g:33:9: 'integer'
             {
             match("integer"); 
 
@@ -564,8 +565,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:34:7: ( 'range' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:34:9: 'range'
+            // InternalOSSWI.g:34:7: ( 'range' )
+            // InternalOSSWI.g:34:9: 'range'
             {
             match("range"); 
 
@@ -585,8 +586,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:35:7: ( 'enum' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:35:9: 'enum'
+            // InternalOSSWI.g:35:7: ( 'enum' )
+            // InternalOSSWI.g:35:9: 'enum'
             {
             match("enum"); 
 
@@ -606,8 +607,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:36:7: ( 'real' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:36:9: 'real'
+            // InternalOSSWI.g:36:7: ( 'real' )
+            // InternalOSSWI.g:36:9: 'real'
             {
             match("real"); 
 
@@ -627,8 +628,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:37:7: ( '=' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:37:9: '='
+            // InternalOSSWI.g:37:7: ( '=' )
+            // InternalOSSWI.g:37:9: '='
             {
             match('='); 
 
@@ -647,10 +648,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:38:7: ( 'boolean' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:38:9: 'boolean'
+            // InternalOSSWI.g:38:7: ( 'raw' )
+            // InternalOSSWI.g:38:9: 'raw'
             {
-            match("boolean"); 
+            match("raw"); 
 
 
             }
@@ -668,10 +669,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:39:7: ( 'string' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:39:9: 'string'
+            // InternalOSSWI.g:39:7: ( 'boolean' )
+            // InternalOSSWI.g:39:9: 'boolean'
             {
-            match("string"); 
+            match("boolean"); 
 
 
             }
@@ -689,10 +690,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:40:7: ( 'true' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:40:9: 'true'
+            // InternalOSSWI.g:40:7: ( 'string' )
+            // InternalOSSWI.g:40:9: 'string'
             {
-            match("true"); 
+            match("string"); 
 
 
             }
@@ -710,10 +711,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:41:7: ( 'false' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:41:9: 'false'
+            // InternalOSSWI.g:41:7: ( 'true' )
+            // InternalOSSWI.g:41:9: 'true'
             {
-            match("false"); 
+            match("true"); 
 
 
             }
@@ -731,10 +732,11 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:42:7: ( '-' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:42:9: '-'
+            // InternalOSSWI.g:42:7: ( 'false' )
+            // InternalOSSWI.g:42:9: 'false'
             {
-            match('-'); 
+            match("false"); 
+
 
             }
 
@@ -751,10 +753,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:43:7: ( 'e' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:43:9: 'e'
+            // InternalOSSWI.g:43:7: ( '-' )
+            // InternalOSSWI.g:43:9: '-'
             {
-            match('e'); 
+            match('-'); 
 
             }
 
@@ -771,10 +773,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:44:7: ( ']' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:44:9: ']'
+            // InternalOSSWI.g:44:7: ( 'e' )
+            // InternalOSSWI.g:44:9: 'e'
             {
-            match(']'); 
+            match('e'); 
 
             }
 
@@ -791,10 +793,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:45:7: ( '[' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:45:9: '['
+            // InternalOSSWI.g:45:7: ( ']' )
+            // InternalOSSWI.g:45:9: ']'
             {
-            match('['); 
+            match(']'); 
 
             }
 
@@ -811,10 +813,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:46:7: ( '+' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:46:9: '+'
+            // InternalOSSWI.g:46:7: ( '[' )
+            // InternalOSSWI.g:46:9: '['
             {
-            match('+'); 
+            match('['); 
 
             }
 
@@ -831,10 +833,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:47:7: ( '*' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:47:9: '*'
+            // InternalOSSWI.g:47:7: ( '+' )
+            // InternalOSSWI.g:47:9: '+'
             {
-            match('*'); 
+            match('+'); 
 
             }
 
@@ -851,10 +853,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:48:7: ( '/' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:48:9: '/'
+            // InternalOSSWI.g:48:7: ( '*' )
+            // InternalOSSWI.g:48:9: '*'
             {
-            match('/'); 
+            match('*'); 
 
             }
 
@@ -866,17 +868,37 @@ public class InternalOSSWILexer extends Lexer {
     }
     // $ANTLR end "T__49"
 
+    // $ANTLR start "T__50"
+    public final void mT__50() throws RecognitionException {
+        try {
+            int _type = T__50;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalOSSWI.g:49:7: ( '/' )
+            // InternalOSSWI.g:49:9: '/'
+            {
+            match('/'); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__50"
+
     // $ANTLR start "RULE_HEXADECIMAL"
     public final void mRULE_HEXADECIMAL() throws RecognitionException {
         try {
             int _type = RULE_HEXADECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3039:18: ( '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3039:20: '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+            // InternalOSSWI.g:3024:18: ( '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ )
+            // InternalOSSWI.g:3024:20: '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
             {
             match("0x"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3039:25: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+            // InternalOSSWI.g:3024:25: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
             int cnt1=0;
             loop1:
             do {
@@ -890,7 +912,7 @@ public class InternalOSSWILexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:
+            	    // InternalOSSWI.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
             	        input.consume();
@@ -930,10 +952,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3041:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3041:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalOSSWI.g:3026:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalOSSWI.g:3026:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3041:11: ( '^' )?
+            // InternalOSSWI.g:3026:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -942,7 +964,7 @@ public class InternalOSSWILexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3041:11: '^'
+                    // InternalOSSWI.g:3026:11: '^'
                     {
                     match('^'); 
 
@@ -960,7 +982,7 @@ public class InternalOSSWILexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3041:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalOSSWI.g:3026:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -973,7 +995,7 @@ public class InternalOSSWILexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:
+            	    // InternalOSSWI.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -1009,10 +1031,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3043:10: ( ( '0' .. '9' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3043:12: ( '0' .. '9' )+
+            // InternalOSSWI.g:3028:10: ( ( '0' .. '9' )+ )
+            // InternalOSSWI.g:3028:12: ( '0' .. '9' )+
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3043:12: ( '0' .. '9' )+
+            // InternalOSSWI.g:3028:12: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1026,7 +1048,7 @@ public class InternalOSSWILexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3043:13: '0' .. '9'
+            	    // InternalOSSWI.g:3028:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1058,10 +1080,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalOSSWI.g:3030:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalOSSWI.g:3030:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalOSSWI.g:3030:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1079,10 +1101,10 @@ public class InternalOSSWILexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalOSSWI.g:3030:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalOSSWI.g:3030:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1098,23 +1120,15 @@ public class InternalOSSWILexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalOSSWI.g:3030:21: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalOSSWI.g:3030:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1139,10 +1153,10 @@ public class InternalOSSWILexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalOSSWI.g:3030:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalOSSWI.g:3030:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -1158,23 +1172,15 @@ public class InternalOSSWILexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalOSSWI.g:3030:54: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3045:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalOSSWI.g:3030:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1217,12 +1223,12 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3047:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3047:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalOSSWI.g:3032:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalOSSWI.g:3032:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3047:24: ( options {greedy=false; } : . )*
+            // InternalOSSWI.g:3032:24: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -1247,7 +1253,7 @@ public class InternalOSSWILexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3047:52: .
+            	    // InternalOSSWI.g:3032:52: .
             	    {
             	    matchAny(); 
 
@@ -1277,12 +1283,12 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalOSSWI.g:3034:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalOSSWI.g:3034:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalOSSWI.g:3034:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop9:
             do {
                 int alt9=2;
@@ -1295,7 +1301,7 @@ public class InternalOSSWILexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalOSSWI.g:3034:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1315,7 +1321,7 @@ public class InternalOSSWILexer extends Lexer {
                 }
             } while (true);
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:40: ( ( '\\r' )? '\\n' )?
+            // InternalOSSWI.g:3034:40: ( ( '\\r' )? '\\n' )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1324,9 +1330,9 @@ public class InternalOSSWILexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:41: ( '\\r' )? '\\n'
+                    // InternalOSSWI.g:3034:41: ( '\\r' )? '\\n'
                     {
-                    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:41: ( '\\r' )?
+                    // InternalOSSWI.g:3034:41: ( '\\r' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -1335,7 +1341,7 @@ public class InternalOSSWILexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3049:41: '\\r'
+                            // InternalOSSWI.g:3034:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1367,10 +1373,10 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3051:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3051:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalOSSWI.g:3036:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalOSSWI.g:3036:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3051:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalOSSWI.g:3036:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt12=0;
             loop12:
             do {
@@ -1384,7 +1390,7 @@ public class InternalOSSWILexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:
+            	    // InternalOSSWI.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1424,8 +1430,8 @@ public class InternalOSSWILexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3053:16: ( . )
-            // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:3053:18: .
+            // InternalOSSWI.g:3038:16: ( . )
+            // InternalOSSWI.g:3038:18: .
             {
             matchAny(); 
 
@@ -1440,327 +1446,334 @@ public class InternalOSSWILexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt13=46;
+        // InternalOSSWI.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt13=47;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:10: T__12
+                // InternalOSSWI.g:1:10: T__12
                 {
                 mT__12(); 
 
                 }
                 break;
             case 2 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:16: T__13
+                // InternalOSSWI.g:1:16: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
             case 3 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:22: T__14
+                // InternalOSSWI.g:1:22: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 4 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:28: T__15
+                // InternalOSSWI.g:1:28: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 5 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:34: T__16
+                // InternalOSSWI.g:1:34: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 6 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:40: T__17
+                // InternalOSSWI.g:1:40: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 7 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:46: T__18
+                // InternalOSSWI.g:1:46: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
             case 8 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:52: T__19
+                // InternalOSSWI.g:1:52: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
             case 9 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:58: T__20
+                // InternalOSSWI.g:1:58: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
             case 10 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:64: T__21
+                // InternalOSSWI.g:1:64: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
             case 11 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:70: T__22
+                // InternalOSSWI.g:1:70: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
             case 12 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:76: T__23
+                // InternalOSSWI.g:1:76: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 13 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:82: T__24
+                // InternalOSSWI.g:1:82: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 14 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:88: T__25
+                // InternalOSSWI.g:1:88: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 15 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:94: T__26
+                // InternalOSSWI.g:1:94: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
             case 16 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:100: T__27
+                // InternalOSSWI.g:1:100: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
             case 17 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:106: T__28
+                // InternalOSSWI.g:1:106: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
             case 18 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:112: T__29
+                // InternalOSSWI.g:1:112: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 19 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:118: T__30
+                // InternalOSSWI.g:1:118: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 20 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:124: T__31
+                // InternalOSSWI.g:1:124: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 21 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:130: T__32
+                // InternalOSSWI.g:1:130: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 22 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:136: T__33
+                // InternalOSSWI.g:1:136: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 23 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:142: T__34
+                // InternalOSSWI.g:1:142: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 24 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:148: T__35
+                // InternalOSSWI.g:1:148: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 25 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:154: T__36
+                // InternalOSSWI.g:1:154: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 26 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:160: T__37
+                // InternalOSSWI.g:1:160: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 27 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:166: T__38
+                // InternalOSSWI.g:1:166: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 28 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:172: T__39
+                // InternalOSSWI.g:1:172: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
             case 29 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:178: T__40
+                // InternalOSSWI.g:1:178: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
             case 30 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:184: T__41
+                // InternalOSSWI.g:1:184: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
             case 31 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:190: T__42
+                // InternalOSSWI.g:1:190: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
             case 32 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:196: T__43
+                // InternalOSSWI.g:1:196: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
             case 33 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:202: T__44
+                // InternalOSSWI.g:1:202: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
             case 34 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:208: T__45
+                // InternalOSSWI.g:1:208: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
             case 35 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:214: T__46
+                // InternalOSSWI.g:1:214: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
             case 36 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:220: T__47
+                // InternalOSSWI.g:1:220: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
             case 37 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:226: T__48
+                // InternalOSSWI.g:1:226: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
             case 38 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:232: T__49
+                // InternalOSSWI.g:1:232: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
             case 39 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:238: RULE_HEXADECIMAL
+                // InternalOSSWI.g:1:238: T__50
+                {
+                mT__50(); 
+
+                }
+                break;
+            case 40 :
+                // InternalOSSWI.g:1:244: RULE_HEXADECIMAL
                 {
                 mRULE_HEXADECIMAL(); 
 
                 }
                 break;
-            case 40 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:255: RULE_ID
+            case 41 :
+                // InternalOSSWI.g:1:261: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 41 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:263: RULE_INT
+            case 42 :
+                // InternalOSSWI.g:1:269: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 42 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:272: RULE_STRING
+            case 43 :
+                // InternalOSSWI.g:1:278: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 43 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:284: RULE_ML_COMMENT
+            case 44 :
+                // InternalOSSWI.g:1:290: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 44 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:300: RULE_SL_COMMENT
+            case 45 :
+                // InternalOSSWI.g:1:306: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 45 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:316: RULE_WS
+            case 46 :
+                // InternalOSSWI.g:1:322: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 46 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.osswi/src-gen/es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalOSSWI.g:1:324: RULE_ANY_OTHER
+            case 47 :
+                // InternalOSSWI.g:1:330: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1774,71 +1787,19 @@ public class InternalOSSWILexer extends Lexer {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
-        "\1\uffff\1\45\1\uffff\1\45\3\uffff\1\42\1\45\1\61\2\uffff\2\45\1"+
-        "\uffff\3\45\1\uffff\2\45\5\uffff\1\106\1\110\1\42\2\uffff\2\42\2"+
-        "\uffff\2\45\2\uffff\2\45\5\uffff\3\45\3\uffff\3\45\1\uffff\2\45"+
-        "\1\133\1\45\1\uffff\2\45\14\uffff\20\45\1\uffff\13\45\1\172\2\45"+
-        "\1\175\2\45\1\u0080\1\45\1\u0082\10\45\1\u008b\1\45\1\uffff\2\45"+
-        "\1\uffff\1\u008f\1\45\1\uffff\1\45\1\uffff\1\45\1\u0093\2\45\1\u0096"+
-        "\3\45\1\uffff\3\45\1\uffff\1\45\1\u009e\1\45\1\uffff\1\u00a0\1\45"+
-        "\1\uffff\1\45\1\u00a3\1\45\1\u00a5\1\u00a6\2\45\1\uffff\1\u00a9"+
-        "\1\uffff\1\u00aa\1\45\1\uffff\1\45\2\uffff\1\u00ae\1\45\2\uffff"+
-        "\2\45\1\u00b2\1\uffff\3\45\1\uffff\4\45\1\u00ba\1\45\1\u00bc\1\uffff"+
-        "\1\u00bd\2\uffff";
+        "\1\uffff\1\45\1\uffff\1\45\3\uffff\1\42\1\45\1\61\2\uffff\2\45\1\uffff\3\45\1\uffff\2\45\5\uffff\1\106\1\110\1\42\2\uffff\2\42\2\uffff\2\45\2\uffff\2\45\5\uffff\3\45\3\uffff\3\45\1\uffff\2\45\1\134\1\45\1\uffff\2\45\14\uffff\15\45\1\155\3\45\1\uffff\13\45\1\174\2\45\1\177\1\45\1\uffff\1\45\1\u0082\1\45\1\u0084\10\45\1\u008d\1\45\1\uffff\2\45\1\uffff\1\u0091\1\45\1\uffff\1\45\1\uffff\1\45\1\u0095\2\45\1\u0098\3\45\1\uffff\3\45\1\uffff\1\45\1\u00a0\1\45\1\uffff\1\u00a2\1\45\1\uffff\1\45\1\u00a5\1\45\1\u00a7\1\u00a8\2\45\1\uffff\1\u00ab\1\uffff\1\u00ac\1\45\1\uffff\1\45\2\uffff\1\u00b0\1\45\2\uffff\2\45\1\u00b4\1\uffff\3\45\1\uffff\4\45\1\u00bc\1\45\1\u00be\1\uffff\1\u00bf\2\uffff";
     static final String DFA13_eofS =
-        "\u00be\uffff";
+        "\u00c0\uffff";
     static final String DFA13_minS =
-        "\1\0\1\141\1\uffff\1\155\3\uffff\1\72\1\163\1\60\2\uffff\1\145\1"+
-        "\141\1\uffff\1\165\1\164\1\157\1\uffff\1\157\1\141\5\uffff\1\52"+
-        "\1\170\1\101\2\uffff\2\0\2\uffff\1\143\1\157\2\uffff\1\160\1\163"+
-        "\5\uffff\1\141\1\164\1\165\3\uffff\1\162\1\141\1\156\1\uffff\1\141"+
-        "\1\145\1\60\1\165\1\uffff\1\157\1\154\14\uffff\1\153\1\166\1\157"+
-        "\1\164\1\145\1\167\1\160\1\145\1\155\1\163\1\157\1\154\1\147\1\156"+
-        "\1\160\1\151\1\uffff\1\145\1\154\1\163\1\141\1\151\1\162\1\141\1"+
-        "\147\2\151\1\156\1\60\1\151\1\165\1\60\1\145\1\164\1\60\1\156\1"+
-        "\60\2\145\1\147\1\144\1\164\1\156\1\145\1\156\1\60\1\144\1\uffff"+
-        "\1\157\1\162\1\uffff\1\60\1\151\1\uffff\1\147\1\uffff\1\141\1\60"+
-        "\2\145\1\60\1\164\1\162\1\164\1\uffff\1\163\1\156\1\143\1\uffff"+
-        "\1\146\1\60\1\156\1\uffff\1\60\1\144\1\uffff\1\151\1\60\1\145\2"+
-        "\60\1\145\1\151\1\uffff\1\60\1\uffff\1\60\1\141\1\uffff\1\162\2"+
-        "\uffff\1\60\1\141\2\uffff\1\142\1\146\1\60\1\uffff\1\142\1\154\1"+
-        "\141\1\uffff\1\154\1\145\1\143\1\145\1\60\1\145\1\60\1\uffff\1\60"+
-        "\2\uffff";
+        "\1\0\1\141\1\uffff\1\155\3\uffff\1\72\1\163\1\60\2\uffff\1\145\1\141\1\uffff\1\165\1\164\1\157\1\uffff\1\157\1\141\5\uffff\1\52\1\170\1\101\2\uffff\2\0\2\uffff\1\143\1\157\2\uffff\1\160\1\163\5\uffff\1\141\1\164\1\165\3\uffff\1\162\1\141\1\156\1\uffff\1\141\1\145\1\60\1\165\1\uffff\1\157\1\154\14\uffff\1\153\1\166\1\157\1\164\1\145\1\167\1\160\1\145\1\155\1\163\1\157\1\154\1\147\1\60\1\156\1\160\1\151\1\uffff\1\145\1\154\1\163\1\141\1\151\1\162\1\141\1\147\2\151\1\156\1\60\1\151\1\165\1\60\1\145\1\uffff\1\164\1\60\1\156\1\60\2\145\1\147\1\144\1\164\1\156\1\145\1\156\1\60\1\144\1\uffff\1\157\1\162\1\uffff\1\60\1\151\1\uffff\1\147\1\uffff\1\141\1\60\2\145\1\60\1\164\1\162\1\164\1\uffff\1\163\1\156\1\143\1\uffff\1\146\1\60\1\156\1\uffff\1\60\1\144\1\uffff\1\151\1\60\1\145\2\60\1\145\1\151\1\uffff\1\60\1\uffff\1\60\1\141\1\uffff\1\162\2\uffff\1\60\1\141\2\uffff\1\142\1\146\1\60\1\uffff\1\142\1\154\1\141\1\uffff\1\154\1\145\1\143\1\145\1\60\1\145\1\60\1\uffff\1\60\2\uffff";
     static final String DFA13_maxS =
-        "\1\uffff\1\162\1\uffff\1\156\3\uffff\1\75\1\163\1\172\2\uffff\2"+
-        "\145\1\uffff\1\165\1\164\1\162\1\uffff\1\157\1\141\5\uffff\1\57"+
-        "\1\170\1\172\2\uffff\2\uffff\2\uffff\1\143\1\157\2\uffff\1\160\1"+
-        "\164\5\uffff\1\163\1\164\1\165\3\uffff\1\162\1\163\1\156\1\uffff"+
-        "\1\141\1\162\1\172\1\165\1\uffff\1\157\1\154\14\uffff\1\153\1\166"+
-        "\1\157\1\164\1\145\1\167\1\160\1\145\1\155\1\163\1\157\1\154\1\147"+
-        "\1\156\1\160\1\151\1\uffff\1\145\1\154\1\163\1\141\1\151\1\162\1"+
-        "\141\1\147\2\151\1\156\1\172\1\151\1\165\1\172\1\145\1\164\1\172"+
-        "\1\156\1\172\2\145\1\147\1\144\1\164\1\156\1\145\1\156\1\172\1\144"+
-        "\1\uffff\1\157\1\162\1\uffff\1\172\1\151\1\uffff\1\147\1\uffff\1"+
-        "\141\1\172\2\145\1\172\1\164\1\162\1\164\1\uffff\1\163\1\156\1\143"+
-        "\1\uffff\1\146\1\172\1\156\1\uffff\1\172\1\144\1\uffff\1\151\1\172"+
-        "\1\145\2\172\1\145\1\151\1\uffff\1\172\1\uffff\1\172\1\141\1\uffff"+
-        "\1\162\2\uffff\1\172\1\141\2\uffff\1\142\1\146\1\172\1\uffff\1\142"+
-        "\1\154\1\141\1\uffff\1\154\1\145\1\143\1\145\1\172\1\145\1\172\1"+
-        "\uffff\1\172\2\uffff";
+        "\1\uffff\1\162\1\uffff\1\156\3\uffff\1\75\1\163\1\172\2\uffff\2\145\1\uffff\1\165\1\164\1\162\1\uffff\1\157\1\141\5\uffff\1\57\1\170\1\172\2\uffff\2\uffff\2\uffff\1\143\1\157\2\uffff\1\160\1\164\5\uffff\1\163\1\164\1\165\3\uffff\1\162\1\163\1\167\1\uffff\1\141\1\162\1\172\1\165\1\uffff\1\157\1\154\14\uffff\1\153\1\166\1\157\1\164\1\145\1\167\1\160\1\145\1\155\1\163\1\157\1\154\1\147\1\172\1\156\1\160\1\151\1\uffff\1\145\1\154\1\163\1\141\1\151\1\162\1\141\1\147\2\151\1\156\1\172\1\151\1\165\1\172\1\145\1\uffff\1\164\1\172\1\156\1\172\2\145\1\147\1\144\1\164\1\156\1\145\1\156\1\172\1\144\1\uffff\1\157\1\162\1\uffff\1\172\1\151\1\uffff\1\147\1\uffff\1\141\1\172\2\145\1\172\1\164\1\162\1\164\1\uffff\1\163\1\156\1\143\1\uffff\1\146\1\172\1\156\1\uffff\1\172\1\144\1\uffff\1\151\1\172\1\145\2\172\1\145\1\151\1\uffff\1\172\1\uffff\1\172\1\141\1\uffff\1\162\2\uffff\1\172\1\141\2\uffff\1\142\1\146\1\172\1\uffff\1\142\1\154\1\141\1\uffff\1\154\1\145\1\143\1\145\1\172\1\145\1\172\1\uffff\1\172\2\uffff";
     static final String DFA13_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\1\5\1\6\3\uffff\1\12\1\13\2\uffff\1\21"+
-        "\3\uffff\1\33\2\uffff\1\40\1\42\1\43\1\44\1\45\3\uffff\1\50\1\51"+
-        "\2\uffff\1\55\1\56\2\uffff\1\50\1\2\2\uffff\1\4\1\5\1\6\1\7\1\15"+
-        "\3\uffff\1\41\1\12\1\13\3\uffff\1\21\4\uffff\1\33\2\uffff\1\40\1"+
-        "\42\1\43\1\44\1\45\1\53\1\54\1\46\1\47\1\51\1\52\1\55\20\uffff\1"+
-        "\25\36\uffff\1\31\2\uffff\1\32\2\uffff\1\24\1\uffff\1\36\10\uffff"+
-        "\1\16\3\uffff\1\30\3\uffff\1\37\2\uffff\1\3\7\uffff\1\35\1\uffff"+
-        "\1\1\2\uffff\1\27\1\uffff\1\11\1\14\2\uffff\1\34\1\17\3\uffff\1"+
-        "\23\3\uffff\1\20\7\uffff\1\26\1\uffff\1\22\1\10";
+        "\2\uffff\1\2\1\uffff\1\4\1\5\1\6\3\uffff\1\12\1\13\2\uffff\1\21\3\uffff\1\33\2\uffff\1\41\1\43\1\44\1\45\1\46\3\uffff\1\51\1\52\2\uffff\1\56\1\57\2\uffff\1\51\1\2\2\uffff\1\4\1\5\1\6\1\7\1\15\3\uffff\1\42\1\12\1\13\3\uffff\1\21\4\uffff\1\33\2\uffff\1\41\1\43\1\44\1\45\1\46\1\54\1\55\1\47\1\50\1\52\1\53\1\56\21\uffff\1\25\20\uffff\1\34\16\uffff\1\31\2\uffff\1\32\2\uffff\1\24\1\uffff\1\37\10\uffff\1\16\3\uffff\1\30\3\uffff\1\40\2\uffff\1\3\7\uffff\1\36\1\uffff\1\1\2\uffff\1\27\1\uffff\1\11\1\14\2\uffff\1\35\1\17\3\uffff\1\23\3\uffff\1\20\7\uffff\1\26\1\uffff\1\22\1\10";
     static final String DFA13_specialS =
-        "\1\1\36\uffff\1\2\1\0\u009d\uffff}>";
+        "\1\1\36\uffff\1\2\1\0\u009f\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\11\42\2\41\2\42\1\41\22\42\1\41\1\42\1\37\4\42\1\40\1\5\1\6"+
-            "\1\31\1\30\1\12\1\25\1\4\1\32\1\33\11\36\1\7\1\2\1\42\1\22\3"+
-            "\42\32\35\1\27\1\42\1\26\1\34\1\35\1\42\1\35\1\23\2\35\1\11"+
-            "\1\24\2\35\1\3\5\35\1\10\1\1\1\17\1\15\1\20\1\21\1\35\1\14\4"+
-            "\35\1\13\1\42\1\16\uff82\42",
+            "\11\42\2\41\2\42\1\41\22\42\1\41\1\42\1\37\4\42\1\40\1\5\1\6\1\31\1\30\1\12\1\25\1\4\1\32\1\33\11\36\1\7\1\2\1\42\1\22\3\42\32\35\1\27\1\42\1\26\1\34\1\35\1\42\1\35\1\23\2\35\1\11\1\24\2\35\1\3\5\35\1\10\1\1\1\17\1\15\1\20\1\21\1\35\1\14\4\35\1\13\1\42\1\16\uff82\42",
             "\1\43\20\uffff\1\44",
             "",
             "\1\47\1\50",
@@ -1847,8 +1808,7 @@ public class InternalOSSWILexer extends Lexer {
             "",
             "\1\54\2\uffff\1\55",
             "\1\56",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\15\45\1\60\11\45"+
-            "\1\57\2\45",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\15\45\1\60\11\45\1\57\2\45",
             "",
             "",
             "\1\64",
@@ -1893,28 +1853,27 @@ public class InternalOSSWILexer extends Lexer {
             "",
             "\1\124",
             "\1\126\21\uffff\1\125",
-            "\1\127",
+            "\1\127\10\uffff\1\130",
             "",
-            "\1\130",
-            "\1\131\14\uffff\1\132",
+            "\1\131",
+            "\1\132\14\uffff\1\133",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\134",
-            "",
             "\1\135",
+            "",
             "\1\136",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
-            "",
             "\1\137",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\140",
             "\1\141",
             "\1\142",
@@ -1928,11 +1887,11 @@ public class InternalOSSWILexer extends Lexer {
             "\1\152",
             "\1\153",
             "\1\154",
-            "\1\155",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\156",
-            "",
             "\1\157",
             "\1\160",
+            "",
             "\1\161",
             "\1\162",
             "\1\163",
@@ -1942,88 +1901,91 @@ public class InternalOSSWILexer extends Lexer {
             "\1\167",
             "\1\170",
             "\1\171",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\172",
             "\1\173",
-            "\1\174",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\175",
             "\1\176",
-            "\1\177",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u0080",
+            "",
             "\1\u0081",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u0083",
-            "\1\u0084",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u0085",
             "\1\u0086",
             "\1\u0087",
             "\1\u0088",
             "\1\u0089",
             "\1\u008a",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u008b",
             "\1\u008c",
-            "",
-            "\1\u008d",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u008e",
             "",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u008f",
             "\1\u0090",
             "",
-            "\1\u0091",
-            "",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u0092",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\u0094",
-            "\1\u0095",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\u0097",
-            "\1\u0098",
-            "\1\u0099",
             "",
+            "\1\u0093",
+            "",
+            "\1\u0094",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u0096",
+            "\1\u0097",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u0099",
             "\1\u009a",
             "\1\u009b",
+            "",
             "\1\u009c",
-            "",
             "\1\u009d",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\u009f",
+            "\1\u009e",
             "",
+            "\1\u009f",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "\1\u00a1",
             "",
-            "\1\u00a2",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00a3",
+            "",
             "\1\u00a4",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00a6",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\u00a7",
-            "\1\u00a8",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00a9",
+            "\1\u00aa",
             "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
-            "\1\u00ab",
+            "\1\u00ad",
             "",
-            "\1\u00ac",
-            "",
-            "",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\22\45\1\u00ad\7\45",
-            "\1\u00af",
+            "\1\u00ae",
             "",
             "",
-            "\1\u00b0",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\22\45\1\u00af\7\45",
             "\1\u00b1",
+            "",
+            "",
+            "\1\u00b2",
+            "\1\u00b3",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
-            "\1\u00b3",
-            "\1\u00b4",
             "\1\u00b5",
-            "",
             "\1\u00b6",
             "\1\u00b7",
+            "",
             "\1\u00b8",
             "\1\u00b9",
-            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00ba",
             "\1\u00bb",
+            "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
+            "\1\u00bd",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
             "",
             "\12\45\7\uffff\32\45\4\uffff\1\45\1\uffff\32\45",
@@ -2061,7 +2023,7 @@ public class InternalOSSWILexer extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;

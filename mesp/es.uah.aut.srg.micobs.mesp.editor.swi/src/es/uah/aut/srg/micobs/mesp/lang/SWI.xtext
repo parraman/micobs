@@ -145,6 +145,7 @@ MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
 	{common::MEnumParamStringLiteral}
 	name=ID
 	'='
+	(isRaw?='raw')?
 	value=STRING
 ;
 
@@ -190,6 +191,7 @@ MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
 
 MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
 	{common::MParameterValueStringLiteral}
+	(isRaw?='raw')?
 	value=STRING;
 
 MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
@@ -199,7 +201,6 @@ MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
 MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
 	{common::MParameterValueRealLiteral}
 	value=REAL;
-
 
 MParameterValueRefObject returns common::MParameterValueRefObject:
 	{common::MParameterValueRefObject}

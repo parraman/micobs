@@ -10,21 +10,16 @@
  ******************************************************************************/
 package es.uah.aut.srg.micobs.mesp.lang.parseTreeConstruction;
 
-import org.eclipse.emf.ecore.EObject;
-import org.eclipse.xtext.Assignment;
-import org.eclipse.xtext.Group;
-import org.eclipse.xtext.Keyword;
-import org.eclipse.xtext.RuleCall;
-import org.eclipse.xtext.UnorderedGroup;
+import org.eclipse.emf.ecore.*;
+import org.eclipse.xtext.*;
 import org.eclipse.xtext.parsetree.reconstr.IEObjectConsumer;
-import org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor;
-
-import com.google.inject.Inject;
 
 import es.uah.aut.srg.micobs.mesp.lang.services.CTOOLGrammarAccess;
 
+import com.google.inject.Inject;
+
 @SuppressWarnings("all")
-public class CTOOLParsetreeConstructor extends AbstractParseTreeConstructor {
+public class CTOOLParsetreeConstructor extends org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor {
 		
 	@Inject
 	private CTOOLGrammarAccess grammarAccess;
@@ -54,13 +49,14 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule MMESPCTOOLPackageFile ****************
  *
  * MMESPCTOOLPackageFile:
- * 	"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
- * 	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPCTOOLPackageElement;
+ * 	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+ * 	imports+=[common::MCommonPackage|QualifiedName] ';')*
+ * 	element=MMESPCTOOLPackageElement;
  *
  **/
 
-// "package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-// imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPCTOOLPackageElement
+// 'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+// imports+=[common::MCommonPackage|QualifiedName] ';')* element=MMESPCTOOLPackageElement
 protected class MMESPCTOOLPackageFile_Group extends GroupToken {
 	
 	public MMESPCTOOLPackageFile_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -89,7 +85,7 @@ protected class MMESPCTOOLPackageFile_Group extends GroupToken {
 
 }
 
-// "package"
+// 'package'
 protected class MMESPCTOOLPackageFile_PackageKeyword_0 extends KeywordToken  {
 	
 	public MMESPCTOOLPackageFile_PackageKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -147,7 +143,7 @@ protected class MMESPCTOOLPackageFile_PackageAssignment_1 extends AssignmentToke
 
 }
 
-// ";"
+// ';'
 protected class MMESPCTOOLPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 	
 	public MMESPCTOOLPackageFile_SemicolonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -169,7 +165,7 @@ protected class MMESPCTOOLPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 
 }
 
-// ("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+// ('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 protected class MMESPCTOOLPackageFile_Group_3 extends GroupToken {
 	
 	public MMESPCTOOLPackageFile_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -191,7 +187,7 @@ protected class MMESPCTOOLPackageFile_Group_3 extends GroupToken {
 
 }
 
-// "import"
+// 'import'
 protected class MMESPCTOOLPackageFile_ImportKeyword_3_0 extends KeywordToken  {
 	
 	public MMESPCTOOLPackageFile_ImportKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -251,7 +247,7 @@ protected class MMESPCTOOLPackageFile_ImportsAssignment_3_1 extends AssignmentTo
 
 }
 
-// ";"
+// ';'
 protected class MMESPCTOOLPackageFile_SemicolonKeyword_3_2 extends KeywordToken  {
 	
 	public MMESPCTOOLPackageFile_SemicolonKeyword_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -378,17 +374,21 @@ protected class MMESPCTOOLPackageElement_MConstructionToolParserRuleCall extends
 /************ begin Rule MConstructionTool ****************
  *
  * MConstructionTool:
- * 	"construction tool" name=ID ("extends" extends+=[MConstructionTool|VersionedQualifiedName] (","
- * 	extends+=[MConstructionTool|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" &
- * 	"supported languages" ":=" supportedLanguages+=[system::MLanguage|VersionedQualifiedName] (","
- * 	supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ";") "}" ";";
+ * 	'construction' 'tool'
+ * 	name=ID ('extends' extends+=[MConstructionTool|VersionedQualifiedName] (","
+ * 	extends+=[MConstructionTool|VersionedQualifiedName])*)?
+ * 	'{' ('version' ':=' version=Version ';' & 'supported' 'languages' ':='
+ * 	supportedLanguages+=[system::MLanguage|VersionedQualifiedName] (","
+ * 	supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ';')
+ * 	'}'
+ * 	';';
  *
  **/
 
-// "construction tool" name=ID ("extends" extends+=[MConstructionTool|VersionedQualifiedName] (","
-// extends+=[MConstructionTool|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & "supported languages"
-// ":=" supportedLanguages+=[system::MLanguage|VersionedQualifiedName] (","
-// supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ";") "}" ";"
+// 'construction' 'tool' name=ID ('extends' extends+=[MConstructionTool|VersionedQualifiedName] (","
+// extends+=[MConstructionTool|VersionedQualifiedName])*)? '{' ('version' ':=' version=Version ';' & 'supported'
+// 'languages' ':=' supportedLanguages+=[system::MLanguage|VersionedQualifiedName] (","
+// supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ';') '}' ';'
 protected class MConstructionTool_Group extends GroupToken {
 	
 	public MConstructionTool_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -403,7 +403,7 @@ protected class MConstructionTool_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_SemicolonKeyword_6(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_SemicolonKeyword_7(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -417,16 +417,16 @@ protected class MConstructionTool_Group extends GroupToken {
 
 }
 
-// "construction tool"
-protected class MConstructionTool_ConstructionToolKeyword_0 extends KeywordToken  {
+// 'construction'
+protected class MConstructionTool_ConstructionKeyword_0 extends KeywordToken  {
 	
-	public MConstructionTool_ConstructionToolKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_ConstructionKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getConstructionToolKeyword_0();
+		return grammarAccess.getMConstructionToolAccess().getConstructionKeyword_0();
 	}
 
     @Override
@@ -438,22 +438,44 @@ protected class MConstructionTool_ConstructionToolKeyword_0 extends KeywordToken
 
 }
 
-// name=ID
-protected class MConstructionTool_NameAssignment_1 extends AssignmentToken  {
+// 'tool'
+protected class MConstructionTool_ToolKeyword_1 extends KeywordToken  {
 	
-	public MConstructionTool_NameAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_ToolKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getNameAssignment_1();
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMConstructionToolAccess().getToolKeyword_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_ConstructionToolKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_ConstructionKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class MConstructionTool_NameAssignment_2 extends AssignmentToken  {
+	
+	public MConstructionTool_NameAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMConstructionToolAccess().getNameAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MConstructionTool_ToolKeyword_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -462,9 +484,9 @@ protected class MConstructionTool_NameAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMConstructionToolAccess().getNameIDTerminalRuleCall_1_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMConstructionToolAccess().getNameIDTerminalRuleCall_2_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getMConstructionToolAccess().getNameIDTerminalRuleCall_1_0();
+			element = grammarAccess.getMConstructionToolAccess().getNameIDTerminalRuleCall_2_0();
 			return obj;
 		}
 		return null;
@@ -472,46 +494,46 @@ protected class MConstructionTool_NameAssignment_1 extends AssignmentToken  {
 
 }
 
-// ("extends" extends+=[MConstructionTool|VersionedQualifiedName] (","
+// ('extends' extends+=[MConstructionTool|VersionedQualifiedName] (","
 // extends+=[MConstructionTool|VersionedQualifiedName])*)?
-protected class MConstructionTool_Group_2 extends GroupToken {
+protected class MConstructionTool_Group_3 extends GroupToken {
 	
-	public MConstructionTool_Group_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getGroup_2();
+		return grammarAccess.getMConstructionToolAccess().getGroup_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_Group_2_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MConstructionTool_ExtendsAssignment_2_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MConstructionTool_Group_3_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MConstructionTool_ExtendsAssignment_3_1(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "extends"
-protected class MConstructionTool_ExtendsKeyword_2_0 extends KeywordToken  {
+// 'extends'
+protected class MConstructionTool_ExtendsKeyword_3_0 extends KeywordToken  {
 	
-	public MConstructionTool_ExtendsKeyword_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_ExtendsKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getExtendsKeyword_2_0();
+		return grammarAccess.getMConstructionToolAccess().getExtendsKeyword_3_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_NameAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_NameAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -519,21 +541,21 @@ protected class MConstructionTool_ExtendsKeyword_2_0 extends KeywordToken  {
 }
 
 // extends+=[MConstructionTool|VersionedQualifiedName]
-protected class MConstructionTool_ExtendsAssignment_2_1 extends AssignmentToken  {
+protected class MConstructionTool_ExtendsAssignment_3_1 extends AssignmentToken  {
 	
-	public MConstructionTool_ExtendsAssignment_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_ExtendsAssignment_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getExtendsAssignment_2_1();
+		return grammarAccess.getMConstructionToolAccess().getExtendsAssignment_3_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_ExtendsKeyword_2_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_ExtendsKeyword_3_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -544,9 +566,9 @@ protected class MConstructionTool_ExtendsAssignment_2_1 extends AssignmentToken 
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("extends");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_2_1_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_3_1_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_2_1_0(); 
+				element = grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_3_1_0(); 
 				return obj;
 			}
 		}
@@ -556,21 +578,21 @@ protected class MConstructionTool_ExtendsAssignment_2_1 extends AssignmentToken 
 }
 
 // ("," extends+=[MConstructionTool|VersionedQualifiedName])*
-protected class MConstructionTool_Group_2_2 extends GroupToken {
+protected class MConstructionTool_Group_3_2 extends GroupToken {
 	
-	public MConstructionTool_Group_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_Group_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getGroup_2_2();
+		return grammarAccess.getMConstructionToolAccess().getGroup_3_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_ExtendsAssignment_2_2_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_ExtendsAssignment_3_2_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -578,22 +600,22 @@ protected class MConstructionTool_Group_2_2 extends GroupToken {
 }
 
 // ","
-protected class MConstructionTool_CommaKeyword_2_2_0 extends KeywordToken  {
+protected class MConstructionTool_CommaKeyword_3_2_0 extends KeywordToken  {
 	
-	public MConstructionTool_CommaKeyword_2_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_CommaKeyword_3_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getCommaKeyword_2_2_0();
+		return grammarAccess.getMConstructionToolAccess().getCommaKeyword_3_2_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_Group_2_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MConstructionTool_ExtendsAssignment_2_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MConstructionTool_Group_3_2(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MConstructionTool_ExtendsAssignment_3_1(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -601,21 +623,21 @@ protected class MConstructionTool_CommaKeyword_2_2_0 extends KeywordToken  {
 }
 
 // extends+=[MConstructionTool|VersionedQualifiedName]
-protected class MConstructionTool_ExtendsAssignment_2_2_1 extends AssignmentToken  {
+protected class MConstructionTool_ExtendsAssignment_3_2_1 extends AssignmentToken  {
 	
-	public MConstructionTool_ExtendsAssignment_2_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_ExtendsAssignment_3_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getExtendsAssignment_2_2_1();
+		return grammarAccess.getMConstructionToolAccess().getExtendsAssignment_3_2_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_CommaKeyword_2_2_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_CommaKeyword_3_2_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -626,9 +648,9 @@ protected class MConstructionTool_ExtendsAssignment_2_2_1 extends AssignmentToke
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("extends");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_2_2_1_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_3_2_1_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_2_2_1_0(); 
+				element = grammarAccess.getMConstructionToolAccess().getExtendsMConstructionToolCrossReference_3_2_1_0(); 
 				return obj;
 			}
 		}
@@ -639,113 +661,113 @@ protected class MConstructionTool_ExtendsAssignment_2_2_1 extends AssignmentToke
 
 
 
-// "{"
-protected class MConstructionTool_LeftCurlyBracketKeyword_3 extends KeywordToken  {
+// '{'
+protected class MConstructionTool_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
-	public MConstructionTool_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getLeftCurlyBracketKeyword_3();
+		return grammarAccess.getMConstructionToolAccess().getLeftCurlyBracketKeyword_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_Group_2(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MConstructionTool_NameAssignment_1(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MConstructionTool_Group_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MConstructionTool_NameAssignment_2(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "version" ":=" version=Version ";" & "supported languages" ":="
+// ('version' ':=' version=Version ';' & 'supported' 'languages' ':='
 // supportedLanguages+=[system::MLanguage|VersionedQualifiedName] (","
-// supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ";"
-protected class MConstructionTool_UnorderedGroup_4 extends UnorderedGroupToken {
+// supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ';')
+protected class MConstructionTool_UnorderedGroup_5 extends UnorderedGroupToken {
 	
-	public MConstructionTool_UnorderedGroup_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_UnorderedGroup_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public UnorderedGroup getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getUnorderedGroup_4();
+		return grammarAccess.getMConstructionToolAccess().getUnorderedGroup_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_Group_4_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_Group_5_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "version" ":=" version=Version ";"
-protected class MConstructionTool_Group_4_0 extends GroupToken {
+// 'version' ':=' version=Version ';'
+protected class MConstructionTool_Group_5_0 extends GroupToken {
 	
-	public MConstructionTool_Group_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_Group_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getGroup_4_0();
+		return grammarAccess.getMConstructionToolAccess().getGroup_5_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_SemicolonKeyword_4_0_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_SemicolonKeyword_5_0_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "version"
-protected class MConstructionTool_VersionKeyword_4_0_0 extends KeywordToken  {
+// 'version'
+protected class MConstructionTool_VersionKeyword_5_0_0 extends KeywordToken  {
 	
-	public MConstructionTool_VersionKeyword_4_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_VersionKeyword_5_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getVersionKeyword_4_0_0();
+		return grammarAccess.getMConstructionToolAccess().getVersionKeyword_5_0_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_LeftCurlyBracketKeyword_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_LeftCurlyBracketKeyword_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// ":="
-protected class MConstructionTool_ColonEqualsSignKeyword_4_0_1 extends KeywordToken  {
+// ':='
+protected class MConstructionTool_ColonEqualsSignKeyword_5_0_1 extends KeywordToken  {
 	
-	public MConstructionTool_ColonEqualsSignKeyword_4_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_ColonEqualsSignKeyword_5_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getColonEqualsSignKeyword_4_0_1();
+		return grammarAccess.getMConstructionToolAccess().getColonEqualsSignKeyword_5_0_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_VersionKeyword_4_0_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_VersionKeyword_5_0_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -753,21 +775,21 @@ protected class MConstructionTool_ColonEqualsSignKeyword_4_0_1 extends KeywordTo
 }
 
 // version=Version
-protected class MConstructionTool_VersionAssignment_4_0_2 extends AssignmentToken  {
+protected class MConstructionTool_VersionAssignment_5_0_2 extends AssignmentToken  {
 	
-	public MConstructionTool_VersionAssignment_4_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_VersionAssignment_5_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getVersionAssignment_4_0_2();
+		return grammarAccess.getMConstructionToolAccess().getVersionAssignment_5_0_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_ColonEqualsSignKeyword_4_0_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_ColonEqualsSignKeyword_5_0_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -776,9 +798,9 @@ protected class MConstructionTool_VersionAssignment_4_0_2 extends AssignmentToke
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("version",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("version");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMConstructionToolAccess().getVersionVersionParserRuleCall_4_0_2_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMConstructionToolAccess().getVersionVersionParserRuleCall_5_0_2_0(), value, null)) {
 			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getMConstructionToolAccess().getVersionVersionParserRuleCall_4_0_2_0();
+			element = grammarAccess.getMConstructionToolAccess().getVersionVersionParserRuleCall_5_0_2_0();
 			return obj;
 		}
 		return null;
@@ -786,22 +808,22 @@ protected class MConstructionTool_VersionAssignment_4_0_2 extends AssignmentToke
 
 }
 
-// ";"
-protected class MConstructionTool_SemicolonKeyword_4_0_3 extends KeywordToken  {
+// ';'
+protected class MConstructionTool_SemicolonKeyword_5_0_3 extends KeywordToken  {
 	
-	public MConstructionTool_SemicolonKeyword_4_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_SemicolonKeyword_5_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getSemicolonKeyword_4_0_3();
+		return grammarAccess.getMConstructionToolAccess().getSemicolonKeyword_5_0_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_VersionAssignment_4_0_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_VersionAssignment_5_0_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -809,67 +831,89 @@ protected class MConstructionTool_SemicolonKeyword_4_0_3 extends KeywordToken  {
 }
 
 
-// "supported languages" ":=" supportedLanguages+=[system::MLanguage|VersionedQualifiedName] (","
-// supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ";"
-protected class MConstructionTool_Group_4_1 extends GroupToken {
+// 'supported' 'languages' ':=' supportedLanguages+=[system::MLanguage|VersionedQualifiedName] (","
+// supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ';'
+protected class MConstructionTool_Group_5_1 extends GroupToken {
 	
-	public MConstructionTool_Group_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_Group_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getGroup_4_1();
+		return grammarAccess.getMConstructionToolAccess().getGroup_5_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_SemicolonKeyword_4_1_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_SemicolonKeyword_5_1_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "supported languages"
-protected class MConstructionTool_SupportedLanguagesKeyword_4_1_0 extends KeywordToken  {
+// 'supported'
+protected class MConstructionTool_SupportedKeyword_5_1_0 extends KeywordToken  {
 	
-	public MConstructionTool_SupportedLanguagesKeyword_4_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_SupportedKeyword_5_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getSupportedLanguagesKeyword_4_1_0();
+		return grammarAccess.getMConstructionToolAccess().getSupportedKeyword_5_1_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_Group_4_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_Group_5_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// ":="
-protected class MConstructionTool_ColonEqualsSignKeyword_4_1_1 extends KeywordToken  {
+// 'languages'
+protected class MConstructionTool_LanguagesKeyword_5_1_1 extends KeywordToken  {
 	
-	public MConstructionTool_ColonEqualsSignKeyword_4_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_LanguagesKeyword_5_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getColonEqualsSignKeyword_4_1_1();
+		return grammarAccess.getMConstructionToolAccess().getLanguagesKeyword_5_1_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_SupportedLanguagesKeyword_4_1_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_SupportedKeyword_5_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ':='
+protected class MConstructionTool_ColonEqualsSignKeyword_5_1_2 extends KeywordToken  {
+	
+	public MConstructionTool_ColonEqualsSignKeyword_5_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMConstructionToolAccess().getColonEqualsSignKeyword_5_1_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MConstructionTool_LanguagesKeyword_5_1_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -877,21 +921,21 @@ protected class MConstructionTool_ColonEqualsSignKeyword_4_1_1 extends KeywordTo
 }
 
 // supportedLanguages+=[system::MLanguage|VersionedQualifiedName]
-protected class MConstructionTool_SupportedLanguagesAssignment_4_1_2 extends AssignmentToken  {
+protected class MConstructionTool_SupportedLanguagesAssignment_5_1_3 extends AssignmentToken  {
 	
-	public MConstructionTool_SupportedLanguagesAssignment_4_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_SupportedLanguagesAssignment_5_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_4_1_2();
+		return grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_5_1_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_ColonEqualsSignKeyword_4_1_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_ColonEqualsSignKeyword_5_1_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -902,9 +946,9 @@ protected class MConstructionTool_SupportedLanguagesAssignment_4_1_2 extends Ass
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("supportedLanguages");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_4_1_2_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_5_1_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_4_1_2_0(); 
+				element = grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_5_1_3_0(); 
 				return obj;
 			}
 		}
@@ -914,21 +958,21 @@ protected class MConstructionTool_SupportedLanguagesAssignment_4_1_2 extends Ass
 }
 
 // ("," supportedLanguages+=[system::MLanguage|VersionedQualifiedName])*
-protected class MConstructionTool_Group_4_1_3 extends GroupToken {
+protected class MConstructionTool_Group_5_1_4 extends GroupToken {
 	
-	public MConstructionTool_Group_4_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_Group_5_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getGroup_4_1_3();
+		return grammarAccess.getMConstructionToolAccess().getGroup_5_1_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_SupportedLanguagesAssignment_4_1_3_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_SupportedLanguagesAssignment_5_1_4_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -936,22 +980,22 @@ protected class MConstructionTool_Group_4_1_3 extends GroupToken {
 }
 
 // ","
-protected class MConstructionTool_CommaKeyword_4_1_3_0 extends KeywordToken  {
+protected class MConstructionTool_CommaKeyword_5_1_4_0 extends KeywordToken  {
 	
-	public MConstructionTool_CommaKeyword_4_1_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_CommaKeyword_5_1_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getCommaKeyword_4_1_3_0();
+		return grammarAccess.getMConstructionToolAccess().getCommaKeyword_5_1_4_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_Group_4_1_3(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MConstructionTool_SupportedLanguagesAssignment_4_1_2(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MConstructionTool_Group_5_1_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MConstructionTool_SupportedLanguagesAssignment_5_1_3(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -959,21 +1003,21 @@ protected class MConstructionTool_CommaKeyword_4_1_3_0 extends KeywordToken  {
 }
 
 // supportedLanguages+=[system::MLanguage|VersionedQualifiedName]
-protected class MConstructionTool_SupportedLanguagesAssignment_4_1_3_1 extends AssignmentToken  {
+protected class MConstructionTool_SupportedLanguagesAssignment_5_1_4_1 extends AssignmentToken  {
 	
-	public MConstructionTool_SupportedLanguagesAssignment_4_1_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_SupportedLanguagesAssignment_5_1_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_4_1_3_1();
+		return grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_5_1_4_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_CommaKeyword_4_1_3_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_CommaKeyword_5_1_4_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -984,9 +1028,9 @@ protected class MConstructionTool_SupportedLanguagesAssignment_4_1_3_1 extends A
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("supportedLanguages");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_4_1_3_1_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_5_1_4_1_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_4_1_3_1_0(); 
+				element = grammarAccess.getMConstructionToolAccess().getSupportedLanguagesMLanguageCrossReference_5_1_4_1_0(); 
 				return obj;
 			}
 		}
@@ -996,23 +1040,23 @@ protected class MConstructionTool_SupportedLanguagesAssignment_4_1_3_1 extends A
 }
 
 
-// ";"
-protected class MConstructionTool_SemicolonKeyword_4_1_4 extends KeywordToken  {
+// ';'
+protected class MConstructionTool_SemicolonKeyword_5_1_5 extends KeywordToken  {
 	
-	public MConstructionTool_SemicolonKeyword_4_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_SemicolonKeyword_5_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getSemicolonKeyword_4_1_4();
+		return grammarAccess.getMConstructionToolAccess().getSemicolonKeyword_5_1_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_Group_4_1_3(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MConstructionTool_SupportedLanguagesAssignment_4_1_2(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MConstructionTool_Group_5_1_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MConstructionTool_SupportedLanguagesAssignment_5_1_3(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -1021,44 +1065,44 @@ protected class MConstructionTool_SemicolonKeyword_4_1_4 extends KeywordToken  {
 
 
 
-// "}"
-protected class MConstructionTool_RightCurlyBracketKeyword_5 extends KeywordToken  {
+// '}'
+protected class MConstructionTool_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
-	public MConstructionTool_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getRightCurlyBracketKeyword_5();
+		return grammarAccess.getMConstructionToolAccess().getRightCurlyBracketKeyword_6();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_UnorderedGroup_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_UnorderedGroup_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// ";"
-protected class MConstructionTool_SemicolonKeyword_6 extends KeywordToken  {
+// ';'
+protected class MConstructionTool_SemicolonKeyword_7 extends KeywordToken  {
 	
-	public MConstructionTool_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MConstructionTool_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMConstructionToolAccess().getSemicolonKeyword_6();
+		return grammarAccess.getMConstructionToolAccess().getSemicolonKeyword_7();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MConstructionTool_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MConstructionTool_RightCurlyBracketKeyword_6(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}

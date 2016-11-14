@@ -73,13 +73,14 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule MMCLEVMCADPackageFile ****************
  *
  * MMCLEVMCADPackageFile:
- * 	"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
- * 	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMCLEVMCADPackageElement;
+ * 	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+ * 	imports+=[common::MCommonPackage|QualifiedName] ';')*
+ * 	element=MMCLEVMCADPackageElement;
  *
  **/
 
-// "package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-// imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMCLEVMCADPackageElement
+// 'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+// imports+=[common::MCommonPackage|QualifiedName] ';')* element=MMCLEVMCADPackageElement
 protected class MMCLEVMCADPackageFile_Group extends GroupToken {
 	
 	public MMCLEVMCADPackageFile_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -108,7 +109,7 @@ protected class MMCLEVMCADPackageFile_Group extends GroupToken {
 
 }
 
-// "package"
+// 'package'
 protected class MMCLEVMCADPackageFile_PackageKeyword_0 extends KeywordToken  {
 	
 	public MMCLEVMCADPackageFile_PackageKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -166,7 +167,7 @@ protected class MMCLEVMCADPackageFile_PackageAssignment_1 extends AssignmentToke
 
 }
 
-// ";"
+// ';'
 protected class MMCLEVMCADPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 	
 	public MMCLEVMCADPackageFile_SemicolonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -188,7 +189,7 @@ protected class MMCLEVMCADPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 
 }
 
-// ("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+// ('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 protected class MMCLEVMCADPackageFile_Group_3 extends GroupToken {
 	
 	public MMCLEVMCADPackageFile_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -210,7 +211,7 @@ protected class MMCLEVMCADPackageFile_Group_3 extends GroupToken {
 
 }
 
-// "import"
+// 'import'
 protected class MMCLEVMCADPackageFile_ImportKeyword_3_0 extends KeywordToken  {
 	
 	public MMCLEVMCADPackageFile_ImportKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -270,7 +271,7 @@ protected class MMCLEVMCADPackageFile_ImportsAssignment_3_1 extends AssignmentTo
 
 }
 
-// ";"
+// ';'
 protected class MMCLEVMCADPackageFile_SemicolonKeyword_3_2 extends KeywordToken  {
 	
 	public MMCLEVMCADPackageFile_SemicolonKeyword_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -393,21 +394,42 @@ protected class MMCLEVMCADPackageElement_MMCADeploymentParserRuleCall extends Ru
 /************ begin Rule MMCADeployment ****************
  *
  * MMCADeployment:
- * 	"deployment" "project" domain=[mclevdom::MDomain|VersionedQualifiedName] name=ID "{" ("version" ":=" version=Version
- * 	";" & ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("deployment"
- * 	"platforms" "{" deploymentPlatforms+=MDeploymentPlatform+ "}" ";")? & ("deployment" "alternatives" "{"
- * 	deploymentAlternatives+=MDeploymentAlternative+ "}" ";")? & ("components" "{" components+=MComponentInstance+ "}"
- * 	";")? & ("connections" "{" connections+=MConnection+ "}" ";")? & ("libraries" "{" libraries+=MServiceLibraryInstance+
- * 	"}" ";")?) "}" ";";
+ * 	'deployment' 'project'
+ * 	domain=[mclevdom::MDomain|VersionedQualifiedName] name=ID
+ * 	'{' ('version' ':=' version=Version ';' & ('attribute' 'values'
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment+
+ * 	'}' ';')?
+ * 	& ('deployment' 'platforms'
+ * 	'{'
+ * 	deploymentPlatforms+=MDeploymentPlatform+
+ * 	'}' ';')?
+ * 	& ('deployment' 'alternatives'
+ * 	'{'
+ * 	deploymentAlternatives+=MDeploymentAlternative+
+ * 	'}' ';')?
+ * 	& ('components'
+ * 	'{'
+ * 	components+=MComponentInstance+
+ * 	'}' ';')?
+ * 	& ('connections'
+ * 	'{'
+ * 	connections+=MConnection+
+ * 	'}' ';')?
+ * 	& ('libraries'
+ * 	'{'
+ * 	libraries+=MServiceLibraryInstance+
+ * 	'}' ';')?)
+ * 	'}' ';';
  *
  **/
 
-// "deployment" "project" domain=[mclevdom::MDomain|VersionedQualifiedName] name=ID "{" ("version" ":=" version=Version ";"
-// & ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("deployment" "platforms"
-// "{" deploymentPlatforms+=MDeploymentPlatform+ "}" ";")? & ("deployment" "alternatives" "{"
-// deploymentAlternatives+=MDeploymentAlternative+ "}" ";")? & ("components" "{" components+=MComponentInstance+ "}" ";")?
-// & ("connections" "{" connections+=MConnection+ "}" ";")? & ("libraries" "{" libraries+=MServiceLibraryInstance+ "}"
-// ";")?) "}" ";"
+// 'deployment' 'project' domain=[mclevdom::MDomain|VersionedQualifiedName] name=ID '{' ('version' ':=' version=Version ';'
+// & ('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('deployment' 'platforms'
+// '{' deploymentPlatforms+=MDeploymentPlatform+ '}' ';')? & ('deployment' 'alternatives' '{'
+// deploymentAlternatives+=MDeploymentAlternative+ '}' ';')? & ('components' '{' components+=MComponentInstance+ '}' ';')?
+// & ('connections' '{' connections+=MConnection+ '}' ';')? & ('libraries' '{' libraries+=MServiceLibraryInstance+ '}'
+// ';')?) '}' ';'
 protected class MMCADeployment_Group extends GroupToken {
 	
 	public MMCADeployment_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -436,7 +458,7 @@ protected class MMCADeployment_Group extends GroupToken {
 
 }
 
-// "deployment"
+// 'deployment'
 protected class MMCADeployment_DeploymentKeyword_0 extends KeywordToken  {
 	
 	public MMCADeployment_DeploymentKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -457,7 +479,7 @@ protected class MMCADeployment_DeploymentKeyword_0 extends KeywordToken  {
 
 }
 
-// "project"
+// 'project'
 protected class MMCADeployment_ProjectKeyword_1 extends KeywordToken  {
 	
 	public MMCADeployment_ProjectKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -550,7 +572,7 @@ protected class MMCADeployment_NameAssignment_3 extends AssignmentToken  {
 
 }
 
-// "{"
+// '{'
 protected class MMCADeployment_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MMCADeployment_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -572,11 +594,11 @@ protected class MMCADeployment_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 
 }
 
-// "version" ":=" version=Version ";" & ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}"
-// ";")? & ("deployment" "platforms" "{" deploymentPlatforms+=MDeploymentPlatform+ "}" ";")? & ("deployment"
-// "alternatives" "{" deploymentAlternatives+=MDeploymentAlternative+ "}" ";")? & ("components" "{"
-// components+=MComponentInstance+ "}" ";")? & ("connections" "{" connections+=MConnection+ "}" ";")? & ("libraries" "{"
-// libraries+=MServiceLibraryInstance+ "}" ";")?
+// ('version' ':=' version=Version ';' & ('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+
+// '}' ';')? & ('deployment' 'platforms' '{' deploymentPlatforms+=MDeploymentPlatform+ '}' ';')? & ('deployment'
+// 'alternatives' '{' deploymentAlternatives+=MDeploymentAlternative+ '}' ';')? & ('components' '{'
+// components+=MComponentInstance+ '}' ';')? & ('connections' '{' connections+=MConnection+ '}' ';')? & ('libraries' '{'
+// libraries+=MServiceLibraryInstance+ '}' ';')?)
 protected class MMCADeployment_UnorderedGroup_5 extends UnorderedGroupToken {
 	
 	public MMCADeployment_UnorderedGroup_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -604,7 +626,7 @@ protected class MMCADeployment_UnorderedGroup_5 extends UnorderedGroupToken {
 
 }
 
-// "version" ":=" version=Version ";"
+// 'version' ':=' version=Version ';'
 protected class MMCADeployment_Group_5_0 extends GroupToken {
 	
 	public MMCADeployment_Group_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -626,7 +648,7 @@ protected class MMCADeployment_Group_5_0 extends GroupToken {
 
 }
 
-// "version"
+// 'version'
 protected class MMCADeployment_VersionKeyword_5_0_0 extends KeywordToken  {
 	
 	public MMCADeployment_VersionKeyword_5_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -648,7 +670,7 @@ protected class MMCADeployment_VersionKeyword_5_0_0 extends KeywordToken  {
 
 }
 
-// ":="
+// ':='
 protected class MMCADeployment_ColonEqualsSignKeyword_5_0_1 extends KeywordToken  {
 	
 	public MMCADeployment_ColonEqualsSignKeyword_5_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -704,7 +726,7 @@ protected class MMCADeployment_VersionAssignment_5_0_2 extends AssignmentToken  
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_5_0_3 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_5_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -727,7 +749,7 @@ protected class MMCADeployment_SemicolonKeyword_5_0_3 extends KeywordToken  {
 }
 
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")?
+// ('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')?
 protected class MMCADeployment_Group_5_1 extends GroupToken {
 	
 	public MMCADeployment_Group_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -749,7 +771,7 @@ protected class MMCADeployment_Group_5_1 extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MMCADeployment_AttributeKeyword_5_1_0 extends KeywordToken  {
 	
 	public MMCADeployment_AttributeKeyword_5_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -771,7 +793,7 @@ protected class MMCADeployment_AttributeKeyword_5_1_0 extends KeywordToken  {
 
 }
 
-// "values"
+// 'values'
 protected class MMCADeployment_ValuesKeyword_5_1_1 extends KeywordToken  {
 	
 	public MMCADeployment_ValuesKeyword_5_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -793,7 +815,7 @@ protected class MMCADeployment_ValuesKeyword_5_1_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MMCADeployment_LeftCurlyBracketKeyword_5_1_2 extends KeywordToken  {
 	
 	public MMCADeployment_LeftCurlyBracketKeyword_5_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -862,7 +884,7 @@ protected class MMCADeployment_AttributeValueAssignmentsAssignment_5_1_3 extends
 	}	
 }
 
-// "}"
+// '}'
 protected class MMCADeployment_RightCurlyBracketKeyword_5_1_4 extends KeywordToken  {
 	
 	public MMCADeployment_RightCurlyBracketKeyword_5_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -884,7 +906,7 @@ protected class MMCADeployment_RightCurlyBracketKeyword_5_1_4 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_5_1_5 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_5_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -907,7 +929,7 @@ protected class MMCADeployment_SemicolonKeyword_5_1_5 extends KeywordToken  {
 }
 
 
-// ("deployment" "platforms" "{" deploymentPlatforms+=MDeploymentPlatform+ "}" ";")?
+// ('deployment' 'platforms' '{' deploymentPlatforms+=MDeploymentPlatform+ '}' ';')?
 protected class MMCADeployment_Group_5_2 extends GroupToken {
 	
 	public MMCADeployment_Group_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -929,7 +951,7 @@ protected class MMCADeployment_Group_5_2 extends GroupToken {
 
 }
 
-// "deployment"
+// 'deployment'
 protected class MMCADeployment_DeploymentKeyword_5_2_0 extends KeywordToken  {
 	
 	public MMCADeployment_DeploymentKeyword_5_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -952,7 +974,7 @@ protected class MMCADeployment_DeploymentKeyword_5_2_0 extends KeywordToken  {
 
 }
 
-// "platforms"
+// 'platforms'
 protected class MMCADeployment_PlatformsKeyword_5_2_1 extends KeywordToken  {
 	
 	public MMCADeployment_PlatformsKeyword_5_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -974,7 +996,7 @@ protected class MMCADeployment_PlatformsKeyword_5_2_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MMCADeployment_LeftCurlyBracketKeyword_5_2_2 extends KeywordToken  {
 	
 	public MMCADeployment_LeftCurlyBracketKeyword_5_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1043,7 +1065,7 @@ protected class MMCADeployment_DeploymentPlatformsAssignment_5_2_3 extends Assig
 	}	
 }
 
-// "}"
+// '}'
 protected class MMCADeployment_RightCurlyBracketKeyword_5_2_4 extends KeywordToken  {
 	
 	public MMCADeployment_RightCurlyBracketKeyword_5_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1065,7 +1087,7 @@ protected class MMCADeployment_RightCurlyBracketKeyword_5_2_4 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_5_2_5 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_5_2_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1088,7 +1110,7 @@ protected class MMCADeployment_SemicolonKeyword_5_2_5 extends KeywordToken  {
 }
 
 
-// ("deployment" "alternatives" "{" deploymentAlternatives+=MDeploymentAlternative+ "}" ";")?
+// ('deployment' 'alternatives' '{' deploymentAlternatives+=MDeploymentAlternative+ '}' ';')?
 protected class MMCADeployment_Group_5_3 extends GroupToken {
 	
 	public MMCADeployment_Group_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1110,7 +1132,7 @@ protected class MMCADeployment_Group_5_3 extends GroupToken {
 
 }
 
-// "deployment"
+// 'deployment'
 protected class MMCADeployment_DeploymentKeyword_5_3_0 extends KeywordToken  {
 	
 	public MMCADeployment_DeploymentKeyword_5_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1134,7 +1156,7 @@ protected class MMCADeployment_DeploymentKeyword_5_3_0 extends KeywordToken  {
 
 }
 
-// "alternatives"
+// 'alternatives'
 protected class MMCADeployment_AlternativesKeyword_5_3_1 extends KeywordToken  {
 	
 	public MMCADeployment_AlternativesKeyword_5_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1156,7 +1178,7 @@ protected class MMCADeployment_AlternativesKeyword_5_3_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MMCADeployment_LeftCurlyBracketKeyword_5_3_2 extends KeywordToken  {
 	
 	public MMCADeployment_LeftCurlyBracketKeyword_5_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1225,7 +1247,7 @@ protected class MMCADeployment_DeploymentAlternativesAssignment_5_3_3 extends As
 	}	
 }
 
-// "}"
+// '}'
 protected class MMCADeployment_RightCurlyBracketKeyword_5_3_4 extends KeywordToken  {
 	
 	public MMCADeployment_RightCurlyBracketKeyword_5_3_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1247,7 +1269,7 @@ protected class MMCADeployment_RightCurlyBracketKeyword_5_3_4 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_5_3_5 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_5_3_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1270,7 +1292,7 @@ protected class MMCADeployment_SemicolonKeyword_5_3_5 extends KeywordToken  {
 }
 
 
-// ("components" "{" components+=MComponentInstance+ "}" ";")?
+// ('components' '{' components+=MComponentInstance+ '}' ';')?
 protected class MMCADeployment_Group_5_4 extends GroupToken {
 	
 	public MMCADeployment_Group_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1292,7 +1314,7 @@ protected class MMCADeployment_Group_5_4 extends GroupToken {
 
 }
 
-// "components"
+// 'components'
 protected class MMCADeployment_ComponentsKeyword_5_4_0 extends KeywordToken  {
 	
 	public MMCADeployment_ComponentsKeyword_5_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1317,7 +1339,7 @@ protected class MMCADeployment_ComponentsKeyword_5_4_0 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MMCADeployment_LeftCurlyBracketKeyword_5_4_1 extends KeywordToken  {
 	
 	public MMCADeployment_LeftCurlyBracketKeyword_5_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1386,7 +1408,7 @@ protected class MMCADeployment_ComponentsAssignment_5_4_2 extends AssignmentToke
 	}	
 }
 
-// "}"
+// '}'
 protected class MMCADeployment_RightCurlyBracketKeyword_5_4_3 extends KeywordToken  {
 	
 	public MMCADeployment_RightCurlyBracketKeyword_5_4_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1408,7 +1430,7 @@ protected class MMCADeployment_RightCurlyBracketKeyword_5_4_3 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_5_4_4 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_5_4_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1431,7 +1453,7 @@ protected class MMCADeployment_SemicolonKeyword_5_4_4 extends KeywordToken  {
 }
 
 
-// ("connections" "{" connections+=MConnection+ "}" ";")?
+// ('connections' '{' connections+=MConnection+ '}' ';')?
 protected class MMCADeployment_Group_5_5 extends GroupToken {
 	
 	public MMCADeployment_Group_5_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1453,7 +1475,7 @@ protected class MMCADeployment_Group_5_5 extends GroupToken {
 
 }
 
-// "connections"
+// 'connections'
 protected class MMCADeployment_ConnectionsKeyword_5_5_0 extends KeywordToken  {
 	
 	public MMCADeployment_ConnectionsKeyword_5_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1479,7 +1501,7 @@ protected class MMCADeployment_ConnectionsKeyword_5_5_0 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MMCADeployment_LeftCurlyBracketKeyword_5_5_1 extends KeywordToken  {
 	
 	public MMCADeployment_LeftCurlyBracketKeyword_5_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1548,7 +1570,7 @@ protected class MMCADeployment_ConnectionsAssignment_5_5_2 extends AssignmentTok
 	}	
 }
 
-// "}"
+// '}'
 protected class MMCADeployment_RightCurlyBracketKeyword_5_5_3 extends KeywordToken  {
 	
 	public MMCADeployment_RightCurlyBracketKeyword_5_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1570,7 +1592,7 @@ protected class MMCADeployment_RightCurlyBracketKeyword_5_5_3 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_5_5_4 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_5_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1593,7 +1615,7 @@ protected class MMCADeployment_SemicolonKeyword_5_5_4 extends KeywordToken  {
 }
 
 
-// ("libraries" "{" libraries+=MServiceLibraryInstance+ "}" ";")?
+// ('libraries' '{' libraries+=MServiceLibraryInstance+ '}' ';')?
 protected class MMCADeployment_Group_5_6 extends GroupToken {
 	
 	public MMCADeployment_Group_5_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1615,7 +1637,7 @@ protected class MMCADeployment_Group_5_6 extends GroupToken {
 
 }
 
-// "libraries"
+// 'libraries'
 protected class MMCADeployment_LibrariesKeyword_5_6_0 extends KeywordToken  {
 	
 	public MMCADeployment_LibrariesKeyword_5_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1642,7 +1664,7 @@ protected class MMCADeployment_LibrariesKeyword_5_6_0 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MMCADeployment_LeftCurlyBracketKeyword_5_6_1 extends KeywordToken  {
 	
 	public MMCADeployment_LeftCurlyBracketKeyword_5_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1711,7 +1733,7 @@ protected class MMCADeployment_LibrariesAssignment_5_6_2 extends AssignmentToken
 	}	
 }
 
-// "}"
+// '}'
 protected class MMCADeployment_RightCurlyBracketKeyword_5_6_3 extends KeywordToken  {
 	
 	public MMCADeployment_RightCurlyBracketKeyword_5_6_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1733,7 +1755,7 @@ protected class MMCADeployment_RightCurlyBracketKeyword_5_6_3 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_5_6_4 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_5_6_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1757,7 +1779,7 @@ protected class MMCADeployment_SemicolonKeyword_5_6_4 extends KeywordToken  {
 
 
 
-// "}"
+// '}'
 protected class MMCADeployment_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MMCADeployment_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1779,7 +1801,7 @@ protected class MMCADeployment_RightCurlyBracketKeyword_6 extends KeywordToken  
 
 }
 
-// ";"
+// ';'
 protected class MMCADeployment_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MMCADeployment_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1926,19 +1948,23 @@ protected class MConnection_MConnectionSwitchParserRuleCall_1 extends RuleCallTo
 /************ begin Rule MCommonConnection ****************
  *
  * MCommonConnection:
- * 	{MCommonConnection} "connection" clientInstance=[MComponentInstance] "." clientPort=[mclevcmp::MClientPort] "<->"
- * 	serverInstance=[MComponentInstance] "." serverPort=[mclevcmp::MServerPort] "using"
- * 	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{" ("mapping" ":="
- * 	ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
- * 	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+ * 	{MCommonConnection}
+ * 	'connection' clientInstance=[MComponentInstance] '.'
+ * 	clientPort=[mclevcmp::MClientPort] '<->'
+ * 	serverInstance=[MComponentInstance] '.'
+ * 	serverPort=[mclevcmp::MServerPort] 'using'
+ * 	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
+ * 	'{' ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+ * 	attributeValueAssignments+=MAttributeValueAssignment*
+ * 	'}' ';';
  *
  **/
 
-// {MCommonConnection} "connection" clientInstance=[MComponentInstance] "." clientPort=[mclevcmp::MClientPort] "<->"
-// serverInstance=[MComponentInstance] "." serverPort=[mclevcmp::MServerPort] "using"
-// connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{" ("mapping" ":="
-// ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
-// attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+// {MCommonConnection} 'connection' clientInstance=[MComponentInstance] '.' clientPort=[mclevcmp::MClientPort] '<->'
+// serverInstance=[MComponentInstance] '.' serverPort=[mclevcmp::MServerPort] 'using'
+// connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] '{' ('mapping' ':='
+// ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+// attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 protected class MCommonConnection_Group extends GroupToken {
 	
 	public MCommonConnection_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1993,7 +2019,7 @@ protected class MCommonConnection_MCommonConnectionAction_0 extends ActionToken 
 	}
 }
 
-// "connection"
+// 'connection'
 protected class MCommonConnection_ConnectionKeyword_1 extends KeywordToken  {
 	
 	public MCommonConnection_ConnectionKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2052,7 +2078,7 @@ protected class MCommonConnection_ClientInstanceAssignment_2 extends AssignmentT
 
 }
 
-// "."
+// '.'
 protected class MCommonConnection_FullStopKeyword_3 extends KeywordToken  {
 	
 	public MCommonConnection_FullStopKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2111,7 +2137,7 @@ protected class MCommonConnection_ClientPortAssignment_4 extends AssignmentToken
 
 }
 
-// "<->"
+// '<->'
 protected class MCommonConnection_LessThanSignHyphenMinusGreaterThanSignKeyword_5 extends KeywordToken  {
 	
 	public MCommonConnection_LessThanSignHyphenMinusGreaterThanSignKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2170,7 +2196,7 @@ protected class MCommonConnection_ServerInstanceAssignment_6 extends AssignmentT
 
 }
 
-// "."
+// '.'
 protected class MCommonConnection_FullStopKeyword_7 extends KeywordToken  {
 	
 	public MCommonConnection_FullStopKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2229,7 +2255,7 @@ protected class MCommonConnection_ServerPortAssignment_8 extends AssignmentToken
 
 }
 
-// "using"
+// 'using'
 protected class MCommonConnection_UsingKeyword_9 extends KeywordToken  {
 	
 	public MCommonConnection_UsingKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2288,7 +2314,7 @@ protected class MCommonConnection_ConnectorAssignment_10 extends AssignmentToken
 
 }
 
-// "{"
+// '{'
 protected class MCommonConnection_LeftCurlyBracketKeyword_11 extends KeywordToken  {
 	
 	public MCommonConnection_LeftCurlyBracketKeyword_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2310,7 +2336,7 @@ protected class MCommonConnection_LeftCurlyBracketKeyword_11 extends KeywordToke
 
 }
 
-// ("mapping" ":=" ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
+// ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
 protected class MCommonConnection_Group_12 extends GroupToken {
 	
 	public MCommonConnection_Group_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2332,7 +2358,7 @@ protected class MCommonConnection_Group_12 extends GroupToken {
 
 }
 
-// "mapping"
+// 'mapping'
 protected class MCommonConnection_MappingKeyword_12_0 extends KeywordToken  {
 	
 	public MCommonConnection_MappingKeyword_12_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2354,7 +2380,7 @@ protected class MCommonConnection_MappingKeyword_12_0 extends KeywordToken  {
 
 }
 
-// ":="
+// ':='
 protected class MCommonConnection_ColonEqualsSignKeyword_12_1 extends KeywordToken  {
 	
 	public MCommonConnection_ColonEqualsSignKeyword_12_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2413,7 +2439,7 @@ protected class MCommonConnection_IfaceMappingAssignment_12_2 extends Assignment
 
 }
 
-// ";"
+// ';'
 protected class MCommonConnection_SemicolonKeyword_12_3 extends KeywordToken  {
 	
 	public MCommonConnection_SemicolonKeyword_12_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2484,7 +2510,7 @@ protected class MCommonConnection_AttributeValueAssignmentsAssignment_13 extends
 	}	
 }
 
-// "}"
+// '}'
 protected class MCommonConnection_RightCurlyBracketKeyword_14 extends KeywordToken  {
 	
 	public MCommonConnection_RightCurlyBracketKeyword_14(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2508,7 +2534,7 @@ protected class MCommonConnection_RightCurlyBracketKeyword_14 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MCommonConnection_SemicolonKeyword_15 extends KeywordToken  {
 	
 	public MCommonConnection_SemicolonKeyword_15(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2537,13 +2563,17 @@ protected class MCommonConnection_SemicolonKeyword_15 extends KeywordToken  {
 /************ begin Rule MConnectionSwitch ****************
  *
  * MConnectionSwitch:
- * 	{MConnectionSwitch} "switch" "(" clientInstance=[MComponentInstance] "." clientPort=[mclevcmp::MClientPort] ")" "{"
- * 	cases+=MConnectionSwitchCase+ "}" ";";
+ * 	{MConnectionSwitch}
+ * 	'switch' '(' clientInstance=[MComponentInstance] '.'
+ * 	clientPort=[mclevcmp::MClientPort] ')'
+ * 	'{'
+ * 	cases+=MConnectionSwitchCase+
+ * 	'}' ';';
  *
  **/
 
-// {MConnectionSwitch} "switch" "(" clientInstance=[MComponentInstance] "." clientPort=[mclevcmp::MClientPort] ")" "{"
-// cases+=MConnectionSwitchCase+ "}" ";"
+// {MConnectionSwitch} 'switch' '(' clientInstance=[MComponentInstance] '.' clientPort=[mclevcmp::MClientPort] ')' '{'
+// cases+=MConnectionSwitchCase+ '}' ';'
 protected class MConnectionSwitch_Group extends GroupToken {
 	
 	public MConnectionSwitch_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2598,7 +2628,7 @@ protected class MConnectionSwitch_MConnectionSwitchAction_0 extends ActionToken 
 	}
 }
 
-// "switch"
+// 'switch'
 protected class MConnectionSwitch_SwitchKeyword_1 extends KeywordToken  {
 	
 	public MConnectionSwitch_SwitchKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2620,7 +2650,7 @@ protected class MConnectionSwitch_SwitchKeyword_1 extends KeywordToken  {
 
 }
 
-// "("
+// '('
 protected class MConnectionSwitch_LeftParenthesisKeyword_2 extends KeywordToken  {
 	
 	public MConnectionSwitch_LeftParenthesisKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2679,7 +2709,7 @@ protected class MConnectionSwitch_ClientInstanceAssignment_3 extends AssignmentT
 
 }
 
-// "."
+// '.'
 protected class MConnectionSwitch_FullStopKeyword_4 extends KeywordToken  {
 	
 	public MConnectionSwitch_FullStopKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2738,7 +2768,7 @@ protected class MConnectionSwitch_ClientPortAssignment_5 extends AssignmentToken
 
 }
 
-// ")"
+// ')'
 protected class MConnectionSwitch_RightParenthesisKeyword_6 extends KeywordToken  {
 	
 	public MConnectionSwitch_RightParenthesisKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2760,7 +2790,7 @@ protected class MConnectionSwitch_RightParenthesisKeyword_6 extends KeywordToken
 
 }
 
-// "{"
+// '{'
 protected class MConnectionSwitch_LeftCurlyBracketKeyword_7 extends KeywordToken  {
 	
 	public MConnectionSwitch_LeftCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2829,7 +2859,7 @@ protected class MConnectionSwitch_CasesAssignment_8 extends AssignmentToken  {
 	}	
 }
 
-// "}"
+// '}'
 protected class MConnectionSwitch_RightCurlyBracketKeyword_9 extends KeywordToken  {
 	
 	public MConnectionSwitch_RightCurlyBracketKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2851,7 +2881,7 @@ protected class MConnectionSwitch_RightCurlyBracketKeyword_9 extends KeywordToke
 
 }
 
-// ";"
+// ';'
 protected class MConnectionSwitch_SemicolonKeyword_10 extends KeywordToken  {
 	
 	public MConnectionSwitch_SemicolonKeyword_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2880,17 +2910,21 @@ protected class MConnectionSwitch_SemicolonKeyword_10 extends KeywordToken  {
 /************ begin Rule MConnectionSwitchCase ****************
  *
  * MConnectionSwitchCase:
- * 	{MConnectionSwitchCase} "case" alternative=[MDeploymentAlternative] ":" serverInstance=[MComponentInstance] "."
- * 	serverPort=[mclevcmp::MServerPort] "using" connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{"
- * 	("mapping" ":=" ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
- * 	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+ * 	{MConnectionSwitchCase}
+ * 	'case' alternative=[MDeploymentAlternative] ':'
+ * 	serverInstance=[MComponentInstance] '.'
+ * 	serverPort=[mclevcmp::MServerPort]
+ * 	'using' connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
+ * 	'{' ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+ * 	attributeValueAssignments+=MAttributeValueAssignment*
+ * 	'}' ';';
  *
  **/
 
-// {MConnectionSwitchCase} "case" alternative=[MDeploymentAlternative] ":" serverInstance=[MComponentInstance] "."
-// serverPort=[mclevcmp::MServerPort] "using" connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{"
-// ("mapping" ":=" ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
-// attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+// {MConnectionSwitchCase} 'case' alternative=[MDeploymentAlternative] ':' serverInstance=[MComponentInstance] '.'
+// serverPort=[mclevcmp::MServerPort] 'using' connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] '{'
+// ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+// attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 protected class MConnectionSwitchCase_Group extends GroupToken {
 	
 	public MConnectionSwitchCase_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2945,7 +2979,7 @@ protected class MConnectionSwitchCase_MConnectionSwitchCaseAction_0 extends Acti
 	}
 }
 
-// "case"
+// 'case'
 protected class MConnectionSwitchCase_CaseKeyword_1 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_CaseKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3004,7 +3038,7 @@ protected class MConnectionSwitchCase_AlternativeAssignment_2 extends Assignment
 
 }
 
-// ":"
+// ':'
 protected class MConnectionSwitchCase_ColonKeyword_3 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_ColonKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3063,7 +3097,7 @@ protected class MConnectionSwitchCase_ServerInstanceAssignment_4 extends Assignm
 
 }
 
-// "."
+// '.'
 protected class MConnectionSwitchCase_FullStopKeyword_5 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_FullStopKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3122,7 +3156,7 @@ protected class MConnectionSwitchCase_ServerPortAssignment_6 extends AssignmentT
 
 }
 
-// "using"
+// 'using'
 protected class MConnectionSwitchCase_UsingKeyword_7 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_UsingKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3181,7 +3215,7 @@ protected class MConnectionSwitchCase_ConnectorAssignment_8 extends AssignmentTo
 
 }
 
-// "{"
+// '{'
 protected class MConnectionSwitchCase_LeftCurlyBracketKeyword_9 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_LeftCurlyBracketKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3203,7 +3237,7 @@ protected class MConnectionSwitchCase_LeftCurlyBracketKeyword_9 extends KeywordT
 
 }
 
-// ("mapping" ":=" ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
+// ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
 protected class MConnectionSwitchCase_Group_10 extends GroupToken {
 	
 	public MConnectionSwitchCase_Group_10(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3225,7 +3259,7 @@ protected class MConnectionSwitchCase_Group_10 extends GroupToken {
 
 }
 
-// "mapping"
+// 'mapping'
 protected class MConnectionSwitchCase_MappingKeyword_10_0 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_MappingKeyword_10_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3247,7 +3281,7 @@ protected class MConnectionSwitchCase_MappingKeyword_10_0 extends KeywordToken  
 
 }
 
-// ":="
+// ':='
 protected class MConnectionSwitchCase_ColonEqualsSignKeyword_10_1 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_ColonEqualsSignKeyword_10_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3306,7 +3340,7 @@ protected class MConnectionSwitchCase_IfaceMappingAssignment_10_2 extends Assign
 
 }
 
-// ";"
+// ';'
 protected class MConnectionSwitchCase_SemicolonKeyword_10_3 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_SemicolonKeyword_10_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3377,7 +3411,7 @@ protected class MConnectionSwitchCase_AttributeValueAssignmentsAssignment_11 ext
 	}	
 }
 
-// "}"
+// '}'
 protected class MConnectionSwitchCase_RightCurlyBracketKeyword_12 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_RightCurlyBracketKeyword_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3401,7 +3435,7 @@ protected class MConnectionSwitchCase_RightCurlyBracketKeyword_12 extends Keywor
 
 }
 
-// ";"
+// ';'
 protected class MConnectionSwitchCase_SemicolonKeyword_13 extends KeywordToken  {
 	
 	public MConnectionSwitchCase_SemicolonKeyword_13(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3430,13 +3464,17 @@ protected class MConnectionSwitchCase_SemicolonKeyword_13 extends KeywordToken  
 /************ begin Rule MComponentInstance ****************
  *
  * MComponentInstance:
- * 	{MComponentInstance} "instance" component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID "{"
- * 	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+ * 	{MComponentInstance}
+ * 	'instance'
+ * 	component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment*
+ * 	'}' ';';
  *
  **/
 
-// {MComponentInstance} "instance" component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID "{"
-// attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+// {MComponentInstance} 'instance' component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID '{'
+// attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 protected class MComponentInstance_Group extends GroupToken {
 	
 	public MComponentInstance_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3491,7 +3529,7 @@ protected class MComponentInstance_MComponentInstanceAction_0 extends ActionToke
 	}
 }
 
-// "instance"
+// 'instance'
 protected class MComponentInstance_InstanceKeyword_1 extends KeywordToken  {
 	
 	public MComponentInstance_InstanceKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3584,7 +3622,7 @@ protected class MComponentInstance_NameAssignment_3 extends AssignmentToken  {
 
 }
 
-// "{"
+// '{'
 protected class MComponentInstance_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MComponentInstance_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3653,7 +3691,7 @@ protected class MComponentInstance_AttributeValueAssignmentsAssignment_5 extends
 	}	
 }
 
-// "}"
+// '}'
 protected class MComponentInstance_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MComponentInstance_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3676,7 +3714,7 @@ protected class MComponentInstance_RightCurlyBracketKeyword_6 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MComponentInstance_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MComponentInstance_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3818,14 +3856,17 @@ protected class MServiceLibraryInstance_MDriverSLibInstanceParserRuleCall_1 exte
 
 /************ begin Rule MRegularServiceLibraryInstance ****************
  *
- * MRegularServiceLibraryInstance returns MServiceLibraryInstance:
- * 	"library" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{"
- * 	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+ * MRegularServiceLibraryInstance MServiceLibraryInstance:
+ * 	'library'
+ * 	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment*
+ * 	'}' ';'
  *
  **/
 
-// "library" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{"
-// attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+// 'library' library=[mclevslib::MServiceLibrary|VersionedQualifiedName] '{'
+// attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 protected class MRegularServiceLibraryInstance_Group extends GroupToken {
 	
 	public MRegularServiceLibraryInstance_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3854,7 +3895,7 @@ protected class MRegularServiceLibraryInstance_Group extends GroupToken {
 
 }
 
-// "library"
+// 'library'
 protected class MRegularServiceLibraryInstance_LibraryKeyword_0 extends KeywordToken  {
 	
 	public MRegularServiceLibraryInstance_LibraryKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3912,7 +3953,7 @@ protected class MRegularServiceLibraryInstance_LibraryAssignment_1 extends Assig
 
 }
 
-// "{"
+// '{'
 protected class MRegularServiceLibraryInstance_LeftCurlyBracketKeyword_2 extends KeywordToken  {
 	
 	public MRegularServiceLibraryInstance_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3981,7 +4022,7 @@ protected class MRegularServiceLibraryInstance_AttributeValueAssignmentsAssignme
 	}	
 }
 
-// "}"
+// '}'
 protected class MRegularServiceLibraryInstance_RightCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MRegularServiceLibraryInstance_RightCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4004,7 +4045,7 @@ protected class MRegularServiceLibraryInstance_RightCurlyBracketKeyword_4 extend
 
 }
 
-// ";"
+// ';'
 protected class MRegularServiceLibraryInstance_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MRegularServiceLibraryInstance_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4033,15 +4074,23 @@ protected class MRegularServiceLibraryInstance_SemicolonKeyword_5 extends Keywor
 /************ begin Rule MDriverSLibInstance ****************
  *
  * MDriverSLibInstance:
- * 	{MDriverSLibInstance} "driver" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{" (("attribute" "values"
- * 	"{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
- * 	deviceDriverMappings+=MDeviceDriverMapping+ "}" ";")?) "}" ";";
+ * 	{MDriverSLibInstance}
+ * 	'driver'
+ * 	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+ * 	'{' (('attribute' 'values'
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment+
+ * 	'}' ';')?
+ * 	& ('device' 'mappings' '{'
+ * 	deviceDriverMappings+=MDeviceDriverMapping+
+ * 	'}' ';')?)
+ * 	'}' ';';
  *
  **/
 
-// {MDriverSLibInstance} "driver" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{" (("attribute" "values"
-// "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-// deviceDriverMappings+=MDeviceDriverMapping+ "}" ";")?) "}" ";"
+// {MDriverSLibInstance} 'driver' library=[mclevslib::MServiceLibrary|VersionedQualifiedName] '{' (('attribute' 'values'
+// '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+// deviceDriverMappings+=MDeviceDriverMapping+ '}' ';')?) '}' ';'
 protected class MDriverSLibInstance_Group extends GroupToken {
 	
 	public MDriverSLibInstance_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4096,7 +4145,7 @@ protected class MDriverSLibInstance_MDriverSLibInstanceAction_0 extends ActionTo
 	}
 }
 
-// "driver"
+// 'driver'
 protected class MDriverSLibInstance_DriverKeyword_1 extends KeywordToken  {
 	
 	public MDriverSLibInstance_DriverKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4155,7 +4204,7 @@ protected class MDriverSLibInstance_LibraryAssignment_2 extends AssignmentToken 
 
 }
 
-// "{"
+// '{'
 protected class MDriverSLibInstance_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
 	public MDriverSLibInstance_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4177,8 +4226,8 @@ protected class MDriverSLibInstance_LeftCurlyBracketKeyword_3 extends KeywordTok
 
 }
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-// deviceDriverMappings+=MDeviceDriverMapping+ "}" ";")?
+// (('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+// deviceDriverMappings+=MDeviceDriverMapping+ '}' ';')?)
 protected class MDriverSLibInstance_UnorderedGroup_4 extends UnorderedGroupToken {
 	
 	public MDriverSLibInstance_UnorderedGroup_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4202,7 +4251,7 @@ protected class MDriverSLibInstance_UnorderedGroup_4 extends UnorderedGroupToken
 
 }
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")?
+// ('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')?
 protected class MDriverSLibInstance_Group_4_0 extends GroupToken {
 	
 	public MDriverSLibInstance_Group_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4224,7 +4273,7 @@ protected class MDriverSLibInstance_Group_4_0 extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MDriverSLibInstance_AttributeKeyword_4_0_0 extends KeywordToken  {
 	
 	public MDriverSLibInstance_AttributeKeyword_4_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4246,7 +4295,7 @@ protected class MDriverSLibInstance_AttributeKeyword_4_0_0 extends KeywordToken 
 
 }
 
-// "values"
+// 'values'
 protected class MDriverSLibInstance_ValuesKeyword_4_0_1 extends KeywordToken  {
 	
 	public MDriverSLibInstance_ValuesKeyword_4_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4268,7 +4317,7 @@ protected class MDriverSLibInstance_ValuesKeyword_4_0_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MDriverSLibInstance_LeftCurlyBracketKeyword_4_0_2 extends KeywordToken  {
 	
 	public MDriverSLibInstance_LeftCurlyBracketKeyword_4_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4337,7 +4386,7 @@ protected class MDriverSLibInstance_AttributeValueAssignmentsAssignment_4_0_3 ex
 	}	
 }
 
-// "}"
+// '}'
 protected class MDriverSLibInstance_RightCurlyBracketKeyword_4_0_4 extends KeywordToken  {
 	
 	public MDriverSLibInstance_RightCurlyBracketKeyword_4_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4359,7 +4408,7 @@ protected class MDriverSLibInstance_RightCurlyBracketKeyword_4_0_4 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibInstance_SemicolonKeyword_4_0_5 extends KeywordToken  {
 	
 	public MDriverSLibInstance_SemicolonKeyword_4_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4382,7 +4431,7 @@ protected class MDriverSLibInstance_SemicolonKeyword_4_0_5 extends KeywordToken 
 }
 
 
-// ("device" "mappings" "{" deviceDriverMappings+=MDeviceDriverMapping+ "}" ";")?
+// ('device' 'mappings' '{' deviceDriverMappings+=MDeviceDriverMapping+ '}' ';')?
 protected class MDriverSLibInstance_Group_4_1 extends GroupToken {
 	
 	public MDriverSLibInstance_Group_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4404,7 +4453,7 @@ protected class MDriverSLibInstance_Group_4_1 extends GroupToken {
 
 }
 
-// "device"
+// 'device'
 protected class MDriverSLibInstance_DeviceKeyword_4_1_0 extends KeywordToken  {
 	
 	public MDriverSLibInstance_DeviceKeyword_4_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4427,7 +4476,7 @@ protected class MDriverSLibInstance_DeviceKeyword_4_1_0 extends KeywordToken  {
 
 }
 
-// "mappings"
+// 'mappings'
 protected class MDriverSLibInstance_MappingsKeyword_4_1_1 extends KeywordToken  {
 	
 	public MDriverSLibInstance_MappingsKeyword_4_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4449,7 +4498,7 @@ protected class MDriverSLibInstance_MappingsKeyword_4_1_1 extends KeywordToken  
 
 }
 
-// "{"
+// '{'
 protected class MDriverSLibInstance_LeftCurlyBracketKeyword_4_1_2 extends KeywordToken  {
 	
 	public MDriverSLibInstance_LeftCurlyBracketKeyword_4_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4518,7 +4567,7 @@ protected class MDriverSLibInstance_DeviceDriverMappingsAssignment_4_1_3 extends
 	}	
 }
 
-// "}"
+// '}'
 protected class MDriverSLibInstance_RightCurlyBracketKeyword_4_1_4 extends KeywordToken  {
 	
 	public MDriverSLibInstance_RightCurlyBracketKeyword_4_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4540,7 +4589,7 @@ protected class MDriverSLibInstance_RightCurlyBracketKeyword_4_1_4 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibInstance_SemicolonKeyword_4_1_5 extends KeywordToken  {
 	
 	public MDriverSLibInstance_SemicolonKeyword_4_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4564,7 +4613,7 @@ protected class MDriverSLibInstance_SemicolonKeyword_4_1_5 extends KeywordToken 
 
 
 
-// "}"
+// '}'
 protected class MDriverSLibInstance_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MDriverSLibInstance_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4586,7 +4635,7 @@ protected class MDriverSLibInstance_RightCurlyBracketKeyword_5 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibInstance_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MDriverSLibInstance_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4615,13 +4664,14 @@ protected class MDriverSLibInstance_SemicolonKeyword_6 extends KeywordToken  {
 /************ begin Rule MDeviceDriverMapping ****************
  *
  * MDeviceDriverMapping:
- * 	"supported" "device" supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] "->"
- * 	"deployed" "device" deployedDevice=[MDeployedDevice|VersionedQualifiedReferenceName] ";";
+ * 	'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName]
+ * 	'->'
+ * 	'deployed' 'device' deployedDevice=[MDeployedDevice|VersionedQualifiedReferenceName] ';';
  *
  **/
 
-// "supported" "device" supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] "->"
-// "deployed" "device" deployedDevice=[MDeployedDevice|VersionedQualifiedReferenceName] ";"
+// 'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] '->'
+// 'deployed' 'device' deployedDevice=[MDeployedDevice|VersionedQualifiedReferenceName] ';'
 protected class MDeviceDriverMapping_Group extends GroupToken {
 	
 	public MDeviceDriverMapping_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4650,7 +4700,7 @@ protected class MDeviceDriverMapping_Group extends GroupToken {
 
 }
 
-// "supported"
+// 'supported'
 protected class MDeviceDriverMapping_SupportedKeyword_0 extends KeywordToken  {
 	
 	public MDeviceDriverMapping_SupportedKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4671,7 +4721,7 @@ protected class MDeviceDriverMapping_SupportedKeyword_0 extends KeywordToken  {
 
 }
 
-// "device"
+// 'device'
 protected class MDeviceDriverMapping_DeviceKeyword_1 extends KeywordToken  {
 	
 	public MDeviceDriverMapping_DeviceKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4730,7 +4780,7 @@ protected class MDeviceDriverMapping_SupportedDeviceAssignment_2 extends Assignm
 
 }
 
-// "->"
+// '->'
 protected class MDeviceDriverMapping_HyphenMinusGreaterThanSignKeyword_3 extends KeywordToken  {
 	
 	public MDeviceDriverMapping_HyphenMinusGreaterThanSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4752,7 +4802,7 @@ protected class MDeviceDriverMapping_HyphenMinusGreaterThanSignKeyword_3 extends
 
 }
 
-// "deployed"
+// 'deployed'
 protected class MDeviceDriverMapping_DeployedKeyword_4 extends KeywordToken  {
 	
 	public MDeviceDriverMapping_DeployedKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4774,7 +4824,7 @@ protected class MDeviceDriverMapping_DeployedKeyword_4 extends KeywordToken  {
 
 }
 
-// "device"
+// 'device'
 protected class MDeviceDriverMapping_DeviceKeyword_5 extends KeywordToken  {
 	
 	public MDeviceDriverMapping_DeviceKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4833,7 +4883,7 @@ protected class MDeviceDriverMapping_DeployedDeviceAssignment_6 extends Assignme
 
 }
 
-// ";"
+// ';'
 protected class MDeviceDriverMapping_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MDeviceDriverMapping_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4862,21 +4912,40 @@ protected class MDeviceDriverMapping_SemicolonKeyword_7 extends KeywordToken  {
 /************ begin Rule MDeploymentAlternative ****************
  *
  * MDeploymentAlternative:
- * 	{MDeploymentAlternative} "deployment" "alternative" name=ID "{" ("deployment" "platforms" ":="
- * 	deploymentPlatforms+=[MDeploymentPlatform] ("," deploymentPlatforms+=[MDeploymentPlatform])* ";" & ("attribute"
- * 	"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("deployment" "alternatives" "{"
- * 	deploymentAlternatives+=MDeploymentAlternative+ "}" ";")? & ("components" "{" components+=MComponentInstance+ "}"
- * 	";")? & ("connections" "{" connections+=MConnection+ "}" ";")? & ("libraries" "{" libraries+=MServiceLibraryInstance+
- * 	"}" ";")?) "}" ";";
+ * 	{MDeploymentAlternative}
+ * 	'deployment' 'alternative'
+ * 	name=ID
+ * 	'{' ('deployment' 'platforms' ':=' deploymentPlatforms+=[MDeploymentPlatform] (","
+ * 	deploymentPlatforms+=[MDeploymentPlatform])* ';' & ('attribute' 'values'
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment+
+ * 	'}' ';')?
+ * 	& ('deployment' 'alternatives'
+ * 	'{'
+ * 	deploymentAlternatives+=MDeploymentAlternative+
+ * 	'}' ';')?
+ * 	& ('components'
+ * 	'{'
+ * 	components+=MComponentInstance+
+ * 	'}' ';')?
+ * 	& ('connections'
+ * 	'{'
+ * 	connections+=MConnection+
+ * 	'}' ';')?
+ * 	& ('libraries'
+ * 	'{'
+ * 	libraries+=MServiceLibraryInstance+
+ * 	'}' ';')?)
+ * 	'}' ';';
  *
  **/
 
-// {MDeploymentAlternative} "deployment" "alternative" name=ID "{" ("deployment" "platforms" ":="
-// deploymentPlatforms+=[MDeploymentPlatform] ("," deploymentPlatforms+=[MDeploymentPlatform])* ";" & ("attribute"
-// "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("deployment" "alternatives" "{"
-// deploymentAlternatives+=MDeploymentAlternative+ "}" ";")? & ("components" "{" components+=MComponentInstance+ "}" ";")?
-// & ("connections" "{" connections+=MConnection+ "}" ";")? & ("libraries" "{" libraries+=MServiceLibraryInstance+ "}"
-// ";")?) "}" ";"
+// {MDeploymentAlternative} 'deployment' 'alternative' name=ID '{' ('deployment' 'platforms' ':='
+// deploymentPlatforms+=[MDeploymentPlatform] ("," deploymentPlatforms+=[MDeploymentPlatform])* ';' & ('attribute'
+// 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('deployment' 'alternatives' '{'
+// deploymentAlternatives+=MDeploymentAlternative+ '}' ';')? & ('components' '{' components+=MComponentInstance+ '}' ';')?
+// & ('connections' '{' connections+=MConnection+ '}' ';')? & ('libraries' '{' libraries+=MServiceLibraryInstance+ '}'
+// ';')?) '}' ';'
 protected class MDeploymentAlternative_Group extends GroupToken {
 	
 	public MDeploymentAlternative_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4931,7 +5000,7 @@ protected class MDeploymentAlternative_MDeploymentAlternativeAction_0 extends Ac
 	}
 }
 
-// "deployment"
+// 'deployment'
 protected class MDeploymentAlternative_DeploymentKeyword_1 extends KeywordToken  {
 	
 	public MDeploymentAlternative_DeploymentKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4953,7 +5022,7 @@ protected class MDeploymentAlternative_DeploymentKeyword_1 extends KeywordToken 
 
 }
 
-// "alternative"
+// 'alternative'
 protected class MDeploymentAlternative_AlternativeKeyword_2 extends KeywordToken  {
 	
 	public MDeploymentAlternative_AlternativeKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5009,7 +5078,7 @@ protected class MDeploymentAlternative_NameAssignment_3 extends AssignmentToken 
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentAlternative_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MDeploymentAlternative_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5031,12 +5100,12 @@ protected class MDeploymentAlternative_LeftCurlyBracketKeyword_4 extends Keyword
 
 }
 
-// "deployment" "platforms" ":=" deploymentPlatforms+=[MDeploymentPlatform] (","
-// deploymentPlatforms+=[MDeploymentPlatform])* ";" & ("attribute" "values" "{"
-// attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("deployment" "alternatives" "{"
-// deploymentAlternatives+=MDeploymentAlternative+ "}" ";")? & ("components" "{" components+=MComponentInstance+ "}" ";")?
-// & ("connections" "{" connections+=MConnection+ "}" ";")? & ("libraries" "{" libraries+=MServiceLibraryInstance+ "}"
-// ";")?
+// ('deployment' 'platforms' ':=' deploymentPlatforms+=[MDeploymentPlatform] (","
+// deploymentPlatforms+=[MDeploymentPlatform])* ';' & ('attribute' 'values' '{'
+// attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('deployment' 'alternatives' '{'
+// deploymentAlternatives+=MDeploymentAlternative+ '}' ';')? & ('components' '{' components+=MComponentInstance+ '}' ';')?
+// & ('connections' '{' connections+=MConnection+ '}' ';')? & ('libraries' '{' libraries+=MServiceLibraryInstance+ '}'
+// ';')?)
 protected class MDeploymentAlternative_UnorderedGroup_5 extends UnorderedGroupToken {
 	
 	public MDeploymentAlternative_UnorderedGroup_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5063,8 +5132,8 @@ protected class MDeploymentAlternative_UnorderedGroup_5 extends UnorderedGroupTo
 
 }
 
-// "deployment" "platforms" ":=" deploymentPlatforms+=[MDeploymentPlatform] (","
-// deploymentPlatforms+=[MDeploymentPlatform])* ";"
+// 'deployment' 'platforms' ':=' deploymentPlatforms+=[MDeploymentPlatform] (","
+// deploymentPlatforms+=[MDeploymentPlatform])* ';'
 protected class MDeploymentAlternative_Group_5_0 extends GroupToken {
 	
 	public MDeploymentAlternative_Group_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5086,7 +5155,7 @@ protected class MDeploymentAlternative_Group_5_0 extends GroupToken {
 
 }
 
-// "deployment"
+// 'deployment'
 protected class MDeploymentAlternative_DeploymentKeyword_5_0_0 extends KeywordToken  {
 	
 	public MDeploymentAlternative_DeploymentKeyword_5_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5108,7 +5177,7 @@ protected class MDeploymentAlternative_DeploymentKeyword_5_0_0 extends KeywordTo
 
 }
 
-// "platforms"
+// 'platforms'
 protected class MDeploymentAlternative_PlatformsKeyword_5_0_1 extends KeywordToken  {
 	
 	public MDeploymentAlternative_PlatformsKeyword_5_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5130,7 +5199,7 @@ protected class MDeploymentAlternative_PlatformsKeyword_5_0_1 extends KeywordTok
 
 }
 
-// ":="
+// ':='
 protected class MDeploymentAlternative_ColonEqualsSignKeyword_5_0_2 extends KeywordToken  {
 	
 	public MDeploymentAlternative_ColonEqualsSignKeyword_5_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5272,7 +5341,7 @@ protected class MDeploymentAlternative_DeploymentPlatformsAssignment_5_0_4_1 ext
 }
 
 
-// ";"
+// ';'
 protected class MDeploymentAlternative_SemicolonKeyword_5_0_5 extends KeywordToken  {
 	
 	public MDeploymentAlternative_SemicolonKeyword_5_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5296,7 +5365,7 @@ protected class MDeploymentAlternative_SemicolonKeyword_5_0_5 extends KeywordTok
 }
 
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")?
+// ('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')?
 protected class MDeploymentAlternative_Group_5_1 extends GroupToken {
 	
 	public MDeploymentAlternative_Group_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5318,7 +5387,7 @@ protected class MDeploymentAlternative_Group_5_1 extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MDeploymentAlternative_AttributeKeyword_5_1_0 extends KeywordToken  {
 	
 	public MDeploymentAlternative_AttributeKeyword_5_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5340,7 +5409,7 @@ protected class MDeploymentAlternative_AttributeKeyword_5_1_0 extends KeywordTok
 
 }
 
-// "values"
+// 'values'
 protected class MDeploymentAlternative_ValuesKeyword_5_1_1 extends KeywordToken  {
 	
 	public MDeploymentAlternative_ValuesKeyword_5_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5362,7 +5431,7 @@ protected class MDeploymentAlternative_ValuesKeyword_5_1_1 extends KeywordToken 
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentAlternative_LeftCurlyBracketKeyword_5_1_2 extends KeywordToken  {
 	
 	public MDeploymentAlternative_LeftCurlyBracketKeyword_5_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5431,7 +5500,7 @@ protected class MDeploymentAlternative_AttributeValueAssignmentsAssignment_5_1_3
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_1_4 extends KeywordToken  {
 	
 	public MDeploymentAlternative_RightCurlyBracketKeyword_5_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5453,7 +5522,7 @@ protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_1_4 extends Ke
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentAlternative_SemicolonKeyword_5_1_5 extends KeywordToken  {
 	
 	public MDeploymentAlternative_SemicolonKeyword_5_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5476,7 +5545,7 @@ protected class MDeploymentAlternative_SemicolonKeyword_5_1_5 extends KeywordTok
 }
 
 
-// ("deployment" "alternatives" "{" deploymentAlternatives+=MDeploymentAlternative+ "}" ";")?
+// ('deployment' 'alternatives' '{' deploymentAlternatives+=MDeploymentAlternative+ '}' ';')?
 protected class MDeploymentAlternative_Group_5_2 extends GroupToken {
 	
 	public MDeploymentAlternative_Group_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5498,7 +5567,7 @@ protected class MDeploymentAlternative_Group_5_2 extends GroupToken {
 
 }
 
-// "deployment"
+// 'deployment'
 protected class MDeploymentAlternative_DeploymentKeyword_5_2_0 extends KeywordToken  {
 	
 	public MDeploymentAlternative_DeploymentKeyword_5_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5521,7 +5590,7 @@ protected class MDeploymentAlternative_DeploymentKeyword_5_2_0 extends KeywordTo
 
 }
 
-// "alternatives"
+// 'alternatives'
 protected class MDeploymentAlternative_AlternativesKeyword_5_2_1 extends KeywordToken  {
 	
 	public MDeploymentAlternative_AlternativesKeyword_5_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5543,7 +5612,7 @@ protected class MDeploymentAlternative_AlternativesKeyword_5_2_1 extends Keyword
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentAlternative_LeftCurlyBracketKeyword_5_2_2 extends KeywordToken  {
 	
 	public MDeploymentAlternative_LeftCurlyBracketKeyword_5_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5612,7 +5681,7 @@ protected class MDeploymentAlternative_DeploymentAlternativesAssignment_5_2_3 ex
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_2_4 extends KeywordToken  {
 	
 	public MDeploymentAlternative_RightCurlyBracketKeyword_5_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5634,7 +5703,7 @@ protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_2_4 extends Ke
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentAlternative_SemicolonKeyword_5_2_5 extends KeywordToken  {
 	
 	public MDeploymentAlternative_SemicolonKeyword_5_2_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5657,7 +5726,7 @@ protected class MDeploymentAlternative_SemicolonKeyword_5_2_5 extends KeywordTok
 }
 
 
-// ("components" "{" components+=MComponentInstance+ "}" ";")?
+// ('components' '{' components+=MComponentInstance+ '}' ';')?
 protected class MDeploymentAlternative_Group_5_3 extends GroupToken {
 	
 	public MDeploymentAlternative_Group_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5679,7 +5748,7 @@ protected class MDeploymentAlternative_Group_5_3 extends GroupToken {
 
 }
 
-// "components"
+// 'components'
 protected class MDeploymentAlternative_ComponentsKeyword_5_3_0 extends KeywordToken  {
 	
 	public MDeploymentAlternative_ComponentsKeyword_5_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5703,7 +5772,7 @@ protected class MDeploymentAlternative_ComponentsKeyword_5_3_0 extends KeywordTo
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentAlternative_LeftCurlyBracketKeyword_5_3_1 extends KeywordToken  {
 	
 	public MDeploymentAlternative_LeftCurlyBracketKeyword_5_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5772,7 +5841,7 @@ protected class MDeploymentAlternative_ComponentsAssignment_5_3_2 extends Assign
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_3_3 extends KeywordToken  {
 	
 	public MDeploymentAlternative_RightCurlyBracketKeyword_5_3_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5794,7 +5863,7 @@ protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_3_3 extends Ke
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentAlternative_SemicolonKeyword_5_3_4 extends KeywordToken  {
 	
 	public MDeploymentAlternative_SemicolonKeyword_5_3_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5817,7 +5886,7 @@ protected class MDeploymentAlternative_SemicolonKeyword_5_3_4 extends KeywordTok
 }
 
 
-// ("connections" "{" connections+=MConnection+ "}" ";")?
+// ('connections' '{' connections+=MConnection+ '}' ';')?
 protected class MDeploymentAlternative_Group_5_4 extends GroupToken {
 	
 	public MDeploymentAlternative_Group_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5839,7 +5908,7 @@ protected class MDeploymentAlternative_Group_5_4 extends GroupToken {
 
 }
 
-// "connections"
+// 'connections'
 protected class MDeploymentAlternative_ConnectionsKeyword_5_4_0 extends KeywordToken  {
 	
 	public MDeploymentAlternative_ConnectionsKeyword_5_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5864,7 +5933,7 @@ protected class MDeploymentAlternative_ConnectionsKeyword_5_4_0 extends KeywordT
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentAlternative_LeftCurlyBracketKeyword_5_4_1 extends KeywordToken  {
 	
 	public MDeploymentAlternative_LeftCurlyBracketKeyword_5_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5933,7 +6002,7 @@ protected class MDeploymentAlternative_ConnectionsAssignment_5_4_2 extends Assig
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_4_3 extends KeywordToken  {
 	
 	public MDeploymentAlternative_RightCurlyBracketKeyword_5_4_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5955,7 +6024,7 @@ protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_4_3 extends Ke
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentAlternative_SemicolonKeyword_5_4_4 extends KeywordToken  {
 	
 	public MDeploymentAlternative_SemicolonKeyword_5_4_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5978,7 +6047,7 @@ protected class MDeploymentAlternative_SemicolonKeyword_5_4_4 extends KeywordTok
 }
 
 
-// ("libraries" "{" libraries+=MServiceLibraryInstance+ "}" ";")?
+// ('libraries' '{' libraries+=MServiceLibraryInstance+ '}' ';')?
 protected class MDeploymentAlternative_Group_5_5 extends GroupToken {
 	
 	public MDeploymentAlternative_Group_5_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6000,7 +6069,7 @@ protected class MDeploymentAlternative_Group_5_5 extends GroupToken {
 
 }
 
-// "libraries"
+// 'libraries'
 protected class MDeploymentAlternative_LibrariesKeyword_5_5_0 extends KeywordToken  {
 	
 	public MDeploymentAlternative_LibrariesKeyword_5_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6026,7 +6095,7 @@ protected class MDeploymentAlternative_LibrariesKeyword_5_5_0 extends KeywordTok
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentAlternative_LeftCurlyBracketKeyword_5_5_1 extends KeywordToken  {
 	
 	public MDeploymentAlternative_LeftCurlyBracketKeyword_5_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6095,7 +6164,7 @@ protected class MDeploymentAlternative_LibrariesAssignment_5_5_2 extends Assignm
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_5_3 extends KeywordToken  {
 	
 	public MDeploymentAlternative_RightCurlyBracketKeyword_5_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6117,7 +6186,7 @@ protected class MDeploymentAlternative_RightCurlyBracketKeyword_5_5_3 extends Ke
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentAlternative_SemicolonKeyword_5_5_4 extends KeywordToken  {
 	
 	public MDeploymentAlternative_SemicolonKeyword_5_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6141,7 +6210,7 @@ protected class MDeploymentAlternative_SemicolonKeyword_5_5_4 extends KeywordTok
 
 
 
-// "}"
+// '}'
 protected class MDeploymentAlternative_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MDeploymentAlternative_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6163,7 +6232,7 @@ protected class MDeploymentAlternative_RightCurlyBracketKeyword_6 extends Keywor
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentAlternative_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MDeploymentAlternative_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6192,15 +6261,23 @@ protected class MDeploymentAlternative_SemicolonKeyword_7 extends KeywordToken  
 /************ begin Rule MDeploymentPlatform ****************
  *
  * MDeploymentPlatform:
- * 	"deployment" "platform" name=ID "{" ("platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";" &
- * 	("deployed" "devices" "{" deployedDevices+=MDeployedDevice+ "}" ";")? & ("parameter" "values" "{"
- * 	parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?) "}" ";";
+ * 	'deployment' 'platform'
+ * 	name=ID
+ * 	'{' ('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';' & ('deployed' 'devices' '{'
+ * 	deployedDevices+=MDeployedDevice+
+ * 	'}' ';')?
+ * 	& ('parameter' 'values'
+ * 	'{'
+ * 	parameterValueAssignments+=MParameterValueAssignment+
+ * 	'}' ';')?)
+ * 	'}'
+ * 	';';
  *
  **/
 
-// "deployment" "platform" name=ID "{" ("platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";" & ("deployed"
-// "devices" "{" deployedDevices+=MDeployedDevice+ "}" ";")? & ("parameter" "values" "{"
-// parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?) "}" ";"
+// 'deployment' 'platform' name=ID '{' ('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';' & ('deployed'
+// 'devices' '{' deployedDevices+=MDeployedDevice+ '}' ';')? & ('parameter' 'values' '{'
+// parameterValueAssignments+=MParameterValueAssignment+ '}' ';')?) '}' ';'
 protected class MDeploymentPlatform_Group extends GroupToken {
 	
 	public MDeploymentPlatform_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6229,7 +6306,7 @@ protected class MDeploymentPlatform_Group extends GroupToken {
 
 }
 
-// "deployment"
+// 'deployment'
 protected class MDeploymentPlatform_DeploymentKeyword_0 extends KeywordToken  {
 	
 	public MDeploymentPlatform_DeploymentKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6250,7 +6327,7 @@ protected class MDeploymentPlatform_DeploymentKeyword_0 extends KeywordToken  {
 
 }
 
-// "platform"
+// 'platform'
 protected class MDeploymentPlatform_PlatformKeyword_1 extends KeywordToken  {
 	
 	public MDeploymentPlatform_PlatformKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6306,7 +6383,7 @@ protected class MDeploymentPlatform_NameAssignment_2 extends AssignmentToken  {
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentPlatform_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
 	public MDeploymentPlatform_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6328,9 +6405,9 @@ protected class MDeploymentPlatform_LeftCurlyBracketKeyword_3 extends KeywordTok
 
 }
 
-// "platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";" & ("deployed" "devices" "{"
-// deployedDevices+=MDeployedDevice+ "}" ";")? & ("parameter" "values" "{"
-// parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?
+// ('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';' & ('deployed' 'devices' '{'
+// deployedDevices+=MDeployedDevice+ '}' ';')? & ('parameter' 'values' '{'
+// parameterValueAssignments+=MParameterValueAssignment+ '}' ';')?)
 protected class MDeploymentPlatform_UnorderedGroup_4 extends UnorderedGroupToken {
 	
 	public MDeploymentPlatform_UnorderedGroup_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6354,7 +6431,7 @@ protected class MDeploymentPlatform_UnorderedGroup_4 extends UnorderedGroupToken
 
 }
 
-// "platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";"
+// 'platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';'
 protected class MDeploymentPlatform_Group_4_0 extends GroupToken {
 	
 	public MDeploymentPlatform_Group_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6376,7 +6453,7 @@ protected class MDeploymentPlatform_Group_4_0 extends GroupToken {
 
 }
 
-// "platform"
+// 'platform'
 protected class MDeploymentPlatform_PlatformKeyword_4_0_0 extends KeywordToken  {
 	
 	public MDeploymentPlatform_PlatformKeyword_4_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6398,7 +6475,7 @@ protected class MDeploymentPlatform_PlatformKeyword_4_0_0 extends KeywordToken  
 
 }
 
-// ":="
+// ':='
 protected class MDeploymentPlatform_ColonEqualsSignKeyword_4_0_1 extends KeywordToken  {
 	
 	public MDeploymentPlatform_ColonEqualsSignKeyword_4_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6457,7 +6534,7 @@ protected class MDeploymentPlatform_PlatformAssignment_4_0_2 extends AssignmentT
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentPlatform_SemicolonKeyword_4_0_3 extends KeywordToken  {
 	
 	public MDeploymentPlatform_SemicolonKeyword_4_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6480,7 +6557,7 @@ protected class MDeploymentPlatform_SemicolonKeyword_4_0_3 extends KeywordToken 
 }
 
 
-// ("deployed" "devices" "{" deployedDevices+=MDeployedDevice+ "}" ";")?
+// ('deployed' 'devices' '{' deployedDevices+=MDeployedDevice+ '}' ';')?
 protected class MDeploymentPlatform_Group_4_1 extends GroupToken {
 	
 	public MDeploymentPlatform_Group_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6502,7 +6579,7 @@ protected class MDeploymentPlatform_Group_4_1 extends GroupToken {
 
 }
 
-// "deployed"
+// 'deployed'
 protected class MDeploymentPlatform_DeployedKeyword_4_1_0 extends KeywordToken  {
 	
 	public MDeploymentPlatform_DeployedKeyword_4_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6524,7 +6601,7 @@ protected class MDeploymentPlatform_DeployedKeyword_4_1_0 extends KeywordToken  
 
 }
 
-// "devices"
+// 'devices'
 protected class MDeploymentPlatform_DevicesKeyword_4_1_1 extends KeywordToken  {
 	
 	public MDeploymentPlatform_DevicesKeyword_4_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6546,7 +6623,7 @@ protected class MDeploymentPlatform_DevicesKeyword_4_1_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentPlatform_LeftCurlyBracketKeyword_4_1_2 extends KeywordToken  {
 	
 	public MDeploymentPlatform_LeftCurlyBracketKeyword_4_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6615,7 +6692,7 @@ protected class MDeploymentPlatform_DeployedDevicesAssignment_4_1_3 extends Assi
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeploymentPlatform_RightCurlyBracketKeyword_4_1_4 extends KeywordToken  {
 	
 	public MDeploymentPlatform_RightCurlyBracketKeyword_4_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6637,7 +6714,7 @@ protected class MDeploymentPlatform_RightCurlyBracketKeyword_4_1_4 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentPlatform_SemicolonKeyword_4_1_5 extends KeywordToken  {
 	
 	public MDeploymentPlatform_SemicolonKeyword_4_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6660,7 +6737,7 @@ protected class MDeploymentPlatform_SemicolonKeyword_4_1_5 extends KeywordToken 
 }
 
 
-// ("parameter" "values" "{" parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?
+// ('parameter' 'values' '{' parameterValueAssignments+=MParameterValueAssignment+ '}' ';')?
 protected class MDeploymentPlatform_Group_4_2 extends GroupToken {
 	
 	public MDeploymentPlatform_Group_4_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6682,7 +6759,7 @@ protected class MDeploymentPlatform_Group_4_2 extends GroupToken {
 
 }
 
-// "parameter"
+// 'parameter'
 protected class MDeploymentPlatform_ParameterKeyword_4_2_0 extends KeywordToken  {
 	
 	public MDeploymentPlatform_ParameterKeyword_4_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6705,7 +6782,7 @@ protected class MDeploymentPlatform_ParameterKeyword_4_2_0 extends KeywordToken 
 
 }
 
-// "values"
+// 'values'
 protected class MDeploymentPlatform_ValuesKeyword_4_2_1 extends KeywordToken  {
 	
 	public MDeploymentPlatform_ValuesKeyword_4_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6727,7 +6804,7 @@ protected class MDeploymentPlatform_ValuesKeyword_4_2_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MDeploymentPlatform_LeftCurlyBracketKeyword_4_2_2 extends KeywordToken  {
 	
 	public MDeploymentPlatform_LeftCurlyBracketKeyword_4_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6796,7 +6873,7 @@ protected class MDeploymentPlatform_ParameterValueAssignmentsAssignment_4_2_3 ex
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeploymentPlatform_RightCurlyBracketKeyword_4_2_4 extends KeywordToken  {
 	
 	public MDeploymentPlatform_RightCurlyBracketKeyword_4_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6818,7 +6895,7 @@ protected class MDeploymentPlatform_RightCurlyBracketKeyword_4_2_4 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentPlatform_SemicolonKeyword_4_2_5 extends KeywordToken  {
 	
 	public MDeploymentPlatform_SemicolonKeyword_4_2_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6842,7 +6919,7 @@ protected class MDeploymentPlatform_SemicolonKeyword_4_2_5 extends KeywordToken 
 
 
 
-// "}"
+// '}'
 protected class MDeploymentPlatform_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MDeploymentPlatform_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6864,7 +6941,7 @@ protected class MDeploymentPlatform_RightCurlyBracketKeyword_5 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MDeploymentPlatform_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MDeploymentPlatform_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6893,13 +6970,16 @@ protected class MDeploymentPlatform_SemicolonKeyword_6 extends KeywordToken  {
 /************ begin Rule MDeployedDevice ****************
  *
  * MDeployedDevice:
- * 	"device" device=[pdl::MDevice|VersionedQualifiedName] name=ID "{"
- * 	parameterValueAssignments+=MParameterValueAssignment* "}" ";";
+ * 	'device'
+ * 	device=[pdl::MDevice|VersionedQualifiedName] name=ID
+ * 	'{'
+ * 	parameterValueAssignments+=MParameterValueAssignment*
+ * 	'}' ';';
  *
  **/
 
-// "device" device=[pdl::MDevice|VersionedQualifiedName] name=ID "{" parameterValueAssignments+=MParameterValueAssignment*
-// "}" ";"
+// 'device' device=[pdl::MDevice|VersionedQualifiedName] name=ID '{' parameterValueAssignments+=MParameterValueAssignment*
+// '}' ';'
 protected class MDeployedDevice_Group extends GroupToken {
 	
 	public MDeployedDevice_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6928,7 +7008,7 @@ protected class MDeployedDevice_Group extends GroupToken {
 
 }
 
-// "device"
+// 'device'
 protected class MDeployedDevice_DeviceKeyword_0 extends KeywordToken  {
 	
 	public MDeployedDevice_DeviceKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7020,7 +7100,7 @@ protected class MDeployedDevice_NameAssignment_2 extends AssignmentToken  {
 
 }
 
-// "{"
+// '{'
 protected class MDeployedDevice_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
 	public MDeployedDevice_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7089,7 +7169,7 @@ protected class MDeployedDevice_ParameterValueAssignmentsAssignment_4 extends As
 	}	
 }
 
-// "}"
+// '}'
 protected class MDeployedDevice_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MDeployedDevice_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7112,7 +7192,7 @@ protected class MDeployedDevice_RightCurlyBracketKeyword_5 extends KeywordToken 
 
 }
 
-// ";"
+// ';'
 protected class MDeployedDevice_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MDeployedDevice_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7140,14 +7220,16 @@ protected class MDeployedDevice_SemicolonKeyword_6 extends KeywordToken  {
 
 /************ begin Rule MAttributeValueAssignment ****************
  *
- * MAttributeValueAssignment returns common::MParameterValueAssignmentSingleExpression:
- * 	"attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
- * 	parameterValue=MParameterValueExpression ";";
+ * MAttributeValueAssignment common::MParameterValueAssignmentSingleExpression:
+ * 	'attribute'
+ * 	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+ * 	':='
+ * 	parameterValue=MParameterValueExpression ';'
  *
  **/
 
-// "attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" parameterValue=MParameterValueExpression
-// ";"
+// 'attribute' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' parameterValue=MParameterValueExpression
+// ';'
 protected class MAttributeValueAssignment_Group extends GroupToken {
 	
 	public MAttributeValueAssignment_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7176,7 +7258,7 @@ protected class MAttributeValueAssignment_Group extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MAttributeValueAssignment_AttributeKeyword_0 extends KeywordToken  {
 	
 	public MAttributeValueAssignment_AttributeKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7234,7 +7316,7 @@ protected class MAttributeValueAssignment_ParameterAssignment_1 extends Assignme
 
 }
 
-// ":="
+// ':='
 protected class MAttributeValueAssignment_ColonEqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MAttributeValueAssignment_ColonEqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7302,7 +7384,7 @@ protected class MAttributeValueAssignment_ParameterValueAssignment_3 extends Ass
 	}	
 }
 
-// ";"
+// ';'
 protected class MAttributeValueAssignment_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MAttributeValueAssignment_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7330,14 +7412,16 @@ protected class MAttributeValueAssignment_SemicolonKeyword_4 extends KeywordToke
 
 /************ begin Rule MParameterValueAssignment ****************
  *
- * MParameterValueAssignment returns common::MParameterValueAssignmentSingleExpression:
- * 	"parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
- * 	parameterValue=MParameterValueExpression ";";
+ * MParameterValueAssignment common::MParameterValueAssignmentSingleExpression:
+ * 	'parameter'
+ * 	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+ * 	':='
+ * 	parameterValue=MParameterValueExpression ';'
  *
  **/
 
-// "parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" parameterValue=MParameterValueExpression
-// ";"
+// 'parameter' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' parameterValue=MParameterValueExpression
+// ';'
 protected class MParameterValueAssignment_Group extends GroupToken {
 	
 	public MParameterValueAssignment_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7366,7 +7450,7 @@ protected class MParameterValueAssignment_Group extends GroupToken {
 
 }
 
-// "parameter"
+// 'parameter'
 protected class MParameterValueAssignment_ParameterKeyword_0 extends KeywordToken  {
 	
 	public MParameterValueAssignment_ParameterKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7424,7 +7508,7 @@ protected class MParameterValueAssignment_ParameterAssignment_1 extends Assignme
 
 }
 
-// ":="
+// ':='
 protected class MParameterValueAssignment_ColonEqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MParameterValueAssignment_ColonEqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7492,7 +7576,7 @@ protected class MParameterValueAssignment_ParameterValueAssignment_3 extends Ass
 	}	
 }
 
-// ";"
+// ';'
 protected class MParameterValueAssignment_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MParameterValueAssignment_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7520,8 +7604,8 @@ protected class MParameterValueAssignment_SemicolonKeyword_4 extends KeywordToke
 
 /************ begin Rule MParameterValue ****************
  *
- * MParameterValue returns common::MParameterValue:
- * 	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
+ * MParameterValue common::MParameterValue:
+ * 	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
  *
  **/
 
@@ -7678,9 +7762,9 @@ protected class MParameterValue_MParameterValuePARParserRuleCall_2 extends RuleC
 
 /************ begin Rule MParameterValueLiteral ****************
  *
- * MParameterValueLiteral returns common::MParameterValueLiteral:
+ * MParameterValueLiteral common::MParameterValueLiteral:
  * 	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
- * 	MParameterValueRealLiteral;
+ * 	MParameterValueRealLiteral
  *
  **/
 
@@ -7870,8 +7954,8 @@ protected class MParameterValueLiteral_MParameterValueRealLiteralParserRuleCall_
 
 /************ begin Rule MParameterValueBooleanLiteral ****************
  *
- * MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
- * 	{common::MParameterValueBooleanLiteral} value=EBoolean;
+ * MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+ * 	{common::MParameterValueBooleanLiteral} value=EBoolean
  *
  **/
 
@@ -7970,12 +8054,13 @@ protected class MParameterValueBooleanLiteral_ValueAssignment_1 extends Assignme
 
 /************ begin Rule MParameterValueStringLiteral ****************
  *
- * MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
- * 	{common::MParameterValueStringLiteral} value=STRING;
+ * MParameterValueStringLiteral common::MParameterValueStringLiteral:
+ * 	{common::MParameterValueStringLiteral} isRaw?='raw'?
+ * 	value=STRING
  *
  **/
 
-// {common::MParameterValueStringLiteral} value=STRING
+// {common::MParameterValueStringLiteral} isRaw?='raw'? value=STRING
 protected class MParameterValueStringLiteral_Group extends GroupToken {
 	
 	public MParameterValueStringLiteral_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7990,7 +8075,7 @@ protected class MParameterValueStringLiteral_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MParameterValueStringLiteral_ValueAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MParameterValueStringLiteral_ValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -8030,16 +8115,16 @@ protected class MParameterValueStringLiteral_MParameterValueStringLiteralAction_
 	}
 }
 
-// value=STRING
-protected class MParameterValueStringLiteral_ValueAssignment_1 extends AssignmentToken  {
+// isRaw?='raw'?
+protected class MParameterValueStringLiteral_IsRawAssignment_1 extends AssignmentToken  {
 	
-	public MParameterValueStringLiteral_ValueAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MParameterValueStringLiteral_IsRawAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_1();
+		return grammarAccess.getMParameterValueStringLiteralAccess().getIsRawAssignment_1();
 	}
 
     @Override
@@ -8052,11 +8137,46 @@ protected class MParameterValueStringLiteral_ValueAssignment_1 extends Assignmen
 
     @Override	
 	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("isRaw",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("isRaw");
+		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getMParameterValueStringLiteralAccess().getIsRawRawKeyword_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// value=STRING
+protected class MParameterValueStringLiteral_ValueAssignment_2 extends AssignmentToken  {
+	
+	public MParameterValueStringLiteral_ValueAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MParameterValueStringLiteral_IsRawAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MParameterValueStringLiteral_MParameterValueStringLiteralAction_0(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_2_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0();
+			element = grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_2_0();
 			return obj;
 		}
 		return null;
@@ -8070,8 +8190,8 @@ protected class MParameterValueStringLiteral_ValueAssignment_1 extends Assignmen
 
 /************ begin Rule MParameterValueIntegerLiteral ****************
  *
- * MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
- * 	{common::MParameterValueIntegerLiteral} value=INTEGER;
+ * MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+ * 	{common::MParameterValueIntegerLiteral} value=INTEGER
  *
  **/
 
@@ -8170,8 +8290,8 @@ protected class MParameterValueIntegerLiteral_ValueAssignment_1 extends Assignme
 
 /************ begin Rule MParameterValueRealLiteral ****************
  *
- * MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
- * 	{common::MParameterValueRealLiteral} value=REAL;
+ * MParameterValueRealLiteral common::MParameterValueRealLiteral:
+ * 	{common::MParameterValueRealLiteral} value=REAL
  *
  **/
 
@@ -8270,8 +8390,8 @@ protected class MParameterValueRealLiteral_ValueAssignment_1 extends AssignmentT
 
 /************ begin Rule MParameterValueRefObject ****************
  *
- * MParameterValueRefObject returns common::MParameterValueRefObject:
- * 	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
+ * MParameterValueRefObject common::MParameterValueRefObject:
+ * 	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
  *
  **/
 
@@ -8373,12 +8493,12 @@ protected class MParameterValueRefObject_ObjectAssignment_1 extends AssignmentTo
 
 /************ begin Rule MParameterValuePAR ****************
  *
- * MParameterValuePAR returns common::MParameterValuePAR:
- * 	"(" value=MParameterValueExpression ")";
+ * MParameterValuePAR common::MParameterValuePAR:
+ * 	'(' value=MParameterValueExpression ')'
  *
  **/
 
-// "(" value=MParameterValueExpression ")"
+// '(' value=MParameterValueExpression ')'
 protected class MParameterValuePAR_Group extends GroupToken {
 	
 	public MParameterValuePAR_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8407,7 +8527,7 @@ protected class MParameterValuePAR_Group extends GroupToken {
 
 }
 
-// "("
+// '('
 protected class MParameterValuePAR_LeftParenthesisKeyword_0 extends KeywordToken  {
 	
 	public MParameterValuePAR_LeftParenthesisKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8474,7 +8594,7 @@ protected class MParameterValuePAR_ValueAssignment_1 extends AssignmentToken  {
 	}	
 }
 
-// ")"
+// ')'
 protected class MParameterValuePAR_RightParenthesisKeyword_2 extends KeywordToken  {
 	
 	public MParameterValuePAR_RightParenthesisKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8502,9 +8622,9 @@ protected class MParameterValuePAR_RightParenthesisKeyword_2 extends KeywordToke
 
 /************ begin Rule MParameterValueExpression ****************
  *
- * MParameterValueExpression returns common::MParameterValueExpression:
+ * MParameterValueExpression common::MParameterValueExpression:
  * 	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
- * 	right=MParameterValueExpression)?;
+ * 	right=MParameterValueExpression)?
  *
  **/
 
@@ -8720,9 +8840,8 @@ protected class MParameterValueExpression_RightAssignment_2_1 extends Assignment
 
 /************ begin Rule MParameterValueTERM ****************
  *
- * MParameterValueTERM returns common::MParameterValueTERM:
- * 	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
- * 	right=MParameterValueTERM)?;
+ * MParameterValueTERM common::MParameterValueTERM:
+ * 	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
  *
  **/
 

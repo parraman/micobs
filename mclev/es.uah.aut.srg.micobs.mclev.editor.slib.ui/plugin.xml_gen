@@ -299,6 +299,12 @@
             extensions="mclev_slib">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="mclev_slib"
+            type="text">
+    </fileTypes>
+  </extension>
     <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.mclev.lang.SLIB -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

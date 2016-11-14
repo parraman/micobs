@@ -22,59 +22,60 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalSWILexer extends Lexer {
-    public static final int RULE_ID=6;
-    public static final int T__29=29;
-    public static final int T__28=28;
-    public static final int T__27=27;
-    public static final int T__26=26;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int T__21=21;
-    public static final int RULE_ANY_OTHER=11;
-    public static final int T__20=20;
-    public static final int EOF=-1;
-    public static final int T__55=55;
-    public static final int T__19=19;
-    public static final int T__51=51;
-    public static final int T__16=16;
-    public static final int T__52=52;
-    public static final int T__15=15;
-    public static final int T__53=53;
-    public static final int T__18=18;
-    public static final int T__54=54;
-    public static final int T__17=17;
-    public static final int T__12=12;
-    public static final int T__14=14;
-    public static final int T__13=13;
-    public static final int RULE_INT=4;
     public static final int T__50=50;
-    public static final int T__42=42;
-    public static final int T__43=43;
-    public static final int T__40=40;
-    public static final int T__41=41;
-    public static final int T__46=46;
-    public static final int T__47=47;
-    public static final int T__44=44;
-    public static final int T__45=45;
-    public static final int RULE_HEXADECIMAL=5;
-    public static final int T__48=48;
-    public static final int T__49=49;
-    public static final int RULE_SL_COMMENT=9;
+    public static final int T__19=19;
+    public static final int T__15=15;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
+    public static final int T__55=55;
+    public static final int T__12=12;
+    public static final int T__56=56;
+    public static final int T__13=13;
+    public static final int T__14=14;
+    public static final int T__51=51;
+    public static final int T__52=52;
+    public static final int T__53=53;
+    public static final int T__54=54;
+    public static final int RULE_ID=6;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int RULE_INT=4;
+    public static final int T__29=29;
+    public static final int T__22=22;
     public static final int RULE_ML_COMMENT=8;
-    public static final int T__30=30;
-    public static final int T__31=31;
-    public static final int T__32=32;
+    public static final int T__23=23;
+    public static final int RULE_HEXADECIMAL=5;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
     public static final int RULE_STRING=7;
+    public static final int RULE_SL_COMMENT=9;
+    public static final int T__37=37;
+    public static final int T__38=38;
+    public static final int T__39=39;
     public static final int T__33=33;
     public static final int T__34=34;
     public static final int T__35=35;
     public static final int T__36=36;
-    public static final int T__37=37;
-    public static final int T__38=38;
-    public static final int T__39=39;
+    public static final int EOF=-1;
+    public static final int T__30=30;
+    public static final int T__31=31;
+    public static final int T__32=32;
     public static final int RULE_WS=10;
+    public static final int RULE_ANY_OTHER=11;
+    public static final int T__48=48;
+    public static final int T__49=49;
+    public static final int T__44=44;
+    public static final int T__45=45;
+    public static final int T__46=46;
+    public static final int T__47=47;
+    public static final int T__40=40;
+    public static final int T__41=41;
+    public static final int T__42=42;
+    public static final int T__43=43;
 
     // delegates
     // delegators
@@ -87,15 +88,15 @@ public class InternalSWILexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g"; }
+    public String getGrammarFileName() { return "InternalSWI.g"; }
 
     // $ANTLR start "T__12"
     public final void mT__12() throws RecognitionException {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:11:7: ( 'true' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:11:9: 'true'
+            // InternalSWI.g:11:7: ( 'true' )
+            // InternalSWI.g:11:9: 'true'
             {
             match("true"); 
 
@@ -115,8 +116,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:12:7: ( 'false' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:12:9: 'false'
+            // InternalSWI.g:12:7: ( 'false' )
+            // InternalSWI.g:12:9: 'false'
             {
             match("false"); 
 
@@ -136,8 +137,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:13:7: ( '+' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:13:9: '+'
+            // InternalSWI.g:13:7: ( '+' )
+            // InternalSWI.g:13:9: '+'
             {
             match('+'); 
 
@@ -156,8 +157,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:14:7: ( '-' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:14:9: '-'
+            // InternalSWI.g:14:7: ( '-' )
+            // InternalSWI.g:14:9: '-'
             {
             match('-'); 
 
@@ -176,8 +177,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:15:7: ( '*' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:15:9: '*'
+            // InternalSWI.g:15:7: ( '*' )
+            // InternalSWI.g:15:9: '*'
             {
             match('*'); 
 
@@ -196,8 +197,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:16:7: ( '/' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:16:9: '/'
+            // InternalSWI.g:16:7: ( '/' )
+            // InternalSWI.g:16:9: '/'
             {
             match('/'); 
 
@@ -216,8 +217,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:17:7: ( 'package' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:17:9: 'package'
+            // InternalSWI.g:17:7: ( 'package' )
+            // InternalSWI.g:17:9: 'package'
             {
             match("package"); 
 
@@ -237,8 +238,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:18:7: ( ';' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:18:9: ';'
+            // InternalSWI.g:18:7: ( ';' )
+            // InternalSWI.g:18:9: ';'
             {
             match(';'); 
 
@@ -257,8 +258,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:19:7: ( 'import' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:19:9: 'import'
+            // InternalSWI.g:19:7: ( 'import' )
+            // InternalSWI.g:19:9: 'import'
             {
             match("import"); 
 
@@ -278,8 +279,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:20:7: ( '.' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:20:9: '.'
+            // InternalSWI.g:20:7: ( '.' )
+            // InternalSWI.g:20:9: '.'
             {
             match('.'); 
 
@@ -298,8 +299,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:21:7: ( '(' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:21:9: '('
+            // InternalSWI.g:21:7: ( '(' )
+            // InternalSWI.g:21:9: '('
             {
             match('('); 
 
@@ -318,8 +319,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:22:7: ( ')' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:22:9: ')'
+            // InternalSWI.g:22:7: ( ')' )
+            // InternalSWI.g:22:9: ')'
             {
             match(')'); 
 
@@ -338,8 +339,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:23:7: ( '::' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:23:9: '::'
+            // InternalSWI.g:23:7: ( '::' )
+            // InternalSWI.g:23:9: '::'
             {
             match("::"); 
 
@@ -359,8 +360,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:24:7: ( 'swinterface' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:24:9: 'swinterface'
+            // InternalSWI.g:24:7: ( 'swinterface' )
+            // InternalSWI.g:24:9: 'swinterface'
             {
             match("swinterface"); 
 
@@ -380,8 +381,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__26;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:25:7: ( '{' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:25:9: '{'
+            // InternalSWI.g:25:7: ( '{' )
+            // InternalSWI.g:25:9: '{'
             {
             match('{'); 
 
@@ -400,8 +401,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__27;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:26:7: ( '}' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:26:9: '}'
+            // InternalSWI.g:26:7: ( '}' )
+            // InternalSWI.g:26:9: '}'
             {
             match('}'); 
 
@@ -420,8 +421,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__28;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:27:7: ( 'extends' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:27:9: 'extends'
+            // InternalSWI.g:27:7: ( 'extends' )
+            // InternalSWI.g:27:9: 'extends'
             {
             match("extends"); 
 
@@ -441,8 +442,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__29;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:28:7: ( ',' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:28:9: ','
+            // InternalSWI.g:28:7: ( ',' )
+            // InternalSWI.g:28:9: ','
             {
             match(','); 
 
@@ -461,8 +462,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__30;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:29:7: ( 'version' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:29:9: 'version'
+            // InternalSWI.g:29:7: ( 'version' )
+            // InternalSWI.g:29:9: 'version'
             {
             match("version"); 
 
@@ -482,8 +483,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__31;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:30:7: ( ':=' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:30:9: ':='
+            // InternalSWI.g:30:7: ( ':=' )
+            // InternalSWI.g:30:9: ':='
             {
             match(":="); 
 
@@ -503,8 +504,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__32;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:31:7: ( 'language' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:31:9: 'language'
+            // InternalSWI.g:31:7: ( 'language' )
+            // InternalSWI.g:31:9: 'language'
             {
             match("language"); 
 
@@ -524,8 +525,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__33;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:32:7: ( 'configuration' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:32:9: 'configuration'
+            // InternalSWI.g:32:7: ( 'configuration' )
+            // InternalSWI.g:32:9: 'configuration'
             {
             match("configuration"); 
 
@@ -545,8 +546,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__34;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:33:7: ( 'parameters' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:33:9: 'parameters'
+            // InternalSWI.g:33:7: ( 'parameters' )
+            // InternalSWI.g:33:9: 'parameters'
             {
             match("parameters"); 
 
@@ -566,8 +567,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__35;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:34:7: ( 'provided' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:34:9: 'provided'
+            // InternalSWI.g:34:7: ( 'provided' )
+            // InternalSWI.g:34:9: 'provided'
             {
             match("provided"); 
 
@@ -587,8 +588,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__36;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:35:7: ( 'resources' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:35:9: 'resources'
+            // InternalSWI.g:35:7: ( 'resources' )
+            // InternalSWI.g:35:9: 'resources'
             {
             match("resources"); 
 
@@ -608,8 +609,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__37;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:36:7: ( 'requires' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:36:9: 'requires'
+            // InternalSWI.g:36:7: ( 'requires' )
+            // InternalSWI.g:36:9: 'requires'
             {
             match("requires"); 
 
@@ -629,8 +630,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__38;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:37:7: ( 'required' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:37:9: 'required'
+            // InternalSWI.g:37:7: ( 'required' )
+            // InternalSWI.g:37:9: 'required'
             {
             match("required"); 
 
@@ -650,8 +651,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__39;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:38:7: ( 'osapi' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:38:9: 'osapi'
+            // InternalSWI.g:38:7: ( 'osapi' )
+            // InternalSWI.g:38:9: 'osapi'
             {
             match("osapi"); 
 
@@ -671,8 +672,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__40;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:39:7: ( 'quantifiable' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:39:9: 'quantifiable'
+            // InternalSWI.g:39:7: ( 'quantifiable' )
+            // InternalSWI.g:39:9: 'quantifiable'
             {
             match("quantifiable"); 
 
@@ -692,8 +693,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__41;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:40:7: ( 'resource' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:40:9: 'resource'
+            // InternalSWI.g:40:7: ( 'resource' )
+            // InternalSWI.g:40:9: 'resource'
             {
             match("resource"); 
 
@@ -713,8 +714,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__42;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:41:7: ( 'step' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:41:9: 'step'
+            // InternalSWI.g:41:7: ( 'step' )
+            // InternalSWI.g:41:9: 'step'
             {
             match("step"); 
 
@@ -734,8 +735,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__43;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:42:7: ( 'to' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:42:9: 'to'
+            // InternalSWI.g:42:7: ( 'to' )
+            // InternalSWI.g:42:9: 'to'
             {
             match("to"); 
 
@@ -755,8 +756,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__44;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:43:7: ( 'instantiable' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:43:9: 'instantiable'
+            // InternalSWI.g:43:7: ( 'instantiable' )
+            // InternalSWI.g:43:9: 'instantiable'
             {
             match("instantiable"); 
 
@@ -776,8 +777,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__45;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:44:7: ( 'integer' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:44:9: 'integer'
+            // InternalSWI.g:44:7: ( 'integer' )
+            // InternalSWI.g:44:9: 'integer'
             {
             match("integer"); 
 
@@ -797,8 +798,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__46;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:45:7: ( 'range' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:45:9: 'range'
+            // InternalSWI.g:45:7: ( 'range' )
+            // InternalSWI.g:45:9: 'range'
             {
             match("range"); 
 
@@ -818,8 +819,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__47;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:46:7: ( 'enum' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:46:9: 'enum'
+            // InternalSWI.g:46:7: ( 'enum' )
+            // InternalSWI.g:46:9: 'enum'
             {
             match("enum"); 
 
@@ -839,8 +840,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__48;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:47:7: ( 'real' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:47:9: 'real'
+            // InternalSWI.g:47:7: ( 'real' )
+            // InternalSWI.g:47:9: 'real'
             {
             match("real"); 
 
@@ -860,8 +861,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__49;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:48:7: ( '=' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:48:9: '='
+            // InternalSWI.g:48:7: ( '=' )
+            // InternalSWI.g:48:9: '='
             {
             match('='); 
 
@@ -880,8 +881,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__50;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:49:7: ( 'boolean' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:49:9: 'boolean'
+            // InternalSWI.g:49:7: ( 'boolean' )
+            // InternalSWI.g:49:9: 'boolean'
             {
             match("boolean"); 
 
@@ -901,8 +902,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__51;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:50:7: ( 'string' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:50:9: 'string'
+            // InternalSWI.g:50:7: ( 'string' )
+            // InternalSWI.g:50:9: 'string'
             {
             match("string"); 
 
@@ -922,8 +923,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__52;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:51:7: ( 'e' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:51:9: 'e'
+            // InternalSWI.g:51:7: ( 'e' )
+            // InternalSWI.g:51:9: 'e'
             {
             match('e'); 
 
@@ -942,8 +943,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__53;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:52:7: ( ']' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:52:9: ']'
+            // InternalSWI.g:52:7: ( ']' )
+            // InternalSWI.g:52:9: ']'
             {
             match(']'); 
 
@@ -962,8 +963,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__54;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:53:7: ( '[' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:53:9: '['
+            // InternalSWI.g:53:7: ( '[' )
+            // InternalSWI.g:53:9: '['
             {
             match('['); 
 
@@ -982,8 +983,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = T__55;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:54:7: ( 'const' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:54:9: 'const'
+            // InternalSWI.g:54:7: ( 'const' )
+            // InternalSWI.g:54:9: 'const'
             {
             match("const"); 
 
@@ -998,17 +999,38 @@ public class InternalSWILexer extends Lexer {
     }
     // $ANTLR end "T__55"
 
+    // $ANTLR start "T__56"
+    public final void mT__56() throws RecognitionException {
+        try {
+            int _type = T__56;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalSWI.g:55:7: ( 'raw' )
+            // InternalSWI.g:55:9: 'raw'
+            {
+            match("raw"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__56"
+
     // $ANTLR start "RULE_HEXADECIMAL"
     public final void mRULE_HEXADECIMAL() throws RecognitionException {
         try {
             int _type = RULE_HEXADECIMAL;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9514:18: ( '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9514:20: '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+            // InternalSWI.g:9622:18: ( '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+ )
+            // InternalSWI.g:9622:20: '0x' ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
             {
             match("0x"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9514:25: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
+            // InternalSWI.g:9622:25: ( '0' .. '9' | 'a' .. 'f' | 'A' .. 'F' )+
             int cnt1=0;
             loop1:
             do {
@@ -1022,7 +1044,7 @@ public class InternalSWILexer extends Lexer {
 
                 switch (alt1) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:
+            	    // InternalSWI.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='F')||(input.LA(1)>='a' && input.LA(1)<='f') ) {
             	        input.consume();
@@ -1062,10 +1084,10 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9516:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9516:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalSWI.g:9624:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalSWI.g:9624:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9516:11: ( '^' )?
+            // InternalSWI.g:9624:11: ( '^' )?
             int alt2=2;
             int LA2_0 = input.LA(1);
 
@@ -1074,7 +1096,7 @@ public class InternalSWILexer extends Lexer {
             }
             switch (alt2) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9516:11: '^'
+                    // InternalSWI.g:9624:11: '^'
                     {
                     match('^'); 
 
@@ -1092,7 +1114,7 @@ public class InternalSWILexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9516:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalSWI.g:9624:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop3:
             do {
                 int alt3=2;
@@ -1105,7 +1127,7 @@ public class InternalSWILexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:
+            	    // InternalSWI.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -1141,10 +1163,10 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9518:10: ( ( '0' .. '9' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9518:12: ( '0' .. '9' )+
+            // InternalSWI.g:9626:10: ( ( '0' .. '9' )+ )
+            // InternalSWI.g:9626:12: ( '0' .. '9' )+
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9518:12: ( '0' .. '9' )+
+            // InternalSWI.g:9626:12: ( '0' .. '9' )+
             int cnt4=0;
             loop4:
             do {
@@ -1158,7 +1180,7 @@ public class InternalSWILexer extends Lexer {
 
                 switch (alt4) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9518:13: '0' .. '9'
+            	    // InternalSWI.g:9626:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -1190,10 +1212,10 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalSWI.g:9628:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalSWI.g:9628:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalSWI.g:9628:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt7=2;
             int LA7_0 = input.LA(1);
 
@@ -1211,10 +1233,10 @@ public class InternalSWILexer extends Lexer {
             }
             switch (alt7) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalSWI.g:9628:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalSWI.g:9628:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -1230,23 +1252,15 @@ public class InternalSWILexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalSWI.g:9628:21: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalSWI.g:9628:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1271,10 +1285,10 @@ public class InternalSWILexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalSWI.g:9628:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalSWI.g:9628:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop6:
                     do {
                         int alt6=3;
@@ -1290,23 +1304,15 @@ public class InternalSWILexer extends Lexer {
 
                         switch (alt6) {
                     	case 1 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalSWI.g:9628:54: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9520:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalSWI.g:9628:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -1349,12 +1355,12 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9522:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9522:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalSWI.g:9630:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalSWI.g:9630:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9522:24: ( options {greedy=false; } : . )*
+            // InternalSWI.g:9630:24: ( options {greedy=false; } : . )*
             loop8:
             do {
                 int alt8=2;
@@ -1379,7 +1385,7 @@ public class InternalSWILexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9522:52: .
+            	    // InternalSWI.g:9630:52: .
             	    {
             	    matchAny(); 
 
@@ -1409,12 +1415,12 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalSWI.g:9632:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalSWI.g:9632:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalSWI.g:9632:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop9:
             do {
                 int alt9=2;
@@ -1427,7 +1433,7 @@ public class InternalSWILexer extends Lexer {
 
                 switch (alt9) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalSWI.g:9632:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -1447,7 +1453,7 @@ public class InternalSWILexer extends Lexer {
                 }
             } while (true);
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:40: ( ( '\\r' )? '\\n' )?
+            // InternalSWI.g:9632:40: ( ( '\\r' )? '\\n' )?
             int alt11=2;
             int LA11_0 = input.LA(1);
 
@@ -1456,9 +1462,9 @@ public class InternalSWILexer extends Lexer {
             }
             switch (alt11) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:41: ( '\\r' )? '\\n'
+                    // InternalSWI.g:9632:41: ( '\\r' )? '\\n'
                     {
-                    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:41: ( '\\r' )?
+                    // InternalSWI.g:9632:41: ( '\\r' )?
                     int alt10=2;
                     int LA10_0 = input.LA(1);
 
@@ -1467,7 +1473,7 @@ public class InternalSWILexer extends Lexer {
                     }
                     switch (alt10) {
                         case 1 :
-                            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9524:41: '\\r'
+                            // InternalSWI.g:9632:41: '\\r'
                             {
                             match('\r'); 
 
@@ -1499,10 +1505,10 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9526:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9526:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalSWI.g:9634:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalSWI.g:9634:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9526:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalSWI.g:9634:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt12=0;
             loop12:
             do {
@@ -1516,7 +1522,7 @@ public class InternalSWILexer extends Lexer {
 
                 switch (alt12) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:
+            	    // InternalSWI.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -1556,8 +1562,8 @@ public class InternalSWILexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9528:16: ( . )
-            // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:9528:18: .
+            // InternalSWI.g:9636:16: ( . )
+            // InternalSWI.g:9636:18: .
             {
             matchAny(); 
 
@@ -1572,369 +1578,376 @@ public class InternalSWILexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt13=52;
+        // InternalSWI.g:1:8: ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt13=53;
         alt13 = dfa13.predict(input);
         switch (alt13) {
             case 1 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:10: T__12
+                // InternalSWI.g:1:10: T__12
                 {
                 mT__12(); 
 
                 }
                 break;
             case 2 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:16: T__13
+                // InternalSWI.g:1:16: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
             case 3 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:22: T__14
+                // InternalSWI.g:1:22: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 4 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:28: T__15
+                // InternalSWI.g:1:28: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 5 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:34: T__16
+                // InternalSWI.g:1:34: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 6 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:40: T__17
+                // InternalSWI.g:1:40: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 7 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:46: T__18
+                // InternalSWI.g:1:46: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
             case 8 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:52: T__19
+                // InternalSWI.g:1:52: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
             case 9 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:58: T__20
+                // InternalSWI.g:1:58: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
             case 10 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:64: T__21
+                // InternalSWI.g:1:64: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
             case 11 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:70: T__22
+                // InternalSWI.g:1:70: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
             case 12 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:76: T__23
+                // InternalSWI.g:1:76: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 13 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:82: T__24
+                // InternalSWI.g:1:82: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 14 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:88: T__25
+                // InternalSWI.g:1:88: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 15 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:94: T__26
+                // InternalSWI.g:1:94: T__26
                 {
                 mT__26(); 
 
                 }
                 break;
             case 16 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:100: T__27
+                // InternalSWI.g:1:100: T__27
                 {
                 mT__27(); 
 
                 }
                 break;
             case 17 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:106: T__28
+                // InternalSWI.g:1:106: T__28
                 {
                 mT__28(); 
 
                 }
                 break;
             case 18 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:112: T__29
+                // InternalSWI.g:1:112: T__29
                 {
                 mT__29(); 
 
                 }
                 break;
             case 19 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:118: T__30
+                // InternalSWI.g:1:118: T__30
                 {
                 mT__30(); 
 
                 }
                 break;
             case 20 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:124: T__31
+                // InternalSWI.g:1:124: T__31
                 {
                 mT__31(); 
 
                 }
                 break;
             case 21 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:130: T__32
+                // InternalSWI.g:1:130: T__32
                 {
                 mT__32(); 
 
                 }
                 break;
             case 22 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:136: T__33
+                // InternalSWI.g:1:136: T__33
                 {
                 mT__33(); 
 
                 }
                 break;
             case 23 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:142: T__34
+                // InternalSWI.g:1:142: T__34
                 {
                 mT__34(); 
 
                 }
                 break;
             case 24 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:148: T__35
+                // InternalSWI.g:1:148: T__35
                 {
                 mT__35(); 
 
                 }
                 break;
             case 25 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:154: T__36
+                // InternalSWI.g:1:154: T__36
                 {
                 mT__36(); 
 
                 }
                 break;
             case 26 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:160: T__37
+                // InternalSWI.g:1:160: T__37
                 {
                 mT__37(); 
 
                 }
                 break;
             case 27 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:166: T__38
+                // InternalSWI.g:1:166: T__38
                 {
                 mT__38(); 
 
                 }
                 break;
             case 28 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:172: T__39
+                // InternalSWI.g:1:172: T__39
                 {
                 mT__39(); 
 
                 }
                 break;
             case 29 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:178: T__40
+                // InternalSWI.g:1:178: T__40
                 {
                 mT__40(); 
 
                 }
                 break;
             case 30 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:184: T__41
+                // InternalSWI.g:1:184: T__41
                 {
                 mT__41(); 
 
                 }
                 break;
             case 31 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:190: T__42
+                // InternalSWI.g:1:190: T__42
                 {
                 mT__42(); 
 
                 }
                 break;
             case 32 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:196: T__43
+                // InternalSWI.g:1:196: T__43
                 {
                 mT__43(); 
 
                 }
                 break;
             case 33 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:202: T__44
+                // InternalSWI.g:1:202: T__44
                 {
                 mT__44(); 
 
                 }
                 break;
             case 34 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:208: T__45
+                // InternalSWI.g:1:208: T__45
                 {
                 mT__45(); 
 
                 }
                 break;
             case 35 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:214: T__46
+                // InternalSWI.g:1:214: T__46
                 {
                 mT__46(); 
 
                 }
                 break;
             case 36 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:220: T__47
+                // InternalSWI.g:1:220: T__47
                 {
                 mT__47(); 
 
                 }
                 break;
             case 37 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:226: T__48
+                // InternalSWI.g:1:226: T__48
                 {
                 mT__48(); 
 
                 }
                 break;
             case 38 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:232: T__49
+                // InternalSWI.g:1:232: T__49
                 {
                 mT__49(); 
 
                 }
                 break;
             case 39 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:238: T__50
+                // InternalSWI.g:1:238: T__50
                 {
                 mT__50(); 
 
                 }
                 break;
             case 40 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:244: T__51
+                // InternalSWI.g:1:244: T__51
                 {
                 mT__51(); 
 
                 }
                 break;
             case 41 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:250: T__52
+                // InternalSWI.g:1:250: T__52
                 {
                 mT__52(); 
 
                 }
                 break;
             case 42 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:256: T__53
+                // InternalSWI.g:1:256: T__53
                 {
                 mT__53(); 
 
                 }
                 break;
             case 43 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:262: T__54
+                // InternalSWI.g:1:262: T__54
                 {
                 mT__54(); 
 
                 }
                 break;
             case 44 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:268: T__55
+                // InternalSWI.g:1:268: T__55
                 {
                 mT__55(); 
 
                 }
                 break;
             case 45 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:274: RULE_HEXADECIMAL
+                // InternalSWI.g:1:274: T__56
+                {
+                mT__56(); 
+
+                }
+                break;
+            case 46 :
+                // InternalSWI.g:1:280: RULE_HEXADECIMAL
                 {
                 mRULE_HEXADECIMAL(); 
 
                 }
                 break;
-            case 46 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:291: RULE_ID
+            case 47 :
+                // InternalSWI.g:1:297: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 47 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:299: RULE_INT
+            case 48 :
+                // InternalSWI.g:1:305: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 48 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:308: RULE_STRING
+            case 49 :
+                // InternalSWI.g:1:314: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 49 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:320: RULE_ML_COMMENT
+            case 50 :
+                // InternalSWI.g:1:326: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 50 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:336: RULE_SL_COMMENT
+            case 51 :
+                // InternalSWI.g:1:342: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 51 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:352: RULE_WS
+            case 52 :
+                // InternalSWI.g:1:358: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 52 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.swi.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalSWI.g:1:360: RULE_ANY_OTHER
+            case 53 :
+                // InternalSWI.g:1:366: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1948,81 +1961,19 @@ public class InternalSWILexer extends Lexer {
 
     protected DFA13 dfa13 = new DFA13(this);
     static final String DFA13_eotS =
-        "\1\uffff\2\47\3\uffff\1\56\1\47\1\uffff\1\47\3\uffff\1\44\1\47\2"+
-        "\uffff\1\77\1\uffff\6\47\1\uffff\1\47\2\uffff\1\115\1\44\2\uffff"+
-        "\2\44\2\uffff\1\47\1\121\1\uffff\1\47\6\uffff\2\47\1\uffff\2\47"+
-        "\5\uffff\2\47\2\uffff\2\47\2\uffff\7\47\1\uffff\1\47\6\uffff\1\47"+
-        "\1\uffff\26\47\1\u0080\10\47\1\u0089\2\47\1\u008c\6\47\1\u0093\4"+
-        "\47\1\uffff\1\u0098\7\47\1\uffff\2\47\1\uffff\3\47\1\u00a5\2\47"+
-        "\1\uffff\1\u00a8\1\u00a9\2\47\1\uffff\3\47\1\u00af\3\47\1\u00b3"+
-        "\4\47\1\uffff\2\47\2\uffff\2\47\1\u00bc\2\47\1\uffff\1\47\1\u00c0"+
-        "\1\47\1\uffff\1\u00c2\1\u00c3\5\47\1\u00ca\1\uffff\1\47\1\u00cc"+
-        "\1\47\1\uffff\1\47\2\uffff\1\u00cf\1\47\1\u00d2\1\u00d3\1\u00d4"+
-        "\1\47\1\uffff\1\47\1\uffff\2\47\1\uffff\1\47\1\u00da\3\uffff\1\47"+
-        "\1\u00dc\3\47\1\uffff\1\47\1\uffff\1\47\1\u00e2\2\47\1\u00e5\1\uffff"+
-        "\1\47\1\u00e7\1\uffff\1\u00e8\2\uffff";
+        "\1\uffff\2\47\3\uffff\1\56\1\47\1\uffff\1\47\3\uffff\1\44\1\47\2\uffff\1\77\1\uffff\6\47\1\uffff\1\47\2\uffff\1\115\1\44\2\uffff\2\44\2\uffff\1\47\1\121\1\uffff\1\47\6\uffff\2\47\1\uffff\2\47\5\uffff\2\47\2\uffff\2\47\2\uffff\7\47\1\uffff\1\47\6\uffff\1\47\1\uffff\23\47\1\176\3\47\1\u0082\10\47\1\u008b\2\47\1\u008e\6\47\1\u0095\1\47\1\uffff\3\47\1\uffff\1\u009a\7\47\1\uffff\2\47\1\uffff\3\47\1\u00a7\2\47\1\uffff\1\u00aa\1\u00ab\2\47\1\uffff\3\47\1\u00b1\3\47\1\u00b5\4\47\1\uffff\2\47\2\uffff\2\47\1\u00be\2\47\1\uffff\1\47\1\u00c2\1\47\1\uffff\1\u00c4\1\u00c5\5\47\1\u00cc\1\uffff\1\47\1\u00ce\1\47\1\uffff\1\47\2\uffff\1\u00d1\1\47\1\u00d4\1\u00d5\1\u00d6\1\47\1\uffff\1\47\1\uffff\2\47\1\uffff\1\47\1\u00dc\3\uffff\1\47\1\u00de\3\47\1\uffff\1\47\1\uffff\1\47\1\u00e4\2\47\1\u00e7\1\uffff\1\47\1\u00e9\1\uffff\1\u00ea\2\uffff";
     static final String DFA13_eofS =
-        "\u00e9\uffff";
+        "\u00eb\uffff";
     static final String DFA13_minS =
-        "\1\0\1\157\1\141\3\uffff\1\52\1\141\1\uffff\1\155\3\uffff\1\72\1"+
-        "\164\2\uffff\1\60\1\uffff\1\145\1\141\1\157\1\141\1\163\1\165\1"+
-        "\uffff\1\157\2\uffff\1\170\1\101\2\uffff\2\0\2\uffff\1\165\1\60"+
-        "\1\uffff\1\154\6\uffff\1\143\1\157\1\uffff\1\160\1\163\5\uffff\1"+
-        "\151\1\145\2\uffff\1\164\1\165\2\uffff\1\162\2\156\1\141\1\156\2"+
-        "\141\1\uffff\1\157\6\uffff\1\145\1\uffff\1\163\1\153\1\141\1\166"+
-        "\1\157\1\164\1\145\1\156\1\160\1\151\1\145\1\155\1\163\1\147\1\146"+
-        "\1\157\1\165\1\154\1\147\1\160\1\156\1\154\1\60\1\145\1\141\1\155"+
-        "\1\151\1\162\1\141\1\147\1\164\1\60\2\156\1\60\1\151\1\165\1\151"+
-        "\1\164\1\165\1\151\1\60\1\145\1\151\1\164\1\145\1\uffff\1\60\1\147"+
-        "\1\145\1\144\1\164\1\156\2\145\1\uffff\1\147\1\144\1\uffff\1\157"+
-        "\1\141\1\147\1\60\2\162\1\uffff\2\60\1\151\1\141\1\uffff\1\145\1"+
-        "\164\1\145\1\60\1\164\2\162\1\60\1\163\1\156\1\147\1\165\1\uffff"+
-        "\1\143\1\145\2\uffff\1\146\1\156\1\60\1\145\1\144\1\uffff\1\151"+
-        "\1\60\1\146\1\uffff\2\60\1\145\1\162\1\145\1\144\1\151\1\60\1\uffff"+
-        "\1\162\1\60\1\141\1\uffff\1\141\2\uffff\1\60\1\141\3\60\1\141\1"+
-        "\uffff\1\163\1\uffff\1\142\1\143\1\uffff\1\164\1\60\3\uffff\1\142"+
-        "\1\60\1\154\1\145\1\151\1\uffff\1\154\1\uffff\1\145\1\60\1\157\1"+
-        "\145\1\60\1\uffff\1\156\1\60\1\uffff\1\60\2\uffff";
+        "\1\0\1\157\1\141\3\uffff\1\52\1\141\1\uffff\1\155\3\uffff\1\72\1\164\2\uffff\1\60\1\uffff\1\145\1\141\1\157\1\141\1\163\1\165\1\uffff\1\157\2\uffff\1\170\1\101\2\uffff\2\0\2\uffff\1\165\1\60\1\uffff\1\154\6\uffff\1\143\1\157\1\uffff\1\160\1\163\5\uffff\1\151\1\145\2\uffff\1\164\1\165\2\uffff\1\162\2\156\1\141\1\156\2\141\1\uffff\1\157\6\uffff\1\145\1\uffff\1\163\1\153\1\141\1\166\1\157\1\164\1\145\1\156\1\160\1\151\1\145\1\155\1\163\1\147\1\146\1\157\1\165\1\154\1\147\1\60\1\160\1\156\1\154\1\60\1\145\1\141\1\155\1\151\1\162\1\141\1\147\1\164\1\60\2\156\1\60\1\151\1\165\1\151\1\164\1\165\1\151\1\60\1\145\1\uffff\1\151\1\164\1\145\1\uffff\1\60\1\147\1\145\1\144\1\164\1\156\2\145\1\uffff\1\147\1\144\1\uffff\1\157\1\141\1\147\1\60\2\162\1\uffff\2\60\1\151\1\141\1\uffff\1\145\1\164\1\145\1\60\1\164\2\162\1\60\1\163\1\156\1\147\1\165\1\uffff\1\143\1\145\2\uffff\1\146\1\156\1\60\1\145\1\144\1\uffff\1\151\1\60\1\146\1\uffff\2\60\1\145\1\162\1\145\1\144\1\151\1\60\1\uffff\1\162\1\60\1\141\1\uffff\1\141\2\uffff\1\60\1\141\3\60\1\141\1\uffff\1\163\1\uffff\1\142\1\143\1\uffff\1\164\1\60\3\uffff\1\142\1\60\1\154\1\145\1\151\1\uffff\1\154\1\uffff\1\145\1\60\1\157\1\145\1\60\1\uffff\1\156\1\60\1\uffff\1\60\2\uffff";
     static final String DFA13_maxS =
-        "\1\uffff\1\162\1\141\3\uffff\1\57\1\162\1\uffff\1\156\3\uffff\1"+
-        "\75\1\167\2\uffff\1\172\1\uffff\1\145\1\141\1\157\1\145\1\163\1"+
-        "\165\1\uffff\1\157\2\uffff\1\170\1\172\2\uffff\2\uffff\2\uffff\1"+
-        "\165\1\172\1\uffff\1\154\6\uffff\1\162\1\157\1\uffff\1\160\1\164"+
-        "\5\uffff\1\151\1\162\2\uffff\1\164\1\165\2\uffff\1\162\2\156\1\163"+
-        "\1\156\2\141\1\uffff\1\157\6\uffff\1\145\1\uffff\1\163\1\153\1\141"+
-        "\1\166\1\157\1\164\1\145\1\156\1\160\1\151\1\145\1\155\1\163\1\147"+
-        "\1\163\1\157\1\165\1\154\1\147\1\160\1\156\1\154\1\172\1\145\1\141"+
-        "\1\155\1\151\1\162\1\141\1\147\1\164\1\172\2\156\1\172\1\151\1\165"+
-        "\1\151\1\164\1\165\1\151\1\172\1\145\1\151\1\164\1\145\1\uffff\1"+
-        "\172\1\147\1\145\1\144\1\164\1\156\2\145\1\uffff\1\147\1\144\1\uffff"+
-        "\1\157\1\141\1\147\1\172\2\162\1\uffff\2\172\1\151\1\141\1\uffff"+
-        "\1\145\1\164\1\145\1\172\1\164\2\162\1\172\1\163\1\156\1\147\1\165"+
-        "\1\uffff\1\143\1\145\2\uffff\1\146\1\156\1\172\1\145\1\144\1\uffff"+
-        "\1\151\1\172\1\146\1\uffff\2\172\1\145\1\162\1\145\1\163\1\151\1"+
-        "\172\1\uffff\1\162\1\172\1\141\1\uffff\1\141\2\uffff\1\172\1\141"+
-        "\3\172\1\141\1\uffff\1\163\1\uffff\1\142\1\143\1\uffff\1\164\1\172"+
-        "\3\uffff\1\142\1\172\1\154\1\145\1\151\1\uffff\1\154\1\uffff\1\145"+
-        "\1\172\1\157\1\145\1\172\1\uffff\1\156\1\172\1\uffff\1\172\2\uffff";
+        "\1\uffff\1\162\1\141\3\uffff\1\57\1\162\1\uffff\1\156\3\uffff\1\75\1\167\2\uffff\1\172\1\uffff\1\145\1\141\1\157\1\145\1\163\1\165\1\uffff\1\157\2\uffff\1\170\1\172\2\uffff\2\uffff\2\uffff\1\165\1\172\1\uffff\1\154\6\uffff\1\162\1\157\1\uffff\1\160\1\164\5\uffff\1\151\1\162\2\uffff\1\164\1\165\2\uffff\1\162\2\156\1\163\1\167\2\141\1\uffff\1\157\6\uffff\1\145\1\uffff\1\163\1\153\1\141\1\166\1\157\1\164\1\145\1\156\1\160\1\151\1\145\1\155\1\163\1\147\1\163\1\157\1\165\1\154\1\147\1\172\1\160\1\156\1\154\1\172\1\145\1\141\1\155\1\151\1\162\1\141\1\147\1\164\1\172\2\156\1\172\1\151\1\165\1\151\1\164\1\165\1\151\1\172\1\145\1\uffff\1\151\1\164\1\145\1\uffff\1\172\1\147\1\145\1\144\1\164\1\156\2\145\1\uffff\1\147\1\144\1\uffff\1\157\1\141\1\147\1\172\2\162\1\uffff\2\172\1\151\1\141\1\uffff\1\145\1\164\1\145\1\172\1\164\2\162\1\172\1\163\1\156\1\147\1\165\1\uffff\1\143\1\145\2\uffff\1\146\1\156\1\172\1\145\1\144\1\uffff\1\151\1\172\1\146\1\uffff\2\172\1\145\1\162\1\145\1\163\1\151\1\172\1\uffff\1\162\1\172\1\141\1\uffff\1\141\2\uffff\1\172\1\141\3\172\1\141\1\uffff\1\163\1\uffff\1\142\1\143\1\uffff\1\164\1\172\3\uffff\1\142\1\172\1\154\1\145\1\151\1\uffff\1\154\1\uffff\1\145\1\172\1\157\1\145\1\172\1\uffff\1\156\1\172\1\uffff\1\172\2\uffff";
     static final String DFA13_acceptS =
-        "\3\uffff\1\3\1\4\1\5\2\uffff\1\10\1\uffff\1\12\1\13\1\14\2\uffff"+
-        "\1\17\1\20\1\uffff\1\22\6\uffff\1\46\1\uffff\1\52\1\53\2\uffff\1"+
-        "\56\1\57\2\uffff\1\63\1\64\2\uffff\1\56\1\uffff\1\3\1\4\1\5\1\61"+
-        "\1\62\1\6\2\uffff\1\10\2\uffff\1\12\1\13\1\14\1\15\1\24\2\uffff"+
-        "\1\17\1\20\2\uffff\1\51\1\22\7\uffff\1\46\1\uffff\1\52\1\53\1\55"+
-        "\1\57\1\60\1\63\1\uffff\1\40\56\uffff\1\1\10\uffff\1\37\2\uffff"+
-        "\1\44\6\uffff\1\45\4\uffff\1\2\14\uffff\1\54\2\uffff\1\43\1\34\5"+
-        "\uffff\1\11\3\uffff\1\50\10\uffff\1\7\3\uffff\1\42\1\uffff\1\21"+
-        "\1\23\6\uffff\1\47\1\uffff\1\30\2\uffff\1\25\2\uffff\1\36\1\32\1"+
-        "\33\5\uffff\1\31\1\uffff\1\27\5\uffff\1\16\2\uffff\1\41\1\uffff"+
-        "\1\35\1\26";
+        "\3\uffff\1\3\1\4\1\5\2\uffff\1\10\1\uffff\1\12\1\13\1\14\2\uffff\1\17\1\20\1\uffff\1\22\6\uffff\1\46\1\uffff\1\52\1\53\2\uffff\1\57\1\60\2\uffff\1\64\1\65\2\uffff\1\57\1\uffff\1\3\1\4\1\5\1\62\1\63\1\6\2\uffff\1\10\2\uffff\1\12\1\13\1\14\1\15\1\24\2\uffff\1\17\1\20\2\uffff\1\51\1\22\7\uffff\1\46\1\uffff\1\52\1\53\1\56\1\60\1\61\1\64\1\uffff\1\40\54\uffff\1\55\3\uffff\1\1\10\uffff\1\37\2\uffff\1\44\6\uffff\1\45\4\uffff\1\2\14\uffff\1\54\2\uffff\1\43\1\34\5\uffff\1\11\3\uffff\1\50\10\uffff\1\7\3\uffff\1\42\1\uffff\1\21\1\23\6\uffff\1\47\1\uffff\1\30\2\uffff\1\25\2\uffff\1\36\1\32\1\33\5\uffff\1\31\1\uffff\1\27\5\uffff\1\16\2\uffff\1\41\1\uffff\1\35\1\26";
     static final String DFA13_specialS =
-        "\1\2\40\uffff\1\1\1\0\u00c6\uffff}>";
+        "\1\2\40\uffff\1\0\1\1\u00c8\uffff}>";
     static final String[] DFA13_transitionS = {
-            "\11\44\2\43\2\44\1\43\22\44\1\43\1\44\1\41\4\44\1\42\1\13\1"+
-            "\14\1\5\1\3\1\22\1\4\1\12\1\6\1\35\11\40\1\15\1\10\1\44\1\31"+
-            "\3\44\32\37\1\34\1\44\1\33\1\36\1\37\1\44\1\37\1\32\1\25\1\37"+
-            "\1\21\1\2\2\37\1\11\2\37\1\24\2\37\1\27\1\7\1\30\1\26\1\16\1"+
-            "\1\1\37\1\23\4\37\1\17\1\44\1\20\uff82\44",
+            "\11\44\2\43\2\44\1\43\22\44\1\43\1\44\1\41\4\44\1\42\1\13\1\14\1\5\1\3\1\22\1\4\1\12\1\6\1\35\11\40\1\15\1\10\1\44\1\31\3\44\32\37\1\34\1\44\1\33\1\36\1\37\1\44\1\37\1\32\1\25\1\37\1\21\1\2\2\37\1\11\2\37\1\24\2\37\1\27\1\7\1\30\1\26\1\16\1\1\1\37\1\23\4\37\1\17\1\44\1\20\uff82\44",
             "\1\46\2\uffff\1\45",
             "\1\50",
             "",
@@ -2039,8 +1990,7 @@ public class InternalSWILexer extends Lexer {
             "\1\72\2\uffff\1\71",
             "",
             "",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\15\47\1\76\11\47"+
-            "\1\75\2\47",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\15\47\1\76\11\47\1\75\2\47",
             "",
             "\1\101",
             "\1\102",
@@ -2092,20 +2042,19 @@ public class InternalSWILexer extends Lexer {
             "\1\137",
             "\1\140",
             "\1\143\17\uffff\1\142\1\uffff\1\141",
-            "\1\144",
-            "\1\145",
+            "\1\144\10\uffff\1\145",
             "\1\146",
-            "",
             "\1\147",
-            "",
-            "",
-            "",
-            "",
-            "",
             "",
             "\1\150",
             "",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\151",
+            "",
             "\1\152",
             "\1\153",
             "\1\154",
@@ -2119,138 +2068,141 @@ public class InternalSWILexer extends Lexer {
             "\1\164",
             "\1\165",
             "\1\166",
-            "\1\167\14\uffff\1\170",
-            "\1\171",
+            "\1\167",
+            "\1\170\14\uffff\1\171",
             "\1\172",
             "\1\173",
             "\1\174",
             "\1\175",
-            "\1\176",
-            "\1\177",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\177",
+            "\1\u0080",
             "\1\u0081",
-            "\1\u0082",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0083",
             "\1\u0084",
             "\1\u0085",
             "\1\u0086",
             "\1\u0087",
             "\1\u0088",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u0089",
             "\1\u008a",
-            "\1\u008b",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u008c",
             "\1\u008d",
-            "\1\u008e",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u008f",
             "\1\u0090",
             "\1\u0091",
             "\1\u0092",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u0093",
             "\1\u0094",
-            "\1\u0095",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u0096",
+            "",
             "\1\u0097",
+            "\1\u0098",
+            "\1\u0099",
             "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u0099",
-            "\1\u009a",
             "\1\u009b",
             "\1\u009c",
             "\1\u009d",
             "\1\u009e",
             "\1\u009f",
-            "",
             "\1\u00a0",
             "\1\u00a1",
             "",
             "\1\u00a2",
             "\1\u00a3",
+            "",
             "\1\u00a4",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00a5",
             "\1\u00a6",
-            "\1\u00a7",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00a8",
+            "\1\u00a9",
             "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u00aa",
-            "\1\u00ab",
-            "",
             "\1\u00ac",
             "\1\u00ad",
+            "",
             "\1\u00ae",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00af",
             "\1\u00b0",
-            "\1\u00b1",
-            "\1\u00b2",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00b2",
+            "\1\u00b3",
             "\1\u00b4",
-            "\1\u00b5",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u00b6",
             "\1\u00b7",
-            "",
             "\1\u00b8",
             "\1\u00b9",
             "",
-            "",
             "\1\u00ba",
             "\1\u00bb",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "",
+            "\1\u00bc",
             "\1\u00bd",
-            "\1\u00be",
-            "",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u00bf",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00c0",
+            "",
             "\1\u00c1",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00c3",
             "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u00c4",
-            "\1\u00c5",
             "\1\u00c6",
-            "\1\u00c8\16\uffff\1\u00c7",
-            "\1\u00c9",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "",
+            "\1\u00c7",
+            "\1\u00c8",
+            "\1\u00ca\16\uffff\1\u00c9",
             "\1\u00cb",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
             "\1\u00cd",
-            "",
-            "\1\u00ce",
-            "",
-            "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00cf",
+            "",
             "\1\u00d0",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\22\47\1\u00d1\7\47",
+            "",
+            "",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00d2",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\22\47\1\u00d3\7\47",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "\1\u00d5",
-            "",
-            "\1\u00d6",
-            "",
             "\1\u00d7",
+            "",
             "\1\u00d8",
             "",
             "\1\u00d9",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
-            "",
-            "",
+            "\1\u00da",
             "",
             "\1\u00db",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "",
+            "",
             "\1\u00dd",
-            "\1\u00de",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "\1\u00df",
-            "",
             "\1\u00e0",
-            "",
             "\1\u00e1",
-            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "",
+            "\1\u00e2",
+            "",
             "\1\u00e3",
-            "\1\u00e4",
+            "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
+            "\1\u00e5",
+            "\1\u00e6",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "",
-            "\1\u00e6",
+            "\1\u00e8",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
             "",
             "\12\47\7\uffff\32\47\4\uffff\1\47\1\uffff\32\47",
@@ -2288,27 +2240,27 @@ public class InternalSWILexer extends Lexer {
             this.transition = DFA13_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | T__28 | T__29 | T__30 | T__31 | T__32 | T__33 | T__34 | T__35 | T__36 | T__37 | T__38 | T__39 | T__40 | T__41 | T__42 | T__43 | T__44 | T__45 | T__46 | T__47 | T__48 | T__49 | T__50 | T__51 | T__52 | T__53 | T__54 | T__55 | T__56 | RULE_HEXADECIMAL | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA13_34 = input.LA(1);
+                        int LA13_33 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA13_34>='\u0000' && LA13_34<='\uFFFF')) ) {s = 78;}
+                        if ( ((LA13_33>='\u0000' && LA13_33<='\uFFFF')) ) {s = 78;}
 
                         else s = 36;
 
                         if ( s>=0 ) return s;
                         break;
                     case 1 : 
-                        int LA13_33 = input.LA(1);
+                        int LA13_34 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA13_33>='\u0000' && LA13_33<='\uFFFF')) ) {s = 78;}
+                        if ( ((LA13_34>='\u0000' && LA13_34<='\uFFFF')) ) {s = 78;}
 
                         else s = 36;
 

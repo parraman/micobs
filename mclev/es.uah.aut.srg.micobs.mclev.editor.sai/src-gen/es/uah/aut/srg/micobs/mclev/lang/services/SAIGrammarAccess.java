@@ -26,7 +26,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MMCLEVSAIPackageFileElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMCLEVSAIPackageFile");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MMCLEVSAIPackageFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -43,15 +43,16 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cElementMMCLEVSAIPackageElementParserRuleCall_4_0 = (RuleCall)cElementAssignment_4.eContents().get(0);
 		
 		//MMCLEVSAIPackageFile:
-		//	"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-		//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMCLEVSAIPackageElement;
-		public ParserRule getRule() { return rule; }
+		//	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+		//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+		//	element=MMCLEVSAIPackageElement;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-		//imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMCLEVSAIPackageElement
+		//'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+		//imports+=[common::MCommonPackage|QualifiedName] ';')* element=MMCLEVSAIPackageElement
 		public Group getGroup() { return cGroup; }
 
-		//"package"
+		//'package'
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
 		//package=[mclevlibrary::MMCLEVPackage|QualifiedName]
@@ -63,13 +64,13 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getPackageMMCLEVPackageQualifiedNameParserRuleCall_1_0_1() { return cPackageMMCLEVPackageQualifiedNameParserRuleCall_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 
-		//("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+		//('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"import"
+		//'import'
 		public Keyword getImportKeyword_3_0() { return cImportKeyword_3_0; }
 
 		//imports+=[common::MCommonPackage|QualifiedName]
@@ -81,7 +82,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1() { return cImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2() { return cSemicolonKeyword_3_2; }
 
 		//element=MMCLEVSAIPackageElement
@@ -92,27 +93,27 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//QualifiedName returns ecore::EString:
-		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
+		//QualifiedName:
+		//	ID ('.' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)*
+		//ID ('.' ID)*
 		public Group getGroup() { return cGroup; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//("." ID)*
+		//('.' ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
 		//ID
@@ -120,7 +121,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Version");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.Version");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
@@ -135,14 +136,14 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_1_1_1_0 = (RuleCall)cGroup_1_1_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1_1_1 = (RuleCall)cGroup_1_1_1.eContents().get(1);
 		
-		//Version returns ecore::EString:
-		//	(INT | INT? ID) ("." (INT | INT? ID))*;
-		public ParserRule getRule() { return rule; }
+		//Version:
+		//	(INT | INT? ID) ('.' (INT | INT? ID))*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(INT | INT? ID) ("." (INT | INT? ID))*
+		//(INT | INT? ID) ('.' (INT | INT? ID))*
 		public Group getGroup() { return cGroup; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//INT
@@ -157,13 +158,13 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_0_1_1() { return cIDTerminalRuleCall_0_1_1; }
 
-		//("." (INT | INT? ID))*
+		//('.' (INT | INT? ID))*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 
 		//INT
@@ -180,35 +181,35 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionedQualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.VersionedQualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final RuleCall cVersionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//VersionedQualifiedName returns ecore::EString:
-		//	QualifiedName "(" Version ")";
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedName:
+		//	QualifiedName '(' Version ')';
+		@Override public ParserRule getRule() { return rule; }
 
-		//QualifiedName "(" Version ")"
+		//QualifiedName '(' Version ')'
 		public Group getGroup() { return cGroup; }
 
 		//QualifiedName
 		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//Version
 		public RuleCall getVersionParserRuleCall_2() { return cVersionParserRuleCall_2; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 
 	public class VersionedQualifiedReferenceNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedReferenceName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.VersionedQualifiedReferenceName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final RuleCall cVersionedQualifiedNameParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
@@ -218,29 +219,29 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		
-		//VersionedQualifiedReferenceName returns ecore::EString:
-		//	(VersionedQualifiedName "::")? ID ("::" ID)*;
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedReferenceName:
+		//	(VersionedQualifiedName '::')? ID ('::' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(VersionedQualifiedName "::")? ID ("::" ID)*
+		//(VersionedQualifiedName '::')? ID ('::' ID)*
 		public Group getGroup() { return cGroup; }
 
-		//(VersionedQualifiedName "::")?
+		//(VersionedQualifiedName '::')?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//VersionedQualifiedName
 		public RuleCall getVersionedQualifiedNameParserRuleCall_0_0() { return cVersionedQualifiedNameParserRuleCall_0_0; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_0_1() { return cColonColonKeyword_0_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 
-		//("::" ID)*
+		//('::' ID)*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_2_0() { return cColonColonKeyword_2_0; }
 
 		//ID
@@ -248,19 +249,19 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MMCLEVSAIPackageElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMCLEVSAIPackageElement");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MMCLEVSAIPackageElement");
 		private final RuleCall cMSAIParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//MMCLEVSAIPackageElement:
 		//	MSAI;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MSAI
 		public RuleCall getMSAIParserRuleCall() { return cMSAIParserRuleCall; }
 	}
 
 	public class MSAIElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MSAI");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MSAI");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSaiKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -321,21 +322,27 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MSAI:
-		//	"sai" name=ID ("extends" extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)? "{"
-		//	("version" ":=" version=Version ";" & "language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" &
-		//	("attributes" "{" attributes+=MParameter+ "}" ";")? & ("requires" ":=" requires+=[MSAI|VersionedQualifiedName] (","
-		//	requires+=[MSAI|VersionedQualifiedName])* ";")? & ("required" "osapi" ":="
-		//	requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'sai'
+		//	name=ID ('extends' extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)?
+		//	'{' ('version' ':=' version=Version ';' & 'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' &
+		//	('attributes'
+		//	'{'
+		//	attributes+=MParameter+
+		//	'}' ';')?
+		//	& ('requires' ':=' requires+=[MSAI|VersionedQualifiedName] ("," requires+=[MSAI|VersionedQualifiedName])* ';')?
+		//	& ('required' 'osapi' ':=' requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"sai" name=ID ("extends" extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)? "{"
-		//("version" ":=" version=Version ";" & "language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" &
-		//("attributes" "{" attributes+=MParameter+ "}" ";")? & ("requires" ":=" requires+=[MSAI|VersionedQualifiedName] (","
-		//requires+=[MSAI|VersionedQualifiedName])* ";")? & ("required" "osapi" ":="
-		//requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ";")?) "}" ";"
+		//'sai' name=ID ('extends' extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)? '{'
+		//('version' ':=' version=Version ';' & 'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' &
+		//('attributes' '{' attributes+=MParameter+ '}' ';')? & ('requires' ':=' requires+=[MSAI|VersionedQualifiedName] (","
+		//requires+=[MSAI|VersionedQualifiedName])* ';')? & ('required' 'osapi' ':='
+		//requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"sai"
+		//'sai'
 		public Keyword getSaiKeyword_0() { return cSaiKeyword_0; }
 
 		//name=ID
@@ -344,10 +351,10 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//("extends" extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)?
+		//('extends' extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"extends"
+		//'extends'
 		public Keyword getExtendsKeyword_2_0() { return cExtendsKeyword_2_0; }
 
 		//extends+=[MSAI|VersionedQualifiedName]
@@ -374,22 +381,22 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getExtendsMSAIVersionedQualifiedNameParserRuleCall_2_2_1_0_1() { return cExtendsMSAIVersionedQualifiedNameParserRuleCall_2_2_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"version" ":=" version=Version ";" & "language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" &
-		//("attributes" "{" attributes+=MParameter+ "}" ";")? & ("requires" ":=" requires+=[MSAI|VersionedQualifiedName] (","
-		//requires+=[MSAI|VersionedQualifiedName])* ";")? & ("required" "osapi" ":="
-		//requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ";")?
+		//('version' ':=' version=Version ';' & 'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' &
+		//('attributes' '{' attributes+=MParameter+ '}' ';')? & ('requires' ':=' requires+=[MSAI|VersionedQualifiedName] (","
+		//requires+=[MSAI|VersionedQualifiedName])* ';')? & ('required' 'osapi' ':='
+		//requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ';')?)
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_4_0_0() { return cVersionKeyword_4_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_0_1() { return cColonEqualsSignKeyword_4_0_1; }
 
 		//version=Version
@@ -398,16 +405,16 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_4_0_2_0() { return cVersionVersionParserRuleCall_4_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_3() { return cSemicolonKeyword_4_0_3; }
 
-		//"language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";"
+		//'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';'
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"language"
+		//'language'
 		public Keyword getLanguageKeyword_4_1_0() { return cLanguageKeyword_4_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_1_1() { return cColonEqualsSignKeyword_4_1_1; }
 
 		//language=[system::MLanguage|VersionedQualifiedName]
@@ -419,16 +426,16 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLanguageMLanguageVersionedQualifiedNameParserRuleCall_4_1_2_0_1() { return cLanguageMLanguageVersionedQualifiedNameParserRuleCall_4_1_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_3() { return cSemicolonKeyword_4_1_3; }
 
-		//("attributes" "{" attributes+=MParameter+ "}" ";")?
+		//('attributes' '{' attributes+=MParameter+ '}' ';')?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 
-		//"attributes"
+		//'attributes'
 		public Keyword getAttributesKeyword_4_2_0() { return cAttributesKeyword_4_2_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_2_1() { return cLeftCurlyBracketKeyword_4_2_1; }
 
 		//attributes+=MParameter+
@@ -437,19 +444,19 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameter
 		public RuleCall getAttributesMParameterParserRuleCall_4_2_2_0() { return cAttributesMParameterParserRuleCall_4_2_2_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_2_3() { return cRightCurlyBracketKeyword_4_2_3; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_2_4() { return cSemicolonKeyword_4_2_4; }
 
-		//("requires" ":=" requires+=[MSAI|VersionedQualifiedName] ("," requires+=[MSAI|VersionedQualifiedName])* ";")?
+		//('requires' ':=' requires+=[MSAI|VersionedQualifiedName] ("," requires+=[MSAI|VersionedQualifiedName])* ';')?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 
-		//"requires"
+		//'requires'
 		public Keyword getRequiresKeyword_4_3_0() { return cRequiresKeyword_4_3_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_3_1() { return cColonEqualsSignKeyword_4_3_1; }
 
 		//requires+=[MSAI|VersionedQualifiedName]
@@ -476,19 +483,19 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getRequiresMSAIVersionedQualifiedNameParserRuleCall_4_3_3_1_0_1() { return cRequiresMSAIVersionedQualifiedNameParserRuleCall_4_3_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_3_4() { return cSemicolonKeyword_4_3_4; }
 
-		//("required" "osapi" ":=" requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ";")?
+		//('required' 'osapi' ':=' requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ';')?
 		public Group getGroup_4_4() { return cGroup_4_4; }
 
-		//"required"
+		//'required'
 		public Keyword getRequiredKeyword_4_4_0() { return cRequiredKeyword_4_4_0; }
 
-		//"osapi"
+		//'osapi'
 		public Keyword getOsapiKeyword_4_4_1() { return cOsapiKeyword_4_4_1; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_4_2() { return cColonEqualsSignKeyword_4_4_2; }
 
 		//requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName]
@@ -500,18 +507,18 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getRequiredOSAPIMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_4_4_3_0_1() { return cRequiredOSAPIMOperatingSystemAPIVersionedQualifiedNameParserRuleCall_4_4_3_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_4_4() { return cSemicolonKeyword_4_4_4; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MParameterElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameter");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameter");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMIntegerParameterSingleExpressionParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMEnumParameterSingleExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
@@ -520,10 +527,10 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cMStringParameterSingleExpressionParserRuleCall_4 = (RuleCall)cAlternatives.eContents().get(4);
 		private final RuleCall cMEnumParameterDefinitionParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
-		//MParameter returns common::MParameter:
+		//MParameter common::MParameter:
 		//	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
-		//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition;
-		public ParserRule getRule() { return rule; }
+		//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition
+		@Override public ParserRule getRule() { return rule; }
 
 		//MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
 		//MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition
@@ -549,7 +556,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MIntegerParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MIntegerParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MIntegerParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -565,20 +572,24 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRangeMParameterRangeParserRuleCall_5_1_0 = (RuleCall)cRangeAssignment_5_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
-		//	constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
-		public ParserRule getRule() { return rule; }
+		//MIntegerParameterSingleExpression common::MIntegerParameterSingleExpression:
+		//	constant?='const'?
+		//	'integer'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+		//constant?='const'? 'integer' name=ID ':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"integer"
+		//'integer'
 		public Keyword getIntegerKeyword_1() { return cIntegerKeyword_1; }
 
 		//name=ID
@@ -587,7 +598,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -596,10 +607,10 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//("range" range=MParameterRange)?
+		//('range' range=MParameterRange)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"range"
+		//'range'
 		public Keyword getRangeKeyword_5_0() { return cRangeKeyword_5_0; }
 
 		//range=MParameterRange
@@ -608,12 +619,12 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterRange
 		public RuleCall getRangeMParameterRangeParserRuleCall_5_1_0() { return cRangeMParameterRangeParserRuleCall_5_1_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MEnumParameterDefinitionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterDefinition");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MEnumParameterDefinition");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParameterDefinitionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cEnumKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -629,19 +640,24 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//MEnumParameterDefinition returns common::MEnumParameterDefinition:
-		//	{common::MEnumParameterDefinition} "enum" name=ID "{" literals+=MEnumParameterLiteralRule (","
-		//	literals+=MEnumParameterLiteralRule)* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterDefinition common::MEnumParameterDefinition:
+		//	{common::MEnumParameterDefinition}
+		//	'enum'
+		//	name=ID
+		//	'{'
+		//	literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+		//	'}'
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MEnumParameterDefinition} "enum" name=ID "{" literals+=MEnumParameterLiteralRule (","
-		//literals+=MEnumParameterLiteralRule)* "}" ";"
+		//{common::MEnumParameterDefinition} 'enum' name=ID '{' literals+=MEnumParameterLiteralRule (","
+		//literals+=MEnumParameterLiteralRule)* '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MEnumParameterDefinition}
 		public Action getMEnumParameterDefinitionAction_0() { return cMEnumParameterDefinitionAction_0; }
 
-		//"enum"
+		//'enum'
 		public Keyword getEnumKeyword_1() { return cEnumKeyword_1; }
 
 		//name=ID
@@ -650,7 +666,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//literals+=MEnumParameterLiteralRule
@@ -671,15 +687,15 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MEnumParameterLiteralRule
 		public RuleCall getLiteralsMEnumParameterLiteralRuleParserRuleCall_5_1_0() { return cLiteralsMEnumParameterLiteralRuleParserRuleCall_5_1_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MEnumParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MEnumParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -694,22 +710,25 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefaultValueMParameterValueExpressionParserRuleCall_5_0 = (RuleCall)cDefaultValueAssignment_5.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
-		//	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
-		//	":=" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterSingleExpression common::MEnumParameterSingleExpression:
+		//	constant?='const'?
+		//	'enum'
+		//	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
+		//	':=' defaultValue=MParameterValueExpression
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ":="
-		//defaultValue=MParameterValueExpression ";"
+		//constant?='const'? 'enum' enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+		//defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"enum"
+		//'enum'
 		public Keyword getEnumKeyword_1() { return cEnumKeyword_1; }
 
 		//enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName]
@@ -727,7 +746,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4() { return cColonEqualsSignKeyword_4; }
 
 		//defaultValue=MParameterValueExpression
@@ -736,12 +755,12 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_5_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_5_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MRealParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MRealParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MRealParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -757,20 +776,24 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cRangeMParameterRangeParserRuleCall_5_1_0 = (RuleCall)cRangeAssignment_5_1.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
-		//	constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
-		public ParserRule getRule() { return rule; }
+		//MRealParameterSingleExpression common::MRealParameterSingleExpression:
+		//	constant?='const'?
+		//	'real'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+		//constant?='const'? 'real' name=ID ':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"real"
+		//'real'
 		public Keyword getRealKeyword_1() { return cRealKeyword_1; }
 
 		//name=ID
@@ -779,7 +802,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -788,10 +811,10 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//("range" range=MParameterRange)?
+		//('range' range=MParameterRange)?
 		public Group getGroup_5() { return cGroup_5; }
 
-		//"range"
+		//'range'
 		public Keyword getRangeKeyword_5_0() { return cRangeKeyword_5_0; }
 
 		//range=MParameterRange
@@ -800,21 +823,21 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterRange
 		public RuleCall getRangeMParameterRangeParserRuleCall_5_1_0() { return cRangeMParameterRangeParserRuleCall_5_1_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MEnumParameterLiteralRuleElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterLiteralRule");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MEnumParameterLiteralRule");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMEnumParameterLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMEnumParamIntegerLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMEnumParamRealLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cMEnumParamStringLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
-		//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral;
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterLiteralRule common::MEnumParameterLiteral:
+		//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral
+		@Override public ParserRule getRule() { return rule; }
 
 		//MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -833,15 +856,15 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MEnumParameterLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParameterLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MEnumParameterLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParameterLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		
-		//MEnumParameterLiteral returns common::MEnumParameterLiteral:
-		//	{common::MEnumParameterLiteral} name=ID;
-		public ParserRule getRule() { return rule; }
+		//MEnumParameterLiteral common::MEnumParameterLiteral:
+		//	{common::MEnumParameterLiteral} name=ID
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MEnumParameterLiteral} name=ID
 		public Group getGroup() { return cGroup; }
@@ -857,7 +880,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MEnumParamIntegerLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamIntegerLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MEnumParamIntegerLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParamIntegerLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -866,11 +889,13 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cValueINTEGERParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
-		//MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
-		//	{common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER;
-		public ParserRule getRule() { return rule; }
+		//MEnumParamIntegerLiteral common::MEnumParamIntegerLiteral:
+		//	{common::MEnumParamIntegerLiteral} name=ID
+		//	'='
+		//	value=INTEGER
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER
+		//{common::MEnumParamIntegerLiteral} name=ID '=' value=INTEGER
 		public Group getGroup() { return cGroup; }
 
 		//{common::MEnumParamIntegerLiteral}
@@ -882,7 +907,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"="
+		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 
 		//value=INTEGER
@@ -893,7 +918,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MEnumParamRealLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamRealLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MEnumParamRealLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParamRealLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -902,11 +927,13 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
 		private final RuleCall cValueREALParserRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
 		
-		//MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
-		//	{common::MEnumParamRealLiteral} name=ID "=" value=REAL;
-		public ParserRule getRule() { return rule; }
+		//MEnumParamRealLiteral common::MEnumParamRealLiteral:
+		//	{common::MEnumParamRealLiteral} name=ID
+		//	'='
+		//	value=REAL
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MEnumParamRealLiteral} name=ID "=" value=REAL
+		//{common::MEnumParamRealLiteral} name=ID '=' value=REAL
 		public Group getGroup() { return cGroup; }
 
 		//{common::MEnumParamRealLiteral}
@@ -918,7 +945,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"="
+		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 
 		//value=REAL
@@ -929,20 +956,25 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MEnumParamStringLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MEnumParamStringLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MEnumParamStringLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMEnumParamStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cEqualsSignKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Assignment cValueAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cValueSTRINGTerminalRuleCall_3_0 = (RuleCall)cValueAssignment_3.eContents().get(0);
+		private final Assignment cIsRawAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final Keyword cIsRawRawKeyword_3_0 = (Keyword)cIsRawAssignment_3.eContents().get(0);
+		private final Assignment cValueAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cValueSTRINGTerminalRuleCall_4_0 = (RuleCall)cValueAssignment_4.eContents().get(0);
 		
-		//MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
-		//	{common::MEnumParamStringLiteral} name=ID "=" value=STRING;
-		public ParserRule getRule() { return rule; }
+		//MEnumParamStringLiteral common::MEnumParamStringLiteral:
+		//	{common::MEnumParamStringLiteral} name=ID
+		//	'='
+		//	isRaw?='raw'?
+		//	value=STRING
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MEnumParamStringLiteral} name=ID "=" value=STRING
+		//{common::MEnumParamStringLiteral} name=ID '=' isRaw?='raw'? value=STRING
 		public Group getGroup() { return cGroup; }
 
 		//{common::MEnumParamStringLiteral}
@@ -954,18 +986,24 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"="
+		//'='
 		public Keyword getEqualsSignKeyword_2() { return cEqualsSignKeyword_2; }
 
+		//isRaw?='raw'?
+		public Assignment getIsRawAssignment_3() { return cIsRawAssignment_3; }
+
+		//'raw'
+		public Keyword getIsRawRawKeyword_3_0() { return cIsRawRawKeyword_3_0; }
+
 		//value=STRING
-		public Assignment getValueAssignment_3() { return cValueAssignment_3; }
+		public Assignment getValueAssignment_4() { return cValueAssignment_4; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_3_0() { return cValueSTRINGTerminalRuleCall_3_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_4_0() { return cValueSTRINGTerminalRuleCall_4_0; }
 	}
 
 	public class MBooleanParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MBooleanParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MBooleanParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -977,20 +1015,24 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefaultValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cDefaultValueAssignment_4.eContents().get(0);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
-		//	constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MBooleanParameterSingleExpression common::MBooleanParameterSingleExpression:
+		//	constant?='const'?
+		//	'boolean'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";"
+		//constant?='const'? 'boolean' name=ID ':=' defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"boolean"
+		//'boolean'
 		public Keyword getBooleanKeyword_1() { return cBooleanKeyword_1; }
 
 		//name=ID
@@ -999,7 +1041,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -1008,12 +1050,12 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MStringParameterSingleExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MStringParameterSingleExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MStringParameterSingleExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Assignment cConstantAssignment_0 = (Assignment)cGroup.eContents().get(0);
 		private final Keyword cConstantConstKeyword_0_0 = (Keyword)cConstantAssignment_0.eContents().get(0);
@@ -1025,20 +1067,24 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cDefaultValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cDefaultValueAssignment_4.eContents().get(0);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
-		//	constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MStringParameterSingleExpression common::MStringParameterSingleExpression:
+		//	constant?='const'?
+		//	'string'
+		//	name=ID
+		//	':=' defaultValue=MParameterValueExpression
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";"
+		//constant?='const'? 'string' name=ID ':=' defaultValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
-		//constant?="const"?
+		//constant?='const'?
 		public Assignment getConstantAssignment_0() { return cConstantAssignment_0; }
 
-		//"const"
+		//'const'
 		public Keyword getConstantConstKeyword_0_0() { return cConstantConstKeyword_0_0; }
 
-		//"string"
+		//'string'
 		public Keyword getStringKeyword_1() { return cStringKeyword_1; }
 
 		//name=ID
@@ -1047,7 +1093,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3() { return cColonEqualsSignKeyword_3; }
 
 		//defaultValue=MParameterValueExpression
@@ -1056,49 +1102,49 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getDefaultValueMParameterValueExpressionParserRuleCall_4_0() { return cDefaultValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class EBooleanElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EBoolean");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.EBoolean");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
-		//EBoolean returns ecore::EBoolean:
-		//	"true" | "false";
-		public ParserRule getRule() { return rule; }
+		//EBoolean ecore::EBoolean:
+		//	'true' | 'false'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"true" | "false"
+		//'true' | 'false'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"true"
+		//'true'
 		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
 
-		//"false"
+		//'false'
 		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
 	}
 
 	public class INTEGERElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "INTEGER");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.INTEGER");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final RuleCall cHEXADECIMALTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//INTEGER returns ecore::EString:
-		//	"-"? INT | HEXADECIMAL;
-		public ParserRule getRule() { return rule; }
+		//INTEGER:
+		//	'-'? INT | HEXADECIMAL;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? INT | HEXADECIMAL
+		//'-'? INT | HEXADECIMAL
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"-"? INT
+		//'-'? INT
 		public Group getGroup_0() { return cGroup_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0_0() { return cHyphenMinusKeyword_0_0; }
 
 		//INT
@@ -1109,7 +1155,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class REALElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "REAL");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.REAL");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -1121,35 +1167,35 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cHyphenMinusKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final RuleCall cINTTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
-		//REAL returns ecore::EString:
-		//	"-"? (INT "." INT) ("e" "-"? INT)?;
-		public ParserRule getRule() { return rule; }
+		//REAL:
+		//	'-'? (INT '.' INT) ('e' '-'? INT)?;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? (INT "." INT) ("e" "-"? INT)?
+		//'-'? (INT '.' INT) ('e' '-'? INT)?
 		public Group getGroup() { return cGroup; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
 
-		//INT "." INT
+		//(INT '.' INT)
 		public Group getGroup_1() { return cGroup_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_1() { return cFullStopKeyword_1_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_2() { return cINTTerminalRuleCall_1_2; }
 
-		//("e" "-"? INT)?
+		//('e' '-'? INT)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"e"
+		//'e'
 		public Keyword getEKeyword_2_0() { return cEKeyword_2_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_2_1() { return cHyphenMinusKeyword_2_1; }
 
 		//INT
@@ -1157,15 +1203,15 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValue");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueRefObjectParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValuePARParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//MParameterValue returns common::MParameterValue:
-		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
-		public ParserRule getRule() { return rule; }
+		//MParameterValue common::MParameterValue:
+		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1181,17 +1227,17 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueLiteral");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueBooleanLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueStringLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValueIntegerLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cMParameterValueRealLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MParameterValueLiteral returns common::MParameterValueLiteral:
+		//MParameterValueLiteral common::MParameterValueLiteral:
 		//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-		//	MParameterValueRealLiteral;
-		public ParserRule getRule() { return rule; }
+		//	MParameterValueRealLiteral
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
 		//MParameterValueRealLiteral
@@ -1211,15 +1257,15 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueBooleanLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueBooleanLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueBooleanLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueBooleanLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueEBooleanParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-		//	{common::MParameterValueBooleanLiteral} value=EBoolean;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+		//	{common::MParameterValueBooleanLiteral} value=EBoolean
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueBooleanLiteral} value=EBoolean
 		public Group getGroup() { return cGroup; }
@@ -1235,39 +1281,48 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueStringLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueStringLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueStringLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final Assignment cIsRawAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cIsRawRawKeyword_1_0 = (Keyword)cIsRawAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
-		//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-		//	{common::MParameterValueStringLiteral} value=STRING;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+		//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+		//	value=STRING
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterValueStringLiteral} value=STRING
+		//{common::MParameterValueStringLiteral} isRaw?='raw'? value=STRING
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterValueStringLiteral}
 		public Action getMParameterValueStringLiteralAction_0() { return cMParameterValueStringLiteralAction_0; }
 
+		//isRaw?='raw'?
+		public Assignment getIsRawAssignment_1() { return cIsRawAssignment_1; }
+
+		//'raw'
+		public Keyword getIsRawRawKeyword_1_0() { return cIsRawRawKeyword_1_0; }
+
 		//value=STRING
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class MParameterValueIntegerLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueIntegerLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueIntegerLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueIntegerLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueINTEGERParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-		//	{common::MParameterValueIntegerLiteral} value=INTEGER;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+		//	{common::MParameterValueIntegerLiteral} value=INTEGER
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueIntegerLiteral} value=INTEGER
 		public Group getGroup() { return cGroup; }
@@ -1283,15 +1338,15 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRealLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRealLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueRealLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRealLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueREALParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-		//	{common::MParameterValueRealLiteral} value=REAL;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+		//	{common::MParameterValueRealLiteral} value=REAL
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRealLiteral} value=REAL
 		public Group getGroup() { return cGroup; }
@@ -1307,16 +1362,16 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRefObjectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRefObject");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueRefObject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRefObjectAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cObjectAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cObjectMCommonReferenceableObjCrossReference_1_0 = (CrossReference)cObjectAssignment_1.eContents().get(0);
 		private final RuleCall cObjectMCommonReferenceableObjVersionedQualifiedReferenceNameParserRuleCall_1_0_1 = (RuleCall)cObjectMCommonReferenceableObjCrossReference_1_0.eContents().get(1);
 		
-		//MParameterValueRefObject returns common::MParameterValueRefObject:
-		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRefObject common::MParameterValueRefObject:
+		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 		public Group getGroup() { return cGroup; }
@@ -1335,21 +1390,21 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValuePARElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValuePAR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValuePAR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueMParameterValueExpressionParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//MParameterValuePAR returns common::MParameterValuePAR:
-		//	"(" value=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterValuePAR common::MParameterValuePAR:
+		//	'(' value=MParameterValueExpression ')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"(" value=MParameterValueExpression ")"
+		//'(' value=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 
 		//value=MParameterValueExpression
@@ -1358,12 +1413,12 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getValueMParameterValueExpressionParserRuleCall_1_0() { return cValueMParameterValueExpressionParserRuleCall_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 
 	public class MParameterValueExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueExpressionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1374,10 +1429,10 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueExpressionParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueExpression returns common::MParameterValueExpression:
+		//MParameterValueExpression common::MParameterValueExpression:
 		//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-		//	right=MParameterValueExpression)?;
-		public ParserRule getRule() { return rule; }
+		//	right=MParameterValueExpression)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
 		//right=MParameterValueExpression)?
@@ -1409,7 +1464,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueTERMElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERM");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueTERM");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueTERMAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1420,10 +1475,9 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueTERMParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueTERM returns common::MParameterValueTERM:
-		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-		//	right=MParameterValueTERM)?;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueTERM common::MParameterValueTERM:
+		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 		public Group getGroup() { return cGroup; }
@@ -1454,16 +1508,16 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterRangeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterRange");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterRange");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterOCRParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterOORParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterCORParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cMParameterCCRParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MParameterRange returns common::MParameterRange:
-		//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR;
-		public ParserRule getRule() { return rule; }
+		//MParameterRange common::MParameterRange:
+		//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1482,7 +1536,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterOCRElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterOCR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterOCR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterOCRAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1493,17 +1547,21 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterOCR returns common::MParameterOCR:
-		//	{common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
-		public ParserRule getRule() { return rule; }
+		//MParameterOCR common::MParameterOCR:
+		//	{common::MParameterOCR}
+		//	'('
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	']'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]"
+		//{common::MParameterOCR} '(' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ']'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterOCR}
 		public Action getMParameterOCRAction_0() { return cMParameterOCRAction_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -1512,7 +1570,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -1521,12 +1579,12 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//"]"
+		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
 
 	public class MParameterOORElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterOOR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterOOR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterOORAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1537,17 +1595,21 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterOOR returns common::MParameterOOR:
-		//	{common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterOOR common::MParameterOOR:
+		//	{common::MParameterOOR}
+		//	'('
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")"
+		//{common::MParameterOOR} '(' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterOOR}
 		public Action getMParameterOORAction_0() { return cMParameterOORAction_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -1556,7 +1618,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -1565,12 +1627,12 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 
 	public class MParameterCORElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterCOR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterCOR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterCORAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1581,17 +1643,21 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterCOR returns common::MParameterCOR:
-		//	{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterCOR common::MParameterCOR:
+		//	{common::MParameterCOR}
+		//	'['
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")"
+		//{common::MParameterCOR} '[' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterCOR}
 		public Action getMParameterCORAction_0() { return cMParameterCORAction_0; }
 
-		//"["
+		//'['
 		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -1600,7 +1666,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -1609,12 +1675,12 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_5() { return cRightParenthesisKeyword_5; }
 	}
 
 	public class MParameterCCRElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterCCR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterCCR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterCORAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cLeftSquareBracketKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1625,17 +1691,21 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cUpperValueMParameterValueExpressionParserRuleCall_4_0 = (RuleCall)cUpperValueAssignment_4.eContents().get(0);
 		private final Keyword cRightSquareBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MParameterCCR returns common::MParameterCOR:
-		//	{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
-		public ParserRule getRule() { return rule; }
+		//MParameterCCR common::MParameterCOR:
+		//	{common::MParameterCOR}
+		//	'['
+		//	lowerValue=MParameterValueExpression ','
+		//	upperValue=MParameterValueExpression
+		//	']'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]"
+		//{common::MParameterCOR} '[' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ']'
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterCOR}
 		public Action getMParameterCORAction_0() { return cMParameterCORAction_0; }
 
-		//"["
+		//'['
 		public Keyword getLeftSquareBracketKeyword_1() { return cLeftSquareBracketKeyword_1; }
 
 		//lowerValue=MParameterValueExpression
@@ -1644,7 +1714,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getLowerValueMParameterValueExpressionParserRuleCall_2_0() { return cLowerValueMParameterValueExpressionParserRuleCall_2_0; }
 
-		//","
+		//','
 		public Keyword getCommaKeyword_3() { return cCommaKeyword_3; }
 
 		//upperValue=MParameterValueExpression
@@ -1653,13 +1723,13 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getUpperValueMParameterValueExpressionParserRuleCall_4_0() { return cUpperValueMParameterValueExpressionParserRuleCall_4_0; }
 
-		//"]"
+		//']'
 		public Keyword getRightSquareBracketKeyword_5() { return cRightSquareBracketKeyword_5; }
 	}
 	
 	
 	public class MParameterValueExpressionOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpressionOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueExpressionOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cPlusEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cPlusPlusSignKeyword_0_0 = (Keyword)cPlusEnumLiteralDeclaration_0.eContents().get(0);
@@ -1667,27 +1737,27 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMinusHyphenMinusKeyword_1_0 = (Keyword)cMinusEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-		//	plus="+" | minus="-";
+		//	plus='+' | minus='-';
 		public EnumRule getRule() { return rule; }
 
-		//plus="+" | minus="-"
+		//plus='+' | minus='-'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//plus="+"
+		//plus='+'
 		public EnumLiteralDeclaration getPlusEnumLiteralDeclaration_0() { return cPlusEnumLiteralDeclaration_0; }
 
-		//"+"
+		//'+'
 		public Keyword getPlusPlusSignKeyword_0_0() { return cPlusPlusSignKeyword_0_0; }
 
-		//minus="-"
+		//minus='-'
 		public EnumLiteralDeclaration getMinusEnumLiteralDeclaration_1() { return cMinusEnumLiteralDeclaration_1; }
 
-		//"-"
+		//'-'
 		public Keyword getMinusHyphenMinusKeyword_1_0() { return cMinusHyphenMinusKeyword_1_0; }
 	}
 
 	public class MParameterValueTERMOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERMOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.MParameterValueTERMOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cMultEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cMultAsteriskKeyword_0_0 = (Keyword)cMultEnumLiteralDeclaration_0.eContents().get(0);
@@ -1695,75 +1765,115 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDivSolidusKeyword_1_0 = (Keyword)cDivEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-		//	mult="*" | div="/";
+		//	mult='*' | div='/';
 		public EnumRule getRule() { return rule; }
 
-		//mult="*" | div="/"
+		//mult='*' | div='/'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//mult="*"
+		//mult='*'
 		public EnumLiteralDeclaration getMultEnumLiteralDeclaration_0() { return cMultEnumLiteralDeclaration_0; }
 
-		//"*"
+		//'*'
 		public Keyword getMultAsteriskKeyword_0_0() { return cMultAsteriskKeyword_0_0; }
 
-		//div="/"
+		//div='/'
 		public EnumLiteralDeclaration getDivEnumLiteralDeclaration_1() { return cDivEnumLiteralDeclaration_1; }
 
-		//"/"
+		//'/'
 		public Keyword getDivSolidusKeyword_1_0() { return cDivSolidusKeyword_1_0; }
 	}
 	
-	private MMCLEVSAIPackageFileElements pMMCLEVSAIPackageFile;
-	private QualifiedNameElements pQualifiedName;
-	private VersionElements pVersion;
-	private VersionedQualifiedNameElements pVersionedQualifiedName;
-	private VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
-	private MMCLEVSAIPackageElementElements pMMCLEVSAIPackageElement;
-	private MSAIElements pMSAI;
-	private MParameterElements pMParameter;
-	private MIntegerParameterSingleExpressionElements pMIntegerParameterSingleExpression;
-	private MEnumParameterDefinitionElements pMEnumParameterDefinition;
-	private MEnumParameterSingleExpressionElements pMEnumParameterSingleExpression;
-	private MRealParameterSingleExpressionElements pMRealParameterSingleExpression;
-	private MEnumParameterLiteralRuleElements pMEnumParameterLiteralRule;
-	private MEnumParameterLiteralElements pMEnumParameterLiteral;
-	private MEnumParamIntegerLiteralElements pMEnumParamIntegerLiteral;
-	private MEnumParamRealLiteralElements pMEnumParamRealLiteral;
-	private MEnumParamStringLiteralElements pMEnumParamStringLiteral;
-	private MBooleanParameterSingleExpressionElements pMBooleanParameterSingleExpression;
-	private MStringParameterSingleExpressionElements pMStringParameterSingleExpression;
-	private EBooleanElements pEBoolean;
-	private TerminalRule tHEXADECIMAL;
-	private INTEGERElements pINTEGER;
-	private REALElements pREAL;
-	private MParameterValueElements pMParameterValue;
-	private MParameterValueLiteralElements pMParameterValueLiteral;
-	private MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
-	private MParameterValueStringLiteralElements pMParameterValueStringLiteral;
-	private MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
-	private MParameterValueRealLiteralElements pMParameterValueRealLiteral;
-	private MParameterValueRefObjectElements pMParameterValueRefObject;
-	private MParameterValuePARElements pMParameterValuePAR;
-	private MParameterValueExpressionOperatorsElements unknownRuleMParameterValueExpressionOperators;
-	private MParameterValueTERMOperatorsElements unknownRuleMParameterValueTERMOperators;
-	private MParameterValueExpressionElements pMParameterValueExpression;
-	private MParameterValueTERMElements pMParameterValueTERM;
-	private MParameterRangeElements pMParameterRange;
-	private MParameterOCRElements pMParameterOCR;
-	private MParameterOORElements pMParameterOOR;
-	private MParameterCORElements pMParameterCOR;
-	private MParameterCCRElements pMParameterCCR;
+	private final MMCLEVSAIPackageFileElements pMMCLEVSAIPackageFile;
+	private final QualifiedNameElements pQualifiedName;
+	private final VersionElements pVersion;
+	private final VersionedQualifiedNameElements pVersionedQualifiedName;
+	private final VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
+	private final MMCLEVSAIPackageElementElements pMMCLEVSAIPackageElement;
+	private final MSAIElements pMSAI;
+	private final MParameterElements pMParameter;
+	private final MIntegerParameterSingleExpressionElements pMIntegerParameterSingleExpression;
+	private final MEnumParameterDefinitionElements pMEnumParameterDefinition;
+	private final MEnumParameterSingleExpressionElements pMEnumParameterSingleExpression;
+	private final MRealParameterSingleExpressionElements pMRealParameterSingleExpression;
+	private final MEnumParameterLiteralRuleElements pMEnumParameterLiteralRule;
+	private final MEnumParameterLiteralElements pMEnumParameterLiteral;
+	private final MEnumParamIntegerLiteralElements pMEnumParamIntegerLiteral;
+	private final MEnumParamRealLiteralElements pMEnumParamRealLiteral;
+	private final MEnumParamStringLiteralElements pMEnumParamStringLiteral;
+	private final MBooleanParameterSingleExpressionElements pMBooleanParameterSingleExpression;
+	private final MStringParameterSingleExpressionElements pMStringParameterSingleExpression;
+	private final EBooleanElements pEBoolean;
+	private final TerminalRule tHEXADECIMAL;
+	private final INTEGERElements pINTEGER;
+	private final REALElements pREAL;
+	private final MParameterValueElements pMParameterValue;
+	private final MParameterValueLiteralElements pMParameterValueLiteral;
+	private final MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
+	private final MParameterValueStringLiteralElements pMParameterValueStringLiteral;
+	private final MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
+	private final MParameterValueRealLiteralElements pMParameterValueRealLiteral;
+	private final MParameterValueRefObjectElements pMParameterValueRefObject;
+	private final MParameterValuePARElements pMParameterValuePAR;
+	private final MParameterValueExpressionOperatorsElements eMParameterValueExpressionOperators;
+	private final MParameterValueTERMOperatorsElements eMParameterValueTERMOperators;
+	private final MParameterValueExpressionElements pMParameterValueExpression;
+	private final MParameterValueTERMElements pMParameterValueTERM;
+	private final MParameterRangeElements pMParameterRange;
+	private final MParameterOCRElements pMParameterOCR;
+	private final MParameterOORElements pMParameterOOR;
+	private final MParameterCORElements pMParameterCOR;
+	private final MParameterCCRElements pMParameterCCR;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public SAIGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMMCLEVSAIPackageFile = new MMCLEVSAIPackageFileElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pVersion = new VersionElements();
+		this.pVersionedQualifiedName = new VersionedQualifiedNameElements();
+		this.pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements();
+		this.pMMCLEVSAIPackageElement = new MMCLEVSAIPackageElementElements();
+		this.pMSAI = new MSAIElements();
+		this.pMParameter = new MParameterElements();
+		this.pMIntegerParameterSingleExpression = new MIntegerParameterSingleExpressionElements();
+		this.pMEnumParameterDefinition = new MEnumParameterDefinitionElements();
+		this.pMEnumParameterSingleExpression = new MEnumParameterSingleExpressionElements();
+		this.pMRealParameterSingleExpression = new MRealParameterSingleExpressionElements();
+		this.pMEnumParameterLiteralRule = new MEnumParameterLiteralRuleElements();
+		this.pMEnumParameterLiteral = new MEnumParameterLiteralElements();
+		this.pMEnumParamIntegerLiteral = new MEnumParamIntegerLiteralElements();
+		this.pMEnumParamRealLiteral = new MEnumParamRealLiteralElements();
+		this.pMEnumParamStringLiteral = new MEnumParamStringLiteralElements();
+		this.pMBooleanParameterSingleExpression = new MBooleanParameterSingleExpressionElements();
+		this.pMStringParameterSingleExpression = new MStringParameterSingleExpressionElements();
+		this.pEBoolean = new EBooleanElements();
+		this.tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.SAI.HEXADECIMAL");
+		this.pINTEGER = new INTEGERElements();
+		this.pREAL = new REALElements();
+		this.pMParameterValue = new MParameterValueElements();
+		this.pMParameterValueLiteral = new MParameterValueLiteralElements();
+		this.pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements();
+		this.pMParameterValueStringLiteral = new MParameterValueStringLiteralElements();
+		this.pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements();
+		this.pMParameterValueRealLiteral = new MParameterValueRealLiteralElements();
+		this.pMParameterValueRefObject = new MParameterValueRefObjectElements();
+		this.pMParameterValuePAR = new MParameterValuePARElements();
+		this.eMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements();
+		this.eMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements();
+		this.pMParameterValueExpression = new MParameterValueExpressionElements();
+		this.pMParameterValueTERM = new MParameterValueTERMElements();
+		this.pMParameterRange = new MParameterRangeElements();
+		this.pMParameterOCR = new MParameterOCRElements();
+		this.pMParameterOOR = new MParameterOORElements();
+		this.pMParameterCOR = new MParameterCORElements();
+		this.pMParameterCCR = new MParameterCCRElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1782,7 +1892,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-	
+	@Override
 	public Grammar getGrammar() {
 		return grammar;
 	}
@@ -1794,50 +1904,51 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//MMCLEVSAIPackageFile:
-	//	"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-	//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMCLEVSAIPackageElement;
+	//	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+	//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+	//	element=MMCLEVSAIPackageElement;
 	public MMCLEVSAIPackageFileElements getMMCLEVSAIPackageFileAccess() {
-		return (pMMCLEVSAIPackageFile != null) ? pMMCLEVSAIPackageFile : (pMMCLEVSAIPackageFile = new MMCLEVSAIPackageFileElements());
+		return pMMCLEVSAIPackageFile;
 	}
 	
 	public ParserRule getMMCLEVSAIPackageFileRule() {
 		return getMMCLEVSAIPackageFileAccess().getRule();
 	}
 
-	//QualifiedName returns ecore::EString:
-	//	ID ("." ID)*;
+	//QualifiedName:
+	//	ID ('.' ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
 		return getQualifiedNameAccess().getRule();
 	}
 
-	//Version returns ecore::EString:
-	//	(INT | INT? ID) ("." (INT | INT? ID))*;
+	//Version:
+	//	(INT | INT? ID) ('.' (INT | INT? ID))*;
 	public VersionElements getVersionAccess() {
-		return (pVersion != null) ? pVersion : (pVersion = new VersionElements());
+		return pVersion;
 	}
 	
 	public ParserRule getVersionRule() {
 		return getVersionAccess().getRule();
 	}
 
-	//VersionedQualifiedName returns ecore::EString:
-	//	QualifiedName "(" Version ")";
+	//VersionedQualifiedName:
+	//	QualifiedName '(' Version ')';
 	public VersionedQualifiedNameElements getVersionedQualifiedNameAccess() {
-		return (pVersionedQualifiedName != null) ? pVersionedQualifiedName : (pVersionedQualifiedName = new VersionedQualifiedNameElements());
+		return pVersionedQualifiedName;
 	}
 	
 	public ParserRule getVersionedQualifiedNameRule() {
 		return getVersionedQualifiedNameAccess().getRule();
 	}
 
-	//VersionedQualifiedReferenceName returns ecore::EString:
-	//	(VersionedQualifiedName "::")? ID ("::" ID)*;
+	//VersionedQualifiedReferenceName:
+	//	(VersionedQualifiedName '::')? ID ('::' ID)*;
 	public VersionedQualifiedReferenceNameElements getVersionedQualifiedReferenceNameAccess() {
-		return (pVersionedQualifiedReferenceName != null) ? pVersionedQualifiedReferenceName : (pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements());
+		return pVersionedQualifiedReferenceName;
 	}
 	
 	public ParserRule getVersionedQualifiedReferenceNameRule() {
@@ -1847,7 +1958,7 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	//MMCLEVSAIPackageElement:
 	//	MSAI;
 	public MMCLEVSAIPackageElementElements getMMCLEVSAIPackageElementAccess() {
-		return (pMMCLEVSAIPackageElement != null) ? pMMCLEVSAIPackageElement : (pMMCLEVSAIPackageElement = new MMCLEVSAIPackageElementElements());
+		return pMMCLEVSAIPackageElement;
 	}
 	
 	public ParserRule getMMCLEVSAIPackageElementRule() {
@@ -1855,146 +1966,183 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MSAI:
-	//	"sai" name=ID ("extends" extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)? "{"
-	//	("version" ":=" version=Version ";" & "language" ":=" language=[system::MLanguage|VersionedQualifiedName] ";" &
-	//	("attributes" "{" attributes+=MParameter+ "}" ";")? & ("requires" ":=" requires+=[MSAI|VersionedQualifiedName] (","
-	//	requires+=[MSAI|VersionedQualifiedName])* ";")? & ("required" "osapi" ":="
-	//	requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ";")?) "}" ";";
+	//	'sai'
+	//	name=ID ('extends' extends+=[MSAI|VersionedQualifiedName] ("," extends+=[MSAI|VersionedQualifiedName])*)?
+	//	'{' ('version' ':=' version=Version ';' & 'language' ':=' language=[system::MLanguage|VersionedQualifiedName] ';' &
+	//	('attributes'
+	//	'{'
+	//	attributes+=MParameter+
+	//	'}' ';')?
+	//	& ('requires' ':=' requires+=[MSAI|VersionedQualifiedName] ("," requires+=[MSAI|VersionedQualifiedName])* ';')?
+	//	& ('required' 'osapi' ':=' requiredOSAPI=[pdl::MOperatingSystemAPI|VersionedQualifiedName] ';')?)
+	//	'}'
+	//	';';
 	public MSAIElements getMSAIAccess() {
-		return (pMSAI != null) ? pMSAI : (pMSAI = new MSAIElements());
+		return pMSAI;
 	}
 	
 	public ParserRule getMSAIRule() {
 		return getMSAIAccess().getRule();
 	}
 
-	//MParameter returns common::MParameter:
+	//MParameter common::MParameter:
 	//	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
-	//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition;
+	//	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition
 	public MParameterElements getMParameterAccess() {
-		return (pMParameter != null) ? pMParameter : (pMParameter = new MParameterElements());
+		return pMParameter;
 	}
 	
 	public ParserRule getMParameterRule() {
 		return getMParameterAccess().getRule();
 	}
 
-	//MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
-	//	constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
+	//MIntegerParameterSingleExpression common::MIntegerParameterSingleExpression:
+	//	constant?='const'?
+	//	'integer'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+	//	';'
 	public MIntegerParameterSingleExpressionElements getMIntegerParameterSingleExpressionAccess() {
-		return (pMIntegerParameterSingleExpression != null) ? pMIntegerParameterSingleExpression : (pMIntegerParameterSingleExpression = new MIntegerParameterSingleExpressionElements());
+		return pMIntegerParameterSingleExpression;
 	}
 	
 	public ParserRule getMIntegerParameterSingleExpressionRule() {
 		return getMIntegerParameterSingleExpressionAccess().getRule();
 	}
 
-	//MEnumParameterDefinition returns common::MEnumParameterDefinition:
-	//	{common::MEnumParameterDefinition} "enum" name=ID "{" literals+=MEnumParameterLiteralRule (","
-	//	literals+=MEnumParameterLiteralRule)* "}" ";";
+	//MEnumParameterDefinition common::MEnumParameterDefinition:
+	//	{common::MEnumParameterDefinition}
+	//	'enum'
+	//	name=ID
+	//	'{'
+	//	literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+	//	'}'
+	//	';'
 	public MEnumParameterDefinitionElements getMEnumParameterDefinitionAccess() {
-		return (pMEnumParameterDefinition != null) ? pMEnumParameterDefinition : (pMEnumParameterDefinition = new MEnumParameterDefinitionElements());
+		return pMEnumParameterDefinition;
 	}
 	
 	public ParserRule getMEnumParameterDefinitionRule() {
 		return getMEnumParameterDefinitionAccess().getRule();
 	}
 
-	//MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
-	//	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
-	//	":=" defaultValue=MParameterValueExpression ";";
+	//MEnumParameterSingleExpression common::MEnumParameterSingleExpression:
+	//	constant?='const'?
+	//	'enum'
+	//	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
+	//	':=' defaultValue=MParameterValueExpression
+	//	';'
 	public MEnumParameterSingleExpressionElements getMEnumParameterSingleExpressionAccess() {
-		return (pMEnumParameterSingleExpression != null) ? pMEnumParameterSingleExpression : (pMEnumParameterSingleExpression = new MEnumParameterSingleExpressionElements());
+		return pMEnumParameterSingleExpression;
 	}
 	
 	public ParserRule getMEnumParameterSingleExpressionRule() {
 		return getMEnumParameterSingleExpressionAccess().getRule();
 	}
 
-	//MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
-	//	constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
+	//MRealParameterSingleExpression common::MRealParameterSingleExpression:
+	//	constant?='const'?
+	//	'real'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+	//	';'
 	public MRealParameterSingleExpressionElements getMRealParameterSingleExpressionAccess() {
-		return (pMRealParameterSingleExpression != null) ? pMRealParameterSingleExpression : (pMRealParameterSingleExpression = new MRealParameterSingleExpressionElements());
+		return pMRealParameterSingleExpression;
 	}
 	
 	public ParserRule getMRealParameterSingleExpressionRule() {
 		return getMRealParameterSingleExpressionAccess().getRule();
 	}
 
-	//MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
-	//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral;
+	//MEnumParameterLiteralRule common::MEnumParameterLiteral:
+	//	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral
 	public MEnumParameterLiteralRuleElements getMEnumParameterLiteralRuleAccess() {
-		return (pMEnumParameterLiteralRule != null) ? pMEnumParameterLiteralRule : (pMEnumParameterLiteralRule = new MEnumParameterLiteralRuleElements());
+		return pMEnumParameterLiteralRule;
 	}
 	
 	public ParserRule getMEnumParameterLiteralRuleRule() {
 		return getMEnumParameterLiteralRuleAccess().getRule();
 	}
 
-	//MEnumParameterLiteral returns common::MEnumParameterLiteral:
-	//	{common::MEnumParameterLiteral} name=ID;
+	//MEnumParameterLiteral common::MEnumParameterLiteral:
+	//	{common::MEnumParameterLiteral} name=ID
 	public MEnumParameterLiteralElements getMEnumParameterLiteralAccess() {
-		return (pMEnumParameterLiteral != null) ? pMEnumParameterLiteral : (pMEnumParameterLiteral = new MEnumParameterLiteralElements());
+		return pMEnumParameterLiteral;
 	}
 	
 	public ParserRule getMEnumParameterLiteralRule() {
 		return getMEnumParameterLiteralAccess().getRule();
 	}
 
-	//MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
-	//	{common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER;
+	//MEnumParamIntegerLiteral common::MEnumParamIntegerLiteral:
+	//	{common::MEnumParamIntegerLiteral} name=ID
+	//	'='
+	//	value=INTEGER
 	public MEnumParamIntegerLiteralElements getMEnumParamIntegerLiteralAccess() {
-		return (pMEnumParamIntegerLiteral != null) ? pMEnumParamIntegerLiteral : (pMEnumParamIntegerLiteral = new MEnumParamIntegerLiteralElements());
+		return pMEnumParamIntegerLiteral;
 	}
 	
 	public ParserRule getMEnumParamIntegerLiteralRule() {
 		return getMEnumParamIntegerLiteralAccess().getRule();
 	}
 
-	//MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
-	//	{common::MEnumParamRealLiteral} name=ID "=" value=REAL;
+	//MEnumParamRealLiteral common::MEnumParamRealLiteral:
+	//	{common::MEnumParamRealLiteral} name=ID
+	//	'='
+	//	value=REAL
 	public MEnumParamRealLiteralElements getMEnumParamRealLiteralAccess() {
-		return (pMEnumParamRealLiteral != null) ? pMEnumParamRealLiteral : (pMEnumParamRealLiteral = new MEnumParamRealLiteralElements());
+		return pMEnumParamRealLiteral;
 	}
 	
 	public ParserRule getMEnumParamRealLiteralRule() {
 		return getMEnumParamRealLiteralAccess().getRule();
 	}
 
-	//MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
-	//	{common::MEnumParamStringLiteral} name=ID "=" value=STRING;
+	//MEnumParamStringLiteral common::MEnumParamStringLiteral:
+	//	{common::MEnumParamStringLiteral} name=ID
+	//	'='
+	//	isRaw?='raw'?
+	//	value=STRING
 	public MEnumParamStringLiteralElements getMEnumParamStringLiteralAccess() {
-		return (pMEnumParamStringLiteral != null) ? pMEnumParamStringLiteral : (pMEnumParamStringLiteral = new MEnumParamStringLiteralElements());
+		return pMEnumParamStringLiteral;
 	}
 	
 	public ParserRule getMEnumParamStringLiteralRule() {
 		return getMEnumParamStringLiteralAccess().getRule();
 	}
 
-	//MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
-	//	constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";";
+	//MBooleanParameterSingleExpression common::MBooleanParameterSingleExpression:
+	//	constant?='const'?
+	//	'boolean'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression
+	//	';'
 	public MBooleanParameterSingleExpressionElements getMBooleanParameterSingleExpressionAccess() {
-		return (pMBooleanParameterSingleExpression != null) ? pMBooleanParameterSingleExpression : (pMBooleanParameterSingleExpression = new MBooleanParameterSingleExpressionElements());
+		return pMBooleanParameterSingleExpression;
 	}
 	
 	public ParserRule getMBooleanParameterSingleExpressionRule() {
 		return getMBooleanParameterSingleExpressionAccess().getRule();
 	}
 
-	//MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
-	//	constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";";
+	//MStringParameterSingleExpression common::MStringParameterSingleExpression:
+	//	constant?='const'?
+	//	'string'
+	//	name=ID
+	//	':=' defaultValue=MParameterValueExpression
+	//	';'
 	public MStringParameterSingleExpressionElements getMStringParameterSingleExpressionAccess() {
-		return (pMStringParameterSingleExpression != null) ? pMStringParameterSingleExpression : (pMStringParameterSingleExpression = new MStringParameterSingleExpressionElements());
+		return pMStringParameterSingleExpression;
 	}
 	
 	public ParserRule getMStringParameterSingleExpressionRule() {
 		return getMStringParameterSingleExpressionAccess().getRule();
 	}
 
-	//EBoolean returns ecore::EBoolean:
-	//	"true" | "false";
+	//EBoolean ecore::EBoolean:
+	//	'true' | 'false'
 	public EBooleanElements getEBooleanAccess() {
-		return (pEBoolean != null) ? pEBoolean : (pEBoolean = new EBooleanElements());
+		return pEBoolean;
 	}
 	
 	public ParserRule getEBooleanRule() {
@@ -2002,106 +2150,107 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal HEXADECIMAL:
-	//	"0x" ("0".."9" | "a".."f" | "A".."F")+;
+	//	'0x' ('0'..'9' | 'a'..'f' | 'A'..'F')+;
 	public TerminalRule getHEXADECIMALRule() {
-		return (tHEXADECIMAL != null) ? tHEXADECIMAL : (tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEXADECIMAL"));
+		return tHEXADECIMAL;
 	} 
 
-	//INTEGER returns ecore::EString:
-	//	"-"? INT | HEXADECIMAL;
+	//INTEGER:
+	//	'-'? INT | HEXADECIMAL;
 	public INTEGERElements getINTEGERAccess() {
-		return (pINTEGER != null) ? pINTEGER : (pINTEGER = new INTEGERElements());
+		return pINTEGER;
 	}
 	
 	public ParserRule getINTEGERRule() {
 		return getINTEGERAccess().getRule();
 	}
 
-	//REAL returns ecore::EString:
-	//	"-"? (INT "." INT) ("e" "-"? INT)?;
+	//REAL:
+	//	'-'? (INT '.' INT) ('e' '-'? INT)?;
 	public REALElements getREALAccess() {
-		return (pREAL != null) ? pREAL : (pREAL = new REALElements());
+		return pREAL;
 	}
 	
 	public ParserRule getREALRule() {
 		return getREALAccess().getRule();
 	}
 
-	//MParameterValue returns common::MParameterValue:
-	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
+	//MParameterValue common::MParameterValue:
+	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 	public MParameterValueElements getMParameterValueAccess() {
-		return (pMParameterValue != null) ? pMParameterValue : (pMParameterValue = new MParameterValueElements());
+		return pMParameterValue;
 	}
 	
 	public ParserRule getMParameterValueRule() {
 		return getMParameterValueAccess().getRule();
 	}
 
-	//MParameterValueLiteral returns common::MParameterValueLiteral:
+	//MParameterValueLiteral common::MParameterValueLiteral:
 	//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-	//	MParameterValueRealLiteral;
+	//	MParameterValueRealLiteral
 	public MParameterValueLiteralElements getMParameterValueLiteralAccess() {
-		return (pMParameterValueLiteral != null) ? pMParameterValueLiteral : (pMParameterValueLiteral = new MParameterValueLiteralElements());
+		return pMParameterValueLiteral;
 	}
 	
 	public ParserRule getMParameterValueLiteralRule() {
 		return getMParameterValueLiteralAccess().getRule();
 	}
 
-	//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-	//	{common::MParameterValueBooleanLiteral} value=EBoolean;
+	//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+	//	{common::MParameterValueBooleanLiteral} value=EBoolean
 	public MParameterValueBooleanLiteralElements getMParameterValueBooleanLiteralAccess() {
-		return (pMParameterValueBooleanLiteral != null) ? pMParameterValueBooleanLiteral : (pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements());
+		return pMParameterValueBooleanLiteral;
 	}
 	
 	public ParserRule getMParameterValueBooleanLiteralRule() {
 		return getMParameterValueBooleanLiteralAccess().getRule();
 	}
 
-	//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-	//	{common::MParameterValueStringLiteral} value=STRING;
+	//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+	//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+	//	value=STRING
 	public MParameterValueStringLiteralElements getMParameterValueStringLiteralAccess() {
-		return (pMParameterValueStringLiteral != null) ? pMParameterValueStringLiteral : (pMParameterValueStringLiteral = new MParameterValueStringLiteralElements());
+		return pMParameterValueStringLiteral;
 	}
 	
 	public ParserRule getMParameterValueStringLiteralRule() {
 		return getMParameterValueStringLiteralAccess().getRule();
 	}
 
-	//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-	//	{common::MParameterValueIntegerLiteral} value=INTEGER;
+	//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+	//	{common::MParameterValueIntegerLiteral} value=INTEGER
 	public MParameterValueIntegerLiteralElements getMParameterValueIntegerLiteralAccess() {
-		return (pMParameterValueIntegerLiteral != null) ? pMParameterValueIntegerLiteral : (pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements());
+		return pMParameterValueIntegerLiteral;
 	}
 	
 	public ParserRule getMParameterValueIntegerLiteralRule() {
 		return getMParameterValueIntegerLiteralAccess().getRule();
 	}
 
-	//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-	//	{common::MParameterValueRealLiteral} value=REAL;
+	//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+	//	{common::MParameterValueRealLiteral} value=REAL
 	public MParameterValueRealLiteralElements getMParameterValueRealLiteralAccess() {
-		return (pMParameterValueRealLiteral != null) ? pMParameterValueRealLiteral : (pMParameterValueRealLiteral = new MParameterValueRealLiteralElements());
+		return pMParameterValueRealLiteral;
 	}
 	
 	public ParserRule getMParameterValueRealLiteralRule() {
 		return getMParameterValueRealLiteralAccess().getRule();
 	}
 
-	//MParameterValueRefObject returns common::MParameterValueRefObject:
-	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
+	//MParameterValueRefObject common::MParameterValueRefObject:
+	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 	public MParameterValueRefObjectElements getMParameterValueRefObjectAccess() {
-		return (pMParameterValueRefObject != null) ? pMParameterValueRefObject : (pMParameterValueRefObject = new MParameterValueRefObjectElements());
+		return pMParameterValueRefObject;
 	}
 	
 	public ParserRule getMParameterValueRefObjectRule() {
 		return getMParameterValueRefObjectAccess().getRule();
 	}
 
-	//MParameterValuePAR returns common::MParameterValuePAR:
-	//	"(" value=MParameterValueExpression ")";
+	//MParameterValuePAR common::MParameterValuePAR:
+	//	'(' value=MParameterValueExpression ')'
 	public MParameterValuePARElements getMParameterValuePARAccess() {
-		return (pMParameterValuePAR != null) ? pMParameterValuePAR : (pMParameterValuePAR = new MParameterValuePARElements());
+		return pMParameterValuePAR;
 	}
 	
 	public ParserRule getMParameterValuePARRule() {
@@ -2109,9 +2258,9 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-	//	plus="+" | minus="-";
+	//	plus='+' | minus='-';
 	public MParameterValueExpressionOperatorsElements getMParameterValueExpressionOperatorsAccess() {
-		return (unknownRuleMParameterValueExpressionOperators != null) ? unknownRuleMParameterValueExpressionOperators : (unknownRuleMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements());
+		return eMParameterValueExpressionOperators;
 	}
 	
 	public EnumRule getMParameterValueExpressionOperatorsRule() {
@@ -2119,81 +2268,96 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-	//	mult="*" | div="/";
+	//	mult='*' | div='/';
 	public MParameterValueTERMOperatorsElements getMParameterValueTERMOperatorsAccess() {
-		return (unknownRuleMParameterValueTERMOperators != null) ? unknownRuleMParameterValueTERMOperators : (unknownRuleMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements());
+		return eMParameterValueTERMOperators;
 	}
 	
 	public EnumRule getMParameterValueTERMOperatorsRule() {
 		return getMParameterValueTERMOperatorsAccess().getRule();
 	}
 
-	//MParameterValueExpression returns common::MParameterValueExpression:
+	//MParameterValueExpression common::MParameterValueExpression:
 	//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-	//	right=MParameterValueExpression)?;
+	//	right=MParameterValueExpression)?
 	public MParameterValueExpressionElements getMParameterValueExpressionAccess() {
-		return (pMParameterValueExpression != null) ? pMParameterValueExpression : (pMParameterValueExpression = new MParameterValueExpressionElements());
+		return pMParameterValueExpression;
 	}
 	
 	public ParserRule getMParameterValueExpressionRule() {
 		return getMParameterValueExpressionAccess().getRule();
 	}
 
-	//MParameterValueTERM returns common::MParameterValueTERM:
-	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-	//	right=MParameterValueTERM)?;
+	//MParameterValueTERM common::MParameterValueTERM:
+	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 	public MParameterValueTERMElements getMParameterValueTERMAccess() {
-		return (pMParameterValueTERM != null) ? pMParameterValueTERM : (pMParameterValueTERM = new MParameterValueTERMElements());
+		return pMParameterValueTERM;
 	}
 	
 	public ParserRule getMParameterValueTERMRule() {
 		return getMParameterValueTERMAccess().getRule();
 	}
 
-	//MParameterRange returns common::MParameterRange:
-	//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR;
+	//MParameterRange common::MParameterRange:
+	//	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR
 	public MParameterRangeElements getMParameterRangeAccess() {
-		return (pMParameterRange != null) ? pMParameterRange : (pMParameterRange = new MParameterRangeElements());
+		return pMParameterRange;
 	}
 	
 	public ParserRule getMParameterRangeRule() {
 		return getMParameterRangeAccess().getRule();
 	}
 
-	//MParameterOCR returns common::MParameterOCR:
-	//	{common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
+	//MParameterOCR common::MParameterOCR:
+	//	{common::MParameterOCR}
+	//	'('
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	']'
 	public MParameterOCRElements getMParameterOCRAccess() {
-		return (pMParameterOCR != null) ? pMParameterOCR : (pMParameterOCR = new MParameterOCRElements());
+		return pMParameterOCR;
 	}
 	
 	public ParserRule getMParameterOCRRule() {
 		return getMParameterOCRAccess().getRule();
 	}
 
-	//MParameterOOR returns common::MParameterOOR:
-	//	{common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
+	//MParameterOOR common::MParameterOOR:
+	//	{common::MParameterOOR}
+	//	'('
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	')'
 	public MParameterOORElements getMParameterOORAccess() {
-		return (pMParameterOOR != null) ? pMParameterOOR : (pMParameterOOR = new MParameterOORElements());
+		return pMParameterOOR;
 	}
 	
 	public ParserRule getMParameterOORRule() {
 		return getMParameterOORAccess().getRule();
 	}
 
-	//MParameterCOR returns common::MParameterCOR:
-	//	{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
+	//MParameterCOR common::MParameterCOR:
+	//	{common::MParameterCOR}
+	//	'['
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	')'
 	public MParameterCORElements getMParameterCORAccess() {
-		return (pMParameterCOR != null) ? pMParameterCOR : (pMParameterCOR = new MParameterCORElements());
+		return pMParameterCOR;
 	}
 	
 	public ParserRule getMParameterCORRule() {
 		return getMParameterCORAccess().getRule();
 	}
 
-	//MParameterCCR returns common::MParameterCOR:
-	//	{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
+	//MParameterCCR common::MParameterCOR:
+	//	{common::MParameterCOR}
+	//	'['
+	//	lowerValue=MParameterValueExpression ','
+	//	upperValue=MParameterValueExpression
+	//	']'
 	public MParameterCCRElements getMParameterCCRAccess() {
-		return (pMParameterCCR != null) ? pMParameterCCR : (pMParameterCCR = new MParameterCCRElements());
+		return pMParameterCCR;
 	}
 	
 	public ParserRule getMParameterCCRRule() {
@@ -2201,38 +2365,38 @@ public class SAIGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
+	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
+	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 

@@ -18,5 +18,6 @@ Import-Package: org.apache.log4j
 Bundle-RequiredExecutionEnvironment: JavaSE-1.6
 Export-Package: es.uah.aut.srg.micobs.mclev.lang.ui.contentassist,
  es.uah.aut.srg.micobs.mclev.lang.ui.contentassist.antlr,
- es.uah.aut.srg.micobs.mclev.lang.ui.quickfix
+ es.uah.aut.srg.micobs.mclev.lang.ui.quickfix,
+ es.uah.aut.srg.micobs.mclev.lang.ui.contentassist.antlr.internal
 Bundle-Activator: es.uah.aut.srg.micobs.mclev.lang.ui.internal.CMPActivator

@@ -13,14 +13,13 @@ package es.uah.aut.srg.micobs.mesp.lang.parseTreeConstruction;
 import org.eclipse.emf.ecore.*;
 import org.eclipse.xtext.*;
 import org.eclipse.xtext.parsetree.reconstr.IEObjectConsumer;
-import org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor;
 
 import es.uah.aut.srg.micobs.mesp.lang.services.PSWPGrammarAccess;
 
 import com.google.inject.Inject;
 
 @SuppressWarnings("all")
-public class PSWPParsetreeConstructor extends AbstractParseTreeConstructor {
+public class PSWPParsetreeConstructor extends org.eclipse.xtext.parsetree.reconstr.impl.AbstractParseTreeConstructor {
 		
 	@Inject
 	private PSWPGrammarAccess grammarAccess;
@@ -50,13 +49,14 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule MMESPPSWPPackageFile ****************
  *
  * MMESPPSWPPackageFile:
- * 	"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
- * 	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPPSWPPackageElement;
+ * 	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+ * 	imports+=[common::MCommonPackage|QualifiedName] ';')*
+ * 	element=MMESPPSWPPackageElement;
  *
  **/
 
-// "package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-// imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPPSWPPackageElement
+// 'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+// imports+=[common::MCommonPackage|QualifiedName] ';')* element=MMESPPSWPPackageElement
 protected class MMESPPSWPPackageFile_Group extends GroupToken {
 	
 	public MMESPPSWPPackageFile_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -85,7 +85,7 @@ protected class MMESPPSWPPackageFile_Group extends GroupToken {
 
 }
 
-// "package"
+// 'package'
 protected class MMESPPSWPPackageFile_PackageKeyword_0 extends KeywordToken  {
 	
 	public MMESPPSWPPackageFile_PackageKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -143,7 +143,7 @@ protected class MMESPPSWPPackageFile_PackageAssignment_1 extends AssignmentToken
 
 }
 
-// ";"
+// ';'
 protected class MMESPPSWPPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 	
 	public MMESPPSWPPackageFile_SemicolonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -165,7 +165,7 @@ protected class MMESPPSWPPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 
 }
 
-// ("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+// ('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 protected class MMESPPSWPPackageFile_Group_3 extends GroupToken {
 	
 	public MMESPPSWPPackageFile_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -187,7 +187,7 @@ protected class MMESPPSWPPackageFile_Group_3 extends GroupToken {
 
 }
 
-// "import"
+// 'import'
 protected class MMESPPSWPPackageFile_ImportKeyword_3_0 extends KeywordToken  {
 	
 	public MMESPPSWPPackageFile_ImportKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -247,7 +247,7 @@ protected class MMESPPSWPPackageFile_ImportsAssignment_3_1 extends AssignmentTok
 
 }
 
-// ";"
+// ';'
 protected class MMESPPSWPPackageFile_SemicolonKeyword_3_2 extends KeywordToken  {
 	
 	public MMESPPSWPPackageFile_SemicolonKeyword_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -374,21 +374,24 @@ protected class MMESPPSWPPackageElement_MPlatformSwPackageParserRuleCall extends
 /************ begin Rule MPlatformSwPackage ****************
  *
  * MPlatformSwPackage:
- * 	"pswpackage" name=ID "{" ("version" ":=" version=Version ";" & "supported platform" ":="
- * 	referencedElement=[pdl::MPlatform|VersionedQualifiedName] ";" & "construction tools" ":="
+ * 	'pswpackage'
+ * 	name=ID
+ * 	'{' ('version' ':=' version=Version ';' & 'supported' 'platform' ':='
+ * 	referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';' & 'construction' 'tools' ':='
  * 	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
- * 	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";" & "osswpackages" ":="
+ * 	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';' & 'osswpackages' ':='
  * 	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
- * 	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";") "}" ";";
+ * 	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';')
+ * 	'}' ';';
  *
  **/
 
-// "pswpackage" name=ID "{" ("version" ":=" version=Version ";" & "supported platform" ":="
-// referencedElement=[pdl::MPlatform|VersionedQualifiedName] ";" & "construction tools" ":="
+// 'pswpackage' name=ID '{' ('version' ':=' version=Version ';' & 'supported' 'platform' ':='
+// referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';' & 'construction' 'tools' ':='
 // ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-// ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";" & "osswpackages" ":="
+// ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';' & 'osswpackages' ':='
 // osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-// osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";") "}" ";"
+// osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';') '}' ';'
 protected class MPlatformSwPackage_Group extends GroupToken {
 	
 	public MPlatformSwPackage_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -417,7 +420,7 @@ protected class MPlatformSwPackage_Group extends GroupToken {
 
 }
 
-// "pswpackage"
+// 'pswpackage'
 protected class MPlatformSwPackage_PswpackageKeyword_0 extends KeywordToken  {
 	
 	public MPlatformSwPackage_PswpackageKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -472,7 +475,7 @@ protected class MPlatformSwPackage_NameAssignment_1 extends AssignmentToken  {
 
 }
 
-// "{"
+// '{'
 protected class MPlatformSwPackage_LeftCurlyBracketKeyword_2 extends KeywordToken  {
 	
 	public MPlatformSwPackage_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -494,11 +497,12 @@ protected class MPlatformSwPackage_LeftCurlyBracketKeyword_2 extends KeywordToke
 
 }
 
-// "version" ":=" version=Version ";" & "supported platform" ":=" referencedElement=[pdl::MPlatform|VersionedQualifiedName]
-// ";" & "construction tools" ":=" ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-// ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";" & "osswpackages" ":="
+// ('version' ':=' version=Version ';' & 'supported' 'platform' ':='
+// referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';' & 'construction' 'tools' ':='
+// ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
+// ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';' & 'osswpackages' ':='
 // osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-// osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";"
+// osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';')
 protected class MPlatformSwPackage_UnorderedGroup_3 extends UnorderedGroupToken {
 	
 	public MPlatformSwPackage_UnorderedGroup_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -520,7 +524,7 @@ protected class MPlatformSwPackage_UnorderedGroup_3 extends UnorderedGroupToken 
 
 }
 
-// "version" ":=" version=Version ";"
+// 'version' ':=' version=Version ';'
 protected class MPlatformSwPackage_Group_3_0 extends GroupToken {
 	
 	public MPlatformSwPackage_Group_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -542,7 +546,7 @@ protected class MPlatformSwPackage_Group_3_0 extends GroupToken {
 
 }
 
-// "version"
+// 'version'
 protected class MPlatformSwPackage_VersionKeyword_3_0_0 extends KeywordToken  {
 	
 	public MPlatformSwPackage_VersionKeyword_3_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -564,7 +568,7 @@ protected class MPlatformSwPackage_VersionKeyword_3_0_0 extends KeywordToken  {
 
 }
 
-// ":="
+// ':='
 protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_0_1 extends KeywordToken  {
 	
 	public MPlatformSwPackage_ColonEqualsSignKeyword_3_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -620,7 +624,7 @@ protected class MPlatformSwPackage_VersionAssignment_3_0_2 extends AssignmentTok
 
 }
 
-// ";"
+// ';'
 protected class MPlatformSwPackage_SemicolonKeyword_3_0_3 extends KeywordToken  {
 	
 	public MPlatformSwPackage_SemicolonKeyword_3_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -643,7 +647,7 @@ protected class MPlatformSwPackage_SemicolonKeyword_3_0_3 extends KeywordToken  
 }
 
 
-// "supported platform" ":=" referencedElement=[pdl::MPlatform|VersionedQualifiedName] ";"
+// 'supported' 'platform' ':=' referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';'
 protected class MPlatformSwPackage_Group_3_1 extends GroupToken {
 	
 	public MPlatformSwPackage_Group_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -658,23 +662,23 @@ protected class MPlatformSwPackage_Group_3_1 extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_SemicolonKeyword_3_1_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_SemicolonKeyword_3_1_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "supported platform"
-protected class MPlatformSwPackage_SupportedPlatformKeyword_3_1_0 extends KeywordToken  {
+// 'supported'
+protected class MPlatformSwPackage_SupportedKeyword_3_1_0 extends KeywordToken  {
 	
-	public MPlatformSwPackage_SupportedPlatformKeyword_3_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_SupportedKeyword_3_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getSupportedPlatformKeyword_3_1_0();
+		return grammarAccess.getMPlatformSwPackageAccess().getSupportedKeyword_3_1_0();
 	}
 
     @Override
@@ -687,22 +691,44 @@ protected class MPlatformSwPackage_SupportedPlatformKeyword_3_1_0 extends Keywor
 
 }
 
-// ":="
-protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_1_1 extends KeywordToken  {
+// 'platform'
+protected class MPlatformSwPackage_PlatformKeyword_3_1_1 extends KeywordToken  {
 	
-	public MPlatformSwPackage_ColonEqualsSignKeyword_3_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_PlatformKeyword_3_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getColonEqualsSignKeyword_3_1_1();
+		return grammarAccess.getMPlatformSwPackageAccess().getPlatformKeyword_3_1_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_SupportedPlatformKeyword_3_1_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_SupportedKeyword_3_1_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ':='
+protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_1_2 extends KeywordToken  {
+	
+	public MPlatformSwPackage_ColonEqualsSignKeyword_3_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMPlatformSwPackageAccess().getColonEqualsSignKeyword_3_1_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MPlatformSwPackage_PlatformKeyword_3_1_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -710,21 +736,21 @@ protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_1_1 extends KeywordT
 }
 
 // referencedElement=[pdl::MPlatform|VersionedQualifiedName]
-protected class MPlatformSwPackage_ReferencedElementAssignment_3_1_2 extends AssignmentToken  {
+protected class MPlatformSwPackage_ReferencedElementAssignment_3_1_3 extends AssignmentToken  {
 	
-	public MPlatformSwPackage_ReferencedElementAssignment_3_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_ReferencedElementAssignment_3_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getReferencedElementAssignment_3_1_2();
+		return grammarAccess.getMPlatformSwPackageAccess().getReferencedElementAssignment_3_1_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_ColonEqualsSignKeyword_3_1_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_ColonEqualsSignKeyword_3_1_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -735,9 +761,9 @@ protected class MPlatformSwPackage_ReferencedElementAssignment_3_1_2 extends Ass
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("referencedElement");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMPlatformSwPackageAccess().getReferencedElementMPlatformCrossReference_3_1_2_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMPlatformSwPackageAccess().getReferencedElementMPlatformCrossReference_3_1_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMPlatformSwPackageAccess().getReferencedElementMPlatformCrossReference_3_1_2_0(); 
+				element = grammarAccess.getMPlatformSwPackageAccess().getReferencedElementMPlatformCrossReference_3_1_3_0(); 
 				return obj;
 			}
 		}
@@ -746,22 +772,22 @@ protected class MPlatformSwPackage_ReferencedElementAssignment_3_1_2 extends Ass
 
 }
 
-// ";"
-protected class MPlatformSwPackage_SemicolonKeyword_3_1_3 extends KeywordToken  {
+// ';'
+protected class MPlatformSwPackage_SemicolonKeyword_3_1_4 extends KeywordToken  {
 	
-	public MPlatformSwPackage_SemicolonKeyword_3_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_SemicolonKeyword_3_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getSemicolonKeyword_3_1_3();
+		return grammarAccess.getMPlatformSwPackageAccess().getSemicolonKeyword_3_1_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_ReferencedElementAssignment_3_1_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_ReferencedElementAssignment_3_1_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -769,8 +795,8 @@ protected class MPlatformSwPackage_SemicolonKeyword_3_1_3 extends KeywordToken  
 }
 
 
-// "construction tools" ":=" ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-// ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";"
+// 'construction' 'tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
+// ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';'
 protected class MPlatformSwPackage_Group_3_2 extends GroupToken {
 	
 	public MPlatformSwPackage_Group_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -785,23 +811,23 @@ protected class MPlatformSwPackage_Group_3_2 extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_SemicolonKeyword_3_2_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_SemicolonKeyword_3_2_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "construction tools"
-protected class MPlatformSwPackage_ConstructionToolsKeyword_3_2_0 extends KeywordToken  {
+// 'construction'
+protected class MPlatformSwPackage_ConstructionKeyword_3_2_0 extends KeywordToken  {
 	
-	public MPlatformSwPackage_ConstructionToolsKeyword_3_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_ConstructionKeyword_3_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getConstructionToolsKeyword_3_2_0();
+		return grammarAccess.getMPlatformSwPackageAccess().getConstructionKeyword_3_2_0();
 	}
 
     @Override
@@ -814,22 +840,44 @@ protected class MPlatformSwPackage_ConstructionToolsKeyword_3_2_0 extends Keywor
 
 }
 
-// ":="
-protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_2_1 extends KeywordToken  {
+// 'tools'
+protected class MPlatformSwPackage_ToolsKeyword_3_2_1 extends KeywordToken  {
 	
-	public MPlatformSwPackage_ColonEqualsSignKeyword_3_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_ToolsKeyword_3_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getColonEqualsSignKeyword_3_2_1();
+		return grammarAccess.getMPlatformSwPackageAccess().getToolsKeyword_3_2_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_ConstructionToolsKeyword_3_2_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_ConstructionKeyword_3_2_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// ':='
+protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_2_2 extends KeywordToken  {
+	
+	public MPlatformSwPackage_ColonEqualsSignKeyword_3_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMPlatformSwPackageAccess().getColonEqualsSignKeyword_3_2_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MPlatformSwPackage_ToolsKeyword_3_2_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -837,21 +885,21 @@ protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_2_1 extends KeywordT
 }
 
 // ctools+=[mespctool::MConstructionTool|VersionedQualifiedName]
-protected class MPlatformSwPackage_CtoolsAssignment_3_2_2 extends AssignmentToken  {
+protected class MPlatformSwPackage_CtoolsAssignment_3_2_3 extends AssignmentToken  {
 	
-	public MPlatformSwPackage_CtoolsAssignment_3_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_CtoolsAssignment_3_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_2();
+		return grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_ColonEqualsSignKeyword_3_2_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_ColonEqualsSignKeyword_3_2_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -862,9 +910,9 @@ protected class MPlatformSwPackage_CtoolsAssignment_3_2_2 extends AssignmentToke
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("ctools");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_2_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_2_0(); 
+				element = grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_3_0(); 
 				return obj;
 			}
 		}
@@ -874,21 +922,21 @@ protected class MPlatformSwPackage_CtoolsAssignment_3_2_2 extends AssignmentToke
 }
 
 // ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])*
-protected class MPlatformSwPackage_Group_3_2_3 extends GroupToken {
+protected class MPlatformSwPackage_Group_3_2_4 extends GroupToken {
 	
-	public MPlatformSwPackage_Group_3_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_Group_3_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getGroup_3_2_3();
+		return grammarAccess.getMPlatformSwPackageAccess().getGroup_3_2_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_CtoolsAssignment_3_2_3_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_CtoolsAssignment_3_2_4_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -896,22 +944,22 @@ protected class MPlatformSwPackage_Group_3_2_3 extends GroupToken {
 }
 
 // ","
-protected class MPlatformSwPackage_CommaKeyword_3_2_3_0 extends KeywordToken  {
+protected class MPlatformSwPackage_CommaKeyword_3_2_4_0 extends KeywordToken  {
 	
-	public MPlatformSwPackage_CommaKeyword_3_2_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_CommaKeyword_3_2_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getCommaKeyword_3_2_3_0();
+		return grammarAccess.getMPlatformSwPackageAccess().getCommaKeyword_3_2_4_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_Group_3_2_3(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MPlatformSwPackage_CtoolsAssignment_3_2_2(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MPlatformSwPackage_Group_3_2_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MPlatformSwPackage_CtoolsAssignment_3_2_3(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -919,21 +967,21 @@ protected class MPlatformSwPackage_CommaKeyword_3_2_3_0 extends KeywordToken  {
 }
 
 // ctools+=[mespctool::MConstructionTool|VersionedQualifiedName]
-protected class MPlatformSwPackage_CtoolsAssignment_3_2_3_1 extends AssignmentToken  {
+protected class MPlatformSwPackage_CtoolsAssignment_3_2_4_1 extends AssignmentToken  {
 	
-	public MPlatformSwPackage_CtoolsAssignment_3_2_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_CtoolsAssignment_3_2_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_3_1();
+		return grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_4_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_CommaKeyword_3_2_3_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MPlatformSwPackage_CommaKeyword_3_2_4_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -944,9 +992,9 @@ protected class MPlatformSwPackage_CtoolsAssignment_3_2_3_1 extends AssignmentTo
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("ctools");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_3_1_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_4_1_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_3_1_0(); 
+				element = grammarAccess.getMPlatformSwPackageAccess().getCtoolsMConstructionToolCrossReference_3_2_4_1_0(); 
 				return obj;
 			}
 		}
@@ -956,23 +1004,23 @@ protected class MPlatformSwPackage_CtoolsAssignment_3_2_3_1 extends AssignmentTo
 }
 
 
-// ";"
-protected class MPlatformSwPackage_SemicolonKeyword_3_2_4 extends KeywordToken  {
+// ';'
+protected class MPlatformSwPackage_SemicolonKeyword_3_2_5 extends KeywordToken  {
 	
-	public MPlatformSwPackage_SemicolonKeyword_3_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MPlatformSwPackage_SemicolonKeyword_3_2_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMPlatformSwPackageAccess().getSemicolonKeyword_3_2_4();
+		return grammarAccess.getMPlatformSwPackageAccess().getSemicolonKeyword_3_2_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MPlatformSwPackage_Group_3_2_3(lastRuleCallOrigin, this, 0, inst);
-			case 1: return new MPlatformSwPackage_CtoolsAssignment_3_2_2(lastRuleCallOrigin, this, 1, inst);
+			case 0: return new MPlatformSwPackage_Group_3_2_4(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MPlatformSwPackage_CtoolsAssignment_3_2_3(lastRuleCallOrigin, this, 1, inst);
 			default: return null;
 		}	
 	}
@@ -980,8 +1028,8 @@ protected class MPlatformSwPackage_SemicolonKeyword_3_2_4 extends KeywordToken  
 }
 
 
-// "osswpackages" ":=" osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-// osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";"
+// 'osswpackages' ':=' osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
+// osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';'
 protected class MPlatformSwPackage_Group_3_3 extends GroupToken {
 	
 	public MPlatformSwPackage_Group_3_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1003,7 +1051,7 @@ protected class MPlatformSwPackage_Group_3_3 extends GroupToken {
 
 }
 
-// "osswpackages"
+// 'osswpackages'
 protected class MPlatformSwPackage_OsswpackagesKeyword_3_3_0 extends KeywordToken  {
 	
 	public MPlatformSwPackage_OsswpackagesKeyword_3_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1025,7 +1073,7 @@ protected class MPlatformSwPackage_OsswpackagesKeyword_3_3_0 extends KeywordToke
 
 }
 
-// ":="
+// ':='
 protected class MPlatformSwPackage_ColonEqualsSignKeyword_3_3_1 extends KeywordToken  {
 	
 	public MPlatformSwPackage_ColonEqualsSignKeyword_3_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1167,7 +1215,7 @@ protected class MPlatformSwPackage_OsSwPackagesAssignment_3_3_3_1 extends Assign
 }
 
 
-// ";"
+// ';'
 protected class MPlatformSwPackage_SemicolonKeyword_3_3_4 extends KeywordToken  {
 	
 	public MPlatformSwPackage_SemicolonKeyword_3_3_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1192,7 +1240,7 @@ protected class MPlatformSwPackage_SemicolonKeyword_3_3_4 extends KeywordToken  
 
 
 
-// "}"
+// '}'
 protected class MPlatformSwPackage_RightCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MPlatformSwPackage_RightCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1214,7 +1262,7 @@ protected class MPlatformSwPackage_RightCurlyBracketKeyword_4 extends KeywordTok
 
 }
 
-// ";"
+// ';'
 protected class MPlatformSwPackage_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MPlatformSwPackage_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {

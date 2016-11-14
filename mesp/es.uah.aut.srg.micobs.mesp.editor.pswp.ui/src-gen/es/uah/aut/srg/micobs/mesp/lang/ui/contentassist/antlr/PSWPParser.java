@@ -62,7 +62,7 @@ public class PSWPParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMPlatformSwPackageAccess().getGroup_3_0(), "rule__MPlatformSwPackage__Group_3_0__0");
 					put(grammarAccess.getMPlatformSwPackageAccess().getGroup_3_1(), "rule__MPlatformSwPackage__Group_3_1__0");
 					put(grammarAccess.getMPlatformSwPackageAccess().getGroup_3_2(), "rule__MPlatformSwPackage__Group_3_2__0");
-					put(grammarAccess.getMPlatformSwPackageAccess().getGroup_3_2_3(), "rule__MPlatformSwPackage__Group_3_2_3__0");
+					put(grammarAccess.getMPlatformSwPackageAccess().getGroup_3_2_4(), "rule__MPlatformSwPackage__Group_3_2_4__0");
 					put(grammarAccess.getMPlatformSwPackageAccess().getGroup_3_3(), "rule__MPlatformSwPackage__Group_3_3__0");
 					put(grammarAccess.getMPlatformSwPackageAccess().getGroup_3_3_3(), "rule__MPlatformSwPackage__Group_3_3_3__0");
 					put(grammarAccess.getMMESPPSWPPackageFileAccess().getPackageAssignment_1(), "rule__MMESPPSWPPackageFile__PackageAssignment_1");
@@ -70,9 +70,9 @@ public class PSWPParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMMESPPSWPPackageFileAccess().getElementAssignment_4(), "rule__MMESPPSWPPackageFile__ElementAssignment_4");
 					put(grammarAccess.getMPlatformSwPackageAccess().getNameAssignment_1(), "rule__MPlatformSwPackage__NameAssignment_1");
 					put(grammarAccess.getMPlatformSwPackageAccess().getVersionAssignment_3_0_2(), "rule__MPlatformSwPackage__VersionAssignment_3_0_2");
-					put(grammarAccess.getMPlatformSwPackageAccess().getReferencedElementAssignment_3_1_2(), "rule__MPlatformSwPackage__ReferencedElementAssignment_3_1_2");
-					put(grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_2(), "rule__MPlatformSwPackage__CtoolsAssignment_3_2_2");
-					put(grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_3_1(), "rule__MPlatformSwPackage__CtoolsAssignment_3_2_3_1");
+					put(grammarAccess.getMPlatformSwPackageAccess().getReferencedElementAssignment_3_1_3(), "rule__MPlatformSwPackage__ReferencedElementAssignment_3_1_3");
+					put(grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_3(), "rule__MPlatformSwPackage__CtoolsAssignment_3_2_3");
+					put(grammarAccess.getMPlatformSwPackageAccess().getCtoolsAssignment_3_2_4_1(), "rule__MPlatformSwPackage__CtoolsAssignment_3_2_4_1");
 					put(grammarAccess.getMPlatformSwPackageAccess().getOsSwPackagesAssignment_3_3_2(), "rule__MPlatformSwPackage__OsSwPackagesAssignment_3_3_2");
 					put(grammarAccess.getMPlatformSwPackageAccess().getOsSwPackagesAssignment_3_3_3_1(), "rule__MPlatformSwPackage__OsSwPackagesAssignment_3_3_3_1");
 					put(grammarAccess.getMPlatformSwPackageAccess().getUnorderedGroup_3(), "rule__MPlatformSwPackage__UnorderedGroup_3");

@@ -321,7 +321,8 @@ public class SWPParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMRealParameterSingleExpressionAccess().getDefaultValueAssignment_4(), "rule__MRealParameterSingleExpression__DefaultValueAssignment_4");
 					put(grammarAccess.getMRealParameterSingleExpressionAccess().getRangeAssignment_5_1(), "rule__MRealParameterSingleExpression__RangeAssignment_5_1");
 					put(grammarAccess.getMParameterValueBooleanLiteralAccess().getValueAssignment_1(), "rule__MParameterValueBooleanLiteral__ValueAssignment_1");
-					put(grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_1(), "rule__MParameterValueStringLiteral__ValueAssignment_1");
+					put(grammarAccess.getMParameterValueStringLiteralAccess().getIsRawAssignment_1(), "rule__MParameterValueStringLiteral__IsRawAssignment_1");
+					put(grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_2(), "rule__MParameterValueStringLiteral__ValueAssignment_2");
 					put(grammarAccess.getMParameterValueIntegerLiteralAccess().getValueAssignment_1(), "rule__MParameterValueIntegerLiteral__ValueAssignment_1");
 					put(grammarAccess.getMParameterValueRealLiteralAccess().getValueAssignment_1(), "rule__MParameterValueRealLiteral__ValueAssignment_1");
 					put(grammarAccess.getMParameterValueRefObjectAccess().getObjectAssignment_1(), "rule__MParameterValueRefObject__ObjectAssignment_1");
@@ -346,7 +347,8 @@ public class SWPParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMEnumParamRealLiteralAccess().getNameAssignment_1(), "rule__MEnumParamRealLiteral__NameAssignment_1");
 					put(grammarAccess.getMEnumParamRealLiteralAccess().getValueAssignment_3(), "rule__MEnumParamRealLiteral__ValueAssignment_3");
 					put(grammarAccess.getMEnumParamStringLiteralAccess().getNameAssignment_1(), "rule__MEnumParamStringLiteral__NameAssignment_1");
-					put(grammarAccess.getMEnumParamStringLiteralAccess().getValueAssignment_3(), "rule__MEnumParamStringLiteral__ValueAssignment_3");
+					put(grammarAccess.getMEnumParamStringLiteralAccess().getIsRawAssignment_3(), "rule__MEnumParamStringLiteral__IsRawAssignment_3");
+					put(grammarAccess.getMEnumParamStringLiteralAccess().getValueAssignment_4(), "rule__MEnumParamStringLiteral__ValueAssignment_4");
 					put(grammarAccess.getMAbstractSwPackageAccess().getUnorderedGroup_5(), "rule__MAbstractSwPackage__UnorderedGroup_5");
 					put(grammarAccess.getMSwPackageAccess().getUnorderedGroup_5(), "rule__MSwPackage__UnorderedGroup_5");
 					put(grammarAccess.getMDriverSwPackageAccess().getUnorderedGroup_5(), "rule__MDriverSwPackage__UnorderedGroup_5");

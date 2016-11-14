@@ -26,7 +26,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MMESPDEPPackageFileElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDEPPackageFile");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDEPPackageFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -43,15 +43,16 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cElementMMESPDEPPackageElementParserRuleCall_4_0 = (RuleCall)cElementAssignment_4.eContents().get(0);
 		
 		//MMESPDEPPackageFile:
-		//	"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-		//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPDEPPackageElement;
-		public ParserRule getRule() { return rule; }
+		//	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+		//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+		//	element=MMESPDEPPackageElement;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-		//imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPDEPPackageElement
+		//'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+		//imports+=[common::MCommonPackage|QualifiedName] ';')* element=MMESPDEPPackageElement
 		public Group getGroup() { return cGroup; }
 
-		//"package"
+		//'package'
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
 		//package=[mesplibrary::MMESPPackage|QualifiedName]
@@ -63,13 +64,13 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getPackageMMESPPackageQualifiedNameParserRuleCall_1_0_1() { return cPackageMMESPPackageQualifiedNameParserRuleCall_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 
-		//("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+		//('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"import"
+		//'import'
 		public Keyword getImportKeyword_3_0() { return cImportKeyword_3_0; }
 
 		//imports+=[common::MCommonPackage|QualifiedName]
@@ -81,7 +82,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1() { return cImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2() { return cSemicolonKeyword_3_2; }
 
 		//element=MMESPDEPPackageElement
@@ -92,19 +93,19 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MMESPDEPPackageElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDEPPackageElement");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDEPPackageElement");
 		private final RuleCall cMMESPDeploymentParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//MMESPDEPPackageElement:
 		//	MMESPDeployment;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MMESPDeployment
 		public RuleCall getMMESPDeploymentParserRuleCall() { return cMMESPDeploymentParserRuleCall; }
 	}
 
 	public class MMESPDeploymentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDeployment");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDeployment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMMESPDeploymentAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cDeploymentKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -174,29 +175,43 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//MMESPDeployment:
-		//	{MMESPDeployment} "deployment" "project" name=ID "{" ("version" ":=" version=Version ";" & "construction" "tool" ":="
-		//	ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ";" & ("languages" ":="
+		//	{MMESPDeployment}
+		//	'deployment' 'project'
+		//	name=ID
+		//	'{' ('version' ':=' version=Version ';' & 'construction' 'tool' ':='
+		//	ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ';' & ('languages' ':='
 		//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-		//	";")? & "deployment" "platforms" "{" deploymentPlatforms+=MMESPDeploymentPlatform+ "}" ";" & ("required" "interfaces"
-		//	"{" requires+=MSwPackageRequiredInterface+ "}" ";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+
-		//	"}" ";")? & ("deployment" "alternatives" "{" deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	';')?
+		//	& 'deployment' 'platforms' '{'
+		//	deploymentPlatforms+=MMESPDeploymentPlatform+
+		//	'}' ';' & ('required' 'interfaces' '{'
+		//	requires+=MSwPackageRequiredInterface+
+		//	'}' ';')?
+		//	& ('swpackages' '{'
+		//	deployedSwPackages+=MMESPSwPackageDeployment+
+		//	'}' ';')?
+		//	& ('deployment' 'alternatives'
+		//	'{'
+		//	deploymentAlternatives+=MMESPDeploymentAlternative+
+		//	'}' ';')?)
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//{MMESPDeployment} "deployment" "project" name=ID "{" ("version" ":=" version=Version ";" & "construction" "tool" ":="
-		//ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ";" & ("languages" ":="
+		//{MMESPDeployment} 'deployment' 'project' name=ID '{' ('version' ':=' version=Version ';' & 'construction' 'tool' ':='
+		//ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ';' & ('languages' ':='
 		//languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-		//";")? & "deployment" "platforms" "{" deploymentPlatforms+=MMESPDeploymentPlatform+ "}" ";" & ("required" "interfaces"
-		//"{" requires+=MSwPackageRequiredInterface+ "}" ";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+
-		//"}" ";")? & ("deployment" "alternatives" "{" deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?) "}" ";"
+		//';')? & 'deployment' 'platforms' '{' deploymentPlatforms+=MMESPDeploymentPlatform+ '}' ';' & ('required' 'interfaces'
+		//'{' requires+=MSwPackageRequiredInterface+ '}' ';')? & ('swpackages' '{' deployedSwPackages+=MMESPSwPackageDeployment+
+		//'}' ';')? & ('deployment' 'alternatives' '{' deploymentAlternatives+=MMESPDeploymentAlternative+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{MMESPDeployment}
 		public Action getMMESPDeploymentAction_0() { return cMMESPDeploymentAction_0; }
 
-		//"deployment"
+		//'deployment'
 		public Keyword getDeploymentKeyword_1() { return cDeploymentKeyword_1; }
 
-		//"project"
+		//'project'
 		public Keyword getProjectKeyword_2() { return cProjectKeyword_2; }
 
 		//name=ID
@@ -205,24 +220,24 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
-		//"version" ":=" version=Version ";" & "construction" "tool" ":="
-		//ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ";" & ("languages" ":="
+		//('version' ':=' version=Version ';' & 'construction' 'tool' ':='
+		//ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ';' & ('languages' ':='
 		//languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-		//";")? & "deployment" "platforms" "{" deploymentPlatforms+=MMESPDeploymentPlatform+ "}" ";" & ("required" "interfaces"
-		//"{" requires+=MSwPackageRequiredInterface+ "}" ";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+
-		//"}" ";")? & ("deployment" "alternatives" "{" deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?
+		//';')? & 'deployment' 'platforms' '{' deploymentPlatforms+=MMESPDeploymentPlatform+ '}' ';' & ('required' 'interfaces'
+		//'{' requires+=MSwPackageRequiredInterface+ '}' ';')? & ('swpackages' '{' deployedSwPackages+=MMESPSwPackageDeployment+
+		//'}' ';')? & ('deployment' 'alternatives' '{' deploymentAlternatives+=MMESPDeploymentAlternative+ '}' ';')?)
 		public UnorderedGroup getUnorderedGroup_5() { return cUnorderedGroup_5; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_5_0() { return cGroup_5_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_5_0_0() { return cVersionKeyword_5_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_0_1() { return cColonEqualsSignKeyword_5_0_1; }
 
 		//version=Version
@@ -231,19 +246,19 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_5_0_2_0() { return cVersionVersionParserRuleCall_5_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_0_3() { return cSemicolonKeyword_5_0_3; }
 
-		//"construction" "tool" ":=" ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ";"
+		//'construction' 'tool' ':=' ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ';'
 		public Group getGroup_5_1() { return cGroup_5_1; }
 
-		//"construction"
+		//'construction'
 		public Keyword getConstructionKeyword_5_1_0() { return cConstructionKeyword_5_1_0; }
 
-		//"tool"
+		//'tool'
 		public Keyword getToolKeyword_5_1_1() { return cToolKeyword_5_1_1; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_1_2() { return cColonEqualsSignKeyword_5_1_2; }
 
 		//ctool=[mespctool::MConstructionTool|VersionedQualifiedName]
@@ -255,17 +270,17 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getCtoolMConstructionToolVersionedQualifiedNameParserRuleCall_5_1_3_0_1() { return cCtoolMConstructionToolVersionedQualifiedNameParserRuleCall_5_1_3_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_1_4() { return cSemicolonKeyword_5_1_4; }
 
-		//("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-		//languages+=[system::MLanguage|VersionedQualifiedName])* ";")?
+		//('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+		//languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
 		public Group getGroup_5_2() { return cGroup_5_2; }
 
-		//"languages"
+		//'languages'
 		public Keyword getLanguagesKeyword_5_2_0() { return cLanguagesKeyword_5_2_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_5_2_1() { return cColonEqualsSignKeyword_5_2_1; }
 
 		//languages+=[system::MLanguage|VersionedQualifiedName]
@@ -292,19 +307,19 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLanguagesMLanguageVersionedQualifiedNameParserRuleCall_5_2_3_1_0_1() { return cLanguagesMLanguageVersionedQualifiedNameParserRuleCall_5_2_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_2_4() { return cSemicolonKeyword_5_2_4; }
 
-		//"deployment" "platforms" "{" deploymentPlatforms+=MMESPDeploymentPlatform+ "}" ";"
+		//'deployment' 'platforms' '{' deploymentPlatforms+=MMESPDeploymentPlatform+ '}' ';'
 		public Group getGroup_5_3() { return cGroup_5_3; }
 
-		//"deployment"
+		//'deployment'
 		public Keyword getDeploymentKeyword_5_3_0() { return cDeploymentKeyword_5_3_0; }
 
-		//"platforms"
+		//'platforms'
 		public Keyword getPlatformsKeyword_5_3_1() { return cPlatformsKeyword_5_3_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5_3_2() { return cLeftCurlyBracketKeyword_5_3_2; }
 
 		//deploymentPlatforms+=MMESPDeploymentPlatform+
@@ -313,22 +328,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MMESPDeploymentPlatform
 		public RuleCall getDeploymentPlatformsMMESPDeploymentPlatformParserRuleCall_5_3_3_0() { return cDeploymentPlatformsMMESPDeploymentPlatformParserRuleCall_5_3_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_3_4() { return cRightCurlyBracketKeyword_5_3_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_3_5() { return cSemicolonKeyword_5_3_5; }
 
-		//("required" "interfaces" "{" requires+=MSwPackageRequiredInterface+ "}" ";")?
+		//('required' 'interfaces' '{' requires+=MSwPackageRequiredInterface+ '}' ';')?
 		public Group getGroup_5_4() { return cGroup_5_4; }
 
-		//"required"
+		//'required'
 		public Keyword getRequiredKeyword_5_4_0() { return cRequiredKeyword_5_4_0; }
 
-		//"interfaces"
+		//'interfaces'
 		public Keyword getInterfacesKeyword_5_4_1() { return cInterfacesKeyword_5_4_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5_4_2() { return cLeftCurlyBracketKeyword_5_4_2; }
 
 		//requires+=MSwPackageRequiredInterface+
@@ -337,19 +352,19 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MSwPackageRequiredInterface
 		public RuleCall getRequiresMSwPackageRequiredInterfaceParserRuleCall_5_4_3_0() { return cRequiresMSwPackageRequiredInterfaceParserRuleCall_5_4_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_4_4() { return cRightCurlyBracketKeyword_5_4_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_4_5() { return cSemicolonKeyword_5_4_5; }
 
-		//("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+ "}" ";")?
+		//('swpackages' '{' deployedSwPackages+=MMESPSwPackageDeployment+ '}' ';')?
 		public Group getGroup_5_5() { return cGroup_5_5; }
 
-		//"swpackages"
+		//'swpackages'
 		public Keyword getSwpackagesKeyword_5_5_0() { return cSwpackagesKeyword_5_5_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5_5_1() { return cLeftCurlyBracketKeyword_5_5_1; }
 
 		//deployedSwPackages+=MMESPSwPackageDeployment+
@@ -358,22 +373,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MMESPSwPackageDeployment
 		public RuleCall getDeployedSwPackagesMMESPSwPackageDeploymentParserRuleCall_5_5_2_0() { return cDeployedSwPackagesMMESPSwPackageDeploymentParserRuleCall_5_5_2_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_5_3() { return cRightCurlyBracketKeyword_5_5_3; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_5_4() { return cSemicolonKeyword_5_5_4; }
 
-		//("deployment" "alternatives" "{" deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?
+		//('deployment' 'alternatives' '{' deploymentAlternatives+=MMESPDeploymentAlternative+ '}' ';')?
 		public Group getGroup_5_6() { return cGroup_5_6; }
 
-		//"deployment"
+		//'deployment'
 		public Keyword getDeploymentKeyword_5_6_0() { return cDeploymentKeyword_5_6_0; }
 
-		//"alternatives"
+		//'alternatives'
 		public Keyword getAlternativesKeyword_5_6_1() { return cAlternativesKeyword_5_6_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_5_6_2() { return cLeftCurlyBracketKeyword_5_6_2; }
 
 		//deploymentAlternatives+=MMESPDeploymentAlternative+
@@ -382,21 +397,21 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MMESPDeploymentAlternative
 		public RuleCall getDeploymentAlternativesMMESPDeploymentAlternativeParserRuleCall_5_6_3_0() { return cDeploymentAlternativesMMESPDeploymentAlternativeParserRuleCall_5_6_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5_6_4() { return cRightCurlyBracketKeyword_5_6_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5_6_5() { return cSemicolonKeyword_5_6_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MSwPackageRequiredInterfaceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MSwPackageRequiredInterface");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MSwPackageRequiredInterface");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cRequiresKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cInterfaceAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -408,16 +423,19 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MSwPackageRequiredInterface returns mespswp::MSwPackageRequiredInterface:
-		//	"requires" interface=[common::MCommonPackageElement|VersionedQualifiedName] "{" resourceDemands+=MResourceDemand* "}"
-		//	";";
-		public ParserRule getRule() { return rule; }
+		//MSwPackageRequiredInterface mespswp::MSwPackageRequiredInterface:
+		//	'requires'
+		//	interface=[common::MCommonPackageElement|VersionedQualifiedName]
+		//	'{'
+		//	resourceDemands+=MResourceDemand*
+		//	'}' ';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"requires" interface=[common::MCommonPackageElement|VersionedQualifiedName] "{" resourceDemands+=MResourceDemand* "}"
-		//";"
+		//'requires' interface=[common::MCommonPackageElement|VersionedQualifiedName] '{' resourceDemands+=MResourceDemand* '}'
+		//';'
 		public Group getGroup() { return cGroup; }
 
-		//"requires"
+		//'requires'
 		public Keyword getRequiresKeyword_0() { return cRequiresKeyword_0; }
 
 		//interface=[common::MCommonPackageElement|VersionedQualifiedName]
@@ -429,7 +447,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getInterfaceMCommonPackageElementVersionedQualifiedNameParserRuleCall_1_0_1() { return cInterfaceMCommonPackageElementVersionedQualifiedNameParserRuleCall_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//resourceDemands+=MResourceDemand*
@@ -438,22 +456,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MResourceDemand
 		public RuleCall getResourceDemandsMResourceDemandParserRuleCall_3_0() { return cResourceDemandsMResourceDemandParserRuleCall_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MResourceDemandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MResourceDemand");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MResourceDemand");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMQuantifiableResourceDemandParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMInstantiableResourceDemandParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//MResourceDemand returns mespswp::MResourceDemand:
-		//	MQuantifiableResourceDemand | MInstantiableResourceDemand;
-		public ParserRule getRule() { return rule; }
+		//MResourceDemand mespswp::MResourceDemand:
+		//	MQuantifiableResourceDemand | MInstantiableResourceDemand
+		@Override public ParserRule getRule() { return rule; }
 
 		//MQuantifiableResourceDemand | MInstantiableResourceDemand
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -466,7 +484,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MInstantiableResourceDemandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MInstantiableResourceDemand");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MInstantiableResourceDemand");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cInstantiableKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cResourceKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -481,19 +499,23 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
-		//MInstantiableResourceDemand returns mespswp::MInstantiableResourceDemand:
-		//	"instantiable" "resource" resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName] name=ID "{"
-		//	parameterValueAssignments+=MParameterValueAssignment* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//MInstantiableResourceDemand mespswp::MInstantiableResourceDemand:
+		//	'instantiable' 'resource'
+		//	resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName] name=ID
+		//	'{'
+		//	parameterValueAssignments+=MParameterValueAssignment*
+		//	'}'
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"instantiable" "resource" resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName] name=ID "{"
-		//parameterValueAssignments+=MParameterValueAssignment* "}" ";"
+		//'instantiable' 'resource' resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName] name=ID '{'
+		//parameterValueAssignments+=MParameterValueAssignment* '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"instantiable"
+		//'instantiable'
 		public Keyword getInstantiableKeyword_0() { return cInstantiableKeyword_0; }
 
-		//"resource"
+		//'resource'
 		public Keyword getResourceKeyword_1() { return cResourceKeyword_1; }
 
 		//resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName]
@@ -511,7 +533,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
 		//parameterValueAssignments+=MParameterValueAssignment*
@@ -520,15 +542,15 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueAssignment
 		public RuleCall getParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_5_0() { return cParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_5_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MQuantifiableResourceDemandElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MQuantifiableResourceDemand");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MQuantifiableResourceDemand");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMQuantifiableResourceDemandAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cQuantifiableKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -541,24 +563,27 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cResourceValueMParameterValueExpressionParserRuleCall_5_0 = (RuleCall)cResourceValueAssignment_5.eContents().get(0);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MQuantifiableResourceDemand returns mespswp::MQuantifiableResourceDemand:
-		//	{mespswp::MQuantifiableResourceDemand} "quantifiable" "resource"
-		//	resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName] ":="
-		//	resourceValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MQuantifiableResourceDemand mespswp::MQuantifiableResourceDemand:
+		//	{mespswp::MQuantifiableResourceDemand}
+		//	'quantifiable' 'resource'
+		//	resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName]
+		//	':='
+		//	resourceValue=MParameterValueExpression
+		//	';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{mespswp::MQuantifiableResourceDemand} "quantifiable" "resource"
-		//resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName] ":="
-		//resourceValue=MParameterValueExpression ";"
+		//{mespswp::MQuantifiableResourceDemand} 'quantifiable' 'resource'
+		//resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName] ':='
+		//resourceValue=MParameterValueExpression ';'
 		public Group getGroup() { return cGroup; }
 
 		//{mespswp::MQuantifiableResourceDemand}
 		public Action getMQuantifiableResourceDemandAction_0() { return cMQuantifiableResourceDemandAction_0; }
 
-		//"quantifiable"
+		//'quantifiable'
 		public Keyword getQuantifiableKeyword_1() { return cQuantifiableKeyword_1; }
 
-		//"resource"
+		//'resource'
 		public Keyword getResourceKeyword_2() { return cResourceKeyword_2; }
 
 		//resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName]
@@ -570,7 +595,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getResourceMQuantifiableResourceVersionedQualifiedReferenceNameParserRuleCall_3_0_1() { return cResourceMQuantifiableResourceVersionedQualifiedReferenceNameParserRuleCall_3_0_1; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4() { return cColonEqualsSignKeyword_4; }
 
 		//resourceValue=MParameterValueExpression
@@ -579,32 +604,32 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getResourceValueMParameterValueExpressionParserRuleCall_5_0() { return cResourceValueMParameterValueExpressionParserRuleCall_5_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//QualifiedName returns ecore::EString:
-		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
+		//QualifiedName:
+		//	ID ('.' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)*
+		//ID ('.' ID)*
 		public Group getGroup() { return cGroup; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//("." ID)*
+		//('.' ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
 		//ID
@@ -612,7 +637,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Version");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.Version");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
@@ -627,14 +652,14 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_1_1_1_0 = (RuleCall)cGroup_1_1_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1_1_1 = (RuleCall)cGroup_1_1_1.eContents().get(1);
 		
-		//Version returns ecore::EString:
-		//	(INT | INT? ID) ("." (INT | INT? ID))*;
-		public ParserRule getRule() { return rule; }
+		//Version:
+		//	(INT | INT? ID) ('.' (INT | INT? ID))*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(INT | INT? ID) ("." (INT | INT? ID))*
+		//(INT | INT? ID) ('.' (INT | INT? ID))*
 		public Group getGroup() { return cGroup; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//INT
@@ -649,13 +674,13 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_0_1_1() { return cIDTerminalRuleCall_0_1_1; }
 
-		//("." (INT | INT? ID))*
+		//('.' (INT | INT? ID))*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 
 		//INT
@@ -672,35 +697,35 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionedQualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.VersionedQualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final RuleCall cVersionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//VersionedQualifiedName returns ecore::EString:
-		//	QualifiedName "(" Version ")";
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedName:
+		//	QualifiedName '(' Version ')';
+		@Override public ParserRule getRule() { return rule; }
 
-		//QualifiedName "(" Version ")"
+		//QualifiedName '(' Version ')'
 		public Group getGroup() { return cGroup; }
 
 		//QualifiedName
 		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//Version
 		public RuleCall getVersionParserRuleCall_2() { return cVersionParserRuleCall_2; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 
 	public class VersionedQualifiedReferenceNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedReferenceName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.VersionedQualifiedReferenceName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final RuleCall cVersionedQualifiedNameParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
@@ -710,29 +735,29 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		
-		//VersionedQualifiedReferenceName returns ecore::EString:
-		//	(VersionedQualifiedName "::")? ID ("::" ID)*;
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedReferenceName:
+		//	(VersionedQualifiedName '::')? ID ('::' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(VersionedQualifiedName "::")? ID ("::" ID)*
+		//(VersionedQualifiedName '::')? ID ('::' ID)*
 		public Group getGroup() { return cGroup; }
 
-		//(VersionedQualifiedName "::")?
+		//(VersionedQualifiedName '::')?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//VersionedQualifiedName
 		public RuleCall getVersionedQualifiedNameParserRuleCall_0_0() { return cVersionedQualifiedNameParserRuleCall_0_0; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_0_1() { return cColonColonKeyword_0_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 
-		//("::" ID)*
+		//('::' ID)*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_2_0() { return cColonColonKeyword_2_0; }
 
 		//ID
@@ -740,14 +765,14 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MMESPSwPackageDeploymentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPSwPackageDeployment");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPSwPackageDeployment");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMMESPRegularSwPackageDeploymentParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMMESPDriverSwPackageDeploymentParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//MMESPSwPackageDeployment:
 		//	MMESPRegularSwPackageDeployment | MMESPDriverSwPackageDeployment;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MMESPRegularSwPackageDeployment | MMESPDriverSwPackageDeployment
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -760,7 +785,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MMESPRegularSwPackageDeploymentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPRegularSwPackageDeployment");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPRegularSwPackageDeployment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMMESPSwPackageDeploymentAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cSwpackageKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -773,19 +798,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
-		//MMESPRegularSwPackageDeployment returns MMESPSwPackageDeployment:
-		//	{MMESPSwPackageDeployment} "swpackage" swPackage=[mespswp::MSwPackage|VersionedQualifiedName] "{"
-		//	parameterValueAssignments+=MParameterValueAssignment* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//MMESPRegularSwPackageDeployment MMESPSwPackageDeployment:
+		//	{MMESPSwPackageDeployment}
+		//	'swpackage' swPackage=[mespswp::MSwPackage|VersionedQualifiedName]
+		//	'{'
+		//	parameterValueAssignments+=MParameterValueAssignment*
+		//	'}' ';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//{MMESPSwPackageDeployment} "swpackage" swPackage=[mespswp::MSwPackage|VersionedQualifiedName] "{"
-		//parameterValueAssignments+=MParameterValueAssignment* "}" ";"
+		//{MMESPSwPackageDeployment} 'swpackage' swPackage=[mespswp::MSwPackage|VersionedQualifiedName] '{'
+		//parameterValueAssignments+=MParameterValueAssignment* '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{MMESPSwPackageDeployment}
 		public Action getMMESPSwPackageDeploymentAction_0() { return cMMESPSwPackageDeploymentAction_0; }
 
-		//"swpackage"
+		//'swpackage'
 		public Keyword getSwpackageKeyword_1() { return cSwpackageKeyword_1; }
 
 		//swPackage=[mespswp::MSwPackage|VersionedQualifiedName]
@@ -797,7 +825,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getSwPackageMSwPackageVersionedQualifiedNameParserRuleCall_2_0_1() { return cSwPackageMSwPackageVersionedQualifiedNameParserRuleCall_2_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//parameterValueAssignments+=MParameterValueAssignment*
@@ -806,15 +834,15 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueAssignment
 		public RuleCall getParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_0() { return cParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MMESPDriverSwPackageDeploymentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDriverSwPackageDeployment");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDriverSwPackageDeployment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMMESPDriverSwPackageDeploymentAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cDriverKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -843,20 +871,27 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MMESPDriverSwPackageDeployment:
-		//	{MMESPDriverSwPackageDeployment} "driver" swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName] "{"
-		//	(("parameter" "values" "{" parameterValueAssignments+=MParameterValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-		//	deviceDriverMappings+=MMESPDeviceDriverMapping+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	{MMESPDriverSwPackageDeployment}
+		//	'driver' swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName]
+		//	'{' (('parameter' 'values'
+		//	'{'
+		//	parameterValueAssignments+=MParameterValueAssignment+
+		//	'}' ';')?
+		//	& ('device' 'mappings' '{'
+		//	deviceDriverMappings+=MMESPDeviceDriverMapping+
+		//	'}' ';')?)
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//{MMESPDriverSwPackageDeployment} "driver" swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName] "{" (("parameter"
-		//"values" "{" parameterValueAssignments+=MParameterValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-		//deviceDriverMappings+=MMESPDeviceDriverMapping+ "}" ";")?) "}" ";"
+		//{MMESPDriverSwPackageDeployment} 'driver' swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName] '{' (('parameter'
+		//'values' '{' parameterValueAssignments+=MParameterValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+		//deviceDriverMappings+=MMESPDeviceDriverMapping+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{MMESPDriverSwPackageDeployment}
 		public Action getMMESPDriverSwPackageDeploymentAction_0() { return cMMESPDriverSwPackageDeploymentAction_0; }
 
-		//"driver"
+		//'driver'
 		public Keyword getDriverKeyword_1() { return cDriverKeyword_1; }
 
 		//swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName]
@@ -868,23 +903,23 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getSwPackageMDriverSwPackageVersionedQualifiedNameParserRuleCall_2_0_1() { return cSwPackageMDriverSwPackageVersionedQualifiedNameParserRuleCall_2_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//("parameter" "values" "{" parameterValueAssignments+=MParameterValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-		//deviceDriverMappings+=MMESPDeviceDriverMapping+ "}" ";")?
+		//(('parameter' 'values' '{' parameterValueAssignments+=MParameterValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+		//deviceDriverMappings+=MMESPDeviceDriverMapping+ '}' ';')?)
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//("parameter" "values" "{" parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?
+		//('parameter' 'values' '{' parameterValueAssignments+=MParameterValueAssignment+ '}' ';')?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"parameter"
+		//'parameter'
 		public Keyword getParameterKeyword_4_0_0() { return cParameterKeyword_4_0_0; }
 
-		//"values"
+		//'values'
 		public Keyword getValuesKeyword_4_0_1() { return cValuesKeyword_4_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_0_2() { return cLeftCurlyBracketKeyword_4_0_2; }
 
 		//parameterValueAssignments+=MParameterValueAssignment+
@@ -893,22 +928,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueAssignment
 		public RuleCall getParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_0_3_0() { return cParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_0_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_0_4() { return cRightCurlyBracketKeyword_4_0_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_5() { return cSemicolonKeyword_4_0_5; }
 
-		//("device" "mappings" "{" deviceDriverMappings+=MMESPDeviceDriverMapping+ "}" ";")?
+		//('device' 'mappings' '{' deviceDriverMappings+=MMESPDeviceDriverMapping+ '}' ';')?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_4_1_0() { return cDeviceKeyword_4_1_0; }
 
-		//"mappings"
+		//'mappings'
 		public Keyword getMappingsKeyword_4_1_1() { return cMappingsKeyword_4_1_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_1_2() { return cLeftCurlyBracketKeyword_4_1_2; }
 
 		//deviceDriverMappings+=MMESPDeviceDriverMapping+
@@ -917,21 +952,21 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MMESPDeviceDriverMapping
 		public RuleCall getDeviceDriverMappingsMMESPDeviceDriverMappingParserRuleCall_4_1_3_0() { return cDeviceDriverMappingsMMESPDeviceDriverMappingParserRuleCall_4_1_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_1_4() { return cRightCurlyBracketKeyword_4_1_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_5() { return cSemicolonKeyword_4_1_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MMESPDeviceDriverMappingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDeviceDriverMapping");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDeviceDriverMapping");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSupportedKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cDeviceKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -947,18 +982,19 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//MMESPDeviceDriverMapping:
-		//	"supported" "device" supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName] "->"
-		//	"deployed" "device" deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName] ";";
-		public ParserRule getRule() { return rule; }
+		//	'supported' 'device' supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName]
+		//	'->'
+		//	'deployed' 'device' deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName] ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"supported" "device" supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName] "->"
-		//"deployed" "device" deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName] ";"
+		//'supported' 'device' supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName] '->'
+		//'deployed' 'device' deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName] ';'
 		public Group getGroup() { return cGroup; }
 
-		//"supported"
+		//'supported'
 		public Keyword getSupportedKeyword_0() { return cSupportedKeyword_0; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_1() { return cDeviceKeyword_1; }
 
 		//supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName]
@@ -970,13 +1006,13 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getSupportedDeviceMDriverSwPackageSupportedDeviceVersionedQualifiedReferenceNameParserRuleCall_2_0_1() { return cSupportedDeviceMDriverSwPackageSupportedDeviceVersionedQualifiedReferenceNameParserRuleCall_2_0_1; }
 
-		//"->"
+		//'->'
 		public Keyword getHyphenMinusGreaterThanSignKeyword_3() { return cHyphenMinusGreaterThanSignKeyword_3; }
 
-		//"deployed"
+		//'deployed'
 		public Keyword getDeployedKeyword_4() { return cDeployedKeyword_4; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_5() { return cDeviceKeyword_5; }
 
 		//deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName]
@@ -988,12 +1024,12 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getDeployedDeviceMMESPDeployedDeviceVersionedQualifiedReferenceNameParserRuleCall_6_0_1() { return cDeployedDeviceMMESPDeployedDeviceVersionedQualifiedReferenceNameParserRuleCall_6_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MParameterValueAssignmentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueAssignment");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueAssignment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cParameterKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cParameterAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1004,16 +1040,18 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParameterValueMParameterValueExpressionParserRuleCall_3_0 = (RuleCall)cParameterValueAssignment_3.eContents().get(0);
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//MParameterValueAssignment returns common::MParameterValueAssignmentSingleExpression:
-		//	"parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
-		//	parameterValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MParameterValueAssignment common::MParameterValueAssignmentSingleExpression:
+		//	'parameter'
+		//	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+		//	':='
+		//	parameterValue=MParameterValueExpression ';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" parameterValue=MParameterValueExpression
-		//";"
+		//'parameter' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' parameterValue=MParameterValueExpression
+		//';'
 		public Group getGroup() { return cGroup; }
 
-		//"parameter"
+		//'parameter'
 		public Keyword getParameterKeyword_0() { return cParameterKeyword_0; }
 
 		//parameter=[common::MParameter|VersionedQualifiedReferenceName]
@@ -1025,7 +1063,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_1_0_1() { return cParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_1_0_1; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_2() { return cColonEqualsSignKeyword_2; }
 
 		//parameterValue=MParameterValueExpression
@@ -1034,20 +1072,20 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getParameterValueMParameterValueExpressionParserRuleCall_3_0() { return cParameterValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class MParameterValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValue");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueRefObjectParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValuePARParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//MParameterValue returns common::MParameterValue:
-		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
-		public ParserRule getRule() { return rule; }
+		//MParameterValue common::MParameterValue:
+		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1063,17 +1101,17 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueLiteral");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueBooleanLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueStringLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValueIntegerLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cMParameterValueRealLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MParameterValueLiteral returns common::MParameterValueLiteral:
+		//MParameterValueLiteral common::MParameterValueLiteral:
 		//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-		//	MParameterValueRealLiteral;
-		public ParserRule getRule() { return rule; }
+		//	MParameterValueRealLiteral
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
 		//MParameterValueRealLiteral
@@ -1093,15 +1131,15 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueBooleanLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueBooleanLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueBooleanLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueBooleanLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueEBooleanParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-		//	{common::MParameterValueBooleanLiteral} value=EBoolean;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+		//	{common::MParameterValueBooleanLiteral} value=EBoolean
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueBooleanLiteral} value=EBoolean
 		public Group getGroup() { return cGroup; }
@@ -1117,39 +1155,48 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueStringLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueStringLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueStringLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final Assignment cIsRawAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cIsRawRawKeyword_1_0 = (Keyword)cIsRawAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
-		//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-		//	{common::MParameterValueStringLiteral} value=STRING;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+		//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+		//	value=STRING
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterValueStringLiteral} value=STRING
+		//{common::MParameterValueStringLiteral} isRaw?='raw'? value=STRING
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterValueStringLiteral}
 		public Action getMParameterValueStringLiteralAction_0() { return cMParameterValueStringLiteralAction_0; }
 
+		//isRaw?='raw'?
+		public Assignment getIsRawAssignment_1() { return cIsRawAssignment_1; }
+
+		//'raw'
+		public Keyword getIsRawRawKeyword_1_0() { return cIsRawRawKeyword_1_0; }
+
 		//value=STRING
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class MParameterValueIntegerLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueIntegerLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueIntegerLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueIntegerLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueINTEGERParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-		//	{common::MParameterValueIntegerLiteral} value=INTEGER;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+		//	{common::MParameterValueIntegerLiteral} value=INTEGER
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueIntegerLiteral} value=INTEGER
 		public Group getGroup() { return cGroup; }
@@ -1165,15 +1212,15 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRealLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRealLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueRealLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRealLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueREALParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-		//	{common::MParameterValueRealLiteral} value=REAL;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+		//	{common::MParameterValueRealLiteral} value=REAL
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRealLiteral} value=REAL
 		public Group getGroup() { return cGroup; }
@@ -1189,16 +1236,16 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRefObjectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRefObject");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueRefObject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRefObjectAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cObjectAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cObjectMCommonReferenceableObjCrossReference_1_0 = (CrossReference)cObjectAssignment_1.eContents().get(0);
 		private final RuleCall cObjectMCommonReferenceableObjVersionedQualifiedReferenceNameParserRuleCall_1_0_1 = (RuleCall)cObjectMCommonReferenceableObjCrossReference_1_0.eContents().get(1);
 		
-		//MParameterValueRefObject returns common::MParameterValueRefObject:
-		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRefObject common::MParameterValueRefObject:
+		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 		public Group getGroup() { return cGroup; }
@@ -1217,21 +1264,21 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValuePARElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValuePAR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValuePAR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueMParameterValueExpressionParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//MParameterValuePAR returns common::MParameterValuePAR:
-		//	"(" value=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterValuePAR common::MParameterValuePAR:
+		//	'(' value=MParameterValueExpression ')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"(" value=MParameterValueExpression ")"
+		//'(' value=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 
 		//value=MParameterValueExpression
@@ -1240,12 +1287,12 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getValueMParameterValueExpressionParserRuleCall_1_0() { return cValueMParameterValueExpressionParserRuleCall_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 
 	public class MParameterValueExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueExpressionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1256,10 +1303,10 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueExpressionParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueExpression returns common::MParameterValueExpression:
+		//MParameterValueExpression common::MParameterValueExpression:
 		//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-		//	right=MParameterValueExpression)?;
-		public ParserRule getRule() { return rule; }
+		//	right=MParameterValueExpression)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
 		//right=MParameterValueExpression)?
@@ -1291,7 +1338,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueTERMElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERM");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueTERM");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueTERMAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1302,10 +1349,9 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueTERMParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueTERM returns common::MParameterValueTERM:
-		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-		//	right=MParameterValueTERM)?;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueTERM common::MParameterValueTERM:
+		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 		public Group getGroup() { return cGroup; }
@@ -1336,7 +1382,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MMESPDeploymentPlatformElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDeploymentPlatform");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDeploymentPlatform");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDeploymentKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cPlatformKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1378,22 +1424,30 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MMESPDeploymentPlatform:
-		//	"deployment" "platform" name=ID "{" ("platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";" &
-		//	"pswpackage" ":=" platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ";" & ("deployed" "devices"
-		//	"{" deployedDevices+=MMESPDeployedDevice+ "}" ";")? & ("parameter" "values" "{"
-		//	parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'deployment' 'platform'
+		//	name=ID
+		//	'{' ('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';' & 'pswpackage' ':='
+		//	platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ';' & ('deployed' 'devices' '{'
+		//	deployedDevices+=MMESPDeployedDevice+
+		//	'}' ';')?
+		//	& ('parameter' 'values'
+		//	'{'
+		//	parameterValueAssignments+=MParameterValueAssignment+
+		//	'}' ';')?)
+		//	'}'
+		//	';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"deployment" "platform" name=ID "{" ("platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";" & "pswpackage"
-		//":=" platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ";" & ("deployed" "devices" "{"
-		//deployedDevices+=MMESPDeployedDevice+ "}" ";")? & ("parameter" "values" "{"
-		//parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?) "}" ";"
+		//'deployment' 'platform' name=ID '{' ('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';' & 'pswpackage'
+		//':=' platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ';' & ('deployed' 'devices' '{'
+		//deployedDevices+=MMESPDeployedDevice+ '}' ';')? & ('parameter' 'values' '{'
+		//parameterValueAssignments+=MParameterValueAssignment+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"deployment"
+		//'deployment'
 		public Keyword getDeploymentKeyword_0() { return cDeploymentKeyword_0; }
 
-		//"platform"
+		//'platform'
 		public Keyword getPlatformKeyword_1() { return cPlatformKeyword_1; }
 
 		//name=ID
@@ -1402,22 +1456,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";" & "pswpackage" ":="
-		//platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ";" & ("deployed" "devices" "{"
-		//deployedDevices+=MMESPDeployedDevice+ "}" ";")? & ("parameter" "values" "{"
-		//parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?
+		//('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';' & 'pswpackage' ':='
+		//platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ';' & ('deployed' 'devices' '{'
+		//deployedDevices+=MMESPDeployedDevice+ '}' ';')? & ('parameter' 'values' '{'
+		//parameterValueAssignments+=MParameterValueAssignment+ '}' ';')?)
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";"
+		//'platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';'
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"platform"
+		//'platform'
 		public Keyword getPlatformKeyword_4_0_0() { return cPlatformKeyword_4_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_0_1() { return cColonEqualsSignKeyword_4_0_1; }
 
 		//platform=[pdl::MPlatform|VersionedQualifiedName]
@@ -1429,16 +1483,16 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getPlatformMPlatformVersionedQualifiedNameParserRuleCall_4_0_2_0_1() { return cPlatformMPlatformVersionedQualifiedNameParserRuleCall_4_0_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_3() { return cSemicolonKeyword_4_0_3; }
 
-		//"pswpackage" ":=" platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ";"
+		//'pswpackage' ':=' platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ';'
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"pswpackage"
+		//'pswpackage'
 		public Keyword getPswpackageKeyword_4_1_0() { return cPswpackageKeyword_4_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_1_1() { return cColonEqualsSignKeyword_4_1_1; }
 
 		//platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName]
@@ -1450,19 +1504,19 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getPlatformSwPackageMPlatformSwPackageVersionedQualifiedNameParserRuleCall_4_1_2_0_1() { return cPlatformSwPackageMPlatformSwPackageVersionedQualifiedNameParserRuleCall_4_1_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_3() { return cSemicolonKeyword_4_1_3; }
 
-		//("deployed" "devices" "{" deployedDevices+=MMESPDeployedDevice+ "}" ";")?
+		//('deployed' 'devices' '{' deployedDevices+=MMESPDeployedDevice+ '}' ';')?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 
-		//"deployed"
+		//'deployed'
 		public Keyword getDeployedKeyword_4_2_0() { return cDeployedKeyword_4_2_0; }
 
-		//"devices"
+		//'devices'
 		public Keyword getDevicesKeyword_4_2_1() { return cDevicesKeyword_4_2_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_2_2() { return cLeftCurlyBracketKeyword_4_2_2; }
 
 		//deployedDevices+=MMESPDeployedDevice+
@@ -1471,22 +1525,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MMESPDeployedDevice
 		public RuleCall getDeployedDevicesMMESPDeployedDeviceParserRuleCall_4_2_3_0() { return cDeployedDevicesMMESPDeployedDeviceParserRuleCall_4_2_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_2_4() { return cRightCurlyBracketKeyword_4_2_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_2_5() { return cSemicolonKeyword_4_2_5; }
 
-		//("parameter" "values" "{" parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?
+		//('parameter' 'values' '{' parameterValueAssignments+=MParameterValueAssignment+ '}' ';')?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 
-		//"parameter"
+		//'parameter'
 		public Keyword getParameterKeyword_4_3_0() { return cParameterKeyword_4_3_0; }
 
-		//"values"
+		//'values'
 		public Keyword getValuesKeyword_4_3_1() { return cValuesKeyword_4_3_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_3_2() { return cLeftCurlyBracketKeyword_4_3_2; }
 
 		//parameterValueAssignments+=MParameterValueAssignment+
@@ -1495,21 +1549,21 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueAssignment
 		public RuleCall getParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_3_3_0() { return cParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_3_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_3_4() { return cRightCurlyBracketKeyword_4_3_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_3_5() { return cSemicolonKeyword_4_3_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MMESPDeployedDeviceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDeployedDevice");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDeployedDevice");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDeviceKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cDeviceAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1524,15 +1578,18 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MMESPDeployedDevice:
-		//	"device" device=[pdl::MDevice|VersionedQualifiedName] name=ID "{"
-		//	parameterValueAssignments+=MParameterValueAssignment* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'device'
+		//	device=[pdl::MDevice|VersionedQualifiedName] name=ID
+		//	'{'
+		//	parameterValueAssignments+=MParameterValueAssignment*
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"device" device=[pdl::MDevice|VersionedQualifiedName] name=ID "{" parameterValueAssignments+=MParameterValueAssignment*
-		//"}" ";"
+		//'device' device=[pdl::MDevice|VersionedQualifiedName] name=ID '{' parameterValueAssignments+=MParameterValueAssignment*
+		//'}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_0() { return cDeviceKeyword_0; }
 
 		//device=[pdl::MDevice|VersionedQualifiedName]
@@ -1550,7 +1607,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
 		//parameterValueAssignments+=MParameterValueAssignment*
@@ -1559,15 +1616,15 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueAssignment
 		public RuleCall getParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_0() { return cParameterValueAssignmentsMParameterValueAssignmentParserRuleCall_4_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MMESPDeploymentAlternativeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPDeploymentAlternative");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MMESPDeploymentAlternative");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cDeploymentKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cAlternativeKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1627,26 +1684,37 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MMESPDeploymentAlternative:
-		//	"deployment" "alternative" name=ID "{" ("deployment" "platforms" ":=" deploymentPlatforms+=[MMESPDeploymentPlatform]
-		//	("," deploymentPlatforms+=[MMESPDeploymentPlatform])* ";" & ("languages" ":="
+		//	'deployment' 'alternative'
+		//	name=ID
+		//	'{' ('deployment' 'platforms' ':=' deploymentPlatforms+=[MMESPDeploymentPlatform] (","
+		//	deploymentPlatforms+=[MMESPDeploymentPlatform])* ';' & ('languages' ':='
 		//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-		//	";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+ "}" ";")? & ("required" "interfaces" "{"
-		//	requires+=MSwPackageRequiredInterface+ "}" ";")? & ("deployment" "alternatives" "{"
-		//	deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	';')?
+		//	& ('swpackages' '{'
+		//	deployedSwPackages+=MMESPSwPackageDeployment+
+		//	'}' ';')?
+		//	& ('required' 'interfaces' '{'
+		//	requires+=MSwPackageRequiredInterface+
+		//	'}' ';')?
+		//	& ('deployment' 'alternatives'
+		//	'{'
+		//	deploymentAlternatives+=MMESPDeploymentAlternative+
+		//	'}' ';')?)
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"deployment" "alternative" name=ID "{" ("deployment" "platforms" ":=" deploymentPlatforms+=[MMESPDeploymentPlatform]
-		//("," deploymentPlatforms+=[MMESPDeploymentPlatform])* ";" & ("languages" ":="
+		//'deployment' 'alternative' name=ID '{' ('deployment' 'platforms' ':=' deploymentPlatforms+=[MMESPDeploymentPlatform]
+		//("," deploymentPlatforms+=[MMESPDeploymentPlatform])* ';' & ('languages' ':='
 		//languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-		//";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+ "}" ";")? & ("required" "interfaces" "{"
-		//requires+=MSwPackageRequiredInterface+ "}" ";")? & ("deployment" "alternatives" "{"
-		//deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?) "}" ";"
+		//';')? & ('swpackages' '{' deployedSwPackages+=MMESPSwPackageDeployment+ '}' ';')? & ('required' 'interfaces' '{'
+		//requires+=MSwPackageRequiredInterface+ '}' ';')? & ('deployment' 'alternatives' '{'
+		//deploymentAlternatives+=MMESPDeploymentAlternative+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"deployment"
+		//'deployment'
 		public Keyword getDeploymentKeyword_0() { return cDeploymentKeyword_0; }
 
-		//"alternative"
+		//'alternative'
 		public Keyword getAlternativeKeyword_1() { return cAlternativeKeyword_1; }
 
 		//name=ID
@@ -1655,28 +1723,28 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"deployment" "platforms" ":=" deploymentPlatforms+=[MMESPDeploymentPlatform] (","
-		//deploymentPlatforms+=[MMESPDeploymentPlatform])* ";" & ("languages" ":="
+		//('deployment' 'platforms' ':=' deploymentPlatforms+=[MMESPDeploymentPlatform] (","
+		//deploymentPlatforms+=[MMESPDeploymentPlatform])* ';' & ('languages' ':='
 		//languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-		//";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+ "}" ";")? & ("required" "interfaces" "{"
-		//requires+=MSwPackageRequiredInterface+ "}" ";")? & ("deployment" "alternatives" "{"
-		//deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?
+		//';')? & ('swpackages' '{' deployedSwPackages+=MMESPSwPackageDeployment+ '}' ';')? & ('required' 'interfaces' '{'
+		//requires+=MSwPackageRequiredInterface+ '}' ';')? & ('deployment' 'alternatives' '{'
+		//deploymentAlternatives+=MMESPDeploymentAlternative+ '}' ';')?)
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"deployment" "platforms" ":=" deploymentPlatforms+=[MMESPDeploymentPlatform] (","
-		//deploymentPlatforms+=[MMESPDeploymentPlatform])* ";"
+		//'deployment' 'platforms' ':=' deploymentPlatforms+=[MMESPDeploymentPlatform] (","
+		//deploymentPlatforms+=[MMESPDeploymentPlatform])* ';'
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"deployment"
+		//'deployment'
 		public Keyword getDeploymentKeyword_4_0_0() { return cDeploymentKeyword_4_0_0; }
 
-		//"platforms"
+		//'platforms'
 		public Keyword getPlatformsKeyword_4_0_1() { return cPlatformsKeyword_4_0_1; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_0_2() { return cColonEqualsSignKeyword_4_0_2; }
 
 		//deploymentPlatforms+=[MMESPDeploymentPlatform]
@@ -1703,17 +1771,17 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getDeploymentPlatformsMMESPDeploymentPlatformIDTerminalRuleCall_4_0_4_1_0_1() { return cDeploymentPlatformsMMESPDeploymentPlatformIDTerminalRuleCall_4_0_4_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_5() { return cSemicolonKeyword_4_0_5; }
 
-		//("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-		//languages+=[system::MLanguage|VersionedQualifiedName])* ";")?
+		//('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+		//languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"languages"
+		//'languages'
 		public Keyword getLanguagesKeyword_4_1_0() { return cLanguagesKeyword_4_1_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_4_1_1() { return cColonEqualsSignKeyword_4_1_1; }
 
 		//languages+=[system::MLanguage|VersionedQualifiedName]
@@ -1740,16 +1808,16 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLanguagesMLanguageVersionedQualifiedNameParserRuleCall_4_1_3_1_0_1() { return cLanguagesMLanguageVersionedQualifiedNameParserRuleCall_4_1_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_4() { return cSemicolonKeyword_4_1_4; }
 
-		//("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+ "}" ";")?
+		//('swpackages' '{' deployedSwPackages+=MMESPSwPackageDeployment+ '}' ';')?
 		public Group getGroup_4_2() { return cGroup_4_2; }
 
-		//"swpackages"
+		//'swpackages'
 		public Keyword getSwpackagesKeyword_4_2_0() { return cSwpackagesKeyword_4_2_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_2_1() { return cLeftCurlyBracketKeyword_4_2_1; }
 
 		//deployedSwPackages+=MMESPSwPackageDeployment+
@@ -1758,22 +1826,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MMESPSwPackageDeployment
 		public RuleCall getDeployedSwPackagesMMESPSwPackageDeploymentParserRuleCall_4_2_2_0() { return cDeployedSwPackagesMMESPSwPackageDeploymentParserRuleCall_4_2_2_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_2_3() { return cRightCurlyBracketKeyword_4_2_3; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_2_4() { return cSemicolonKeyword_4_2_4; }
 
-		//("required" "interfaces" "{" requires+=MSwPackageRequiredInterface+ "}" ";")?
+		//('required' 'interfaces' '{' requires+=MSwPackageRequiredInterface+ '}' ';')?
 		public Group getGroup_4_3() { return cGroup_4_3; }
 
-		//"required"
+		//'required'
 		public Keyword getRequiredKeyword_4_3_0() { return cRequiredKeyword_4_3_0; }
 
-		//"interfaces"
+		//'interfaces'
 		public Keyword getInterfacesKeyword_4_3_1() { return cInterfacesKeyword_4_3_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_3_2() { return cLeftCurlyBracketKeyword_4_3_2; }
 
 		//requires+=MSwPackageRequiredInterface+
@@ -1782,22 +1850,22 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MSwPackageRequiredInterface
 		public RuleCall getRequiresMSwPackageRequiredInterfaceParserRuleCall_4_3_3_0() { return cRequiresMSwPackageRequiredInterfaceParserRuleCall_4_3_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_3_4() { return cRightCurlyBracketKeyword_4_3_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_3_5() { return cSemicolonKeyword_4_3_5; }
 
-		//("deployment" "alternatives" "{" deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?
+		//('deployment' 'alternatives' '{' deploymentAlternatives+=MMESPDeploymentAlternative+ '}' ';')?
 		public Group getGroup_4_4() { return cGroup_4_4; }
 
-		//"deployment"
+		//'deployment'
 		public Keyword getDeploymentKeyword_4_4_0() { return cDeploymentKeyword_4_4_0; }
 
-		//"alternatives"
+		//'alternatives'
 		public Keyword getAlternativesKeyword_4_4_1() { return cAlternativesKeyword_4_4_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_4_2() { return cLeftCurlyBracketKeyword_4_4_2; }
 
 		//deploymentAlternatives+=MMESPDeploymentAlternative+
@@ -1806,58 +1874,58 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		//MMESPDeploymentAlternative
 		public RuleCall getDeploymentAlternativesMMESPDeploymentAlternativeParserRuleCall_4_4_3_0() { return cDeploymentAlternativesMMESPDeploymentAlternativeParserRuleCall_4_4_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_4_4() { return cRightCurlyBracketKeyword_4_4_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_4_5() { return cSemicolonKeyword_4_4_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class EBooleanElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EBoolean");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.EBoolean");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
-		//EBoolean returns ecore::EBoolean:
-		//	"true" | "false";
-		public ParserRule getRule() { return rule; }
+		//EBoolean ecore::EBoolean:
+		//	'true' | 'false'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"true" | "false"
+		//'true' | 'false'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"true"
+		//'true'
 		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
 
-		//"false"
+		//'false'
 		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
 	}
 
 	public class INTEGERElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "INTEGER");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.INTEGER");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final RuleCall cHEXADECIMALTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//INTEGER returns ecore::EString:
-		//	"-"? INT | HEXADECIMAL;
-		public ParserRule getRule() { return rule; }
+		//INTEGER:
+		//	'-'? INT | HEXADECIMAL;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? INT | HEXADECIMAL
+		//'-'? INT | HEXADECIMAL
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"-"? INT
+		//'-'? INT
 		public Group getGroup_0() { return cGroup_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0_0() { return cHyphenMinusKeyword_0_0; }
 
 		//INT
@@ -1868,7 +1936,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class REALElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "REAL");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.REAL");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -1880,35 +1948,35 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cHyphenMinusKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final RuleCall cINTTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
-		//REAL returns ecore::EString:
-		//	"-"? (INT "." INT) ("e" "-"? INT)?;
-		public ParserRule getRule() { return rule; }
+		//REAL:
+		//	'-'? (INT '.' INT) ('e' '-'? INT)?;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? (INT "." INT) ("e" "-"? INT)?
+		//'-'? (INT '.' INT) ('e' '-'? INT)?
 		public Group getGroup() { return cGroup; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
 
-		//INT "." INT
+		//(INT '.' INT)
 		public Group getGroup_1() { return cGroup_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_1() { return cFullStopKeyword_1_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_2() { return cINTTerminalRuleCall_1_2; }
 
-		//("e" "-"? INT)?
+		//('e' '-'? INT)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"e"
+		//'e'
 		public Keyword getEKeyword_2_0() { return cEKeyword_2_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_2_1() { return cHyphenMinusKeyword_2_1; }
 
 		//INT
@@ -1917,7 +1985,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MParameterValueExpressionOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpressionOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueExpressionOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cPlusEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cPlusPlusSignKeyword_0_0 = (Keyword)cPlusEnumLiteralDeclaration_0.eContents().get(0);
@@ -1925,27 +1993,27 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMinusHyphenMinusKeyword_1_0 = (Keyword)cMinusEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-		//	plus="+" | minus="-";
+		//	plus='+' | minus='-';
 		public EnumRule getRule() { return rule; }
 
-		//plus="+" | minus="-"
+		//plus='+' | minus='-'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//plus="+"
+		//plus='+'
 		public EnumLiteralDeclaration getPlusEnumLiteralDeclaration_0() { return cPlusEnumLiteralDeclaration_0; }
 
-		//"+"
+		//'+'
 		public Keyword getPlusPlusSignKeyword_0_0() { return cPlusPlusSignKeyword_0_0; }
 
-		//minus="-"
+		//minus='-'
 		public EnumLiteralDeclaration getMinusEnumLiteralDeclaration_1() { return cMinusEnumLiteralDeclaration_1; }
 
-		//"-"
+		//'-'
 		public Keyword getMinusHyphenMinusKeyword_1_0() { return cMinusHyphenMinusKeyword_1_0; }
 	}
 
 	public class MParameterValueTERMOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERMOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.MParameterValueTERMOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cMultEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cMultAsteriskKeyword_0_0 = (Keyword)cMultEnumLiteralDeclaration_0.eContents().get(0);
@@ -1953,70 +2021,105 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDivSolidusKeyword_1_0 = (Keyword)cDivEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-		//	mult="*" | div="/";
+		//	mult='*' | div='/';
 		public EnumRule getRule() { return rule; }
 
-		//mult="*" | div="/"
+		//mult='*' | div='/'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//mult="*"
+		//mult='*'
 		public EnumLiteralDeclaration getMultEnumLiteralDeclaration_0() { return cMultEnumLiteralDeclaration_0; }
 
-		//"*"
+		//'*'
 		public Keyword getMultAsteriskKeyword_0_0() { return cMultAsteriskKeyword_0_0; }
 
-		//div="/"
+		//div='/'
 		public EnumLiteralDeclaration getDivEnumLiteralDeclaration_1() { return cDivEnumLiteralDeclaration_1; }
 
-		//"/"
+		//'/'
 		public Keyword getDivSolidusKeyword_1_0() { return cDivSolidusKeyword_1_0; }
 	}
 	
-	private MMESPDEPPackageFileElements pMMESPDEPPackageFile;
-	private MMESPDEPPackageElementElements pMMESPDEPPackageElement;
-	private MMESPDeploymentElements pMMESPDeployment;
-	private MSwPackageRequiredInterfaceElements pMSwPackageRequiredInterface;
-	private MResourceDemandElements pMResourceDemand;
-	private MInstantiableResourceDemandElements pMInstantiableResourceDemand;
-	private MQuantifiableResourceDemandElements pMQuantifiableResourceDemand;
-	private QualifiedNameElements pQualifiedName;
-	private VersionElements pVersion;
-	private VersionedQualifiedNameElements pVersionedQualifiedName;
-	private VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
-	private MMESPSwPackageDeploymentElements pMMESPSwPackageDeployment;
-	private MMESPRegularSwPackageDeploymentElements pMMESPRegularSwPackageDeployment;
-	private MMESPDriverSwPackageDeploymentElements pMMESPDriverSwPackageDeployment;
-	private MMESPDeviceDriverMappingElements pMMESPDeviceDriverMapping;
-	private MParameterValueAssignmentElements pMParameterValueAssignment;
-	private MParameterValueElements pMParameterValue;
-	private MParameterValueLiteralElements pMParameterValueLiteral;
-	private MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
-	private MParameterValueStringLiteralElements pMParameterValueStringLiteral;
-	private MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
-	private MParameterValueRealLiteralElements pMParameterValueRealLiteral;
-	private MParameterValueRefObjectElements pMParameterValueRefObject;
-	private MParameterValuePARElements pMParameterValuePAR;
-	private MParameterValueExpressionOperatorsElements unknownRuleMParameterValueExpressionOperators;
-	private MParameterValueTERMOperatorsElements unknownRuleMParameterValueTERMOperators;
-	private MParameterValueExpressionElements pMParameterValueExpression;
-	private MParameterValueTERMElements pMParameterValueTERM;
-	private MMESPDeploymentPlatformElements pMMESPDeploymentPlatform;
-	private MMESPDeployedDeviceElements pMMESPDeployedDevice;
-	private MMESPDeploymentAlternativeElements pMMESPDeploymentAlternative;
-	private EBooleanElements pEBoolean;
-	private TerminalRule tHEXADECIMAL;
-	private INTEGERElements pINTEGER;
-	private REALElements pREAL;
+	private final MMESPDEPPackageFileElements pMMESPDEPPackageFile;
+	private final MMESPDEPPackageElementElements pMMESPDEPPackageElement;
+	private final MMESPDeploymentElements pMMESPDeployment;
+	private final MSwPackageRequiredInterfaceElements pMSwPackageRequiredInterface;
+	private final MResourceDemandElements pMResourceDemand;
+	private final MInstantiableResourceDemandElements pMInstantiableResourceDemand;
+	private final MQuantifiableResourceDemandElements pMQuantifiableResourceDemand;
+	private final QualifiedNameElements pQualifiedName;
+	private final VersionElements pVersion;
+	private final VersionedQualifiedNameElements pVersionedQualifiedName;
+	private final VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
+	private final MMESPSwPackageDeploymentElements pMMESPSwPackageDeployment;
+	private final MMESPRegularSwPackageDeploymentElements pMMESPRegularSwPackageDeployment;
+	private final MMESPDriverSwPackageDeploymentElements pMMESPDriverSwPackageDeployment;
+	private final MMESPDeviceDriverMappingElements pMMESPDeviceDriverMapping;
+	private final MParameterValueAssignmentElements pMParameterValueAssignment;
+	private final MParameterValueElements pMParameterValue;
+	private final MParameterValueLiteralElements pMParameterValueLiteral;
+	private final MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
+	private final MParameterValueStringLiteralElements pMParameterValueStringLiteral;
+	private final MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
+	private final MParameterValueRealLiteralElements pMParameterValueRealLiteral;
+	private final MParameterValueRefObjectElements pMParameterValueRefObject;
+	private final MParameterValuePARElements pMParameterValuePAR;
+	private final MParameterValueExpressionOperatorsElements eMParameterValueExpressionOperators;
+	private final MParameterValueTERMOperatorsElements eMParameterValueTERMOperators;
+	private final MParameterValueExpressionElements pMParameterValueExpression;
+	private final MParameterValueTERMElements pMParameterValueTERM;
+	private final MMESPDeploymentPlatformElements pMMESPDeploymentPlatform;
+	private final MMESPDeployedDeviceElements pMMESPDeployedDevice;
+	private final MMESPDeploymentAlternativeElements pMMESPDeploymentAlternative;
+	private final EBooleanElements pEBoolean;
+	private final TerminalRule tHEXADECIMAL;
+	private final INTEGERElements pINTEGER;
+	private final REALElements pREAL;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public DEPGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMMESPDEPPackageFile = new MMESPDEPPackageFileElements();
+		this.pMMESPDEPPackageElement = new MMESPDEPPackageElementElements();
+		this.pMMESPDeployment = new MMESPDeploymentElements();
+		this.pMSwPackageRequiredInterface = new MSwPackageRequiredInterfaceElements();
+		this.pMResourceDemand = new MResourceDemandElements();
+		this.pMInstantiableResourceDemand = new MInstantiableResourceDemandElements();
+		this.pMQuantifiableResourceDemand = new MQuantifiableResourceDemandElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pVersion = new VersionElements();
+		this.pVersionedQualifiedName = new VersionedQualifiedNameElements();
+		this.pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements();
+		this.pMMESPSwPackageDeployment = new MMESPSwPackageDeploymentElements();
+		this.pMMESPRegularSwPackageDeployment = new MMESPRegularSwPackageDeploymentElements();
+		this.pMMESPDriverSwPackageDeployment = new MMESPDriverSwPackageDeploymentElements();
+		this.pMMESPDeviceDriverMapping = new MMESPDeviceDriverMappingElements();
+		this.pMParameterValueAssignment = new MParameterValueAssignmentElements();
+		this.pMParameterValue = new MParameterValueElements();
+		this.pMParameterValueLiteral = new MParameterValueLiteralElements();
+		this.pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements();
+		this.pMParameterValueStringLiteral = new MParameterValueStringLiteralElements();
+		this.pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements();
+		this.pMParameterValueRealLiteral = new MParameterValueRealLiteralElements();
+		this.pMParameterValueRefObject = new MParameterValueRefObjectElements();
+		this.pMParameterValuePAR = new MParameterValuePARElements();
+		this.eMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements();
+		this.eMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements();
+		this.pMParameterValueExpression = new MParameterValueExpressionElements();
+		this.pMParameterValueTERM = new MParameterValueTERMElements();
+		this.pMMESPDeploymentPlatform = new MMESPDeploymentPlatformElements();
+		this.pMMESPDeployedDevice = new MMESPDeployedDeviceElements();
+		this.pMMESPDeploymentAlternative = new MMESPDeploymentAlternativeElements();
+		this.pEBoolean = new EBooleanElements();
+		this.tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.DEP.HEXADECIMAL");
+		this.pINTEGER = new INTEGERElements();
+		this.pREAL = new REALElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -2035,7 +2138,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-	
+	@Override
 	public Grammar getGrammar() {
 		return grammar;
 	}
@@ -2047,10 +2150,11 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//MMESPDEPPackageFile:
-	//	"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-	//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPDEPPackageElement;
+	//	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+	//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+	//	element=MMESPDEPPackageElement;
 	public MMESPDEPPackageFileElements getMMESPDEPPackageFileAccess() {
-		return (pMMESPDEPPackageFile != null) ? pMMESPDEPPackageFile : (pMMESPDEPPackageFile = new MMESPDEPPackageFileElements());
+		return pMMESPDEPPackageFile;
 	}
 	
 	public ParserRule getMMESPDEPPackageFileRule() {
@@ -2060,7 +2164,7 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	//MMESPDEPPackageElement:
 	//	MMESPDeployment;
 	public MMESPDEPPackageElementElements getMMESPDEPPackageElementAccess() {
-		return (pMMESPDEPPackageElement != null) ? pMMESPDEPPackageElement : (pMMESPDEPPackageElement = new MMESPDEPPackageElementElements());
+		return pMMESPDEPPackageElement;
 	}
 	
 	public ParserRule getMMESPDEPPackageElementRule() {
@@ -2068,98 +2172,122 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MMESPDeployment:
-	//	{MMESPDeployment} "deployment" "project" name=ID "{" ("version" ":=" version=Version ";" & "construction" "tool" ":="
-	//	ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ";" & ("languages" ":="
+	//	{MMESPDeployment}
+	//	'deployment' 'project'
+	//	name=ID
+	//	'{' ('version' ':=' version=Version ';' & 'construction' 'tool' ':='
+	//	ctool=[mespctool::MConstructionTool|VersionedQualifiedName] ';' & ('languages' ':='
 	//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-	//	";")? & "deployment" "platforms" "{" deploymentPlatforms+=MMESPDeploymentPlatform+ "}" ";" & ("required" "interfaces"
-	//	"{" requires+=MSwPackageRequiredInterface+ "}" ";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+
-	//	"}" ";")? & ("deployment" "alternatives" "{" deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?) "}" ";";
+	//	';')?
+	//	& 'deployment' 'platforms' '{'
+	//	deploymentPlatforms+=MMESPDeploymentPlatform+
+	//	'}' ';' & ('required' 'interfaces' '{'
+	//	requires+=MSwPackageRequiredInterface+
+	//	'}' ';')?
+	//	& ('swpackages' '{'
+	//	deployedSwPackages+=MMESPSwPackageDeployment+
+	//	'}' ';')?
+	//	& ('deployment' 'alternatives'
+	//	'{'
+	//	deploymentAlternatives+=MMESPDeploymentAlternative+
+	//	'}' ';')?)
+	//	'}' ';';
 	public MMESPDeploymentElements getMMESPDeploymentAccess() {
-		return (pMMESPDeployment != null) ? pMMESPDeployment : (pMMESPDeployment = new MMESPDeploymentElements());
+		return pMMESPDeployment;
 	}
 	
 	public ParserRule getMMESPDeploymentRule() {
 		return getMMESPDeploymentAccess().getRule();
 	}
 
-	//MSwPackageRequiredInterface returns mespswp::MSwPackageRequiredInterface:
-	//	"requires" interface=[common::MCommonPackageElement|VersionedQualifiedName] "{" resourceDemands+=MResourceDemand* "}"
-	//	";";
+	//MSwPackageRequiredInterface mespswp::MSwPackageRequiredInterface:
+	//	'requires'
+	//	interface=[common::MCommonPackageElement|VersionedQualifiedName]
+	//	'{'
+	//	resourceDemands+=MResourceDemand*
+	//	'}' ';'
 	public MSwPackageRequiredInterfaceElements getMSwPackageRequiredInterfaceAccess() {
-		return (pMSwPackageRequiredInterface != null) ? pMSwPackageRequiredInterface : (pMSwPackageRequiredInterface = new MSwPackageRequiredInterfaceElements());
+		return pMSwPackageRequiredInterface;
 	}
 	
 	public ParserRule getMSwPackageRequiredInterfaceRule() {
 		return getMSwPackageRequiredInterfaceAccess().getRule();
 	}
 
-	//MResourceDemand returns mespswp::MResourceDemand:
-	//	MQuantifiableResourceDemand | MInstantiableResourceDemand;
+	//MResourceDemand mespswp::MResourceDemand:
+	//	MQuantifiableResourceDemand | MInstantiableResourceDemand
 	public MResourceDemandElements getMResourceDemandAccess() {
-		return (pMResourceDemand != null) ? pMResourceDemand : (pMResourceDemand = new MResourceDemandElements());
+		return pMResourceDemand;
 	}
 	
 	public ParserRule getMResourceDemandRule() {
 		return getMResourceDemandAccess().getRule();
 	}
 
-	//MInstantiableResourceDemand returns mespswp::MInstantiableResourceDemand:
-	//	"instantiable" "resource" resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName] name=ID "{"
-	//	parameterValueAssignments+=MParameterValueAssignment* "}" ";";
+	//MInstantiableResourceDemand mespswp::MInstantiableResourceDemand:
+	//	'instantiable' 'resource'
+	//	resource=[mespcommon::MInstantiableResource|VersionedQualifiedReferenceName] name=ID
+	//	'{'
+	//	parameterValueAssignments+=MParameterValueAssignment*
+	//	'}'
+	//	';'
 	public MInstantiableResourceDemandElements getMInstantiableResourceDemandAccess() {
-		return (pMInstantiableResourceDemand != null) ? pMInstantiableResourceDemand : (pMInstantiableResourceDemand = new MInstantiableResourceDemandElements());
+		return pMInstantiableResourceDemand;
 	}
 	
 	public ParserRule getMInstantiableResourceDemandRule() {
 		return getMInstantiableResourceDemandAccess().getRule();
 	}
 
-	//MQuantifiableResourceDemand returns mespswp::MQuantifiableResourceDemand:
-	//	{mespswp::MQuantifiableResourceDemand} "quantifiable" "resource"
-	//	resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName] ":="
-	//	resourceValue=MParameterValueExpression ";";
+	//MQuantifiableResourceDemand mespswp::MQuantifiableResourceDemand:
+	//	{mespswp::MQuantifiableResourceDemand}
+	//	'quantifiable' 'resource'
+	//	resource=[mespcommon::MQuantifiableResource|VersionedQualifiedReferenceName]
+	//	':='
+	//	resourceValue=MParameterValueExpression
+	//	';'
 	public MQuantifiableResourceDemandElements getMQuantifiableResourceDemandAccess() {
-		return (pMQuantifiableResourceDemand != null) ? pMQuantifiableResourceDemand : (pMQuantifiableResourceDemand = new MQuantifiableResourceDemandElements());
+		return pMQuantifiableResourceDemand;
 	}
 	
 	public ParserRule getMQuantifiableResourceDemandRule() {
 		return getMQuantifiableResourceDemandAccess().getRule();
 	}
 
-	//QualifiedName returns ecore::EString:
-	//	ID ("." ID)*;
+	//QualifiedName:
+	//	ID ('.' ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
 		return getQualifiedNameAccess().getRule();
 	}
 
-	//Version returns ecore::EString:
-	//	(INT | INT? ID) ("." (INT | INT? ID))*;
+	//Version:
+	//	(INT | INT? ID) ('.' (INT | INT? ID))*;
 	public VersionElements getVersionAccess() {
-		return (pVersion != null) ? pVersion : (pVersion = new VersionElements());
+		return pVersion;
 	}
 	
 	public ParserRule getVersionRule() {
 		return getVersionAccess().getRule();
 	}
 
-	//VersionedQualifiedName returns ecore::EString:
-	//	QualifiedName "(" Version ")";
+	//VersionedQualifiedName:
+	//	QualifiedName '(' Version ')';
 	public VersionedQualifiedNameElements getVersionedQualifiedNameAccess() {
-		return (pVersionedQualifiedName != null) ? pVersionedQualifiedName : (pVersionedQualifiedName = new VersionedQualifiedNameElements());
+		return pVersionedQualifiedName;
 	}
 	
 	public ParserRule getVersionedQualifiedNameRule() {
 		return getVersionedQualifiedNameAccess().getRule();
 	}
 
-	//VersionedQualifiedReferenceName returns ecore::EString:
-	//	(VersionedQualifiedName "::")? ID ("::" ID)*;
+	//VersionedQualifiedReferenceName:
+	//	(VersionedQualifiedName '::')? ID ('::' ID)*;
 	public VersionedQualifiedReferenceNameElements getVersionedQualifiedReferenceNameAccess() {
-		return (pVersionedQualifiedReferenceName != null) ? pVersionedQualifiedReferenceName : (pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements());
+		return pVersionedQualifiedReferenceName;
 	}
 	
 	public ParserRule getVersionedQualifiedReferenceNameRule() {
@@ -2169,18 +2297,21 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	//MMESPSwPackageDeployment:
 	//	MMESPRegularSwPackageDeployment | MMESPDriverSwPackageDeployment;
 	public MMESPSwPackageDeploymentElements getMMESPSwPackageDeploymentAccess() {
-		return (pMMESPSwPackageDeployment != null) ? pMMESPSwPackageDeployment : (pMMESPSwPackageDeployment = new MMESPSwPackageDeploymentElements());
+		return pMMESPSwPackageDeployment;
 	}
 	
 	public ParserRule getMMESPSwPackageDeploymentRule() {
 		return getMMESPSwPackageDeploymentAccess().getRule();
 	}
 
-	//MMESPRegularSwPackageDeployment returns MMESPSwPackageDeployment:
-	//	{MMESPSwPackageDeployment} "swpackage" swPackage=[mespswp::MSwPackage|VersionedQualifiedName] "{"
-	//	parameterValueAssignments+=MParameterValueAssignment* "}" ";";
+	//MMESPRegularSwPackageDeployment MMESPSwPackageDeployment:
+	//	{MMESPSwPackageDeployment}
+	//	'swpackage' swPackage=[mespswp::MSwPackage|VersionedQualifiedName]
+	//	'{'
+	//	parameterValueAssignments+=MParameterValueAssignment*
+	//	'}' ';'
 	public MMESPRegularSwPackageDeploymentElements getMMESPRegularSwPackageDeploymentAccess() {
-		return (pMMESPRegularSwPackageDeployment != null) ? pMMESPRegularSwPackageDeployment : (pMMESPRegularSwPackageDeployment = new MMESPRegularSwPackageDeploymentElements());
+		return pMMESPRegularSwPackageDeployment;
 	}
 	
 	public ParserRule getMMESPRegularSwPackageDeploymentRule() {
@@ -2188,11 +2319,18 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MMESPDriverSwPackageDeployment:
-	//	{MMESPDriverSwPackageDeployment} "driver" swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName] "{"
-	//	(("parameter" "values" "{" parameterValueAssignments+=MParameterValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-	//	deviceDriverMappings+=MMESPDeviceDriverMapping+ "}" ";")?) "}" ";";
+	//	{MMESPDriverSwPackageDeployment}
+	//	'driver' swPackage=[mespswp::MDriverSwPackage|VersionedQualifiedName]
+	//	'{' (('parameter' 'values'
+	//	'{'
+	//	parameterValueAssignments+=MParameterValueAssignment+
+	//	'}' ';')?
+	//	& ('device' 'mappings' '{'
+	//	deviceDriverMappings+=MMESPDeviceDriverMapping+
+	//	'}' ';')?)
+	//	'}' ';';
 	public MMESPDriverSwPackageDeploymentElements getMMESPDriverSwPackageDeploymentAccess() {
-		return (pMMESPDriverSwPackageDeployment != null) ? pMMESPDriverSwPackageDeployment : (pMMESPDriverSwPackageDeployment = new MMESPDriverSwPackageDeploymentElements());
+		return pMMESPDriverSwPackageDeployment;
 	}
 	
 	public ParserRule getMMESPDriverSwPackageDeploymentRule() {
@@ -2200,102 +2338,106 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MMESPDeviceDriverMapping:
-	//	"supported" "device" supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName] "->"
-	//	"deployed" "device" deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName] ";";
+	//	'supported' 'device' supportedDevice=[mespswp::MDriverSwPackageSupportedDevice|VersionedQualifiedReferenceName]
+	//	'->'
+	//	'deployed' 'device' deployedDevice=[MMESPDeployedDevice|VersionedQualifiedReferenceName] ';';
 	public MMESPDeviceDriverMappingElements getMMESPDeviceDriverMappingAccess() {
-		return (pMMESPDeviceDriverMapping != null) ? pMMESPDeviceDriverMapping : (pMMESPDeviceDriverMapping = new MMESPDeviceDriverMappingElements());
+		return pMMESPDeviceDriverMapping;
 	}
 	
 	public ParserRule getMMESPDeviceDriverMappingRule() {
 		return getMMESPDeviceDriverMappingAccess().getRule();
 	}
 
-	//MParameterValueAssignment returns common::MParameterValueAssignmentSingleExpression:
-	//	"parameter" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
-	//	parameterValue=MParameterValueExpression ";";
+	//MParameterValueAssignment common::MParameterValueAssignmentSingleExpression:
+	//	'parameter'
+	//	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	//	':='
+	//	parameterValue=MParameterValueExpression ';'
 	public MParameterValueAssignmentElements getMParameterValueAssignmentAccess() {
-		return (pMParameterValueAssignment != null) ? pMParameterValueAssignment : (pMParameterValueAssignment = new MParameterValueAssignmentElements());
+		return pMParameterValueAssignment;
 	}
 	
 	public ParserRule getMParameterValueAssignmentRule() {
 		return getMParameterValueAssignmentAccess().getRule();
 	}
 
-	//MParameterValue returns common::MParameterValue:
-	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
+	//MParameterValue common::MParameterValue:
+	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 	public MParameterValueElements getMParameterValueAccess() {
-		return (pMParameterValue != null) ? pMParameterValue : (pMParameterValue = new MParameterValueElements());
+		return pMParameterValue;
 	}
 	
 	public ParserRule getMParameterValueRule() {
 		return getMParameterValueAccess().getRule();
 	}
 
-	//MParameterValueLiteral returns common::MParameterValueLiteral:
+	//MParameterValueLiteral common::MParameterValueLiteral:
 	//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-	//	MParameterValueRealLiteral;
+	//	MParameterValueRealLiteral
 	public MParameterValueLiteralElements getMParameterValueLiteralAccess() {
-		return (pMParameterValueLiteral != null) ? pMParameterValueLiteral : (pMParameterValueLiteral = new MParameterValueLiteralElements());
+		return pMParameterValueLiteral;
 	}
 	
 	public ParserRule getMParameterValueLiteralRule() {
 		return getMParameterValueLiteralAccess().getRule();
 	}
 
-	//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-	//	{common::MParameterValueBooleanLiteral} value=EBoolean;
+	//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+	//	{common::MParameterValueBooleanLiteral} value=EBoolean
 	public MParameterValueBooleanLiteralElements getMParameterValueBooleanLiteralAccess() {
-		return (pMParameterValueBooleanLiteral != null) ? pMParameterValueBooleanLiteral : (pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements());
+		return pMParameterValueBooleanLiteral;
 	}
 	
 	public ParserRule getMParameterValueBooleanLiteralRule() {
 		return getMParameterValueBooleanLiteralAccess().getRule();
 	}
 
-	//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-	//	{common::MParameterValueStringLiteral} value=STRING;
+	//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+	//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+	//	value=STRING
 	public MParameterValueStringLiteralElements getMParameterValueStringLiteralAccess() {
-		return (pMParameterValueStringLiteral != null) ? pMParameterValueStringLiteral : (pMParameterValueStringLiteral = new MParameterValueStringLiteralElements());
+		return pMParameterValueStringLiteral;
 	}
 	
 	public ParserRule getMParameterValueStringLiteralRule() {
 		return getMParameterValueStringLiteralAccess().getRule();
 	}
 
-	//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-	//	{common::MParameterValueIntegerLiteral} value=INTEGER;
+	//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+	//	{common::MParameterValueIntegerLiteral} value=INTEGER
 	public MParameterValueIntegerLiteralElements getMParameterValueIntegerLiteralAccess() {
-		return (pMParameterValueIntegerLiteral != null) ? pMParameterValueIntegerLiteral : (pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements());
+		return pMParameterValueIntegerLiteral;
 	}
 	
 	public ParserRule getMParameterValueIntegerLiteralRule() {
 		return getMParameterValueIntegerLiteralAccess().getRule();
 	}
 
-	//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-	//	{common::MParameterValueRealLiteral} value=REAL;
+	//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+	//	{common::MParameterValueRealLiteral} value=REAL
 	public MParameterValueRealLiteralElements getMParameterValueRealLiteralAccess() {
-		return (pMParameterValueRealLiteral != null) ? pMParameterValueRealLiteral : (pMParameterValueRealLiteral = new MParameterValueRealLiteralElements());
+		return pMParameterValueRealLiteral;
 	}
 	
 	public ParserRule getMParameterValueRealLiteralRule() {
 		return getMParameterValueRealLiteralAccess().getRule();
 	}
 
-	//MParameterValueRefObject returns common::MParameterValueRefObject:
-	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
+	//MParameterValueRefObject common::MParameterValueRefObject:
+	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 	public MParameterValueRefObjectElements getMParameterValueRefObjectAccess() {
-		return (pMParameterValueRefObject != null) ? pMParameterValueRefObject : (pMParameterValueRefObject = new MParameterValueRefObjectElements());
+		return pMParameterValueRefObject;
 	}
 	
 	public ParserRule getMParameterValueRefObjectRule() {
 		return getMParameterValueRefObjectAccess().getRule();
 	}
 
-	//MParameterValuePAR returns common::MParameterValuePAR:
-	//	"(" value=MParameterValueExpression ")";
+	//MParameterValuePAR common::MParameterValuePAR:
+	//	'(' value=MParameterValueExpression ')'
 	public MParameterValuePARElements getMParameterValuePARAccess() {
-		return (pMParameterValuePAR != null) ? pMParameterValuePAR : (pMParameterValuePAR = new MParameterValuePARElements());
+		return pMParameterValuePAR;
 	}
 	
 	public ParserRule getMParameterValuePARRule() {
@@ -2303,9 +2445,9 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-	//	plus="+" | minus="-";
+	//	plus='+' | minus='-';
 	public MParameterValueExpressionOperatorsElements getMParameterValueExpressionOperatorsAccess() {
-		return (unknownRuleMParameterValueExpressionOperators != null) ? unknownRuleMParameterValueExpressionOperators : (unknownRuleMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements());
+		return eMParameterValueExpressionOperators;
 	}
 	
 	public EnumRule getMParameterValueExpressionOperatorsRule() {
@@ -2313,31 +2455,30 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-	//	mult="*" | div="/";
+	//	mult='*' | div='/';
 	public MParameterValueTERMOperatorsElements getMParameterValueTERMOperatorsAccess() {
-		return (unknownRuleMParameterValueTERMOperators != null) ? unknownRuleMParameterValueTERMOperators : (unknownRuleMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements());
+		return eMParameterValueTERMOperators;
 	}
 	
 	public EnumRule getMParameterValueTERMOperatorsRule() {
 		return getMParameterValueTERMOperatorsAccess().getRule();
 	}
 
-	//MParameterValueExpression returns common::MParameterValueExpression:
+	//MParameterValueExpression common::MParameterValueExpression:
 	//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-	//	right=MParameterValueExpression)?;
+	//	right=MParameterValueExpression)?
 	public MParameterValueExpressionElements getMParameterValueExpressionAccess() {
-		return (pMParameterValueExpression != null) ? pMParameterValueExpression : (pMParameterValueExpression = new MParameterValueExpressionElements());
+		return pMParameterValueExpression;
 	}
 	
 	public ParserRule getMParameterValueExpressionRule() {
 		return getMParameterValueExpressionAccess().getRule();
 	}
 
-	//MParameterValueTERM returns common::MParameterValueTERM:
-	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-	//	right=MParameterValueTERM)?;
+	//MParameterValueTERM common::MParameterValueTERM:
+	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 	public MParameterValueTERMElements getMParameterValueTERMAccess() {
-		return (pMParameterValueTERM != null) ? pMParameterValueTERM : (pMParameterValueTERM = new MParameterValueTERMElements());
+		return pMParameterValueTERM;
 	}
 	
 	public ParserRule getMParameterValueTERMRule() {
@@ -2345,12 +2486,20 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MMESPDeploymentPlatform:
-	//	"deployment" "platform" name=ID "{" ("platform" ":=" platform=[pdl::MPlatform|VersionedQualifiedName] ";" &
-	//	"pswpackage" ":=" platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ";" & ("deployed" "devices"
-	//	"{" deployedDevices+=MMESPDeployedDevice+ "}" ";")? & ("parameter" "values" "{"
-	//	parameterValueAssignments+=MParameterValueAssignment+ "}" ";")?) "}" ";";
+	//	'deployment' 'platform'
+	//	name=ID
+	//	'{' ('platform' ':=' platform=[pdl::MPlatform|VersionedQualifiedName] ';' & 'pswpackage' ':='
+	//	platformSwPackage=[mesppswp::MPlatformSwPackage|VersionedQualifiedName] ';' & ('deployed' 'devices' '{'
+	//	deployedDevices+=MMESPDeployedDevice+
+	//	'}' ';')?
+	//	& ('parameter' 'values'
+	//	'{'
+	//	parameterValueAssignments+=MParameterValueAssignment+
+	//	'}' ';')?)
+	//	'}'
+	//	';';
 	public MMESPDeploymentPlatformElements getMMESPDeploymentPlatformAccess() {
-		return (pMMESPDeploymentPlatform != null) ? pMMESPDeploymentPlatform : (pMMESPDeploymentPlatform = new MMESPDeploymentPlatformElements());
+		return pMMESPDeploymentPlatform;
 	}
 	
 	public ParserRule getMMESPDeploymentPlatformRule() {
@@ -2358,10 +2507,13 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MMESPDeployedDevice:
-	//	"device" device=[pdl::MDevice|VersionedQualifiedName] name=ID "{"
-	//	parameterValueAssignments+=MParameterValueAssignment* "}" ";";
+	//	'device'
+	//	device=[pdl::MDevice|VersionedQualifiedName] name=ID
+	//	'{'
+	//	parameterValueAssignments+=MParameterValueAssignment*
+	//	'}' ';';
 	public MMESPDeployedDeviceElements getMMESPDeployedDeviceAccess() {
-		return (pMMESPDeployedDevice != null) ? pMMESPDeployedDevice : (pMMESPDeployedDevice = new MMESPDeployedDeviceElements());
+		return pMMESPDeployedDevice;
 	}
 	
 	public ParserRule getMMESPDeployedDeviceRule() {
@@ -2369,24 +2521,35 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MMESPDeploymentAlternative:
-	//	"deployment" "alternative" name=ID "{" ("deployment" "platforms" ":=" deploymentPlatforms+=[MMESPDeploymentPlatform]
-	//	("," deploymentPlatforms+=[MMESPDeploymentPlatform])* ";" & ("languages" ":="
+	//	'deployment' 'alternative'
+	//	name=ID
+	//	'{' ('deployment' 'platforms' ':=' deploymentPlatforms+=[MMESPDeploymentPlatform] (","
+	//	deploymentPlatforms+=[MMESPDeploymentPlatform])* ';' & ('languages' ':='
 	//	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-	//	";")? & ("swpackages" "{" deployedSwPackages+=MMESPSwPackageDeployment+ "}" ";")? & ("required" "interfaces" "{"
-	//	requires+=MSwPackageRequiredInterface+ "}" ";")? & ("deployment" "alternatives" "{"
-	//	deploymentAlternatives+=MMESPDeploymentAlternative+ "}" ";")?) "}" ";";
+	//	';')?
+	//	& ('swpackages' '{'
+	//	deployedSwPackages+=MMESPSwPackageDeployment+
+	//	'}' ';')?
+	//	& ('required' 'interfaces' '{'
+	//	requires+=MSwPackageRequiredInterface+
+	//	'}' ';')?
+	//	& ('deployment' 'alternatives'
+	//	'{'
+	//	deploymentAlternatives+=MMESPDeploymentAlternative+
+	//	'}' ';')?)
+	//	'}' ';';
 	public MMESPDeploymentAlternativeElements getMMESPDeploymentAlternativeAccess() {
-		return (pMMESPDeploymentAlternative != null) ? pMMESPDeploymentAlternative : (pMMESPDeploymentAlternative = new MMESPDeploymentAlternativeElements());
+		return pMMESPDeploymentAlternative;
 	}
 	
 	public ParserRule getMMESPDeploymentAlternativeRule() {
 		return getMMESPDeploymentAlternativeAccess().getRule();
 	}
 
-	//EBoolean returns ecore::EBoolean:
-	//	"true" | "false";
+	//EBoolean ecore::EBoolean:
+	//	'true' | 'false'
 	public EBooleanElements getEBooleanAccess() {
-		return (pEBoolean != null) ? pEBoolean : (pEBoolean = new EBooleanElements());
+		return pEBoolean;
 	}
 	
 	public ParserRule getEBooleanRule() {
@@ -2394,25 +2557,25 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal HEXADECIMAL:
-	//	"0x" ("0".."9" | "a".."f" | "A".."F")+;
+	//	'0x' ('0'..'9' | 'a'..'f' | 'A'..'F')+;
 	public TerminalRule getHEXADECIMALRule() {
-		return (tHEXADECIMAL != null) ? tHEXADECIMAL : (tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEXADECIMAL"));
+		return tHEXADECIMAL;
 	} 
 
-	//INTEGER returns ecore::EString:
-	//	"-"? INT | HEXADECIMAL;
+	//INTEGER:
+	//	'-'? INT | HEXADECIMAL;
 	public INTEGERElements getINTEGERAccess() {
-		return (pINTEGER != null) ? pINTEGER : (pINTEGER = new INTEGERElements());
+		return pINTEGER;
 	}
 	
 	public ParserRule getINTEGERRule() {
 		return getINTEGERAccess().getRule();
 	}
 
-	//REAL returns ecore::EString:
-	//	"-"? (INT "." INT) ("e" "-"? INT)?;
+	//REAL:
+	//	'-'? (INT '.' INT) ('e' '-'? INT)?;
 	public REALElements getREALAccess() {
-		return (pREAL != null) ? pREAL : (pREAL = new REALElements());
+		return pREAL;
 	}
 	
 	public ParserRule getREALRule() {
@@ -2420,38 +2583,38 @@ public class DEPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
+	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
+	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 

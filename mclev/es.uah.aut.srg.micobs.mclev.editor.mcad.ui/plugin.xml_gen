@@ -299,6 +299,12 @@
             extensions="mclev_mcad">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="mclev_mcad"
+            type="text">
+    </fileTypes>
+  </extension>
     <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.mclev.lang.MCAD -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

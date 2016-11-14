@@ -61,9 +61,9 @@ public class OSSWPParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_0(), "rule__MOSSwPackage__Group_4_0__0");
 					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_1(), "rule__MOSSwPackage__Group_4_1__0");
 					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_2(), "rule__MOSSwPackage__Group_4_2__0");
-					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_2_3(), "rule__MOSSwPackage__Group_4_2_3__0");
+					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_2_4(), "rule__MOSSwPackage__Group_4_2_4__0");
 					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_3(), "rule__MOSSwPackage__Group_4_3__0");
-					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_3_3(), "rule__MOSSwPackage__Group_4_3_3__0");
+					put(grammarAccess.getMOSSwPackageAccess().getGroup_4_3_4(), "rule__MOSSwPackage__Group_4_3_4__0");
 					put(grammarAccess.getMMESPOSSWPPackageFileAccess().getPackageAssignment_1(), "rule__MMESPOSSWPPackageFile__PackageAssignment_1");
 					put(grammarAccess.getMMESPOSSWPPackageFileAccess().getImportsAssignment_3_1(), "rule__MMESPOSSWPPackageFile__ImportsAssignment_3_1");
 					put(grammarAccess.getMMESPOSSWPPackageFileAccess().getElementAssignment_4(), "rule__MMESPOSSWPPackageFile__ElementAssignment_4");
@@ -72,10 +72,10 @@ public class OSSWPParser extends AbstractContentAssistParser {
 					put(grammarAccess.getMOSSwPackageAccess().getExtendsAssignment_2_2_1(), "rule__MOSSwPackage__ExtendsAssignment_2_2_1");
 					put(grammarAccess.getMOSSwPackageAccess().getVersionAssignment_4_0_2(), "rule__MOSSwPackage__VersionAssignment_4_0_2");
 					put(grammarAccess.getMOSSwPackageAccess().getReferencedElementAssignment_4_1_2(), "rule__MOSSwPackage__ReferencedElementAssignment_4_1_2");
-					put(grammarAccess.getMOSSwPackageAccess().getCtoolsAssignment_4_2_2(), "rule__MOSSwPackage__CtoolsAssignment_4_2_2");
-					put(grammarAccess.getMOSSwPackageAccess().getCtoolsAssignment_4_2_3_1(), "rule__MOSSwPackage__CtoolsAssignment_4_2_3_1");
-					put(grammarAccess.getMOSSwPackageAccess().getProvidedOSSWIsAssignment_4_3_2(), "rule__MOSSwPackage__ProvidedOSSWIsAssignment_4_3_2");
-					put(grammarAccess.getMOSSwPackageAccess().getProvidedOSSWIsAssignment_4_3_3_1(), "rule__MOSSwPackage__ProvidedOSSWIsAssignment_4_3_3_1");
+					put(grammarAccess.getMOSSwPackageAccess().getCtoolsAssignment_4_2_3(), "rule__MOSSwPackage__CtoolsAssignment_4_2_3");
+					put(grammarAccess.getMOSSwPackageAccess().getCtoolsAssignment_4_2_4_1(), "rule__MOSSwPackage__CtoolsAssignment_4_2_4_1");
+					put(grammarAccess.getMOSSwPackageAccess().getProvidedOSSWIsAssignment_4_3_3(), "rule__MOSSwPackage__ProvidedOSSWIsAssignment_4_3_3");
+					put(grammarAccess.getMOSSwPackageAccess().getProvidedOSSWIsAssignment_4_3_4_1(), "rule__MOSSwPackage__ProvidedOSSWIsAssignment_4_3_4_1");
 					put(grammarAccess.getMOSSwPackageAccess().getUnorderedGroup_4(), "rule__MOSSwPackage__UnorderedGroup_4");
 				}
 			};

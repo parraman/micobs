@@ -299,6 +299,12 @@
             extensions="mclev_sai">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="mclev_sai"
+            type="text">
+    </fileTypes>
+  </extension>
     <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.mclev.lang.SAI -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

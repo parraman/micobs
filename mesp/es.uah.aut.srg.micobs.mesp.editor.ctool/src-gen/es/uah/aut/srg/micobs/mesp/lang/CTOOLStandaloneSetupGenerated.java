@@ -10,6 +10,7 @@
  ******************************************************************************/
 package es.uah.aut.srg.micobs.mesp.lang;
 
+import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.xtext.ISetup;
 
@@ -22,6 +23,7 @@ import com.google.inject.Injector;
 @SuppressWarnings("all")
 public class CTOOLStandaloneSetupGenerated implements ISetup {
 
+	@Override
 	public Injector createInjectorAndDoEMFRegistration() {
 		org.eclipse.xtext.common.TerminalsStandaloneSetup.doSetup();
 

@@ -97,13 +97,14 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule MMCLEVSLIBPackageFile ****************
  *
  * MMCLEVSLIBPackageFile:
- * 	"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
- * 	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMCLEVSLIBPackageElement;
+ * 	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+ * 	imports+=[common::MCommonPackage|QualifiedName] ';')*
+ * 	element=MMCLEVSLIBPackageElement;
  *
  **/
 
-// "package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-// imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMCLEVSLIBPackageElement
+// 'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+// imports+=[common::MCommonPackage|QualifiedName] ';')* element=MMCLEVSLIBPackageElement
 protected class MMCLEVSLIBPackageFile_Group extends GroupToken {
 	
 	public MMCLEVSLIBPackageFile_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -132,7 +133,7 @@ protected class MMCLEVSLIBPackageFile_Group extends GroupToken {
 
 }
 
-// "package"
+// 'package'
 protected class MMCLEVSLIBPackageFile_PackageKeyword_0 extends KeywordToken  {
 	
 	public MMCLEVSLIBPackageFile_PackageKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -190,7 +191,7 @@ protected class MMCLEVSLIBPackageFile_PackageAssignment_1 extends AssignmentToke
 
 }
 
-// ";"
+// ';'
 protected class MMCLEVSLIBPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 	
 	public MMCLEVSLIBPackageFile_SemicolonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -212,7 +213,7 @@ protected class MMCLEVSLIBPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 
 }
 
-// ("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+// ('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 protected class MMCLEVSLIBPackageFile_Group_3 extends GroupToken {
 	
 	public MMCLEVSLIBPackageFile_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -234,7 +235,7 @@ protected class MMCLEVSLIBPackageFile_Group_3 extends GroupToken {
 
 }
 
-// "import"
+// 'import'
 protected class MMCLEVSLIBPackageFile_ImportKeyword_3_0 extends KeywordToken  {
 	
 	public MMCLEVSLIBPackageFile_ImportKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -294,7 +295,7 @@ protected class MMCLEVSLIBPackageFile_ImportsAssignment_3_1 extends AssignmentTo
 
 }
 
-// ";"
+// ';'
 protected class MMCLEVSLIBPackageFile_SemicolonKeyword_3_2 extends KeywordToken  {
 	
 	public MMCLEVSLIBPackageFile_SemicolonKeyword_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -527,17 +528,24 @@ protected class MMCLEVSLIBPackageElement_MAbstractServiceLibraryParserRuleCall_2
 /************ begin Rule MAbstractServiceLibrary ****************
  *
  * MAbstractServiceLibrary:
- * 	"abstract" "service" "library" name=ID ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
- * 	inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("attributes"
- * 	"{" attributes+=MParameterWithoutSLSP+ "}" ";")? & ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}"
- * 	";")?) "}" ";";
+ * 	'abstract' 'service' 'library'
+ * 	name=ID ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+ * 	inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)?
+ * 	'{' ('version' ':=' version=Version ';' & ('attributes'
+ * 	'{'
+ * 	attributes+=MParameterWithoutSLSP+
+ * 	'}' ';')?
+ * 	& ('provided' 'sais' '{'
+ * 	provides+=MServiceLibraryProvidedSAI+
+ * 	'}' ';')?)
+ * 	'}' ';';
  *
  **/
 
-// "abstract" "service" "library" name=ID ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
-// inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? "{" ("version" ":=" version=Version ";" & ("attributes"
-// "{" attributes+=MParameterWithoutSLSP+ "}" ";")? & ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}"
-// ";")?) "}" ";"
+// 'abstract' 'service' 'library' name=ID ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+// inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? '{' ('version' ':=' version=Version ';' & ('attributes'
+// '{' attributes+=MParameterWithoutSLSP+ '}' ';')? & ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}'
+// ';')?) '}' ';'
 protected class MAbstractServiceLibrary_Group extends GroupToken {
 	
 	public MAbstractServiceLibrary_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -566,7 +574,7 @@ protected class MAbstractServiceLibrary_Group extends GroupToken {
 
 }
 
-// "abstract"
+// 'abstract'
 protected class MAbstractServiceLibrary_AbstractKeyword_0 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_AbstractKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -587,7 +595,7 @@ protected class MAbstractServiceLibrary_AbstractKeyword_0 extends KeywordToken  
 
 }
 
-// "service"
+// 'service'
 protected class MAbstractServiceLibrary_ServiceKeyword_1 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_ServiceKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -609,7 +617,7 @@ protected class MAbstractServiceLibrary_ServiceKeyword_1 extends KeywordToken  {
 
 }
 
-// "library"
+// 'library'
 protected class MAbstractServiceLibrary_LibraryKeyword_2 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_LibraryKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -665,7 +673,7 @@ protected class MAbstractServiceLibrary_NameAssignment_3 extends AssignmentToken
 
 }
 
-// ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+// ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
 // inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)?
 protected class MAbstractServiceLibrary_Group_4 extends GroupToken {
 	
@@ -689,7 +697,7 @@ protected class MAbstractServiceLibrary_Group_4 extends GroupToken {
 
 }
 
-// "inherits"
+// 'inherits'
 protected class MAbstractServiceLibrary_InheritsKeyword_4_0 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_InheritsKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -832,7 +840,7 @@ protected class MAbstractServiceLibrary_InheritsAssignment_4_2_1 extends Assignm
 
 
 
-// "{"
+// '{'
 protected class MAbstractServiceLibrary_LeftCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_LeftCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -855,8 +863,8 @@ protected class MAbstractServiceLibrary_LeftCurlyBracketKeyword_5 extends Keywor
 
 }
 
-// "version" ":=" version=Version ";" & ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")? & ("provided" "sais"
-// "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")?
+// ('version' ':=' version=Version ';' & ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')? & ('provided'
+// 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')?)
 protected class MAbstractServiceLibrary_UnorderedGroup_6 extends UnorderedGroupToken {
 	
 	public MAbstractServiceLibrary_UnorderedGroup_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -880,7 +888,7 @@ protected class MAbstractServiceLibrary_UnorderedGroup_6 extends UnorderedGroupT
 
 }
 
-// "version" ":=" version=Version ";"
+// 'version' ':=' version=Version ';'
 protected class MAbstractServiceLibrary_Group_6_0 extends GroupToken {
 	
 	public MAbstractServiceLibrary_Group_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -902,7 +910,7 @@ protected class MAbstractServiceLibrary_Group_6_0 extends GroupToken {
 
 }
 
-// "version"
+// 'version'
 protected class MAbstractServiceLibrary_VersionKeyword_6_0_0 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_VersionKeyword_6_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -924,7 +932,7 @@ protected class MAbstractServiceLibrary_VersionKeyword_6_0_0 extends KeywordToke
 
 }
 
-// ":="
+// ':='
 protected class MAbstractServiceLibrary_ColonEqualsSignKeyword_6_0_1 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_ColonEqualsSignKeyword_6_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -980,7 +988,7 @@ protected class MAbstractServiceLibrary_VersionAssignment_6_0_2 extends Assignme
 
 }
 
-// ";"
+// ';'
 protected class MAbstractServiceLibrary_SemicolonKeyword_6_0_3 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_SemicolonKeyword_6_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1003,7 +1011,7 @@ protected class MAbstractServiceLibrary_SemicolonKeyword_6_0_3 extends KeywordTo
 }
 
 
-// ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")?
+// ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')?
 protected class MAbstractServiceLibrary_Group_6_1 extends GroupToken {
 	
 	public MAbstractServiceLibrary_Group_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1025,7 +1033,7 @@ protected class MAbstractServiceLibrary_Group_6_1 extends GroupToken {
 
 }
 
-// "attributes"
+// 'attributes'
 protected class MAbstractServiceLibrary_AttributesKeyword_6_1_0 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_AttributesKeyword_6_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1047,7 +1055,7 @@ protected class MAbstractServiceLibrary_AttributesKeyword_6_1_0 extends KeywordT
 
 }
 
-// "{"
+// '{'
 protected class MAbstractServiceLibrary_LeftCurlyBracketKeyword_6_1_1 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_LeftCurlyBracketKeyword_6_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1116,7 +1124,7 @@ protected class MAbstractServiceLibrary_AttributesAssignment_6_1_2 extends Assig
 	}	
 }
 
-// "}"
+// '}'
 protected class MAbstractServiceLibrary_RightCurlyBracketKeyword_6_1_3 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_RightCurlyBracketKeyword_6_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1138,7 +1146,7 @@ protected class MAbstractServiceLibrary_RightCurlyBracketKeyword_6_1_3 extends K
 
 }
 
-// ";"
+// ';'
 protected class MAbstractServiceLibrary_SemicolonKeyword_6_1_4 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_SemicolonKeyword_6_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1161,7 +1169,7 @@ protected class MAbstractServiceLibrary_SemicolonKeyword_6_1_4 extends KeywordTo
 }
 
 
-// ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")?
+// ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')?
 protected class MAbstractServiceLibrary_Group_6_2 extends GroupToken {
 	
 	public MAbstractServiceLibrary_Group_6_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1183,7 +1191,7 @@ protected class MAbstractServiceLibrary_Group_6_2 extends GroupToken {
 
 }
 
-// "provided"
+// 'provided'
 protected class MAbstractServiceLibrary_ProvidedKeyword_6_2_0 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_ProvidedKeyword_6_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1206,7 +1214,7 @@ protected class MAbstractServiceLibrary_ProvidedKeyword_6_2_0 extends KeywordTok
 
 }
 
-// "sais"
+// 'sais'
 protected class MAbstractServiceLibrary_SaisKeyword_6_2_1 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_SaisKeyword_6_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1228,7 +1236,7 @@ protected class MAbstractServiceLibrary_SaisKeyword_6_2_1 extends KeywordToken  
 
 }
 
-// "{"
+// '{'
 protected class MAbstractServiceLibrary_LeftCurlyBracketKeyword_6_2_2 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_LeftCurlyBracketKeyword_6_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1297,7 +1305,7 @@ protected class MAbstractServiceLibrary_ProvidesAssignment_6_2_3 extends Assignm
 	}	
 }
 
-// "}"
+// '}'
 protected class MAbstractServiceLibrary_RightCurlyBracketKeyword_6_2_4 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_RightCurlyBracketKeyword_6_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1319,7 +1327,7 @@ protected class MAbstractServiceLibrary_RightCurlyBracketKeyword_6_2_4 extends K
 
 }
 
-// ";"
+// ';'
 protected class MAbstractServiceLibrary_SemicolonKeyword_6_2_5 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_SemicolonKeyword_6_2_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1343,7 +1351,7 @@ protected class MAbstractServiceLibrary_SemicolonKeyword_6_2_5 extends KeywordTo
 
 
 
-// "}"
+// '}'
 protected class MAbstractServiceLibrary_RightCurlyBracketKeyword_7 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1365,7 +1373,7 @@ protected class MAbstractServiceLibrary_RightCurlyBracketKeyword_7 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MAbstractServiceLibrary_SemicolonKeyword_8 extends KeywordToken  {
 	
 	public MAbstractServiceLibrary_SemicolonKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1394,11 +1402,15 @@ protected class MAbstractServiceLibrary_SemicolonKeyword_8 extends KeywordToken 
 /************ begin Rule MServiceLibraryProvidedSAI ****************
  *
  * MServiceLibraryProvidedSAI:
- * 	"provides" sai=[mclevsai::MSAI|VersionedQualifiedName] "{" attributeValueAssignments+=MSLibProvidedSAIAVA* "}" ";";
+ * 	'provides'
+ * 	sai=[mclevsai::MSAI|VersionedQualifiedName]
+ * 	'{'
+ * 	attributeValueAssignments+=MSLibProvidedSAIAVA*
+ * 	'}' ';';
  *
  **/
 
-// "provides" sai=[mclevsai::MSAI|VersionedQualifiedName] "{" attributeValueAssignments+=MSLibProvidedSAIAVA* "}" ";"
+// 'provides' sai=[mclevsai::MSAI|VersionedQualifiedName] '{' attributeValueAssignments+=MSLibProvidedSAIAVA* '}' ';'
 protected class MServiceLibraryProvidedSAI_Group extends GroupToken {
 	
 	public MServiceLibraryProvidedSAI_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1427,7 +1439,7 @@ protected class MServiceLibraryProvidedSAI_Group extends GroupToken {
 
 }
 
-// "provides"
+// 'provides'
 protected class MServiceLibraryProvidedSAI_ProvidesKeyword_0 extends KeywordToken  {
 	
 	public MServiceLibraryProvidedSAI_ProvidesKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1485,7 +1497,7 @@ protected class MServiceLibraryProvidedSAI_SaiAssignment_1 extends AssignmentTok
 
 }
 
-// "{"
+// '{'
 protected class MServiceLibraryProvidedSAI_LeftCurlyBracketKeyword_2 extends KeywordToken  {
 	
 	public MServiceLibraryProvidedSAI_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1554,7 +1566,7 @@ protected class MServiceLibraryProvidedSAI_AttributeValueAssignmentsAssignment_3
 	}	
 }
 
-// "}"
+// '}'
 protected class MServiceLibraryProvidedSAI_RightCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MServiceLibraryProvidedSAI_RightCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1577,7 +1589,7 @@ protected class MServiceLibraryProvidedSAI_RightCurlyBracketKeyword_4 extends Ke
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibraryProvidedSAI_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MServiceLibraryProvidedSAI_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1720,13 +1732,15 @@ protected class MSLibProvidedSAIAVA_MSLibProvidedSAIAVASwitchParserRuleCall_1 ex
 /************ begin Rule MSLibProvidedSAIAVAExpression ****************
  *
  * MSLibProvidedSAIAVAExpression:
- * 	"attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
- * 	attributeValue=MParameterValueExpression ";";
+ * 	'attribute'
+ * 	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+ * 	':='
+ * 	attributeValue=MParameterValueExpression ';';
  *
  **/
 
-// "attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" attributeValue=MParameterValueExpression
-// ";"
+// 'attribute' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' attributeValue=MParameterValueExpression
+// ';'
 protected class MSLibProvidedSAIAVAExpression_Group extends GroupToken {
 	
 	public MSLibProvidedSAIAVAExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1755,7 +1769,7 @@ protected class MSLibProvidedSAIAVAExpression_Group extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MSLibProvidedSAIAVAExpression_AttributeKeyword_0 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVAExpression_AttributeKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1813,7 +1827,7 @@ protected class MSLibProvidedSAIAVAExpression_ParameterAssignment_1 extends Assi
 
 }
 
-// ":="
+// ':='
 protected class MSLibProvidedSAIAVAExpression_ColonEqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVAExpression_ColonEqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1881,7 +1895,7 @@ protected class MSLibProvidedSAIAVAExpression_AttributeValueAssignment_3 extends
 	}	
 }
 
-// ";"
+// ';'
 protected class MSLibProvidedSAIAVAExpression_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVAExpression_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1910,13 +1924,18 @@ protected class MSLibProvidedSAIAVAExpression_SemicolonKeyword_4 extends Keyword
 /************ begin Rule MSLibProvidedSAIAVASwitch ****************
  *
  * MSLibProvidedSAIAVASwitch:
- * 	"attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" "switch" "{"
- * 	cases+=MSLibProvidedSAIAVASwitchCase+ "}" ";";
+ * 	'attribute'
+ * 	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+ * 	':='
+ * 	'switch'
+ * 	'{'
+ * 	cases+=MSLibProvidedSAIAVASwitchCase+
+ * 	'}' ';';
  *
  **/
 
-// "attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" "switch" "{"
-// cases+=MSLibProvidedSAIAVASwitchCase+ "}" ";"
+// 'attribute' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' 'switch' '{'
+// cases+=MSLibProvidedSAIAVASwitchCase+ '}' ';'
 protected class MSLibProvidedSAIAVASwitch_Group extends GroupToken {
 	
 	public MSLibProvidedSAIAVASwitch_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1945,7 +1964,7 @@ protected class MSLibProvidedSAIAVASwitch_Group extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MSLibProvidedSAIAVASwitch_AttributeKeyword_0 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitch_AttributeKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2003,7 +2022,7 @@ protected class MSLibProvidedSAIAVASwitch_ParameterAssignment_1 extends Assignme
 
 }
 
-// ":="
+// ':='
 protected class MSLibProvidedSAIAVASwitch_ColonEqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitch_ColonEqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2025,7 +2044,7 @@ protected class MSLibProvidedSAIAVASwitch_ColonEqualsSignKeyword_2 extends Keywo
 
 }
 
-// "switch"
+// 'switch'
 protected class MSLibProvidedSAIAVASwitch_SwitchKeyword_3 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitch_SwitchKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2047,7 +2066,7 @@ protected class MSLibProvidedSAIAVASwitch_SwitchKeyword_3 extends KeywordToken  
 
 }
 
-// "{"
+// '{'
 protected class MSLibProvidedSAIAVASwitch_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitch_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2116,7 +2135,7 @@ protected class MSLibProvidedSAIAVASwitch_CasesAssignment_5 extends AssignmentTo
 	}	
 }
 
-// "}"
+// '}'
 protected class MSLibProvidedSAIAVASwitch_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitch_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2138,7 +2157,7 @@ protected class MSLibProvidedSAIAVASwitch_RightCurlyBracketKeyword_6 extends Key
 
 }
 
-// ";"
+// ';'
 protected class MSLibProvidedSAIAVASwitch_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitch_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2167,11 +2186,12 @@ protected class MSLibProvidedSAIAVASwitch_SemicolonKeyword_7 extends KeywordToke
 /************ begin Rule MSLibProvidedSAIAVASwitchCase ****************
  *
  * MSLibProvidedSAIAVASwitchCase:
- * 	"case" platform=[MServiceLibrarySupportedPlatform] ":" attributeValue=MParameterValueExpression ";";
+ * 	'case' platform=[MServiceLibrarySupportedPlatform] ':'
+ * 	attributeValue=MParameterValueExpression ';';
  *
  **/
 
-// "case" platform=[MServiceLibrarySupportedPlatform] ":" attributeValue=MParameterValueExpression ";"
+// 'case' platform=[MServiceLibrarySupportedPlatform] ':' attributeValue=MParameterValueExpression ';'
 protected class MSLibProvidedSAIAVASwitchCase_Group extends GroupToken {
 	
 	public MSLibProvidedSAIAVASwitchCase_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2200,7 +2220,7 @@ protected class MSLibProvidedSAIAVASwitchCase_Group extends GroupToken {
 
 }
 
-// "case"
+// 'case'
 protected class MSLibProvidedSAIAVASwitchCase_CaseKeyword_0 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitchCase_CaseKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2258,7 +2278,7 @@ protected class MSLibProvidedSAIAVASwitchCase_PlatformAssignment_1 extends Assig
 
 }
 
-// ":"
+// ':'
 protected class MSLibProvidedSAIAVASwitchCase_ColonKeyword_2 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitchCase_ColonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2326,7 +2346,7 @@ protected class MSLibProvidedSAIAVASwitchCase_AttributeValueAssignment_3 extends
 	}	
 }
 
-// ";"
+// ';'
 protected class MSLibProvidedSAIAVASwitchCase_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MSLibProvidedSAIAVASwitchCase_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2355,25 +2375,36 @@ protected class MSLibProvidedSAIAVASwitchCase_SemicolonKeyword_4 extends Keyword
 /************ begin Rule MServiceLibrary ****************
  *
  * MServiceLibrary:
- * 	"service" "library" name=ID ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
- * 	inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ("extends"
- * 	extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)? "{"
- * 	("version" ":=" version=Version ";" & "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
- * 	languages+=[system::MLanguage|VersionedQualifiedName])* ";" & ("attributes" "{" attributes+=MParameter+ "}" ";")? &
- * 	("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")? & ("requires" ":="
- * 	requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")? &
- * 	"supported" "platforms" "{" supportedPlatforms+=MServiceLibrarySupportedPlatform+ "}" ";") "}" ";";
+ * 	'service' 'library'
+ * 	name=ID ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+ * 	inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ('extends'
+ * 	extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)?
+ * 	'{' ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+ * 	languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('attributes'
+ * 	'{'
+ * 	attributes+=MParameter+
+ * 	'}' ';')?
+ * 	& ('provided' 'sais' '{'
+ * 	provides+=MServiceLibraryProvidedSAI+
+ * 	'}' ';')?
+ * 	& ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+ * 	requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?
+ * 	& 'supported' 'platforms'
+ * 	'{'
+ * 	supportedPlatforms+=MServiceLibrarySupportedPlatform+
+ * 	'}' ';')
+ * 	'}' ';';
  *
  **/
 
-// "service" "library" name=ID ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
-// inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ("extends"
-// extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)? "{"
-// ("version" ":=" version=Version ";" & "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";" & ("attributes" "{" attributes+=MParameter+ "}" ";")? &
-// ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")? & ("requires" ":="
-// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")? &
-// "supported" "platforms" "{" supportedPlatforms+=MServiceLibrarySupportedPlatform+ "}" ";") "}" ";"
+// 'service' 'library' name=ID ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+// inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ('extends'
+// extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)? '{'
+// ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('attributes' '{' attributes+=MParameter+ '}' ';')? &
+// ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')? & ('requires' ':='
+// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')? &
+// 'supported' 'platforms' '{' supportedPlatforms+=MServiceLibrarySupportedPlatform+ '}' ';') '}' ';'
 protected class MServiceLibrary_Group extends GroupToken {
 	
 	public MServiceLibrary_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2402,7 +2433,7 @@ protected class MServiceLibrary_Group extends GroupToken {
 
 }
 
-// "service"
+// 'service'
 protected class MServiceLibrary_ServiceKeyword_0 extends KeywordToken  {
 	
 	public MServiceLibrary_ServiceKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2423,7 +2454,7 @@ protected class MServiceLibrary_ServiceKeyword_0 extends KeywordToken  {
 
 }
 
-// "library"
+// 'library'
 protected class MServiceLibrary_LibraryKeyword_1 extends KeywordToken  {
 	
 	public MServiceLibrary_LibraryKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2479,7 +2510,7 @@ protected class MServiceLibrary_NameAssignment_2 extends AssignmentToken  {
 
 }
 
-// ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+// ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
 // inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)?
 protected class MServiceLibrary_Group_3 extends GroupToken {
 	
@@ -2503,7 +2534,7 @@ protected class MServiceLibrary_Group_3 extends GroupToken {
 
 }
 
-// "inherits"
+// 'inherits'
 protected class MServiceLibrary_InheritsKeyword_3_0 extends KeywordToken  {
 	
 	public MServiceLibrary_InheritsKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2646,7 +2677,7 @@ protected class MServiceLibrary_InheritsAssignment_3_2_1 extends AssignmentToken
 
 
 
-// ("extends" extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)?
+// ('extends' extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)?
 protected class MServiceLibrary_Group_4 extends GroupToken {
 	
 	public MServiceLibrary_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2669,7 +2700,7 @@ protected class MServiceLibrary_Group_4 extends GroupToken {
 
 }
 
-// "extends"
+// 'extends'
 protected class MServiceLibrary_ExtendsKeyword_4_0 extends KeywordToken  {
 	
 	public MServiceLibrary_ExtendsKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2813,7 +2844,7 @@ protected class MServiceLibrary_ExtendsAssignment_4_2_1 extends AssignmentToken 
 
 
 
-// "{"
+// '{'
 protected class MServiceLibrary_LeftCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MServiceLibrary_LeftCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2837,11 +2868,11 @@ protected class MServiceLibrary_LeftCurlyBracketKeyword_5 extends KeywordToken  
 
 }
 
-// "version" ":=" version=Version ";" & "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";" & ("attributes" "{" attributes+=MParameter+ "}" ";")? &
-// ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")? & ("requires" ":="
-// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")? &
-// "supported" "platforms" "{" supportedPlatforms+=MServiceLibrarySupportedPlatform+ "}" ";"
+// ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('attributes' '{' attributes+=MParameter+ '}' ';')? &
+// ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')? & ('requires' ':='
+// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')? &
+// 'supported' 'platforms' '{' supportedPlatforms+=MServiceLibrarySupportedPlatform+ '}' ';')
 protected class MServiceLibrary_UnorderedGroup_6 extends UnorderedGroupToken {
 	
 	public MServiceLibrary_UnorderedGroup_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2863,7 +2894,7 @@ protected class MServiceLibrary_UnorderedGroup_6 extends UnorderedGroupToken {
 
 }
 
-// "version" ":=" version=Version ";"
+// 'version' ':=' version=Version ';'
 protected class MServiceLibrary_Group_6_0 extends GroupToken {
 	
 	public MServiceLibrary_Group_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2885,7 +2916,7 @@ protected class MServiceLibrary_Group_6_0 extends GroupToken {
 
 }
 
-// "version"
+// 'version'
 protected class MServiceLibrary_VersionKeyword_6_0_0 extends KeywordToken  {
 	
 	public MServiceLibrary_VersionKeyword_6_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2907,7 +2938,7 @@ protected class MServiceLibrary_VersionKeyword_6_0_0 extends KeywordToken  {
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrary_ColonEqualsSignKeyword_6_0_1 extends KeywordToken  {
 	
 	public MServiceLibrary_ColonEqualsSignKeyword_6_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2963,7 +2994,7 @@ protected class MServiceLibrary_VersionAssignment_6_0_2 extends AssignmentToken 
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrary_SemicolonKeyword_6_0_3 extends KeywordToken  {
 	
 	public MServiceLibrary_SemicolonKeyword_6_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2986,8 +3017,8 @@ protected class MServiceLibrary_SemicolonKeyword_6_0_3 extends KeywordToken  {
 }
 
 
-// "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";"
+// 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';'
 protected class MServiceLibrary_Group_6_1 extends GroupToken {
 	
 	public MServiceLibrary_Group_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3009,7 +3040,7 @@ protected class MServiceLibrary_Group_6_1 extends GroupToken {
 
 }
 
-// "languages"
+// 'languages'
 protected class MServiceLibrary_LanguagesKeyword_6_1_0 extends KeywordToken  {
 	
 	public MServiceLibrary_LanguagesKeyword_6_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3031,7 +3062,7 @@ protected class MServiceLibrary_LanguagesKeyword_6_1_0 extends KeywordToken  {
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrary_ColonEqualsSignKeyword_6_1_1 extends KeywordToken  {
 	
 	public MServiceLibrary_ColonEqualsSignKeyword_6_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3173,7 +3204,7 @@ protected class MServiceLibrary_LanguagesAssignment_6_1_3_1 extends AssignmentTo
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrary_SemicolonKeyword_6_1_4 extends KeywordToken  {
 	
 	public MServiceLibrary_SemicolonKeyword_6_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3197,7 +3228,7 @@ protected class MServiceLibrary_SemicolonKeyword_6_1_4 extends KeywordToken  {
 }
 
 
-// ("attributes" "{" attributes+=MParameter+ "}" ";")?
+// ('attributes' '{' attributes+=MParameter+ '}' ';')?
 protected class MServiceLibrary_Group_6_2 extends GroupToken {
 	
 	public MServiceLibrary_Group_6_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3219,7 +3250,7 @@ protected class MServiceLibrary_Group_6_2 extends GroupToken {
 
 }
 
-// "attributes"
+// 'attributes'
 protected class MServiceLibrary_AttributesKeyword_6_2_0 extends KeywordToken  {
 	
 	public MServiceLibrary_AttributesKeyword_6_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3241,7 +3272,7 @@ protected class MServiceLibrary_AttributesKeyword_6_2_0 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MServiceLibrary_LeftCurlyBracketKeyword_6_2_1 extends KeywordToken  {
 	
 	public MServiceLibrary_LeftCurlyBracketKeyword_6_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3310,7 +3341,7 @@ protected class MServiceLibrary_AttributesAssignment_6_2_2 extends AssignmentTok
 	}	
 }
 
-// "}"
+// '}'
 protected class MServiceLibrary_RightCurlyBracketKeyword_6_2_3 extends KeywordToken  {
 	
 	public MServiceLibrary_RightCurlyBracketKeyword_6_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3332,7 +3363,7 @@ protected class MServiceLibrary_RightCurlyBracketKeyword_6_2_3 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrary_SemicolonKeyword_6_2_4 extends KeywordToken  {
 	
 	public MServiceLibrary_SemicolonKeyword_6_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3355,7 +3386,7 @@ protected class MServiceLibrary_SemicolonKeyword_6_2_4 extends KeywordToken  {
 }
 
 
-// ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")?
+// ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')?
 protected class MServiceLibrary_Group_6_3 extends GroupToken {
 	
 	public MServiceLibrary_Group_6_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3377,7 +3408,7 @@ protected class MServiceLibrary_Group_6_3 extends GroupToken {
 
 }
 
-// "provided"
+// 'provided'
 protected class MServiceLibrary_ProvidedKeyword_6_3_0 extends KeywordToken  {
 	
 	public MServiceLibrary_ProvidedKeyword_6_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3400,7 +3431,7 @@ protected class MServiceLibrary_ProvidedKeyword_6_3_0 extends KeywordToken  {
 
 }
 
-// "sais"
+// 'sais'
 protected class MServiceLibrary_SaisKeyword_6_3_1 extends KeywordToken  {
 	
 	public MServiceLibrary_SaisKeyword_6_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3422,7 +3453,7 @@ protected class MServiceLibrary_SaisKeyword_6_3_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MServiceLibrary_LeftCurlyBracketKeyword_6_3_2 extends KeywordToken  {
 	
 	public MServiceLibrary_LeftCurlyBracketKeyword_6_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3491,7 +3522,7 @@ protected class MServiceLibrary_ProvidesAssignment_6_3_3 extends AssignmentToken
 	}	
 }
 
-// "}"
+// '}'
 protected class MServiceLibrary_RightCurlyBracketKeyword_6_3_4 extends KeywordToken  {
 	
 	public MServiceLibrary_RightCurlyBracketKeyword_6_3_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3513,7 +3544,7 @@ protected class MServiceLibrary_RightCurlyBracketKeyword_6_3_4 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrary_SemicolonKeyword_6_3_5 extends KeywordToken  {
 	
 	public MServiceLibrary_SemicolonKeyword_6_3_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3536,8 +3567,8 @@ protected class MServiceLibrary_SemicolonKeyword_6_3_5 extends KeywordToken  {
 }
 
 
-// ("requires" ":=" requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
-// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?
+// ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?
 protected class MServiceLibrary_Group_6_4 extends GroupToken {
 	
 	public MServiceLibrary_Group_6_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3559,7 +3590,7 @@ protected class MServiceLibrary_Group_6_4 extends GroupToken {
 
 }
 
-// "requires"
+// 'requires'
 protected class MServiceLibrary_RequiresKeyword_6_4_0 extends KeywordToken  {
 	
 	public MServiceLibrary_RequiresKeyword_6_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3583,7 +3614,7 @@ protected class MServiceLibrary_RequiresKeyword_6_4_0 extends KeywordToken  {
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrary_ColonEqualsSignKeyword_6_4_1 extends KeywordToken  {
 	
 	public MServiceLibrary_ColonEqualsSignKeyword_6_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3725,7 +3756,7 @@ protected class MServiceLibrary_RequiresAssignment_6_4_3_1 extends AssignmentTok
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrary_SemicolonKeyword_6_4_4 extends KeywordToken  {
 	
 	public MServiceLibrary_SemicolonKeyword_6_4_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3749,7 +3780,7 @@ protected class MServiceLibrary_SemicolonKeyword_6_4_4 extends KeywordToken  {
 }
 
 
-// "supported" "platforms" "{" supportedPlatforms+=MServiceLibrarySupportedPlatform+ "}" ";"
+// 'supported' 'platforms' '{' supportedPlatforms+=MServiceLibrarySupportedPlatform+ '}' ';'
 protected class MServiceLibrary_Group_6_5 extends GroupToken {
 	
 	public MServiceLibrary_Group_6_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3771,7 +3802,7 @@ protected class MServiceLibrary_Group_6_5 extends GroupToken {
 
 }
 
-// "supported"
+// 'supported'
 protected class MServiceLibrary_SupportedKeyword_6_5_0 extends KeywordToken  {
 	
 	public MServiceLibrary_SupportedKeyword_6_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3796,7 +3827,7 @@ protected class MServiceLibrary_SupportedKeyword_6_5_0 extends KeywordToken  {
 
 }
 
-// "platforms"
+// 'platforms'
 protected class MServiceLibrary_PlatformsKeyword_6_5_1 extends KeywordToken  {
 	
 	public MServiceLibrary_PlatformsKeyword_6_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3818,7 +3849,7 @@ protected class MServiceLibrary_PlatformsKeyword_6_5_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MServiceLibrary_LeftCurlyBracketKeyword_6_5_2 extends KeywordToken  {
 	
 	public MServiceLibrary_LeftCurlyBracketKeyword_6_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3887,7 +3918,7 @@ protected class MServiceLibrary_SupportedPlatformsAssignment_6_5_3 extends Assig
 	}	
 }
 
-// "}"
+// '}'
 protected class MServiceLibrary_RightCurlyBracketKeyword_6_5_4 extends KeywordToken  {
 	
 	public MServiceLibrary_RightCurlyBracketKeyword_6_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3909,7 +3940,7 @@ protected class MServiceLibrary_RightCurlyBracketKeyword_6_5_4 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrary_SemicolonKeyword_6_5_5 extends KeywordToken  {
 	
 	public MServiceLibrary_SemicolonKeyword_6_5_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3933,7 +3964,7 @@ protected class MServiceLibrary_SemicolonKeyword_6_5_5 extends KeywordToken  {
 
 
 
-// "}"
+// '}'
 protected class MServiceLibrary_RightCurlyBracketKeyword_7 extends KeywordToken  {
 	
 	public MServiceLibrary_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3955,7 +3986,7 @@ protected class MServiceLibrary_RightCurlyBracketKeyword_7 extends KeywordToken 
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrary_SemicolonKeyword_8 extends KeywordToken  {
 	
 	public MServiceLibrary_SemicolonKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3984,25 +4015,36 @@ protected class MServiceLibrary_SemicolonKeyword_8 extends KeywordToken  {
 /************ begin Rule MDriverServiceLibrary ****************
  *
  * MDriverServiceLibrary:
- * 	"driver" "service" "library" name=ID ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
- * 	inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ("extends"
- * 	extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)? "{"
- * 	("version" ":=" version=Version ";" & "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
- * 	languages+=[system::MLanguage|VersionedQualifiedName])* ";" & ("attributes" "{" attributes+=MParameter+ "}" ";")? &
- * 	("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")? & ("requires" ":="
- * 	requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")? &
- * 	"supported" "platforms" "{" supportedPlatforms+=MDriverSLibSupportedPlatform+ "}" ";") "}" ";";
+ * 	'driver' 'service' 'library'
+ * 	name=ID ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+ * 	inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ('extends'
+ * 	extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)?
+ * 	'{' ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+ * 	languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('attributes'
+ * 	'{'
+ * 	attributes+=MParameter+
+ * 	'}' ';')?
+ * 	& ('provided' 'sais' '{'
+ * 	provides+=MServiceLibraryProvidedSAI+
+ * 	'}' ';')?
+ * 	& ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+ * 	requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?
+ * 	& 'supported' 'platforms'
+ * 	'{'
+ * 	supportedPlatforms+=MDriverSLibSupportedPlatform+
+ * 	'}' ';')
+ * 	'}' ';';
  *
  **/
 
-// "driver" "service" "library" name=ID ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
-// inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ("extends"
-// extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)? "{"
-// ("version" ":=" version=Version ";" & "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";" & ("attributes" "{" attributes+=MParameter+ "}" ";")? &
-// ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")? & ("requires" ":="
-// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")? &
-// "supported" "platforms" "{" supportedPlatforms+=MDriverSLibSupportedPlatform+ "}" ";") "}" ";"
+// 'driver' 'service' 'library' name=ID ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+// inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)? ('extends'
+// extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)? '{'
+// ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('attributes' '{' attributes+=MParameter+ '}' ';')? &
+// ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')? & ('requires' ':='
+// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')? &
+// 'supported' 'platforms' '{' supportedPlatforms+=MDriverSLibSupportedPlatform+ '}' ';') '}' ';'
 protected class MDriverServiceLibrary_Group extends GroupToken {
 	
 	public MDriverServiceLibrary_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4031,7 +4073,7 @@ protected class MDriverServiceLibrary_Group extends GroupToken {
 
 }
 
-// "driver"
+// 'driver'
 protected class MDriverServiceLibrary_DriverKeyword_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_DriverKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4052,7 +4094,7 @@ protected class MDriverServiceLibrary_DriverKeyword_0 extends KeywordToken  {
 
 }
 
-// "service"
+// 'service'
 protected class MDriverServiceLibrary_ServiceKeyword_1 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_ServiceKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4074,7 +4116,7 @@ protected class MDriverServiceLibrary_ServiceKeyword_1 extends KeywordToken  {
 
 }
 
-// "library"
+// 'library'
 protected class MDriverServiceLibrary_LibraryKeyword_2 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_LibraryKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4130,7 +4172,7 @@ protected class MDriverServiceLibrary_NameAssignment_3 extends AssignmentToken  
 
 }
 
-// ("inherits" inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
+// ('inherits' inherits+=[MAbstractServiceLibrary|VersionedQualifiedName] (","
 // inherits+=[MAbstractServiceLibrary|VersionedQualifiedName])*)?
 protected class MDriverServiceLibrary_Group_4 extends GroupToken {
 	
@@ -4154,7 +4196,7 @@ protected class MDriverServiceLibrary_Group_4 extends GroupToken {
 
 }
 
-// "inherits"
+// 'inherits'
 protected class MDriverServiceLibrary_InheritsKeyword_4_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_InheritsKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4297,7 +4339,7 @@ protected class MDriverServiceLibrary_InheritsAssignment_4_2_1 extends Assignmen
 
 
 
-// ("extends" extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)?
+// ('extends' extends+=[MServiceLibrary|VersionedQualifiedName] ("," extends+=[MServiceLibrary|VersionedQualifiedName])*)?
 protected class MDriverServiceLibrary_Group_5 extends GroupToken {
 	
 	public MDriverServiceLibrary_Group_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4320,7 +4362,7 @@ protected class MDriverServiceLibrary_Group_5 extends GroupToken {
 
 }
 
-// "extends"
+// 'extends'
 protected class MDriverServiceLibrary_ExtendsKeyword_5_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_ExtendsKeyword_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4464,7 +4506,7 @@ protected class MDriverServiceLibrary_ExtendsAssignment_5_2_1 extends Assignment
 
 
 
-// "{"
+// '{'
 protected class MDriverServiceLibrary_LeftCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_LeftCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4488,11 +4530,11 @@ protected class MDriverServiceLibrary_LeftCurlyBracketKeyword_6 extends KeywordT
 
 }
 
-// "version" ":=" version=Version ";" & "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";" & ("attributes" "{" attributes+=MParameter+ "}" ";")? &
-// ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")? & ("requires" ":="
-// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")? &
-// "supported" "platforms" "{" supportedPlatforms+=MDriverSLibSupportedPlatform+ "}" ";"
+// ('version' ':=' version=Version ';' & 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';' & ('attributes' '{' attributes+=MParameter+ '}' ';')? &
+// ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')? & ('requires' ':='
+// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')? &
+// 'supported' 'platforms' '{' supportedPlatforms+=MDriverSLibSupportedPlatform+ '}' ';')
 protected class MDriverServiceLibrary_UnorderedGroup_7 extends UnorderedGroupToken {
 	
 	public MDriverServiceLibrary_UnorderedGroup_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4514,7 +4556,7 @@ protected class MDriverServiceLibrary_UnorderedGroup_7 extends UnorderedGroupTok
 
 }
 
-// "version" ":=" version=Version ";"
+// 'version' ':=' version=Version ';'
 protected class MDriverServiceLibrary_Group_7_0 extends GroupToken {
 	
 	public MDriverServiceLibrary_Group_7_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4536,7 +4578,7 @@ protected class MDriverServiceLibrary_Group_7_0 extends GroupToken {
 
 }
 
-// "version"
+// 'version'
 protected class MDriverServiceLibrary_VersionKeyword_7_0_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_VersionKeyword_7_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4558,7 +4600,7 @@ protected class MDriverServiceLibrary_VersionKeyword_7_0_0 extends KeywordToken 
 
 }
 
-// ":="
+// ':='
 protected class MDriverServiceLibrary_ColonEqualsSignKeyword_7_0_1 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_ColonEqualsSignKeyword_7_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4614,7 +4656,7 @@ protected class MDriverServiceLibrary_VersionAssignment_7_0_2 extends Assignment
 
 }
 
-// ";"
+// ';'
 protected class MDriverServiceLibrary_SemicolonKeyword_7_0_3 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SemicolonKeyword_7_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4637,8 +4679,8 @@ protected class MDriverServiceLibrary_SemicolonKeyword_7_0_3 extends KeywordToke
 }
 
 
-// "languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";"
+// 'languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';'
 protected class MDriverServiceLibrary_Group_7_1 extends GroupToken {
 	
 	public MDriverServiceLibrary_Group_7_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4660,7 +4702,7 @@ protected class MDriverServiceLibrary_Group_7_1 extends GroupToken {
 
 }
 
-// "languages"
+// 'languages'
 protected class MDriverServiceLibrary_LanguagesKeyword_7_1_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_LanguagesKeyword_7_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4682,7 +4724,7 @@ protected class MDriverServiceLibrary_LanguagesKeyword_7_1_0 extends KeywordToke
 
 }
 
-// ":="
+// ':='
 protected class MDriverServiceLibrary_ColonEqualsSignKeyword_7_1_1 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_ColonEqualsSignKeyword_7_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4824,7 +4866,7 @@ protected class MDriverServiceLibrary_LanguagesAssignment_7_1_3_1 extends Assign
 }
 
 
-// ";"
+// ';'
 protected class MDriverServiceLibrary_SemicolonKeyword_7_1_4 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SemicolonKeyword_7_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4848,7 +4890,7 @@ protected class MDriverServiceLibrary_SemicolonKeyword_7_1_4 extends KeywordToke
 }
 
 
-// ("attributes" "{" attributes+=MParameter+ "}" ";")?
+// ('attributes' '{' attributes+=MParameter+ '}' ';')?
 protected class MDriverServiceLibrary_Group_7_2 extends GroupToken {
 	
 	public MDriverServiceLibrary_Group_7_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4870,7 +4912,7 @@ protected class MDriverServiceLibrary_Group_7_2 extends GroupToken {
 
 }
 
-// "attributes"
+// 'attributes'
 protected class MDriverServiceLibrary_AttributesKeyword_7_2_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_AttributesKeyword_7_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4892,7 +4934,7 @@ protected class MDriverServiceLibrary_AttributesKeyword_7_2_0 extends KeywordTok
 
 }
 
-// "{"
+// '{'
 protected class MDriverServiceLibrary_LeftCurlyBracketKeyword_7_2_1 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_LeftCurlyBracketKeyword_7_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4961,7 +5003,7 @@ protected class MDriverServiceLibrary_AttributesAssignment_7_2_2 extends Assignm
 	}	
 }
 
-// "}"
+// '}'
 protected class MDriverServiceLibrary_RightCurlyBracketKeyword_7_2_3 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_RightCurlyBracketKeyword_7_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4983,7 +5025,7 @@ protected class MDriverServiceLibrary_RightCurlyBracketKeyword_7_2_3 extends Key
 
 }
 
-// ";"
+// ';'
 protected class MDriverServiceLibrary_SemicolonKeyword_7_2_4 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SemicolonKeyword_7_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5006,7 +5048,7 @@ protected class MDriverServiceLibrary_SemicolonKeyword_7_2_4 extends KeywordToke
 }
 
 
-// ("provided" "sais" "{" provides+=MServiceLibraryProvidedSAI+ "}" ";")?
+// ('provided' 'sais' '{' provides+=MServiceLibraryProvidedSAI+ '}' ';')?
 protected class MDriverServiceLibrary_Group_7_3 extends GroupToken {
 	
 	public MDriverServiceLibrary_Group_7_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5028,7 +5070,7 @@ protected class MDriverServiceLibrary_Group_7_3 extends GroupToken {
 
 }
 
-// "provided"
+// 'provided'
 protected class MDriverServiceLibrary_ProvidedKeyword_7_3_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_ProvidedKeyword_7_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5051,7 +5093,7 @@ protected class MDriverServiceLibrary_ProvidedKeyword_7_3_0 extends KeywordToken
 
 }
 
-// "sais"
+// 'sais'
 protected class MDriverServiceLibrary_SaisKeyword_7_3_1 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SaisKeyword_7_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5073,7 +5115,7 @@ protected class MDriverServiceLibrary_SaisKeyword_7_3_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MDriverServiceLibrary_LeftCurlyBracketKeyword_7_3_2 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_LeftCurlyBracketKeyword_7_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5142,7 +5184,7 @@ protected class MDriverServiceLibrary_ProvidesAssignment_7_3_3 extends Assignmen
 	}	
 }
 
-// "}"
+// '}'
 protected class MDriverServiceLibrary_RightCurlyBracketKeyword_7_3_4 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_RightCurlyBracketKeyword_7_3_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5164,7 +5206,7 @@ protected class MDriverServiceLibrary_RightCurlyBracketKeyword_7_3_4 extends Key
 
 }
 
-// ";"
+// ';'
 protected class MDriverServiceLibrary_SemicolonKeyword_7_3_5 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SemicolonKeyword_7_3_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5187,8 +5229,8 @@ protected class MDriverServiceLibrary_SemicolonKeyword_7_3_5 extends KeywordToke
 }
 
 
-// ("requires" ":=" requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
-// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?
+// ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?
 protected class MDriverServiceLibrary_Group_7_4 extends GroupToken {
 	
 	public MDriverServiceLibrary_Group_7_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5210,7 +5252,7 @@ protected class MDriverServiceLibrary_Group_7_4 extends GroupToken {
 
 }
 
-// "requires"
+// 'requires'
 protected class MDriverServiceLibrary_RequiresKeyword_7_4_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_RequiresKeyword_7_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5234,7 +5276,7 @@ protected class MDriverServiceLibrary_RequiresKeyword_7_4_0 extends KeywordToken
 
 }
 
-// ":="
+// ':='
 protected class MDriverServiceLibrary_ColonEqualsSignKeyword_7_4_1 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_ColonEqualsSignKeyword_7_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5376,7 +5418,7 @@ protected class MDriverServiceLibrary_RequiresAssignment_7_4_3_1 extends Assignm
 }
 
 
-// ";"
+// ';'
 protected class MDriverServiceLibrary_SemicolonKeyword_7_4_4 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SemicolonKeyword_7_4_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5400,7 +5442,7 @@ protected class MDriverServiceLibrary_SemicolonKeyword_7_4_4 extends KeywordToke
 }
 
 
-// "supported" "platforms" "{" supportedPlatforms+=MDriverSLibSupportedPlatform+ "}" ";"
+// 'supported' 'platforms' '{' supportedPlatforms+=MDriverSLibSupportedPlatform+ '}' ';'
 protected class MDriverServiceLibrary_Group_7_5 extends GroupToken {
 	
 	public MDriverServiceLibrary_Group_7_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5422,7 +5464,7 @@ protected class MDriverServiceLibrary_Group_7_5 extends GroupToken {
 
 }
 
-// "supported"
+// 'supported'
 protected class MDriverServiceLibrary_SupportedKeyword_7_5_0 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SupportedKeyword_7_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5447,7 +5489,7 @@ protected class MDriverServiceLibrary_SupportedKeyword_7_5_0 extends KeywordToke
 
 }
 
-// "platforms"
+// 'platforms'
 protected class MDriverServiceLibrary_PlatformsKeyword_7_5_1 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_PlatformsKeyword_7_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5469,7 +5511,7 @@ protected class MDriverServiceLibrary_PlatformsKeyword_7_5_1 extends KeywordToke
 
 }
 
-// "{"
+// '{'
 protected class MDriverServiceLibrary_LeftCurlyBracketKeyword_7_5_2 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_LeftCurlyBracketKeyword_7_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5538,7 +5580,7 @@ protected class MDriverServiceLibrary_SupportedPlatformsAssignment_7_5_3 extends
 	}	
 }
 
-// "}"
+// '}'
 protected class MDriverServiceLibrary_RightCurlyBracketKeyword_7_5_4 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_RightCurlyBracketKeyword_7_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5560,7 +5602,7 @@ protected class MDriverServiceLibrary_RightCurlyBracketKeyword_7_5_4 extends Key
 
 }
 
-// ";"
+// ';'
 protected class MDriverServiceLibrary_SemicolonKeyword_7_5_5 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SemicolonKeyword_7_5_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5584,7 +5626,7 @@ protected class MDriverServiceLibrary_SemicolonKeyword_7_5_5 extends KeywordToke
 
 
 
-// "}"
+// '}'
 protected class MDriverServiceLibrary_RightCurlyBracketKeyword_8 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_RightCurlyBracketKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5606,7 +5648,7 @@ protected class MDriverServiceLibrary_RightCurlyBracketKeyword_8 extends Keyword
 
 }
 
-// ";"
+// ';'
 protected class MDriverServiceLibrary_SemicolonKeyword_9 extends KeywordToken  {
 	
 	public MDriverServiceLibrary_SemicolonKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5635,31 +5677,37 @@ protected class MDriverServiceLibrary_SemicolonKeyword_9 extends KeywordToken  {
 /************ begin Rule MServiceLibrarySupportedPlatform ****************
  *
  * MServiceLibrarySupportedPlatform:
- * 	{MServiceLibrarySupportedPlatform} "supported" "platform" name=ID "{" ("osapi" ":=" ("any" |
- * 	osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";" & "os" ":=" ("any" |
- * 	os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";" & "architecture" ":=" ("any" |
- * 	architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";" & ("compiler" ":="
- * 	compiler=[pdl::MCompiler|VersionedQualifiedName] ";")? & "microprocessor" ":=" ("any" |
- * 	microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
- * 	board=[pdl::MBoard|VersionedQualifiedName]) ";" & ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")? &
- * 	("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
- * 	languages+=[system::MLanguage|VersionedQualifiedName])* ";")? & ("requires" ":="
- * 	requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?) "}"
- * 	";";
+ * 	{MServiceLibrarySupportedPlatform}
+ * 	'supported' 'platform'
+ * 	name=ID
+ * 	'{' ('osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';' & 'os' ':=' ('any' |
+ * 	os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';' & 'architecture' ':=' ('any' |
+ * 	architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';' & ('compiler' ':='
+ * 	compiler=[pdl::MCompiler|VersionedQualifiedName] ';')?
+ * 	& 'microprocessor' ':=' ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':='
+ * 	('any' | board=[pdl::MBoard|VersionedQualifiedName]) ';' & ('attributes'
+ * 	'{'
+ * 	attributes+=MParameterWithoutSLSP+
+ * 	'}' ';')?
+ * 	& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+ * 	languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+ * 	& ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+ * 	requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?)
+ * 	'}' ';';
  *
  **/
 
-// {MServiceLibrarySupportedPlatform} "supported" "platform" name=ID "{" ("osapi" ":=" ("any" |
-// osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";" & "os" ":=" ("any" |
-// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";" & "architecture" ":=" ("any" |
-// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";" & ("compiler" ":="
-// compiler=[pdl::MCompiler|VersionedQualifiedName] ";")? & "microprocessor" ":=" ("any" |
-// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-// board=[pdl::MBoard|VersionedQualifiedName]) ";" & ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")? &
-// ("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";")? & ("requires" ":="
-// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?) "}"
-// ";"
+// {MServiceLibrarySupportedPlatform} 'supported' 'platform' name=ID '{' ('osapi' ':=' ('any' |
+// osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';' & 'os' ':=' ('any' |
+// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';' & 'architecture' ':=' ('any' |
+// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';' & ('compiler' ':='
+// compiler=[pdl::MCompiler|VersionedQualifiedName] ';')? & 'microprocessor' ':=' ('any' |
+// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+// board=[pdl::MBoard|VersionedQualifiedName]) ';' & ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')? &
+// ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';')? & ('requires' ':='
+// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?) '}'
+// ';'
 protected class MServiceLibrarySupportedPlatform_Group extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5714,7 +5762,7 @@ protected class MServiceLibrarySupportedPlatform_MServiceLibrarySupportedPlatfor
 	}
 }
 
-// "supported"
+// 'supported'
 protected class MServiceLibrarySupportedPlatform_SupportedKeyword_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SupportedKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5736,7 +5784,7 @@ protected class MServiceLibrarySupportedPlatform_SupportedKeyword_1 extends Keyw
 
 }
 
-// "platform"
+// 'platform'
 protected class MServiceLibrarySupportedPlatform_PlatformKeyword_2 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_PlatformKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5792,7 +5840,7 @@ protected class MServiceLibrarySupportedPlatform_NameAssignment_3 extends Assign
 
 }
 
-// "{"
+// '{'
 protected class MServiceLibrarySupportedPlatform_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5814,15 +5862,15 @@ protected class MServiceLibrarySupportedPlatform_LeftCurlyBracketKeyword_4 exten
 
 }
 
-// "osapi" ":=" ("any" | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";" & "os" ":=" ("any" |
-// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";" & "architecture" ":=" ("any" |
-// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";" & ("compiler" ":="
-// compiler=[pdl::MCompiler|VersionedQualifiedName] ";")? & "microprocessor" ":=" ("any" |
-// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-// board=[pdl::MBoard|VersionedQualifiedName]) ";" & ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")? &
-// ("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";")? & ("requires" ":="
-// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?
+// ('osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';' & 'os' ':=' ('any' |
+// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';' & 'architecture' ':=' ('any' |
+// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';' & ('compiler' ':='
+// compiler=[pdl::MCompiler|VersionedQualifiedName] ';')? & 'microprocessor' ':=' ('any' |
+// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+// board=[pdl::MBoard|VersionedQualifiedName]) ';' & ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')? &
+// ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';')? & ('requires' ':='
+// requires+=[mclevsai::MSAI|VersionedQualifiedName] ("," requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?)
 protected class MServiceLibrarySupportedPlatform_UnorderedGroup_5 extends UnorderedGroupToken {
 	
 	public MServiceLibrarySupportedPlatform_UnorderedGroup_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5847,7 +5895,7 @@ protected class MServiceLibrarySupportedPlatform_UnorderedGroup_5 extends Unorde
 
 }
 
-// "osapi" ":=" ("any" | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";"
+// 'osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';'
 protected class MServiceLibrarySupportedPlatform_Group_5_0 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5869,7 +5917,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_0 extends GroupToken {
 
 }
 
-// "osapi"
+// 'osapi'
 protected class MServiceLibrarySupportedPlatform_OsapiKeyword_5_0_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_OsapiKeyword_5_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5891,7 +5939,7 @@ protected class MServiceLibrarySupportedPlatform_OsapiKeyword_5_0_0 extends Keyw
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_0_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5913,7 +5961,7 @@ protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_0_1 ex
 
 }
 
-// "any" | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]
+// ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName])
 protected class MServiceLibrarySupportedPlatform_Alternatives_5_0_2 extends AlternativesToken {
 
 	public MServiceLibrarySupportedPlatform_Alternatives_5_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5936,7 +5984,7 @@ protected class MServiceLibrarySupportedPlatform_Alternatives_5_0_2 extends Alte
 
 }
 
-// "any"
+// 'any'
 protected class MServiceLibrarySupportedPlatform_AnyKeyword_5_0_2_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_AnyKeyword_5_0_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5996,7 +6044,7 @@ protected class MServiceLibrarySupportedPlatform_OsapiAssignment_5_0_2_1 extends
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_0_3 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6019,7 +6067,7 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_0_3 extends 
 }
 
 
-// "os" ":=" ("any" | os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";"
+// 'os' ':=' ('any' | os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';'
 protected class MServiceLibrarySupportedPlatform_Group_5_1 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6041,7 +6089,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_1 extends GroupToken {
 
 }
 
-// "os"
+// 'os'
 protected class MServiceLibrarySupportedPlatform_OsKeyword_5_1_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_OsKeyword_5_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6063,7 +6111,7 @@ protected class MServiceLibrarySupportedPlatform_OsKeyword_5_1_0 extends Keyword
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_1_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6085,7 +6133,7 @@ protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_1_1 ex
 
 }
 
-// "any" | os=[pdl::MOperatingSystem|VersionedQualifiedName]
+// ('any' | os=[pdl::MOperatingSystem|VersionedQualifiedName])
 protected class MServiceLibrarySupportedPlatform_Alternatives_5_1_2 extends AlternativesToken {
 
 	public MServiceLibrarySupportedPlatform_Alternatives_5_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6108,7 +6156,7 @@ protected class MServiceLibrarySupportedPlatform_Alternatives_5_1_2 extends Alte
 
 }
 
-// "any"
+// 'any'
 protected class MServiceLibrarySupportedPlatform_AnyKeyword_5_1_2_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_AnyKeyword_5_1_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6168,7 +6216,7 @@ protected class MServiceLibrarySupportedPlatform_OsAssignment_5_1_2_1 extends As
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_1_3 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6191,7 +6239,7 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_1_3 extends 
 }
 
 
-// "architecture" ":=" ("any" | architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";"
+// 'architecture' ':=' ('any' | architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';'
 protected class MServiceLibrarySupportedPlatform_Group_5_2 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6213,7 +6261,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_2 extends GroupToken {
 
 }
 
-// "architecture"
+// 'architecture'
 protected class MServiceLibrarySupportedPlatform_ArchitectureKeyword_5_2_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ArchitectureKeyword_5_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6235,7 +6283,7 @@ protected class MServiceLibrarySupportedPlatform_ArchitectureKeyword_5_2_0 exten
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_2_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6257,7 +6305,7 @@ protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_2_1 ex
 
 }
 
-// "any" | architecture=[pdl::MArchitecture|VersionedQualifiedName]
+// ('any' | architecture=[pdl::MArchitecture|VersionedQualifiedName])
 protected class MServiceLibrarySupportedPlatform_Alternatives_5_2_2 extends AlternativesToken {
 
 	public MServiceLibrarySupportedPlatform_Alternatives_5_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6280,7 +6328,7 @@ protected class MServiceLibrarySupportedPlatform_Alternatives_5_2_2 extends Alte
 
 }
 
-// "any"
+// 'any'
 protected class MServiceLibrarySupportedPlatform_AnyKeyword_5_2_2_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_AnyKeyword_5_2_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6340,7 +6388,7 @@ protected class MServiceLibrarySupportedPlatform_ArchitectureAssignment_5_2_2_1 
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_2_3 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6363,7 +6411,7 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_2_3 extends 
 }
 
 
-// ("compiler" ":=" compiler=[pdl::MCompiler|VersionedQualifiedName] ";")?
+// ('compiler' ':=' compiler=[pdl::MCompiler|VersionedQualifiedName] ';')?
 protected class MServiceLibrarySupportedPlatform_Group_5_3 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6385,7 +6433,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_3 extends GroupToken {
 
 }
 
-// "compiler"
+// 'compiler'
 protected class MServiceLibrarySupportedPlatform_CompilerKeyword_5_3_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_CompilerKeyword_5_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6407,7 +6455,7 @@ protected class MServiceLibrarySupportedPlatform_CompilerKeyword_5_3_0 extends K
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_3_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6466,7 +6514,7 @@ protected class MServiceLibrarySupportedPlatform_CompilerAssignment_5_3_2 extend
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_3_3 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_3_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6489,7 +6537,7 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_3_3 extends 
 }
 
 
-// "microprocessor" ":=" ("any" | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";"
+// 'microprocessor' ':=' ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';'
 protected class MServiceLibrarySupportedPlatform_Group_5_4 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6511,7 +6559,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_4 extends GroupToken {
 
 }
 
-// "microprocessor"
+// 'microprocessor'
 protected class MServiceLibrarySupportedPlatform_MicroprocessorKeyword_5_4_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_MicroprocessorKeyword_5_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6534,7 +6582,7 @@ protected class MServiceLibrarySupportedPlatform_MicroprocessorKeyword_5_4_0 ext
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_4_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6556,7 +6604,7 @@ protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_4_1 ex
 
 }
 
-// "any" | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]
+// ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName])
 protected class MServiceLibrarySupportedPlatform_Alternatives_5_4_2 extends AlternativesToken {
 
 	public MServiceLibrarySupportedPlatform_Alternatives_5_4_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6579,7 +6627,7 @@ protected class MServiceLibrarySupportedPlatform_Alternatives_5_4_2 extends Alte
 
 }
 
-// "any"
+// 'any'
 protected class MServiceLibrarySupportedPlatform_AnyKeyword_5_4_2_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_AnyKeyword_5_4_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6639,7 +6687,7 @@ protected class MServiceLibrarySupportedPlatform_MicroprocessorAssignment_5_4_2_
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_4_3 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_4_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6662,7 +6710,7 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_4_3 extends 
 }
 
 
-// "board" ":=" ("any" | board=[pdl::MBoard|VersionedQualifiedName]) ";"
+// 'board' ':=' ('any' | board=[pdl::MBoard|VersionedQualifiedName]) ';'
 protected class MServiceLibrarySupportedPlatform_Group_5_5 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6684,7 +6732,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_5 extends GroupToken {
 
 }
 
-// "board"
+// 'board'
 protected class MServiceLibrarySupportedPlatform_BoardKeyword_5_5_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_BoardKeyword_5_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6706,7 +6754,7 @@ protected class MServiceLibrarySupportedPlatform_BoardKeyword_5_5_0 extends Keyw
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_5_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6728,7 +6776,7 @@ protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_5_1 ex
 
 }
 
-// "any" | board=[pdl::MBoard|VersionedQualifiedName]
+// ('any' | board=[pdl::MBoard|VersionedQualifiedName])
 protected class MServiceLibrarySupportedPlatform_Alternatives_5_5_2 extends AlternativesToken {
 
 	public MServiceLibrarySupportedPlatform_Alternatives_5_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6751,7 +6799,7 @@ protected class MServiceLibrarySupportedPlatform_Alternatives_5_5_2 extends Alte
 
 }
 
-// "any"
+// 'any'
 protected class MServiceLibrarySupportedPlatform_AnyKeyword_5_5_2_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_AnyKeyword_5_5_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6811,7 +6859,7 @@ protected class MServiceLibrarySupportedPlatform_BoardAssignment_5_5_2_1 extends
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_5_3 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6834,7 +6882,7 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_5_3 extends 
 }
 
 
-// ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")?
+// ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')?
 protected class MServiceLibrarySupportedPlatform_Group_5_6 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6856,7 +6904,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_6 extends GroupToken {
 
 }
 
-// "attributes"
+// 'attributes'
 protected class MServiceLibrarySupportedPlatform_AttributesKeyword_5_6_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_AttributesKeyword_5_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6878,7 +6926,7 @@ protected class MServiceLibrarySupportedPlatform_AttributesKeyword_5_6_0 extends
 
 }
 
-// "{"
+// '{'
 protected class MServiceLibrarySupportedPlatform_LeftCurlyBracketKeyword_5_6_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_LeftCurlyBracketKeyword_5_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6947,7 +6995,7 @@ protected class MServiceLibrarySupportedPlatform_AttributesAssignment_5_6_2 exte
 	}	
 }
 
-// "}"
+// '}'
 protected class MServiceLibrarySupportedPlatform_RightCurlyBracketKeyword_5_6_3 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_RightCurlyBracketKeyword_5_6_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6969,7 +7017,7 @@ protected class MServiceLibrarySupportedPlatform_RightCurlyBracketKeyword_5_6_3 
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_6_4 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_6_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -6992,8 +7040,8 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_6_4 extends 
 }
 
 
-// ("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";")?
+// ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
 protected class MServiceLibrarySupportedPlatform_Group_5_7 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7015,7 +7063,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_7 extends GroupToken {
 
 }
 
-// "languages"
+// 'languages'
 protected class MServiceLibrarySupportedPlatform_LanguagesKeyword_5_7_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_LanguagesKeyword_5_7_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7038,7 +7086,7 @@ protected class MServiceLibrarySupportedPlatform_LanguagesKeyword_5_7_0 extends 
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_7_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_7_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7180,7 +7228,7 @@ protected class MServiceLibrarySupportedPlatform_LanguagesAssignment_5_7_3_1 ext
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_7_4 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_7_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7204,8 +7252,8 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_7_4 extends 
 }
 
 
-// ("requires" ":=" requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
-// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?
+// ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?
 protected class MServiceLibrarySupportedPlatform_Group_5_8 extends GroupToken {
 	
 	public MServiceLibrarySupportedPlatform_Group_5_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7227,7 +7275,7 @@ protected class MServiceLibrarySupportedPlatform_Group_5_8 extends GroupToken {
 
 }
 
-// "requires"
+// 'requires'
 protected class MServiceLibrarySupportedPlatform_RequiresKeyword_5_8_0 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_RequiresKeyword_5_8_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7251,7 +7299,7 @@ protected class MServiceLibrarySupportedPlatform_RequiresKeyword_5_8_0 extends K
 
 }
 
-// ":="
+// ':='
 protected class MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_8_1 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_ColonEqualsSignKeyword_5_8_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7393,7 +7441,7 @@ protected class MServiceLibrarySupportedPlatform_RequiresAssignment_5_8_3_1 exte
 }
 
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_8_4 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_5_8_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7418,7 +7466,7 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_5_8_4 extends 
 
 
 
-// "}"
+// '}'
 protected class MServiceLibrarySupportedPlatform_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7440,7 +7488,7 @@ protected class MServiceLibrarySupportedPlatform_RightCurlyBracketKeyword_6 exte
 
 }
 
-// ";"
+// ';'
 protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MServiceLibrarySupportedPlatform_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7469,31 +7517,40 @@ protected class MServiceLibrarySupportedPlatform_SemicolonKeyword_7 extends Keyw
 /************ begin Rule MDriverSLibSupportedPlatform ****************
  *
  * MDriverSLibSupportedPlatform:
- * 	{MDriverSLibSupportedPlatform} "supported" "platform" name=ID "{" ("osapi" ":=" ("any" |
- * 	osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";" & "os" ":=" ("any" |
- * 	os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";" & "architecture" ":=" ("any" |
- * 	architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";" & ("compiler" ":="
- * 	compiler=[pdl::MCompiler|VersionedQualifiedName] ";")? & "microprocessor" ":=" ("any" |
- * 	microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
- * 	board=[pdl::MBoard|VersionedQualifiedName]) ";" & ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")? &
- * 	("supported" "devices" "{" supportedDevices+=MDriverSLibSupportedDevice+ "}" ";")? & ("languages" ":="
- * 	languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
- * 	";")? & ("requires" ":=" requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
- * 	requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?) "}" ";";
+ * 	{MDriverSLibSupportedPlatform}
+ * 	'supported' 'platform'
+ * 	name=ID
+ * 	'{' ('osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';' & 'os' ':=' ('any' |
+ * 	os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';' & 'architecture' ':=' ('any' |
+ * 	architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';' & ('compiler' ':='
+ * 	compiler=[pdl::MCompiler|VersionedQualifiedName] ';')?
+ * 	& 'microprocessor' ':=' ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':='
+ * 	('any' | board=[pdl::MBoard|VersionedQualifiedName]) ';' & ('attributes'
+ * 	'{'
+ * 	attributes+=MParameterWithoutSLSP+
+ * 	'}' ';')?
+ * 	& ('supported' 'devices' '{'
+ * 	supportedDevices+=MDriverSLibSupportedDevice+
+ * 	'}' ';')?
+ * 	& ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+ * 	languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
+ * 	& ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+ * 	requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?)
+ * 	'}' ';';
  *
  **/
 
-// {MDriverSLibSupportedPlatform} "supported" "platform" name=ID "{" ("osapi" ":=" ("any" |
-// osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";" & "os" ":=" ("any" |
-// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";" & "architecture" ":=" ("any" |
-// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";" & ("compiler" ":="
-// compiler=[pdl::MCompiler|VersionedQualifiedName] ";")? & "microprocessor" ":=" ("any" |
-// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-// board=[pdl::MBoard|VersionedQualifiedName]) ";" & ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")? &
-// ("supported" "devices" "{" supportedDevices+=MDriverSLibSupportedDevice+ "}" ";")? & ("languages" ":="
+// {MDriverSLibSupportedPlatform} 'supported' 'platform' name=ID '{' ('osapi' ':=' ('any' |
+// osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';' & 'os' ':=' ('any' |
+// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';' & 'architecture' ':=' ('any' |
+// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';' & ('compiler' ':='
+// compiler=[pdl::MCompiler|VersionedQualifiedName] ';')? & 'microprocessor' ':=' ('any' |
+// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+// board=[pdl::MBoard|VersionedQualifiedName]) ';' & ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')? &
+// ('supported' 'devices' '{' supportedDevices+=MDriverSLibSupportedDevice+ '}' ';')? & ('languages' ':='
 // languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-// ";")? & ("requires" ":=" requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
-// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?) "}" ";"
+// ';')? & ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?) '}' ';'
 protected class MDriverSLibSupportedPlatform_Group extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7548,7 +7605,7 @@ protected class MDriverSLibSupportedPlatform_MDriverSLibSupportedPlatformAction_
 	}
 }
 
-// "supported"
+// 'supported'
 protected class MDriverSLibSupportedPlatform_SupportedKeyword_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SupportedKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7570,7 +7627,7 @@ protected class MDriverSLibSupportedPlatform_SupportedKeyword_1 extends KeywordT
 
 }
 
-// "platform"
+// 'platform'
 protected class MDriverSLibSupportedPlatform_PlatformKeyword_2 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_PlatformKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7626,7 +7683,7 @@ protected class MDriverSLibSupportedPlatform_NameAssignment_3 extends Assignment
 
 }
 
-// "{"
+// '{'
 protected class MDriverSLibSupportedPlatform_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7648,16 +7705,16 @@ protected class MDriverSLibSupportedPlatform_LeftCurlyBracketKeyword_4 extends K
 
 }
 
-// "osapi" ":=" ("any" | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";" & "os" ":=" ("any" |
-// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";" & "architecture" ":=" ("any" |
-// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";" & ("compiler" ":="
-// compiler=[pdl::MCompiler|VersionedQualifiedName] ";")? & "microprocessor" ":=" ("any" |
-// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";" & "board" ":=" ("any" |
-// board=[pdl::MBoard|VersionedQualifiedName]) ";" & ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")? &
-// ("supported" "devices" "{" supportedDevices+=MDriverSLibSupportedDevice+ "}" ";")? & ("languages" ":="
+// ('osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';' & 'os' ':=' ('any' |
+// os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';' & 'architecture' ':=' ('any' |
+// architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';' & ('compiler' ':='
+// compiler=[pdl::MCompiler|VersionedQualifiedName] ';')? & 'microprocessor' ':=' ('any' |
+// microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';' & 'board' ':=' ('any' |
+// board=[pdl::MBoard|VersionedQualifiedName]) ';' & ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')? &
+// ('supported' 'devices' '{' supportedDevices+=MDriverSLibSupportedDevice+ '}' ';')? & ('languages' ':='
 // languages+=[system::MLanguage|VersionedQualifiedName] ("," languages+=[system::MLanguage|VersionedQualifiedName])*
-// ";")? & ("requires" ":=" requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
-// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?
+// ';')? & ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?)
 protected class MDriverSLibSupportedPlatform_UnorderedGroup_5 extends UnorderedGroupToken {
 	
 	public MDriverSLibSupportedPlatform_UnorderedGroup_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7683,7 +7740,7 @@ protected class MDriverSLibSupportedPlatform_UnorderedGroup_5 extends UnorderedG
 
 }
 
-// "osapi" ":=" ("any" | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ";"
+// 'osapi' ':=' ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]) ';'
 protected class MDriverSLibSupportedPlatform_Group_5_0 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7705,7 +7762,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_0 extends GroupToken {
 
 }
 
-// "osapi"
+// 'osapi'
 protected class MDriverSLibSupportedPlatform_OsapiKeyword_5_0_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_OsapiKeyword_5_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7727,7 +7784,7 @@ protected class MDriverSLibSupportedPlatform_OsapiKeyword_5_0_0 extends KeywordT
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_0_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7749,7 +7806,7 @@ protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_0_1 extend
 
 }
 
-// "any" | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName]
+// ('any' | osapi=[pdl::MOperatingSystemAPI|VersionedQualifiedName])
 protected class MDriverSLibSupportedPlatform_Alternatives_5_0_2 extends AlternativesToken {
 
 	public MDriverSLibSupportedPlatform_Alternatives_5_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7772,7 +7829,7 @@ protected class MDriverSLibSupportedPlatform_Alternatives_5_0_2 extends Alternat
 
 }
 
-// "any"
+// 'any'
 protected class MDriverSLibSupportedPlatform_AnyKeyword_5_0_2_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_AnyKeyword_5_0_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7832,7 +7889,7 @@ protected class MDriverSLibSupportedPlatform_OsapiAssignment_5_0_2_1 extends Ass
 }
 
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_0_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7855,7 +7912,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_0_3 extends Keyw
 }
 
 
-// "os" ":=" ("any" | os=[pdl::MOperatingSystem|VersionedQualifiedName]) ";"
+// 'os' ':=' ('any' | os=[pdl::MOperatingSystem|VersionedQualifiedName]) ';'
 protected class MDriverSLibSupportedPlatform_Group_5_1 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7877,7 +7934,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_1 extends GroupToken {
 
 }
 
-// "os"
+// 'os'
 protected class MDriverSLibSupportedPlatform_OsKeyword_5_1_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_OsKeyword_5_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7899,7 +7956,7 @@ protected class MDriverSLibSupportedPlatform_OsKeyword_5_1_0 extends KeywordToke
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_1_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7921,7 +7978,7 @@ protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_1_1 extend
 
 }
 
-// "any" | os=[pdl::MOperatingSystem|VersionedQualifiedName]
+// ('any' | os=[pdl::MOperatingSystem|VersionedQualifiedName])
 protected class MDriverSLibSupportedPlatform_Alternatives_5_1_2 extends AlternativesToken {
 
 	public MDriverSLibSupportedPlatform_Alternatives_5_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -7944,7 +8001,7 @@ protected class MDriverSLibSupportedPlatform_Alternatives_5_1_2 extends Alternat
 
 }
 
-// "any"
+// 'any'
 protected class MDriverSLibSupportedPlatform_AnyKeyword_5_1_2_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_AnyKeyword_5_1_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8004,7 +8061,7 @@ protected class MDriverSLibSupportedPlatform_OsAssignment_5_1_2_1 extends Assign
 }
 
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_1_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8027,7 +8084,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_1_3 extends Keyw
 }
 
 
-// "architecture" ":=" ("any" | architecture=[pdl::MArchitecture|VersionedQualifiedName]) ";"
+// 'architecture' ':=' ('any' | architecture=[pdl::MArchitecture|VersionedQualifiedName]) ';'
 protected class MDriverSLibSupportedPlatform_Group_5_2 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8049,7 +8106,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_2 extends GroupToken {
 
 }
 
-// "architecture"
+// 'architecture'
 protected class MDriverSLibSupportedPlatform_ArchitectureKeyword_5_2_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ArchitectureKeyword_5_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8071,7 +8128,7 @@ protected class MDriverSLibSupportedPlatform_ArchitectureKeyword_5_2_0 extends K
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_2_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8093,7 +8150,7 @@ protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_2_1 extend
 
 }
 
-// "any" | architecture=[pdl::MArchitecture|VersionedQualifiedName]
+// ('any' | architecture=[pdl::MArchitecture|VersionedQualifiedName])
 protected class MDriverSLibSupportedPlatform_Alternatives_5_2_2 extends AlternativesToken {
 
 	public MDriverSLibSupportedPlatform_Alternatives_5_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8116,7 +8173,7 @@ protected class MDriverSLibSupportedPlatform_Alternatives_5_2_2 extends Alternat
 
 }
 
-// "any"
+// 'any'
 protected class MDriverSLibSupportedPlatform_AnyKeyword_5_2_2_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_AnyKeyword_5_2_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8176,7 +8233,7 @@ protected class MDriverSLibSupportedPlatform_ArchitectureAssignment_5_2_2_1 exte
 }
 
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_2_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8199,7 +8256,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_2_3 extends Keyw
 }
 
 
-// ("compiler" ":=" compiler=[pdl::MCompiler|VersionedQualifiedName] ";")?
+// ('compiler' ':=' compiler=[pdl::MCompiler|VersionedQualifiedName] ';')?
 protected class MDriverSLibSupportedPlatform_Group_5_3 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8221,7 +8278,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_3 extends GroupToken {
 
 }
 
-// "compiler"
+// 'compiler'
 protected class MDriverSLibSupportedPlatform_CompilerKeyword_5_3_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_CompilerKeyword_5_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8243,7 +8300,7 @@ protected class MDriverSLibSupportedPlatform_CompilerKeyword_5_3_0 extends Keywo
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_3_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8302,7 +8359,7 @@ protected class MDriverSLibSupportedPlatform_CompilerAssignment_5_3_2 extends As
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_3_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_3_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8325,7 +8382,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_3_3 extends Keyw
 }
 
 
-// "microprocessor" ":=" ("any" | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ";"
+// 'microprocessor' ':=' ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]) ';'
 protected class MDriverSLibSupportedPlatform_Group_5_4 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8347,7 +8404,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_4 extends GroupToken {
 
 }
 
-// "microprocessor"
+// 'microprocessor'
 protected class MDriverSLibSupportedPlatform_MicroprocessorKeyword_5_4_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_MicroprocessorKeyword_5_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8370,7 +8427,7 @@ protected class MDriverSLibSupportedPlatform_MicroprocessorKeyword_5_4_0 extends
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_4_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8392,7 +8449,7 @@ protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_4_1 extend
 
 }
 
-// "any" | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName]
+// ('any' | microprocessor=[pdl::MMicroprocessor|VersionedQualifiedName])
 protected class MDriverSLibSupportedPlatform_Alternatives_5_4_2 extends AlternativesToken {
 
 	public MDriverSLibSupportedPlatform_Alternatives_5_4_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8415,7 +8472,7 @@ protected class MDriverSLibSupportedPlatform_Alternatives_5_4_2 extends Alternat
 
 }
 
-// "any"
+// 'any'
 protected class MDriverSLibSupportedPlatform_AnyKeyword_5_4_2_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_AnyKeyword_5_4_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8475,7 +8532,7 @@ protected class MDriverSLibSupportedPlatform_MicroprocessorAssignment_5_4_2_1 ex
 }
 
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_4_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_4_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8498,7 +8555,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_4_3 extends Keyw
 }
 
 
-// "board" ":=" ("any" | board=[pdl::MBoard|VersionedQualifiedName]) ";"
+// 'board' ':=' ('any' | board=[pdl::MBoard|VersionedQualifiedName]) ';'
 protected class MDriverSLibSupportedPlatform_Group_5_5 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8520,7 +8577,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_5 extends GroupToken {
 
 }
 
-// "board"
+// 'board'
 protected class MDriverSLibSupportedPlatform_BoardKeyword_5_5_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_BoardKeyword_5_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8542,7 +8599,7 @@ protected class MDriverSLibSupportedPlatform_BoardKeyword_5_5_0 extends KeywordT
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_5_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_5_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8564,7 +8621,7 @@ protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_5_1 extend
 
 }
 
-// "any" | board=[pdl::MBoard|VersionedQualifiedName]
+// ('any' | board=[pdl::MBoard|VersionedQualifiedName])
 protected class MDriverSLibSupportedPlatform_Alternatives_5_5_2 extends AlternativesToken {
 
 	public MDriverSLibSupportedPlatform_Alternatives_5_5_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8587,7 +8644,7 @@ protected class MDriverSLibSupportedPlatform_Alternatives_5_5_2 extends Alternat
 
 }
 
-// "any"
+// 'any'
 protected class MDriverSLibSupportedPlatform_AnyKeyword_5_5_2_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_AnyKeyword_5_5_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8647,7 +8704,7 @@ protected class MDriverSLibSupportedPlatform_BoardAssignment_5_5_2_1 extends Ass
 }
 
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_5_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_5_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8670,7 +8727,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_5_3 extends Keyw
 }
 
 
-// ("attributes" "{" attributes+=MParameterWithoutSLSP+ "}" ";")?
+// ('attributes' '{' attributes+=MParameterWithoutSLSP+ '}' ';')?
 protected class MDriverSLibSupportedPlatform_Group_5_6 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8692,7 +8749,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_6 extends GroupToken {
 
 }
 
-// "attributes"
+// 'attributes'
 protected class MDriverSLibSupportedPlatform_AttributesKeyword_5_6_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_AttributesKeyword_5_6_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8714,7 +8771,7 @@ protected class MDriverSLibSupportedPlatform_AttributesKeyword_5_6_0 extends Key
 
 }
 
-// "{"
+// '{'
 protected class MDriverSLibSupportedPlatform_LeftCurlyBracketKeyword_5_6_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_LeftCurlyBracketKeyword_5_6_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8783,7 +8840,7 @@ protected class MDriverSLibSupportedPlatform_AttributesAssignment_5_6_2 extends 
 	}	
 }
 
-// "}"
+// '}'
 protected class MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_5_6_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_5_6_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8805,7 +8862,7 @@ protected class MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_5_6_3 exte
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_6_4 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_6_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8828,7 +8885,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_6_4 extends Keyw
 }
 
 
-// ("supported" "devices" "{" supportedDevices+=MDriverSLibSupportedDevice+ "}" ";")?
+// ('supported' 'devices' '{' supportedDevices+=MDriverSLibSupportedDevice+ '}' ';')?
 protected class MDriverSLibSupportedPlatform_Group_5_7 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8850,7 +8907,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_7 extends GroupToken {
 
 }
 
-// "supported"
+// 'supported'
 protected class MDriverSLibSupportedPlatform_SupportedKeyword_5_7_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SupportedKeyword_5_7_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8873,7 +8930,7 @@ protected class MDriverSLibSupportedPlatform_SupportedKeyword_5_7_0 extends Keyw
 
 }
 
-// "devices"
+// 'devices'
 protected class MDriverSLibSupportedPlatform_DevicesKeyword_5_7_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_DevicesKeyword_5_7_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8895,7 +8952,7 @@ protected class MDriverSLibSupportedPlatform_DevicesKeyword_5_7_1 extends Keywor
 
 }
 
-// "{"
+// '{'
 protected class MDriverSLibSupportedPlatform_LeftCurlyBracketKeyword_5_7_2 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_LeftCurlyBracketKeyword_5_7_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8964,7 +9021,7 @@ protected class MDriverSLibSupportedPlatform_SupportedDevicesAssignment_5_7_3 ex
 	}	
 }
 
-// "}"
+// '}'
 protected class MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_5_7_4 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_5_7_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -8986,7 +9043,7 @@ protected class MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_5_7_4 exte
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_7_5 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_7_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9009,8 +9066,8 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_7_5 extends Keyw
 }
 
 
-// ("languages" ":=" languages+=[system::MLanguage|VersionedQualifiedName] (","
-// languages+=[system::MLanguage|VersionedQualifiedName])* ";")?
+// ('languages' ':=' languages+=[system::MLanguage|VersionedQualifiedName] (","
+// languages+=[system::MLanguage|VersionedQualifiedName])* ';')?
 protected class MDriverSLibSupportedPlatform_Group_5_8 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9032,7 +9089,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_8 extends GroupToken {
 
 }
 
-// "languages"
+// 'languages'
 protected class MDriverSLibSupportedPlatform_LanguagesKeyword_5_8_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_LanguagesKeyword_5_8_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9056,7 +9113,7 @@ protected class MDriverSLibSupportedPlatform_LanguagesKeyword_5_8_0 extends Keyw
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_8_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_8_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9198,7 +9255,7 @@ protected class MDriverSLibSupportedPlatform_LanguagesAssignment_5_8_3_1 extends
 }
 
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_8_4 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_8_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9222,8 +9279,8 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_8_4 extends Keyw
 }
 
 
-// ("requires" ":=" requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
-// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ";")?
+// ('requires' ':=' requires+=[mclevsai::MSAI|VersionedQualifiedName] (","
+// requires+=[mclevsai::MSAI|VersionedQualifiedName])* ';')?
 protected class MDriverSLibSupportedPlatform_Group_5_9 extends GroupToken {
 	
 	public MDriverSLibSupportedPlatform_Group_5_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9245,7 +9302,7 @@ protected class MDriverSLibSupportedPlatform_Group_5_9 extends GroupToken {
 
 }
 
-// "requires"
+// 'requires'
 protected class MDriverSLibSupportedPlatform_RequiresKeyword_5_9_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_RequiresKeyword_5_9_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9270,7 +9327,7 @@ protected class MDriverSLibSupportedPlatform_RequiresKeyword_5_9_0 extends Keywo
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_9_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_ColonEqualsSignKeyword_5_9_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9412,7 +9469,7 @@ protected class MDriverSLibSupportedPlatform_RequiresAssignment_5_9_3_1 extends 
 }
 
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_9_4 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_5_9_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9437,7 +9494,7 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_5_9_4 extends Keyw
 
 
 
-// "}"
+// '}'
 protected class MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9459,7 +9516,7 @@ protected class MDriverSLibSupportedPlatform_RightCurlyBracketKeyword_6 extends 
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedPlatform_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MDriverSLibSupportedPlatform_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9488,13 +9545,14 @@ protected class MDriverSLibSupportedPlatform_SemicolonKeyword_7 extends KeywordT
 /************ begin Rule MDriverSLibSupportedDevice ****************
  *
  * MDriverSLibSupportedDevice:
- * 	"device" device=[pdl::MDevice|VersionedQualifiedName] name=ID "{" ("required" ":=" required=MParameterValueExpression
- * 	";")? "}" ";";
+ * 	'device' device=[pdl::MDevice|VersionedQualifiedName] name=ID '{' ('required' ':=' required=MParameterValueExpression
+ * 	';')?
+ * 	'}' ';';
  *
  **/
 
-// "device" device=[pdl::MDevice|VersionedQualifiedName] name=ID "{" ("required" ":=" required=MParameterValueExpression
-// ";")? "}" ";"
+// 'device' device=[pdl::MDevice|VersionedQualifiedName] name=ID '{' ('required' ':=' required=MParameterValueExpression
+// ';')? '}' ';'
 protected class MDriverSLibSupportedDevice_Group extends GroupToken {
 	
 	public MDriverSLibSupportedDevice_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9523,7 +9581,7 @@ protected class MDriverSLibSupportedDevice_Group extends GroupToken {
 
 }
 
-// "device"
+// 'device'
 protected class MDriverSLibSupportedDevice_DeviceKeyword_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedDevice_DeviceKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9615,7 +9673,7 @@ protected class MDriverSLibSupportedDevice_NameAssignment_2 extends AssignmentTo
 
 }
 
-// "{"
+// '{'
 protected class MDriverSLibSupportedDevice_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedDevice_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9637,7 +9695,7 @@ protected class MDriverSLibSupportedDevice_LeftCurlyBracketKeyword_3 extends Key
 
 }
 
-// ("required" ":=" required=MParameterValueExpression ";")?
+// ('required' ':=' required=MParameterValueExpression ';')?
 protected class MDriverSLibSupportedDevice_Group_4 extends GroupToken {
 	
 	public MDriverSLibSupportedDevice_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9659,7 +9717,7 @@ protected class MDriverSLibSupportedDevice_Group_4 extends GroupToken {
 
 }
 
-// "required"
+// 'required'
 protected class MDriverSLibSupportedDevice_RequiredKeyword_4_0 extends KeywordToken  {
 	
 	public MDriverSLibSupportedDevice_RequiredKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9681,7 +9739,7 @@ protected class MDriverSLibSupportedDevice_RequiredKeyword_4_0 extends KeywordTo
 
 }
 
-// ":="
+// ':='
 protected class MDriverSLibSupportedDevice_ColonEqualsSignKeyword_4_1 extends KeywordToken  {
 	
 	public MDriverSLibSupportedDevice_ColonEqualsSignKeyword_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9749,7 +9807,7 @@ protected class MDriverSLibSupportedDevice_RequiredAssignment_4_2 extends Assign
 	}	
 }
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedDevice_SemicolonKeyword_4_3 extends KeywordToken  {
 	
 	public MDriverSLibSupportedDevice_SemicolonKeyword_4_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9772,7 +9830,7 @@ protected class MDriverSLibSupportedDevice_SemicolonKeyword_4_3 extends KeywordT
 }
 
 
-// "}"
+// '}'
 protected class MDriverSLibSupportedDevice_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MDriverSLibSupportedDevice_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9795,7 +9853,7 @@ protected class MDriverSLibSupportedDevice_RightCurlyBracketKeyword_5 extends Ke
 
 }
 
-// ";"
+// ';'
 protected class MDriverSLibSupportedDevice_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MDriverSLibSupportedDevice_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -9826,10 +9884,10 @@ protected class MDriverSLibSupportedDevice_SemicolonKeyword_6 extends KeywordTok
 
 /************ begin Rule MParameter ****************
  *
- * MParameter returns common::MParameter:
+ * MParameter common::MParameter:
  * 	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
  * 	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition | MBooleanParamSLSPSwitch
- * 	| MStringParamSLSPSwitch | MIntegerParamSLSPSwitch | MRealParamSLSPSwitch | MEnumParamSLSPSwitch;
+ * 	| MStringParamSLSPSwitch | MIntegerParamSLSPSwitch | MRealParamSLSPSwitch | MEnumParamSLSPSwitch
  *
  **/
 
@@ -10286,9 +10344,9 @@ protected class MParameter_MEnumParamSLSPSwitchParserRuleCall_10 extends RuleCal
 
 /************ begin Rule MParameterWithoutSLSP ****************
  *
- * MParameterWithoutSLSP returns common::MParameter:
+ * MParameterWithoutSLSP common::MParameter:
  * 	MIntegerParameterSingleExpression | MEnumParameterSingleExpression | MBooleanParameterSingleExpression |
- * 	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition;
+ * 	MRealParameterSingleExpression | MStringParameterSingleExpression | MEnumParameterDefinition
  *
  **/
 
@@ -10555,11 +10613,16 @@ protected class MParameterWithoutSLSP_MEnumParameterDefinitionParserRuleCall_5 e
 /************ begin Rule MBooleanParamSLSPSwitch ****************
  *
  * MBooleanParamSLSPSwitch:
- * 	constant?="const"? "boolean" name=ID ":=" "switch" "{" cases+=MBooleanParamSLSPSwitchCase+ "}" ";";
+ * 	constant?='const'?
+ * 	'boolean' name=ID ':='
+ * 	'switch'
+ * 	'{'
+ * 	cases+=MBooleanParamSLSPSwitchCase+
+ * 	'}' ';';
  *
  **/
 
-// constant?="const"? "boolean" name=ID ":=" "switch" "{" cases+=MBooleanParamSLSPSwitchCase+ "}" ";"
+// constant?='const'? 'boolean' name=ID ':=' 'switch' '{' cases+=MBooleanParamSLSPSwitchCase+ '}' ';'
 protected class MBooleanParamSLSPSwitch_Group extends GroupToken {
 	
 	public MBooleanParamSLSPSwitch_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10588,7 +10651,7 @@ protected class MBooleanParamSLSPSwitch_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MBooleanParamSLSPSwitch_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MBooleanParamSLSPSwitch_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10621,7 +10684,7 @@ protected class MBooleanParamSLSPSwitch_ConstantAssignment_0 extends AssignmentT
 
 }
 
-// "boolean"
+// 'boolean'
 protected class MBooleanParamSLSPSwitch_BooleanKeyword_1 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitch_BooleanKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10677,7 +10740,7 @@ protected class MBooleanParamSLSPSwitch_NameAssignment_2 extends AssignmentToken
 
 }
 
-// ":="
+// ':='
 protected class MBooleanParamSLSPSwitch_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitch_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10699,7 +10762,7 @@ protected class MBooleanParamSLSPSwitch_ColonEqualsSignKeyword_3 extends Keyword
 
 }
 
-// "switch"
+// 'switch'
 protected class MBooleanParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitch_SwitchKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10721,7 +10784,7 @@ protected class MBooleanParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MBooleanParamSLSPSwitch_LeftCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitch_LeftCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10790,7 +10853,7 @@ protected class MBooleanParamSLSPSwitch_CasesAssignment_6 extends AssignmentToke
 	}	
 }
 
-// "}"
+// '}'
 protected class MBooleanParamSLSPSwitch_RightCurlyBracketKeyword_7 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitch_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10812,7 +10875,7 @@ protected class MBooleanParamSLSPSwitch_RightCurlyBracketKeyword_7 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MBooleanParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitch_SemicolonKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10841,11 +10904,12 @@ protected class MBooleanParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken 
 /************ begin Rule MBooleanParamSLSPSwitchCase ****************
  *
  * MBooleanParamSLSPSwitchCase:
- * 	"case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
+ * 	'case' platform=[MServiceLibrarySupportedPlatform] ':'
+ * 	defaultValue=MParameterValueExpression ';';
  *
  **/
 
-// "case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ";"
+// 'case' platform=[MServiceLibrarySupportedPlatform] ':' defaultValue=MParameterValueExpression ';'
 protected class MBooleanParamSLSPSwitchCase_Group extends GroupToken {
 	
 	public MBooleanParamSLSPSwitchCase_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10874,7 +10938,7 @@ protected class MBooleanParamSLSPSwitchCase_Group extends GroupToken {
 
 }
 
-// "case"
+// 'case'
 protected class MBooleanParamSLSPSwitchCase_CaseKeyword_0 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitchCase_CaseKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -10932,7 +10996,7 @@ protected class MBooleanParamSLSPSwitchCase_PlatformAssignment_1 extends Assignm
 
 }
 
-// ":"
+// ':'
 protected class MBooleanParamSLSPSwitchCase_ColonKeyword_2 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitchCase_ColonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11000,7 +11064,7 @@ protected class MBooleanParamSLSPSwitchCase_DefaultValueAssignment_3 extends Ass
 	}	
 }
 
-// ";"
+// ';'
 protected class MBooleanParamSLSPSwitchCase_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MBooleanParamSLSPSwitchCase_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11029,11 +11093,16 @@ protected class MBooleanParamSLSPSwitchCase_SemicolonKeyword_4 extends KeywordTo
 /************ begin Rule MStringParamSLSPSwitch ****************
  *
  * MStringParamSLSPSwitch:
- * 	constant?="const"? "string" name=ID ":=" "switch" "{" cases+=MStringParamSLSPSwitchCase+ "}" ";";
+ * 	constant?='const'?
+ * 	'string' name=ID ':='
+ * 	'switch'
+ * 	'{'
+ * 	cases+=MStringParamSLSPSwitchCase+
+ * 	'}' ';';
  *
  **/
 
-// constant?="const"? "string" name=ID ":=" "switch" "{" cases+=MStringParamSLSPSwitchCase+ "}" ";"
+// constant?='const'? 'string' name=ID ':=' 'switch' '{' cases+=MStringParamSLSPSwitchCase+ '}' ';'
 protected class MStringParamSLSPSwitch_Group extends GroupToken {
 	
 	public MStringParamSLSPSwitch_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11062,7 +11131,7 @@ protected class MStringParamSLSPSwitch_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MStringParamSLSPSwitch_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MStringParamSLSPSwitch_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11095,7 +11164,7 @@ protected class MStringParamSLSPSwitch_ConstantAssignment_0 extends AssignmentTo
 
 }
 
-// "string"
+// 'string'
 protected class MStringParamSLSPSwitch_StringKeyword_1 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitch_StringKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11151,7 +11220,7 @@ protected class MStringParamSLSPSwitch_NameAssignment_2 extends AssignmentToken 
 
 }
 
-// ":="
+// ':='
 protected class MStringParamSLSPSwitch_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitch_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11173,7 +11242,7 @@ protected class MStringParamSLSPSwitch_ColonEqualsSignKeyword_3 extends KeywordT
 
 }
 
-// "switch"
+// 'switch'
 protected class MStringParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitch_SwitchKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11195,7 +11264,7 @@ protected class MStringParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MStringParamSLSPSwitch_LeftCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitch_LeftCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11264,7 +11333,7 @@ protected class MStringParamSLSPSwitch_CasesAssignment_6 extends AssignmentToken
 	}	
 }
 
-// "}"
+// '}'
 protected class MStringParamSLSPSwitch_RightCurlyBracketKeyword_7 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitch_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11286,7 +11355,7 @@ protected class MStringParamSLSPSwitch_RightCurlyBracketKeyword_7 extends Keywor
 
 }
 
-// ";"
+// ';'
 protected class MStringParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitch_SemicolonKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11315,11 +11384,12 @@ protected class MStringParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken  
 /************ begin Rule MStringParamSLSPSwitchCase ****************
  *
  * MStringParamSLSPSwitchCase:
- * 	"case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
+ * 	'case' platform=[MServiceLibrarySupportedPlatform] ':'
+ * 	defaultValue=MParameterValueExpression ';';
  *
  **/
 
-// "case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ";"
+// 'case' platform=[MServiceLibrarySupportedPlatform] ':' defaultValue=MParameterValueExpression ';'
 protected class MStringParamSLSPSwitchCase_Group extends GroupToken {
 	
 	public MStringParamSLSPSwitchCase_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11348,7 +11418,7 @@ protected class MStringParamSLSPSwitchCase_Group extends GroupToken {
 
 }
 
-// "case"
+// 'case'
 protected class MStringParamSLSPSwitchCase_CaseKeyword_0 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitchCase_CaseKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11406,7 +11476,7 @@ protected class MStringParamSLSPSwitchCase_PlatformAssignment_1 extends Assignme
 
 }
 
-// ":"
+// ':'
 protected class MStringParamSLSPSwitchCase_ColonKeyword_2 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitchCase_ColonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11474,7 +11544,7 @@ protected class MStringParamSLSPSwitchCase_DefaultValueAssignment_3 extends Assi
 	}	
 }
 
-// ";"
+// ';'
 protected class MStringParamSLSPSwitchCase_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MStringParamSLSPSwitchCase_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11503,11 +11573,16 @@ protected class MStringParamSLSPSwitchCase_SemicolonKeyword_4 extends KeywordTok
 /************ begin Rule MIntegerParamSLSPSwitch ****************
  *
  * MIntegerParamSLSPSwitch:
- * 	constant?="const"? "integer" name=ID ":=" "switch" "{" cases+=MIntegerParamSLSPSwitchCase+ "}" ";";
+ * 	constant?='const'?
+ * 	'integer' name=ID ':='
+ * 	'switch'
+ * 	'{'
+ * 	cases+=MIntegerParamSLSPSwitchCase+
+ * 	'}' ';';
  *
  **/
 
-// constant?="const"? "integer" name=ID ":=" "switch" "{" cases+=MIntegerParamSLSPSwitchCase+ "}" ";"
+// constant?='const'? 'integer' name=ID ':=' 'switch' '{' cases+=MIntegerParamSLSPSwitchCase+ '}' ';'
 protected class MIntegerParamSLSPSwitch_Group extends GroupToken {
 	
 	public MIntegerParamSLSPSwitch_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11536,7 +11611,7 @@ protected class MIntegerParamSLSPSwitch_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MIntegerParamSLSPSwitch_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MIntegerParamSLSPSwitch_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11569,7 +11644,7 @@ protected class MIntegerParamSLSPSwitch_ConstantAssignment_0 extends AssignmentT
 
 }
 
-// "integer"
+// 'integer'
 protected class MIntegerParamSLSPSwitch_IntegerKeyword_1 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitch_IntegerKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11625,7 +11700,7 @@ protected class MIntegerParamSLSPSwitch_NameAssignment_2 extends AssignmentToken
 
 }
 
-// ":="
+// ':='
 protected class MIntegerParamSLSPSwitch_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitch_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11647,7 +11722,7 @@ protected class MIntegerParamSLSPSwitch_ColonEqualsSignKeyword_3 extends Keyword
 
 }
 
-// "switch"
+// 'switch'
 protected class MIntegerParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitch_SwitchKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11669,7 +11744,7 @@ protected class MIntegerParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MIntegerParamSLSPSwitch_LeftCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitch_LeftCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11738,7 +11813,7 @@ protected class MIntegerParamSLSPSwitch_CasesAssignment_6 extends AssignmentToke
 	}	
 }
 
-// "}"
+// '}'
 protected class MIntegerParamSLSPSwitch_RightCurlyBracketKeyword_7 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitch_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11760,7 +11835,7 @@ protected class MIntegerParamSLSPSwitch_RightCurlyBracketKeyword_7 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MIntegerParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitch_SemicolonKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11789,13 +11864,13 @@ protected class MIntegerParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken 
 /************ begin Rule MIntegerParamSLSPSwitchCase ****************
  *
  * MIntegerParamSLSPSwitchCase:
- * 	"case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ("range"
- * 	range=MParameterRange)? ";";
+ * 	'case' platform=[MServiceLibrarySupportedPlatform] ':'
+ * 	defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';';
  *
  **/
 
-// "case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ("range"
-// range=MParameterRange)? ";"
+// 'case' platform=[MServiceLibrarySupportedPlatform] ':' defaultValue=MParameterValueExpression ('range'
+// range=MParameterRange)? ';'
 protected class MIntegerParamSLSPSwitchCase_Group extends GroupToken {
 	
 	public MIntegerParamSLSPSwitchCase_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11824,7 +11899,7 @@ protected class MIntegerParamSLSPSwitchCase_Group extends GroupToken {
 
 }
 
-// "case"
+// 'case'
 protected class MIntegerParamSLSPSwitchCase_CaseKeyword_0 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitchCase_CaseKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11882,7 +11957,7 @@ protected class MIntegerParamSLSPSwitchCase_PlatformAssignment_1 extends Assignm
 
 }
 
-// ":"
+// ':'
 protected class MIntegerParamSLSPSwitchCase_ColonKeyword_2 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitchCase_ColonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11950,7 +12025,7 @@ protected class MIntegerParamSLSPSwitchCase_DefaultValueAssignment_3 extends Ass
 	}	
 }
 
-// ("range" range=MParameterRange)?
+// ('range' range=MParameterRange)?
 protected class MIntegerParamSLSPSwitchCase_Group_4 extends GroupToken {
 	
 	public MIntegerParamSLSPSwitchCase_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -11972,7 +12047,7 @@ protected class MIntegerParamSLSPSwitchCase_Group_4 extends GroupToken {
 
 }
 
-// "range"
+// 'range'
 protected class MIntegerParamSLSPSwitchCase_RangeKeyword_4_0 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitchCase_RangeKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12041,7 +12116,7 @@ protected class MIntegerParamSLSPSwitchCase_RangeAssignment_4_1 extends Assignme
 }
 
 
-// ";"
+// ';'
 protected class MIntegerParamSLSPSwitchCase_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MIntegerParamSLSPSwitchCase_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12071,11 +12146,16 @@ protected class MIntegerParamSLSPSwitchCase_SemicolonKeyword_5 extends KeywordTo
 /************ begin Rule MRealParamSLSPSwitch ****************
  *
  * MRealParamSLSPSwitch:
- * 	constant?="const"? "real" name=ID ":=" "switch" "{" cases+=MRealParamSLSPSwitchCase+ "}" ";";
+ * 	constant?='const'?
+ * 	'real' name=ID ':='
+ * 	'switch'
+ * 	'{'
+ * 	cases+=MRealParamSLSPSwitchCase+
+ * 	'}' ';';
  *
  **/
 
-// constant?="const"? "real" name=ID ":=" "switch" "{" cases+=MRealParamSLSPSwitchCase+ "}" ";"
+// constant?='const'? 'real' name=ID ':=' 'switch' '{' cases+=MRealParamSLSPSwitchCase+ '}' ';'
 protected class MRealParamSLSPSwitch_Group extends GroupToken {
 	
 	public MRealParamSLSPSwitch_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12104,7 +12184,7 @@ protected class MRealParamSLSPSwitch_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MRealParamSLSPSwitch_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MRealParamSLSPSwitch_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12137,7 +12217,7 @@ protected class MRealParamSLSPSwitch_ConstantAssignment_0 extends AssignmentToke
 
 }
 
-// "real"
+// 'real'
 protected class MRealParamSLSPSwitch_RealKeyword_1 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitch_RealKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12193,7 +12273,7 @@ protected class MRealParamSLSPSwitch_NameAssignment_2 extends AssignmentToken  {
 
 }
 
-// ":="
+// ':='
 protected class MRealParamSLSPSwitch_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitch_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12215,7 +12295,7 @@ protected class MRealParamSLSPSwitch_ColonEqualsSignKeyword_3 extends KeywordTok
 
 }
 
-// "switch"
+// 'switch'
 protected class MRealParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitch_SwitchKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12237,7 +12317,7 @@ protected class MRealParamSLSPSwitch_SwitchKeyword_4 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MRealParamSLSPSwitch_LeftCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitch_LeftCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12306,7 +12386,7 @@ protected class MRealParamSLSPSwitch_CasesAssignment_6 extends AssignmentToken  
 	}	
 }
 
-// "}"
+// '}'
 protected class MRealParamSLSPSwitch_RightCurlyBracketKeyword_7 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitch_RightCurlyBracketKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12328,7 +12408,7 @@ protected class MRealParamSLSPSwitch_RightCurlyBracketKeyword_7 extends KeywordT
 
 }
 
-// ";"
+// ';'
 protected class MRealParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitch_SemicolonKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12357,13 +12437,13 @@ protected class MRealParamSLSPSwitch_SemicolonKeyword_8 extends KeywordToken  {
 /************ begin Rule MRealParamSLSPSwitchCase ****************
  *
  * MRealParamSLSPSwitchCase:
- * 	"case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ("range"
- * 	range=MParameterRange)? ";";
+ * 	'case' platform=[MServiceLibrarySupportedPlatform] ':'
+ * 	defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';';
  *
  **/
 
-// "case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ("range"
-// range=MParameterRange)? ";"
+// 'case' platform=[MServiceLibrarySupportedPlatform] ':' defaultValue=MParameterValueExpression ('range'
+// range=MParameterRange)? ';'
 protected class MRealParamSLSPSwitchCase_Group extends GroupToken {
 	
 	public MRealParamSLSPSwitchCase_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12392,7 +12472,7 @@ protected class MRealParamSLSPSwitchCase_Group extends GroupToken {
 
 }
 
-// "case"
+// 'case'
 protected class MRealParamSLSPSwitchCase_CaseKeyword_0 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitchCase_CaseKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12450,7 +12530,7 @@ protected class MRealParamSLSPSwitchCase_PlatformAssignment_1 extends Assignment
 
 }
 
-// ":"
+// ':'
 protected class MRealParamSLSPSwitchCase_ColonKeyword_2 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitchCase_ColonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12518,7 +12598,7 @@ protected class MRealParamSLSPSwitchCase_DefaultValueAssignment_3 extends Assign
 	}	
 }
 
-// ("range" range=MParameterRange)?
+// ('range' range=MParameterRange)?
 protected class MRealParamSLSPSwitchCase_Group_4 extends GroupToken {
 	
 	public MRealParamSLSPSwitchCase_Group_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12540,7 +12620,7 @@ protected class MRealParamSLSPSwitchCase_Group_4 extends GroupToken {
 
 }
 
-// "range"
+// 'range'
 protected class MRealParamSLSPSwitchCase_RangeKeyword_4_0 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitchCase_RangeKeyword_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12609,7 +12689,7 @@ protected class MRealParamSLSPSwitchCase_RangeAssignment_4_1 extends AssignmentT
 }
 
 
-// ";"
+// ';'
 protected class MRealParamSLSPSwitchCase_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MRealParamSLSPSwitchCase_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12639,13 +12719,18 @@ protected class MRealParamSLSPSwitchCase_SemicolonKeyword_5 extends KeywordToken
 /************ begin Rule MEnumParamSLSPSwitch ****************
  *
  * MEnumParamSLSPSwitch:
- * 	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
- * 	":=" "switch" "{" cases+=MEnumParamSLSPSwitchCase+ "}" ";";
+ * 	constant?='const'?
+ * 	'enum'
+ * 	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+ * 	'switch'
+ * 	'{'
+ * 	cases+=MEnumParamSLSPSwitchCase+
+ * 	'}' ';';
  *
  **/
 
-// constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ":="
-// "switch" "{" cases+=MEnumParamSLSPSwitchCase+ "}" ";"
+// constant?='const'? 'enum' enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+// 'switch' '{' cases+=MEnumParamSLSPSwitchCase+ '}' ';'
 protected class MEnumParamSLSPSwitch_Group extends GroupToken {
 	
 	public MEnumParamSLSPSwitch_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12674,7 +12759,7 @@ protected class MEnumParamSLSPSwitch_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MEnumParamSLSPSwitch_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MEnumParamSLSPSwitch_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12707,7 +12792,7 @@ protected class MEnumParamSLSPSwitch_ConstantAssignment_0 extends AssignmentToke
 
 }
 
-// "enum"
+// 'enum'
 protected class MEnumParamSLSPSwitch_EnumKeyword_1 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitch_EnumKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12800,7 +12885,7 @@ protected class MEnumParamSLSPSwitch_NameAssignment_3 extends AssignmentToken  {
 
 }
 
-// ":="
+// ':='
 protected class MEnumParamSLSPSwitch_ColonEqualsSignKeyword_4 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitch_ColonEqualsSignKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12822,7 +12907,7 @@ protected class MEnumParamSLSPSwitch_ColonEqualsSignKeyword_4 extends KeywordTok
 
 }
 
-// "switch"
+// 'switch'
 protected class MEnumParamSLSPSwitch_SwitchKeyword_5 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitch_SwitchKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12844,7 +12929,7 @@ protected class MEnumParamSLSPSwitch_SwitchKeyword_5 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MEnumParamSLSPSwitch_LeftCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitch_LeftCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12913,7 +12998,7 @@ protected class MEnumParamSLSPSwitch_CasesAssignment_7 extends AssignmentToken  
 	}	
 }
 
-// "}"
+// '}'
 protected class MEnumParamSLSPSwitch_RightCurlyBracketKeyword_8 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitch_RightCurlyBracketKeyword_8(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12935,7 +13020,7 @@ protected class MEnumParamSLSPSwitch_RightCurlyBracketKeyword_8 extends KeywordT
 
 }
 
-// ";"
+// ';'
 protected class MEnumParamSLSPSwitch_SemicolonKeyword_9 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitch_SemicolonKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12964,11 +13049,12 @@ protected class MEnumParamSLSPSwitch_SemicolonKeyword_9 extends KeywordToken  {
 /************ begin Rule MEnumParamSLSPSwitchCase ****************
  *
  * MEnumParamSLSPSwitchCase:
- * 	"case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ";";
+ * 	'case' platform=[MServiceLibrarySupportedPlatform] ':'
+ * 	defaultValue=MParameterValueExpression ';';
  *
  **/
 
-// "case" platform=[MServiceLibrarySupportedPlatform] ":" defaultValue=MParameterValueExpression ";"
+// 'case' platform=[MServiceLibrarySupportedPlatform] ':' defaultValue=MParameterValueExpression ';'
 protected class MEnumParamSLSPSwitchCase_Group extends GroupToken {
 	
 	public MEnumParamSLSPSwitchCase_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -12997,7 +13083,7 @@ protected class MEnumParamSLSPSwitchCase_Group extends GroupToken {
 
 }
 
-// "case"
+// 'case'
 protected class MEnumParamSLSPSwitchCase_CaseKeyword_0 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitchCase_CaseKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13055,7 +13141,7 @@ protected class MEnumParamSLSPSwitchCase_PlatformAssignment_1 extends Assignment
 
 }
 
-// ":"
+// ':'
 protected class MEnumParamSLSPSwitchCase_ColonKeyword_2 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitchCase_ColonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13123,7 +13209,7 @@ protected class MEnumParamSLSPSwitchCase_DefaultValueAssignment_3 extends Assign
 	}	
 }
 
-// ";"
+// ';'
 protected class MEnumParamSLSPSwitchCase_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MEnumParamSLSPSwitchCase_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13151,12 +13237,16 @@ protected class MEnumParamSLSPSwitchCase_SemicolonKeyword_4 extends KeywordToken
 
 /************ begin Rule MIntegerParameterSingleExpression ****************
  *
- * MIntegerParameterSingleExpression returns common::MIntegerParameterSingleExpression:
- * 	constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
+ * MIntegerParameterSingleExpression common::MIntegerParameterSingleExpression:
+ * 	constant?='const'?
+ * 	'integer'
+ * 	name=ID
+ * 	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+ * 	';'
  *
  **/
 
-// constant?="const"? "integer" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+// constant?='const'? 'integer' name=ID ':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 protected class MIntegerParameterSingleExpression_Group extends GroupToken {
 	
 	public MIntegerParameterSingleExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13185,7 +13275,7 @@ protected class MIntegerParameterSingleExpression_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MIntegerParameterSingleExpression_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MIntegerParameterSingleExpression_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13218,7 +13308,7 @@ protected class MIntegerParameterSingleExpression_ConstantAssignment_0 extends A
 
 }
 
-// "integer"
+// 'integer'
 protected class MIntegerParameterSingleExpression_IntegerKeyword_1 extends KeywordToken  {
 	
 	public MIntegerParameterSingleExpression_IntegerKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13274,7 +13364,7 @@ protected class MIntegerParameterSingleExpression_NameAssignment_2 extends Assig
 
 }
 
-// ":="
+// ':='
 protected class MIntegerParameterSingleExpression_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MIntegerParameterSingleExpression_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13342,7 +13432,7 @@ protected class MIntegerParameterSingleExpression_DefaultValueAssignment_4 exten
 	}	
 }
 
-// ("range" range=MParameterRange)?
+// ('range' range=MParameterRange)?
 protected class MIntegerParameterSingleExpression_Group_5 extends GroupToken {
 	
 	public MIntegerParameterSingleExpression_Group_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13364,7 +13454,7 @@ protected class MIntegerParameterSingleExpression_Group_5 extends GroupToken {
 
 }
 
-// "range"
+// 'range'
 protected class MIntegerParameterSingleExpression_RangeKeyword_5_0 extends KeywordToken  {
 	
 	public MIntegerParameterSingleExpression_RangeKeyword_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13433,7 +13523,7 @@ protected class MIntegerParameterSingleExpression_RangeAssignment_5_1 extends As
 }
 
 
-// ";"
+// ';'
 protected class MIntegerParameterSingleExpression_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MIntegerParameterSingleExpression_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13462,14 +13552,19 @@ protected class MIntegerParameterSingleExpression_SemicolonKeyword_6 extends Key
 
 /************ begin Rule MEnumParameterDefinition ****************
  *
- * MEnumParameterDefinition returns common::MEnumParameterDefinition:
- * 	{common::MEnumParameterDefinition} "enum" name=ID "{" literals+=MEnumParameterLiteralRule (","
- * 	literals+=MEnumParameterLiteralRule)* "}" ";";
+ * MEnumParameterDefinition common::MEnumParameterDefinition:
+ * 	{common::MEnumParameterDefinition}
+ * 	'enum'
+ * 	name=ID
+ * 	'{'
+ * 	literals+=MEnumParameterLiteralRule ("," literals+=MEnumParameterLiteralRule)*
+ * 	'}'
+ * 	';'
  *
  **/
 
-// {common::MEnumParameterDefinition} "enum" name=ID "{" literals+=MEnumParameterLiteralRule (","
-// literals+=MEnumParameterLiteralRule)* "}" ";"
+// {common::MEnumParameterDefinition} 'enum' name=ID '{' literals+=MEnumParameterLiteralRule (","
+// literals+=MEnumParameterLiteralRule)* '}' ';'
 protected class MEnumParameterDefinition_Group extends GroupToken {
 	
 	public MEnumParameterDefinition_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13524,7 +13619,7 @@ protected class MEnumParameterDefinition_MEnumParameterDefinitionAction_0 extend
 	}
 }
 
-// "enum"
+// 'enum'
 protected class MEnumParameterDefinition_EnumKeyword_1 extends KeywordToken  {
 	
 	public MEnumParameterDefinition_EnumKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13580,7 +13675,7 @@ protected class MEnumParameterDefinition_NameAssignment_2 extends AssignmentToke
 
 }
 
-// "{"
+// '{'
 protected class MEnumParameterDefinition_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
 	public MEnumParameterDefinition_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13740,7 +13835,7 @@ protected class MEnumParameterDefinition_LiteralsAssignment_5_1 extends Assignme
 }
 
 
-// "}"
+// '}'
 protected class MEnumParameterDefinition_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MEnumParameterDefinition_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13763,7 +13858,7 @@ protected class MEnumParameterDefinition_RightCurlyBracketKeyword_6 extends Keyw
 
 }
 
-// ";"
+// ';'
 protected class MEnumParameterDefinition_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MEnumParameterDefinition_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13791,14 +13886,17 @@ protected class MEnumParameterDefinition_SemicolonKeyword_7 extends KeywordToken
 
 /************ begin Rule MEnumParameterSingleExpression ****************
  *
- * MEnumParameterSingleExpression returns common::MEnumParameterSingleExpression:
- * 	constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
- * 	":=" defaultValue=MParameterValueExpression ";";
+ * MEnumParameterSingleExpression common::MEnumParameterSingleExpression:
+ * 	constant?='const'?
+ * 	'enum'
+ * 	enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID
+ * 	':=' defaultValue=MParameterValueExpression
+ * 	';'
  *
  **/
 
-// constant?="const"? "enum" enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ":="
-// defaultValue=MParameterValueExpression ";"
+// constant?='const'? 'enum' enumDefinition=[common::MEnumParameterDefinition|VersionedQualifiedReferenceName] name=ID ':='
+// defaultValue=MParameterValueExpression ';'
 protected class MEnumParameterSingleExpression_Group extends GroupToken {
 	
 	public MEnumParameterSingleExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13827,7 +13925,7 @@ protected class MEnumParameterSingleExpression_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MEnumParameterSingleExpression_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MEnumParameterSingleExpression_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13860,7 +13958,7 @@ protected class MEnumParameterSingleExpression_ConstantAssignment_0 extends Assi
 
 }
 
-// "enum"
+// 'enum'
 protected class MEnumParameterSingleExpression_EnumKeyword_1 extends KeywordToken  {
 	
 	public MEnumParameterSingleExpression_EnumKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -13953,7 +14051,7 @@ protected class MEnumParameterSingleExpression_NameAssignment_3 extends Assignme
 
 }
 
-// ":="
+// ':='
 protected class MEnumParameterSingleExpression_ColonEqualsSignKeyword_4 extends KeywordToken  {
 	
 	public MEnumParameterSingleExpression_ColonEqualsSignKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14021,7 +14119,7 @@ protected class MEnumParameterSingleExpression_DefaultValueAssignment_5 extends 
 	}	
 }
 
-// ";"
+// ';'
 protected class MEnumParameterSingleExpression_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MEnumParameterSingleExpression_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14049,12 +14147,16 @@ protected class MEnumParameterSingleExpression_SemicolonKeyword_6 extends Keywor
 
 /************ begin Rule MRealParameterSingleExpression ****************
  *
- * MRealParameterSingleExpression returns common::MRealParameterSingleExpression:
- * 	constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";";
+ * MRealParameterSingleExpression common::MRealParameterSingleExpression:
+ * 	constant?='const'?
+ * 	'real'
+ * 	name=ID
+ * 	':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)?
+ * 	';'
  *
  **/
 
-// constant?="const"? "real" name=ID ":=" defaultValue=MParameterValueExpression ("range" range=MParameterRange)? ";"
+// constant?='const'? 'real' name=ID ':=' defaultValue=MParameterValueExpression ('range' range=MParameterRange)? ';'
 protected class MRealParameterSingleExpression_Group extends GroupToken {
 	
 	public MRealParameterSingleExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14083,7 +14185,7 @@ protected class MRealParameterSingleExpression_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MRealParameterSingleExpression_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MRealParameterSingleExpression_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14116,7 +14218,7 @@ protected class MRealParameterSingleExpression_ConstantAssignment_0 extends Assi
 
 }
 
-// "real"
+// 'real'
 protected class MRealParameterSingleExpression_RealKeyword_1 extends KeywordToken  {
 	
 	public MRealParameterSingleExpression_RealKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14172,7 +14274,7 @@ protected class MRealParameterSingleExpression_NameAssignment_2 extends Assignme
 
 }
 
-// ":="
+// ':='
 protected class MRealParameterSingleExpression_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MRealParameterSingleExpression_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14240,7 +14342,7 @@ protected class MRealParameterSingleExpression_DefaultValueAssignment_4 extends 
 	}	
 }
 
-// ("range" range=MParameterRange)?
+// ('range' range=MParameterRange)?
 protected class MRealParameterSingleExpression_Group_5 extends GroupToken {
 	
 	public MRealParameterSingleExpression_Group_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14262,7 +14364,7 @@ protected class MRealParameterSingleExpression_Group_5 extends GroupToken {
 
 }
 
-// "range"
+// 'range'
 protected class MRealParameterSingleExpression_RangeKeyword_5_0 extends KeywordToken  {
 	
 	public MRealParameterSingleExpression_RangeKeyword_5_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14331,7 +14433,7 @@ protected class MRealParameterSingleExpression_RangeAssignment_5_1 extends Assig
 }
 
 
-// ";"
+// ';'
 protected class MRealParameterSingleExpression_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MRealParameterSingleExpression_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -14360,8 +14462,8 @@ protected class MRealParameterSingleExpression_SemicolonKeyword_6 extends Keywor
 
 /************ begin Rule MEnumParameterLiteralRule ****************
  *
- * MEnumParameterLiteralRule returns common::MEnumParameterLiteral:
- * 	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral;
+ * MEnumParameterLiteralRule common::MEnumParameterLiteral:
+ * 	MEnumParameterLiteral | MEnumParamIntegerLiteral | MEnumParamRealLiteral | MEnumParamStringLiteral
  *
  **/
 
@@ -14550,8 +14652,8 @@ protected class MEnumParameterLiteralRule_MEnumParamStringLiteralParserRuleCall_
 
 /************ begin Rule MParameterValue ****************
  *
- * MParameterValue returns common::MParameterValue:
- * 	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
+ * MParameterValue common::MParameterValue:
+ * 	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
  *
  **/
 
@@ -14708,9 +14810,9 @@ protected class MParameterValue_MParameterValuePARParserRuleCall_2 extends RuleC
 
 /************ begin Rule MParameterValueLiteral ****************
  *
- * MParameterValueLiteral returns common::MParameterValueLiteral:
+ * MParameterValueLiteral common::MParameterValueLiteral:
  * 	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
- * 	MParameterValueRealLiteral;
+ * 	MParameterValueRealLiteral
  *
  **/
 
@@ -14900,8 +15002,8 @@ protected class MParameterValueLiteral_MParameterValueRealLiteralParserRuleCall_
 
 /************ begin Rule MParameterValueBooleanLiteral ****************
  *
- * MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
- * 	{common::MParameterValueBooleanLiteral} value=EBoolean;
+ * MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+ * 	{common::MParameterValueBooleanLiteral} value=EBoolean
  *
  **/
 
@@ -15000,12 +15102,13 @@ protected class MParameterValueBooleanLiteral_ValueAssignment_1 extends Assignme
 
 /************ begin Rule MParameterValueStringLiteral ****************
  *
- * MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
- * 	{common::MParameterValueStringLiteral} value=STRING;
+ * MParameterValueStringLiteral common::MParameterValueStringLiteral:
+ * 	{common::MParameterValueStringLiteral} isRaw?='raw'?
+ * 	value=STRING
  *
  **/
 
-// {common::MParameterValueStringLiteral} value=STRING
+// {common::MParameterValueStringLiteral} isRaw?='raw'? value=STRING
 protected class MParameterValueStringLiteral_Group extends GroupToken {
 	
 	public MParameterValueStringLiteral_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -15020,7 +15123,7 @@ protected class MParameterValueStringLiteral_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MParameterValueStringLiteral_ValueAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MParameterValueStringLiteral_ValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -15060,16 +15163,16 @@ protected class MParameterValueStringLiteral_MParameterValueStringLiteralAction_
 	}
 }
 
-// value=STRING
-protected class MParameterValueStringLiteral_ValueAssignment_1 extends AssignmentToken  {
+// isRaw?='raw'?
+protected class MParameterValueStringLiteral_IsRawAssignment_1 extends AssignmentToken  {
 	
-	public MParameterValueStringLiteral_ValueAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MParameterValueStringLiteral_IsRawAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_1();
+		return grammarAccess.getMParameterValueStringLiteralAccess().getIsRawAssignment_1();
 	}
 
     @Override
@@ -15082,11 +15185,46 @@ protected class MParameterValueStringLiteral_ValueAssignment_1 extends Assignmen
 
     @Override	
 	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("isRaw",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("isRaw");
+		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getMParameterValueStringLiteralAccess().getIsRawRawKeyword_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// value=STRING
+protected class MParameterValueStringLiteral_ValueAssignment_2 extends AssignmentToken  {
+	
+	public MParameterValueStringLiteral_ValueAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MParameterValueStringLiteral_IsRawAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MParameterValueStringLiteral_MParameterValueStringLiteralAction_0(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_2_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0();
+			element = grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_2_0();
 			return obj;
 		}
 		return null;
@@ -15100,8 +15238,8 @@ protected class MParameterValueStringLiteral_ValueAssignment_1 extends Assignmen
 
 /************ begin Rule MParameterValueIntegerLiteral ****************
  *
- * MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
- * 	{common::MParameterValueIntegerLiteral} value=INTEGER;
+ * MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+ * 	{common::MParameterValueIntegerLiteral} value=INTEGER
  *
  **/
 
@@ -15200,8 +15338,8 @@ protected class MParameterValueIntegerLiteral_ValueAssignment_1 extends Assignme
 
 /************ begin Rule MParameterValueRealLiteral ****************
  *
- * MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
- * 	{common::MParameterValueRealLiteral} value=REAL;
+ * MParameterValueRealLiteral common::MParameterValueRealLiteral:
+ * 	{common::MParameterValueRealLiteral} value=REAL
  *
  **/
 
@@ -15300,8 +15438,8 @@ protected class MParameterValueRealLiteral_ValueAssignment_1 extends AssignmentT
 
 /************ begin Rule MParameterValueRefObject ****************
  *
- * MParameterValueRefObject returns common::MParameterValueRefObject:
- * 	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
+ * MParameterValueRefObject common::MParameterValueRefObject:
+ * 	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
  *
  **/
 
@@ -15403,12 +15541,12 @@ protected class MParameterValueRefObject_ObjectAssignment_1 extends AssignmentTo
 
 /************ begin Rule MParameterValuePAR ****************
  *
- * MParameterValuePAR returns common::MParameterValuePAR:
- * 	"(" value=MParameterValueExpression ")";
+ * MParameterValuePAR common::MParameterValuePAR:
+ * 	'(' value=MParameterValueExpression ')'
  *
  **/
 
-// "(" value=MParameterValueExpression ")"
+// '(' value=MParameterValueExpression ')'
 protected class MParameterValuePAR_Group extends GroupToken {
 	
 	public MParameterValuePAR_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -15437,7 +15575,7 @@ protected class MParameterValuePAR_Group extends GroupToken {
 
 }
 
-// "("
+// '('
 protected class MParameterValuePAR_LeftParenthesisKeyword_0 extends KeywordToken  {
 	
 	public MParameterValuePAR_LeftParenthesisKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -15504,7 +15642,7 @@ protected class MParameterValuePAR_ValueAssignment_1 extends AssignmentToken  {
 	}	
 }
 
-// ")"
+// ')'
 protected class MParameterValuePAR_RightParenthesisKeyword_2 extends KeywordToken  {
 	
 	public MParameterValuePAR_RightParenthesisKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -15532,9 +15670,9 @@ protected class MParameterValuePAR_RightParenthesisKeyword_2 extends KeywordToke
 
 /************ begin Rule MParameterValueExpression ****************
  *
- * MParameterValueExpression returns common::MParameterValueExpression:
+ * MParameterValueExpression common::MParameterValueExpression:
  * 	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
- * 	right=MParameterValueExpression)?;
+ * 	right=MParameterValueExpression)?
  *
  **/
 
@@ -15750,9 +15888,8 @@ protected class MParameterValueExpression_RightAssignment_2_1 extends Assignment
 
 /************ begin Rule MParameterValueTERM ****************
  *
- * MParameterValueTERM returns common::MParameterValueTERM:
- * 	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
- * 	right=MParameterValueTERM)?;
+ * MParameterValueTERM common::MParameterValueTERM:
+ * 	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
  *
  **/
 
@@ -15967,8 +16104,8 @@ protected class MParameterValueTERM_RightAssignment_2_1 extends AssignmentToken 
 
 /************ begin Rule MParameterRange ****************
  *
- * MParameterRange returns common::MParameterRange:
- * 	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR;
+ * MParameterRange common::MParameterRange:
+ * 	MParameterOCR | MParameterOOR | MParameterCOR | MParameterCCR
  *
  **/
 
@@ -16157,12 +16294,16 @@ protected class MParameterRange_MParameterCCRParserRuleCall_3 extends RuleCallTo
 
 /************ begin Rule MParameterOCR ****************
  *
- * MParameterOCR returns common::MParameterOCR:
- * 	{common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
+ * MParameterOCR common::MParameterOCR:
+ * 	{common::MParameterOCR}
+ * 	'('
+ * 	lowerValue=MParameterValueExpression ','
+ * 	upperValue=MParameterValueExpression
+ * 	']'
  *
  **/
 
-// {common::MParameterOCR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]"
+// {common::MParameterOCR} '(' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ']'
 protected class MParameterOCR_Group extends GroupToken {
 	
 	public MParameterOCR_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16217,7 +16358,7 @@ protected class MParameterOCR_MParameterOCRAction_0 extends ActionToken  {
 	}
 }
 
-// "("
+// '('
 protected class MParameterOCR_LeftParenthesisKeyword_1 extends KeywordToken  {
 	
 	public MParameterOCR_LeftParenthesisKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16285,7 +16426,7 @@ protected class MParameterOCR_LowerValueAssignment_2 extends AssignmentToken  {
 	}	
 }
 
-// ","
+// ','
 protected class MParameterOCR_CommaKeyword_3 extends KeywordToken  {
 	
 	public MParameterOCR_CommaKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16353,7 +16494,7 @@ protected class MParameterOCR_UpperValueAssignment_4 extends AssignmentToken  {
 	}	
 }
 
-// "]"
+// ']'
 protected class MParameterOCR_RightSquareBracketKeyword_5 extends KeywordToken  {
 	
 	public MParameterOCR_RightSquareBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16381,12 +16522,16 @@ protected class MParameterOCR_RightSquareBracketKeyword_5 extends KeywordToken  
 
 /************ begin Rule MParameterOOR ****************
  *
- * MParameterOOR returns common::MParameterOOR:
- * 	{common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
+ * MParameterOOR common::MParameterOOR:
+ * 	{common::MParameterOOR}
+ * 	'('
+ * 	lowerValue=MParameterValueExpression ','
+ * 	upperValue=MParameterValueExpression
+ * 	')'
  *
  **/
 
-// {common::MParameterOOR} "(" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")"
+// {common::MParameterOOR} '(' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ')'
 protected class MParameterOOR_Group extends GroupToken {
 	
 	public MParameterOOR_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16441,7 +16586,7 @@ protected class MParameterOOR_MParameterOORAction_0 extends ActionToken  {
 	}
 }
 
-// "("
+// '('
 protected class MParameterOOR_LeftParenthesisKeyword_1 extends KeywordToken  {
 	
 	public MParameterOOR_LeftParenthesisKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16509,7 +16654,7 @@ protected class MParameterOOR_LowerValueAssignment_2 extends AssignmentToken  {
 	}	
 }
 
-// ","
+// ','
 protected class MParameterOOR_CommaKeyword_3 extends KeywordToken  {
 	
 	public MParameterOOR_CommaKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16577,7 +16722,7 @@ protected class MParameterOOR_UpperValueAssignment_4 extends AssignmentToken  {
 	}	
 }
 
-// ")"
+// ')'
 protected class MParameterOOR_RightParenthesisKeyword_5 extends KeywordToken  {
 	
 	public MParameterOOR_RightParenthesisKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16605,12 +16750,16 @@ protected class MParameterOOR_RightParenthesisKeyword_5 extends KeywordToken  {
 
 /************ begin Rule MParameterCOR ****************
  *
- * MParameterCOR returns common::MParameterCOR:
- * 	{common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")";
+ * MParameterCOR common::MParameterCOR:
+ * 	{common::MParameterCOR}
+ * 	'['
+ * 	lowerValue=MParameterValueExpression ','
+ * 	upperValue=MParameterValueExpression
+ * 	')'
  *
  **/
 
-// {common::MParameterCOR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression ")"
+// {common::MParameterCOR} '[' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ')'
 protected class MParameterCOR_Group extends GroupToken {
 	
 	public MParameterCOR_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16665,7 +16814,7 @@ protected class MParameterCOR_MParameterCORAction_0 extends ActionToken  {
 	}
 }
 
-// "["
+// '['
 protected class MParameterCOR_LeftSquareBracketKeyword_1 extends KeywordToken  {
 	
 	public MParameterCOR_LeftSquareBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16733,7 +16882,7 @@ protected class MParameterCOR_LowerValueAssignment_2 extends AssignmentToken  {
 	}	
 }
 
-// ","
+// ','
 protected class MParameterCOR_CommaKeyword_3 extends KeywordToken  {
 	
 	public MParameterCOR_CommaKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16801,7 +16950,7 @@ protected class MParameterCOR_UpperValueAssignment_4 extends AssignmentToken  {
 	}	
 }
 
-// ")"
+// ')'
 protected class MParameterCOR_RightParenthesisKeyword_5 extends KeywordToken  {
 	
 	public MParameterCOR_RightParenthesisKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16829,12 +16978,16 @@ protected class MParameterCOR_RightParenthesisKeyword_5 extends KeywordToken  {
 
 /************ begin Rule MParameterCCR ****************
  *
- * MParameterCCR returns common::MParameterCCR:
- * 	{common::MParameterCCR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]";
+ * MParameterCCR common::MParameterCCR:
+ * 	{common::MParameterCCR}
+ * 	'['
+ * 	lowerValue=MParameterValueExpression ','
+ * 	upperValue=MParameterValueExpression
+ * 	']'
  *
  **/
 
-// {common::MParameterCCR} "[" lowerValue=MParameterValueExpression "," upperValue=MParameterValueExpression "]"
+// {common::MParameterCCR} '[' lowerValue=MParameterValueExpression ',' upperValue=MParameterValueExpression ']'
 protected class MParameterCCR_Group extends GroupToken {
 	
 	public MParameterCCR_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16889,7 +17042,7 @@ protected class MParameterCCR_MParameterCCRAction_0 extends ActionToken  {
 	}
 }
 
-// "["
+// '['
 protected class MParameterCCR_LeftSquareBracketKeyword_1 extends KeywordToken  {
 	
 	public MParameterCCR_LeftSquareBracketKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -16957,7 +17110,7 @@ protected class MParameterCCR_LowerValueAssignment_2 extends AssignmentToken  {
 	}	
 }
 
-// ","
+// ','
 protected class MParameterCCR_CommaKeyword_3 extends KeywordToken  {
 	
 	public MParameterCCR_CommaKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17025,7 +17178,7 @@ protected class MParameterCCR_UpperValueAssignment_4 extends AssignmentToken  {
 	}	
 }
 
-// "]"
+// ']'
 protected class MParameterCCR_RightSquareBracketKeyword_5 extends KeywordToken  {
 	
 	public MParameterCCR_RightSquareBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17053,8 +17206,8 @@ protected class MParameterCCR_RightSquareBracketKeyword_5 extends KeywordToken  
 
 /************ begin Rule MEnumParameterLiteral ****************
  *
- * MEnumParameterLiteral returns common::MEnumParameterLiteral:
- * 	{common::MEnumParameterLiteral} name=ID;
+ * MEnumParameterLiteral common::MEnumParameterLiteral:
+ * 	{common::MEnumParameterLiteral} name=ID
  *
  **/
 
@@ -17153,12 +17306,14 @@ protected class MEnumParameterLiteral_NameAssignment_1 extends AssignmentToken  
 
 /************ begin Rule MEnumParamIntegerLiteral ****************
  *
- * MEnumParamIntegerLiteral returns common::MEnumParamIntegerLiteral:
- * 	{common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER;
+ * MEnumParamIntegerLiteral common::MEnumParamIntegerLiteral:
+ * 	{common::MEnumParamIntegerLiteral} name=ID
+ * 	'='
+ * 	value=INTEGER
  *
  **/
 
-// {common::MEnumParamIntegerLiteral} name=ID "=" value=INTEGER
+// {common::MEnumParamIntegerLiteral} name=ID '=' value=INTEGER
 protected class MEnumParamIntegerLiteral_Group extends GroupToken {
 	
 	public MEnumParamIntegerLiteral_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17247,7 +17402,7 @@ protected class MEnumParamIntegerLiteral_NameAssignment_1 extends AssignmentToke
 
 }
 
-// "="
+// '='
 protected class MEnumParamIntegerLiteral_EqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MEnumParamIntegerLiteral_EqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17309,12 +17464,14 @@ protected class MEnumParamIntegerLiteral_ValueAssignment_3 extends AssignmentTok
 
 /************ begin Rule MEnumParamRealLiteral ****************
  *
- * MEnumParamRealLiteral returns common::MEnumParamRealLiteral:
- * 	{common::MEnumParamRealLiteral} name=ID "=" value=REAL;
+ * MEnumParamRealLiteral common::MEnumParamRealLiteral:
+ * 	{common::MEnumParamRealLiteral} name=ID
+ * 	'='
+ * 	value=REAL
  *
  **/
 
-// {common::MEnumParamRealLiteral} name=ID "=" value=REAL
+// {common::MEnumParamRealLiteral} name=ID '=' value=REAL
 protected class MEnumParamRealLiteral_Group extends GroupToken {
 	
 	public MEnumParamRealLiteral_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17403,7 +17560,7 @@ protected class MEnumParamRealLiteral_NameAssignment_1 extends AssignmentToken  
 
 }
 
-// "="
+// '='
 protected class MEnumParamRealLiteral_EqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MEnumParamRealLiteral_EqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17465,12 +17622,15 @@ protected class MEnumParamRealLiteral_ValueAssignment_3 extends AssignmentToken 
 
 /************ begin Rule MEnumParamStringLiteral ****************
  *
- * MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
- * 	{common::MEnumParamStringLiteral} name=ID "=" value=STRING;
+ * MEnumParamStringLiteral common::MEnumParamStringLiteral:
+ * 	{common::MEnumParamStringLiteral} name=ID
+ * 	'='
+ * 	isRaw?='raw'?
+ * 	value=STRING
  *
  **/
 
-// {common::MEnumParamStringLiteral} name=ID "=" value=STRING
+// {common::MEnumParamStringLiteral} name=ID '=' isRaw?='raw'? value=STRING
 protected class MEnumParamStringLiteral_Group extends GroupToken {
 	
 	public MEnumParamStringLiteral_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17485,7 +17645,7 @@ protected class MEnumParamStringLiteral_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MEnumParamStringLiteral_ValueAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MEnumParamStringLiteral_ValueAssignment_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -17559,7 +17719,7 @@ protected class MEnumParamStringLiteral_NameAssignment_1 extends AssignmentToken
 
 }
 
-// "="
+// '='
 protected class MEnumParamStringLiteral_EqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MEnumParamStringLiteral_EqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17581,16 +17741,16 @@ protected class MEnumParamStringLiteral_EqualsSignKeyword_2 extends KeywordToken
 
 }
 
-// value=STRING
-protected class MEnumParamStringLiteral_ValueAssignment_3 extends AssignmentToken  {
+// isRaw?='raw'?
+protected class MEnumParamStringLiteral_IsRawAssignment_3 extends AssignmentToken  {
 	
-	public MEnumParamStringLiteral_ValueAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MEnumParamStringLiteral_IsRawAssignment_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMEnumParamStringLiteralAccess().getValueAssignment_3();
+		return grammarAccess.getMEnumParamStringLiteralAccess().getIsRawAssignment_3();
 	}
 
     @Override
@@ -17603,11 +17763,46 @@ protected class MEnumParamStringLiteral_ValueAssignment_3 extends AssignmentToke
 
     @Override	
 	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("isRaw",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("isRaw");
+		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getMEnumParamStringLiteralAccess().getIsRawRawKeyword_3_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// value=STRING
+protected class MEnumParamStringLiteral_ValueAssignment_4 extends AssignmentToken  {
+	
+	public MEnumParamStringLiteral_ValueAssignment_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMEnumParamStringLiteralAccess().getValueAssignment_4();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MEnumParamStringLiteral_IsRawAssignment_3(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MEnumParamStringLiteral_EqualsSignKeyword_2(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMEnumParamStringLiteralAccess().getValueSTRINGTerminalRuleCall_3_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMEnumParamStringLiteralAccess().getValueSTRINGTerminalRuleCall_4_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getMEnumParamStringLiteralAccess().getValueSTRINGTerminalRuleCall_3_0();
+			element = grammarAccess.getMEnumParamStringLiteralAccess().getValueSTRINGTerminalRuleCall_4_0();
 			return obj;
 		}
 		return null;
@@ -17621,12 +17816,16 @@ protected class MEnumParamStringLiteral_ValueAssignment_3 extends AssignmentToke
 
 /************ begin Rule MBooleanParameterSingleExpression ****************
  *
- * MBooleanParameterSingleExpression returns common::MBooleanParameterSingleExpression:
- * 	constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";";
+ * MBooleanParameterSingleExpression common::MBooleanParameterSingleExpression:
+ * 	constant?='const'?
+ * 	'boolean'
+ * 	name=ID
+ * 	':=' defaultValue=MParameterValueExpression
+ * 	';'
  *
  **/
 
-// constant?="const"? "boolean" name=ID ":=" defaultValue=MParameterValueExpression ";"
+// constant?='const'? 'boolean' name=ID ':=' defaultValue=MParameterValueExpression ';'
 protected class MBooleanParameterSingleExpression_Group extends GroupToken {
 	
 	public MBooleanParameterSingleExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17655,7 +17854,7 @@ protected class MBooleanParameterSingleExpression_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MBooleanParameterSingleExpression_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MBooleanParameterSingleExpression_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17688,7 +17887,7 @@ protected class MBooleanParameterSingleExpression_ConstantAssignment_0 extends A
 
 }
 
-// "boolean"
+// 'boolean'
 protected class MBooleanParameterSingleExpression_BooleanKeyword_1 extends KeywordToken  {
 	
 	public MBooleanParameterSingleExpression_BooleanKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17744,7 +17943,7 @@ protected class MBooleanParameterSingleExpression_NameAssignment_2 extends Assig
 
 }
 
-// ":="
+// ':='
 protected class MBooleanParameterSingleExpression_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MBooleanParameterSingleExpression_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17812,7 +18011,7 @@ protected class MBooleanParameterSingleExpression_DefaultValueAssignment_4 exten
 	}	
 }
 
-// ";"
+// ';'
 protected class MBooleanParameterSingleExpression_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MBooleanParameterSingleExpression_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17840,12 +18039,16 @@ protected class MBooleanParameterSingleExpression_SemicolonKeyword_5 extends Key
 
 /************ begin Rule MStringParameterSingleExpression ****************
  *
- * MStringParameterSingleExpression returns common::MStringParameterSingleExpression:
- * 	constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";";
+ * MStringParameterSingleExpression common::MStringParameterSingleExpression:
+ * 	constant?='const'?
+ * 	'string'
+ * 	name=ID
+ * 	':=' defaultValue=MParameterValueExpression
+ * 	';'
  *
  **/
 
-// constant?="const"? "string" name=ID ":=" defaultValue=MParameterValueExpression ";"
+// constant?='const'? 'string' name=ID ':=' defaultValue=MParameterValueExpression ';'
 protected class MStringParameterSingleExpression_Group extends GroupToken {
 	
 	public MStringParameterSingleExpression_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17874,7 +18077,7 @@ protected class MStringParameterSingleExpression_Group extends GroupToken {
 
 }
 
-// constant?="const"?
+// constant?='const'?
 protected class MStringParameterSingleExpression_ConstantAssignment_0 extends AssignmentToken  {
 	
 	public MStringParameterSingleExpression_ConstantAssignment_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17907,7 +18110,7 @@ protected class MStringParameterSingleExpression_ConstantAssignment_0 extends As
 
 }
 
-// "string"
+// 'string'
 protected class MStringParameterSingleExpression_StringKeyword_1 extends KeywordToken  {
 	
 	public MStringParameterSingleExpression_StringKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -17963,7 +18166,7 @@ protected class MStringParameterSingleExpression_NameAssignment_2 extends Assign
 
 }
 
-// ":="
+// ':='
 protected class MStringParameterSingleExpression_ColonEqualsSignKeyword_3 extends KeywordToken  {
 	
 	public MStringParameterSingleExpression_ColonEqualsSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -18031,7 +18234,7 @@ protected class MStringParameterSingleExpression_DefaultValueAssignment_4 extend
 	}	
 }
 
-// ";"
+// ';'
 protected class MStringParameterSingleExpression_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MStringParameterSingleExpression_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {

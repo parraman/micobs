@@ -299,6 +299,12 @@
             extensions="mesp_dep">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="mesp_dep"
+            type="text">
+    </fileTypes>
+  </extension>
     <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.mesp.lang.DEP -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

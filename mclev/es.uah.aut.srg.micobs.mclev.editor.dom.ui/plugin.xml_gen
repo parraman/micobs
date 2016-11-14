@@ -299,6 +299,12 @@
             extensions="mclev_dom">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="mclev_dom"
+            type="text">
+    </fileTypes>
+  </extension>
     <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.mclev.lang.DOM -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

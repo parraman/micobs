@@ -46,8 +46,8 @@ MPlatformSwPackage returns MPlatformSwPackage:
 	name=ID
 	'{'
 		(('version' ':=' version=Version ';')
-		& ('supported platform' ':=' referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';')
-		& ('construction tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';')
+		& ('supported' 'platform' ':=' referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';')
+		& ('construction' 'tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';')
 		& ('osswpackages' ':=' osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] ("," osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';'))
     '}' ';';
 

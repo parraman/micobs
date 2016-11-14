@@ -14,9 +14,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.eclipse.emf.ecore.EPackage;
-import org.eclipse.xtext.validation.AbstractDeclarativeValidator;
 
-public class AbstractPSWPJavaValidator extends AbstractDeclarativeValidator {
+public class AbstractPSWPJavaValidator extends org.eclipse.xtext.validation.AbstractDeclarativeValidator {
 
 	@Override
 	protected List<EPackage> getEPackages() {

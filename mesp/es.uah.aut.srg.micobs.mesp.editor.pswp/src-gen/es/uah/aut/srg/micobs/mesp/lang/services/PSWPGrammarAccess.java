@@ -26,7 +26,7 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MMESPPSWPPackageFileElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPPSWPPackageFile");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.PSWP.MMESPPSWPPackageFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -43,15 +43,16 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cElementMMESPPSWPPackageElementParserRuleCall_4_0 = (RuleCall)cElementAssignment_4.eContents().get(0);
 		
 		//MMESPPSWPPackageFile:
-		//	"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-		//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPPSWPPackageElement;
-		public ParserRule getRule() { return rule; }
+		//	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+		//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+		//	element=MMESPPSWPPackageElement;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-		//imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPPSWPPackageElement
+		//'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+		//imports+=[common::MCommonPackage|QualifiedName] ';')* element=MMESPPSWPPackageElement
 		public Group getGroup() { return cGroup; }
 
-		//"package"
+		//'package'
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
 		//package=[mesplibrary::MMESPPackage|QualifiedName]
@@ -63,13 +64,13 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getPackageMMESPPackageQualifiedNameParserRuleCall_1_0_1() { return cPackageMMESPPackageQualifiedNameParserRuleCall_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 
-		//("import" imports+=[common::MCommonPackage|QualifiedName] ";")*
+		//('import' imports+=[common::MCommonPackage|QualifiedName] ';')*
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"import"
+		//'import'
 		public Keyword getImportKeyword_3_0() { return cImportKeyword_3_0; }
 
 		//imports+=[common::MCommonPackage|QualifiedName]
@@ -81,7 +82,7 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1() { return cImportsMCommonPackageQualifiedNameParserRuleCall_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2() { return cSemicolonKeyword_3_2; }
 
 		//element=MMESPPSWPPackageElement
@@ -92,39 +93,39 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MMESPPSWPPackageElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMESPPSWPPackageElement");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.PSWP.MMESPPSWPPackageElement");
 		private final RuleCall cMPlatformSwPackageParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//MMESPPSWPPackageElement:
 		//	MPlatformSwPackage;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MPlatformSwPackage
 		public RuleCall getMPlatformSwPackageParserRuleCall() { return cMPlatformSwPackageParserRuleCall; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.PSWP.QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//QualifiedName returns ecore::EString:
-		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
+		//QualifiedName:
+		//	ID ('.' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)*
+		//ID ('.' ID)*
 		public Group getGroup() { return cGroup; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//("." ID)*
+		//('.' ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
 		//ID
@@ -132,7 +133,7 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Version");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.PSWP.Version");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
@@ -147,14 +148,14 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_1_1_1_0 = (RuleCall)cGroup_1_1_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1_1_1 = (RuleCall)cGroup_1_1_1.eContents().get(1);
 		
-		//Version returns ecore::EString:
-		//	(INT | INT? ID) ("." (INT | INT? ID))*;
-		public ParserRule getRule() { return rule; }
+		//Version:
+		//	(INT | INT? ID) ('.' (INT | INT? ID))*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(INT | INT? ID) ("." (INT | INT? ID))*
+		//(INT | INT? ID) ('.' (INT | INT? ID))*
 		public Group getGroup() { return cGroup; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//INT
@@ -169,13 +170,13 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_0_1_1() { return cIDTerminalRuleCall_0_1_1; }
 
-		//("." (INT | INT? ID))*
+		//('.' (INT | INT? ID))*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 
 		//INT
@@ -192,35 +193,35 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionedQualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.PSWP.VersionedQualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final RuleCall cVersionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//VersionedQualifiedName returns ecore::EString:
-		//	QualifiedName "(" Version ")";
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedName:
+		//	QualifiedName '(' Version ')';
+		@Override public ParserRule getRule() { return rule; }
 
-		//QualifiedName "(" Version ")"
+		//QualifiedName '(' Version ')'
 		public Group getGroup() { return cGroup; }
 
 		//QualifiedName
 		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//Version
 		public RuleCall getVersionParserRuleCall_2() { return cVersionParserRuleCall_2; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 
 	public class VersionedQualifiedReferenceNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedReferenceName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.PSWP.VersionedQualifiedReferenceName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final RuleCall cVersionedQualifiedNameParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
@@ -230,29 +231,29 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		
-		//VersionedQualifiedReferenceName returns ecore::EString:
-		//	(VersionedQualifiedName "::")? ID ("::" ID)*;
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedReferenceName:
+		//	(VersionedQualifiedName '::')? ID ('::' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(VersionedQualifiedName "::")? ID ("::" ID)*
+		//(VersionedQualifiedName '::')? ID ('::' ID)*
 		public Group getGroup() { return cGroup; }
 
-		//(VersionedQualifiedName "::")?
+		//(VersionedQualifiedName '::')?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//VersionedQualifiedName
 		public RuleCall getVersionedQualifiedNameParserRuleCall_0_0() { return cVersionedQualifiedNameParserRuleCall_0_0; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_0_1() { return cColonColonKeyword_0_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 
-		//("::" ID)*
+		//('::' ID)*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_2_0() { return cColonColonKeyword_2_0; }
 
 		//ID
@@ -260,7 +261,7 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MPlatformSwPackageElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MPlatformSwPackage");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mesp.lang.PSWP.MPlatformSwPackage");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPswpackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -274,24 +275,26 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cVersionVersionParserRuleCall_3_0_2_0 = (RuleCall)cVersionAssignment_3_0_2.eContents().get(0);
 		private final Keyword cSemicolonKeyword_3_0_3 = (Keyword)cGroup_3_0.eContents().get(3);
 		private final Group cGroup_3_1 = (Group)cUnorderedGroup_3.eContents().get(1);
-		private final Keyword cSupportedPlatformKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
-		private final Keyword cColonEqualsSignKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
-		private final Assignment cReferencedElementAssignment_3_1_2 = (Assignment)cGroup_3_1.eContents().get(2);
-		private final CrossReference cReferencedElementMPlatformCrossReference_3_1_2_0 = (CrossReference)cReferencedElementAssignment_3_1_2.eContents().get(0);
-		private final RuleCall cReferencedElementMPlatformVersionedQualifiedNameParserRuleCall_3_1_2_0_1 = (RuleCall)cReferencedElementMPlatformCrossReference_3_1_2_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_3_1_3 = (Keyword)cGroup_3_1.eContents().get(3);
+		private final Keyword cSupportedKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
+		private final Keyword cPlatformKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
+		private final Keyword cColonEqualsSignKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
+		private final Assignment cReferencedElementAssignment_3_1_3 = (Assignment)cGroup_3_1.eContents().get(3);
+		private final CrossReference cReferencedElementMPlatformCrossReference_3_1_3_0 = (CrossReference)cReferencedElementAssignment_3_1_3.eContents().get(0);
+		private final RuleCall cReferencedElementMPlatformVersionedQualifiedNameParserRuleCall_3_1_3_0_1 = (RuleCall)cReferencedElementMPlatformCrossReference_3_1_3_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_3_1_4 = (Keyword)cGroup_3_1.eContents().get(4);
 		private final Group cGroup_3_2 = (Group)cUnorderedGroup_3.eContents().get(2);
-		private final Keyword cConstructionToolsKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
-		private final Keyword cColonEqualsSignKeyword_3_2_1 = (Keyword)cGroup_3_2.eContents().get(1);
-		private final Assignment cCtoolsAssignment_3_2_2 = (Assignment)cGroup_3_2.eContents().get(2);
-		private final CrossReference cCtoolsMConstructionToolCrossReference_3_2_2_0 = (CrossReference)cCtoolsAssignment_3_2_2.eContents().get(0);
-		private final RuleCall cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_2_0_1 = (RuleCall)cCtoolsMConstructionToolCrossReference_3_2_2_0.eContents().get(1);
-		private final Group cGroup_3_2_3 = (Group)cGroup_3_2.eContents().get(3);
-		private final Keyword cCommaKeyword_3_2_3_0 = (Keyword)cGroup_3_2_3.eContents().get(0);
-		private final Assignment cCtoolsAssignment_3_2_3_1 = (Assignment)cGroup_3_2_3.eContents().get(1);
-		private final CrossReference cCtoolsMConstructionToolCrossReference_3_2_3_1_0 = (CrossReference)cCtoolsAssignment_3_2_3_1.eContents().get(0);
-		private final RuleCall cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_3_1_0_1 = (RuleCall)cCtoolsMConstructionToolCrossReference_3_2_3_1_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_3_2_4 = (Keyword)cGroup_3_2.eContents().get(4);
+		private final Keyword cConstructionKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
+		private final Keyword cToolsKeyword_3_2_1 = (Keyword)cGroup_3_2.eContents().get(1);
+		private final Keyword cColonEqualsSignKeyword_3_2_2 = (Keyword)cGroup_3_2.eContents().get(2);
+		private final Assignment cCtoolsAssignment_3_2_3 = (Assignment)cGroup_3_2.eContents().get(3);
+		private final CrossReference cCtoolsMConstructionToolCrossReference_3_2_3_0 = (CrossReference)cCtoolsAssignment_3_2_3.eContents().get(0);
+		private final RuleCall cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_3_0_1 = (RuleCall)cCtoolsMConstructionToolCrossReference_3_2_3_0.eContents().get(1);
+		private final Group cGroup_3_2_4 = (Group)cGroup_3_2.eContents().get(4);
+		private final Keyword cCommaKeyword_3_2_4_0 = (Keyword)cGroup_3_2_4.eContents().get(0);
+		private final Assignment cCtoolsAssignment_3_2_4_1 = (Assignment)cGroup_3_2_4.eContents().get(1);
+		private final CrossReference cCtoolsMConstructionToolCrossReference_3_2_4_1_0 = (CrossReference)cCtoolsAssignment_3_2_4_1.eContents().get(0);
+		private final RuleCall cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_4_1_0_1 = (RuleCall)cCtoolsMConstructionToolCrossReference_3_2_4_1_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_3_2_5 = (Keyword)cGroup_3_2.eContents().get(5);
 		private final Group cGroup_3_3 = (Group)cUnorderedGroup_3.eContents().get(3);
 		private final Keyword cOsswpackagesKeyword_3_3_0 = (Keyword)cGroup_3_3.eContents().get(0);
 		private final Keyword cColonEqualsSignKeyword_3_3_1 = (Keyword)cGroup_3_3.eContents().get(1);
@@ -308,23 +311,26 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MPlatformSwPackage:
-		//	"pswpackage" name=ID "{" ("version" ":=" version=Version ";" & "supported platform" ":="
-		//	referencedElement=[pdl::MPlatform|VersionedQualifiedName] ";" & "construction tools" ":="
+		//	'pswpackage'
+		//	name=ID
+		//	'{' ('version' ':=' version=Version ';' & 'supported' 'platform' ':='
+		//	referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';' & 'construction' 'tools' ':='
 		//	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-		//	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";" & "osswpackages" ":="
+		//	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';' & 'osswpackages' ':='
 		//	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-		//	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";") "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';')
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"pswpackage" name=ID "{" ("version" ":=" version=Version ";" & "supported platform" ":="
-		//referencedElement=[pdl::MPlatform|VersionedQualifiedName] ";" & "construction tools" ":="
+		//'pswpackage' name=ID '{' ('version' ':=' version=Version ';' & 'supported' 'platform' ':='
+		//referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';' & 'construction' 'tools' ':='
 		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";" & "osswpackages" ":="
+		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';' & 'osswpackages' ':='
 		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";") "}" ";"
+		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';') '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"pswpackage"
+		//'pswpackage'
 		public Keyword getPswpackageKeyword_0() { return cPswpackageKeyword_0; }
 
 		//name=ID
@@ -333,23 +339,24 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//"version" ":=" version=Version ";" & "supported platform" ":=" referencedElement=[pdl::MPlatform|VersionedQualifiedName]
-		//";" & "construction tools" ":=" ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";" & "osswpackages" ":="
+		//('version' ':=' version=Version ';' & 'supported' 'platform' ':='
+		//referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';' & 'construction' 'tools' ':='
+		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
+		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';' & 'osswpackages' ':='
 		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";"
+		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';')
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//"version" ":=" version=Version ";"
+		//'version' ':=' version=Version ';'
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//"version"
+		//'version'
 		public Keyword getVersionKeyword_3_0_0() { return cVersionKeyword_3_0_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_0_1() { return cColonEqualsSignKeyword_3_0_1; }
 
 		//version=Version
@@ -358,75 +365,81 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		//Version
 		public RuleCall getVersionVersionParserRuleCall_3_0_2_0() { return cVersionVersionParserRuleCall_3_0_2_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
 
-		//"supported platform" ":=" referencedElement=[pdl::MPlatform|VersionedQualifiedName] ";"
+		//'supported' 'platform' ':=' referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';'
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"supported platform"
-		public Keyword getSupportedPlatformKeyword_3_1_0() { return cSupportedPlatformKeyword_3_1_0; }
+		//'supported'
+		public Keyword getSupportedKeyword_3_1_0() { return cSupportedKeyword_3_1_0; }
 
-		//":="
-		public Keyword getColonEqualsSignKeyword_3_1_1() { return cColonEqualsSignKeyword_3_1_1; }
+		//'platform'
+		public Keyword getPlatformKeyword_3_1_1() { return cPlatformKeyword_3_1_1; }
+
+		//':='
+		public Keyword getColonEqualsSignKeyword_3_1_2() { return cColonEqualsSignKeyword_3_1_2; }
 
 		//referencedElement=[pdl::MPlatform|VersionedQualifiedName]
-		public Assignment getReferencedElementAssignment_3_1_2() { return cReferencedElementAssignment_3_1_2; }
+		public Assignment getReferencedElementAssignment_3_1_3() { return cReferencedElementAssignment_3_1_3; }
 
 		//[pdl::MPlatform|VersionedQualifiedName]
-		public CrossReference getReferencedElementMPlatformCrossReference_3_1_2_0() { return cReferencedElementMPlatformCrossReference_3_1_2_0; }
+		public CrossReference getReferencedElementMPlatformCrossReference_3_1_3_0() { return cReferencedElementMPlatformCrossReference_3_1_3_0; }
 
 		//VersionedQualifiedName
-		public RuleCall getReferencedElementMPlatformVersionedQualifiedNameParserRuleCall_3_1_2_0_1() { return cReferencedElementMPlatformVersionedQualifiedNameParserRuleCall_3_1_2_0_1; }
+		public RuleCall getReferencedElementMPlatformVersionedQualifiedNameParserRuleCall_3_1_3_0_1() { return cReferencedElementMPlatformVersionedQualifiedNameParserRuleCall_3_1_3_0_1; }
 
-		//";"
-		public Keyword getSemicolonKeyword_3_1_3() { return cSemicolonKeyword_3_1_3; }
+		//';'
+		public Keyword getSemicolonKeyword_3_1_4() { return cSemicolonKeyword_3_1_4; }
 
-		//"construction tools" ":=" ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";"
+		//'construction' 'tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
+		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';'
 		public Group getGroup_3_2() { return cGroup_3_2; }
 
-		//"construction tools"
-		public Keyword getConstructionToolsKeyword_3_2_0() { return cConstructionToolsKeyword_3_2_0; }
+		//'construction'
+		public Keyword getConstructionKeyword_3_2_0() { return cConstructionKeyword_3_2_0; }
 
-		//":="
-		public Keyword getColonEqualsSignKeyword_3_2_1() { return cColonEqualsSignKeyword_3_2_1; }
+		//'tools'
+		public Keyword getToolsKeyword_3_2_1() { return cToolsKeyword_3_2_1; }
+
+		//':='
+		public Keyword getColonEqualsSignKeyword_3_2_2() { return cColonEqualsSignKeyword_3_2_2; }
 
 		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName]
-		public Assignment getCtoolsAssignment_3_2_2() { return cCtoolsAssignment_3_2_2; }
+		public Assignment getCtoolsAssignment_3_2_3() { return cCtoolsAssignment_3_2_3; }
 
 		//[mespctool::MConstructionTool|VersionedQualifiedName]
-		public CrossReference getCtoolsMConstructionToolCrossReference_3_2_2_0() { return cCtoolsMConstructionToolCrossReference_3_2_2_0; }
+		public CrossReference getCtoolsMConstructionToolCrossReference_3_2_3_0() { return cCtoolsMConstructionToolCrossReference_3_2_3_0; }
 
 		//VersionedQualifiedName
-		public RuleCall getCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_2_0_1() { return cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_2_0_1; }
+		public RuleCall getCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_3_0_1() { return cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_3_0_1; }
 
 		//("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])*
-		public Group getGroup_3_2_3() { return cGroup_3_2_3; }
+		public Group getGroup_3_2_4() { return cGroup_3_2_4; }
 
 		//","
-		public Keyword getCommaKeyword_3_2_3_0() { return cCommaKeyword_3_2_3_0; }
+		public Keyword getCommaKeyword_3_2_4_0() { return cCommaKeyword_3_2_4_0; }
 
 		//ctools+=[mespctool::MConstructionTool|VersionedQualifiedName]
-		public Assignment getCtoolsAssignment_3_2_3_1() { return cCtoolsAssignment_3_2_3_1; }
+		public Assignment getCtoolsAssignment_3_2_4_1() { return cCtoolsAssignment_3_2_4_1; }
 
 		//[mespctool::MConstructionTool|VersionedQualifiedName]
-		public CrossReference getCtoolsMConstructionToolCrossReference_3_2_3_1_0() { return cCtoolsMConstructionToolCrossReference_3_2_3_1_0; }
+		public CrossReference getCtoolsMConstructionToolCrossReference_3_2_4_1_0() { return cCtoolsMConstructionToolCrossReference_3_2_4_1_0; }
 
 		//VersionedQualifiedName
-		public RuleCall getCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_3_1_0_1() { return cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_3_1_0_1; }
+		public RuleCall getCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_4_1_0_1() { return cCtoolsMConstructionToolVersionedQualifiedNameParserRuleCall_3_2_4_1_0_1; }
 
-		//";"
-		public Keyword getSemicolonKeyword_3_2_4() { return cSemicolonKeyword_3_2_4; }
+		//';'
+		public Keyword getSemicolonKeyword_3_2_5() { return cSemicolonKeyword_3_2_5; }
 
-		//"osswpackages" ":=" osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";"
+		//'osswpackages' ':=' osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
+		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';'
 		public Group getGroup_3_3() { return cGroup_3_3; }
 
-		//"osswpackages"
+		//'osswpackages'
 		public Keyword getOsswpackagesKeyword_3_3_0() { return cOsswpackagesKeyword_3_3_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_3_3_1() { return cColonEqualsSignKeyword_3_3_1; }
 
 		//osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName]
@@ -453,34 +466,41 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getOsSwPackagesMOSSwPackageVersionedQualifiedNameParserRuleCall_3_3_3_1_0_1() { return cOsSwPackagesMOSSwPackageVersionedQualifiedNameParserRuleCall_3_3_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_3_4() { return cSemicolonKeyword_3_3_4; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 	
 	
-	private MMESPPSWPPackageFileElements pMMESPPSWPPackageFile;
-	private MMESPPSWPPackageElementElements pMMESPPSWPPackageElement;
-	private QualifiedNameElements pQualifiedName;
-	private VersionElements pVersion;
-	private VersionedQualifiedNameElements pVersionedQualifiedName;
-	private VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
-	private MPlatformSwPackageElements pMPlatformSwPackage;
+	private final MMESPPSWPPackageFileElements pMMESPPSWPPackageFile;
+	private final MMESPPSWPPackageElementElements pMMESPPSWPPackageElement;
+	private final QualifiedNameElements pQualifiedName;
+	private final VersionElements pVersion;
+	private final VersionedQualifiedNameElements pVersionedQualifiedName;
+	private final VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
+	private final MPlatformSwPackageElements pMPlatformSwPackage;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public PSWPGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMMESPPSWPPackageFile = new MMESPPSWPPackageFileElements();
+		this.pMMESPPSWPPackageElement = new MMESPPSWPPackageElementElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pVersion = new VersionElements();
+		this.pVersionedQualifiedName = new VersionedQualifiedNameElements();
+		this.pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements();
+		this.pMPlatformSwPackage = new MPlatformSwPackageElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -499,7 +519,7 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-	
+	@Override
 	public Grammar getGrammar() {
 		return grammar;
 	}
@@ -511,10 +531,11 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//MMESPPSWPPackageFile:
-	//	"package" package=[mesplibrary::MMESPPackage|QualifiedName] ";" ("import"
-	//	imports+=[common::MCommonPackage|QualifiedName] ";")* element=MMESPPSWPPackageElement;
+	//	'package' package=[mesplibrary::MMESPPackage|QualifiedName] ';' ('import'
+	//	imports+=[common::MCommonPackage|QualifiedName] ';')*
+	//	element=MMESPPSWPPackageElement;
 	public MMESPPSWPPackageFileElements getMMESPPSWPPackageFileAccess() {
-		return (pMMESPPSWPPackageFile != null) ? pMMESPPSWPPackageFile : (pMMESPPSWPPackageFile = new MMESPPSWPPackageFileElements());
+		return pMMESPPSWPPackageFile;
 	}
 	
 	public ParserRule getMMESPPSWPPackageFileRule() {
@@ -524,47 +545,47 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	//MMESPPSWPPackageElement:
 	//	MPlatformSwPackage;
 	public MMESPPSWPPackageElementElements getMMESPPSWPPackageElementAccess() {
-		return (pMMESPPSWPPackageElement != null) ? pMMESPPSWPPackageElement : (pMMESPPSWPPackageElement = new MMESPPSWPPackageElementElements());
+		return pMMESPPSWPPackageElement;
 	}
 	
 	public ParserRule getMMESPPSWPPackageElementRule() {
 		return getMMESPPSWPPackageElementAccess().getRule();
 	}
 
-	//QualifiedName returns ecore::EString:
-	//	ID ("." ID)*;
+	//QualifiedName:
+	//	ID ('.' ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
 		return getQualifiedNameAccess().getRule();
 	}
 
-	//Version returns ecore::EString:
-	//	(INT | INT? ID) ("." (INT | INT? ID))*;
+	//Version:
+	//	(INT | INT? ID) ('.' (INT | INT? ID))*;
 	public VersionElements getVersionAccess() {
-		return (pVersion != null) ? pVersion : (pVersion = new VersionElements());
+		return pVersion;
 	}
 	
 	public ParserRule getVersionRule() {
 		return getVersionAccess().getRule();
 	}
 
-	//VersionedQualifiedName returns ecore::EString:
-	//	QualifiedName "(" Version ")";
+	//VersionedQualifiedName:
+	//	QualifiedName '(' Version ')';
 	public VersionedQualifiedNameElements getVersionedQualifiedNameAccess() {
-		return (pVersionedQualifiedName != null) ? pVersionedQualifiedName : (pVersionedQualifiedName = new VersionedQualifiedNameElements());
+		return pVersionedQualifiedName;
 	}
 	
 	public ParserRule getVersionedQualifiedNameRule() {
 		return getVersionedQualifiedNameAccess().getRule();
 	}
 
-	//VersionedQualifiedReferenceName returns ecore::EString:
-	//	(VersionedQualifiedName "::")? ID ("::" ID)*;
+	//VersionedQualifiedReferenceName:
+	//	(VersionedQualifiedName '::')? ID ('::' ID)*;
 	public VersionedQualifiedReferenceNameElements getVersionedQualifiedReferenceNameAccess() {
-		return (pVersionedQualifiedReferenceName != null) ? pVersionedQualifiedReferenceName : (pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements());
+		return pVersionedQualifiedReferenceName;
 	}
 	
 	public ParserRule getVersionedQualifiedReferenceNameRule() {
@@ -572,14 +593,17 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MPlatformSwPackage:
-	//	"pswpackage" name=ID "{" ("version" ":=" version=Version ";" & "supported platform" ":="
-	//	referencedElement=[pdl::MPlatform|VersionedQualifiedName] ";" & "construction tools" ":="
+	//	'pswpackage'
+	//	name=ID
+	//	'{' ('version' ':=' version=Version ';' & 'supported' 'platform' ':='
+	//	referencedElement=[pdl::MPlatform|VersionedQualifiedName] ';' & 'construction' 'tools' ':='
 	//	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] (","
-	//	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ";" & "osswpackages" ":="
+	//	ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';' & 'osswpackages' ':='
 	//	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName] (","
-	//	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ";") "}" ";";
+	//	osSwPackages+=[mesposswp::MOSSwPackage|VersionedQualifiedName])* ';')
+	//	'}' ';';
 	public MPlatformSwPackageElements getMPlatformSwPackageAccess() {
-		return (pMPlatformSwPackage != null) ? pMPlatformSwPackage : (pMPlatformSwPackage = new MPlatformSwPackageElements());
+		return pMPlatformSwPackage;
 	}
 	
 	public ParserRule getMPlatformSwPackageRule() {
@@ -587,38 +611,38 @@ public class PSWPGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
+	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
+	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 

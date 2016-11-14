@@ -299,6 +299,12 @@
             extensions="mclev_cmp">
     </provider>
   </extension>
+  <extension point="org.eclipse.team.core.fileTypes">
+    <fileTypes
+            extension="mclev_cmp"
+            type="text">
+    </fileTypes>
+  </extension>
     <!-- quickfix marker resolution generator for es.uah.aut.srg.micobs.mclev.lang.CMP -->
     <extension
             point="org.eclipse.ui.ide.markerResolution">

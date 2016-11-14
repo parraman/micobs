@@ -31,7 +31,7 @@ MMCLEVFLATMCADPackageElement returns MMCLEVFLATMCADPackageElement:
 	;
 
 MFlatMCAD returns MFlatMCAD:
-	'flat mcad'
+	'flat' 'mcad'
 	name=ID
 	'{'
 		(('version' ':=' version=Version ';')
@@ -158,6 +158,7 @@ MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
 
 MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
 	{common::MParameterValueStringLiteral}
+	(isRaw?='raw')?
 	value=STRING;
 
 MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:

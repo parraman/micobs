@@ -22,29 +22,31 @@ import java.util.ArrayList;
 
 @SuppressWarnings("all")
 public class InternalPSWPLexer extends Lexer {
-    public static final int RULE_ID=5;
-    public static final int T__25=25;
-    public static final int T__24=24;
-    public static final int T__23=23;
-    public static final int T__22=22;
-    public static final int RULE_ANY_OTHER=10;
-    public static final int T__21=21;
-    public static final int T__20=20;
-    public static final int EOF=-1;
-    public static final int RULE_SL_COMMENT=8;
-    public static final int RULE_ML_COMMENT=7;
-    public static final int T__19=19;
     public static final int RULE_STRING=6;
-    public static final int T__16=16;
+    public static final int RULE_SL_COMMENT=8;
+    public static final int T__19=19;
     public static final int T__15=15;
-    public static final int T__18=18;
+    public static final int T__16=16;
     public static final int T__17=17;
-    public static final int T__12=12;
+    public static final int T__18=18;
     public static final int T__11=11;
-    public static final int T__14=14;
+    public static final int T__12=12;
     public static final int T__13=13;
-    public static final int RULE_INT=4;
+    public static final int T__14=14;
+    public static final int EOF=-1;
+    public static final int RULE_ID=5;
     public static final int RULE_WS=9;
+    public static final int RULE_ANY_OTHER=10;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int RULE_INT=4;
+    public static final int T__22=22;
+    public static final int RULE_ML_COMMENT=7;
+    public static final int T__23=23;
+    public static final int T__24=24;
+    public static final int T__25=25;
+    public static final int T__20=20;
+    public static final int T__21=21;
 
     // delegates
     // delegators
@@ -57,15 +59,15 @@ public class InternalPSWPLexer extends Lexer {
         super(input,state);
 
     }
-    public String getGrammarFileName() { return "../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g"; }
+    public String getGrammarFileName() { return "InternalPSWP.g"; }
 
     // $ANTLR start "T__11"
     public final void mT__11() throws RecognitionException {
         try {
             int _type = T__11;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:11:7: ( 'package' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:11:9: 'package'
+            // InternalPSWP.g:11:7: ( 'package' )
+            // InternalPSWP.g:11:9: 'package'
             {
             match("package"); 
 
@@ -85,8 +87,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__12;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:12:7: ( ';' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:12:9: ';'
+            // InternalPSWP.g:12:7: ( ';' )
+            // InternalPSWP.g:12:9: ';'
             {
             match(';'); 
 
@@ -105,8 +107,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__13;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:13:7: ( 'import' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:13:9: 'import'
+            // InternalPSWP.g:13:7: ( 'import' )
+            // InternalPSWP.g:13:9: 'import'
             {
             match("import"); 
 
@@ -126,8 +128,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__14;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:14:7: ( '.' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:14:9: '.'
+            // InternalPSWP.g:14:7: ( '.' )
+            // InternalPSWP.g:14:9: '.'
             {
             match('.'); 
 
@@ -146,8 +148,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__15;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:15:7: ( '(' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:15:9: '('
+            // InternalPSWP.g:15:7: ( '(' )
+            // InternalPSWP.g:15:9: '('
             {
             match('('); 
 
@@ -166,8 +168,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__16;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:16:7: ( ')' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:16:9: ')'
+            // InternalPSWP.g:16:7: ( ')' )
+            // InternalPSWP.g:16:9: ')'
             {
             match(')'); 
 
@@ -186,8 +188,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__17;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:17:7: ( 'pswpackage' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:17:9: 'pswpackage'
+            // InternalPSWP.g:17:7: ( 'pswpackage' )
+            // InternalPSWP.g:17:9: 'pswpackage'
             {
             match("pswpackage"); 
 
@@ -207,8 +209,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__18;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:18:7: ( '{' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:18:9: '{'
+            // InternalPSWP.g:18:7: ( '{' )
+            // InternalPSWP.g:18:9: '{'
             {
             match('{'); 
 
@@ -227,8 +229,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__19;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:19:7: ( '}' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:19:9: '}'
+            // InternalPSWP.g:19:7: ( '}' )
+            // InternalPSWP.g:19:9: '}'
             {
             match('}'); 
 
@@ -247,8 +249,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__20;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:20:7: ( 'version' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:20:9: 'version'
+            // InternalPSWP.g:20:7: ( 'version' )
+            // InternalPSWP.g:20:9: 'version'
             {
             match("version"); 
 
@@ -268,8 +270,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__21;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:21:7: ( ':=' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:21:9: ':='
+            // InternalPSWP.g:21:7: ( ':=' )
+            // InternalPSWP.g:21:9: ':='
             {
             match(":="); 
 
@@ -289,10 +291,10 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__22;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:22:7: ( 'supported platform' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:22:9: 'supported platform'
+            // InternalPSWP.g:22:7: ( 'supported' )
+            // InternalPSWP.g:22:9: 'supported'
             {
-            match("supported platform"); 
+            match("supported"); 
 
 
             }
@@ -310,10 +312,10 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__23;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:23:7: ( 'construction tools' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:23:9: 'construction tools'
+            // InternalPSWP.g:23:7: ( 'platform' )
+            // InternalPSWP.g:23:9: 'platform'
             {
-            match("construction tools"); 
+            match("platform"); 
 
 
             }
@@ -331,10 +333,11 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__24;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:24:7: ( ',' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:24:9: ','
+            // InternalPSWP.g:24:7: ( 'construction' )
+            // InternalPSWP.g:24:9: 'construction'
             {
-            match(','); 
+            match("construction"); 
+
 
             }
 
@@ -351,10 +354,10 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = T__25;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:25:7: ( 'osswpackages' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:25:9: 'osswpackages'
+            // InternalPSWP.g:25:7: ( 'tools' )
+            // InternalPSWP.g:25:9: 'tools'
             {
-            match("osswpackages"); 
+            match("tools"); 
 
 
             }
@@ -367,15 +370,56 @@ public class InternalPSWPLexer extends Lexer {
     }
     // $ANTLR end "T__25"
 
+    // $ANTLR start "T__26"
+    public final void mT__26() throws RecognitionException {
+        try {
+            int _type = T__26;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalPSWP.g:26:7: ( ',' )
+            // InternalPSWP.g:26:9: ','
+            {
+            match(','); 
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__26"
+
+    // $ANTLR start "T__27"
+    public final void mT__27() throws RecognitionException {
+        try {
+            int _type = T__27;
+            int _channel = DEFAULT_TOKEN_CHANNEL;
+            // InternalPSWP.g:27:7: ( 'osswpackages' )
+            // InternalPSWP.g:27:9: 'osswpackages'
+            {
+            match("osswpackages"); 
+
+
+            }
+
+            state.type = _type;
+            state.channel = _channel;
+        }
+        finally {
+        }
+    }
+    // $ANTLR end "T__27"
+
     // $ANTLR start "RULE_ID"
     public final void mRULE_ID() throws RecognitionException {
         try {
             int _type = RULE_ID;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2269:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2269:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalPSWP.g:2335:9: ( ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )* )
+            // InternalPSWP.g:2335:11: ( '^' )? ( 'a' .. 'z' | 'A' .. 'Z' | '_' ) ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2269:11: ( '^' )?
+            // InternalPSWP.g:2335:11: ( '^' )?
             int alt1=2;
             int LA1_0 = input.LA(1);
 
@@ -384,7 +428,7 @@ public class InternalPSWPLexer extends Lexer {
             }
             switch (alt1) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2269:11: '^'
+                    // InternalPSWP.g:2335:11: '^'
                     {
                     match('^'); 
 
@@ -402,7 +446,7 @@ public class InternalPSWPLexer extends Lexer {
                 recover(mse);
                 throw mse;}
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2269:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
+            // InternalPSWP.g:2335:40: ( 'a' .. 'z' | 'A' .. 'Z' | '_' | '0' .. '9' )*
             loop2:
             do {
                 int alt2=2;
@@ -415,7 +459,7 @@ public class InternalPSWPLexer extends Lexer {
 
                 switch (alt2) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:
+            	    // InternalPSWP.g:
             	    {
             	    if ( (input.LA(1)>='0' && input.LA(1)<='9')||(input.LA(1)>='A' && input.LA(1)<='Z')||input.LA(1)=='_'||(input.LA(1)>='a' && input.LA(1)<='z') ) {
             	        input.consume();
@@ -451,10 +495,10 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = RULE_INT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2271:10: ( ( '0' .. '9' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2271:12: ( '0' .. '9' )+
+            // InternalPSWP.g:2337:10: ( ( '0' .. '9' )+ )
+            // InternalPSWP.g:2337:12: ( '0' .. '9' )+
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2271:12: ( '0' .. '9' )+
+            // InternalPSWP.g:2337:12: ( '0' .. '9' )+
             int cnt3=0;
             loop3:
             do {
@@ -468,7 +512,7 @@ public class InternalPSWPLexer extends Lexer {
 
                 switch (alt3) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2271:13: '0' .. '9'
+            	    // InternalPSWP.g:2337:13: '0' .. '9'
             	    {
             	    matchRange('0','9'); 
 
@@ -500,10 +544,10 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = RULE_STRING;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:13: ( ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalPSWP.g:2339:13: ( ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' ) )
+            // InternalPSWP.g:2339:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:15: ( '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
+            // InternalPSWP.g:2339:15: ( '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"' | '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\'' )
             int alt6=2;
             int LA6_0 = input.LA(1);
 
@@ -521,10 +565,10 @@ public class InternalPSWPLexer extends Lexer {
             }
             switch (alt6) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:16: '\"' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
+                    // InternalPSWP.g:2339:16: '\"' ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )* '\"'
                     {
                     match('\"'); 
-                    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:20: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\"' ) ) )*
+                    // InternalPSWP.g:2339:20: ( '\\\\' . | ~ ( ( '\\\\' | '\"' ) ) )*
                     loop4:
                     do {
                         int alt4=3;
@@ -540,23 +584,15 @@ public class InternalPSWPLexer extends Lexer {
 
                         switch (alt4) {
                     	case 1 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:21: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalPSWP.g:2339:21: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:66: ~ ( ( '\\\\' | '\"' ) )
+                    	    // InternalPSWP.g:2339:28: ~ ( ( '\\\\' | '\"' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='!')||(input.LA(1)>='#' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -581,10 +617,10 @@ public class InternalPSWPLexer extends Lexer {
                     }
                     break;
                 case 2 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:86: '\\'' ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
+                    // InternalPSWP.g:2339:48: '\\'' ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )* '\\''
                     {
                     match('\''); 
-                    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:91: ( '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' ) | ~ ( ( '\\\\' | '\\'' ) ) )*
+                    // InternalPSWP.g:2339:53: ( '\\\\' . | ~ ( ( '\\\\' | '\\'' ) ) )*
                     loop5:
                     do {
                         int alt5=3;
@@ -600,23 +636,15 @@ public class InternalPSWPLexer extends Lexer {
 
                         switch (alt5) {
                     	case 1 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:92: '\\\\' ( 'b' | 't' | 'n' | 'f' | 'r' | 'u' | '\"' | '\\'' | '\\\\' )
+                    	    // InternalPSWP.g:2339:54: '\\\\' .
                     	    {
                     	    match('\\'); 
-                    	    if ( input.LA(1)=='\"'||input.LA(1)=='\''||input.LA(1)=='\\'||input.LA(1)=='b'||input.LA(1)=='f'||input.LA(1)=='n'||input.LA(1)=='r'||(input.LA(1)>='t' && input.LA(1)<='u') ) {
-                    	        input.consume();
-
-                    	    }
-                    	    else {
-                    	        MismatchedSetException mse = new MismatchedSetException(null,input);
-                    	        recover(mse);
-                    	        throw mse;}
-
+                    	    matchAny(); 
 
                     	    }
                     	    break;
                     	case 2 :
-                    	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2273:137: ~ ( ( '\\\\' | '\\'' ) )
+                    	    // InternalPSWP.g:2339:61: ~ ( ( '\\\\' | '\\'' ) )
                     	    {
                     	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='&')||(input.LA(1)>='(' && input.LA(1)<='[')||(input.LA(1)>=']' && input.LA(1)<='\uFFFF') ) {
                     	        input.consume();
@@ -659,12 +687,12 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = RULE_ML_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2275:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2275:19: '/*' ( options {greedy=false; } : . )* '*/'
+            // InternalPSWP.g:2341:17: ( '/*' ( options {greedy=false; } : . )* '*/' )
+            // InternalPSWP.g:2341:19: '/*' ( options {greedy=false; } : . )* '*/'
             {
             match("/*"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2275:24: ( options {greedy=false; } : . )*
+            // InternalPSWP.g:2341:24: ( options {greedy=false; } : . )*
             loop7:
             do {
                 int alt7=2;
@@ -689,7 +717,7 @@ public class InternalPSWPLexer extends Lexer {
 
                 switch (alt7) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2275:52: .
+            	    // InternalPSWP.g:2341:52: .
             	    {
             	    matchAny(); 
 
@@ -719,12 +747,12 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = RULE_SL_COMMENT;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
+            // InternalPSWP.g:2343:17: ( '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )? )
+            // InternalPSWP.g:2343:19: '//' (~ ( ( '\\n' | '\\r' ) ) )* ( ( '\\r' )? '\\n' )?
             {
             match("//"); 
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:24: (~ ( ( '\\n' | '\\r' ) ) )*
+            // InternalPSWP.g:2343:24: (~ ( ( '\\n' | '\\r' ) ) )*
             loop8:
             do {
                 int alt8=2;
@@ -737,7 +765,7 @@ public class InternalPSWPLexer extends Lexer {
 
                 switch (alt8) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:24: ~ ( ( '\\n' | '\\r' ) )
+            	    // InternalPSWP.g:2343:24: ~ ( ( '\\n' | '\\r' ) )
             	    {
             	    if ( (input.LA(1)>='\u0000' && input.LA(1)<='\t')||(input.LA(1)>='\u000B' && input.LA(1)<='\f')||(input.LA(1)>='\u000E' && input.LA(1)<='\uFFFF') ) {
             	        input.consume();
@@ -757,7 +785,7 @@ public class InternalPSWPLexer extends Lexer {
                 }
             } while (true);
 
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:40: ( ( '\\r' )? '\\n' )?
+            // InternalPSWP.g:2343:40: ( ( '\\r' )? '\\n' )?
             int alt10=2;
             int LA10_0 = input.LA(1);
 
@@ -766,9 +794,9 @@ public class InternalPSWPLexer extends Lexer {
             }
             switch (alt10) {
                 case 1 :
-                    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:41: ( '\\r' )? '\\n'
+                    // InternalPSWP.g:2343:41: ( '\\r' )? '\\n'
                     {
-                    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:41: ( '\\r' )?
+                    // InternalPSWP.g:2343:41: ( '\\r' )?
                     int alt9=2;
                     int LA9_0 = input.LA(1);
 
@@ -777,7 +805,7 @@ public class InternalPSWPLexer extends Lexer {
                     }
                     switch (alt9) {
                         case 1 :
-                            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2277:41: '\\r'
+                            // InternalPSWP.g:2343:41: '\\r'
                             {
                             match('\r'); 
 
@@ -809,10 +837,10 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = RULE_WS;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2279:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2279:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalPSWP.g:2345:9: ( ( ' ' | '\\t' | '\\r' | '\\n' )+ )
+            // InternalPSWP.g:2345:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             {
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2279:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
+            // InternalPSWP.g:2345:11: ( ' ' | '\\t' | '\\r' | '\\n' )+
             int cnt11=0;
             loop11:
             do {
@@ -826,7 +854,7 @@ public class InternalPSWPLexer extends Lexer {
 
                 switch (alt11) {
             	case 1 :
-            	    // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:
+            	    // InternalPSWP.g:
             	    {
             	    if ( (input.LA(1)>='\t' && input.LA(1)<='\n')||input.LA(1)=='\r'||input.LA(1)==' ' ) {
             	        input.consume();
@@ -866,8 +894,8 @@ public class InternalPSWPLexer extends Lexer {
         try {
             int _type = RULE_ANY_OTHER;
             int _channel = DEFAULT_TOKEN_CHANNEL;
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2281:16: ( . )
-            // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:2281:18: .
+            // InternalPSWP.g:2347:16: ( . )
+            // InternalPSWP.g:2347:18: .
             {
             matchAny(); 
 
@@ -882,159 +910,173 @@ public class InternalPSWPLexer extends Lexer {
     // $ANTLR end "RULE_ANY_OTHER"
 
     public void mTokens() throws RecognitionException {
-        // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
-        int alt12=22;
+        // InternalPSWP.g:1:8: ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER )
+        int alt12=24;
         alt12 = dfa12.predict(input);
         switch (alt12) {
             case 1 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:10: T__11
+                // InternalPSWP.g:1:10: T__11
                 {
                 mT__11(); 
 
                 }
                 break;
             case 2 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:16: T__12
+                // InternalPSWP.g:1:16: T__12
                 {
                 mT__12(); 
 
                 }
                 break;
             case 3 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:22: T__13
+                // InternalPSWP.g:1:22: T__13
                 {
                 mT__13(); 
 
                 }
                 break;
             case 4 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:28: T__14
+                // InternalPSWP.g:1:28: T__14
                 {
                 mT__14(); 
 
                 }
                 break;
             case 5 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:34: T__15
+                // InternalPSWP.g:1:34: T__15
                 {
                 mT__15(); 
 
                 }
                 break;
             case 6 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:40: T__16
+                // InternalPSWP.g:1:40: T__16
                 {
                 mT__16(); 
 
                 }
                 break;
             case 7 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:46: T__17
+                // InternalPSWP.g:1:46: T__17
                 {
                 mT__17(); 
 
                 }
                 break;
             case 8 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:52: T__18
+                // InternalPSWP.g:1:52: T__18
                 {
                 mT__18(); 
 
                 }
                 break;
             case 9 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:58: T__19
+                // InternalPSWP.g:1:58: T__19
                 {
                 mT__19(); 
 
                 }
                 break;
             case 10 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:64: T__20
+                // InternalPSWP.g:1:64: T__20
                 {
                 mT__20(); 
 
                 }
                 break;
             case 11 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:70: T__21
+                // InternalPSWP.g:1:70: T__21
                 {
                 mT__21(); 
 
                 }
                 break;
             case 12 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:76: T__22
+                // InternalPSWP.g:1:76: T__22
                 {
                 mT__22(); 
 
                 }
                 break;
             case 13 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:82: T__23
+                // InternalPSWP.g:1:82: T__23
                 {
                 mT__23(); 
 
                 }
                 break;
             case 14 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:88: T__24
+                // InternalPSWP.g:1:88: T__24
                 {
                 mT__24(); 
 
                 }
                 break;
             case 15 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:94: T__25
+                // InternalPSWP.g:1:94: T__25
                 {
                 mT__25(); 
 
                 }
                 break;
             case 16 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:100: RULE_ID
+                // InternalPSWP.g:1:100: T__26
+                {
+                mT__26(); 
+
+                }
+                break;
+            case 17 :
+                // InternalPSWP.g:1:106: T__27
+                {
+                mT__27(); 
+
+                }
+                break;
+            case 18 :
+                // InternalPSWP.g:1:112: RULE_ID
                 {
                 mRULE_ID(); 
 
                 }
                 break;
-            case 17 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:108: RULE_INT
+            case 19 :
+                // InternalPSWP.g:1:120: RULE_INT
                 {
                 mRULE_INT(); 
 
                 }
                 break;
-            case 18 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:117: RULE_STRING
+            case 20 :
+                // InternalPSWP.g:1:129: RULE_STRING
                 {
                 mRULE_STRING(); 
 
                 }
                 break;
-            case 19 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:129: RULE_ML_COMMENT
+            case 21 :
+                // InternalPSWP.g:1:141: RULE_ML_COMMENT
                 {
                 mRULE_ML_COMMENT(); 
 
                 }
                 break;
-            case 20 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:145: RULE_SL_COMMENT
+            case 22 :
+                // InternalPSWP.g:1:157: RULE_SL_COMMENT
                 {
                 mRULE_SL_COMMENT(); 
 
                 }
                 break;
-            case 21 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:161: RULE_WS
+            case 23 :
+                // InternalPSWP.g:1:173: RULE_WS
                 {
                 mRULE_WS(); 
 
                 }
                 break;
-            case 22 :
-                // ../es.uah.aut.srg.micobs.mesp.editor.pswp.ui/src-gen/es/uah/aut/srg/micobs/mesp/lang/ui/contentassist/antlr/internal/InternalPSWP.g:1:169: RULE_ANY_OTHER
+            case 24 :
+                // InternalPSWP.g:1:181: RULE_ANY_OTHER
                 {
                 mRULE_ANY_OTHER(); 
 
@@ -1048,80 +1090,46 @@ public class InternalPSWPLexer extends Lexer {
 
     protected DFA12 dfa12 = new DFA12(this);
     static final String DFA12_eotS =
-        "\1\uffff\1\31\1\uffff\1\31\5\uffff\1\31\1\26\2\31\1\uffff\1\31\1"+
-        "\26\2\uffff\3\26\2\uffff\2\31\2\uffff\1\31\5\uffff\1\31\1\uffff"+
-        "\2\31\1\uffff\1\31\5\uffff\27\31\1\112\4\31\1\117\1\31\1\uffff\1"+
-        "\121\3\31\1\uffff\1\31\1\uffff\7\31\1\135\1\uffff\2\31\1\uffff\3"+
-        "\31\1\143\2\uffff";
+        "\1\uffff\1\33\1\uffff\1\33\5\uffff\1\33\1\27\3\33\1\uffff\1\33\1\27\2\uffff\3\27\2\uffff\3\33\2\uffff\1\33\5\uffff\1\33\1\uffff\3\33\1\uffff\1\33\5\uffff\31\33\1\121\4\33\1\126\3\33\1\uffff\1\33\1\133\2\33\1\uffff\1\136\3\33\1\uffff\1\33\1\143\1\uffff\4\33\1\uffff\1\150\2\33\1\153\1\uffff\2\33\1\uffff\2\33\1\160\1\161\2\uffff";
     static final String DFA12_eofS =
-        "\144\uffff";
+        "\162\uffff";
     static final String DFA12_minS =
-        "\1\0\1\141\1\uffff\1\155\5\uffff\1\145\1\75\1\165\1\157\1\uffff"+
-        "\1\163\1\101\2\uffff\2\0\1\52\2\uffff\1\143\1\167\2\uffff\1\160"+
-        "\5\uffff\1\162\1\uffff\1\160\1\156\1\uffff\1\163\5\uffff\1\153\1"+
-        "\160\1\157\1\163\1\160\1\163\1\167\2\141\1\162\1\151\1\157\1\164"+
-        "\1\160\1\147\1\143\1\164\1\157\2\162\1\141\1\145\1\153\1\60\1\156"+
-        "\1\164\1\165\1\143\1\60\1\141\1\uffff\1\60\1\145\1\143\1\153\1\uffff"+
-        "\1\147\1\uffff\1\144\1\164\1\141\1\145\1\40\1\151\1\147\1\60\1\uffff"+
-        "\1\157\1\145\1\uffff\1\156\1\163\1\40\1\60\2\uffff";
+        "\1\0\1\141\1\uffff\1\155\5\uffff\1\145\1\75\1\165\2\157\1\uffff\1\163\1\101\2\uffff\2\0\1\52\2\uffff\1\143\1\167\1\141\2\uffff\1\160\5\uffff\1\162\1\uffff\1\160\1\156\1\157\1\uffff\1\163\5\uffff\1\153\1\160\1\164\1\157\1\163\1\160\1\163\1\154\1\167\2\141\1\146\1\162\1\151\1\157\1\164\1\163\1\160\1\147\1\143\1\157\1\164\1\157\2\162\1\60\1\141\1\145\1\153\1\162\1\60\1\156\1\164\1\165\1\uffff\1\143\1\60\1\141\1\155\1\uffff\1\60\1\145\1\143\1\153\1\uffff\1\147\1\60\1\uffff\1\144\1\164\1\141\1\145\1\uffff\1\60\1\151\1\147\1\60\1\uffff\1\157\1\145\1\uffff\1\156\1\163\2\60\2\uffff";
     static final String DFA12_maxS =
-        "\1\uffff\1\163\1\uffff\1\155\5\uffff\1\145\1\75\1\165\1\157\1\uffff"+
-        "\1\163\1\172\2\uffff\2\uffff\1\57\2\uffff\1\143\1\167\2\uffff\1"+
-        "\160\5\uffff\1\162\1\uffff\1\160\1\156\1\uffff\1\163\5\uffff\1\153"+
-        "\1\160\1\157\1\163\1\160\1\163\1\167\2\141\1\162\1\151\1\157\1\164"+
-        "\1\160\1\147\1\143\1\164\1\157\2\162\1\141\1\145\1\153\1\172\1\156"+
-        "\1\164\1\165\1\143\1\172\1\141\1\uffff\1\172\1\145\1\143\1\153\1"+
-        "\uffff\1\147\1\uffff\1\144\1\164\1\141\1\145\1\40\1\151\1\147\1"+
-        "\172\1\uffff\1\157\1\145\1\uffff\1\156\1\163\1\40\1\172\2\uffff";
+        "\1\uffff\1\163\1\uffff\1\155\5\uffff\1\145\1\75\1\165\2\157\1\uffff\1\163\1\172\2\uffff\2\uffff\1\57\2\uffff\1\143\1\167\1\141\2\uffff\1\160\5\uffff\1\162\1\uffff\1\160\1\156\1\157\1\uffff\1\163\5\uffff\1\153\1\160\1\164\1\157\1\163\1\160\1\163\1\154\1\167\2\141\1\146\1\162\1\151\1\157\1\164\1\163\1\160\1\147\1\143\1\157\1\164\1\157\2\162\1\172\1\141\1\145\1\153\1\162\1\172\1\156\1\164\1\165\1\uffff\1\143\1\172\1\141\1\155\1\uffff\1\172\1\145\1\143\1\153\1\uffff\1\147\1\172\1\uffff\1\144\1\164\1\141\1\145\1\uffff\1\172\1\151\1\147\1\172\1\uffff\1\157\1\145\1\uffff\1\156\1\163\2\172\2\uffff";
     static final String DFA12_acceptS =
-        "\2\uffff\1\2\1\uffff\1\4\1\5\1\6\1\10\1\11\4\uffff\1\16\2\uffff"+
-        "\1\20\1\21\3\uffff\1\25\1\26\2\uffff\1\20\1\2\1\uffff\1\4\1\5\1"+
-        "\6\1\10\1\11\1\uffff\1\13\2\uffff\1\16\1\uffff\1\21\1\22\1\23\1"+
-        "\24\1\25\36\uffff\1\3\4\uffff\1\1\1\uffff\1\12\10\uffff\1\14\2\uffff"+
-        "\1\7\4\uffff\1\15\1\17";
+        "\2\uffff\1\2\1\uffff\1\4\1\5\1\6\1\10\1\11\5\uffff\1\20\2\uffff\1\22\1\23\3\uffff\1\27\1\30\3\uffff\1\22\1\2\1\uffff\1\4\1\5\1\6\1\10\1\11\1\uffff\1\13\3\uffff\1\20\1\uffff\1\23\1\24\1\25\1\26\1\27\42\uffff\1\17\4\uffff\1\3\4\uffff\1\1\2\uffff\1\12\4\uffff\1\15\4\uffff\1\14\2\uffff\1\7\4\uffff\1\16\1\21";
     static final String DFA12_specialS =
-        "\1\1\21\uffff\1\2\1\0\120\uffff}>";
+        "\1\0\22\uffff\1\1\1\2\135\uffff}>";
     static final String[] DFA12_transitionS = {
-            "\11\26\2\25\2\26\1\25\22\26\1\25\1\26\1\22\4\26\1\23\1\5\1\6"+
-            "\2\26\1\15\1\26\1\4\1\24\12\21\1\12\1\2\5\26\32\20\3\26\1\17"+
-            "\1\20\1\26\2\20\1\14\5\20\1\3\5\20\1\16\1\1\2\20\1\13\2\20\1"+
-            "\11\4\20\1\7\1\26\1\10\uff82\26",
-            "\1\27\21\uffff\1\30",
+            "\11\27\2\26\2\27\1\26\22\27\1\26\1\27\1\23\4\27\1\24\1\5\1\6\2\27\1\16\1\27\1\4\1\25\12\22\1\12\1\2\5\27\32\21\3\27\1\20\1\21\1\27\2\21\1\14\5\21\1\3\5\21\1\17\1\1\2\21\1\13\1\15\1\21\1\11\4\21\1\7\1\27\1\10\uff82\27",
+            "\1\30\12\uffff\1\32\6\uffff\1\31",
             "",
-            "\1\33",
+            "\1\35",
             "",
             "",
             "",
             "",
             "",
-            "\1\41",
-            "\1\42",
             "\1\43",
             "\1\44",
-            "",
+            "\1\45",
             "\1\46",
-            "\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\47",
+            "",
+            "\1\51",
+            "\32\33\4\uffff\1\33\1\uffff\32\33",
             "",
             "",
-            "\0\50",
-            "\0\50",
-            "\1\51\4\uffff\1\52",
-            "",
-            "",
-            "\1\54",
-            "\1\55",
-            "",
-            "",
-            "\1\56",
-            "",
-            "",
-            "",
+            "\0\53",
+            "\0\53",
+            "\1\54\4\uffff\1\55",
             "",
             "",
             "\1\57",
-            "",
             "\1\60",
             "\1\61",
+            "",
             "",
             "\1\62",
             "",
@@ -1130,10 +1138,17 @@ public class InternalPSWPLexer extends Lexer {
             "",
             "",
             "\1\63",
+            "",
             "\1\64",
             "\1\65",
             "\1\66",
+            "",
             "\1\67",
+            "",
+            "",
+            "",
+            "",
+            "",
             "\1\70",
             "\1\71",
             "\1\72",
@@ -1152,37 +1167,53 @@ public class InternalPSWPLexer extends Lexer {
             "\1\107",
             "\1\110",
             "\1\111",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\112",
             "\1\113",
             "\1\114",
             "\1\115",
             "\1\116",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\117",
             "\1\120",
-            "",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "\1\122",
             "\1\123",
             "\1\124",
-            "",
             "\1\125",
-            "",
-            "\1\126",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "\1\127",
             "\1\130",
             "\1\131",
+            "",
             "\1\132",
-            "\1\133",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "\1\134",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\1\135",
             "",
-            "\1\136",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "\1\137",
-            "",
             "\1\140",
             "\1\141",
+            "",
             "\1\142",
-            "\12\31\7\uffff\32\31\4\uffff\1\31\1\uffff\32\31",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "",
+            "\1\144",
+            "\1\145",
+            "\1\146",
+            "\1\147",
+            "",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\1\151",
+            "\1\152",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "",
+            "\1\154",
+            "\1\155",
+            "",
+            "\1\156",
+            "\1\157",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
+            "\12\33\7\uffff\32\33\4\uffff\1\33\1\uffff\32\33",
             "",
             ""
     };
@@ -1217,23 +1248,13 @@ public class InternalPSWPLexer extends Lexer {
             this.transition = DFA12_transition;
         }
         public String getDescription() {
-            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
+            return "1:1: Tokens : ( T__11 | T__12 | T__13 | T__14 | T__15 | T__16 | T__17 | T__18 | T__19 | T__20 | T__21 | T__22 | T__23 | T__24 | T__25 | T__26 | T__27 | RULE_ID | RULE_INT | RULE_STRING | RULE_ML_COMMENT | RULE_SL_COMMENT | RULE_WS | RULE_ANY_OTHER );";
         }
         public int specialStateTransition(int s, IntStream _input) throws NoViableAltException {
             IntStream input = _input;
         	int _s = s;
             switch ( s ) {
                     case 0 : 
-                        int LA12_19 = input.LA(1);
-
-                        s = -1;
-                        if ( ((LA12_19>='\u0000' && LA12_19<='\uFFFF')) ) {s = 40;}
-
-                        else s = 22;
-
-                        if ( s>=0 ) return s;
-                        break;
-                    case 1 : 
                         int LA12_0 = input.LA(1);
 
                         s = -1;
@@ -1261,35 +1282,47 @@ public class InternalPSWPLexer extends Lexer {
 
                         else if ( (LA12_0=='c') ) {s = 12;}
 
-                        else if ( (LA12_0==',') ) {s = 13;}
+                        else if ( (LA12_0=='t') ) {s = 13;}
 
-                        else if ( (LA12_0=='o') ) {s = 14;}
+                        else if ( (LA12_0==',') ) {s = 14;}
 
-                        else if ( (LA12_0=='^') ) {s = 15;}
+                        else if ( (LA12_0=='o') ) {s = 15;}
 
-                        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='b')||(LA12_0>='d' && LA12_0<='h')||(LA12_0>='j' && LA12_0<='n')||(LA12_0>='q' && LA12_0<='r')||(LA12_0>='t' && LA12_0<='u')||(LA12_0>='w' && LA12_0<='z')) ) {s = 16;}
+                        else if ( (LA12_0=='^') ) {s = 16;}
 
-                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 17;}
+                        else if ( ((LA12_0>='A' && LA12_0<='Z')||LA12_0=='_'||(LA12_0>='a' && LA12_0<='b')||(LA12_0>='d' && LA12_0<='h')||(LA12_0>='j' && LA12_0<='n')||(LA12_0>='q' && LA12_0<='r')||LA12_0=='u'||(LA12_0>='w' && LA12_0<='z')) ) {s = 17;}
 
-                        else if ( (LA12_0=='\"') ) {s = 18;}
+                        else if ( ((LA12_0>='0' && LA12_0<='9')) ) {s = 18;}
 
-                        else if ( (LA12_0=='\'') ) {s = 19;}
+                        else if ( (LA12_0=='\"') ) {s = 19;}
 
-                        else if ( (LA12_0=='/') ) {s = 20;}
+                        else if ( (LA12_0=='\'') ) {s = 20;}
 
-                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 21;}
+                        else if ( (LA12_0=='/') ) {s = 21;}
 
-                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='*' && LA12_0<='+')||LA12_0=='-'||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 22;}
+                        else if ( ((LA12_0>='\t' && LA12_0<='\n')||LA12_0=='\r'||LA12_0==' ') ) {s = 22;}
+
+                        else if ( ((LA12_0>='\u0000' && LA12_0<='\b')||(LA12_0>='\u000B' && LA12_0<='\f')||(LA12_0>='\u000E' && LA12_0<='\u001F')||LA12_0=='!'||(LA12_0>='#' && LA12_0<='&')||(LA12_0>='*' && LA12_0<='+')||LA12_0=='-'||(LA12_0>='<' && LA12_0<='@')||(LA12_0>='[' && LA12_0<=']')||LA12_0=='`'||LA12_0=='|'||(LA12_0>='~' && LA12_0<='\uFFFF')) ) {s = 23;}
+
+                        if ( s>=0 ) return s;
+                        break;
+                    case 1 : 
+                        int LA12_19 = input.LA(1);
+
+                        s = -1;
+                        if ( ((LA12_19>='\u0000' && LA12_19<='\uFFFF')) ) {s = 43;}
+
+                        else s = 23;
 
                         if ( s>=0 ) return s;
                         break;
                     case 2 : 
-                        int LA12_18 = input.LA(1);
+                        int LA12_20 = input.LA(1);
 
                         s = -1;
-                        if ( ((LA12_18>='\u0000' && LA12_18<='\uFFFF')) ) {s = 40;}
+                        if ( ((LA12_20>='\u0000' && LA12_20<='\uFFFF')) ) {s = 43;}
 
-                        else s = 22;
+                        else s = 23;
 
                         if ( s>=0 ) return s;
                         break;

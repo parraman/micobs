@@ -234,6 +234,7 @@ MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
 
 MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
 	{common::MParameterValueStringLiteral}
+	(isRaw?='raw')?
 	value=STRING;
 
 MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:

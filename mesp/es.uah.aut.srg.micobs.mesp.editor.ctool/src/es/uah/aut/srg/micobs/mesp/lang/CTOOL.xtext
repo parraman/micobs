@@ -42,11 +42,11 @@ VersionedQualifiedReferenceName returns ecore::EString:
 	(VersionedQualifiedName '::')? ID ('::' ID)*;
 
 MConstructionTool returns MConstructionTool:
-	'construction tool'
+	'construction' 'tool'
 	name=ID
 	('extends' extends+=[MConstructionTool|VersionedQualifiedName] ("," extends+=[MConstructionTool|VersionedQualifiedName])* )?
 	'{'
 		(('version' ':=' version=Version ';')
-		& ('supported languages' ':=' supportedLanguages+=[system::MLanguage|VersionedQualifiedName] ("," supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ';'))
+		& ('supported' 'languages' ':=' supportedLanguages+=[system::MLanguage|VersionedQualifiedName] ("," supportedLanguages+=[system::MLanguage|VersionedQualifiedName])* ';'))
     '}'
     ';';

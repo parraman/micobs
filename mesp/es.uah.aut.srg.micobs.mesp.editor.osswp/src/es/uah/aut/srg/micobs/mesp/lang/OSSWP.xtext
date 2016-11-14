@@ -46,7 +46,7 @@ MOSSwPackage returns MOSSwPackage:
 	'{'
 		(('version' ':=' version=Version ';')
 		& ('os' ':=' referencedElement=[pdl::MOperatingSystem|VersionedQualifiedName] ';')
-		& ('construction tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';')
-		& ('provided osswis' ':=' providedOSSWIs+=[mesposswi::MOSSwInterface|VersionedQualifiedName] ("," providedOSSWIs+=[mesposswi::MOSSwInterface|VersionedQualifiedName])* ';')?)
+		& ('construction' 'tools' ':=' ctools+=[mespctool::MConstructionTool|VersionedQualifiedName] ("," ctools+=[mespctool::MConstructionTool|VersionedQualifiedName])* ';')
+		& ('provided' 'osswis' ':=' providedOSSWIs+=[mesposswi::MOSSwInterface|VersionedQualifiedName] ("," providedOSSWIs+=[mesposswi::MOSSwInterface|VersionedQualifiedName])* ';')?)
     '}' ';'
     ;

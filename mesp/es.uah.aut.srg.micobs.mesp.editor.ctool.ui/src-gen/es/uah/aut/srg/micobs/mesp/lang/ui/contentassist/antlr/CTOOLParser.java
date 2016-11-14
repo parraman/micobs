@@ -11,8 +11,8 @@
 package es.uah.aut.srg.micobs.mesp.lang.ui.contentassist.antlr;
 
 import java.util.Collection;
-import java.util.HashMap;
 import java.util.Map;
+import java.util.HashMap;
 
 import org.antlr.runtime.RecognitionException;
 import org.eclipse.xtext.AbstractElement;
@@ -59,21 +59,21 @@ public class CTOOLParser extends AbstractContentAssistParser {
 					put(grammarAccess.getVersionedQualifiedReferenceNameAccess().getGroup_0(), "rule__VersionedQualifiedReferenceName__Group_0__0");
 					put(grammarAccess.getVersionedQualifiedReferenceNameAccess().getGroup_2(), "rule__VersionedQualifiedReferenceName__Group_2__0");
 					put(grammarAccess.getMConstructionToolAccess().getGroup(), "rule__MConstructionTool__Group__0");
-					put(grammarAccess.getMConstructionToolAccess().getGroup_2(), "rule__MConstructionTool__Group_2__0");
-					put(grammarAccess.getMConstructionToolAccess().getGroup_2_2(), "rule__MConstructionTool__Group_2_2__0");
-					put(grammarAccess.getMConstructionToolAccess().getGroup_4_0(), "rule__MConstructionTool__Group_4_0__0");
-					put(grammarAccess.getMConstructionToolAccess().getGroup_4_1(), "rule__MConstructionTool__Group_4_1__0");
-					put(grammarAccess.getMConstructionToolAccess().getGroup_4_1_3(), "rule__MConstructionTool__Group_4_1_3__0");
+					put(grammarAccess.getMConstructionToolAccess().getGroup_3(), "rule__MConstructionTool__Group_3__0");
+					put(grammarAccess.getMConstructionToolAccess().getGroup_3_2(), "rule__MConstructionTool__Group_3_2__0");
+					put(grammarAccess.getMConstructionToolAccess().getGroup_5_0(), "rule__MConstructionTool__Group_5_0__0");
+					put(grammarAccess.getMConstructionToolAccess().getGroup_5_1(), "rule__MConstructionTool__Group_5_1__0");
+					put(grammarAccess.getMConstructionToolAccess().getGroup_5_1_4(), "rule__MConstructionTool__Group_5_1_4__0");
 					put(grammarAccess.getMMESPCTOOLPackageFileAccess().getPackageAssignment_1(), "rule__MMESPCTOOLPackageFile__PackageAssignment_1");
 					put(grammarAccess.getMMESPCTOOLPackageFileAccess().getImportsAssignment_3_1(), "rule__MMESPCTOOLPackageFile__ImportsAssignment_3_1");
 					put(grammarAccess.getMMESPCTOOLPackageFileAccess().getElementAssignment_4(), "rule__MMESPCTOOLPackageFile__ElementAssignment_4");
-					put(grammarAccess.getMConstructionToolAccess().getNameAssignment_1(), "rule__MConstructionTool__NameAssignment_1");
-					put(grammarAccess.getMConstructionToolAccess().getExtendsAssignment_2_1(), "rule__MConstructionTool__ExtendsAssignment_2_1");
-					put(grammarAccess.getMConstructionToolAccess().getExtendsAssignment_2_2_1(), "rule__MConstructionTool__ExtendsAssignment_2_2_1");
-					put(grammarAccess.getMConstructionToolAccess().getVersionAssignment_4_0_2(), "rule__MConstructionTool__VersionAssignment_4_0_2");
-					put(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_4_1_2(), "rule__MConstructionTool__SupportedLanguagesAssignment_4_1_2");
-					put(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_4_1_3_1(), "rule__MConstructionTool__SupportedLanguagesAssignment_4_1_3_1");
-					put(grammarAccess.getMConstructionToolAccess().getUnorderedGroup_4(), "rule__MConstructionTool__UnorderedGroup_4");
+					put(grammarAccess.getMConstructionToolAccess().getNameAssignment_2(), "rule__MConstructionTool__NameAssignment_2");
+					put(grammarAccess.getMConstructionToolAccess().getExtendsAssignment_3_1(), "rule__MConstructionTool__ExtendsAssignment_3_1");
+					put(grammarAccess.getMConstructionToolAccess().getExtendsAssignment_3_2_1(), "rule__MConstructionTool__ExtendsAssignment_3_2_1");
+					put(grammarAccess.getMConstructionToolAccess().getVersionAssignment_5_0_2(), "rule__MConstructionTool__VersionAssignment_5_0_2");
+					put(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_5_1_3(), "rule__MConstructionTool__SupportedLanguagesAssignment_5_1_3");
+					put(grammarAccess.getMConstructionToolAccess().getSupportedLanguagesAssignment_5_1_4_1(), "rule__MConstructionTool__SupportedLanguagesAssignment_5_1_4_1");
+					put(grammarAccess.getMConstructionToolAccess().getUnorderedGroup_5(), "rule__MConstructionTool__UnorderedGroup_5");
 				}
 			};
 		}

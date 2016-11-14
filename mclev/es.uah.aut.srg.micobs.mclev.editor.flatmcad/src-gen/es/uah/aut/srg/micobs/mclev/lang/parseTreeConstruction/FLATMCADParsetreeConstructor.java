@@ -67,13 +67,14 @@ protected class ThisRootNode extends RootToken {
 /************ begin Rule MMCLEVFLATMCADPackageFile ****************
  *
  * MMCLEVFLATMCADPackageFile:
- * 	"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
- * 	imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ";")* element=MMCLEVFLATMCADPackageElement;
+ * 	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+ * 	imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')*
+ * 	element=MMCLEVFLATMCADPackageElement;
  *
  **/
 
-// "package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-// imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ";")* element=MMCLEVFLATMCADPackageElement
+// 'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+// imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')* element=MMCLEVFLATMCADPackageElement
 protected class MMCLEVFLATMCADPackageFile_Group extends GroupToken {
 	
 	public MMCLEVFLATMCADPackageFile_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -102,7 +103,7 @@ protected class MMCLEVFLATMCADPackageFile_Group extends GroupToken {
 
 }
 
-// "package"
+// 'package'
 protected class MMCLEVFLATMCADPackageFile_PackageKeyword_0 extends KeywordToken  {
 	
 	public MMCLEVFLATMCADPackageFile_PackageKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -160,7 +161,7 @@ protected class MMCLEVFLATMCADPackageFile_PackageAssignment_1 extends Assignment
 
 }
 
-// ";"
+// ';'
 protected class MMCLEVFLATMCADPackageFile_SemicolonKeyword_2 extends KeywordToken  {
 	
 	public MMCLEVFLATMCADPackageFile_SemicolonKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -182,7 +183,7 @@ protected class MMCLEVFLATMCADPackageFile_SemicolonKeyword_2 extends KeywordToke
 
 }
 
-// ("import" imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ";")*
+// ('import' imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')*
 protected class MMCLEVFLATMCADPackageFile_Group_3 extends GroupToken {
 	
 	public MMCLEVFLATMCADPackageFile_Group_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -204,7 +205,7 @@ protected class MMCLEVFLATMCADPackageFile_Group_3 extends GroupToken {
 
 }
 
-// "import"
+// 'import'
 protected class MMCLEVFLATMCADPackageFile_ImportKeyword_3_0 extends KeywordToken  {
 	
 	public MMCLEVFLATMCADPackageFile_ImportKeyword_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -264,7 +265,7 @@ protected class MMCLEVFLATMCADPackageFile_ImportsAssignment_3_1 extends Assignme
 
 }
 
-// ";"
+// ';'
 protected class MMCLEVFLATMCADPackageFile_SemicolonKeyword_3_2 extends KeywordToken  {
 	
 	public MMCLEVFLATMCADPackageFile_SemicolonKeyword_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -387,15 +388,19 @@ protected class MMCLEVFLATMCADPackageElement_MFlatMCADParserRuleCall extends Rul
 /************ begin Rule MFlatMCAD ****************
  *
  * MFlatMCAD:
- * 	"flat mcad" name=ID "{" ("version" ":=" version=Version ";" & "deployment" "project" ":="
- * 	referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";" & "deployment" "targets" "{"
- * 	targets+=MFlatMCADTarget+ "}" ";") "}" ";";
+ * 	'flat' 'mcad'
+ * 	name=ID
+ * 	'{' ('version' ':=' version=Version ';' & 'deployment' 'project' ':='
+ * 	referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';' & 'deployment' 'targets' '{'
+ * 	targets+=MFlatMCADTarget+
+ * 	'}' ';')
+ * 	'}' ';';
  *
  **/
 
-// "flat mcad" name=ID "{" ("version" ":=" version=Version ";" & "deployment" "project" ":="
-// referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";" & "deployment" "targets" "{"
-// targets+=MFlatMCADTarget+ "}" ";") "}" ";"
+// 'flat' 'mcad' name=ID '{' ('version' ':=' version=Version ';' & 'deployment' 'project' ':='
+// referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';' & 'deployment' 'targets' '{'
+// targets+=MFlatMCADTarget+ '}' ';') '}' ';'
 protected class MFlatMCAD_Group extends GroupToken {
 	
 	public MFlatMCAD_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -410,7 +415,7 @@ protected class MFlatMCAD_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_SemicolonKeyword_5(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_SemicolonKeyword_6(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -424,16 +429,16 @@ protected class MFlatMCAD_Group extends GroupToken {
 
 }
 
-// "flat mcad"
-protected class MFlatMCAD_FlatMcadKeyword_0 extends KeywordToken  {
+// 'flat'
+protected class MFlatMCAD_FlatKeyword_0 extends KeywordToken  {
 	
-	public MFlatMCAD_FlatMcadKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_FlatKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getFlatMcadKeyword_0();
+		return grammarAccess.getMFlatMCADAccess().getFlatKeyword_0();
 	}
 
     @Override
@@ -445,22 +450,44 @@ protected class MFlatMCAD_FlatMcadKeyword_0 extends KeywordToken  {
 
 }
 
-// name=ID
-protected class MFlatMCAD_NameAssignment_1 extends AssignmentToken  {
+// 'mcad'
+protected class MFlatMCAD_McadKeyword_1 extends KeywordToken  {
 	
-	public MFlatMCAD_NameAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_McadKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
-	public Assignment getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getNameAssignment_1();
+	public Keyword getGrammarElement() {
+		return grammarAccess.getMFlatMCADAccess().getMcadKeyword_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_FlatMcadKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_FlatKeyword_0(lastRuleCallOrigin, this, 0, inst);
+			default: return null;
+		}	
+	}
+
+}
+
+// name=ID
+protected class MFlatMCAD_NameAssignment_2 extends AssignmentToken  {
+	
+	public MFlatMCAD_NameAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMFlatMCADAccess().getNameAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MFlatMCAD_McadKeyword_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -469,9 +496,9 @@ protected class MFlatMCAD_NameAssignment_1 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("name",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("name");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMFlatMCADAccess().getNameIDTerminalRuleCall_1_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMFlatMCADAccess().getNameIDTerminalRuleCall_2_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getMFlatMCADAccess().getNameIDTerminalRuleCall_1_0();
+			element = grammarAccess.getMFlatMCADAccess().getNameIDTerminalRuleCall_2_0();
 			return obj;
 		}
 		return null;
@@ -479,112 +506,112 @@ protected class MFlatMCAD_NameAssignment_1 extends AssignmentToken  {
 
 }
 
-// "{"
-protected class MFlatMCAD_LeftCurlyBracketKeyword_2 extends KeywordToken  {
+// '{'
+protected class MFlatMCAD_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
-	public MFlatMCAD_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getLeftCurlyBracketKeyword_2();
+		return grammarAccess.getMFlatMCADAccess().getLeftCurlyBracketKeyword_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_NameAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_NameAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "version" ":=" version=Version ";" & "deployment" "project" ":="
-// referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";" & "deployment" "targets" "{"
-// targets+=MFlatMCADTarget+ "}" ";"
-protected class MFlatMCAD_UnorderedGroup_3 extends UnorderedGroupToken {
+// ('version' ':=' version=Version ';' & 'deployment' 'project' ':='
+// referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';' & 'deployment' 'targets' '{'
+// targets+=MFlatMCADTarget+ '}' ';')
+protected class MFlatMCAD_UnorderedGroup_4 extends UnorderedGroupToken {
 	
-	public MFlatMCAD_UnorderedGroup_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_UnorderedGroup_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public UnorderedGroup getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getUnorderedGroup_3();
+		return grammarAccess.getMFlatMCADAccess().getUnorderedGroup_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_Group_3_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_Group_4_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "version" ":=" version=Version ";"
-protected class MFlatMCAD_Group_3_0 extends GroupToken {
+// 'version' ':=' version=Version ';'
+protected class MFlatMCAD_Group_4_0 extends GroupToken {
 	
-	public MFlatMCAD_Group_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_Group_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getGroup_3_0();
+		return grammarAccess.getMFlatMCADAccess().getGroup_4_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_SemicolonKeyword_3_0_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_SemicolonKeyword_4_0_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "version"
-protected class MFlatMCAD_VersionKeyword_3_0_0 extends KeywordToken  {
+// 'version'
+protected class MFlatMCAD_VersionKeyword_4_0_0 extends KeywordToken  {
 	
-	public MFlatMCAD_VersionKeyword_3_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_VersionKeyword_4_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getVersionKeyword_3_0_0();
+		return grammarAccess.getMFlatMCADAccess().getVersionKeyword_4_0_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_LeftCurlyBracketKeyword_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_LeftCurlyBracketKeyword_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// ":="
-protected class MFlatMCAD_ColonEqualsSignKeyword_3_0_1 extends KeywordToken  {
+// ':='
+protected class MFlatMCAD_ColonEqualsSignKeyword_4_0_1 extends KeywordToken  {
 	
-	public MFlatMCAD_ColonEqualsSignKeyword_3_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_ColonEqualsSignKeyword_4_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getColonEqualsSignKeyword_3_0_1();
+		return grammarAccess.getMFlatMCADAccess().getColonEqualsSignKeyword_4_0_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_VersionKeyword_3_0_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_VersionKeyword_4_0_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -592,21 +619,21 @@ protected class MFlatMCAD_ColonEqualsSignKeyword_3_0_1 extends KeywordToken  {
 }
 
 // version=Version
-protected class MFlatMCAD_VersionAssignment_3_0_2 extends AssignmentToken  {
+protected class MFlatMCAD_VersionAssignment_4_0_2 extends AssignmentToken  {
 	
-	public MFlatMCAD_VersionAssignment_3_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_VersionAssignment_4_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getVersionAssignment_3_0_2();
+		return grammarAccess.getMFlatMCADAccess().getVersionAssignment_4_0_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_ColonEqualsSignKeyword_3_0_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_ColonEqualsSignKeyword_4_0_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -615,9 +642,9 @@ protected class MFlatMCAD_VersionAssignment_3_0_2 extends AssignmentToken  {
 	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("version",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("version");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMFlatMCADAccess().getVersionVersionParserRuleCall_3_0_2_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMFlatMCADAccess().getVersionVersionParserRuleCall_4_0_2_0(), value, null)) {
 			type = AssignmentType.DATATYPE_RULE_CALL;
-			element = grammarAccess.getMFlatMCADAccess().getVersionVersionParserRuleCall_3_0_2_0();
+			element = grammarAccess.getMFlatMCADAccess().getVersionVersionParserRuleCall_4_0_2_0();
 			return obj;
 		}
 		return null;
@@ -625,22 +652,22 @@ protected class MFlatMCAD_VersionAssignment_3_0_2 extends AssignmentToken  {
 
 }
 
-// ";"
-protected class MFlatMCAD_SemicolonKeyword_3_0_3 extends KeywordToken  {
+// ';'
+protected class MFlatMCAD_SemicolonKeyword_4_0_3 extends KeywordToken  {
 	
-	public MFlatMCAD_SemicolonKeyword_3_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_SemicolonKeyword_4_0_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_3_0_3();
+		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_4_0_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_VersionAssignment_3_0_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_VersionAssignment_4_0_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -648,88 +675,88 @@ protected class MFlatMCAD_SemicolonKeyword_3_0_3 extends KeywordToken  {
 }
 
 
-// "deployment" "project" ":=" referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";"
-protected class MFlatMCAD_Group_3_1 extends GroupToken {
+// 'deployment' 'project' ':=' referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';'
+protected class MFlatMCAD_Group_4_1 extends GroupToken {
 	
-	public MFlatMCAD_Group_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_Group_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getGroup_3_1();
+		return grammarAccess.getMFlatMCADAccess().getGroup_4_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_SemicolonKeyword_3_1_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_SemicolonKeyword_4_1_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "deployment"
-protected class MFlatMCAD_DeploymentKeyword_3_1_0 extends KeywordToken  {
+// 'deployment'
+protected class MFlatMCAD_DeploymentKeyword_4_1_0 extends KeywordToken  {
 	
-	public MFlatMCAD_DeploymentKeyword_3_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_DeploymentKeyword_4_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getDeploymentKeyword_3_1_0();
+		return grammarAccess.getMFlatMCADAccess().getDeploymentKeyword_4_1_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_Group_3_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_Group_4_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "project"
-protected class MFlatMCAD_ProjectKeyword_3_1_1 extends KeywordToken  {
+// 'project'
+protected class MFlatMCAD_ProjectKeyword_4_1_1 extends KeywordToken  {
 	
-	public MFlatMCAD_ProjectKeyword_3_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_ProjectKeyword_4_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getProjectKeyword_3_1_1();
+		return grammarAccess.getMFlatMCADAccess().getProjectKeyword_4_1_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_DeploymentKeyword_3_1_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_DeploymentKeyword_4_1_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// ":="
-protected class MFlatMCAD_ColonEqualsSignKeyword_3_1_2 extends KeywordToken  {
+// ':='
+protected class MFlatMCAD_ColonEqualsSignKeyword_4_1_2 extends KeywordToken  {
 	
-	public MFlatMCAD_ColonEqualsSignKeyword_3_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_ColonEqualsSignKeyword_4_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getColonEqualsSignKeyword_3_1_2();
+		return grammarAccess.getMFlatMCADAccess().getColonEqualsSignKeyword_4_1_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_ProjectKeyword_3_1_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_ProjectKeyword_4_1_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -737,21 +764,21 @@ protected class MFlatMCAD_ColonEqualsSignKeyword_3_1_2 extends KeywordToken  {
 }
 
 // referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName]
-protected class MFlatMCAD_ReferencedElementAssignment_3_1_3 extends AssignmentToken  {
+protected class MFlatMCAD_ReferencedElementAssignment_4_1_3 extends AssignmentToken  {
 	
-	public MFlatMCAD_ReferencedElementAssignment_3_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_ReferencedElementAssignment_4_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getReferencedElementAssignment_3_1_3();
+		return grammarAccess.getMFlatMCADAccess().getReferencedElementAssignment_4_1_3();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_ColonEqualsSignKeyword_3_1_2(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_ColonEqualsSignKeyword_4_1_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -762,9 +789,9 @@ protected class MFlatMCAD_ReferencedElementAssignment_3_1_3 extends AssignmentTo
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("referencedElement");
 		if(value instanceof EObject) { // org::eclipse::xtext::impl::CrossReferenceImpl
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
-			if(param.isInstanceOf(grammarAccess.getMFlatMCADAccess().getReferencedElementMMCADeploymentCrossReference_3_1_3_0().getType().getClassifier())) {
+			if(param.isInstanceOf(grammarAccess.getMFlatMCADAccess().getReferencedElementMMCADeploymentCrossReference_4_1_3_0().getType().getClassifier())) {
 				type = AssignmentType.CROSS_REFERENCE;
-				element = grammarAccess.getMFlatMCADAccess().getReferencedElementMMCADeploymentCrossReference_3_1_3_0(); 
+				element = grammarAccess.getMFlatMCADAccess().getReferencedElementMMCADeploymentCrossReference_4_1_3_0(); 
 				return obj;
 			}
 		}
@@ -773,22 +800,22 @@ protected class MFlatMCAD_ReferencedElementAssignment_3_1_3 extends AssignmentTo
 
 }
 
-// ";"
-protected class MFlatMCAD_SemicolonKeyword_3_1_4 extends KeywordToken  {
+// ';'
+protected class MFlatMCAD_SemicolonKeyword_4_1_4 extends KeywordToken  {
 	
-	public MFlatMCAD_SemicolonKeyword_3_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_SemicolonKeyword_4_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_3_1_4();
+		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_4_1_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_ReferencedElementAssignment_3_1_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_ReferencedElementAssignment_4_1_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -796,88 +823,88 @@ protected class MFlatMCAD_SemicolonKeyword_3_1_4 extends KeywordToken  {
 }
 
 
-// "deployment" "targets" "{" targets+=MFlatMCADTarget+ "}" ";"
-protected class MFlatMCAD_Group_3_2 extends GroupToken {
+// 'deployment' 'targets' '{' targets+=MFlatMCADTarget+ '}' ';'
+protected class MFlatMCAD_Group_4_2 extends GroupToken {
 	
-	public MFlatMCAD_Group_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_Group_4_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Group getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getGroup_3_2();
+		return grammarAccess.getMFlatMCADAccess().getGroup_4_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_SemicolonKeyword_3_2_5(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_SemicolonKeyword_4_2_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "deployment"
-protected class MFlatMCAD_DeploymentKeyword_3_2_0 extends KeywordToken  {
+// 'deployment'
+protected class MFlatMCAD_DeploymentKeyword_4_2_0 extends KeywordToken  {
 	
-	public MFlatMCAD_DeploymentKeyword_3_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_DeploymentKeyword_4_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getDeploymentKeyword_3_2_0();
+		return grammarAccess.getMFlatMCADAccess().getDeploymentKeyword_4_2_0();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_Group_3_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_Group_4_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "targets"
-protected class MFlatMCAD_TargetsKeyword_3_2_1 extends KeywordToken  {
+// 'targets'
+protected class MFlatMCAD_TargetsKeyword_4_2_1 extends KeywordToken  {
 	
-	public MFlatMCAD_TargetsKeyword_3_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_TargetsKeyword_4_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getTargetsKeyword_3_2_1();
+		return grammarAccess.getMFlatMCADAccess().getTargetsKeyword_4_2_1();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_DeploymentKeyword_3_2_0(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_DeploymentKeyword_4_2_0(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// "{"
-protected class MFlatMCAD_LeftCurlyBracketKeyword_3_2_2 extends KeywordToken  {
+// '{'
+protected class MFlatMCAD_LeftCurlyBracketKeyword_4_2_2 extends KeywordToken  {
 	
-	public MFlatMCAD_LeftCurlyBracketKeyword_3_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_LeftCurlyBracketKeyword_4_2_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getLeftCurlyBracketKeyword_3_2_2();
+		return grammarAccess.getMFlatMCADAccess().getLeftCurlyBracketKeyword_4_2_2();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_TargetsKeyword_3_2_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_TargetsKeyword_4_2_1(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -885,15 +912,15 @@ protected class MFlatMCAD_LeftCurlyBracketKeyword_3_2_2 extends KeywordToken  {
 }
 
 // targets+=MFlatMCADTarget+
-protected class MFlatMCAD_TargetsAssignment_3_2_3 extends AssignmentToken  {
+protected class MFlatMCAD_TargetsAssignment_4_2_3 extends AssignmentToken  {
 	
-	public MFlatMCAD_TargetsAssignment_3_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_TargetsAssignment_4_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getTargetsAssignment_3_2_3();
+		return grammarAccess.getMFlatMCADAccess().getTargetsAssignment_4_2_3();
 	}
 
     @Override
@@ -912,7 +939,7 @@ protected class MFlatMCAD_TargetsAssignment_3_2_3 extends AssignmentToken  {
 			IEObjectConsumer param = createEObjectConsumer((EObject)value);
 			if(param.isInstanceOf(grammarAccess.getMFlatMCADTargetRule().getType().getClassifier())) {
 				type = AssignmentType.PARSER_RULE_CALL;
-				element = grammarAccess.getMFlatMCADAccess().getTargetsMFlatMCADTargetParserRuleCall_3_2_3_0(); 
+				element = grammarAccess.getMFlatMCADAccess().getTargetsMFlatMCADTargetParserRuleCall_4_2_3_0(); 
 				consumed = obj;
 				return param;
 			}
@@ -924,51 +951,51 @@ protected class MFlatMCAD_TargetsAssignment_3_2_3 extends AssignmentToken  {
 	public AbstractToken createFollowerAfterReturn(AbstractToken next,	int actIndex, int index, IEObjectConsumer inst) {
 		if(value == inst.getEObject() && !inst.isConsumed()) return null;
 		switch(index) {
-			case 0: return new MFlatMCAD_TargetsAssignment_3_2_3(lastRuleCallOrigin, next, actIndex, consumed);
-			case 1: return new MFlatMCAD_LeftCurlyBracketKeyword_3_2_2(lastRuleCallOrigin, next, actIndex, consumed);
+			case 0: return new MFlatMCAD_TargetsAssignment_4_2_3(lastRuleCallOrigin, next, actIndex, consumed);
+			case 1: return new MFlatMCAD_LeftCurlyBracketKeyword_4_2_2(lastRuleCallOrigin, next, actIndex, consumed);
 			default: return null;
 		}	
 	}	
 }
 
-// "}"
-protected class MFlatMCAD_RightCurlyBracketKeyword_3_2_4 extends KeywordToken  {
+// '}'
+protected class MFlatMCAD_RightCurlyBracketKeyword_4_2_4 extends KeywordToken  {
 	
-	public MFlatMCAD_RightCurlyBracketKeyword_3_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_RightCurlyBracketKeyword_4_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getRightCurlyBracketKeyword_3_2_4();
+		return grammarAccess.getMFlatMCADAccess().getRightCurlyBracketKeyword_4_2_4();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_TargetsAssignment_3_2_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_TargetsAssignment_4_2_3(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// ";"
-protected class MFlatMCAD_SemicolonKeyword_3_2_5 extends KeywordToken  {
+// ';'
+protected class MFlatMCAD_SemicolonKeyword_4_2_5 extends KeywordToken  {
 	
-	public MFlatMCAD_SemicolonKeyword_3_2_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_SemicolonKeyword_4_2_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_3_2_5();
+		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_4_2_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_RightCurlyBracketKeyword_3_2_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_RightCurlyBracketKeyword_4_2_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -977,44 +1004,44 @@ protected class MFlatMCAD_SemicolonKeyword_3_2_5 extends KeywordToken  {
 
 
 
-// "}"
-protected class MFlatMCAD_RightCurlyBracketKeyword_4 extends KeywordToken  {
+// '}'
+protected class MFlatMCAD_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	
-	public MFlatMCAD_RightCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getRightCurlyBracketKeyword_4();
+		return grammarAccess.getMFlatMCADAccess().getRightCurlyBracketKeyword_5();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_UnorderedGroup_3(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_UnorderedGroup_4(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
 
 }
 
-// ";"
-protected class MFlatMCAD_SemicolonKeyword_5 extends KeywordToken  {
+// ';'
+protected class MFlatMCAD_SemicolonKeyword_6 extends KeywordToken  {
 	
-	public MFlatMCAD_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MFlatMCAD_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Keyword getGrammarElement() {
-		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_5();
+		return grammarAccess.getMFlatMCADAccess().getSemicolonKeyword_6();
 	}
 
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MFlatMCAD_RightCurlyBracketKeyword_4(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MFlatMCAD_RightCurlyBracketKeyword_5(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -1028,19 +1055,33 @@ protected class MFlatMCAD_SemicolonKeyword_5 extends KeywordToken  {
 /************ begin Rule MFlatMCADTarget ****************
  *
  * MFlatMCADTarget:
- * 	"target" ("platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ("alternative"
- * 	leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?) "{" (("attribute"
- * 	"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("components" "{"
- * 	components+=MFlatComponentInstance+ "}" ";")? & ("connections" "{" connections+=MFlatConnection+ "}" ";")? &
- * 	("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?) "}" ";";
+ * 	'target' ('platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ('alternative'
+ * 	leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?)
+ * 	'{' (('attribute' 'values'
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment+
+ * 	'}' ';')?
+ * 	& ('components'
+ * 	'{'
+ * 	components+=MFlatComponentInstance+
+ * 	'}' ';')?
+ * 	& ('connections'
+ * 	'{'
+ * 	connections+=MFlatConnection+
+ * 	'}' ';')?
+ * 	& ('libraries'
+ * 	'{'
+ * 	libraries+=MFlatServiceLibraryInstance+
+ * 	'}' ';')?)
+ * 	'}' ';';
  *
  **/
 
-// "target" ("platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ("alternative"
-// leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?) "{" (("attribute"
-// "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("components" "{"
-// components+=MFlatComponentInstance+ "}" ";")? & ("connections" "{" connections+=MFlatConnection+ "}" ";")? &
-// ("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?) "}" ";"
+// 'target' ('platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ('alternative'
+// leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?) '{' (('attribute'
+// 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('components' '{'
+// components+=MFlatComponentInstance+ '}' ';')? & ('connections' '{' connections+=MFlatConnection+ '}' ';')? &
+// ('libraries' '{' libraries+=MFlatServiceLibraryInstance+ '}' ';')?) '}' ';'
 protected class MFlatMCADTarget_Group extends GroupToken {
 	
 	public MFlatMCADTarget_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1069,7 +1110,7 @@ protected class MFlatMCADTarget_Group extends GroupToken {
 
 }
 
-// "target"
+// 'target'
 protected class MFlatMCADTarget_TargetKeyword_0 extends KeywordToken  {
 	
 	public MFlatMCADTarget_TargetKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1090,8 +1131,8 @@ protected class MFlatMCADTarget_TargetKeyword_0 extends KeywordToken  {
 
 }
 
-// "platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ("alternative"
-// leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?
+// ('platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ('alternative'
+// leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?)
 protected class MFlatMCADTarget_UnorderedGroup_1 extends UnorderedGroupToken {
 	
 	public MFlatMCADTarget_UnorderedGroup_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1114,7 +1155,7 @@ protected class MFlatMCADTarget_UnorderedGroup_1 extends UnorderedGroupToken {
 
 }
 
-// "platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform]
+// 'platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform]
 protected class MFlatMCADTarget_Group_1_0 extends GroupToken {
 	
 	public MFlatMCADTarget_Group_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1136,7 +1177,7 @@ protected class MFlatMCADTarget_Group_1_0 extends GroupToken {
 
 }
 
-// "platform"
+// 'platform'
 protected class MFlatMCADTarget_PlatformKeyword_1_0_0 extends KeywordToken  {
 	
 	public MFlatMCADTarget_PlatformKeyword_1_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1196,7 +1237,7 @@ protected class MFlatMCADTarget_DeploymentPlatformAssignment_1_0_1 extends Assig
 }
 
 
-// ("alternative" leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?
+// ('alternative' leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?
 protected class MFlatMCADTarget_Group_1_1 extends GroupToken {
 	
 	public MFlatMCADTarget_Group_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1218,7 +1259,7 @@ protected class MFlatMCADTarget_Group_1_1 extends GroupToken {
 
 }
 
-// "alternative"
+// 'alternative'
 protected class MFlatMCADTarget_AlternativeKeyword_1_1_0 extends KeywordToken  {
 	
 	public MFlatMCADTarget_AlternativeKeyword_1_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1279,7 +1320,7 @@ protected class MFlatMCADTarget_LeafDeploymentAlternativeAssignment_1_1_1 extend
 
 
 
-// "{"
+// '{'
 protected class MFlatMCADTarget_LeftCurlyBracketKeyword_2 extends KeywordToken  {
 	
 	public MFlatMCADTarget_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1301,9 +1342,9 @@ protected class MFlatMCADTarget_LeftCurlyBracketKeyword_2 extends KeywordToken  
 
 }
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("components" "{"
-// components+=MFlatComponentInstance+ "}" ";")? & ("connections" "{" connections+=MFlatConnection+ "}" ";")? &
-// ("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?
+// (('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('components' '{'
+// components+=MFlatComponentInstance+ '}' ';')? & ('connections' '{' connections+=MFlatConnection+ '}' ';')? &
+// ('libraries' '{' libraries+=MFlatServiceLibraryInstance+ '}' ';')?)
 protected class MFlatMCADTarget_UnorderedGroup_3 extends UnorderedGroupToken {
 	
 	public MFlatMCADTarget_UnorderedGroup_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1329,7 +1370,7 @@ protected class MFlatMCADTarget_UnorderedGroup_3 extends UnorderedGroupToken {
 
 }
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")?
+// ('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')?
 protected class MFlatMCADTarget_Group_3_0 extends GroupToken {
 	
 	public MFlatMCADTarget_Group_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1351,7 +1392,7 @@ protected class MFlatMCADTarget_Group_3_0 extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MFlatMCADTarget_AttributeKeyword_3_0_0 extends KeywordToken  {
 	
 	public MFlatMCADTarget_AttributeKeyword_3_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1373,7 +1414,7 @@ protected class MFlatMCADTarget_AttributeKeyword_3_0_0 extends KeywordToken  {
 
 }
 
-// "values"
+// 'values'
 protected class MFlatMCADTarget_ValuesKeyword_3_0_1 extends KeywordToken  {
 	
 	public MFlatMCADTarget_ValuesKeyword_3_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1395,7 +1436,7 @@ protected class MFlatMCADTarget_ValuesKeyword_3_0_1 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MFlatMCADTarget_LeftCurlyBracketKeyword_3_0_2 extends KeywordToken  {
 	
 	public MFlatMCADTarget_LeftCurlyBracketKeyword_3_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1464,7 +1505,7 @@ protected class MFlatMCADTarget_AttributeValueAssignmentsAssignment_3_0_3 extend
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_0_4 extends KeywordToken  {
 	
 	public MFlatMCADTarget_RightCurlyBracketKeyword_3_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1486,7 +1527,7 @@ protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_0_4 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MFlatMCADTarget_SemicolonKeyword_3_0_5 extends KeywordToken  {
 	
 	public MFlatMCADTarget_SemicolonKeyword_3_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1509,7 +1550,7 @@ protected class MFlatMCADTarget_SemicolonKeyword_3_0_5 extends KeywordToken  {
 }
 
 
-// ("components" "{" components+=MFlatComponentInstance+ "}" ";")?
+// ('components' '{' components+=MFlatComponentInstance+ '}' ';')?
 protected class MFlatMCADTarget_Group_3_1 extends GroupToken {
 	
 	public MFlatMCADTarget_Group_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1531,7 +1572,7 @@ protected class MFlatMCADTarget_Group_3_1 extends GroupToken {
 
 }
 
-// "components"
+// 'components'
 protected class MFlatMCADTarget_ComponentsKeyword_3_1_0 extends KeywordToken  {
 	
 	public MFlatMCADTarget_ComponentsKeyword_3_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1554,7 +1595,7 @@ protected class MFlatMCADTarget_ComponentsKeyword_3_1_0 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MFlatMCADTarget_LeftCurlyBracketKeyword_3_1_1 extends KeywordToken  {
 	
 	public MFlatMCADTarget_LeftCurlyBracketKeyword_3_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1623,7 +1664,7 @@ protected class MFlatMCADTarget_ComponentsAssignment_3_1_2 extends AssignmentTok
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_1_3 extends KeywordToken  {
 	
 	public MFlatMCADTarget_RightCurlyBracketKeyword_3_1_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1645,7 +1686,7 @@ protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_1_3 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MFlatMCADTarget_SemicolonKeyword_3_1_4 extends KeywordToken  {
 	
 	public MFlatMCADTarget_SemicolonKeyword_3_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1668,7 +1709,7 @@ protected class MFlatMCADTarget_SemicolonKeyword_3_1_4 extends KeywordToken  {
 }
 
 
-// ("connections" "{" connections+=MFlatConnection+ "}" ";")?
+// ('connections' '{' connections+=MFlatConnection+ '}' ';')?
 protected class MFlatMCADTarget_Group_3_2 extends GroupToken {
 	
 	public MFlatMCADTarget_Group_3_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1690,7 +1731,7 @@ protected class MFlatMCADTarget_Group_3_2 extends GroupToken {
 
 }
 
-// "connections"
+// 'connections'
 protected class MFlatMCADTarget_ConnectionsKeyword_3_2_0 extends KeywordToken  {
 	
 	public MFlatMCADTarget_ConnectionsKeyword_3_2_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1714,7 +1755,7 @@ protected class MFlatMCADTarget_ConnectionsKeyword_3_2_0 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MFlatMCADTarget_LeftCurlyBracketKeyword_3_2_1 extends KeywordToken  {
 	
 	public MFlatMCADTarget_LeftCurlyBracketKeyword_3_2_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1783,7 +1824,7 @@ protected class MFlatMCADTarget_ConnectionsAssignment_3_2_2 extends AssignmentTo
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_2_3 extends KeywordToken  {
 	
 	public MFlatMCADTarget_RightCurlyBracketKeyword_3_2_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1805,7 +1846,7 @@ protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_2_3 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MFlatMCADTarget_SemicolonKeyword_3_2_4 extends KeywordToken  {
 	
 	public MFlatMCADTarget_SemicolonKeyword_3_2_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1828,7 +1869,7 @@ protected class MFlatMCADTarget_SemicolonKeyword_3_2_4 extends KeywordToken  {
 }
 
 
-// ("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?
+// ('libraries' '{' libraries+=MFlatServiceLibraryInstance+ '}' ';')?
 protected class MFlatMCADTarget_Group_3_3 extends GroupToken {
 	
 	public MFlatMCADTarget_Group_3_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1850,7 +1891,7 @@ protected class MFlatMCADTarget_Group_3_3 extends GroupToken {
 
 }
 
-// "libraries"
+// 'libraries'
 protected class MFlatMCADTarget_LibrariesKeyword_3_3_0 extends KeywordToken  {
 	
 	public MFlatMCADTarget_LibrariesKeyword_3_3_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1875,7 +1916,7 @@ protected class MFlatMCADTarget_LibrariesKeyword_3_3_0 extends KeywordToken  {
 
 }
 
-// "{"
+// '{'
 protected class MFlatMCADTarget_LeftCurlyBracketKeyword_3_3_1 extends KeywordToken  {
 	
 	public MFlatMCADTarget_LeftCurlyBracketKeyword_3_3_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1944,7 +1985,7 @@ protected class MFlatMCADTarget_LibrariesAssignment_3_3_2 extends AssignmentToke
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_3_3 extends KeywordToken  {
 	
 	public MFlatMCADTarget_RightCurlyBracketKeyword_3_3_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1966,7 +2007,7 @@ protected class MFlatMCADTarget_RightCurlyBracketKeyword_3_3_3 extends KeywordTo
 
 }
 
-// ";"
+// ';'
 protected class MFlatMCADTarget_SemicolonKeyword_3_3_4 extends KeywordToken  {
 	
 	public MFlatMCADTarget_SemicolonKeyword_3_3_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -1990,7 +2031,7 @@ protected class MFlatMCADTarget_SemicolonKeyword_3_3_4 extends KeywordToken  {
 
 
 
-// "}"
+// '}'
 protected class MFlatMCADTarget_RightCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MFlatMCADTarget_RightCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2012,7 +2053,7 @@ protected class MFlatMCADTarget_RightCurlyBracketKeyword_4 extends KeywordToken 
 
 }
 
-// ";"
+// ';'
 protected class MFlatMCADTarget_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MFlatMCADTarget_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2045,19 +2086,23 @@ protected class MFlatMCADTarget_SemicolonKeyword_5 extends KeywordToken  {
 /************ begin Rule MFlatConnection ****************
  *
  * MFlatConnection:
- * 	{MFlatConnection} "connection" clientInstance=[MFlatComponentInstance] "." clientPort=[mclevcmp::MClientPort] "<->"
- * 	serverInstance=[MFlatComponentInstance] "." serverPort=[mclevcmp::MServerPort] "using"
- * 	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{" ("mapping" ":="
- * 	ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
- * 	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+ * 	{MFlatConnection}
+ * 	'connection' clientInstance=[MFlatComponentInstance] '.'
+ * 	clientPort=[mclevcmp::MClientPort] '<->'
+ * 	serverInstance=[MFlatComponentInstance] '.'
+ * 	serverPort=[mclevcmp::MServerPort] 'using'
+ * 	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
+ * 	'{' ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+ * 	attributeValueAssignments+=MAttributeValueAssignment*
+ * 	'}' ';';
  *
  **/
 
-// {MFlatConnection} "connection" clientInstance=[MFlatComponentInstance] "." clientPort=[mclevcmp::MClientPort] "<->"
-// serverInstance=[MFlatComponentInstance] "." serverPort=[mclevcmp::MServerPort] "using"
-// connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{" ("mapping" ":="
-// ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
-// attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+// {MFlatConnection} 'connection' clientInstance=[MFlatComponentInstance] '.' clientPort=[mclevcmp::MClientPort] '<->'
+// serverInstance=[MFlatComponentInstance] '.' serverPort=[mclevcmp::MServerPort] 'using'
+// connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] '{' ('mapping' ':='
+// ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+// attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 protected class MFlatConnection_Group extends GroupToken {
 	
 	public MFlatConnection_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2112,7 +2157,7 @@ protected class MFlatConnection_MFlatConnectionAction_0 extends ActionToken  {
 	}
 }
 
-// "connection"
+// 'connection'
 protected class MFlatConnection_ConnectionKeyword_1 extends KeywordToken  {
 	
 	public MFlatConnection_ConnectionKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2171,7 +2216,7 @@ protected class MFlatConnection_ClientInstanceAssignment_2 extends AssignmentTok
 
 }
 
-// "."
+// '.'
 protected class MFlatConnection_FullStopKeyword_3 extends KeywordToken  {
 	
 	public MFlatConnection_FullStopKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2230,7 +2275,7 @@ protected class MFlatConnection_ClientPortAssignment_4 extends AssignmentToken  
 
 }
 
-// "<->"
+// '<->'
 protected class MFlatConnection_LessThanSignHyphenMinusGreaterThanSignKeyword_5 extends KeywordToken  {
 	
 	public MFlatConnection_LessThanSignHyphenMinusGreaterThanSignKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2289,7 +2334,7 @@ protected class MFlatConnection_ServerInstanceAssignment_6 extends AssignmentTok
 
 }
 
-// "."
+// '.'
 protected class MFlatConnection_FullStopKeyword_7 extends KeywordToken  {
 	
 	public MFlatConnection_FullStopKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2348,7 +2393,7 @@ protected class MFlatConnection_ServerPortAssignment_8 extends AssignmentToken  
 
 }
 
-// "using"
+// 'using'
 protected class MFlatConnection_UsingKeyword_9 extends KeywordToken  {
 	
 	public MFlatConnection_UsingKeyword_9(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2407,7 +2452,7 @@ protected class MFlatConnection_ConnectorAssignment_10 extends AssignmentToken  
 
 }
 
-// "{"
+// '{'
 protected class MFlatConnection_LeftCurlyBracketKeyword_11 extends KeywordToken  {
 	
 	public MFlatConnection_LeftCurlyBracketKeyword_11(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2429,7 +2474,7 @@ protected class MFlatConnection_LeftCurlyBracketKeyword_11 extends KeywordToken 
 
 }
 
-// ("mapping" ":=" ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
+// ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
 protected class MFlatConnection_Group_12 extends GroupToken {
 	
 	public MFlatConnection_Group_12(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2451,7 +2496,7 @@ protected class MFlatConnection_Group_12 extends GroupToken {
 
 }
 
-// "mapping"
+// 'mapping'
 protected class MFlatConnection_MappingKeyword_12_0 extends KeywordToken  {
 	
 	public MFlatConnection_MappingKeyword_12_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2473,7 +2518,7 @@ protected class MFlatConnection_MappingKeyword_12_0 extends KeywordToken  {
 
 }
 
-// ":="
+// ':='
 protected class MFlatConnection_ColonEqualsSignKeyword_12_1 extends KeywordToken  {
 	
 	public MFlatConnection_ColonEqualsSignKeyword_12_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2532,7 +2577,7 @@ protected class MFlatConnection_IfaceMappingAssignment_12_2 extends AssignmentTo
 
 }
 
-// ";"
+// ';'
 protected class MFlatConnection_SemicolonKeyword_12_3 extends KeywordToken  {
 	
 	public MFlatConnection_SemicolonKeyword_12_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2603,7 +2648,7 @@ protected class MFlatConnection_AttributeValueAssignmentsAssignment_13 extends A
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatConnection_RightCurlyBracketKeyword_14 extends KeywordToken  {
 	
 	public MFlatConnection_RightCurlyBracketKeyword_14(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2627,7 +2672,7 @@ protected class MFlatConnection_RightCurlyBracketKeyword_14 extends KeywordToken
 
 }
 
-// ";"
+// ';'
 protected class MFlatConnection_SemicolonKeyword_15 extends KeywordToken  {
 	
 	public MFlatConnection_SemicolonKeyword_15(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2656,13 +2701,17 @@ protected class MFlatConnection_SemicolonKeyword_15 extends KeywordToken  {
 /************ begin Rule MFlatComponentInstance ****************
  *
  * MFlatComponentInstance:
- * 	{MFlatComponentInstance} "instance" component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID "{"
- * 	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+ * 	{MFlatComponentInstance}
+ * 	'instance'
+ * 	component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment*
+ * 	'}' ';';
  *
  **/
 
-// {MFlatComponentInstance} "instance" component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID "{"
-// attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+// {MFlatComponentInstance} 'instance' component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID '{'
+// attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 protected class MFlatComponentInstance_Group extends GroupToken {
 	
 	public MFlatComponentInstance_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2717,7 +2766,7 @@ protected class MFlatComponentInstance_MFlatComponentInstanceAction_0 extends Ac
 	}
 }
 
-// "instance"
+// 'instance'
 protected class MFlatComponentInstance_InstanceKeyword_1 extends KeywordToken  {
 	
 	public MFlatComponentInstance_InstanceKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2810,7 +2859,7 @@ protected class MFlatComponentInstance_NameAssignment_3 extends AssignmentToken 
 
 }
 
-// "{"
+// '{'
 protected class MFlatComponentInstance_LeftCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MFlatComponentInstance_LeftCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2879,7 +2928,7 @@ protected class MFlatComponentInstance_AttributeValueAssignmentsAssignment_5 ext
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatComponentInstance_RightCurlyBracketKeyword_6 extends KeywordToken  {
 	
 	public MFlatComponentInstance_RightCurlyBracketKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -2902,7 +2951,7 @@ protected class MFlatComponentInstance_RightCurlyBracketKeyword_6 extends Keywor
 
 }
 
-// ";"
+// ';'
 protected class MFlatComponentInstance_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MFlatComponentInstance_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3044,14 +3093,17 @@ protected class MFlatServiceLibraryInstance_MFlatDriverSLibInstanceParserRuleCal
 
 /************ begin Rule MRegularFlatServiceLibraryInstance ****************
  *
- * MRegularFlatServiceLibraryInstance returns MFlatServiceLibraryInstance:
- * 	"library" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{"
- * 	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+ * MRegularFlatServiceLibraryInstance MFlatServiceLibraryInstance:
+ * 	'library'
+ * 	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment*
+ * 	'}' ';'
  *
  **/
 
-// "library" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{"
-// attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+// 'library' library=[mclevslib::MServiceLibrary|VersionedQualifiedName] '{'
+// attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 protected class MRegularFlatServiceLibraryInstance_Group extends GroupToken {
 	
 	public MRegularFlatServiceLibraryInstance_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3080,7 +3132,7 @@ protected class MRegularFlatServiceLibraryInstance_Group extends GroupToken {
 
 }
 
-// "library"
+// 'library'
 protected class MRegularFlatServiceLibraryInstance_LibraryKeyword_0 extends KeywordToken  {
 	
 	public MRegularFlatServiceLibraryInstance_LibraryKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3138,7 +3190,7 @@ protected class MRegularFlatServiceLibraryInstance_LibraryAssignment_1 extends A
 
 }
 
-// "{"
+// '{'
 protected class MRegularFlatServiceLibraryInstance_LeftCurlyBracketKeyword_2 extends KeywordToken  {
 	
 	public MRegularFlatServiceLibraryInstance_LeftCurlyBracketKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3207,7 +3259,7 @@ protected class MRegularFlatServiceLibraryInstance_AttributeValueAssignmentsAssi
 	}	
 }
 
-// "}"
+// '}'
 protected class MRegularFlatServiceLibraryInstance_RightCurlyBracketKeyword_4 extends KeywordToken  {
 	
 	public MRegularFlatServiceLibraryInstance_RightCurlyBracketKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3230,7 +3282,7 @@ protected class MRegularFlatServiceLibraryInstance_RightCurlyBracketKeyword_4 ex
 
 }
 
-// ";"
+// ';'
 protected class MRegularFlatServiceLibraryInstance_SemicolonKeyword_5 extends KeywordToken  {
 	
 	public MRegularFlatServiceLibraryInstance_SemicolonKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3259,15 +3311,23 @@ protected class MRegularFlatServiceLibraryInstance_SemicolonKeyword_5 extends Ke
 /************ begin Rule MFlatDriverSLibInstance ****************
  *
  * MFlatDriverSLibInstance:
- * 	{MFlatDriverSLibInstance} "driver" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{" (("attribute"
- * 	"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
- * 	deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?) "}" ";";
+ * 	{MFlatDriverSLibInstance}
+ * 	'driver'
+ * 	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+ * 	'{' (('attribute' 'values'
+ * 	'{'
+ * 	attributeValueAssignments+=MAttributeValueAssignment+
+ * 	'}' ';')?
+ * 	& ('device' 'mappings' '{'
+ * 	deviceDriverMappings+=MFlatDeviceDriverMapping+
+ * 	'}' ';')?)
+ * 	'}' ';';
  *
  **/
 
-// {MFlatDriverSLibInstance} "driver" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{" (("attribute"
-// "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-// deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?) "}" ";"
+// {MFlatDriverSLibInstance} 'driver' library=[mclevslib::MServiceLibrary|VersionedQualifiedName] '{' (('attribute'
+// 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+// deviceDriverMappings+=MFlatDeviceDriverMapping+ '}' ';')?) '}' ';'
 protected class MFlatDriverSLibInstance_Group extends GroupToken {
 	
 	public MFlatDriverSLibInstance_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3322,7 +3382,7 @@ protected class MFlatDriverSLibInstance_MFlatDriverSLibInstanceAction_0 extends 
 	}
 }
 
-// "driver"
+// 'driver'
 protected class MFlatDriverSLibInstance_DriverKeyword_1 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_DriverKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3381,7 +3441,7 @@ protected class MFlatDriverSLibInstance_LibraryAssignment_2 extends AssignmentTo
 
 }
 
-// "{"
+// '{'
 protected class MFlatDriverSLibInstance_LeftCurlyBracketKeyword_3 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_LeftCurlyBracketKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3403,8 +3463,8 @@ protected class MFlatDriverSLibInstance_LeftCurlyBracketKeyword_3 extends Keywor
 
 }
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-// deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?
+// (('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+// deviceDriverMappings+=MFlatDeviceDriverMapping+ '}' ';')?)
 protected class MFlatDriverSLibInstance_UnorderedGroup_4 extends UnorderedGroupToken {
 	
 	public MFlatDriverSLibInstance_UnorderedGroup_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3428,7 +3488,7 @@ protected class MFlatDriverSLibInstance_UnorderedGroup_4 extends UnorderedGroupT
 
 }
 
-// ("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")?
+// ('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')?
 protected class MFlatDriverSLibInstance_Group_4_0 extends GroupToken {
 	
 	public MFlatDriverSLibInstance_Group_4_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3450,7 +3510,7 @@ protected class MFlatDriverSLibInstance_Group_4_0 extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MFlatDriverSLibInstance_AttributeKeyword_4_0_0 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_AttributeKeyword_4_0_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3472,7 +3532,7 @@ protected class MFlatDriverSLibInstance_AttributeKeyword_4_0_0 extends KeywordTo
 
 }
 
-// "values"
+// 'values'
 protected class MFlatDriverSLibInstance_ValuesKeyword_4_0_1 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_ValuesKeyword_4_0_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3494,7 +3554,7 @@ protected class MFlatDriverSLibInstance_ValuesKeyword_4_0_1 extends KeywordToken
 
 }
 
-// "{"
+// '{'
 protected class MFlatDriverSLibInstance_LeftCurlyBracketKeyword_4_0_2 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_LeftCurlyBracketKeyword_4_0_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3563,7 +3623,7 @@ protected class MFlatDriverSLibInstance_AttributeValueAssignmentsAssignment_4_0_
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatDriverSLibInstance_RightCurlyBracketKeyword_4_0_4 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_RightCurlyBracketKeyword_4_0_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3585,7 +3645,7 @@ protected class MFlatDriverSLibInstance_RightCurlyBracketKeyword_4_0_4 extends K
 
 }
 
-// ";"
+// ';'
 protected class MFlatDriverSLibInstance_SemicolonKeyword_4_0_5 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_SemicolonKeyword_4_0_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3608,7 +3668,7 @@ protected class MFlatDriverSLibInstance_SemicolonKeyword_4_0_5 extends KeywordTo
 }
 
 
-// ("device" "mappings" "{" deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?
+// ('device' 'mappings' '{' deviceDriverMappings+=MFlatDeviceDriverMapping+ '}' ';')?
 protected class MFlatDriverSLibInstance_Group_4_1 extends GroupToken {
 	
 	public MFlatDriverSLibInstance_Group_4_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3630,7 +3690,7 @@ protected class MFlatDriverSLibInstance_Group_4_1 extends GroupToken {
 
 }
 
-// "device"
+// 'device'
 protected class MFlatDriverSLibInstance_DeviceKeyword_4_1_0 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_DeviceKeyword_4_1_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3653,7 +3713,7 @@ protected class MFlatDriverSLibInstance_DeviceKeyword_4_1_0 extends KeywordToken
 
 }
 
-// "mappings"
+// 'mappings'
 protected class MFlatDriverSLibInstance_MappingsKeyword_4_1_1 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_MappingsKeyword_4_1_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3675,7 +3735,7 @@ protected class MFlatDriverSLibInstance_MappingsKeyword_4_1_1 extends KeywordTok
 
 }
 
-// "{"
+// '{'
 protected class MFlatDriverSLibInstance_LeftCurlyBracketKeyword_4_1_2 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_LeftCurlyBracketKeyword_4_1_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3744,7 +3804,7 @@ protected class MFlatDriverSLibInstance_DeviceDriverMappingsAssignment_4_1_3 ext
 	}	
 }
 
-// "}"
+// '}'
 protected class MFlatDriverSLibInstance_RightCurlyBracketKeyword_4_1_4 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_RightCurlyBracketKeyword_4_1_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3766,7 +3826,7 @@ protected class MFlatDriverSLibInstance_RightCurlyBracketKeyword_4_1_4 extends K
 
 }
 
-// ";"
+// ';'
 protected class MFlatDriverSLibInstance_SemicolonKeyword_4_1_5 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_SemicolonKeyword_4_1_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3790,7 +3850,7 @@ protected class MFlatDriverSLibInstance_SemicolonKeyword_4_1_5 extends KeywordTo
 
 
 
-// "}"
+// '}'
 protected class MFlatDriverSLibInstance_RightCurlyBracketKeyword_5 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_RightCurlyBracketKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3812,7 +3872,7 @@ protected class MFlatDriverSLibInstance_RightCurlyBracketKeyword_5 extends Keywo
 
 }
 
-// ";"
+// ';'
 protected class MFlatDriverSLibInstance_SemicolonKeyword_6 extends KeywordToken  {
 	
 	public MFlatDriverSLibInstance_SemicolonKeyword_6(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3841,13 +3901,14 @@ protected class MFlatDriverSLibInstance_SemicolonKeyword_6 extends KeywordToken 
 /************ begin Rule MFlatDeviceDriverMapping ****************
  *
  * MFlatDeviceDriverMapping:
- * 	"supported" "device" supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] "->"
- * 	"deployed" "device" deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ";";
+ * 	'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName]
+ * 	'->'
+ * 	'deployed' 'device' deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ';';
  *
  **/
 
-// "supported" "device" supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] "->"
-// "deployed" "device" deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ";"
+// 'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] '->'
+// 'deployed' 'device' deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ';'
 protected class MFlatDeviceDriverMapping_Group extends GroupToken {
 	
 	public MFlatDeviceDriverMapping_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3876,7 +3937,7 @@ protected class MFlatDeviceDriverMapping_Group extends GroupToken {
 
 }
 
-// "supported"
+// 'supported'
 protected class MFlatDeviceDriverMapping_SupportedKeyword_0 extends KeywordToken  {
 	
 	public MFlatDeviceDriverMapping_SupportedKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3897,7 +3958,7 @@ protected class MFlatDeviceDriverMapping_SupportedKeyword_0 extends KeywordToken
 
 }
 
-// "device"
+// 'device'
 protected class MFlatDeviceDriverMapping_DeviceKeyword_1 extends KeywordToken  {
 	
 	public MFlatDeviceDriverMapping_DeviceKeyword_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3956,7 +4017,7 @@ protected class MFlatDeviceDriverMapping_SupportedDeviceAssignment_2 extends Ass
 
 }
 
-// "->"
+// '->'
 protected class MFlatDeviceDriverMapping_HyphenMinusGreaterThanSignKeyword_3 extends KeywordToken  {
 	
 	public MFlatDeviceDriverMapping_HyphenMinusGreaterThanSignKeyword_3(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -3978,7 +4039,7 @@ protected class MFlatDeviceDriverMapping_HyphenMinusGreaterThanSignKeyword_3 ext
 
 }
 
-// "deployed"
+// 'deployed'
 protected class MFlatDeviceDriverMapping_DeployedKeyword_4 extends KeywordToken  {
 	
 	public MFlatDeviceDriverMapping_DeployedKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4000,7 +4061,7 @@ protected class MFlatDeviceDriverMapping_DeployedKeyword_4 extends KeywordToken 
 
 }
 
-// "device"
+// 'device'
 protected class MFlatDeviceDriverMapping_DeviceKeyword_5 extends KeywordToken  {
 	
 	public MFlatDeviceDriverMapping_DeviceKeyword_5(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4059,7 +4120,7 @@ protected class MFlatDeviceDriverMapping_DeployedDeviceAssignment_6 extends Assi
 
 }
 
-// ";"
+// ';'
 protected class MFlatDeviceDriverMapping_SemicolonKeyword_7 extends KeywordToken  {
 	
 	public MFlatDeviceDriverMapping_SemicolonKeyword_7(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4087,14 +4148,16 @@ protected class MFlatDeviceDriverMapping_SemicolonKeyword_7 extends KeywordToken
 
 /************ begin Rule MAttributeValueAssignment ****************
  *
- * MAttributeValueAssignment returns common::MParameterValueAssignmentSingleExpression:
- * 	"attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
- * 	parameterValue=MParameterValueExpression ";";
+ * MAttributeValueAssignment common::MParameterValueAssignmentSingleExpression:
+ * 	'attribute'
+ * 	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+ * 	':='
+ * 	parameterValue=MParameterValueExpression ';'
  *
  **/
 
-// "attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" parameterValue=MParameterValueExpression
-// ";"
+// 'attribute' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' parameterValue=MParameterValueExpression
+// ';'
 protected class MAttributeValueAssignment_Group extends GroupToken {
 	
 	public MAttributeValueAssignment_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4123,7 +4186,7 @@ protected class MAttributeValueAssignment_Group extends GroupToken {
 
 }
 
-// "attribute"
+// 'attribute'
 protected class MAttributeValueAssignment_AttributeKeyword_0 extends KeywordToken  {
 	
 	public MAttributeValueAssignment_AttributeKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4181,7 +4244,7 @@ protected class MAttributeValueAssignment_ParameterAssignment_1 extends Assignme
 
 }
 
-// ":="
+// ':='
 protected class MAttributeValueAssignment_ColonEqualsSignKeyword_2 extends KeywordToken  {
 	
 	public MAttributeValueAssignment_ColonEqualsSignKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4249,7 +4312,7 @@ protected class MAttributeValueAssignment_ParameterValueAssignment_3 extends Ass
 	}	
 }
 
-// ";"
+// ';'
 protected class MAttributeValueAssignment_SemicolonKeyword_4 extends KeywordToken  {
 	
 	public MAttributeValueAssignment_SemicolonKeyword_4(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4277,8 +4340,8 @@ protected class MAttributeValueAssignment_SemicolonKeyword_4 extends KeywordToke
 
 /************ begin Rule MParameterValue ****************
  *
- * MParameterValue returns common::MParameterValue:
- * 	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
+ * MParameterValue common::MParameterValue:
+ * 	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
  *
  **/
 
@@ -4435,9 +4498,9 @@ protected class MParameterValue_MParameterValuePARParserRuleCall_2 extends RuleC
 
 /************ begin Rule MParameterValueLiteral ****************
  *
- * MParameterValueLiteral returns common::MParameterValueLiteral:
+ * MParameterValueLiteral common::MParameterValueLiteral:
  * 	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
- * 	MParameterValueRealLiteral;
+ * 	MParameterValueRealLiteral
  *
  **/
 
@@ -4627,8 +4690,8 @@ protected class MParameterValueLiteral_MParameterValueRealLiteralParserRuleCall_
 
 /************ begin Rule MParameterValueBooleanLiteral ****************
  *
- * MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
- * 	{common::MParameterValueBooleanLiteral} value=EBoolean;
+ * MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+ * 	{common::MParameterValueBooleanLiteral} value=EBoolean
  *
  **/
 
@@ -4727,12 +4790,13 @@ protected class MParameterValueBooleanLiteral_ValueAssignment_1 extends Assignme
 
 /************ begin Rule MParameterValueStringLiteral ****************
  *
- * MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
- * 	{common::MParameterValueStringLiteral} value=STRING;
+ * MParameterValueStringLiteral common::MParameterValueStringLiteral:
+ * 	{common::MParameterValueStringLiteral} isRaw?='raw'?
+ * 	value=STRING
  *
  **/
 
-// {common::MParameterValueStringLiteral} value=STRING
+// {common::MParameterValueStringLiteral} isRaw?='raw'? value=STRING
 protected class MParameterValueStringLiteral_Group extends GroupToken {
 	
 	public MParameterValueStringLiteral_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -4747,7 +4811,7 @@ protected class MParameterValueStringLiteral_Group extends GroupToken {
     @Override
 	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
 		switch(index) {
-			case 0: return new MParameterValueStringLiteral_ValueAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 0: return new MParameterValueStringLiteral_ValueAssignment_2(lastRuleCallOrigin, this, 0, inst);
 			default: return null;
 		}	
 	}
@@ -4787,16 +4851,16 @@ protected class MParameterValueStringLiteral_MParameterValueStringLiteralAction_
 	}
 }
 
-// value=STRING
-protected class MParameterValueStringLiteral_ValueAssignment_1 extends AssignmentToken  {
+// isRaw?='raw'?
+protected class MParameterValueStringLiteral_IsRawAssignment_1 extends AssignmentToken  {
 	
-	public MParameterValueStringLiteral_ValueAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+	public MParameterValueStringLiteral_IsRawAssignment_1(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
 		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
 	}
 	
 	@Override
 	public Assignment getGrammarElement() {
-		return grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_1();
+		return grammarAccess.getMParameterValueStringLiteralAccess().getIsRawAssignment_1();
 	}
 
     @Override
@@ -4809,11 +4873,46 @@ protected class MParameterValueStringLiteral_ValueAssignment_1 extends Assignmen
 
     @Override	
 	public IEObjectConsumer tryConsume() {
+		if((value = eObjectConsumer.getConsumable("isRaw",false)) == null) return null;
+		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("isRaw");
+		if(Boolean.TRUE.equals(value)) { // org::eclipse::xtext::impl::KeywordImpl
+			type = AssignmentType.KEYWORD;
+			element = grammarAccess.getMParameterValueStringLiteralAccess().getIsRawRawKeyword_1_0();
+			return obj;
+		}
+		return null;
+	}
+
+}
+
+// value=STRING
+protected class MParameterValueStringLiteral_ValueAssignment_2 extends AssignmentToken  {
+	
+	public MParameterValueStringLiteral_ValueAssignment_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
+		super(lastRuleCallOrigin, next, transitionIndex, eObjectConsumer);
+	}
+	
+	@Override
+	public Assignment getGrammarElement() {
+		return grammarAccess.getMParameterValueStringLiteralAccess().getValueAssignment_2();
+	}
+
+    @Override
+	public AbstractToken createFollower(int index, IEObjectConsumer inst) {
+		switch(index) {
+			case 0: return new MParameterValueStringLiteral_IsRawAssignment_1(lastRuleCallOrigin, this, 0, inst);
+			case 1: return new MParameterValueStringLiteral_MParameterValueStringLiteralAction_0(lastRuleCallOrigin, this, 1, inst);
+			default: return null;
+		}	
+	}
+
+    @Override	
+	public IEObjectConsumer tryConsume() {
 		if((value = eObjectConsumer.getConsumable("value",true)) == null) return null;
 		IEObjectConsumer obj = eObjectConsumer.cloneAndConsume("value");
-		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0(), value, null)) {
+		if(valueSerializer.isValid(obj.getEObject(), grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_2_0(), value, null)) {
 			type = AssignmentType.TERMINAL_RULE_CALL;
-			element = grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0();
+			element = grammarAccess.getMParameterValueStringLiteralAccess().getValueSTRINGTerminalRuleCall_2_0();
 			return obj;
 		}
 		return null;
@@ -4827,8 +4926,8 @@ protected class MParameterValueStringLiteral_ValueAssignment_1 extends Assignmen
 
 /************ begin Rule MParameterValueIntegerLiteral ****************
  *
- * MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
- * 	{common::MParameterValueIntegerLiteral} value=INTEGER;
+ * MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+ * 	{common::MParameterValueIntegerLiteral} value=INTEGER
  *
  **/
 
@@ -4927,8 +5026,8 @@ protected class MParameterValueIntegerLiteral_ValueAssignment_1 extends Assignme
 
 /************ begin Rule MParameterValueRealLiteral ****************
  *
- * MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
- * 	{common::MParameterValueRealLiteral} value=REAL;
+ * MParameterValueRealLiteral common::MParameterValueRealLiteral:
+ * 	{common::MParameterValueRealLiteral} value=REAL
  *
  **/
 
@@ -5027,8 +5126,8 @@ protected class MParameterValueRealLiteral_ValueAssignment_1 extends AssignmentT
 
 /************ begin Rule MParameterValueRefObject ****************
  *
- * MParameterValueRefObject returns common::MParameterValueRefObject:
- * 	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
+ * MParameterValueRefObject common::MParameterValueRefObject:
+ * 	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
  *
  **/
 
@@ -5130,12 +5229,12 @@ protected class MParameterValueRefObject_ObjectAssignment_1 extends AssignmentTo
 
 /************ begin Rule MParameterValuePAR ****************
  *
- * MParameterValuePAR returns common::MParameterValuePAR:
- * 	"(" value=MParameterValueExpression ")";
+ * MParameterValuePAR common::MParameterValuePAR:
+ * 	'(' value=MParameterValueExpression ')'
  *
  **/
 
-// "(" value=MParameterValueExpression ")"
+// '(' value=MParameterValueExpression ')'
 protected class MParameterValuePAR_Group extends GroupToken {
 	
 	public MParameterValuePAR_Group(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5164,7 +5263,7 @@ protected class MParameterValuePAR_Group extends GroupToken {
 
 }
 
-// "("
+// '('
 protected class MParameterValuePAR_LeftParenthesisKeyword_0 extends KeywordToken  {
 	
 	public MParameterValuePAR_LeftParenthesisKeyword_0(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5231,7 +5330,7 @@ protected class MParameterValuePAR_ValueAssignment_1 extends AssignmentToken  {
 	}	
 }
 
-// ")"
+// ')'
 protected class MParameterValuePAR_RightParenthesisKeyword_2 extends KeywordToken  {
 	
 	public MParameterValuePAR_RightParenthesisKeyword_2(AbstractToken lastRuleCallOrigin, AbstractToken next, int transitionIndex, IEObjectConsumer eObjectConsumer) {
@@ -5259,9 +5358,9 @@ protected class MParameterValuePAR_RightParenthesisKeyword_2 extends KeywordToke
 
 /************ begin Rule MParameterValueExpression ****************
  *
- * MParameterValueExpression returns common::MParameterValueExpression:
+ * MParameterValueExpression common::MParameterValueExpression:
  * 	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
- * 	right=MParameterValueExpression)?;
+ * 	right=MParameterValueExpression)?
  *
  **/
 
@@ -5477,9 +5576,8 @@ protected class MParameterValueExpression_RightAssignment_2_1 extends Assignment
 
 /************ begin Rule MParameterValueTERM ****************
  *
- * MParameterValueTERM returns common::MParameterValueTERM:
- * 	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
- * 	right=MParameterValueTERM)?;
+ * MParameterValueTERM common::MParameterValueTERM:
+ * 	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
  *
  **/
 

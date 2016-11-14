@@ -26,7 +26,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MMCLEVFLATMCADPackageFileElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMCLEVFLATMCADPackageFile");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MMCLEVFLATMCADPackageFile");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cPackageKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cPackageAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -43,15 +43,16 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cElementMMCLEVFLATMCADPackageElementParserRuleCall_4_0 = (RuleCall)cElementAssignment_4.eContents().get(0);
 		
 		//MMCLEVFLATMCADPackageFile:
-		//	"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-		//	imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ";")* element=MMCLEVFLATMCADPackageElement;
-		public ParserRule getRule() { return rule; }
+		//	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+		//	imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')*
+		//	element=MMCLEVFLATMCADPackageElement;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-		//imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ";")* element=MMCLEVFLATMCADPackageElement
+		//'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+		//imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')* element=MMCLEVFLATMCADPackageElement
 		public Group getGroup() { return cGroup; }
 
-		//"package"
+		//'package'
 		public Keyword getPackageKeyword_0() { return cPackageKeyword_0; }
 
 		//package=[mclevlibrary::MMCLEVPackage|QualifiedName]
@@ -63,13 +64,13 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getPackageMMCLEVPackageQualifiedNameParserRuleCall_1_0_1() { return cPackageMMCLEVPackageQualifiedNameParserRuleCall_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_2() { return cSemicolonKeyword_2; }
 
-		//("import" imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ";")*
+		//('import' imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')*
 		public Group getGroup_3() { return cGroup_3; }
 
-		//"import"
+		//'import'
 		public Keyword getImportKeyword_3_0() { return cImportKeyword_3_0; }
 
 		//imports+=[mclevlibrary::MMCLEVPackage|QualifiedName]
@@ -81,7 +82,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//QualifiedName
 		public RuleCall getImportsMMCLEVPackageQualifiedNameParserRuleCall_3_1_0_1() { return cImportsMMCLEVPackageQualifiedNameParserRuleCall_3_1_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2() { return cSemicolonKeyword_3_2; }
 
 		//element=MMCLEVFLATMCADPackageElement
@@ -92,153 +93,161 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MMCLEVFLATMCADPackageElementElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MMCLEVFLATMCADPackageElement");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MMCLEVFLATMCADPackageElement");
 		private final RuleCall cMFlatMCADParserRuleCall = (RuleCall)rule.eContents().get(1);
 		
 		//MMCLEVFLATMCADPackageElement:
 		//	MFlatMCAD;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MFlatMCAD
 		public RuleCall getMFlatMCADParserRuleCall() { return cMFlatMCADParserRuleCall; }
 	}
 
 	public class MFlatMCADElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MFlatMCAD");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MFlatMCAD");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cFlatMcadKeyword_0 = (Keyword)cGroup.eContents().get(0);
-		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
-		private final Keyword cLeftCurlyBracketKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final UnorderedGroup cUnorderedGroup_3 = (UnorderedGroup)cGroup.eContents().get(3);
-		private final Group cGroup_3_0 = (Group)cUnorderedGroup_3.eContents().get(0);
-		private final Keyword cVersionKeyword_3_0_0 = (Keyword)cGroup_3_0.eContents().get(0);
-		private final Keyword cColonEqualsSignKeyword_3_0_1 = (Keyword)cGroup_3_0.eContents().get(1);
-		private final Assignment cVersionAssignment_3_0_2 = (Assignment)cGroup_3_0.eContents().get(2);
-		private final RuleCall cVersionVersionParserRuleCall_3_0_2_0 = (RuleCall)cVersionAssignment_3_0_2.eContents().get(0);
-		private final Keyword cSemicolonKeyword_3_0_3 = (Keyword)cGroup_3_0.eContents().get(3);
-		private final Group cGroup_3_1 = (Group)cUnorderedGroup_3.eContents().get(1);
-		private final Keyword cDeploymentKeyword_3_1_0 = (Keyword)cGroup_3_1.eContents().get(0);
-		private final Keyword cProjectKeyword_3_1_1 = (Keyword)cGroup_3_1.eContents().get(1);
-		private final Keyword cColonEqualsSignKeyword_3_1_2 = (Keyword)cGroup_3_1.eContents().get(2);
-		private final Assignment cReferencedElementAssignment_3_1_3 = (Assignment)cGroup_3_1.eContents().get(3);
-		private final CrossReference cReferencedElementMMCADeploymentCrossReference_3_1_3_0 = (CrossReference)cReferencedElementAssignment_3_1_3.eContents().get(0);
-		private final RuleCall cReferencedElementMMCADeploymentVersionedQualifiedNameParserRuleCall_3_1_3_0_1 = (RuleCall)cReferencedElementMMCADeploymentCrossReference_3_1_3_0.eContents().get(1);
-		private final Keyword cSemicolonKeyword_3_1_4 = (Keyword)cGroup_3_1.eContents().get(4);
-		private final Group cGroup_3_2 = (Group)cUnorderedGroup_3.eContents().get(2);
-		private final Keyword cDeploymentKeyword_3_2_0 = (Keyword)cGroup_3_2.eContents().get(0);
-		private final Keyword cTargetsKeyword_3_2_1 = (Keyword)cGroup_3_2.eContents().get(1);
-		private final Keyword cLeftCurlyBracketKeyword_3_2_2 = (Keyword)cGroup_3_2.eContents().get(2);
-		private final Assignment cTargetsAssignment_3_2_3 = (Assignment)cGroup_3_2.eContents().get(3);
-		private final RuleCall cTargetsMFlatMCADTargetParserRuleCall_3_2_3_0 = (RuleCall)cTargetsAssignment_3_2_3.eContents().get(0);
-		private final Keyword cRightCurlyBracketKeyword_3_2_4 = (Keyword)cGroup_3_2.eContents().get(4);
-		private final Keyword cSemicolonKeyword_3_2_5 = (Keyword)cGroup_3_2.eContents().get(5);
-		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cFlatKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Keyword cMcadKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameIDTerminalRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		private final Keyword cLeftCurlyBracketKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final UnorderedGroup cUnorderedGroup_4 = (UnorderedGroup)cGroup.eContents().get(4);
+		private final Group cGroup_4_0 = (Group)cUnorderedGroup_4.eContents().get(0);
+		private final Keyword cVersionKeyword_4_0_0 = (Keyword)cGroup_4_0.eContents().get(0);
+		private final Keyword cColonEqualsSignKeyword_4_0_1 = (Keyword)cGroup_4_0.eContents().get(1);
+		private final Assignment cVersionAssignment_4_0_2 = (Assignment)cGroup_4_0.eContents().get(2);
+		private final RuleCall cVersionVersionParserRuleCall_4_0_2_0 = (RuleCall)cVersionAssignment_4_0_2.eContents().get(0);
+		private final Keyword cSemicolonKeyword_4_0_3 = (Keyword)cGroup_4_0.eContents().get(3);
+		private final Group cGroup_4_1 = (Group)cUnorderedGroup_4.eContents().get(1);
+		private final Keyword cDeploymentKeyword_4_1_0 = (Keyword)cGroup_4_1.eContents().get(0);
+		private final Keyword cProjectKeyword_4_1_1 = (Keyword)cGroup_4_1.eContents().get(1);
+		private final Keyword cColonEqualsSignKeyword_4_1_2 = (Keyword)cGroup_4_1.eContents().get(2);
+		private final Assignment cReferencedElementAssignment_4_1_3 = (Assignment)cGroup_4_1.eContents().get(3);
+		private final CrossReference cReferencedElementMMCADeploymentCrossReference_4_1_3_0 = (CrossReference)cReferencedElementAssignment_4_1_3.eContents().get(0);
+		private final RuleCall cReferencedElementMMCADeploymentVersionedQualifiedNameParserRuleCall_4_1_3_0_1 = (RuleCall)cReferencedElementMMCADeploymentCrossReference_4_1_3_0.eContents().get(1);
+		private final Keyword cSemicolonKeyword_4_1_4 = (Keyword)cGroup_4_1.eContents().get(4);
+		private final Group cGroup_4_2 = (Group)cUnorderedGroup_4.eContents().get(2);
+		private final Keyword cDeploymentKeyword_4_2_0 = (Keyword)cGroup_4_2.eContents().get(0);
+		private final Keyword cTargetsKeyword_4_2_1 = (Keyword)cGroup_4_2.eContents().get(1);
+		private final Keyword cLeftCurlyBracketKeyword_4_2_2 = (Keyword)cGroup_4_2.eContents().get(2);
+		private final Assignment cTargetsAssignment_4_2_3 = (Assignment)cGroup_4_2.eContents().get(3);
+		private final RuleCall cTargetsMFlatMCADTargetParserRuleCall_4_2_3_0 = (RuleCall)cTargetsAssignment_4_2_3.eContents().get(0);
+		private final Keyword cRightCurlyBracketKeyword_4_2_4 = (Keyword)cGroup_4_2.eContents().get(4);
+		private final Keyword cSemicolonKeyword_4_2_5 = (Keyword)cGroup_4_2.eContents().get(5);
+		private final Keyword cRightCurlyBracketKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MFlatMCAD:
-		//	"flat mcad" name=ID "{" ("version" ":=" version=Version ";" & "deployment" "project" ":="
-		//	referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";" & "deployment" "targets" "{"
-		//	targets+=MFlatMCADTarget+ "}" ";") "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'flat' 'mcad'
+		//	name=ID
+		//	'{' ('version' ':=' version=Version ';' & 'deployment' 'project' ':='
+		//	referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';' & 'deployment' 'targets' '{'
+		//	targets+=MFlatMCADTarget+
+		//	'}' ';')
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"flat mcad" name=ID "{" ("version" ":=" version=Version ";" & "deployment" "project" ":="
-		//referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";" & "deployment" "targets" "{"
-		//targets+=MFlatMCADTarget+ "}" ";") "}" ";"
+		//'flat' 'mcad' name=ID '{' ('version' ':=' version=Version ';' & 'deployment' 'project' ':='
+		//referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';' & 'deployment' 'targets' '{'
+		//targets+=MFlatMCADTarget+ '}' ';') '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"flat mcad"
-		public Keyword getFlatMcadKeyword_0() { return cFlatMcadKeyword_0; }
+		//'flat'
+		public Keyword getFlatKeyword_0() { return cFlatKeyword_0; }
+
+		//'mcad'
+		public Keyword getMcadKeyword_1() { return cMcadKeyword_1; }
 
 		//name=ID
-		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
 
 		//ID
-		public RuleCall getNameIDTerminalRuleCall_1_0() { return cNameIDTerminalRuleCall_1_0; }
+		public RuleCall getNameIDTerminalRuleCall_2_0() { return cNameIDTerminalRuleCall_2_0; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//"version" ":=" version=Version ";" & "deployment" "project" ":="
-		//referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";" & "deployment" "targets" "{"
-		//targets+=MFlatMCADTarget+ "}" ";"
-		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
+		//('version' ':=' version=Version ';' & 'deployment' 'project' ':='
+		//referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';' & 'deployment' 'targets' '{'
+		//targets+=MFlatMCADTarget+ '}' ';')
+		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//"version" ":=" version=Version ";"
-		public Group getGroup_3_0() { return cGroup_3_0; }
+		//'version' ':=' version=Version ';'
+		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"version"
-		public Keyword getVersionKeyword_3_0_0() { return cVersionKeyword_3_0_0; }
+		//'version'
+		public Keyword getVersionKeyword_4_0_0() { return cVersionKeyword_4_0_0; }
 
-		//":="
-		public Keyword getColonEqualsSignKeyword_3_0_1() { return cColonEqualsSignKeyword_3_0_1; }
+		//':='
+		public Keyword getColonEqualsSignKeyword_4_0_1() { return cColonEqualsSignKeyword_4_0_1; }
 
 		//version=Version
-		public Assignment getVersionAssignment_3_0_2() { return cVersionAssignment_3_0_2; }
+		public Assignment getVersionAssignment_4_0_2() { return cVersionAssignment_4_0_2; }
 
 		//Version
-		public RuleCall getVersionVersionParserRuleCall_3_0_2_0() { return cVersionVersionParserRuleCall_3_0_2_0; }
+		public RuleCall getVersionVersionParserRuleCall_4_0_2_0() { return cVersionVersionParserRuleCall_4_0_2_0; }
 
-		//";"
-		public Keyword getSemicolonKeyword_3_0_3() { return cSemicolonKeyword_3_0_3; }
+		//';'
+		public Keyword getSemicolonKeyword_4_0_3() { return cSemicolonKeyword_4_0_3; }
 
-		//"deployment" "project" ":=" referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";"
-		public Group getGroup_3_1() { return cGroup_3_1; }
+		//'deployment' 'project' ':=' referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';'
+		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"deployment"
-		public Keyword getDeploymentKeyword_3_1_0() { return cDeploymentKeyword_3_1_0; }
+		//'deployment'
+		public Keyword getDeploymentKeyword_4_1_0() { return cDeploymentKeyword_4_1_0; }
 
-		//"project"
-		public Keyword getProjectKeyword_3_1_1() { return cProjectKeyword_3_1_1; }
+		//'project'
+		public Keyword getProjectKeyword_4_1_1() { return cProjectKeyword_4_1_1; }
 
-		//":="
-		public Keyword getColonEqualsSignKeyword_3_1_2() { return cColonEqualsSignKeyword_3_1_2; }
+		//':='
+		public Keyword getColonEqualsSignKeyword_4_1_2() { return cColonEqualsSignKeyword_4_1_2; }
 
 		//referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName]
-		public Assignment getReferencedElementAssignment_3_1_3() { return cReferencedElementAssignment_3_1_3; }
+		public Assignment getReferencedElementAssignment_4_1_3() { return cReferencedElementAssignment_4_1_3; }
 
 		//[mclevmcad::MMCADeployment|VersionedQualifiedName]
-		public CrossReference getReferencedElementMMCADeploymentCrossReference_3_1_3_0() { return cReferencedElementMMCADeploymentCrossReference_3_1_3_0; }
+		public CrossReference getReferencedElementMMCADeploymentCrossReference_4_1_3_0() { return cReferencedElementMMCADeploymentCrossReference_4_1_3_0; }
 
 		//VersionedQualifiedName
-		public RuleCall getReferencedElementMMCADeploymentVersionedQualifiedNameParserRuleCall_3_1_3_0_1() { return cReferencedElementMMCADeploymentVersionedQualifiedNameParserRuleCall_3_1_3_0_1; }
+		public RuleCall getReferencedElementMMCADeploymentVersionedQualifiedNameParserRuleCall_4_1_3_0_1() { return cReferencedElementMMCADeploymentVersionedQualifiedNameParserRuleCall_4_1_3_0_1; }
 
-		//";"
-		public Keyword getSemicolonKeyword_3_1_4() { return cSemicolonKeyword_3_1_4; }
+		//';'
+		public Keyword getSemicolonKeyword_4_1_4() { return cSemicolonKeyword_4_1_4; }
 
-		//"deployment" "targets" "{" targets+=MFlatMCADTarget+ "}" ";"
-		public Group getGroup_3_2() { return cGroup_3_2; }
+		//'deployment' 'targets' '{' targets+=MFlatMCADTarget+ '}' ';'
+		public Group getGroup_4_2() { return cGroup_4_2; }
 
-		//"deployment"
-		public Keyword getDeploymentKeyword_3_2_0() { return cDeploymentKeyword_3_2_0; }
+		//'deployment'
+		public Keyword getDeploymentKeyword_4_2_0() { return cDeploymentKeyword_4_2_0; }
 
-		//"targets"
-		public Keyword getTargetsKeyword_3_2_1() { return cTargetsKeyword_3_2_1; }
+		//'targets'
+		public Keyword getTargetsKeyword_4_2_1() { return cTargetsKeyword_4_2_1; }
 
-		//"{"
-		public Keyword getLeftCurlyBracketKeyword_3_2_2() { return cLeftCurlyBracketKeyword_3_2_2; }
+		//'{'
+		public Keyword getLeftCurlyBracketKeyword_4_2_2() { return cLeftCurlyBracketKeyword_4_2_2; }
 
 		//targets+=MFlatMCADTarget+
-		public Assignment getTargetsAssignment_3_2_3() { return cTargetsAssignment_3_2_3; }
+		public Assignment getTargetsAssignment_4_2_3() { return cTargetsAssignment_4_2_3; }
 
 		//MFlatMCADTarget
-		public RuleCall getTargetsMFlatMCADTargetParserRuleCall_3_2_3_0() { return cTargetsMFlatMCADTargetParserRuleCall_3_2_3_0; }
+		public RuleCall getTargetsMFlatMCADTargetParserRuleCall_4_2_3_0() { return cTargetsMFlatMCADTargetParserRuleCall_4_2_3_0; }
 
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_3_2_4() { return cRightCurlyBracketKeyword_3_2_4; }
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_4_2_4() { return cRightCurlyBracketKeyword_4_2_4; }
 
-		//";"
-		public Keyword getSemicolonKeyword_3_2_5() { return cSemicolonKeyword_3_2_5; }
+		//';'
+		public Keyword getSemicolonKeyword_4_2_5() { return cSemicolonKeyword_4_2_5; }
 
-		//"}"
-		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
+		//'}'
+		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
-		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
+		//';'
+		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MFlatMCADTargetElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MFlatMCADTarget");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MFlatMCADTarget");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cTargetKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final UnorderedGroup cUnorderedGroup_1 = (UnorderedGroup)cGroup.eContents().get(1);
@@ -287,31 +296,45 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
 		//MFlatMCADTarget:
-		//	"target" ("platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ("alternative"
-		//	leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?) "{" (("attribute"
-		//	"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("components" "{"
-		//	components+=MFlatComponentInstance+ "}" ";")? & ("connections" "{" connections+=MFlatConnection+ "}" ";")? &
-		//	("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	'target' ('platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ('alternative'
+		//	leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?)
+		//	'{' (('attribute' 'values'
+		//	'{'
+		//	attributeValueAssignments+=MAttributeValueAssignment+
+		//	'}' ';')?
+		//	& ('components'
+		//	'{'
+		//	components+=MFlatComponentInstance+
+		//	'}' ';')?
+		//	& ('connections'
+		//	'{'
+		//	connections+=MFlatConnection+
+		//	'}' ';')?
+		//	& ('libraries'
+		//	'{'
+		//	libraries+=MFlatServiceLibraryInstance+
+		//	'}' ';')?)
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"target" ("platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ("alternative"
-		//leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?) "{" (("attribute"
-		//"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("components" "{"
-		//components+=MFlatComponentInstance+ "}" ";")? & ("connections" "{" connections+=MFlatConnection+ "}" ";")? &
-		//("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?) "}" ";"
+		//'target' ('platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ('alternative'
+		//leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?) '{' (('attribute'
+		//'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('components' '{'
+		//components+=MFlatComponentInstance+ '}' ';')? & ('connections' '{' connections+=MFlatConnection+ '}' ';')? &
+		//('libraries' '{' libraries+=MFlatServiceLibraryInstance+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"target"
+		//'target'
 		public Keyword getTargetKeyword_0() { return cTargetKeyword_0; }
 
-		//"platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ("alternative"
-		//leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?
+		//('platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ('alternative'
+		//leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?)
 		public UnorderedGroup getUnorderedGroup_1() { return cUnorderedGroup_1; }
 
-		//"platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform]
+		//'platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform]
 		public Group getGroup_1_0() { return cGroup_1_0; }
 
-		//"platform"
+		//'platform'
 		public Keyword getPlatformKeyword_1_0_0() { return cPlatformKeyword_1_0_0; }
 
 		//deploymentPlatform=[mclevmcad::MDeploymentPlatform]
@@ -323,10 +346,10 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getDeploymentPlatformMDeploymentPlatformIDTerminalRuleCall_1_0_1_0_1() { return cDeploymentPlatformMDeploymentPlatformIDTerminalRuleCall_1_0_1_0_1; }
 
-		//("alternative" leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?
+		//('alternative' leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?
 		public Group getGroup_1_1() { return cGroup_1_1; }
 
-		//"alternative"
+		//'alternative'
 		public Keyword getAlternativeKeyword_1_1_0() { return cAlternativeKeyword_1_1_0; }
 
 		//leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName]
@@ -338,24 +361,24 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getLeafDeploymentAlternativeMDeploymentAlternativeVersionedQualifiedReferenceNameParserRuleCall_1_1_1_0_1() { return cLeafDeploymentAlternativeMDeploymentAlternativeVersionedQualifiedReferenceNameParserRuleCall_1_1_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
-		//("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("components" "{"
-		//components+=MFlatComponentInstance+ "}" ";")? & ("connections" "{" connections+=MFlatConnection+ "}" ";")? &
-		//("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?
+		//(('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('components' '{'
+		//components+=MFlatComponentInstance+ '}' ';')? & ('connections' '{' connections+=MFlatConnection+ '}' ';')? &
+		//('libraries' '{' libraries+=MFlatServiceLibraryInstance+ '}' ';')?)
 		public UnorderedGroup getUnorderedGroup_3() { return cUnorderedGroup_3; }
 
-		//("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")?
+		//('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')?
 		public Group getGroup_3_0() { return cGroup_3_0; }
 
-		//"attribute"
+		//'attribute'
 		public Keyword getAttributeKeyword_3_0_0() { return cAttributeKeyword_3_0_0; }
 
-		//"values"
+		//'values'
 		public Keyword getValuesKeyword_3_0_1() { return cValuesKeyword_3_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_0_2() { return cLeftCurlyBracketKeyword_3_0_2; }
 
 		//attributeValueAssignments+=MAttributeValueAssignment+
@@ -364,19 +387,19 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MAttributeValueAssignment
 		public RuleCall getAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_3_0_3_0() { return cAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_3_0_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_0_4() { return cRightCurlyBracketKeyword_3_0_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_0_5() { return cSemicolonKeyword_3_0_5; }
 
-		//("components" "{" components+=MFlatComponentInstance+ "}" ";")?
+		//('components' '{' components+=MFlatComponentInstance+ '}' ';')?
 		public Group getGroup_3_1() { return cGroup_3_1; }
 
-		//"components"
+		//'components'
 		public Keyword getComponentsKeyword_3_1_0() { return cComponentsKeyword_3_1_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_1_1() { return cLeftCurlyBracketKeyword_3_1_1; }
 
 		//components+=MFlatComponentInstance+
@@ -385,19 +408,19 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MFlatComponentInstance
 		public RuleCall getComponentsMFlatComponentInstanceParserRuleCall_3_1_2_0() { return cComponentsMFlatComponentInstanceParserRuleCall_3_1_2_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_1_3() { return cRightCurlyBracketKeyword_3_1_3; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_1_4() { return cSemicolonKeyword_3_1_4; }
 
-		//("connections" "{" connections+=MFlatConnection+ "}" ";")?
+		//('connections' '{' connections+=MFlatConnection+ '}' ';')?
 		public Group getGroup_3_2() { return cGroup_3_2; }
 
-		//"connections"
+		//'connections'
 		public Keyword getConnectionsKeyword_3_2_0() { return cConnectionsKeyword_3_2_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_2_1() { return cLeftCurlyBracketKeyword_3_2_1; }
 
 		//connections+=MFlatConnection+
@@ -406,19 +429,19 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MFlatConnection
 		public RuleCall getConnectionsMFlatConnectionParserRuleCall_3_2_2_0() { return cConnectionsMFlatConnectionParserRuleCall_3_2_2_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_2_3() { return cRightCurlyBracketKeyword_3_2_3; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_2_4() { return cSemicolonKeyword_3_2_4; }
 
-		//("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?
+		//('libraries' '{' libraries+=MFlatServiceLibraryInstance+ '}' ';')?
 		public Group getGroup_3_3() { return cGroup_3_3; }
 
-		//"libraries"
+		//'libraries'
 		public Keyword getLibrariesKeyword_3_3_0() { return cLibrariesKeyword_3_3_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3_3_1() { return cLeftCurlyBracketKeyword_3_3_1; }
 
 		//libraries+=MFlatServiceLibraryInstance+
@@ -427,41 +450,41 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MFlatServiceLibraryInstance
 		public RuleCall getLibrariesMFlatServiceLibraryInstanceParserRuleCall_3_3_2_0() { return cLibrariesMFlatServiceLibraryInstanceParserRuleCall_3_3_2_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_3_3_3() { return cRightCurlyBracketKeyword_3_3_3; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_3_3_4() { return cSemicolonKeyword_3_3_4; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class QualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "QualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.QualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cIDTerminalRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Keyword cFullStopKeyword_1_0 = (Keyword)cGroup_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1 = (RuleCall)cGroup_1.eContents().get(1);
 		
-		//QualifiedName returns ecore::EString:
-		//	ID ("." ID)*;
-		public ParserRule getRule() { return rule; }
+		//QualifiedName:
+		//	ID ('.' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//ID ("." ID)*
+		//ID ('.' ID)*
 		public Group getGroup() { return cGroup; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_0() { return cIDTerminalRuleCall_0; }
 
-		//("." ID)*
+		//('.' ID)*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
 		//ID
@@ -469,7 +492,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "Version");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.Version");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_0 = (RuleCall)cAlternatives_0.eContents().get(0);
@@ -484,14 +507,14 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cINTTerminalRuleCall_1_1_1_0 = (RuleCall)cGroup_1_1_1.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_1_1_1_1 = (RuleCall)cGroup_1_1_1.eContents().get(1);
 		
-		//Version returns ecore::EString:
-		//	(INT | INT? ID) ("." (INT | INT? ID))*;
-		public ParserRule getRule() { return rule; }
+		//Version:
+		//	(INT | INT? ID) ('.' (INT | INT? ID))*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(INT | INT? ID) ("." (INT | INT? ID))*
+		//(INT | INT? ID) ('.' (INT | INT? ID))*
 		public Group getGroup() { return cGroup; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 
 		//INT
@@ -506,13 +529,13 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getIDTerminalRuleCall_0_1_1() { return cIDTerminalRuleCall_0_1_1; }
 
-		//("." (INT | INT? ID))*
+		//('.' (INT | INT? ID))*
 		public Group getGroup_1() { return cGroup_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_0() { return cFullStopKeyword_1_0; }
 
-		//INT | INT? ID
+		//(INT | INT? ID)
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 
 		//INT
@@ -529,35 +552,35 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class VersionedQualifiedNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.VersionedQualifiedName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final RuleCall cQualifiedNameParserRuleCall_0 = (RuleCall)cGroup.eContents().get(0);
 		private final Keyword cLeftParenthesisKeyword_1 = (Keyword)cGroup.eContents().get(1);
 		private final RuleCall cVersionParserRuleCall_2 = (RuleCall)cGroup.eContents().get(2);
 		private final Keyword cRightParenthesisKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
-		//VersionedQualifiedName returns ecore::EString:
-		//	QualifiedName "(" Version ")";
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedName:
+		//	QualifiedName '(' Version ')';
+		@Override public ParserRule getRule() { return rule; }
 
-		//QualifiedName "(" Version ")"
+		//QualifiedName '(' Version ')'
 		public Group getGroup() { return cGroup; }
 
 		//QualifiedName
 		public RuleCall getQualifiedNameParserRuleCall_0() { return cQualifiedNameParserRuleCall_0; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_1() { return cLeftParenthesisKeyword_1; }
 
 		//Version
 		public RuleCall getVersionParserRuleCall_2() { return cVersionParserRuleCall_2; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_3() { return cRightParenthesisKeyword_3; }
 	}
 
 	public class VersionedQualifiedReferenceNameElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "VersionedQualifiedReferenceName");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.VersionedQualifiedReferenceName");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cGroup.eContents().get(0);
 		private final RuleCall cVersionedQualifiedNameParserRuleCall_0_0 = (RuleCall)cGroup_0.eContents().get(0);
@@ -567,29 +590,29 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cColonColonKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
 		private final RuleCall cIDTerminalRuleCall_2_1 = (RuleCall)cGroup_2.eContents().get(1);
 		
-		//VersionedQualifiedReferenceName returns ecore::EString:
-		//	(VersionedQualifiedName "::")? ID ("::" ID)*;
-		public ParserRule getRule() { return rule; }
+		//VersionedQualifiedReferenceName:
+		//	(VersionedQualifiedName '::')? ID ('::' ID)*;
+		@Override public ParserRule getRule() { return rule; }
 
-		//(VersionedQualifiedName "::")? ID ("::" ID)*
+		//(VersionedQualifiedName '::')? ID ('::' ID)*
 		public Group getGroup() { return cGroup; }
 
-		//(VersionedQualifiedName "::")?
+		//(VersionedQualifiedName '::')?
 		public Group getGroup_0() { return cGroup_0; }
 
 		//VersionedQualifiedName
 		public RuleCall getVersionedQualifiedNameParserRuleCall_0_0() { return cVersionedQualifiedNameParserRuleCall_0_0; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_0_1() { return cColonColonKeyword_0_1; }
 
 		//ID
 		public RuleCall getIDTerminalRuleCall_1() { return cIDTerminalRuleCall_1; }
 
-		//("::" ID)*
+		//('::' ID)*
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"::"
+		//'::'
 		public Keyword getColonColonKeyword_2_0() { return cColonColonKeyword_2_0; }
 
 		//ID
@@ -597,7 +620,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MFlatConnectionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MFlatConnection");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MFlatConnection");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMFlatConnectionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cConnectionKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -634,24 +657,28 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_15 = (Keyword)cGroup.eContents().get(15);
 		
 		//MFlatConnection:
-		//	{MFlatConnection} "connection" clientInstance=[MFlatComponentInstance] "." clientPort=[mclevcmp::MClientPort] "<->"
-		//	serverInstance=[MFlatComponentInstance] "." serverPort=[mclevcmp::MServerPort] "using"
-		//	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{" ("mapping" ":="
-		//	ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
-		//	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	{MFlatConnection}
+		//	'connection' clientInstance=[MFlatComponentInstance] '.'
+		//	clientPort=[mclevcmp::MClientPort] '<->'
+		//	serverInstance=[MFlatComponentInstance] '.'
+		//	serverPort=[mclevcmp::MServerPort] 'using'
+		//	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
+		//	'{' ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+		//	attributeValueAssignments+=MAttributeValueAssignment*
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//{MFlatConnection} "connection" clientInstance=[MFlatComponentInstance] "." clientPort=[mclevcmp::MClientPort] "<->"
-		//serverInstance=[MFlatComponentInstance] "." serverPort=[mclevcmp::MServerPort] "using"
-		//connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{" ("mapping" ":="
-		//ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
-		//attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+		//{MFlatConnection} 'connection' clientInstance=[MFlatComponentInstance] '.' clientPort=[mclevcmp::MClientPort] '<->'
+		//serverInstance=[MFlatComponentInstance] '.' serverPort=[mclevcmp::MServerPort] 'using'
+		//connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] '{' ('mapping' ':='
+		//ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+		//attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{MFlatConnection}
 		public Action getMFlatConnectionAction_0() { return cMFlatConnectionAction_0; }
 
-		//"connection"
+		//'connection'
 		public Keyword getConnectionKeyword_1() { return cConnectionKeyword_1; }
 
 		//clientInstance=[MFlatComponentInstance]
@@ -663,7 +690,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getClientInstanceMFlatComponentInstanceIDTerminalRuleCall_2_0_1() { return cClientInstanceMFlatComponentInstanceIDTerminalRuleCall_2_0_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
 
 		//clientPort=[mclevcmp::MClientPort]
@@ -675,7 +702,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getClientPortMClientPortIDTerminalRuleCall_4_0_1() { return cClientPortMClientPortIDTerminalRuleCall_4_0_1; }
 
-		//"<->"
+		//'<->'
 		public Keyword getLessThanSignHyphenMinusGreaterThanSignKeyword_5() { return cLessThanSignHyphenMinusGreaterThanSignKeyword_5; }
 
 		//serverInstance=[MFlatComponentInstance]
@@ -687,7 +714,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getServerInstanceMFlatComponentInstanceIDTerminalRuleCall_6_0_1() { return cServerInstanceMFlatComponentInstanceIDTerminalRuleCall_6_0_1; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_7() { return cFullStopKeyword_7; }
 
 		//serverPort=[mclevcmp::MServerPort]
@@ -699,7 +726,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getServerPortMServerPortIDTerminalRuleCall_8_0_1() { return cServerPortMServerPortIDTerminalRuleCall_8_0_1; }
 
-		//"using"
+		//'using'
 		public Keyword getUsingKeyword_9() { return cUsingKeyword_9; }
 
 		//connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
@@ -711,16 +738,16 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getConnectorMConnectorVersionedQualifiedReferenceNameParserRuleCall_10_0_1() { return cConnectorMConnectorVersionedQualifiedReferenceNameParserRuleCall_10_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_11() { return cLeftCurlyBracketKeyword_11; }
 
-		//("mapping" ":=" ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
+		//('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
 		public Group getGroup_12() { return cGroup_12; }
 
-		//"mapping"
+		//'mapping'
 		public Keyword getMappingKeyword_12_0() { return cMappingKeyword_12_0; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_12_1() { return cColonEqualsSignKeyword_12_1; }
 
 		//ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName]
@@ -732,7 +759,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getIfaceMappingMInterfaceMappingVersionedQualifiedNameParserRuleCall_12_2_0_1() { return cIfaceMappingMInterfaceMappingVersionedQualifiedNameParserRuleCall_12_2_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_12_3() { return cSemicolonKeyword_12_3; }
 
 		//attributeValueAssignments+=MAttributeValueAssignment*
@@ -741,15 +768,15 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MAttributeValueAssignment
 		public RuleCall getAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_13_0() { return cAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_13_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_14() { return cRightCurlyBracketKeyword_14; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_15() { return cSemicolonKeyword_15; }
 	}
 
 	public class MFlatComponentInstanceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MFlatComponentInstance");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MFlatComponentInstance");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMFlatComponentInstanceAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cInstanceKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -765,18 +792,22 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//MFlatComponentInstance:
-		//	{MFlatComponentInstance} "instance" component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID "{"
-		//	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	{MFlatComponentInstance}
+		//	'instance'
+		//	component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID
+		//	'{'
+		//	attributeValueAssignments+=MAttributeValueAssignment*
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//{MFlatComponentInstance} "instance" component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID "{"
-		//attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+		//{MFlatComponentInstance} 'instance' component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID '{'
+		//attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{MFlatComponentInstance}
 		public Action getMFlatComponentInstanceAction_0() { return cMFlatComponentInstanceAction_0; }
 
-		//"instance"
+		//'instance'
 		public Keyword getInstanceKeyword_1() { return cInstanceKeyword_1; }
 
 		//component=[mclevcmp::MComponent|VersionedQualifiedName]
@@ -794,7 +825,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//ID
 		public RuleCall getNameIDTerminalRuleCall_3_0() { return cNameIDTerminalRuleCall_3_0; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4() { return cLeftCurlyBracketKeyword_4; }
 
 		//attributeValueAssignments+=MAttributeValueAssignment*
@@ -803,22 +834,22 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MAttributeValueAssignment
 		public RuleCall getAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_5_0() { return cAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_5_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_6() { return cRightCurlyBracketKeyword_6; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MFlatServiceLibraryInstanceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MFlatServiceLibraryInstance");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MFlatServiceLibraryInstance");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMRegularFlatServiceLibraryInstanceParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMFlatDriverSLibInstanceParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//MFlatServiceLibraryInstance:
 		//	MRegularFlatServiceLibraryInstance | MFlatDriverSLibInstance;
-		public ParserRule getRule() { return rule; }
+		@Override public ParserRule getRule() { return rule; }
 
 		//MRegularFlatServiceLibraryInstance | MFlatDriverSLibInstance
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -831,7 +862,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MRegularFlatServiceLibraryInstanceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MRegularFlatServiceLibraryInstance");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MRegularFlatServiceLibraryInstance");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLibraryKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cLibraryAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -843,16 +874,19 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cRightCurlyBracketKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		private final Keyword cSemicolonKeyword_5 = (Keyword)cGroup.eContents().get(5);
 		
-		//MRegularFlatServiceLibraryInstance returns MFlatServiceLibraryInstance:
-		//	"library" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{"
-		//	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
-		public ParserRule getRule() { return rule; }
+		//MRegularFlatServiceLibraryInstance MFlatServiceLibraryInstance:
+		//	'library'
+		//	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+		//	'{'
+		//	attributeValueAssignments+=MAttributeValueAssignment*
+		//	'}' ';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"library" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{"
-		//attributeValueAssignments+=MAttributeValueAssignment* "}" ";"
+		//'library' library=[mclevslib::MServiceLibrary|VersionedQualifiedName] '{'
+		//attributeValueAssignments+=MAttributeValueAssignment* '}' ';'
 		public Group getGroup() { return cGroup; }
 
-		//"library"
+		//'library'
 		public Keyword getLibraryKeyword_0() { return cLibraryKeyword_0; }
 
 		//library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
@@ -864,7 +898,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLibraryMServiceLibraryVersionedQualifiedNameParserRuleCall_1_0_1() { return cLibraryMServiceLibraryVersionedQualifiedNameParserRuleCall_1_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_2() { return cLeftCurlyBracketKeyword_2; }
 
 		//attributeValueAssignments+=MAttributeValueAssignment*
@@ -873,15 +907,15 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MAttributeValueAssignment
 		public RuleCall getAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_3_0() { return cAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4() { return cRightCurlyBracketKeyword_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_5() { return cSemicolonKeyword_5; }
 	}
 
 	public class MFlatDriverSLibInstanceElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MFlatDriverSLibInstance");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MFlatDriverSLibInstance");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMFlatDriverSLibInstanceAction_0 = (Action)cGroup.eContents().get(0);
 		private final Keyword cDriverKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -910,20 +944,28 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//MFlatDriverSLibInstance:
-		//	{MFlatDriverSLibInstance} "driver" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{" (("attribute"
-		//	"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-		//	deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?) "}" ";";
-		public ParserRule getRule() { return rule; }
+		//	{MFlatDriverSLibInstance}
+		//	'driver'
+		//	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+		//	'{' (('attribute' 'values'
+		//	'{'
+		//	attributeValueAssignments+=MAttributeValueAssignment+
+		//	'}' ';')?
+		//	& ('device' 'mappings' '{'
+		//	deviceDriverMappings+=MFlatDeviceDriverMapping+
+		//	'}' ';')?)
+		//	'}' ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//{MFlatDriverSLibInstance} "driver" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{" (("attribute"
-		//"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-		//deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?) "}" ";"
+		//{MFlatDriverSLibInstance} 'driver' library=[mclevslib::MServiceLibrary|VersionedQualifiedName] '{' (('attribute'
+		//'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+		//deviceDriverMappings+=MFlatDeviceDriverMapping+ '}' ';')?) '}' ';'
 		public Group getGroup() { return cGroup; }
 
 		//{MFlatDriverSLibInstance}
 		public Action getMFlatDriverSLibInstanceAction_0() { return cMFlatDriverSLibInstanceAction_0; }
 
-		//"driver"
+		//'driver'
 		public Keyword getDriverKeyword_1() { return cDriverKeyword_1; }
 
 		//library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
@@ -935,23 +977,23 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedName
 		public RuleCall getLibraryMServiceLibraryVersionedQualifiedNameParserRuleCall_2_0_1() { return cLibraryMServiceLibraryVersionedQualifiedNameParserRuleCall_2_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_3() { return cLeftCurlyBracketKeyword_3; }
 
-		//("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-		//deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?
+		//(('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')? & ('device' 'mappings' '{'
+		//deviceDriverMappings+=MFlatDeviceDriverMapping+ '}' ';')?)
 		public UnorderedGroup getUnorderedGroup_4() { return cUnorderedGroup_4; }
 
-		//("attribute" "values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")?
+		//('attribute' 'values' '{' attributeValueAssignments+=MAttributeValueAssignment+ '}' ';')?
 		public Group getGroup_4_0() { return cGroup_4_0; }
 
-		//"attribute"
+		//'attribute'
 		public Keyword getAttributeKeyword_4_0_0() { return cAttributeKeyword_4_0_0; }
 
-		//"values"
+		//'values'
 		public Keyword getValuesKeyword_4_0_1() { return cValuesKeyword_4_0_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_0_2() { return cLeftCurlyBracketKeyword_4_0_2; }
 
 		//attributeValueAssignments+=MAttributeValueAssignment+
@@ -960,22 +1002,22 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MAttributeValueAssignment
 		public RuleCall getAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_4_0_3_0() { return cAttributeValueAssignmentsMAttributeValueAssignmentParserRuleCall_4_0_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_0_4() { return cRightCurlyBracketKeyword_4_0_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_0_5() { return cSemicolonKeyword_4_0_5; }
 
-		//("device" "mappings" "{" deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?
+		//('device' 'mappings' '{' deviceDriverMappings+=MFlatDeviceDriverMapping+ '}' ';')?
 		public Group getGroup_4_1() { return cGroup_4_1; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_4_1_0() { return cDeviceKeyword_4_1_0; }
 
-		//"mappings"
+		//'mappings'
 		public Keyword getMappingsKeyword_4_1_1() { return cMappingsKeyword_4_1_1; }
 
-		//"{"
+		//'{'
 		public Keyword getLeftCurlyBracketKeyword_4_1_2() { return cLeftCurlyBracketKeyword_4_1_2; }
 
 		//deviceDriverMappings+=MFlatDeviceDriverMapping+
@@ -984,21 +1026,21 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MFlatDeviceDriverMapping
 		public RuleCall getDeviceDriverMappingsMFlatDeviceDriverMappingParserRuleCall_4_1_3_0() { return cDeviceDriverMappingsMFlatDeviceDriverMappingParserRuleCall_4_1_3_0; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_4_1_4() { return cRightCurlyBracketKeyword_4_1_4; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4_1_5() { return cSemicolonKeyword_4_1_5; }
 
-		//"}"
+		//'}'
 		public Keyword getRightCurlyBracketKeyword_5() { return cRightCurlyBracketKeyword_5; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_6() { return cSemicolonKeyword_6; }
 	}
 
 	public class MFlatDeviceDriverMappingElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MFlatDeviceDriverMapping");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MFlatDeviceDriverMapping");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cSupportedKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Keyword cDeviceKeyword_1 = (Keyword)cGroup.eContents().get(1);
@@ -1014,18 +1056,19 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cSemicolonKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//MFlatDeviceDriverMapping:
-		//	"supported" "device" supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] "->"
-		//	"deployed" "device" deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ";";
-		public ParserRule getRule() { return rule; }
+		//	'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName]
+		//	'->'
+		//	'deployed' 'device' deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ';';
+		@Override public ParserRule getRule() { return rule; }
 
-		//"supported" "device" supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] "->"
-		//"deployed" "device" deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ";"
+		//'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] '->'
+		//'deployed' 'device' deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ';'
 		public Group getGroup() { return cGroup; }
 
-		//"supported"
+		//'supported'
 		public Keyword getSupportedKeyword_0() { return cSupportedKeyword_0; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_1() { return cDeviceKeyword_1; }
 
 		//supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName]
@@ -1037,13 +1080,13 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getSupportedDeviceMDriverSLibSupportedDeviceVersionedQualifiedReferenceNameParserRuleCall_2_0_1() { return cSupportedDeviceMDriverSLibSupportedDeviceVersionedQualifiedReferenceNameParserRuleCall_2_0_1; }
 
-		//"->"
+		//'->'
 		public Keyword getHyphenMinusGreaterThanSignKeyword_3() { return cHyphenMinusGreaterThanSignKeyword_3; }
 
-		//"deployed"
+		//'deployed'
 		public Keyword getDeployedKeyword_4() { return cDeployedKeyword_4; }
 
-		//"device"
+		//'device'
 		public Keyword getDeviceKeyword_5() { return cDeviceKeyword_5; }
 
 		//deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName]
@@ -1055,12 +1098,12 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getDeployedDeviceMDeployedDeviceVersionedQualifiedReferenceNameParserRuleCall_6_0_1() { return cDeployedDeviceMDeployedDeviceVersionedQualifiedReferenceNameParserRuleCall_6_0_1; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_7() { return cSemicolonKeyword_7; }
 	}
 
 	public class MAttributeValueAssignmentElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MAttributeValueAssignment");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MAttributeValueAssignment");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cAttributeKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cParameterAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1071,16 +1114,18 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final RuleCall cParameterValueMParameterValueExpressionParserRuleCall_3_0 = (RuleCall)cParameterValueAssignment_3.eContents().get(0);
 		private final Keyword cSemicolonKeyword_4 = (Keyword)cGroup.eContents().get(4);
 		
-		//MAttributeValueAssignment returns common::MParameterValueAssignmentSingleExpression:
-		//	"attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
-		//	parameterValue=MParameterValueExpression ";";
-		public ParserRule getRule() { return rule; }
+		//MAttributeValueAssignment common::MParameterValueAssignmentSingleExpression:
+		//	'attribute'
+		//	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+		//	':='
+		//	parameterValue=MParameterValueExpression ';'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":=" parameterValue=MParameterValueExpression
-		//";"
+		//'attribute' parameter=[common::MParameter|VersionedQualifiedReferenceName] ':=' parameterValue=MParameterValueExpression
+		//';'
 		public Group getGroup() { return cGroup; }
 
-		//"attribute"
+		//'attribute'
 		public Keyword getAttributeKeyword_0() { return cAttributeKeyword_0; }
 
 		//parameter=[common::MParameter|VersionedQualifiedReferenceName]
@@ -1092,7 +1137,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//VersionedQualifiedReferenceName
 		public RuleCall getParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_1_0_1() { return cParameterMParameterVersionedQualifiedReferenceNameParserRuleCall_1_0_1; }
 
-		//":="
+		//':='
 		public Keyword getColonEqualsSignKeyword_2() { return cColonEqualsSignKeyword_2; }
 
 		//parameterValue=MParameterValueExpression
@@ -1101,20 +1146,20 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getParameterValueMParameterValueExpressionParserRuleCall_3_0() { return cParameterValueMParameterValueExpressionParserRuleCall_3_0; }
 
-		//";"
+		//';'
 		public Keyword getSemicolonKeyword_4() { return cSemicolonKeyword_4; }
 	}
 
 	public class MParameterValueElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValue");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValue");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueRefObjectParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValuePARParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		
-		//MParameterValue returns common::MParameterValue:
-		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
-		public ParserRule getRule() { return rule; }
+		//MParameterValue common::MParameterValue:
+		//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 		public Alternatives getAlternatives() { return cAlternatives; }
@@ -1130,17 +1175,17 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueLiteral");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final RuleCall cMParameterValueBooleanLiteralParserRuleCall_0 = (RuleCall)cAlternatives.eContents().get(0);
 		private final RuleCall cMParameterValueStringLiteralParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		private final RuleCall cMParameterValueIntegerLiteralParserRuleCall_2 = (RuleCall)cAlternatives.eContents().get(2);
 		private final RuleCall cMParameterValueRealLiteralParserRuleCall_3 = (RuleCall)cAlternatives.eContents().get(3);
 		
-		//MParameterValueLiteral returns common::MParameterValueLiteral:
+		//MParameterValueLiteral common::MParameterValueLiteral:
 		//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-		//	MParameterValueRealLiteral;
-		public ParserRule getRule() { return rule; }
+		//	MParameterValueRealLiteral
+		@Override public ParserRule getRule() { return rule; }
 
 		//MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
 		//MParameterValueRealLiteral
@@ -1160,15 +1205,15 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueBooleanLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueBooleanLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueBooleanLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueBooleanLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueEBooleanParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-		//	{common::MParameterValueBooleanLiteral} value=EBoolean;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+		//	{common::MParameterValueBooleanLiteral} value=EBoolean
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueBooleanLiteral} value=EBoolean
 		public Group getGroup() { return cGroup; }
@@ -1184,39 +1229,48 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueStringLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueStringLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueStringLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueStringLiteralAction_0 = (Action)cGroup.eContents().get(0);
-		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
-		private final RuleCall cValueSTRINGTerminalRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
+		private final Assignment cIsRawAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final Keyword cIsRawRawKeyword_1_0 = (Keyword)cIsRawAssignment_1.eContents().get(0);
+		private final Assignment cValueAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cValueSTRINGTerminalRuleCall_2_0 = (RuleCall)cValueAssignment_2.eContents().get(0);
 		
-		//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-		//	{common::MParameterValueStringLiteral} value=STRING;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+		//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+		//	value=STRING
+		@Override public ParserRule getRule() { return rule; }
 
-		//{common::MParameterValueStringLiteral} value=STRING
+		//{common::MParameterValueStringLiteral} isRaw?='raw'? value=STRING
 		public Group getGroup() { return cGroup; }
 
 		//{common::MParameterValueStringLiteral}
 		public Action getMParameterValueStringLiteralAction_0() { return cMParameterValueStringLiteralAction_0; }
 
+		//isRaw?='raw'?
+		public Assignment getIsRawAssignment_1() { return cIsRawAssignment_1; }
+
+		//'raw'
+		public Keyword getIsRawRawKeyword_1_0() { return cIsRawRawKeyword_1_0; }
+
 		//value=STRING
-		public Assignment getValueAssignment_1() { return cValueAssignment_1; }
+		public Assignment getValueAssignment_2() { return cValueAssignment_2; }
 
 		//STRING
-		public RuleCall getValueSTRINGTerminalRuleCall_1_0() { return cValueSTRINGTerminalRuleCall_1_0; }
+		public RuleCall getValueSTRINGTerminalRuleCall_2_0() { return cValueSTRINGTerminalRuleCall_2_0; }
 	}
 
 	public class MParameterValueIntegerLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueIntegerLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueIntegerLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueIntegerLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueINTEGERParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-		//	{common::MParameterValueIntegerLiteral} value=INTEGER;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+		//	{common::MParameterValueIntegerLiteral} value=INTEGER
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueIntegerLiteral} value=INTEGER
 		public Group getGroup() { return cGroup; }
@@ -1232,15 +1286,15 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRealLiteralElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRealLiteral");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueRealLiteral");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRealLiteralAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueREALParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		
-		//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-		//	{common::MParameterValueRealLiteral} value=REAL;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+		//	{common::MParameterValueRealLiteral} value=REAL
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRealLiteral} value=REAL
 		public Group getGroup() { return cGroup; }
@@ -1256,16 +1310,16 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueRefObjectElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueRefObject");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueRefObject");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueRefObjectAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cObjectAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final CrossReference cObjectMCommonReferenceableObjCrossReference_1_0 = (CrossReference)cObjectAssignment_1.eContents().get(0);
 		private final RuleCall cObjectMCommonReferenceableObjVersionedQualifiedReferenceNameParserRuleCall_1_0_1 = (RuleCall)cObjectMCommonReferenceableObjCrossReference_1_0.eContents().get(1);
 		
-		//MParameterValueRefObject returns common::MParameterValueRefObject:
-		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
-		public ParserRule getRule() { return rule; }
+		//MParameterValueRefObject common::MParameterValueRefObject:
+		//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 		public Group getGroup() { return cGroup; }
@@ -1284,21 +1338,21 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValuePARElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValuePAR");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValuePAR");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cLeftParenthesisKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Assignment cValueAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cValueMParameterValueExpressionParserRuleCall_1_0 = (RuleCall)cValueAssignment_1.eContents().get(0);
 		private final Keyword cRightParenthesisKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//MParameterValuePAR returns common::MParameterValuePAR:
-		//	"(" value=MParameterValueExpression ")";
-		public ParserRule getRule() { return rule; }
+		//MParameterValuePAR common::MParameterValuePAR:
+		//	'(' value=MParameterValueExpression ')'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"(" value=MParameterValueExpression ")"
+		//'(' value=MParameterValueExpression ')'
 		public Group getGroup() { return cGroup; }
 
-		//"("
+		//'('
 		public Keyword getLeftParenthesisKeyword_0() { return cLeftParenthesisKeyword_0; }
 
 		//value=MParameterValueExpression
@@ -1307,12 +1361,12 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		//MParameterValueExpression
 		public RuleCall getValueMParameterValueExpressionParserRuleCall_1_0() { return cValueMParameterValueExpressionParserRuleCall_1_0; }
 
-		//")"
+		//')'
 		public Keyword getRightParenthesisKeyword_2() { return cRightParenthesisKeyword_2; }
 	}
 
 	public class MParameterValueExpressionElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpression");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueExpression");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueExpressionAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1323,10 +1377,10 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueExpressionParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueExpression returns common::MParameterValueExpression:
+		//MParameterValueExpression common::MParameterValueExpression:
 		//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-		//	right=MParameterValueExpression)?;
-		public ParserRule getRule() { return rule; }
+		//	right=MParameterValueExpression)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
 		//right=MParameterValueExpression)?
@@ -1358,7 +1412,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class MParameterValueTERMElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERM");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueTERM");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cMParameterValueTERMAction_0 = (Action)cGroup.eContents().get(0);
 		private final Assignment cLeftAssignment_1 = (Assignment)cGroup.eContents().get(1);
@@ -1369,10 +1423,9 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Assignment cRightAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
 		private final RuleCall cRightMParameterValueTERMParserRuleCall_2_1_0 = (RuleCall)cRightAssignment_2_1.eContents().get(0);
 		
-		//MParameterValueTERM returns common::MParameterValueTERM:
-		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-		//	right=MParameterValueTERM)?;
-		public ParserRule getRule() { return rule; }
+		//MParameterValueTERM common::MParameterValueTERM:
+		//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
+		@Override public ParserRule getRule() { return rule; }
 
 		//{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 		public Group getGroup() { return cGroup; }
@@ -1403,44 +1456,44 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class EBooleanElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "EBoolean");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.EBoolean");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cTrueKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cFalseKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		
-		//EBoolean returns ecore::EBoolean:
-		//	"true" | "false";
-		public ParserRule getRule() { return rule; }
+		//EBoolean ecore::EBoolean:
+		//	'true' | 'false'
+		@Override public ParserRule getRule() { return rule; }
 
-		//"true" | "false"
+		//'true' | 'false'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"true"
+		//'true'
 		public Keyword getTrueKeyword_0() { return cTrueKeyword_0; }
 
-		//"false"
+		//'false'
 		public Keyword getFalseKeyword_1() { return cFalseKeyword_1; }
 	}
 
 	public class INTEGERElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "INTEGER");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.INTEGER");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Keyword cHyphenMinusKeyword_0_0 = (Keyword)cGroup_0.eContents().get(0);
 		private final RuleCall cINTTerminalRuleCall_0_1 = (RuleCall)cGroup_0.eContents().get(1);
 		private final RuleCall cHEXADECIMALTerminalRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
-		//INTEGER returns ecore::EString:
-		//	"-"? INT | HEXADECIMAL;
-		public ParserRule getRule() { return rule; }
+		//INTEGER:
+		//	'-'? INT | HEXADECIMAL;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? INT | HEXADECIMAL
+		//'-'? INT | HEXADECIMAL
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//"-"? INT
+		//'-'? INT
 		public Group getGroup_0() { return cGroup_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0_0() { return cHyphenMinusKeyword_0_0; }
 
 		//INT
@@ -1451,7 +1504,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	public class REALElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "REAL");
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.REAL");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Keyword cHyphenMinusKeyword_0 = (Keyword)cGroup.eContents().get(0);
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
@@ -1463,35 +1516,35 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cHyphenMinusKeyword_2_1 = (Keyword)cGroup_2.eContents().get(1);
 		private final RuleCall cINTTerminalRuleCall_2_2 = (RuleCall)cGroup_2.eContents().get(2);
 		
-		//REAL returns ecore::EString:
-		//	"-"? (INT "." INT) ("e" "-"? INT)?;
-		public ParserRule getRule() { return rule; }
+		//REAL:
+		//	'-'? (INT '.' INT) ('e' '-'? INT)?;
+		@Override public ParserRule getRule() { return rule; }
 
-		//"-"? (INT "." INT) ("e" "-"? INT)?
+		//'-'? (INT '.' INT) ('e' '-'? INT)?
 		public Group getGroup() { return cGroup; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_0() { return cHyphenMinusKeyword_0; }
 
-		//INT "." INT
+		//(INT '.' INT)
 		public Group getGroup_1() { return cGroup_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_0() { return cINTTerminalRuleCall_1_0; }
 
-		//"."
+		//'.'
 		public Keyword getFullStopKeyword_1_1() { return cFullStopKeyword_1_1; }
 
 		//INT
 		public RuleCall getINTTerminalRuleCall_1_2() { return cINTTerminalRuleCall_1_2; }
 
-		//("e" "-"? INT)?
+		//('e' '-'? INT)?
 		public Group getGroup_2() { return cGroup_2; }
 
-		//"e"
+		//'e'
 		public Keyword getEKeyword_2_0() { return cEKeyword_2_0; }
 
-		//"-"?
+		//'-'?
 		public Keyword getHyphenMinusKeyword_2_1() { return cHyphenMinusKeyword_2_1; }
 
 		//INT
@@ -1500,7 +1553,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	
 	
 	public class MParameterValueExpressionOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueExpressionOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueExpressionOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cPlusEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cPlusPlusSignKeyword_0_0 = (Keyword)cPlusEnumLiteralDeclaration_0.eContents().get(0);
@@ -1508,27 +1561,27 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cMinusHyphenMinusKeyword_1_0 = (Keyword)cMinusEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-		//	plus="+" | minus="-";
+		//	plus='+' | minus='-';
 		public EnumRule getRule() { return rule; }
 
-		//plus="+" | minus="-"
+		//plus='+' | minus='-'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//plus="+"
+		//plus='+'
 		public EnumLiteralDeclaration getPlusEnumLiteralDeclaration_0() { return cPlusEnumLiteralDeclaration_0; }
 
-		//"+"
+		//'+'
 		public Keyword getPlusPlusSignKeyword_0_0() { return cPlusPlusSignKeyword_0_0; }
 
-		//minus="-"
+		//minus='-'
 		public EnumLiteralDeclaration getMinusEnumLiteralDeclaration_1() { return cMinusEnumLiteralDeclaration_1; }
 
-		//"-"
+		//'-'
 		public Keyword getMinusHyphenMinusKeyword_1_0() { return cMinusHyphenMinusKeyword_1_0; }
 	}
 
 	public class MParameterValueTERMOperatorsElements extends AbstractEnumRuleElementFinder {
-		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "MParameterValueTERMOperators");
+		private final EnumRule rule = (EnumRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.MParameterValueTERMOperators");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final EnumLiteralDeclaration cMultEnumLiteralDeclaration_0 = (EnumLiteralDeclaration)cAlternatives.eContents().get(0);
 		private final Keyword cMultAsteriskKeyword_0_0 = (Keyword)cMultEnumLiteralDeclaration_0.eContents().get(0);
@@ -1536,66 +1589,97 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		private final Keyword cDivSolidusKeyword_1_0 = (Keyword)cDivEnumLiteralDeclaration_1.eContents().get(0);
 		
 		//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-		//	mult="*" | div="/";
+		//	mult='*' | div='/';
 		public EnumRule getRule() { return rule; }
 
-		//mult="*" | div="/"
+		//mult='*' | div='/'
 		public Alternatives getAlternatives() { return cAlternatives; }
 
-		//mult="*"
+		//mult='*'
 		public EnumLiteralDeclaration getMultEnumLiteralDeclaration_0() { return cMultEnumLiteralDeclaration_0; }
 
-		//"*"
+		//'*'
 		public Keyword getMultAsteriskKeyword_0_0() { return cMultAsteriskKeyword_0_0; }
 
-		//div="/"
+		//div='/'
 		public EnumLiteralDeclaration getDivEnumLiteralDeclaration_1() { return cDivEnumLiteralDeclaration_1; }
 
-		//"/"
+		//'/'
 		public Keyword getDivSolidusKeyword_1_0() { return cDivSolidusKeyword_1_0; }
 	}
 	
-	private MMCLEVFLATMCADPackageFileElements pMMCLEVFLATMCADPackageFile;
-	private MMCLEVFLATMCADPackageElementElements pMMCLEVFLATMCADPackageElement;
-	private MFlatMCADElements pMFlatMCAD;
-	private MFlatMCADTargetElements pMFlatMCADTarget;
-	private QualifiedNameElements pQualifiedName;
-	private VersionElements pVersion;
-	private VersionedQualifiedNameElements pVersionedQualifiedName;
-	private VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
-	private MFlatConnectionElements pMFlatConnection;
-	private MFlatComponentInstanceElements pMFlatComponentInstance;
-	private MFlatServiceLibraryInstanceElements pMFlatServiceLibraryInstance;
-	private MRegularFlatServiceLibraryInstanceElements pMRegularFlatServiceLibraryInstance;
-	private MFlatDriverSLibInstanceElements pMFlatDriverSLibInstance;
-	private MFlatDeviceDriverMappingElements pMFlatDeviceDriverMapping;
-	private MAttributeValueAssignmentElements pMAttributeValueAssignment;
-	private MParameterValueElements pMParameterValue;
-	private MParameterValueLiteralElements pMParameterValueLiteral;
-	private MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
-	private MParameterValueStringLiteralElements pMParameterValueStringLiteral;
-	private MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
-	private MParameterValueRealLiteralElements pMParameterValueRealLiteral;
-	private MParameterValueRefObjectElements pMParameterValueRefObject;
-	private MParameterValuePARElements pMParameterValuePAR;
-	private MParameterValueExpressionOperatorsElements unknownRuleMParameterValueExpressionOperators;
-	private MParameterValueTERMOperatorsElements unknownRuleMParameterValueTERMOperators;
-	private MParameterValueExpressionElements pMParameterValueExpression;
-	private MParameterValueTERMElements pMParameterValueTERM;
-	private EBooleanElements pEBoolean;
-	private TerminalRule tHEXADECIMAL;
-	private INTEGERElements pINTEGER;
-	private REALElements pREAL;
+	private final MMCLEVFLATMCADPackageFileElements pMMCLEVFLATMCADPackageFile;
+	private final MMCLEVFLATMCADPackageElementElements pMMCLEVFLATMCADPackageElement;
+	private final MFlatMCADElements pMFlatMCAD;
+	private final MFlatMCADTargetElements pMFlatMCADTarget;
+	private final QualifiedNameElements pQualifiedName;
+	private final VersionElements pVersion;
+	private final VersionedQualifiedNameElements pVersionedQualifiedName;
+	private final VersionedQualifiedReferenceNameElements pVersionedQualifiedReferenceName;
+	private final MFlatConnectionElements pMFlatConnection;
+	private final MFlatComponentInstanceElements pMFlatComponentInstance;
+	private final MFlatServiceLibraryInstanceElements pMFlatServiceLibraryInstance;
+	private final MRegularFlatServiceLibraryInstanceElements pMRegularFlatServiceLibraryInstance;
+	private final MFlatDriverSLibInstanceElements pMFlatDriverSLibInstance;
+	private final MFlatDeviceDriverMappingElements pMFlatDeviceDriverMapping;
+	private final MAttributeValueAssignmentElements pMAttributeValueAssignment;
+	private final MParameterValueElements pMParameterValue;
+	private final MParameterValueLiteralElements pMParameterValueLiteral;
+	private final MParameterValueBooleanLiteralElements pMParameterValueBooleanLiteral;
+	private final MParameterValueStringLiteralElements pMParameterValueStringLiteral;
+	private final MParameterValueIntegerLiteralElements pMParameterValueIntegerLiteral;
+	private final MParameterValueRealLiteralElements pMParameterValueRealLiteral;
+	private final MParameterValueRefObjectElements pMParameterValueRefObject;
+	private final MParameterValuePARElements pMParameterValuePAR;
+	private final MParameterValueExpressionOperatorsElements eMParameterValueExpressionOperators;
+	private final MParameterValueTERMOperatorsElements eMParameterValueTERMOperators;
+	private final MParameterValueExpressionElements pMParameterValueExpression;
+	private final MParameterValueTERMElements pMParameterValueTERM;
+	private final EBooleanElements pEBoolean;
+	private final TerminalRule tHEXADECIMAL;
+	private final INTEGERElements pINTEGER;
+	private final REALElements pREAL;
 	
 	private final Grammar grammar;
 
-	private TerminalsGrammarAccess gaTerminals;
+	private final TerminalsGrammarAccess gaTerminals;
 
 	@Inject
 	public FLATMCADGrammarAccess(GrammarProvider grammarProvider,
 		TerminalsGrammarAccess gaTerminals) {
 		this.grammar = internalFindGrammar(grammarProvider);
 		this.gaTerminals = gaTerminals;
+		this.pMMCLEVFLATMCADPackageFile = new MMCLEVFLATMCADPackageFileElements();
+		this.pMMCLEVFLATMCADPackageElement = new MMCLEVFLATMCADPackageElementElements();
+		this.pMFlatMCAD = new MFlatMCADElements();
+		this.pMFlatMCADTarget = new MFlatMCADTargetElements();
+		this.pQualifiedName = new QualifiedNameElements();
+		this.pVersion = new VersionElements();
+		this.pVersionedQualifiedName = new VersionedQualifiedNameElements();
+		this.pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements();
+		this.pMFlatConnection = new MFlatConnectionElements();
+		this.pMFlatComponentInstance = new MFlatComponentInstanceElements();
+		this.pMFlatServiceLibraryInstance = new MFlatServiceLibraryInstanceElements();
+		this.pMRegularFlatServiceLibraryInstance = new MRegularFlatServiceLibraryInstanceElements();
+		this.pMFlatDriverSLibInstance = new MFlatDriverSLibInstanceElements();
+		this.pMFlatDeviceDriverMapping = new MFlatDeviceDriverMappingElements();
+		this.pMAttributeValueAssignment = new MAttributeValueAssignmentElements();
+		this.pMParameterValue = new MParameterValueElements();
+		this.pMParameterValueLiteral = new MParameterValueLiteralElements();
+		this.pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements();
+		this.pMParameterValueStringLiteral = new MParameterValueStringLiteralElements();
+		this.pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements();
+		this.pMParameterValueRealLiteral = new MParameterValueRealLiteralElements();
+		this.pMParameterValueRefObject = new MParameterValueRefObjectElements();
+		this.pMParameterValuePAR = new MParameterValuePARElements();
+		this.eMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements();
+		this.eMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements();
+		this.pMParameterValueExpression = new MParameterValueExpressionElements();
+		this.pMParameterValueTERM = new MParameterValueTERMElements();
+		this.pEBoolean = new EBooleanElements();
+		this.tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "es.uah.aut.srg.micobs.mclev.lang.FLATMCAD.HEXADECIMAL");
+		this.pINTEGER = new INTEGERElements();
+		this.pREAL = new REALElements();
 	}
 	
 	protected Grammar internalFindGrammar(GrammarProvider grammarProvider) {
@@ -1614,7 +1698,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 		return grammar;
 	}
 	
-	
+	@Override
 	public Grammar getGrammar() {
 		return grammar;
 	}
@@ -1626,10 +1710,11 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 
 	
 	//MMCLEVFLATMCADPackageFile:
-	//	"package" package=[mclevlibrary::MMCLEVPackage|QualifiedName] ";" ("import"
-	//	imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ";")* element=MMCLEVFLATMCADPackageElement;
+	//	'package' package=[mclevlibrary::MMCLEVPackage|QualifiedName] ';' ('import'
+	//	imports+=[mclevlibrary::MMCLEVPackage|QualifiedName] ';')*
+	//	element=MMCLEVFLATMCADPackageElement;
 	public MMCLEVFLATMCADPackageFileElements getMMCLEVFLATMCADPackageFileAccess() {
-		return (pMMCLEVFLATMCADPackageFile != null) ? pMMCLEVFLATMCADPackageFile : (pMMCLEVFLATMCADPackageFile = new MMCLEVFLATMCADPackageFileElements());
+		return pMMCLEVFLATMCADPackageFile;
 	}
 	
 	public ParserRule getMMCLEVFLATMCADPackageFileRule() {
@@ -1639,7 +1724,7 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	//MMCLEVFLATMCADPackageElement:
 	//	MFlatMCAD;
 	public MMCLEVFLATMCADPackageElementElements getMMCLEVFLATMCADPackageElementAccess() {
-		return (pMMCLEVFLATMCADPackageElement != null) ? pMMCLEVFLATMCADPackageElement : (pMMCLEVFLATMCADPackageElement = new MMCLEVFLATMCADPackageElementElements());
+		return pMMCLEVFLATMCADPackageElement;
 	}
 	
 	public ParserRule getMMCLEVFLATMCADPackageElementRule() {
@@ -1647,11 +1732,15 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MFlatMCAD:
-	//	"flat mcad" name=ID "{" ("version" ":=" version=Version ";" & "deployment" "project" ":="
-	//	referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ";" & "deployment" "targets" "{"
-	//	targets+=MFlatMCADTarget+ "}" ";") "}" ";";
+	//	'flat' 'mcad'
+	//	name=ID
+	//	'{' ('version' ':=' version=Version ';' & 'deployment' 'project' ':='
+	//	referencedElement=[mclevmcad::MMCADeployment|VersionedQualifiedName] ';' & 'deployment' 'targets' '{'
+	//	targets+=MFlatMCADTarget+
+	//	'}' ';')
+	//	'}' ';';
 	public MFlatMCADElements getMFlatMCADAccess() {
-		return (pMFlatMCAD != null) ? pMFlatMCAD : (pMFlatMCAD = new MFlatMCADElements());
+		return pMFlatMCAD;
 	}
 	
 	public ParserRule getMFlatMCADRule() {
@@ -1659,53 +1748,67 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MFlatMCADTarget:
-	//	"target" ("platform" deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ("alternative"
-	//	leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?) "{" (("attribute"
-	//	"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("components" "{"
-	//	components+=MFlatComponentInstance+ "}" ";")? & ("connections" "{" connections+=MFlatConnection+ "}" ";")? &
-	//	("libraries" "{" libraries+=MFlatServiceLibraryInstance+ "}" ";")?) "}" ";";
+	//	'target' ('platform' deploymentPlatform=[mclevmcad::MDeploymentPlatform] & ('alternative'
+	//	leafDeploymentAlternative=[mclevmcad::MDeploymentAlternative|VersionedQualifiedReferenceName])?)
+	//	'{' (('attribute' 'values'
+	//	'{'
+	//	attributeValueAssignments+=MAttributeValueAssignment+
+	//	'}' ';')?
+	//	& ('components'
+	//	'{'
+	//	components+=MFlatComponentInstance+
+	//	'}' ';')?
+	//	& ('connections'
+	//	'{'
+	//	connections+=MFlatConnection+
+	//	'}' ';')?
+	//	& ('libraries'
+	//	'{'
+	//	libraries+=MFlatServiceLibraryInstance+
+	//	'}' ';')?)
+	//	'}' ';';
 	public MFlatMCADTargetElements getMFlatMCADTargetAccess() {
-		return (pMFlatMCADTarget != null) ? pMFlatMCADTarget : (pMFlatMCADTarget = new MFlatMCADTargetElements());
+		return pMFlatMCADTarget;
 	}
 	
 	public ParserRule getMFlatMCADTargetRule() {
 		return getMFlatMCADTargetAccess().getRule();
 	}
 
-	//QualifiedName returns ecore::EString:
-	//	ID ("." ID)*;
+	//QualifiedName:
+	//	ID ('.' ID)*;
 	public QualifiedNameElements getQualifiedNameAccess() {
-		return (pQualifiedName != null) ? pQualifiedName : (pQualifiedName = new QualifiedNameElements());
+		return pQualifiedName;
 	}
 	
 	public ParserRule getQualifiedNameRule() {
 		return getQualifiedNameAccess().getRule();
 	}
 
-	//Version returns ecore::EString:
-	//	(INT | INT? ID) ("." (INT | INT? ID))*;
+	//Version:
+	//	(INT | INT? ID) ('.' (INT | INT? ID))*;
 	public VersionElements getVersionAccess() {
-		return (pVersion != null) ? pVersion : (pVersion = new VersionElements());
+		return pVersion;
 	}
 	
 	public ParserRule getVersionRule() {
 		return getVersionAccess().getRule();
 	}
 
-	//VersionedQualifiedName returns ecore::EString:
-	//	QualifiedName "(" Version ")";
+	//VersionedQualifiedName:
+	//	QualifiedName '(' Version ')';
 	public VersionedQualifiedNameElements getVersionedQualifiedNameAccess() {
-		return (pVersionedQualifiedName != null) ? pVersionedQualifiedName : (pVersionedQualifiedName = new VersionedQualifiedNameElements());
+		return pVersionedQualifiedName;
 	}
 	
 	public ParserRule getVersionedQualifiedNameRule() {
 		return getVersionedQualifiedNameAccess().getRule();
 	}
 
-	//VersionedQualifiedReferenceName returns ecore::EString:
-	//	(VersionedQualifiedName "::")? ID ("::" ID)*;
+	//VersionedQualifiedReferenceName:
+	//	(VersionedQualifiedName '::')? ID ('::' ID)*;
 	public VersionedQualifiedReferenceNameElements getVersionedQualifiedReferenceNameAccess() {
-		return (pVersionedQualifiedReferenceName != null) ? pVersionedQualifiedReferenceName : (pVersionedQualifiedReferenceName = new VersionedQualifiedReferenceNameElements());
+		return pVersionedQualifiedReferenceName;
 	}
 	
 	public ParserRule getVersionedQualifiedReferenceNameRule() {
@@ -1713,13 +1816,17 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MFlatConnection:
-	//	{MFlatConnection} "connection" clientInstance=[MFlatComponentInstance] "." clientPort=[mclevcmp::MClientPort] "<->"
-	//	serverInstance=[MFlatComponentInstance] "." serverPort=[mclevcmp::MServerPort] "using"
-	//	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName] "{" ("mapping" ":="
-	//	ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ";")?
-	//	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+	//	{MFlatConnection}
+	//	'connection' clientInstance=[MFlatComponentInstance] '.'
+	//	clientPort=[mclevcmp::MClientPort] '<->'
+	//	serverInstance=[MFlatComponentInstance] '.'
+	//	serverPort=[mclevcmp::MServerPort] 'using'
+	//	connector=[mclevdom::MConnector|VersionedQualifiedReferenceName]
+	//	'{' ('mapping' ':=' ifaceMapping=[mclevimap::MInterfaceMapping|VersionedQualifiedName] ';')?
+	//	attributeValueAssignments+=MAttributeValueAssignment*
+	//	'}' ';';
 	public MFlatConnectionElements getMFlatConnectionAccess() {
-		return (pMFlatConnection != null) ? pMFlatConnection : (pMFlatConnection = new MFlatConnectionElements());
+		return pMFlatConnection;
 	}
 	
 	public ParserRule getMFlatConnectionRule() {
@@ -1727,10 +1834,14 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MFlatComponentInstance:
-	//	{MFlatComponentInstance} "instance" component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID "{"
-	//	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+	//	{MFlatComponentInstance}
+	//	'instance'
+	//	component=[mclevcmp::MComponent|VersionedQualifiedName] name=ID
+	//	'{'
+	//	attributeValueAssignments+=MAttributeValueAssignment*
+	//	'}' ';';
 	public MFlatComponentInstanceElements getMFlatComponentInstanceAccess() {
-		return (pMFlatComponentInstance != null) ? pMFlatComponentInstance : (pMFlatComponentInstance = new MFlatComponentInstanceElements());
+		return pMFlatComponentInstance;
 	}
 	
 	public ParserRule getMFlatComponentInstanceRule() {
@@ -1740,18 +1851,21 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	//MFlatServiceLibraryInstance:
 	//	MRegularFlatServiceLibraryInstance | MFlatDriverSLibInstance;
 	public MFlatServiceLibraryInstanceElements getMFlatServiceLibraryInstanceAccess() {
-		return (pMFlatServiceLibraryInstance != null) ? pMFlatServiceLibraryInstance : (pMFlatServiceLibraryInstance = new MFlatServiceLibraryInstanceElements());
+		return pMFlatServiceLibraryInstance;
 	}
 	
 	public ParserRule getMFlatServiceLibraryInstanceRule() {
 		return getMFlatServiceLibraryInstanceAccess().getRule();
 	}
 
-	//MRegularFlatServiceLibraryInstance returns MFlatServiceLibraryInstance:
-	//	"library" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{"
-	//	attributeValueAssignments+=MAttributeValueAssignment* "}" ";";
+	//MRegularFlatServiceLibraryInstance MFlatServiceLibraryInstance:
+	//	'library'
+	//	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+	//	'{'
+	//	attributeValueAssignments+=MAttributeValueAssignment*
+	//	'}' ';'
 	public MRegularFlatServiceLibraryInstanceElements getMRegularFlatServiceLibraryInstanceAccess() {
-		return (pMRegularFlatServiceLibraryInstance != null) ? pMRegularFlatServiceLibraryInstance : (pMRegularFlatServiceLibraryInstance = new MRegularFlatServiceLibraryInstanceElements());
+		return pMRegularFlatServiceLibraryInstance;
 	}
 	
 	public ParserRule getMRegularFlatServiceLibraryInstanceRule() {
@@ -1759,11 +1873,19 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MFlatDriverSLibInstance:
-	//	{MFlatDriverSLibInstance} "driver" library=[mclevslib::MServiceLibrary|VersionedQualifiedName] "{" (("attribute"
-	//	"values" "{" attributeValueAssignments+=MAttributeValueAssignment+ "}" ";")? & ("device" "mappings" "{"
-	//	deviceDriverMappings+=MFlatDeviceDriverMapping+ "}" ";")?) "}" ";";
+	//	{MFlatDriverSLibInstance}
+	//	'driver'
+	//	library=[mclevslib::MServiceLibrary|VersionedQualifiedName]
+	//	'{' (('attribute' 'values'
+	//	'{'
+	//	attributeValueAssignments+=MAttributeValueAssignment+
+	//	'}' ';')?
+	//	& ('device' 'mappings' '{'
+	//	deviceDriverMappings+=MFlatDeviceDriverMapping+
+	//	'}' ';')?)
+	//	'}' ';';
 	public MFlatDriverSLibInstanceElements getMFlatDriverSLibInstanceAccess() {
-		return (pMFlatDriverSLibInstance != null) ? pMFlatDriverSLibInstance : (pMFlatDriverSLibInstance = new MFlatDriverSLibInstanceElements());
+		return pMFlatDriverSLibInstance;
 	}
 	
 	public ParserRule getMFlatDriverSLibInstanceRule() {
@@ -1771,102 +1893,106 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//MFlatDeviceDriverMapping:
-	//	"supported" "device" supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName] "->"
-	//	"deployed" "device" deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ";";
+	//	'supported' 'device' supportedDevice=[mclevslib::MDriverSLibSupportedDevice|VersionedQualifiedReferenceName]
+	//	'->'
+	//	'deployed' 'device' deployedDevice=[mclevmcad::MDeployedDevice|VersionedQualifiedReferenceName] ';';
 	public MFlatDeviceDriverMappingElements getMFlatDeviceDriverMappingAccess() {
-		return (pMFlatDeviceDriverMapping != null) ? pMFlatDeviceDriverMapping : (pMFlatDeviceDriverMapping = new MFlatDeviceDriverMappingElements());
+		return pMFlatDeviceDriverMapping;
 	}
 	
 	public ParserRule getMFlatDeviceDriverMappingRule() {
 		return getMFlatDeviceDriverMappingAccess().getRule();
 	}
 
-	//MAttributeValueAssignment returns common::MParameterValueAssignmentSingleExpression:
-	//	"attribute" parameter=[common::MParameter|VersionedQualifiedReferenceName] ":="
-	//	parameterValue=MParameterValueExpression ";";
+	//MAttributeValueAssignment common::MParameterValueAssignmentSingleExpression:
+	//	'attribute'
+	//	parameter=[common::MParameter|VersionedQualifiedReferenceName]
+	//	':='
+	//	parameterValue=MParameterValueExpression ';'
 	public MAttributeValueAssignmentElements getMAttributeValueAssignmentAccess() {
-		return (pMAttributeValueAssignment != null) ? pMAttributeValueAssignment : (pMAttributeValueAssignment = new MAttributeValueAssignmentElements());
+		return pMAttributeValueAssignment;
 	}
 	
 	public ParserRule getMAttributeValueAssignmentRule() {
 		return getMAttributeValueAssignmentAccess().getRule();
 	}
 
-	//MParameterValue returns common::MParameterValue:
-	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR;
+	//MParameterValue common::MParameterValue:
+	//	MParameterValueLiteral | MParameterValueRefObject | MParameterValuePAR
 	public MParameterValueElements getMParameterValueAccess() {
-		return (pMParameterValue != null) ? pMParameterValue : (pMParameterValue = new MParameterValueElements());
+		return pMParameterValue;
 	}
 	
 	public ParserRule getMParameterValueRule() {
 		return getMParameterValueAccess().getRule();
 	}
 
-	//MParameterValueLiteral returns common::MParameterValueLiteral:
+	//MParameterValueLiteral common::MParameterValueLiteral:
 	//	MParameterValueBooleanLiteral | MParameterValueStringLiteral | MParameterValueIntegerLiteral |
-	//	MParameterValueRealLiteral;
+	//	MParameterValueRealLiteral
 	public MParameterValueLiteralElements getMParameterValueLiteralAccess() {
-		return (pMParameterValueLiteral != null) ? pMParameterValueLiteral : (pMParameterValueLiteral = new MParameterValueLiteralElements());
+		return pMParameterValueLiteral;
 	}
 	
 	public ParserRule getMParameterValueLiteralRule() {
 		return getMParameterValueLiteralAccess().getRule();
 	}
 
-	//MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
-	//	{common::MParameterValueBooleanLiteral} value=EBoolean;
+	//MParameterValueBooleanLiteral common::MParameterValueBooleanLiteral:
+	//	{common::MParameterValueBooleanLiteral} value=EBoolean
 	public MParameterValueBooleanLiteralElements getMParameterValueBooleanLiteralAccess() {
-		return (pMParameterValueBooleanLiteral != null) ? pMParameterValueBooleanLiteral : (pMParameterValueBooleanLiteral = new MParameterValueBooleanLiteralElements());
+		return pMParameterValueBooleanLiteral;
 	}
 	
 	public ParserRule getMParameterValueBooleanLiteralRule() {
 		return getMParameterValueBooleanLiteralAccess().getRule();
 	}
 
-	//MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
-	//	{common::MParameterValueStringLiteral} value=STRING;
+	//MParameterValueStringLiteral common::MParameterValueStringLiteral:
+	//	{common::MParameterValueStringLiteral} isRaw?='raw'?
+	//	value=STRING
 	public MParameterValueStringLiteralElements getMParameterValueStringLiteralAccess() {
-		return (pMParameterValueStringLiteral != null) ? pMParameterValueStringLiteral : (pMParameterValueStringLiteral = new MParameterValueStringLiteralElements());
+		return pMParameterValueStringLiteral;
 	}
 	
 	public ParserRule getMParameterValueStringLiteralRule() {
 		return getMParameterValueStringLiteralAccess().getRule();
 	}
 
-	//MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:
-	//	{common::MParameterValueIntegerLiteral} value=INTEGER;
+	//MParameterValueIntegerLiteral common::MParameterValueIntegerLiteral:
+	//	{common::MParameterValueIntegerLiteral} value=INTEGER
 	public MParameterValueIntegerLiteralElements getMParameterValueIntegerLiteralAccess() {
-		return (pMParameterValueIntegerLiteral != null) ? pMParameterValueIntegerLiteral : (pMParameterValueIntegerLiteral = new MParameterValueIntegerLiteralElements());
+		return pMParameterValueIntegerLiteral;
 	}
 	
 	public ParserRule getMParameterValueIntegerLiteralRule() {
 		return getMParameterValueIntegerLiteralAccess().getRule();
 	}
 
-	//MParameterValueRealLiteral returns common::MParameterValueRealLiteral:
-	//	{common::MParameterValueRealLiteral} value=REAL;
+	//MParameterValueRealLiteral common::MParameterValueRealLiteral:
+	//	{common::MParameterValueRealLiteral} value=REAL
 	public MParameterValueRealLiteralElements getMParameterValueRealLiteralAccess() {
-		return (pMParameterValueRealLiteral != null) ? pMParameterValueRealLiteral : (pMParameterValueRealLiteral = new MParameterValueRealLiteralElements());
+		return pMParameterValueRealLiteral;
 	}
 	
 	public ParserRule getMParameterValueRealLiteralRule() {
 		return getMParameterValueRealLiteralAccess().getRule();
 	}
 
-	//MParameterValueRefObject returns common::MParameterValueRefObject:
-	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName];
+	//MParameterValueRefObject common::MParameterValueRefObject:
+	//	{common::MParameterValueRefObject} object=[common::MCommonReferenceableObj|VersionedQualifiedReferenceName]
 	public MParameterValueRefObjectElements getMParameterValueRefObjectAccess() {
-		return (pMParameterValueRefObject != null) ? pMParameterValueRefObject : (pMParameterValueRefObject = new MParameterValueRefObjectElements());
+		return pMParameterValueRefObject;
 	}
 	
 	public ParserRule getMParameterValueRefObjectRule() {
 		return getMParameterValueRefObjectAccess().getRule();
 	}
 
-	//MParameterValuePAR returns common::MParameterValuePAR:
-	//	"(" value=MParameterValueExpression ")";
+	//MParameterValuePAR common::MParameterValuePAR:
+	//	'(' value=MParameterValueExpression ')'
 	public MParameterValuePARElements getMParameterValuePARAccess() {
-		return (pMParameterValuePAR != null) ? pMParameterValuePAR : (pMParameterValuePAR = new MParameterValuePARElements());
+		return pMParameterValuePAR;
 	}
 	
 	public ParserRule getMParameterValuePARRule() {
@@ -1874,9 +2000,9 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueExpressionOperators returns common::MParameterValueExpressionOperators:
-	//	plus="+" | minus="-";
+	//	plus='+' | minus='-';
 	public MParameterValueExpressionOperatorsElements getMParameterValueExpressionOperatorsAccess() {
-		return (unknownRuleMParameterValueExpressionOperators != null) ? unknownRuleMParameterValueExpressionOperators : (unknownRuleMParameterValueExpressionOperators = new MParameterValueExpressionOperatorsElements());
+		return eMParameterValueExpressionOperators;
 	}
 	
 	public EnumRule getMParameterValueExpressionOperatorsRule() {
@@ -1884,41 +2010,40 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//enum MParameterValueTERMOperators returns common::MParameterValueTERMOperators:
-	//	mult="*" | div="/";
+	//	mult='*' | div='/';
 	public MParameterValueTERMOperatorsElements getMParameterValueTERMOperatorsAccess() {
-		return (unknownRuleMParameterValueTERMOperators != null) ? unknownRuleMParameterValueTERMOperators : (unknownRuleMParameterValueTERMOperators = new MParameterValueTERMOperatorsElements());
+		return eMParameterValueTERMOperators;
 	}
 	
 	public EnumRule getMParameterValueTERMOperatorsRule() {
 		return getMParameterValueTERMOperatorsAccess().getRule();
 	}
 
-	//MParameterValueExpression returns common::MParameterValueExpression:
+	//MParameterValueExpression common::MParameterValueExpression:
 	//	{common::MParameterValueExpression} left=MParameterValueTERM (operation=MParameterValueExpressionOperators
-	//	right=MParameterValueExpression)?;
+	//	right=MParameterValueExpression)?
 	public MParameterValueExpressionElements getMParameterValueExpressionAccess() {
-		return (pMParameterValueExpression != null) ? pMParameterValueExpression : (pMParameterValueExpression = new MParameterValueExpressionElements());
+		return pMParameterValueExpression;
 	}
 	
 	public ParserRule getMParameterValueExpressionRule() {
 		return getMParameterValueExpressionAccess().getRule();
 	}
 
-	//MParameterValueTERM returns common::MParameterValueTERM:
-	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators
-	//	right=MParameterValueTERM)?;
+	//MParameterValueTERM common::MParameterValueTERM:
+	//	{common::MParameterValueTERM} left=MParameterValue (operation=MParameterValueTERMOperators right=MParameterValueTERM)?
 	public MParameterValueTERMElements getMParameterValueTERMAccess() {
-		return (pMParameterValueTERM != null) ? pMParameterValueTERM : (pMParameterValueTERM = new MParameterValueTERMElements());
+		return pMParameterValueTERM;
 	}
 	
 	public ParserRule getMParameterValueTERMRule() {
 		return getMParameterValueTERMAccess().getRule();
 	}
 
-	//EBoolean returns ecore::EBoolean:
-	//	"true" | "false";
+	//EBoolean ecore::EBoolean:
+	//	'true' | 'false'
 	public EBooleanElements getEBooleanAccess() {
-		return (pEBoolean != null) ? pEBoolean : (pEBoolean = new EBooleanElements());
+		return pEBoolean;
 	}
 	
 	public ParserRule getEBooleanRule() {
@@ -1926,25 +2051,25 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal HEXADECIMAL:
-	//	"0x" ("0".."9" | "a".."f" | "A".."F")+;
+	//	'0x' ('0'..'9' | 'a'..'f' | 'A'..'F')+;
 	public TerminalRule getHEXADECIMALRule() {
-		return (tHEXADECIMAL != null) ? tHEXADECIMAL : (tHEXADECIMAL = (TerminalRule) GrammarUtil.findRuleForName(getGrammar(), "HEXADECIMAL"));
+		return tHEXADECIMAL;
 	} 
 
-	//INTEGER returns ecore::EString:
-	//	"-"? INT | HEXADECIMAL;
+	//INTEGER:
+	//	'-'? INT | HEXADECIMAL;
 	public INTEGERElements getINTEGERAccess() {
-		return (pINTEGER != null) ? pINTEGER : (pINTEGER = new INTEGERElements());
+		return pINTEGER;
 	}
 	
 	public ParserRule getINTEGERRule() {
 		return getINTEGERAccess().getRule();
 	}
 
-	//REAL returns ecore::EString:
-	//	"-"? (INT "." INT) ("e" "-"? INT)?;
+	//REAL:
+	//	'-'? (INT '.' INT) ('e' '-'? INT)?;
 	public REALElements getREALAccess() {
-		return (pREAL != null) ? pREAL : (pREAL = new REALElements());
+		return pREAL;
 	}
 	
 	public ParserRule getREALRule() {
@@ -1952,38 +2077,38 @@ public class FLATMCADGrammarAccess extends AbstractGrammarElementFinder {
 	}
 
 	//terminal ID:
-	//	"^"? ("a".."z" | "A".."Z" | "_") ("a".."z" | "A".."Z" | "_" | "0".."9")*;
+	//	'^'? ('a'..'z' | 'A'..'Z' | '_') ('a'..'z' | 'A'..'Z' | '_' | '0'..'9')*;
 	public TerminalRule getIDRule() {
 		return gaTerminals.getIDRule();
 	} 
 
 	//terminal INT returns ecore::EInt:
-	//	"0".."9"+;
+	//	'0'..'9'+;
 	public TerminalRule getINTRule() {
 		return gaTerminals.getINTRule();
 	} 
 
 	//terminal STRING:
-	//	"\"" ("\\" ("b" | "t" | "n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\""))* "\"" | "\'" ("\\" ("b" | "t" |
-	//	"n" | "f" | "r" | "u" | "\"" | "\'" | "\\") | !("\\" | "\'"))* "\'";
+	//	'"' ('\\' . | !('\\' | '"'))* '"' |
+	//	"'" ('\\' . | !('\\' | "'"))* "'";
 	public TerminalRule getSTRINGRule() {
 		return gaTerminals.getSTRINGRule();
 	} 
 
 	//terminal ML_COMMENT:
-	//	"/ *"->"* /";
+	//	'/ *'->'* /';
 	public TerminalRule getML_COMMENTRule() {
 		return gaTerminals.getML_COMMENTRule();
 	} 
 
 	//terminal SL_COMMENT:
-	//	"//" !("\n" | "\r")* ("\r"? "\n")?;
+	//	'//' !('\n' | '\r')* ('\r'? '\n')?;
 	public TerminalRule getSL_COMMENTRule() {
 		return gaTerminals.getSL_COMMENTRule();
 	} 
 
 	//terminal WS:
-	//	(" " | "\t" | "\r" | "\n")+;
+	//	' ' | '\t' | '\r' | '\n'+;
 	public TerminalRule getWSRule() {
 		return gaTerminals.getWSRule();
 	} 

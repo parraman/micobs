@@ -11,11 +11,11 @@
 package es.uah.aut.srg.micobs.mesp.lang.parser.antlr;
 
 import java.io.InputStream;
-
 import org.eclipse.xtext.parser.antlr.IAntlrTokenFileProvider;
 
 public class CTOOLAntlrTokenFileProvider implements IAntlrTokenFileProvider {
 	
+	@Override
 	public InputStream getAntlrTokenFile() {
 		ClassLoader classLoader = getClass().getClassLoader();
     	return classLoader.getResourceAsStream("es/uah/aut/srg/micobs/mesp/lang/parser/antlr/internal/InternalCTOOL.tokens");

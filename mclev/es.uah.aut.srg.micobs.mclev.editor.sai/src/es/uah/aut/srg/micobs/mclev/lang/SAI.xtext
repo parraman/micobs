@@ -124,6 +124,7 @@ MEnumParamStringLiteral returns common::MEnumParamStringLiteral:
 	{common::MEnumParamStringLiteral}
 	name=ID
 	'='
+	(isRaw?='raw')?
 	value=STRING
 ;
 
@@ -169,6 +170,7 @@ MParameterValueBooleanLiteral returns common::MParameterValueBooleanLiteral:
 
 MParameterValueStringLiteral returns common::MParameterValueStringLiteral:
 	{common::MParameterValueStringLiteral}
+	(isRaw?='raw')?
 	value=STRING;
 
 MParameterValueIntegerLiteral returns common::MParameterValueIntegerLiteral:

@@ -1,3 +1,4 @@
+
 /*******************************************************************************
  * Copyright (c) 2013-2015 UAH Space Research Group.
  * All rights reserved. This program and the accompanying materials
@@ -8,17 +9,15 @@
  * Contributors:
  *     MICOBS SRG Team - Initial API and implementation
  ******************************************************************************/
-
 package es.uah.aut.srg.micobs.mclev.lang.ui;
 
-import org.eclipse.xtext.ui.DefaultUiModule;
 import org.eclipse.ui.plugin.AbstractUIPlugin;
 
 /**
  * Manual modifications go to {es.uah.aut.srg.micobs.mclev.lang.ui.DOMUiModule}
  */
 @SuppressWarnings("all")
-public abstract class AbstractDOMUiModule extends DefaultUiModule {
+public abstract class AbstractDOMUiModule extends org.eclipse.xtext.ui.DefaultUiModule {
 	
 	public AbstractDOMUiModule(AbstractUIPlugin plugin) {
 		super(plugin);
@@ -111,8 +110,13 @@ public abstract class AbstractDOMUiModule extends DefaultUiModule {
 	}
 
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
+	public Class<? extends org.eclipse.xtext.generator.IContextualOutputConfigurationProvider> bindIContextualOutputConfigurationProvider() {
+		return org.eclipse.xtext.builder.EclipseOutputConfigurationProvider.class;
+	}
+
+	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
 	public void configureIResourceDescriptionsPersisted(com.google.inject.Binder binder) {
-		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.builder.impl.PersistentDataAwareDirtyResource.PERSISTED_DESCRIPTIONS)).to(org.eclipse.xtext.builder.builderState.IBuilderState.class);
+		binder.bind(org.eclipse.xtext.resource.IResourceDescriptions.class).annotatedWith(com.google.inject.name.Names.named(org.eclipse.xtext.resource.impl.ResourceDescriptionsProvider.PERSISTED_DESCRIPTIONS)).to(org.eclipse.xtext.builder.builderState.IBuilderState.class);
 	}
 
 	// contributed by org.eclipse.xtext.generator.builder.BuilderIntegrationFragment
