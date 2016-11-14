@@ -23,7 +23,7 @@ import es.uah.aut.srg.micobs.common.MParameterValueAssignment;
 import es.uah.aut.srg.micobs.common.MParameterValueExpression;
 import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
-import es.uah.aut.srg.micobs.util.IMICOBSUtil.StringValue;
+import es.uah.aut.srg.micobs.util.StringValue;
 
 /**
  * QVT and Xpand black box unit with common MICOBS functions.

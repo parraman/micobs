@@ -94,6 +94,7 @@ import es.uah.aut.srg.micobs.system.MLanguage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
+import es.uah.aut.srg.micobs.util.StringValue;
 
 /**
  * MESP models helper functions.

@@ -49,7 +49,7 @@ import es.uah.aut.srg.micobs.pdl.MOperatingSystem;
 import es.uah.aut.srg.micobs.pdl.MOperatingSystemAPI;
 import es.uah.aut.srg.micobs.pdl.MPlatform;
 import es.uah.aut.srg.micobs.system.MLanguage;
-import es.uah.aut.srg.micobs.util.IMICOBSUtil.StringValue;
+import es.uah.aut.srg.micobs.util.StringValue;
 
 
 /**

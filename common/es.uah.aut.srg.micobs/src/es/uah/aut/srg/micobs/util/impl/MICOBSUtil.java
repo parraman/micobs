@@ -79,6 +79,7 @@ import es.uah.aut.srg.micobs.system.library.systemlibrary.MSystemPackage;
 import es.uah.aut.srg.micobs.system.library.systemlibrary.manager.SystemLibraryManager;
 import es.uah.aut.srg.micobs.util.IMICOBSUtil;
 import es.uah.aut.srg.micobs.util.IParameterAssignmentResolver;
+import es.uah.aut.srg.micobs.util.StringValue;
 
 /**
  * This class contains a set of helper functions to be used by the
