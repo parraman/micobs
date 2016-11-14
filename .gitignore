@@ -1,9 +1,14 @@
 es.uah.aut.srg.*/bin/*
 common/es.uah.aut.srg.*/bin/*
+common/es.uah.aut.srg.*/.antlr-generator-*jar
 common/langs/es.uah.aut.srg.*/bin/*
 mesp/es.uah.aut.srg.*/bin/*
+mesp/es.uah.aut.srg.*/.antlr-generator-*jar
 mesp/ctools/es.uah.aut.srg.*/bin/*
 mesp/langs/es.uah.aut.srg.*/bin/*
 mclev/es.uah.aut.srg.*/bin/*
+mclev/es.uah.aut.srg.*/.antlr-generator-*jar
 mclev/domains/nulldomain/es.uah.aut.srg.*/bin/*
+mclev/domains/nulldomain/es.uah.aut.srg.*/.antlr-generator-*.jar
 mclev/domains/edroom/es.uah.aut.srg.*/bin/*
+mclev/domains/edroom/es.uah.aut.srg.*/.antlr-generator-*.jar
