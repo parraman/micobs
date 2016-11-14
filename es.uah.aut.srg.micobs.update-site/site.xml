@@ -3,25 +3,25 @@
    <description name="MICOBS update site" url="http://www.micobs.com/eclipse/update/2.1.x">
       MICOBS Framework update site
    </description>
-   <feature url="features/es.uah.aut.srg.micobs.common_2.2.1.jar" id="es.uah.aut.srg.micobs.common" version="2.2.1">
+   <feature url="features/es.uah.aut.srg.micobs.common_2.2.2.jar" id="es.uah.aut.srg.micobs.common" version="2.2.2">
       <category name="es.uah.aut.srg.micobs.common.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.langs_2.2.1.jar" id="es.uah.aut.srg.micobs.langs" version="2.2.1">
+   <feature url="features/es.uah.aut.srg.micobs.langs_2.2.2.jar" id="es.uah.aut.srg.micobs.langs" version="2.2.2">
       <category name="es.uah.aut.srg.micobs.common.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp_2.2.1.jar" id="es.uah.aut.srg.micobs.mesp" version="2.2.1">
+   <feature url="features/es.uah.aut.srg.micobs.mesp_2.2.2.jar" id="es.uah.aut.srg.micobs.mesp" version="2.2.2">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp.ctools_2.2.1.jar" id="es.uah.aut.srg.micobs.mesp.ctools" version="2.2.1">
+   <feature url="features/es.uah.aut.srg.micobs.mesp.ctools_2.2.2.jar" id="es.uah.aut.srg.micobs.mesp.ctools" version="2.2.2">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mesp.langs_2.2.1.jar" id="es.uah.aut.srg.micobs.mesp.langs" version="2.2.1">
+   <feature url="features/es.uah.aut.srg.micobs.mesp.langs_2.2.2.jar" id="es.uah.aut.srg.micobs.mesp.langs" version="2.2.2">
       <category name="es.uah.aut.srg.micobs.mesp.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mclev.feature_2.2.1.jar" id="es.uah.aut.srg.micobs.mclev.feature" version="2.2.1">
+   <feature url="features/es.uah.aut.srg.micobs.mclev.feature_2.2.2.jar" id="es.uah.aut.srg.micobs.mclev.feature" version="2.2.2">
       <category name="es.uah.aut.srg.micobs.mclev.category.id"/>
    </feature>
-   <feature url="features/es.uah.aut.srg.micobs.mclev.domains.feature_2.2.1.jar" id="es.uah.aut.srg.micobs.mclev.domains.feature" version="2.2.1">
+   <feature url="features/es.uah.aut.srg.micobs.mclev.domains.feature_2.2.2.jar" id="es.uah.aut.srg.micobs.mclev.domains.feature" version="2.2.2">
       <category name="es.uah.aut.srg.micobs.mclev.category.id"/>
    </feature>
    <category-def name="es.uah.aut.srg.micobs.common.category.id" label="MICOBS Common">

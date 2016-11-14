@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: Construction Tool Editor UI
 Bundle-Vendor: UAH Space Research Group
-Bundle-Version: 2.2.1.qualifier
+Bundle-Version: 2.2.2.qualifier
 Bundle-SymbolicName: es.uah.aut.srg.micobs.mesp.editor.ctool.ui;singleton:=true
 Bundle-ActivationPolicy: lazy
 Require-Bundle: es.uah.aut.srg.micobs.mesp.editor.ctool;visibility:=reexport,
