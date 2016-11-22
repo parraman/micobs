@@ -16,4 +16,4 @@ The contents of the repository are as follows:
 - LICENSE: a copy of the Eclipse Public License v1.0.
 - README.md: this file.
 
-The project's documentation can be found on http://micobs.readthedocs.org
+The project's documentation can be found on http://micobs.readthedocs.org (in progress).
