@@ -60,4 +60,11 @@
          version="0.0.0"
          unpack="false"/>
 
+   <plugin
+         id="es.uah.aut.srg.micobs.lang.asm_ARM_v7M"
+         download-size="0"
+         install-size="0"
+         version="0.0.0"
+         unpack="false"/>
+
 </feature>
